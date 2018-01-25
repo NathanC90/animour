@@ -2,7 +2,7 @@ package org.iii.ee100.sample.nathan;
 
 import org.iii.ee100.sample.Calculate;
 
-public class CalculateTest implements Calculate {
+public class CalculateImpl implements Calculate {
 
 	public int add(int a, int b) {
 		
