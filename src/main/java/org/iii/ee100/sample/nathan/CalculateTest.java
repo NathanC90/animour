@@ -1,8 +1,8 @@
-package org.iii.ee100.sample.lala;
+package org.iii.ee100.sample.nathan;
 
 import org.iii.ee100.sample.Calculate;
 
-public class CalculateImpl implements Calculate {
+public class CalculateTest implements Calculate {
 
 	public int add(int a, int b) {
 		
@@ -22,11 +22,6 @@ public class CalculateImpl implements Calculate {
 	public double div(int a, int b) {
 		
 		return a/b;
-	}
-
-	public static void main(String[] args) {
-		
-
 	}
 
 }
