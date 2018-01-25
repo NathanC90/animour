@@ -1,6 +1,8 @@
 package org.iii.ee100.sample.sarah;
 
-public class CalculateImpl implements org.iii.ee100.sample.Calculate {
+import org.iii.ee100.sample.Calculate;
+
+public class CalculateImpl implements Calculate {
 
 	public int add(int a, int b) {
 
