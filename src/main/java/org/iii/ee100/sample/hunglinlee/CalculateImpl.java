@@ -1,6 +1,8 @@
 package org.iii.ee100.sample.hunglinlee;
 
-public class CalculateImpl implements org.iii.ee100.sample.Calculate {
+import org.iii.ee100.sample.Calculate;;
+
+public class CalculateImpl implements Calculate {
 
 	public int add(int a, int b) {
 		return a+b;
@@ -17,5 +19,9 @@ public class CalculateImpl implements org.iii.ee100.sample.Calculate {
 	public double div(int a, int b) {
 		return a/b;
 	}
+	
+	public static void main(String[] args) {
+		
 
+	}
 }
