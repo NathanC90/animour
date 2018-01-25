@@ -30,8 +30,9 @@ public class CalculateImplTest {
 
 	@Test
 	public void testDiv() {
-//		assertEquals(new Double(3.0), new CalculateImpl().div(9, 3));
+		assertEquals(3, new CalculateImpl().div(9, 3),0.1);
 		
+		assertEquals(2, new CalculateImpl().div(4, 2),0.1);
 	}
 
 }
