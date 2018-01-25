@@ -9,6 +9,7 @@ iii-ee100
 * pkhsu : 許博凱
 * NathanC90：趙彥茗
 * amanlun :蕭仲倫
-plijyfes : 李鴻麟
+* plijyfes : 李鴻麟
+* LalaLin : 洪紹媛
 
 
