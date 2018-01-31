@@ -2,7 +2,6 @@ package org.iii.ee100.sample.kevinhsu;
 
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class CalculateImplTest {
