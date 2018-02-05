@@ -8,7 +8,7 @@ public class SneakersDao {
 	Connection conn;
 	PreparedStatement pstmt;
 
-	// insert 
+	// insert
 	public void insert(Sneakers sn) {
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -17,7 +17,6 @@ public class SneakersDao {
 			String insql = "INSERT INTO sneakers (name, color, brand, price, launch) VALUES (?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(insql, Statement.RETURN_GENERATED_KEYS);
 
-			// 用傳入的 sneakers 物件的 getter，取得物件 private 屬性，存入資料庫中。
 			pstmt.setString(1, sn.getName());
 			pstmt.setString(2, sn.getColor());
 			pstmt.setString(3, sn.getBrand());
@@ -25,11 +24,11 @@ public class SneakersDao {
 			pstmt.setDate(5, sn.getLaunch());
 			pstmt.executeUpdate();
 
-			ResultSet rsKey= pstmt.getGeneratedKeys();
+			ResultSet rsKey = pstmt.getGeneratedKeys();
 			if (rsKey.next()) {
 				sn.setId(rsKey.getLong(1));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -44,11 +43,11 @@ public class SneakersDao {
 		}
 	} // end of insert
 
-	// update 傳入完成更新的 sneakers 物件，存入資料庫。
+	// update
 	public void update(Sneakers sn) {
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres"); // 記得加帳號密碼
+			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 
 			String upsql = "UPDATE sneakers SET name = ?, color = ?, brand = ? , price = ?, launch = ? WHERE id = ?";
 			pstmt = conn.prepareStatement(upsql);
@@ -76,6 +75,7 @@ public class SneakersDao {
 		}
 	} // end if update
 
+	// delete
 	public void delete(Long id) {
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -101,6 +101,7 @@ public class SneakersDao {
 		}
 	} // end of delete
 
+	// select *
 	public List<Sneakers> findAll() {
 		Sneakers sn = null;
 		List<Sneakers> snlist = new ArrayList<Sneakers>();
@@ -110,23 +111,20 @@ public class SneakersDao {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 
-			//  select 欄位不用加 ()
 			String slsql = "SELECT id, name, color, brand, price, launch FROM sneakers ORDER BY id";
 			pstmt = conn.prepareStatement(slsql);
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) { // 有資料的話
-				sn = new Sneakers(); // 初始化一個 sneakers 物件
-				// 用 rs.getter 取出從資料庫傳回的欄位資料
-				// 用 sneakers 物件的setter 把從資料庫取回的的資料設定為物件屬性
+			while (rs.next()) {
+				sn = new Sneakers();
 				sn.setId(rs.getLong("id"));
 				sn.setName(rs.getString("name"));
 				sn.setColor(rs.getString("color"));
 				sn.setBrand(rs.getString("brand"));
 				sn.setPrice(rs.getFloat("price"));
 				sn.setLaunch(rs.getDate("launch"));
-				
-				snlist.add(sn); // 設定完 sneakers 物件屬性後，加入arraylist 裡面
+
+				snlist.add(sn);
 			} // end of while
 
 		} catch (SQLException e) {
@@ -145,6 +143,7 @@ public class SneakersDao {
 		return snlist;
 	} // end of findall
 
+	// select where id = ?
 	public Sneakers findById(Long id) {
 
 		Sneakers sn = null;
@@ -185,5 +184,4 @@ public class SneakersDao {
 		}
 		return sn;
 	} // end of findbyid
-
 }
