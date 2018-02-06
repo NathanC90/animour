@@ -1,4 +1,4 @@
-package game;
+package org.iii.ee100.sample.game;
 
 public class Game {
 	private Long id;

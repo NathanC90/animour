@@ -1,10 +1,11 @@
-package game;
+package org.iii.ee100.sample.game;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class GameDao {
@@ -21,17 +22,24 @@ public class GameDao {
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
-			PreparedStatement pstmt = conn.prepareStatement(insertSTMT);
+			PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
 			pstmt.setString(3, game.getPlatform());
 			pstmt.setDate(4, game.getRelease_date());
 			pstmt.executeUpdate();
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
+				game.setId(rs.getLong(1));
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstmt.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				conn.close();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -54,7 +62,9 @@ public class GameDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstmt.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				conn.close();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -73,7 +83,9 @@ public class GameDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				pstmt.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				conn.close();
 
 			} catch (SQLException e1) {
@@ -84,7 +96,7 @@ public class GameDao {
 
 	public ArrayList<Game> findAll() {
 		ResultSet rs = null;
-		Game game = null;
+		Game game;
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -106,7 +118,9 @@ public class GameDao {
 		} finally {
 			try {
 				rs.close();
-				pstmt.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				conn.close();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -116,7 +130,7 @@ public class GameDao {
 	}
 
 	public Game findById(Long id) {
-		Game game = null;
+		Game game = new Game();
 		ResultSet rs = null;
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -137,7 +151,9 @@ public class GameDao {
 		} finally {
 			try {
 				rs.close();
-				pstmt.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
 				conn.close();
 			} catch (SQLException e1) {
 				e1.printStackTrace();

@@ -2,10 +2,9 @@ package org.iii.ee100.sample.game;
 
 import static org.junit.Assert.*;
 
+import org.iii.ee100.sample.game.Game;
+import org.iii.ee100.sample.game.GameDao;
 import org.junit.Test;
-
-import game.Game;
-import game.GameDao;
 
 
 public class GameDaoTest {
@@ -18,7 +17,6 @@ public class GameDaoTest {
 		
 		//test insert()
 		Game game1 = new Game();
-		game1.setId((long) 1);
 		game1.setName("Mario_Kart8");
 		game1.setPublisher("Nintendo");
 		game1.setPlatform("Nintendo_Switch"); 
@@ -26,13 +24,13 @@ public class GameDaoTest {
 		gd.insert(game1);
 		assertEquals(1, gd.findAll().size());
 		
-		//test insert()
+		//test update()
 		game1.setName("Mario_Kart8_Deluxe");
 		gd.update(game1);
 		assertEquals(game1.getName(), gd.findById(game1.getId()).getName());
 	
 		//test delete()
-		gd.delete((long) 1);
+		gd.delete(game1.getId());
 		assertEquals(0, gd.findAll().size());
 		
 	}
