@@ -22,10 +22,9 @@ public class CalculateImplTest {
 		assertEquals(2, new CalculateImpl().mul(1, 2));
 	}
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void testDiv() {
-		assertEquals(3.0, new CalculateImpl().div(7, 2));
+		assertEquals(3, new CalculateImpl().div(7, 2));
 	}
 
 }
