@@ -1,9 +1,0 @@
-diff a/src/main/java/org/iii/ee100/sample/sneakers/SneakersDao.java b/src/main/java/org/iii/ee100/sample/sneakers/SneakersDao.java	(rejected hunks)
-@@ -0,6 +0,7 @@
- 			// 用傳入的 sneakers 物件的 getter，取得物件 private 屬性，存入資料庫中。
- 			pstmt.setString(1, sn.getName());
- 			pstmt.setString(2, sn.getColor());
-+			pstmt.setString(3, sn.getBrand());
- 			pstmt.setFloat(4, sn.getPrice());
- 			pstmt.setDate(5, sn.getLaunch());
- 			pstmt.executeUpdate();
