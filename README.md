@@ -14,3 +14,15 @@ iii-ee100
 * LalaLin : 洪紹媛
 
 
+# 2nd Homework to make simple ORM with default Data Access Object
+
+* sarahchiang : < NotYet >
+* mickhsieh : Fruit
+* pkhsu : Sneakers
+* NathanC90：Music
+* amanlun : < NotYet >
+* plijyfes : Game
+* LalaLin : Drama
+
+--- Team member should finish your job before each Wednesday 21:00 ---
+
