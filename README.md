@@ -16,8 +16,8 @@ iii-ee100
 
 # 2nd Homework
 
-*to make simple ORM with default Data Access Object*
-*Team member should finish your job before each Wednesday 21:00*
+## to make simple ORM with default Data Access Object 
+## Team member should finish your job before each Wednesday 21:00
 
 * sarahchiang : < NotYet >
 * mickhsieh : Fruit
