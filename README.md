@@ -23,7 +23,7 @@ iii-ee100
 * mickhsieh : Fruit
 * pkhsu : Sneakers
 * NathanC90：Music
-* amanlun : < NotYet >
+* amanlun : NbaPlayer
 * plijyfes : Game
 * LalaLin : Drama
 
