@@ -13,17 +13,22 @@ public class NbaPlayerDaoTest {
 		NbaPlayerDao dao = new NbaPlayerDao();
 		try {
 			dao.getConnection();
+			
+			//findAll
+			dao.findAll();
+			assertEquals(0, dao.findAll().size());
+			
 			// insert
 			NbaPlayer np1 = new NbaPlayer();
 			np1.setName("STEPHEN-CURRY");
 			np1.setThree_pointer_percentage(43);
 			np1.setFg_percentage(91);
 			np1.setApg(6);
-			//dao.insert(np1);
-			//assertEquals(10, dao.findAll().size());
+			dao.insert(np1);
+			assertEquals(1, dao.findAll().size());
 			
 			//update
-			np1.setId(23);
+			//np1.setId(23);
 			np1.setName("JAMES-HARDEN");
 			np1.setThree_pointer_percentage(41);
 			np1.setFg_percentage(89);
@@ -33,17 +38,17 @@ public class NbaPlayerDaoTest {
 			assertEquals(np1.getName(),dao.findById(np1.getId()).getName());
 			
 			//delete
-			dao.delete(25);
-			assertEquals(8, dao.findAll().size());
+			dao.delete(np1.getId());
+			assertEquals(0, dao.findAll().size());
 
 			//findAll
-			dao.findAll();
-			assertEquals(8, dao.findAll().size());
+//			dao.findAll();
+//			assertEquals(0, dao.findAll().size());
 
 			//findById
 			
-			dao.findById(22);
-			assertEquals(8, dao.findAll().size());
+//			dao.findById(22);
+//			assertEquals(8, dao.findAll().size());
 
 			
 			
