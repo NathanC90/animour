@@ -10,14 +10,59 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicDao{
-	private static final String INSERT_STMT = "INSERT INTO music VALUES (?,?,?,?,?)";
+	private static final String INSERT_STMT = "INSERT INTO music (title, pname, genre, clicks, rdate) VALUES (?,?,?,?,?)";
 	private static final String UPDATE_STMT ="UPDATE music SET title=?, pname=?, genre=?, clicks=?, rdate=? WHERE id=?";
 	private static final String DELETE = "DELETE music WHERE id=?";
-	private static final String FIND_ALL_STMT = "SELECT id, title, pname, genre, clicks, rdate FROM music ORDER BY empno";
+	private static final String FIND_ALL_STMT = "SELECT id, title, pname, genre, clicks, rdate FROM music ORDER BY id";
 	private static final String FIND_BY_ID = "SELECT id, title, pname, genre, clicks, rdate FROM music WHERE id=?";
 	
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	
+	//select all
+		public List<Music> findAll(){
+			
+			Music music = null;
+			
+			List<Music> mlist = new ArrayList<Music>();
+			ResultSet rs = null;
+			
+			try {
+				String connUrl = "jdbc:postgresql://localhost:5432/testdb";
+				conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+				PreparedStatement pstmt = conn.prepareStatement(FIND_ALL_STMT);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {		
+				music = new Music();
+				
+				music.setId(rs.getLong("id"));
+				music.setTitle(rs.getString("title"));
+				music.setPname(rs.getString("pname"));
+				music.setGenre(rs.getString("genre"));
+				music.setClicks(rs.getLong("clicks"));
+				music.setRdate(rs.getDate("rdate"));
+				
+				mlist.add(music);
+				}
+
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					if(pstmt != null) {
+					pstmt.close();
+					}
+					if (conn != null) {
+						conn.close();
+					}
+				}catch(SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			return mlist;
+		}   //end of FindAll
 	
 	//insert
 	public void insert(Music music) {
@@ -39,7 +84,9 @@ public class MusicDao{
 			e.printStackTrace();
 		}finally {
 			try {
+				if (pstmt != null) {
 				pstmt.close();
+				}
 				if (conn != null) {
 					conn.close();
 				}
@@ -70,7 +117,9 @@ public class MusicDao{
 			e.printStackTrace();
 		}finally {
 			try {
-				pstmt.close();
+				if(pstmt != null) {
+					pstmt.close();					
+				}
 				if (conn != null) {
 					conn.close();
 				}
@@ -105,49 +154,6 @@ public class MusicDao{
 		}
 	}  //end of delete
 	
-	//select
-	public List<Music> findAll(){
-		
-		Music music = null;
-		
-		List<Music> mlist = new ArrayList<Music>();
-		ResultSet rs = null;
-		
-		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
-			PreparedStatement pstmt = conn.prepareStatement(FIND_ALL_STMT);
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {		
-			music = new Music();
-			
-			music.setId(rs.getLong("id"));
-			music.setTitle(rs.getString("title"));
-			music.setPname(rs.getString("pname"));
-			music.setGenre(rs.getString("genre"));
-			music.setClicks(rs.getLong("clicks"));
-			music.setRdate(rs.getDate("rdate"));
-			
-			mlist.add(music);
-			}
-
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-				pstmt.close();
-				if (conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
-		}
-		return mlist;
-	}   //end of FindAll
-	
 	//findById
 	public Music findById(Long id) {
 		Music music = null;
@@ -173,7 +179,9 @@ public class MusicDao{
 		}finally {
 			try {
 				rs.close();
-				pstmt.close();
+				if(pstmt != null) {
+					pstmt.close();					
+				}
 				if (conn != null) {
 					conn.close();
 				}
