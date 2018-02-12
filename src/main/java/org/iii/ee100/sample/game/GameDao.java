@@ -19,6 +19,7 @@ public class GameDao {
 	PreparedStatement pstmt = null;
 
 	public void insert(Game game) {
+		ResultSet rs = null;
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
@@ -28,7 +29,7 @@ public class GameDao {
 			pstmt.setString(3, game.getPlatform());
 			pstmt.setDate(4, game.getRelease_date());
 			pstmt.executeUpdate();
-			ResultSet rs = pstmt.getGeneratedKeys();
+			rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				game.setId(rs.getLong(1));
 			}
@@ -37,6 +38,7 @@ public class GameDao {
 			e.printStackTrace();
 		} finally {
 			try {
+				rs.close();
 				if (pstmt != null) {
 					pstmt.close();
 				}
