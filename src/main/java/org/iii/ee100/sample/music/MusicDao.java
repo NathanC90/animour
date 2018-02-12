@@ -81,7 +81,7 @@ public class MusicDao{
 	}  //end of update
 
 	//delete
-	public void delete(Music music) {
+	public void delete(Long id) {
 		try {
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
@@ -145,6 +145,7 @@ public class MusicDao{
 				e1.printStackTrace();
 			}
 		}
+		return mlist;
 	}   //end of FindAll
 	
 	//findById
@@ -180,6 +181,7 @@ public class MusicDao{
 				e1.printStackTrace();
 			}
 		}
+		return music;
 	}  //end of findById
 }
 	
