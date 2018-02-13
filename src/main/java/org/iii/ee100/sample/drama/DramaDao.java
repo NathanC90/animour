@@ -1,13 +1,15 @@
 package org.iii.ee100.sample.drama;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class DramaDao {
 	// 新
@@ -29,9 +31,20 @@ public class DramaDao {
 		String user = "postgres";
 		String password = "postgres";
 
-		Connection conn = DriverManager.getConnection(connUrl, user, password);
+		// Connection conn = DriverManager.getConnection(connUrl, user,
+		// password);
 
-		return conn;
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(connUrl);
+		config.setUsername(user);
+		config.setPassword(password);
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
+		HikariDataSource ds = new HikariDataSource(config);
+
+		return ds.getConnection();
 	}
 
 	public List<Drama> findAll() {
