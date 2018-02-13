@@ -14,6 +14,7 @@ public class MusicDaoTest {
 		assertEquals(0, muDao.findAll().size());
 		
 		Music music1 = new Music();
+		
 		music1.setTitle("Perfect");
 		music1.setPname("Ed Sheeran");
 		music1.setGenre("pop");
@@ -26,7 +27,7 @@ public class MusicDaoTest {
 		
 		music1.setClicks(26721);
 		muDao.update(music1);
-		assertEquals(music1.getClicks(), muDao.findById(music1.getId()).getClicks(), 1);
+		assertEquals(music1.getClicks(), muDao.findById(music1.getId()).getClicks());
 		
 		muDao.delete(music1.getId());
 		assertEquals(0, muDao.findAll().size());
