@@ -12,7 +12,7 @@ import java.util.List;
 public class MusicDao{
 	private static final String INSERT_STMT = "INSERT INTO music (title, pname, genre, clicks, rdate) VALUES (?,?,?,?,?)";
 	private static final String UPDATE_STMT ="UPDATE music SET title=?, pname=?, genre=?, clicks=?, rdate=? WHERE id=?";
-	private static final String DELETE = "DELETE music WHERE id=?";
+	private static final String DELETE = "DELETE from music WHERE id=?";
 	private static final String FIND_ALL_STMT = "SELECT id, title, pname, genre, clicks, rdate FROM music ORDER BY id";
 	private static final String FIND_BY_ID = "SELECT id, title, pname, genre, clicks, rdate FROM music WHERE id=?";
 	
@@ -48,18 +48,7 @@ public class MusicDao{
 
 			}catch(SQLException e) {
 				e.printStackTrace();
-			}finally {
-				try {
-					rs.close();
-					if(pstmt != null) {
-					pstmt.close();
-					}
-					if (conn != null) {
-						conn.close();
-					}
-				}catch(SQLException e1) {
-					e1.printStackTrace();
-				}
+			
 			}
 			return mlist;
 		}   //end of FindAll
@@ -82,17 +71,6 @@ public class MusicDao{
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if (pstmt != null) {
-				pstmt.close();
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
 		}
 	} //end of insert
 
@@ -115,17 +93,7 @@ public class MusicDao{
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				if(pstmt != null) {
-					pstmt.close();					
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
+		
 		}
 	}  //end of update
 
@@ -142,16 +110,8 @@ public class MusicDao{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				pstmt.close();
-				if (conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
 		}
+		
 	}  //end of delete
 	
 	//findById
@@ -163,34 +123,39 @@ public class MusicDao{
 			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(FIND_BY_ID);
-			
+			pstmt.setLong(1, id);
+			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				music = new Music();
-			music.setId(rs.getLong(1));
+			music.setId(rs.getLong("id"));
 			music.setTitle(rs.getString("title"));
 			music.setPname(rs.getString("pname"));
 			music.setGenre(rs.getString("genre"));
 			music.setClicks(rs.getLong("clicks"));
 			music.setRdate(rs.getDate("rdate"));
 			
+			
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-				if(pstmt != null) {
-					pstmt.close();					
-				}
-				if (conn != null) {
-					conn.close();
-				}
-			}catch(SQLException e1) {
-				e1.printStackTrace();
-			}
+
 		}
 		return music;
 	}  //end of findById
+
+	public void closeConn() {
+	try {
+		if(pstmt != null) {
+			pstmt.close();					
+		}
+		if (conn != null) {
+			conn.close();
+		}
+	}catch(SQLException e1) {
+		e1.printStackTrace();
+	}
+}
+
 }
 	
 
