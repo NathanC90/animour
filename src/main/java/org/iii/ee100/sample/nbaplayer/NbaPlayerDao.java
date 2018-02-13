@@ -9,6 +9,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 public class NbaPlayerDao {
 	private static final String INSERT_STMT = "INSERT INTO nbaplayer (name,three_pointer_percentage,fg_percentage,apg) VALUES (?,?,?,?)";
 	private static final String UPDATE_STMT = "UPDATE nbaplayer set name=?,three_pointer_percentage=?,fg_percentage=?,apg=? WHERE Id=?";
@@ -19,11 +22,32 @@ public class NbaPlayerDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 
-	public void getConnection() throws SQLException {
+	public Connection getConnection() throws SQLException {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
-	}
+		String user = "postgres";
+		String password = "postgres";
+		//conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+		
+		
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(connUrl);
+		config.setUsername(user);
+		config.setPassword(password);
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
+		HikariDataSource ds = new HikariDataSource(config);
+
+		return ds.getConnection();
+		
+		
+		
+		
+		
+		
+	}
+	
 	public void closeConn() throws SQLException {
 		if (conn != null)
 			conn.close();
