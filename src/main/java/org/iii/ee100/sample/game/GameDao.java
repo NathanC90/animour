@@ -42,6 +42,7 @@ public class GameDao {
 	public void insert(Game game) {
 		ResultSet rs = null;
 		try {
+			getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -70,7 +71,7 @@ public class GameDao {
 
 	public void update(Game game) {
 		try {
-			
+			getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(updateSTMT);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -94,6 +95,7 @@ public class GameDao {
 
 	public void delete(Long id) {
 		try {
+			getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
@@ -117,6 +119,7 @@ public class GameDao {
 		Game game;
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
+			getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -149,6 +152,7 @@ public class GameDao {
 		Game game = new Game();
 		ResultSet rs = null;
 		try {
+			getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
