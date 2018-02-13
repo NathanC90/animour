@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 public class GameDao {
 	private static final String insertSTMT = "insert into game(name,publisher,platform,release_date) values (?, ?, ?, ?)";
 	private static final String updateSTMT = "update game set name=?, publisher=?, platform=?, release_date=? where id=?";
@@ -17,12 +20,28 @@ public class GameDao {
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
+	
+	private Connection getConnection() throws SQLException {
+		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
+		String user = "postgres";
+		String password = "postgres";
+//		conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(connUrl);
+		config.setUsername(user);
+		config.setPassword(password);
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		
+		HikariDataSource ds = new HikariDataSource(config);
+		return conn;
+	
+	}
 
 	public void insert(Game game) {
 		ResultSet rs = null;
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -51,8 +70,7 @@ public class GameDao {
 
 	public void update(Game game) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+			
 			PreparedStatement pstmt = conn.prepareStatement(updateSTMT);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -76,8 +94,6 @@ public class GameDao {
 
 	public void delete(Long id) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
@@ -101,8 +117,6 @@ public class GameDao {
 		Game game;
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -135,8 +149,6 @@ public class GameDao {
 		Game game = new Game();
 		ResultSet rs = null;
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
