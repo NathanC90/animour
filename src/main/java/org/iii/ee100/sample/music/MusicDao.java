@@ -16,8 +16,18 @@ public class MusicDao{
 	private static final String FIND_ALL_STMT = "SELECT id, title, pname, genre, clicks, rdate FROM music ORDER BY id";
 	private static final String FIND_BY_ID = "SELECT id, title, pname, genre, clicks, rdate FROM music WHERE id=?";
 	
-	Connection conn = null;
-	PreparedStatement pstmt = null;
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	
+	private Connection getConnection() throws SQLException {
+		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
+		String user ="postgres";
+		String password = "postgres";
+		
+		Connection conn = DriverManager.getConnection(connUrl, user, password);
+		
+		return conn;
+	}
 	
 	//select all
 		public List<Music> findAll(){
@@ -28,10 +38,6 @@ public class MusicDao{
 			ResultSet rs = null;
 			
 			try {
-				String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-				conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
-				PreparedStatement pstmt = conn.prepareStatement(FIND_ALL_STMT);
-				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {		
 				music = new Music();
@@ -56,8 +62,6 @@ public class MusicDao{
 	//insert
 	public void insert(Music music) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, music.getTitle());
 			pstmt.setString(2, music.getPname());
@@ -77,8 +81,6 @@ public class MusicDao{
     //update
 	public void update(Music music) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);
 			pstmt.setString(1, music.getTitle());
 			pstmt.setString(2, music.getPname());
@@ -100,8 +102,6 @@ public class MusicDao{
 	//delete
 	public void delete(Long id) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(DELETE);
 
 			pstmt.setLong(1, id);
@@ -120,8 +120,6 @@ public class MusicDao{
 		ResultSet rs = null;
 		
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
 			PreparedStatement pstmt = conn.prepareStatement(FIND_BY_ID);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
@@ -132,8 +130,7 @@ public class MusicDao{
 			music.setPname(rs.getString("pname"));
 			music.setGenre(rs.getString("genre"));
 			music.setClicks(rs.getLong("clicks"));
-			music.setRdate(rs.getDate("rdate"));
-			
+			music.setRdate(rs.getDate("rdate"));			
 			
 			}
 		}catch(SQLException e) {
