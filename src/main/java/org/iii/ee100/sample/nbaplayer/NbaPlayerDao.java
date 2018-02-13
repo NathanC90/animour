@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NbaPlayerDao {
-	public static final String INSERT_STMT = "INSERT INTO nbaplayer (name,three_pointer_percentage,fg_percentage,apg) VALUES (?,?,?,?)";
+	private static final String INSERT_STMT = "INSERT INTO nbaplayer (name,three_pointer_percentage,fg_percentage,apg) VALUES (?,?,?,?)";
 	private static final String UPDATE_STMT = "UPDATE nbaplayer set name=?,three_pointer_percentage=?,fg_percentage=?,apg=? WHERE Id=?";
 	private static final String DELETE_STMT = "DELETE from nbaplayer WHERE Id=?";
 	private static final String GET_ONE_STMT = "SELECT Id,name,three_pointer_percentage,fg_percentage,apg FROM nbaplayer WHERE Id=?";
 	private static final String GET_ALL_STMT = "SELECT Id,name,three_pointer_percentage,fg_percentage,apg FROM nbaplayer ORDER BY Id";
 
-	Connection conn = null;
+	private Connection conn;
+	private PreparedStatement pstmt;
 
 	public void getConnection() throws SQLException {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -29,7 +30,7 @@ public class NbaPlayerDao {
 	}
 
 	public void insert(NbaPlayer np) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
+		pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
 		pstmt.setString(1, np.getName());
 		pstmt.setInt(2, np.getThree_pointer_percentage());
 		pstmt.setInt(3, np.getFg_percentage());
@@ -43,7 +44,7 @@ public class NbaPlayerDao {
 	}
 
 	public void update(NbaPlayer np) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);
+		pstmt = conn.prepareStatement(UPDATE_STMT);
 		pstmt.setLong(5, np.getId());
 		pstmt.setString(1, np.getName());
 		pstmt.setInt(2, np.getThree_pointer_percentage());
@@ -53,7 +54,7 @@ public class NbaPlayerDao {
 	}
 
 	public void delete(long Id) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(DELETE_STMT);
+		pstmt = conn.prepareStatement(DELETE_STMT);
 		pstmt.setLong(1, Id);
 		pstmt.executeUpdate();
 	}
@@ -61,7 +62,7 @@ public class NbaPlayerDao {
 	public List<NbaPlayer> findAll() throws SQLException {
 		NbaPlayer np = null;
 		List<NbaPlayer> nps = new ArrayList<NbaPlayer>();
-		PreparedStatement pstmt = conn.prepareStatement(GET_ALL_STMT);
+		pstmt = conn.prepareStatement(GET_ALL_STMT);
 		ResultSet rs = pstmt.executeQuery();
 		while (rs.next()) {
 			np = new NbaPlayer();
@@ -80,7 +81,7 @@ public class NbaPlayerDao {
 
 	public NbaPlayer findById(long Id) throws SQLException {
 		NbaPlayer np = null;
-		PreparedStatement pstmt = conn.prepareStatement(GET_ONE_STMT);
+		pstmt = conn.prepareStatement(GET_ONE_STMT);
 		pstmt.setLong(1, Id);
 		ResultSet rs = pstmt.executeQuery();
 		if (rs.next()) {
