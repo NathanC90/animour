@@ -21,19 +21,27 @@ public class DramaDao {
 	// 全部
 	private static final String FIND_ALL_STMT = "SELECT id, dname, noofseasons, noofepisodes, year, country FROM drama ORDER BY id";
 
-	Connection conn = null;
-	PreparedStatement pstmt = null;
+	private Connection conn;
+	private PreparedStatement pstmt;
 
-	public List<Drama> findAll() {
+	private Connection getConnection() throws SQLException {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
 		String password = "postgres";
+
+		Connection conn = DriverManager.getConnection(connUrl, user, password);
+
+		return conn;
+	}
+
+	public List<Drama> findAll() {
+
 		Drama drama = null;
 		List<Drama> dramals = new ArrayList<Drama>();
 		ResultSet rs = null;
+
 		try {
-			conn = DriverManager.getConnection(connUrl, user, password);
-			PreparedStatement pstmt = conn.prepareStatement(FIND_ALL_STMT);// 透過PreparedStatement執行sql指令
+			pstmt = getConnection().prepareStatement(FIND_ALL_STMT);// 透過PreparedStatement執行sql指令
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				drama = new Drama();
@@ -50,12 +58,12 @@ public class DramaDao {
 		} finally {
 			try {
 				rs.close();
-				
-				if(pstmt!=null)
-				   pstmt.close();
+
+				if (pstmt != null)
+					pstmt.close();
 				if (conn != null)
 					conn.close();
-			
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -64,16 +72,14 @@ public class DramaDao {
 
 		return dramals;// return List<Drama> object
 	}
-	
+
 	public Drama findById(long id) {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
+
 		Drama drama = null;
 		ResultSet rs = null;
 		try {
-			conn = DriverManager.getConnection(connUrl, user, password);
-			PreparedStatement pstmt = conn.prepareStatement(FIND_ONE_STMT);// 透過PreparedStatement執行sql指令
+
+			PreparedStatement pstmt = getConnection().prepareStatement(FIND_ONE_STMT);// 透過PreparedStatement執行sql指令
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -85,13 +91,13 @@ public class DramaDao {
 				drama.setYear(rs.getInt("year"));
 				drama.setCountry(rs.getString("country"));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
-				if(pstmt!=null)
+				if (pstmt != null)
 					pstmt.close();
 				if (conn != null)
 					conn.close();
@@ -102,34 +108,30 @@ public class DramaDao {
 		}
 
 		return drama;// object
-	}	
-
+	}
 
 	public void insert(Drama drama) {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
+
 		try {
-			conn = DriverManager.getConnection(connUrl, user, password);
-			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement pstmt = getConnection().prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, drama.getDname());
 			pstmt.setInt(2, drama.getSeason());
 			pstmt.setInt(3, drama.getEpisode());
 			pstmt.setInt(4, drama.getYear());
 			pstmt.setString(5, drama.getCountry());
 			pstmt.executeUpdate();
-			
-			ResultSet rs=pstmt.getGeneratedKeys();
-			if(rs.next()) {
+
+			ResultSet rs = pstmt.getGeneratedKeys();
+			if (rs.next()) {
 				drama.setId(rs.getLong(1));
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt!=null)
-					   pstmt.close();
+				if (pstmt != null)
+					pstmt.close();
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
@@ -138,14 +140,12 @@ public class DramaDao {
 
 		}
 	}
-	
+
 	public void update(Drama drama) {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
+
 		try {
-			conn=DriverManager.getConnection(connUrl,user,password);
-			PreparedStatement pstmt=conn.prepareStatement(UPDATE_STMT);
+
+			PreparedStatement pstmt = getConnection().prepareStatement(UPDATE_STMT);
 			pstmt.setString(1, drama.getDname());
 			pstmt.setInt(2, drama.getSeason());
 			pstmt.setInt(3, drama.getEpisode());
@@ -157,8 +157,8 @@ public class DramaDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				if(pstmt!=null)
-					   pstmt.close();
+				if (pstmt != null)
+					pstmt.close();
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
@@ -167,37 +167,28 @@ public class DramaDao {
 
 		}
 	}
-	
-		public void delete(Long id) {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			String user = "postgres";
-			String password = "postgres";
+
+	public void delete(Long id) {
+
+		try {
+
+			PreparedStatement pstmt = getConnection().prepareStatement(DELETE_STMT);
+			pstmt.setLong(1, id);
+			pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				conn=DriverManager.getConnection(connUrl,user,password);
-				PreparedStatement pstmt=conn.prepareStatement(DELETE_STMT);
-				pstmt.setLong(1, id);
-				pstmt.executeUpdate();
-				
-			}catch( SQLException e) {
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
-			}finally {
-				try {
-					if(pstmt!=null)
-						   pstmt.close();
-					if(conn!=null)
-						conn.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-				}
-					
-					}
-				}		
+			}
+
+		}
+	}
 
 }
-
-
-
-
-
-
- 
