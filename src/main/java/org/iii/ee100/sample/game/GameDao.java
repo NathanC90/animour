@@ -1,12 +1,14 @@
 package org.iii.ee100.sample.game;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class GameDao {
 	private static final String insertSTMT = "insert into game(name,publisher,platform,release_date) values (?, ?, ?, ?)";
@@ -18,11 +20,28 @@ public class GameDao {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 
+	private Connection getConnection() throws SQLException {
+		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
+		String user = "postgres";
+		String password = "postgres";
+		// conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl(connUrl);
+		config.setUsername(user);
+		config.setPassword(password);
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+
+		HikariDataSource ds = new HikariDataSource(config);
+		return ds.getConnection();
+
+	}
+
 	public void insert(Game game) {
 		ResultSet rs = null;
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+			conn=getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -38,11 +57,15 @@ public class GameDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -51,8 +74,7 @@ public class GameDao {
 
 	public void update(Game game) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+			conn=getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(updateSTMT);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
@@ -67,7 +89,9 @@ public class GameDao {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -76,8 +100,7 @@ public class GameDao {
 
 	public void delete(Long id) {
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+			conn=getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
@@ -88,8 +111,9 @@ public class GameDao {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
-
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -101,8 +125,7 @@ public class GameDao {
 		Game game;
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
+			conn=getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -119,11 +142,15 @@ public class GameDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -134,10 +161,22 @@ public class GameDao {
 	public Game findById(Long id) {
 		Game game = new Game();
 		ResultSet rs = null;
+		ArrayList<Character> characters = new ArrayList<Character>();
 		try {
-			String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-			conn = DriverManager.getConnection(connUrl, "postgres", "postgres");
-			PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);
+//			PreparedStatement pstmt = getConnection().prepareStatement(findByGameIdSTMT);
+//			pstmt.setLong(1, id);
+//			rs = pstmt.executeQuery();
+//			
+//			while (rs.next()) {
+//				character = new Character();
+//				character.setC_id(rs.getLong("c_id"));
+//				character.setGame_id(rs.getLong("game_id"));
+//				character.setC_name(rs.getString("c_name"));
+//				characters.add(character);
+//			}
+
+			conn=getConnection();
+			pstmt = conn.prepareStatement(findByIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -147,20 +186,70 @@ public class GameDao {
 				game.setPublisher(rs.getString("publisher"));
 				game.setPlatform(rs.getString("platform"));
 				game.setRelease_date(rs.getDate("release_date"));
+				characters=findByGameId(rs.getLong("id"));
+				game.setCharacter_list(characters);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
+				
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
 		}
 		return game;
 	}
+	
+	public ArrayList<Character> findByGameId(Long id) {
+		Character character = new Character();
+		ResultSet rs = null;
+		
+		String findByGameIdSTMT = "select c_id,game_id,c_name from character where game_id=?";
+		ArrayList<Character> characters = new ArrayList<Character>();
+		try {
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(findByGameIdSTMT);
+			pstmt.setLong(1, id);
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				character = new Character();
+				character.setC_id(rs.getLong("c_id"));
+				character.setGame_id(rs.getLong("game_id"));
+				character.setC_name(rs.getString("c_name"));
+				characters.add(character);
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+				
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		return characters;
+	}
+	
 }

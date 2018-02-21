@@ -1,0 +1,27 @@
+drop table game;
+
+CREATE TABLE game (
+    id bigserial primary key,
+    name character varying(50),
+    publisher character varying(20),
+    platform character varying(20),
+    release_date date
+);
+
+insert into game (name,publisher,platform,release_date) values ('Mario_Kart8','Nintendo','Nintendo_Switch','2017-04-28');
+
+select * from game;
+
+drop table character;
+
+create table character 
+(c_id bigserial primary key,
+ game_id bigint REFERENCES game (id),
+ c_name varchar(20)
+);
+
+insert into character (game_id,c_name) values (1,'Mario');
+insert into character (game_id,c_name) values (1,'Luigi');
+insert into character (game_id,c_name) values (1,'Peach');
+
+select * from character;

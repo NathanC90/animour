@@ -1,11 +1,9 @@
 package org.iii.ee100.sample.band;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -44,6 +42,7 @@ public class BandDao {
 
 	public void insert(Band band) {
 		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(insertSTMT);
 			pstmt.setString(1, band.getName());
 			pstmt.setInt(2, band.getMember());
 			pstmt.executeUpdate();
@@ -68,6 +67,7 @@ public class BandDao {
 
 	public void update(Band band) {
 		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(updateSTMT);
 			pstmt.setString(1, band.getName());
 			pstmt.setInt(2, band.getMember());
 			pstmt.setLong(3, band.getId());
@@ -88,7 +88,7 @@ public class BandDao {
 
 	public void delete(Long id) {
 		try {
-
+			PreparedStatement pstmt = getConnection().prepareStatement(deleteSTMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -98,7 +98,9 @@ public class BandDao {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -111,7 +113,7 @@ public class BandDao {
 		Band band;
 		ArrayList<Band> bands = new ArrayList<Band>();
 		try {
-
+			PreparedStatement pstmt = getConnection().prepareStatement(findAllSTMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				band = new Band();
@@ -141,6 +143,7 @@ public class BandDao {
 		Band band = new Band();
 		ResultSet rs = null;
 		try {
+			PreparedStatement pstmt = getConnection().prepareStatement(findByIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
