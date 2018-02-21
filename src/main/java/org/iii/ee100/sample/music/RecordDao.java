@@ -12,12 +12,12 @@ import java.util.List;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class MusicDao{
-	private static final String INSERT_STMT = "INSERT INTO music (title, pname, genre, clicks, rdate) VALUES (?,?,?,?,?)";
-	private static final String UPDATE_STMT ="UPDATE music SET title=?, pname=?, genre=?, clicks=?, rdate=? WHERE id=?";
-	private static final String DELETE = "DELETE from music WHERE id=?";
-	private static final String FIND_ALL_STMT = "SELECT id, title, pname, genre, clicks, rdate FROM music ORDER BY id";
-	private static final String FIND_BY_ID = "SELECT id, title, pname, genre, clicks, rdate FROM music WHERE id=?";
+public class RecordDao{
+	private static final String INSERT_STMT = "INSERT INTO record (reclab, country, area) VALUES (?,?,?)";
+	private static final String UPDATE_STMT ="UPDATE record SET reclab=?, country=?, area=? WHERE id=?";
+	private static final String DELETE = "DELETE from record WHERE id=?";
+	private static final String FIND_ALL_STMT = "SELECT id, reclab, country, area FROM record ORDER BY id";
+	private static final String FIND_BY_ID = "SELECT id, reclab, country, area FROM record WHERE id=?";
 	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -42,48 +42,44 @@ public class MusicDao{
 	}
 	
 	//select all
-		public List<Music> findAll(){
+		public List<Record> findAll(){
 			
-			Music music = null;
+			Record record = null;
 			
-			List<Music> mlist = new ArrayList<Music>();
+			List<Record> rlist = new ArrayList<Record>();
 			ResultSet rs = null;
 			
 			try {
 				
 				while(rs.next()) {		
-				music = new Music();
+				record = new Record();
 				
-				music.setId(rs.getLong("id"));
-				music.setTitle(rs.getString("title"));
-				music.setPname(rs.getString("pname"));
-				music.setGenre(rs.getString("genre"));
-				music.setClicks(rs.getLong("clicks"));
-				music.setRdate(rs.getDate("rdate"));
+				record.setId(rs.getLong("id"));
+				record.setReclab(rs.getString("reclab"));
+				record.setCountry(rs.getString("country"));
+				record.setArea(rs.getString("area"));
 				
-				mlist.add(music);
+				rlist.add(record);
 				}
 
 			}catch(SQLException e) {
 				e.printStackTrace();
 			
 			}
-			return mlist;
+			return rlist;
 		}   //end of FindAll
 	
 	//insert
-	public void insert(Music music) {
+	public void insert(Record record) {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
-			pstmt.setString(1, music.getTitle());
-			pstmt.setString(2, music.getPname());
-			pstmt.setString(3, music.getGenre());
-			pstmt.setLong(4, music.getClicks());
-			pstmt.setDate(5, music.getRdate());
+			pstmt.setString(1, record.getReclab());
+			pstmt.setString(2, record.getCountry());
+			pstmt.setString(3, record.getArea());
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if(rs.next()) {
-				music.setId(rs.getLong(1));
+				record.setId(rs.getLong(1));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -91,19 +87,16 @@ public class MusicDao{
 	} //end of insert
 
     //update
-	public void update(Music music) {
+	public void update(Record record) {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);
-			pstmt.setString(1, music.getTitle());
-			pstmt.setString(2, music.getPname());
-			pstmt.setString(3, music.getGenre());
-			pstmt.setLong(4, music.getClicks());
-			pstmt.setDate(5, music.getRdate());
-			pstmt.setLong(6, music.getId());
+			pstmt.setString(1, record.getReclab());
+			pstmt.setString(2, record.getCountry());
+			pstmt.setString(3, record.getArea());
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if(rs.next()) {
-				music.setId(rs.getLong(1));
+				record.setId(rs.getLong(1));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -127,8 +120,8 @@ public class MusicDao{
 	}  //end of delete
 	
 	//findById
-	public Music findById(Long id) {
-		Music music = null;
+	public Record findById(Long id) {
+		Record record = null;
 		ResultSet rs = null;
 		
 		try {
@@ -136,20 +129,18 @@ public class MusicDao{
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				music = new Music();
-			music.setId(rs.getLong("id"));
-			music.setTitle(rs.getString("title"));
-			music.setPname(rs.getString("pname"));
-			music.setGenre(rs.getString("genre"));
-			music.setClicks(rs.getLong("clicks"));
-			music.setRdate(rs.getDate("rdate"));			
+				record = new Record();
+			record.setId(rs.getLong("id"));
+			record.setReclab(rs.getString("reclab"));
+			record.setCountry(rs.getString("Country"));
+			record.setArea(rs.getString("area"));
 			
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
 
 		}
-		return music;
+		return record;
 	}  //end of findById
 
 	public void closeConn() {
