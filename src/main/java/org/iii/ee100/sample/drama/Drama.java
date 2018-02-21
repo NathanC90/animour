@@ -1,5 +1,7 @@
 package org.iii.ee100.sample.drama;
 
+import java.util.List;
+
 public class Drama {
 	Long  id;
 	private String dname;
@@ -7,6 +9,7 @@ public class Drama {
 	private Integer noofepisodes;
 	private Integer year;
 	private String country;
+	private List<Actor> actor;
 	
 	public long getId() {
 		return id;
@@ -49,6 +52,12 @@ public class Drama {
 	}
 	public void setCountry(String country) {
 		this.country = country;
+	}
+	public List<Actor> getActor() {
+		return actor;
+	}
+	public void setActor(List<Actor> actor) {
+		this.actor = actor;
 	}
 	
 	

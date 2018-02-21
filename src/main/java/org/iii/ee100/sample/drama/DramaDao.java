@@ -20,6 +20,8 @@ public class DramaDao {
 	private static final String DELETE_STMT = "DELETE FROM drama WHERE id=?";
 	// 一筆;
 	private static final String FIND_ONE_STMT = "SELECT id, dname, noofseasons, noofepisodes, year, country FROM drama WHERE id=?";
+	// 一筆(OneToMany);
+	private static final String FIND_ONETOMANY_STMT = "SELECT a.*, d.dname FROM actor a,drama d WHERE a.d_id=d.id and d.id=?";
 	// 全部
 	private static final String FIND_ALL_STMT = "SELECT id, dname, noofseasons, noofepisodes, year, country FROM drama ORDER BY id";
 
@@ -47,6 +49,48 @@ public class DramaDao {
 		return ds.getConnection();
 	}
 
+	public List<Actor> findActorById(long id) {
+		//Drama drama=findById(id);
+		ResultSet rs = null;
+		List<Actor> actorls = new ArrayList<Actor>();
+		try {		
+			pstmt = getConnection().prepareStatement(FIND_ONETOMANY_STMT);// 透過PreparedStatement執行sql指令
+			pstmt.setLong(1,id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Actor actor=new Actor();
+				actor.setDname(rs.getString("dname"));
+				actor.setId(rs.getLong("id"));
+				actor.setA_character(rs.getString("a_character"));
+				actor.setActor(rs.getString("actor"));
+				actor.setD_id(rs.getLong("d_id"));
+				actorls.add(actor);// 加進arraylist
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs != null) {
+					rs.close();
+				}	
+				if (pstmt != null) {
+					pstmt.close();}
+				if (conn != null) {
+					conn.close();}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+		return actorls;// return List<Actor> object
+	}	
+		
+	
+	
+	
+	
 	public List<Drama> findAll() {
 
 		Drama drama = null;

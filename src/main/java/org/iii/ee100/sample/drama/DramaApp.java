@@ -30,14 +30,22 @@ public class DramaApp {
 			num1 = scann.nextInt();
 
 			Drama drama = dao.findById(num1);
-
+			List<Actor> actorls= dao.findActorById(num1);
 			if (drama != null) {
-				System.out.println(drama.getDname());
-				System.out.println(drama.getCountry());
-				System.out.println(drama.getYear());
-				System.out.println(drama.getSeason());
-				System.out.println(drama.getEpisode());
+				if (actorls.size() !=0) {
+				for (Actor actor : actorls) {
+					System.out.println("Dname\t id\t character\t actor\t drama_id");
+					System.out.print(actor.getDname() + ", ");
+					System.out.print(actor.getId() + ", ");
+					System.out.print(actor.getA_character() + ", ");
+					System.out.print(actor.getActor() + ", ");
+					System.out.print(actor.getD_id() + "\n");
+				}
 				System.out.println("==============================");
+				}
+				else {
+					System.err.println("this id = "+num1+" has no actor data ");
+				}
 			} else {
 				System.err.println("this id = "+num1+" is not found");
 			}
