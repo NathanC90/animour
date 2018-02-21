@@ -41,7 +41,8 @@ public class GameDao {
 	public void insert(Game game) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
 			pstmt.setString(3, game.getPlatform());
@@ -73,7 +74,8 @@ public class GameDao {
 
 	public void update(Game game) {
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(updateSTMT);
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(updateSTMT);
 			pstmt.setString(1, game.getName());
 			pstmt.setString(2, game.getPublisher());
 			pstmt.setString(3, game.getPlatform());
@@ -98,7 +100,8 @@ public class GameDao {
 
 	public void delete(Long id) {
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(deleteSTMT);
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -122,7 +125,8 @@ public class GameDao {
 		Game game;
 		ArrayList<Game> games = new ArrayList<Game>();
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(findAllSTMT);
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				game = new Game();
@@ -170,8 +174,9 @@ public class GameDao {
 //				character.setC_name(rs.getString("c_name"));
 //				characters.add(character);
 //			}
-//			
-			pstmt = getConnection().prepareStatement(findByIdSTMT);
+
+			conn=getConnection();
+			pstmt = conn.prepareStatement(findByIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -212,7 +217,8 @@ public class GameDao {
 		String findByGameIdSTMT = "select c_id,game_id,c_name from character where game_id=?";
 		ArrayList<Character> characters = new ArrayList<Character>();
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(findByGameIdSTMT);
+			conn=getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(findByGameIdSTMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			
