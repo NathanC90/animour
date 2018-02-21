@@ -1,0 +1,29 @@
+drop table NbaTeam;
+
+CREATE TABLE NbaTeam (
+    id bigserial primary key,
+    Teamname character varying(50),
+    ranking int ,
+    win int ,
+    lose int
+);
+
+insert into NbaTeam (Teamname,ranking,win,lose) values ('Golden_State_Warriors',1,50,10);
+
+
+drop table nbaplayer;
+
+create table nbaplayer 
+(id bigserial primary key,
+ name varchar (30),
+ three_pointer_percentage int,
+ fg_percentage int,
+ apg int
+);
+
+
+insert into nbaplayer (name,three_pointer_percentage,fg_percentage,apg) values ('Stephen_Curry',41,91,7);
+insert into nbaplayer (name,three_pointer_percentage,fg_percentage,apg) values ('Kevin_Durant',40,93,5);
+insert into nbaplayer (name,three_pointer_percentage,fg_percentage,apg) values ('Klay_Thompson',43,89,3);
+
+select * from nbaplayer;
