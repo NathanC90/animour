@@ -1,0 +1,48 @@
+
+drop table record cascade;
+
+/**record table*/
+
+create table record
+(
+    id bigSerial PRIMARY KEY,
+    reclab varchar(100),
+    country varchar(50),
+    area varchar(50)
+);
+
+/**record資料**/
+insert into record (reclab, country, area) values ('Parlophone' , 'UK', 'Europe');
+insert into record (reclab, country, area) values ('Waner Music', 'USA', 'North America');
+insert into record (reclab, country, area) values ('Universal Music', 'Iceland', 'Europe');
+
+
+drop table music cascade;
+
+/**music table*/
+create table music
+(
+    id bigSerial,
+    title varchar(100),
+    pname varchar(50),
+    genre varchar(30),
+    clicks INT,
+    rdate DATE,
+    rec_id bigSerial REFERENCES record(id)
+    );
+
+/**music資料*/
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('Perfect', 'Ed Sheeran', 'Pop', 8672, '2017-11-09', 1 );
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('Hypnotised', 'Coldplay', 'Pop Rock', 6431, '2017-03-01', 2 );
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('The Hills', 'The Weeknd', 'R&B', 9654, '2015-05-27', 2 );
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('Organs', 'Of Monsters and Men', 'Indie Folk', 3296, '2015-07-29', 3 );
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('Believer', 'Imagine Dragons', 'Rock', 59778, '2017-03-07', 3 );
+insert into music (title, pname, genre, clicks, rdate, rec_id) values ('Heathens', 'Twenty One Pilots', 'Hip Hop', 26314, '2016-06-21', 1 );
+
+select * from record
+
+select * from music
+
+/**select * FROM record  JOIN music ON (record.id = music.r_id);*/
+
+/*select * from music*/
