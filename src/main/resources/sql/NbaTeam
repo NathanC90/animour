@@ -13,12 +13,14 @@ insert into NbaTeam (Teamname,ranking,win,lose) values ('Golden_State_Warriors',
 
 drop table nbaplayer;
 
+
 create table nbaplayer 
-(id bigserial primary key,
+(id bigserial primary key, 
  name varchar (30),
  three_pointer_percentage int,
  fg_percentage int,
- apg int
+ apg int,
+ matchid bigint references NbaTeam(id)
 );
 
 
