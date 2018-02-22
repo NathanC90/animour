@@ -1,4 +1,4 @@
-drop table drama;
+drop table drama cascade;
 
 /**drama table*/
 create table drama(
@@ -14,12 +14,13 @@ create table drama(
 insert into drama (dname , noofseasons , noofepisodes , year , country) values ('TBBT' ,1 ,17 ,2007 , 'USA' );
 insert into drama (dname , noofseasons , noofepisodes , year , country) values ('Elementary' ,1 ,24 ,2012 , 'USA' );
 insert into drama (dname , noofseasons , noofepisodes , year , country) values ('Westworld' ,1 ,10 ,2016 , 'USA' );
+insert into drama (dname , noofseasons , noofepisodes , year , country) values ('Game of Thrones' ,1 ,10 ,2011 , 'USA' );
 
 
 
 
 
-drop table actor;
+drop table actor cascade;
 /**actor table*/
 
 create table actor(
