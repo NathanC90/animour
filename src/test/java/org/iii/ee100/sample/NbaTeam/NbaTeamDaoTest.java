@@ -1,54 +1,58 @@
-package org.iii.ee100.sample.nbaplayer;
+package org.iii.ee100.sample.NbaTeam;
 
 import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 
+import org.iii.ee100.sample.nbaTeam.NbaTeam;
+import org.iii.ee100.sample.nbaTeam.NbaTeamDao;
+import org.iii.ee100.sample.nbaTeam.NbaTeam;
 import org.junit.Test;
 
-public class NbaPlayerDaoTest {
+public class NbaTeamDaoTest {
 
 	@Test
 	public void crud() {
-		NbaPlayerDao dao = new NbaPlayerDao();
+		NbaTeamDao dao = new NbaTeamDao();
 		try {
 			dao.getConnection();
 			
 			//findAll
 			dao.findAll();
-			assertEquals(0, dao.findAll().size());
+			assertEquals(1, dao.findAll().size());
 			
 			// insert
-			NbaPlayer np1 = new NbaPlayer();
-			np1.setName("STEPHEN-CURRY");
-			np1.setThree_pointer_percentage(43);
-			np1.setFg_percentage(91);
-			np1.setApg(6);
+			NbaTeam np1 = new NbaTeam();
+			np1.setTeamName("Golden State Warriors");
+			np1.setranking(1);
+			np1.setwin(50);
+			np1.setlose(12);
+//			
 			dao.insert(np1);
 			assertEquals(1, dao.findAll().size());
 			
-			//update
+//			update
 			//np1.setId(23);
-			np1.setName("JAMES-HARDEN");
-			np1.setThree_pointer_percentage(41);
-			np1.setFg_percentage(89);
-			np1.setApg(9);
+			np1.setTeamName("Golden State Warriors");
+			np1.setranking(1);
+			np1.setwin(50);
+			np1.setlose(12);
 			dao.update(np1);
 			
-			assertEquals(np1.getName(),dao.findById(np1.getId()).getName());
+			assertEquals(np1.getTeamName(),dao.findById(np1.getId()).getTeamName());
 			
 			//delete
 			dao.delete(np1.getId());
 			assertEquals(0, dao.findAll().size());
 
 			//findAll
-//			dao.findAll();
-//			assertEquals(0, dao.findAll().size());
+			dao.findAll();
+			assertEquals(0, dao.findAll().size());
 
 			//findById
 			
-//			dao.findById(22);
-//			assertEquals(8, dao.findAll().size());
+			dao.findById(22);
+			assertEquals(8, dao.findAll().size());
 
 			
 			

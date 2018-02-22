@@ -1,4 +1,4 @@
-package org.iii.ee100.sample.nbaplayer;
+package org.iii.ee100.sample.nbaTeam;
 
 public class NbaPlayer {
 	private long Id;
@@ -6,6 +6,7 @@ public class NbaPlayer {
 	private int three_pointer_percentage;
 	private int fg_percentage;
 	private int apg;
+	private long matchid;
 
 	public void setId(long Id) {
 		this.Id = Id;
@@ -26,6 +27,9 @@ public class NbaPlayer {
 	public void setApg(int apg) {
 		this.apg = apg;
 	}
+	public void setMatchid(long matchid) {
+		this.matchid =matchid;
+	}
 
 	public long getId() {
 		return Id;
@@ -45,6 +49,9 @@ public class NbaPlayer {
 
 	public int getApg() {
 		return apg;
+	}
+	public long getMatchid() {
+		return matchid;
 	}
 
 }
