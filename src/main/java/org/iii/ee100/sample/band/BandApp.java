@@ -3,8 +3,6 @@ package org.iii.ee100.sample.band;
 import java.util.List;
 import java.util.Scanner;
 
-import org.iii.ee100.sample.drama.Actor;
-import org.iii.ee100.sample.drama.Drama;
 
 public class BandApp {
 
@@ -34,21 +32,7 @@ public class BandApp {
 			Band band = dao.findById(answer);
 			List<Member> member = (List<Member>) dao.findById(answer);
 
-			if (answer == 1) {
-
-				System.out.println("Dname\t id\t character\t actor\t drama_id");
-
-			} else if (answer == 2) {
-
-				System.out.println("Dname\t id\t character\t actor\t drama_id");
-
-			} else if (answer == 3) {
-
-				System.out.println("Dname\t id\t character\t actor\t drama_id");
-
-			} else {
-				System.out.println("this id = " + answer + " is not found");
-			}
+			
 		}
 
 	}
