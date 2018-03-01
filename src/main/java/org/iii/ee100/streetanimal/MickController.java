@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class MickController {
 	
-	@RequestMapping("/")
+	@RequestMapping("/mick")
 	public String index() {
 		return "/mick.jsp";
 	}
