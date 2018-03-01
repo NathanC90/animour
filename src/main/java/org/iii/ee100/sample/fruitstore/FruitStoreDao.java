@@ -29,8 +29,9 @@ public class FruitStoreDao {
 	Connection conn = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	HikariDataSource ds = null;
 	
-	private Connection getConnection() throws SQLException {
+	private HikariDataSource getConnection() throws SQLException {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
 		String password = "postgres";
@@ -43,14 +44,15 @@ public class FruitStoreDao {
 		config.addDataSourceProperty("prepStmtCacheSize", "250");
 		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-		HikariDataSource ds = new HikariDataSource(config);
+		ds = new HikariDataSource(config);
 
-		return ds.getConnection();
+		return ds;
 	}
 
 	public void insert(FruitStore fruitStore){
 		try {
-			pstmt = this.getConnection().prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, fruitStore.getStoreName());
 			pstmt.setString(2, fruitStore.getAddress());
 			pstmt.setString(3, fruitStore.getPhoneNumber());
@@ -81,7 +83,8 @@ public class FruitStoreDao {
 
 	public void update(FruitStore fruitStore) {
 		try {
-			pstmt = this.getConnection().prepareStatement(UPDATE_STMT);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(UPDATE_STMT);
 			pstmt.setString(1, fruitStore.getStoreName());
 			pstmt.setString(2, fruitStore.getAddress());
 			pstmt.setString(3, fruitStore.getPhoneNumber());
@@ -109,7 +112,8 @@ public class FruitStoreDao {
 
 	public void delete(Long id) {
 		try {
-			pstmt = this.getConnection().prepareStatement(DELETE_STMT);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(DELETE_STMT);
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -135,7 +139,8 @@ public class FruitStoreDao {
 		FruitStore fruitStore = null;
 		List<FruitStore> fruitStores = new ArrayList<FruitStore>();
 		try {
-			pstmt = this.getConnection().prepareStatement(FINDALL_STMT);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(FINDALL_STMT);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				fruitStore = new FruitStore();
@@ -172,7 +177,8 @@ public class FruitStoreDao {
 		List<Fruit> fruits = new ArrayList<Fruit>();
 		
 		try {
-			pstmt = this.getConnection().prepareStatement(FINDBYPK_STMT);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(FINDBYPK_STMT);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -211,7 +217,8 @@ public class FruitStoreDao {
 		Fruit fruit = null;
 		List<Fruit> fruits = new ArrayList<Fruit>();
 		try {
-			pstmt = this.getConnection().prepareStatement(FINDBYFRUITID_STMT);
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(FINDBYFRUITID_STMT);
 			pstmt.setLong(1, product_id);
 			rs = pstmt.executeQuery();
 			
