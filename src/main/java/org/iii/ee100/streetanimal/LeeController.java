@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class LeeController {
-	@RequestMapping("/")
+	@RequestMapping("/lee")
 	public String index() {
 		return "/lee.jsp";
 	}
