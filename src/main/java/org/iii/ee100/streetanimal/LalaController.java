@@ -8,10 +8,13 @@ public class LalaController {
 	
 	@RequestMapping("/lala")
 	public String lala() {
-		return "/lala.jdp";
+		return "/lala.jsp";
 	}
 	
-	
+	@RequestMapping("/") //要match
+	public String index() {
+		return "/index.jsp";
+	}
 	
 	
 }
