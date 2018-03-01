@@ -8,12 +8,12 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index() {
-		return "/index.jsp";
+		return "/index";
 	}
 	
 	@RequestMapping("/hello")
 	public String hello() {
-		return "/hello.jsp";
+		return "/hello";
 	}
 	
 	
