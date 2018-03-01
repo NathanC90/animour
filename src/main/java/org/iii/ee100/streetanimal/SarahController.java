@@ -9,7 +9,7 @@ public class SarahController {
 
 	@RequestMapping("/sarah")
 	public String sarah() {
-		return "/sarah.jsp";
+		return "/sarah";
 	}
 
 }
