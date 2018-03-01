@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 
-public class sarahcontroller {
+public class SarahController {
 
 	@RequestMapping("/Sarah")
 	public String index() {
@@ -17,7 +17,7 @@ public class sarahcontroller {
 		return "sarah.jsp";
 	}
 
-	public sarahcontroller() {
+	public SarahController() {
 
 	}
 
