@@ -8,7 +8,7 @@ public class MickController {
 	
 	@RequestMapping("/mick")
 	public String index() {
-		return "/mick.jsp";
+		return "/mick";
 	}
 	
 }
