@@ -10,11 +10,7 @@ public class LalaController {
 	public String lala() {
 		return "/lala.jsp";
 	}
-	
-	@RequestMapping("/") //要match
-	public String index() {
-		return "/index.jsp";
-	}
+
 	
 	
 }
