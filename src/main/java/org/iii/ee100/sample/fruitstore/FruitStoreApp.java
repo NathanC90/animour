@@ -37,6 +37,7 @@ public class FruitStoreApp {
 				System.out.print(fruitStore.getPhoneNumber());
 				System.out.print(fruitStore.getBusinessHours());
 
+				System.out.println();
 				System.out.println("-----------------------------");
 
 				for (Fruit fruit : fruits) {
@@ -47,7 +48,7 @@ public class FruitStoreApp {
 					System.out.println("psource:" + fruit.getPsource());
 				}
 			} else {
-				System.err.println("this id" + num + "is not found");
+				System.err.println("this id" + num + " is not found");
 			}
 		}
 	}
