@@ -1,3 +1,1 @@
-Hello Spring-Boot
-
-http://localhost:8080/index.jsp
+<h1>Kevin Hello</h1>
