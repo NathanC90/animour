@@ -8,7 +8,7 @@ public class LalaController {
 	
 	@RequestMapping("/lala")
 	public String lala() {
-		return "/lala.jsp";
+		return "/lala";
 	}
 
 	
