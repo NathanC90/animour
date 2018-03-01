@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class LeeController {
 	@RequestMapping("/")
 	public String index() {
-		return "index.jsp";
+		return "/index.jsp";
 	}
 	
 }
