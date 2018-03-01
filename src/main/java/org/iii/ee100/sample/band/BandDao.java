@@ -5,6 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.iii.ee100.sample.shoebrand.Shoe;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -166,6 +169,42 @@ public class BandDao {
 			}
 		}
 		return band;
+	}
+
+	private Member findAllMember(int id) {
+		ResultSet rs = null;
+		ArrayList<Member> members = new ArrayList<Member>();
+		Member member = null;
+
+		try {
+			conn = getConnection();
+			String findshoessql = "SELECT id, name, color, price, launch FROM shoe WHERE brand_id = ?";
+			pstmt = conn.prepareStatement(findshoessql);
+
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				member = new Member();
+				member.setId(rs.getLong("id"));
+				member.setName(rs.getString("name"));
+				member.setbandid(rs.getLong("bandid"));
+				members.add(member);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				conn.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		return member;
 	}
 
 }
