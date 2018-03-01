@@ -7,13 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class SarahController {
 
-	@RequestMapping("/Sarah")
+	@RequestMapping("/sarah")
 	public String sarah() {
 		return "/sarah.jsp";
-	}
-
-	public SarahController() {
-
 	}
 
 }
