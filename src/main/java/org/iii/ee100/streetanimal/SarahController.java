@@ -8,13 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SarahController {
 
 	@RequestMapping("/Sarah")
-	public String index() {
-		return "index.jsp";
-	}
-
-	@RequestMapping("/hello, Sarah")
-	public String hello() {
-		return "sarah.jsp";
+	public String sarah() {
+		return "/sarah.jsp";
 	}
 
 	public SarahController() {
