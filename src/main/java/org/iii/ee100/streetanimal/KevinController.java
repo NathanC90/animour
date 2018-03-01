@@ -8,11 +8,6 @@ public class KevinController {
 	
 	@RequestMapping("/kevin")
 	public String index() {
-		return "/kevinindex.jsp";
-	}
-	
-	@RequestMapping("/kevin")
-	public String hello() {
 		return "/kevinhello.jsp";
 	}
 
