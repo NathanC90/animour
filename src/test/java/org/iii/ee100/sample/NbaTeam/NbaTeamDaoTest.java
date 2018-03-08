@@ -21,6 +21,8 @@ public class NbaTeamDaoTest {
 			dao.findAll();
 			assertEquals(1, dao.findAll().size());
 			
+			
+			
 			// insert
 			NbaTeam np1 = new NbaTeam();
 			np1.setTeamName("Golden State Warriors");
