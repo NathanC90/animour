@@ -3,9 +3,6 @@ package org.iii.ee100.sample.band;
 import java.util.List;
 import java.util.Scanner;
 
-import org.iii.ee100.sample.fruitstore.Fruit;
-
-
 public class BandApp {
 
 	public static void main(String[] args) {
@@ -20,7 +17,7 @@ public class BandApp {
 			System.out.println(band.getMember());
 			System.out.println();
 			System.out.println("==========================");
-			System.out.println(); 
+			System.out.println();
 		}
 
 		Scanner sc = new Scanner(System.in);
@@ -33,9 +30,8 @@ public class BandApp {
 
 			Band band = dao.findById(answer);
 			List<Member> member = (List<Member>) dao.findById(answer);
-			
+
 			if (band != null) {
-				List<Member> Member = ((Object) Member).getmember();
 
 				System.out.println(band.getId());
 				System.out.println(band.getName());
@@ -43,19 +39,19 @@ public class BandApp {
 				System.out.println();
 				System.out.println("-----------------------------");
 
-				for (Member member1 : Member) {
+				for (Member member1 : member) {
 					System.out.println("member_id:" + member1.getbandid());
 					System.out.println("band_id:" + member1.getId());
 					System.out.println("member's name:" + member1.getName());
-					
+
 				}
 			} else {
 				System.err.println("this id" + answer + "is not found");
 			}
 
-			
 		}
 
 	}
+
 
 }
