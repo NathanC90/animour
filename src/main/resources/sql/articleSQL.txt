@@ -1,0 +1,13 @@
+drop table article;
+
+CREATE TABLE article (
+    articleId bigserial primary key,
+    postName character varying(30),
+    articleSubject character varying(80),
+    articleContent text,
+    postTime timestamp
+);
+
+insert into article (postName,articleSubject,articleContent,postTime) values ('guest1','how to create table?','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','1999-01-08 04:05:06');
+
+select * from article;
