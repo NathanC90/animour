@@ -18,6 +18,7 @@ public class ArticleDao {
 	private static final String deleteSTMT = "delete from article where articleId=?";
 	private static final String findAllSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article order by articleId";
 	private static final String findByIdSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article where articleId=?";
+	HikariDataSource ds = getConnection();
 
 	private HikariDataSource getConnection() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
@@ -38,13 +39,12 @@ public class ArticleDao {
 
 	public void insert(Article article) {
 		ResultSet rs = null;
-		try (HikariDataSource ds = getConnection();
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);) {
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);) {
 			pstmt.setString(1, article.getPostName());
 			pstmt.setString(2, article.getArticleSubject());
 			pstmt.setString(3, article.getArticleContent());
-//			Date date = new Date();
+			// Date date = new Date();
 			Timestamp ts = new Timestamp(System.currentTimeMillis());
 			article.setPostTime(ts);
 			pstmt.setTimestamp(4, article.getPostTime());
@@ -55,13 +55,20 @@ public class ArticleDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+			}
 		}
 	}
 
 	public void update(Article article) {
-		try (HikariDataSource ds = getConnection();
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(updateSTMT);) {
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(updateSTMT);) {
 			pstmt.setString(1, article.getPostName());
 			pstmt.setString(2, article.getArticleSubject());
 			pstmt.setString(3, article.getArticleContent());
@@ -75,9 +82,8 @@ public class ArticleDao {
 	}
 
 	public void delete(Long articleId) {
-		try (HikariDataSource ds = getConnection();
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);) {
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);) {
 			pstmt.setLong(1, articleId);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -90,9 +96,8 @@ public class ArticleDao {
 		ResultSet rs = null;
 		Article article = new Article();
 		ArrayList<Article> articles = new ArrayList<Article>();
-		try (HikariDataSource ds = getConnection();
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);) {
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);) {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				article = new Article();
@@ -105,6 +110,14 @@ public class ArticleDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+			}
 		}
 		return articles;
 	}
@@ -112,12 +125,11 @@ public class ArticleDao {
 	public Article findOne(Long articleId) {
 		Article article = new Article();
 		ResultSet rs = null;
-		try (HikariDataSource ds = getConnection();
-				Connection conn = ds.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);) {
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);) {
 			pstmt.setLong(1, articleId);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				article.setArticleId(rs.getLong("articleId"));
 				article.setPostName(rs.getString("postName"));
 				article.setArticleSubject(rs.getString("articleSubject"));
@@ -126,6 +138,14 @@ public class ArticleDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+			}
 		}
 		return article;
 	}
