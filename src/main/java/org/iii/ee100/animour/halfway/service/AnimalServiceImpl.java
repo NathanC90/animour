@@ -18,7 +18,7 @@ public class AnimalServiceImpl implements AnimalService {
 		
 		//file. IO get aniamlDao impl ?
 		
-		String daoImplName = "org.iii.ee100.streetanimal.halfway.dao.AnimalDaoImpl";
+		String daoImplName = "org.iii.ee100.animour.halfway.dao.AnimalDaoImpl";
 		animalDao = (org.iii.ee100.animour.halfway.dao.AnimalDao) Class.forName(daoImplName).newInstance();
 	}
 	

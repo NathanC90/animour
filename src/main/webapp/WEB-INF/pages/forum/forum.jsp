@@ -8,7 +8,7 @@
 </head>
 <body>
 <%-- <c:forEach var="article" items="${articles}"> --%>
-<p class="card-text">${article.articleId}<br>${article.postName}
+<p class="card-text">hello${article.articleId}<br>${article.postName}
 <br>${article.articleSubject}<br>${article.articleContent}<br>${article.postTime}</p>
 <%-- </c:forEach> --%>
 

@@ -1,4 +1,4 @@
-package org.iii.ee100.animour.home.dao;
+package org.iii.ee100.animour.forum.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,12 +8,12 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-import org.iii.ee100.animour.home.entity.Article;
+import org.iii.ee100.animour.forum.entity.Article;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-public class ArticleDao {
+public class ArticleDaoImpl implements ArticleDao {
 	private static final String insertSTMT = "insert into article(postName,articleSubject,articleContent,postTime) values (?, ?, ?, ?)";
 	private static final String updateSTMT = "update article set postName=?, articleSubject=?, articleContent=?, postTime=? where articleId=?";
 	private static final String deleteSTMT = "delete from article where articleId=?";
@@ -38,6 +38,7 @@ public class ArticleDao {
 
 	}
 
+	@Override
 	public void insert(Article article) {
 		ResultSet rs = null;
 		try (Connection conn = ds.getConnection();
@@ -67,6 +68,7 @@ public class ArticleDao {
 		}
 	}
 
+	@Override
 	public void update(Article article) {
 		try (Connection conn = ds.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(updateSTMT);) {
@@ -82,6 +84,7 @@ public class ArticleDao {
 
 	}
 
+	@Override
 	public void delete(Long articleId) {
 		try (Connection conn = ds.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);) {
@@ -93,6 +96,7 @@ public class ArticleDao {
 
 	}
 
+	@Override
 	public ArrayList<Article> findAll() {
 		ResultSet rs = null;
 		Article article = new Article();
@@ -123,6 +127,7 @@ public class ArticleDao {
 		return articles;
 	}
 
+	@Override
 	public Article findOne(Long articleId) {
 		Article article = new Article();
 		ResultSet rs = null;

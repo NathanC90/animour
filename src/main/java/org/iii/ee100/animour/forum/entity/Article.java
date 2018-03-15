@@ -1,4 +1,4 @@
-package org.iii.ee100.animour.home.entity;
+package org.iii.ee100.animour.forum.entity;
 
 public class Article {
 	private Long articleId;
