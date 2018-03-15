@@ -279,12 +279,13 @@
         待領養專區
       </h1>
       <c:forEach var="animal" items="${animals}">
+      
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="assets/img/adopt/cats/ad-cat1.jpg" 100px alt="待領養小貓">
+            <img class="card-img-top" src="assets/img/adopt/cats/ad-cat1.jpg" width="100px" alt="待領養小貓">
             <div class="card-body">
-              <p class="card-text">${animal.id}<br>${animal.area}</p>
+              <p class="card-text">${animal.name}${animal.city}${animal.upload}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-common btn-sm mt-20">預覽</button>
