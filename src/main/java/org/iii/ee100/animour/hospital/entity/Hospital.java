@@ -14,15 +14,6 @@ public class Hospital {
 	
 	
 	
-//	public Hospital(String veterinaryHospId, String veterinaryHospName, String veterinaryHospTel,
-//			String veterinaryHospAddr) {
-//		super();
-//		this.veterinaryHospId = veterinaryHospId;
-//		this.veterinaryHospName = veterinaryHospName;
-//		this.veterinaryHospTel = veterinaryHospTel;
-//		this.veterinaryHospAddr = veterinaryHospAddr;
-//	}
-	
 	
 	public Integer getHospNo() {
 		return hospNo;
