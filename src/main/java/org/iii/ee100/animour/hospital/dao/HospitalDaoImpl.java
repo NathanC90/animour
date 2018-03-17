@@ -31,8 +31,8 @@ public class HospitalDaoImpl implements HospitalDao  {
 //		}
 //	}
 	
-	HikariDataSource ds=null;
-	private HikariDataSource DataSource() {
+	HikariDataSource ds=dataSource();
+	private HikariDataSource dataSource() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
 		String pswd = "postgres";
@@ -166,9 +166,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 
 	private static final String SELECT_ALL = "Select * from veterinaryHosp ";
 	
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#findAllHosp()
-	 */
 	@Override
 	public List<Hospital> findAllHosp() {
 		List<Hospital> resultls = new ArrayList<Hospital>();
@@ -181,7 +178,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				Hospital rb=new Hospital();	
-				//result = new RegBean();
 				rb.setVeterinaryHospId(rs.getString("veterinaryHospId"));
 				rb.setVeterinaryHospName(rs.getString("veterinaryHospName"));
 				rb.setVeterinaryHospTel(rs.getString("veterinaryHospTel"));
@@ -206,10 +202,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 
 	private static final String DELETE = "DELETE FROM veterinaryHosp WHERE veterinaryHospId=?";
 
-
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#deleteHosp(java.lang.String)
-	 */
 	@Override
 	public void deleteHosp(String id) {
 

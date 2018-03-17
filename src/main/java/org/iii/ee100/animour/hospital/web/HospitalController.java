@@ -4,7 +4,7 @@ import java.util.List;
 
 
 import org.iii.ee100.animour.hospital.entity.Hospital;
-import org.iii.ee100.animour.hospital.service.HospitalService;
+import org.iii.ee100.animour.hospital.service.HospitalServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HospitalController {
 
 	@Autowired
-	private HospitalService hosp;
+	HospitalServiceImpl hosp;
 	
 	
-//	@RequestMapping("/hospital/index")
+//	@RequestMapping("/hospital/")
 //	public String index(Model model) {
 //
 //		return "/hospital/InsertHospitalForm";
 //	}
 	
 
-	@RequestMapping("/hospital/hospitalist")
+	@RequestMapping("/list")
 	public String findAllHospital(Model model)  {
 		List<Hospital> hospital =hosp.getAll();
 		model.addAttribute("alllist", hospital);

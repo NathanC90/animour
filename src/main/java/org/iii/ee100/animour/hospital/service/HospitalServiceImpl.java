@@ -11,6 +11,16 @@ public class HospitalServiceImpl implements HospitalService  {
 
 	private HospitalDao hospitalDao;
 	
+	
+	
+	
+	public HospitalServiceImpl() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+		String daoImplName = "org.iii.ee100.animour.hospital.dao.HospitalDaoImpl";
+		hospitalDao = (org.iii.ee100.animour.hospital.dao.HospitalDao) Class.forName(daoImplName).newInstance();
+	}
+
+
+
 	@Override
 	public void insert(Hospital hospital)  {
 		hospitalDao.insertHosp(hospital);

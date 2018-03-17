@@ -9,10 +9,6 @@ public class Hospital {
 	String veterinaryHospName;
 	String veterinaryHospTel;
 	String veterinaryHospAddr;
-	List<Hospital> hospbean;
-	
-	
-	
 	
 	
 	public Integer getHospNo() {
@@ -45,12 +41,7 @@ public class Hospital {
 	public void setVeterinaryHospAddr(String veterinaryHospAddr) {
 		this.veterinaryHospAddr = veterinaryHospAddr;
 	}
-	public List<Hospital> getHospbean() {
-		return hospbean;
-	}
-	public void setHospbean(List<Hospital> hospbean) {
-		this.hospbean = hospbean;
-	}
+
 
 	
 	
