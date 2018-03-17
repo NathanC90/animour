@@ -75,7 +75,7 @@ public class HotelDaoImpl implements HotelDao {
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#update(org.iii.ee100.animour.hotel.entity.HotelBean)
 	 */
 	@Override
-	public void update(HotelBean customer) throws SQLException {
+	public void update(HotelBean customer){
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(UpdateStmt);) {
@@ -100,7 +100,7 @@ public class HotelDaoImpl implements HotelDao {
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#delete(java.lang.Long)
 	 */
 	@Override
-	public void delete(Long hotelId) throws SQLException {
+	public void delete(Long hotelId){
 
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
@@ -118,7 +118,7 @@ public class HotelDaoImpl implements HotelDao {
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#FindByCno(java.lang.Long)
 	 */
 	@Override
-	public HotelBean FindByCno(Long cno) throws SQLException {
+	public HotelBean FindById(Long hotelId){
 		HotelBean hotels = null;
 		ResultSet rs = null;
 		try (HikariDataSource ds = getConnection();
@@ -149,7 +149,7 @@ public class HotelDaoImpl implements HotelDao {
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#getAll()
 	 */
 	@Override
-	public List<HotelBean> getAll() throws SQLException {
+	public List<HotelBean> getAll(){
 		HotelBean hotel = null;
 		List<HotelBean> hotels = new ArrayList<HotelBean>();
 		ResultSet rs = null;
@@ -162,7 +162,7 @@ public class HotelDaoImpl implements HotelDao {
 				hotel = new HotelBean();
 				hotel.setHotelId(rs.getLong("hotelid"));
 				hotel.setOnwer(rs.getString("onwer"));
-				hotel.setDogName(rs.getString("name"));
+				hotel.setDogName(rs.getString("dogname"));
 				hotel.setSpecies(rs.getString("species"));
 				hotel.setTotal(rs.getInt("total"));
 				hotel.setType(rs.getString("type"));

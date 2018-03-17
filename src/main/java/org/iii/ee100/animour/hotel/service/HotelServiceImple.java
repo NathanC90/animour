@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.iii.ee100.animour.hotel.dao.HotelDao;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
-
+import org.springframework.stereotype.Service;
+@Service
 public class HotelServiceImple implements HotelService {
 	private HotelDao hotelDao;
 	
@@ -33,9 +34,9 @@ public class HotelServiceImple implements HotelService {
 	}
 
 	@Override
-	public List<HotelBean> getAll() {
+	public List<HotelBean> getAll(){
 		// TODO Auto-generated method stub
-		return getAll();
+		return hotelDao.getAll();
 	}
 
 	@Override

@@ -1,13 +1,14 @@
 package org.iii.ee100.animour.hotel.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.hotel.entity.HotelBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+@Controller
 public class HotelController {
 	@Autowired
 	org.iii.ee100.animour.hotel.service.HotelServiceImple hs;

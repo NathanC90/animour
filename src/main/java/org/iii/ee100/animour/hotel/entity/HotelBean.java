@@ -8,6 +8,13 @@ public class HotelBean {
 	private String species;
 	private String dogName;
 	private java.sql.Timestamp checkIn;
+	
+
+	@Override
+	public String toString() {
+		return "HotelBean [hotelId=" + hotelId + ", onwer=" + onwer + ", type=" + type + ", total=" + total
+				+ ", species=" + species + ", dogName=" + dogName + ", checkIn=" + checkIn +"\n";
+	}
 
 	public String getOnwer() {
 		return onwer;
