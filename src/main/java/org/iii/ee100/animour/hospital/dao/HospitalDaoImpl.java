@@ -20,7 +20,7 @@ import com.zaxxer.hikari.HikariDataSource;
 
 
 
-public class HospitalDaoImpl implements HospitalDao {
+public class HospitalDaoImpl implements HospitalDao  {
 //	DataSource ds = null;
 //	public HospitalDaoImpl() {
 //		try {
@@ -56,270 +56,27 @@ public class HospitalDaoImpl implements HospitalDao {
 	
 	
 
+	/* (non-Javadoc)
+	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#insertHosp(org.iii.ee100.animour.hospital.entity.Hospital)
+	 */
 	@Override
-	public Hospital insertHosp(Hospital hospital) throws SQLException {
-		Hospital result = null;
-		Connection conn = null;
-		PreparedStatement ps =null;
-		try {
-			conn = ds.getConnection();
-			ps = conn.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
-			ps.setString(1, hospital.getVeterinaryHospId());
-			ps.setString(2, hospital.getVeterinaryHospName());
-			ps.setString(3, hospital.getVeterinaryHospTel());
-			ps.setString(4, hospital.getVeterinaryHospAddr());
-
-			
-			int i = ps.executeUpdate();
-			if (i == 1) {
-				result = this.selectHosp(hospital.getVeterinaryHospId());
-			}
-			ResultSet rs = ps.getGeneratedKeys();
-			if (rs.next()) {
-				hospital.setHospNo(rs.getInt(1));
-
-			} 
-
-		} finally {
-			if (ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return result;
-
-	
-	}
-	
-	String update = "update veterinaryHosp"
-			+ " set  veterinaryHospName=? , veterinaryHospTel=? , veterinaryHospAddr=? "
-			+ "where veterinaryHospId=? ";
-	
-	
-
-	@Override
-	public Hospital updateHosp(Hospital hospital) throws SQLException {
-		Hospital result = null;
-		Connection conn = null;
-		PreparedStatement ps =null;
-		try {
-			conn = ds.getConnection();
-			ps = conn.prepareStatement(update);
-			ps.setString(1, hospital.getVeterinaryHospId());
-			ps.setString(2, hospital.getVeterinaryHospName());
-			ps.setString(3, hospital.getVeterinaryHospTel());
-			ps.setString(4, hospital.getVeterinaryHospAddr());
-
-			
-			ps.executeUpdate();
-			result = this.selectHosp(hospital.getVeterinaryHospId());
-			
-			ResultSet rs = ps.getGeneratedKeys();
-			if (rs.next()) {
-				hospital.setHospNo(rs.getInt(1));
-
-			} 
-
-		} finally {
-			if (ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return result;
-
-	
-	}
-	
-	
-
-	String SELECT_BY_id = "Select * from veterinaryHosp where veterinaryHospId = ?";
-
-
-	@Override
-	public Hospital selectHosp(String id) {
-		Hospital result = null;
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rset = null;
-		try {
-			conn = ds.getConnection();
-			stmt = conn.prepareStatement(SELECT_BY_id);
-			stmt.setString(1, id);
-			rset = stmt.executeQuery();
-			if (rset.next()) {
-				result = new Hospital();
-				result.setVeterinaryHospId(rset.getString("veterinaryHospId"));
-				result.setVeterinaryHospName(rset.getString("veterinaryHospName"));
-				result.setVeterinaryHospTel(rset.getString("veterinaryHospTel"));
-				result.setVeterinaryHospAddr(rset.getString("veterinaryHospAddr"));
-
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (rset != null) {
-				try {
-					rset.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return result;
-	}
-	
-	
-	String SELECT_BY_ids = "Select * from veterinaryHosp where veterinaryHospId = ?";
-	
-
-	@Override
-	public List<Hospital> selectAllHosp(String id) {
-		List<Hospital> resultls = new ArrayList<Hospital>();
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rset = null;
-		
-		try {
-			conn = ds.getConnection();
-			stmt = conn.prepareStatement(SELECT_BY_ids);
-			stmt.setString(1, id);
-			rset = stmt.executeQuery();
-			while (rset.next()) {
-				Hospital rb=new Hospital();	
-				//result = new RegBean();
-				rb.setVeterinaryHospId(rset.getString("veterinaryHospId"));
-				rb.setVeterinaryHospName(rset.getString("veterinaryHospName"));
-				rb.setVeterinaryHospTel(rset.getString("veterinaryHospTel"));
-				rb.setVeterinaryHospAddr(rset.getString("veterinaryHospAddr"));		
-				
-				resultls.add(rb);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (rset != null) {
-				try {
-					rset.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return resultls;
-	}
-
-	String SELECT = "Select * from veterinaryHosp ";
-	
-
-	@Override
-	public List<Hospital> selectAllHosp() {
-		List<Hospital> resultls = new ArrayList<Hospital>();
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rset = null;
-		
-		try {
-			conn = ds.getConnection();
-			stmt = conn.prepareStatement(SELECT);
-			rset = stmt.executeQuery();
-			while (rset.next()) {
-				Hospital rb=new Hospital();	
-				//result = new RegBean();
-				rb.setVeterinaryHospId(rset.getString("veterinaryHospId"));
-				rb.setVeterinaryHospName(rset.getString("veterinaryHospName"));
-				rb.setVeterinaryHospTel(rset.getString("veterinaryHospTel"));
-				rb.setVeterinaryHospAddr(rset.getString("veterinaryHospAddr"));		
-				resultls.add(rb);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			if (rset != null) {
-				try {
-					rset.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (stmt != null) {
-				try {
-					stmt.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-			if (conn != null) {
-				try {
-					conn.close();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return resultls;
-	}
-
-
-	private static final String delete = "DELETE FROM veterinaryHosp WHERE veterinaryHospId=?";
-
-
-	@Override
-	public void deleteHosp(String id) {
+	public void insertHosp(Hospital hospital)  {
 		ResultSet rs = null;
 
-		try (Connection conn = ds.getConnection(); 
-				PreparedStatement pstmt = conn.prepareStatement(delete);) {
-			pstmt.setString(1, id);
-			pstmt.executeUpdate();
+		try(Connection conn = ds.getConnection();
+			PreparedStatement ps = conn.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
+			) {
+			ps.setString(1, hospital.getVeterinaryHospId());
+			ps.setString(2, hospital.getVeterinaryHospName());
+			ps.setString(3, hospital.getVeterinaryHospTel());
+			ps.setString(4, hospital.getVeterinaryHospAddr());
+			ps.executeUpdate();
+			
+			rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				hospital.setHospNo(rs.getInt(1));
+
+			} 
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -332,6 +89,139 @@ public class HospitalDaoImpl implements HospitalDao {
 				}
 			}
 		}
+	}// end of insert
+	
+	String update = "update veterinaryHosp"
+			+ " set  veterinaryHospName=? , veterinaryHospTel=? , veterinaryHospAddr=? "
+			+ "where veterinaryHospId=? ";
+	
+	
+
+	/* (non-Javadoc)
+	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#updateHosp(org.iii.ee100.animour.hospital.entity.Hospital)
+	 */
+	@Override
+	public void updateHosp(Hospital hospital) {
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement ps = conn.prepareStatement(update);
+				){
+			ps.setString(1, hospital.getVeterinaryHospId());
+			ps.setString(2, hospital.getVeterinaryHospName());
+			ps.setString(3, hospital.getVeterinaryHospTel());
+			ps.setString(4, hospital.getVeterinaryHospAddr());
+
+			
+			ps.executeUpdate();
+			Hospital result = this.findOneHosp(hospital.getVeterinaryHospId());
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}//end update
+	
+	
+	
+
+	private static final String SELECT_BY_ID = "Select * from veterinaryHosp where veterinaryHospId = ?";
+
+
+	/* (non-Javadoc)
+	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#findOneHosp(java.lang.String)
+	 */
+	@Override
+	public Hospital findOneHosp(String id) {
+		Hospital result = null;
+
+		ResultSet rs = null;
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement ps = conn.prepareStatement(SELECT_BY_ID);
+			){			
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				result = new Hospital();
+				result.setVeterinaryHospId(rs.getString("veterinaryHospId"));
+				result.setVeterinaryHospName(rs.getString("veterinaryHospName"));
+				result.setVeterinaryHospTel(rs.getString("veterinaryHospTel"));
+				result.setVeterinaryHospAddr(rs.getString("veterinaryHospAddr"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		return result;
+	}
+	
+	
+
+	private static final String SELECT_ALL = "Select * from veterinaryHosp ";
+	
+	/* (non-Javadoc)
+	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#findAllHosp()
+	 */
+	@Override
+	public List<Hospital> findAllHosp() {
+		List<Hospital> resultls = new ArrayList<Hospital>();
+		ResultSet rs= null;
+		
+		try(Connection conn = ds.getConnection();
+				 PreparedStatement ps = conn.prepareStatement(SELECT_ALL);
+				) {
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Hospital rb=new Hospital();	
+				//result = new RegBean();
+				rb.setVeterinaryHospId(rs.getString("veterinaryHospId"));
+				rb.setVeterinaryHospName(rs.getString("veterinaryHospName"));
+				rb.setVeterinaryHospTel(rs.getString("veterinaryHospTel"));
+				rb.setVeterinaryHospAddr(rs.getString("veterinaryHospAddr"));		
+				resultls.add(rb);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		return resultls;
+	}
+
+
+	private static final String DELETE = "DELETE FROM veterinaryHosp WHERE veterinaryHospId=?";
+
+
+	/* (non-Javadoc)
+	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#deleteHosp(java.lang.String)
+	 */
+	@Override
+	public void deleteHosp(String id) {
+
+		try (Connection conn = ds.getConnection(); 
+				PreparedStatement ps = conn.prepareStatement(DELETE);) {
+			ps.setString(1, id);
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+	}
 	}
 
 
