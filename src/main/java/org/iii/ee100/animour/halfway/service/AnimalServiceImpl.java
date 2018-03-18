@@ -42,9 +42,10 @@ public class AnimalServiceImpl implements AnimalService {
 		return animalDao.findOne(id);
 	}
 	
-//	public List<Animal> getSix(){
-//		return animalDao.findTopSix();
-//	}
+	public List<Animal> getSix(){
+		org.iii.ee100.animour.halfway.dao.AnimalDaoImpl dao = new org.iii.ee100.animour.halfway.dao.AnimalDaoImpl();
+		return dao.findTopSix();
+	}
 
 
 	

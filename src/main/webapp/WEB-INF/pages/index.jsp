@@ -1,28 +1,57 @@
-<%@ page contentType="text/html; charset=UTF-8"  %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Hello, world!</title>
-</head>
-<body>
+<title>Animour</title>
+<!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <!-- Main Style -->
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <!-- Slicknav Css -->
+  <link rel="stylesheet" type="text/css" href="/css/slicknav.css">
 
+  <!-- Responsive Style -->
+  <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+  <!--Fonts-->
+  <link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
+  <link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
+
+  <!-- Extras -->
+  <link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
+  <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+  <link rel="stylesheet" type="text/css" href="/extras/animate.css">
+  <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+<!-- Color CSS Styles  -->
+  <link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
+</head>
+
+<body>
+  <!-- Header area wrapper starts -->
   <header id="header-wrap">
     <!-- Navbar Starts -->
     <nav class="navbar navbar-expand-md fixed-top scrolling-navbar nav-bg">
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">
-            <img src="assets/img/logo.png" alt="">
+          <a class="navbar-brand" href="index.jsp">
+            <img src="/images/logo.png" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -32,52 +61,52 @@
         <div class="collapse navbar-collapse" id="main-menu">
           <ul class="navbar-nav mr-auto w-100 justify-content-end">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="index.html" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle active" href="index.jsp" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 首頁
               </a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">最新消息</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="about-us.html">認養活動</a>
-                <a class="dropdown-item" href="about-us2.html">寵物保健</a>
-                <a class="dropdown-item" href="team-page.html">演講座談</a>
+                <a class="dropdown-item" href="">認養活動</a>
+                <a class="dropdown-item" href="">寵物保健</a>
+                <a class="dropdown-item" href="">演講座談</a>
 
               </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">寵物市集</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="portfolio-col-2.html">新品上市</a>
-                <a class="dropdown-item" href="portfolio-col-3.html">好康優惠</a>
-                <a class="dropdown-item" href="portfolio-col-4.html">寵物飲食</a>
-                <a class="dropdown-item" href="portfolio-col-5.html">寵物用品</a>
+                <a class="dropdown-item" href="">新品上市</a>
+                <a class="dropdown-item" href="l">好康優惠</a>
+                <a class="dropdown-item" href="l">寵物飲食</a>
+                <a class="dropdown-item" href="">寵物用品</a>
               </div>
             </li>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">寵物旅店</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="accordions.html">旅店簡介</a>
-                <a class="dropdown-item" href="tabs.html">房型價格</a>
-                <a class="dropdown-item" href="buttons.html">特色設備</a>
-                <a class="dropdown-item" href="skills.html">線上訂房</a>
+                <a class="dropdown-item" href="">旅店簡介</a>
+                <a class="dropdown-item" href="">房型價格</a>
+                <a class="dropdown-item" href="">特色設備</a>
+                <a class="dropdown-item" href="">線上訂房</a>
               </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">寵物醫院</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="about-us3.html">各區醫院</a>
-                <a class="dropdown-item" href="about-us4.html">線上掛號</a>
-                <a class="dropdown-item" href="about-us5.html">看診進度查詢</a>
+                <a class="dropdown-item" href="">各區醫院</a>
+                <a class="dropdown-item" href="">線上掛號</a>
+                <a class="dropdown-item" href="">看診進度查詢</a>
               </div>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">部落格分享</a>
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="sidebar-right.html">本周最新</a>
-                <a class="dropdown-item" href="sidebar-left.html">熱門文章</a>
-                <a class="dropdown-item" href="sidebar-full.html">精選圖文</a>
+                <a class="dropdown-item" href="">本周最新</a>
+                <a class="dropdown-item" href="">熱門文章</a>
+                <a class="dropdown-item" href="">精選圖文</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -97,19 +126,19 @@
         <!-- Mobile Menu Start -->
         <ul class="wpb-mobile-menu">
           <li>
-            <a class="active" href="index.html">首頁</a>
+            <a class="active" href="index.jsp">首頁</a>
           </li>
           <li>
             <a href="#">最新消息</a>
             <ul>
               <li>
-                <a href="about-us.html">認養活動</a>
+                <a href="">認養活動</a>
               </li>
               <li>
-                <a href="about-us2.html">寵物保健</a>
+                <a href="">寵物保健</a>
               </li>
               <li>
-                <a href="team-page.html">演講座談</a>
+                <a href="">演講座談</a>
               </li>
             </ul>
           </li>
@@ -117,16 +146,16 @@
             <a href="#">寵物市集</a>
             <ul>
               <li>
-                <a href="portfolio-col-2.html">新品上市</a>
+                <a href="">新品上市</a>
               </li>
               <li>
-                <a href="portfolio-col-3.html">好康優惠</a>
+                <a href="">好康優惠</a>
               </li>
               <li>
-                <a href="portfolio-col-4.html">寵物飲食</a>
+                <a href="">寵物飲食</a>
               </li>
               <li>
-                <a href="porfolio-item.html">寵物用品</a>
+                <a href="">寵物用品</a>
               </li>
             </ul>
           </li>
@@ -134,16 +163,16 @@
             <a href="#">寵物旅店</a>
             <ul>
               <li>
-                <a href="accordions.html">旅店簡介</a>
+                <a href="">旅店簡介</a>
               </li>
               <li>
-                <a href="tabs.html">房型價格</a>
+                <a href="">房型價格</a>
               </li>
               <li>
-                <a href="buttons.html">特色設備</a>
+                <a href="">特色設備</a>
               </li>
               <li>
-                <a href="skills.html">線上訂房</a>
+                <a href="">線上訂房</a>
               </li>
             </ul>
           </li>
@@ -151,13 +180,13 @@
             <a href="#">寵物醫院</a>
             <ul>
               <li>
-                <a href="about-us.html">各區醫院</a>
+                <a href="">各區醫院</a>
               </li>
               <li>
-                <a href="about-us2.html">線上掛號</a>
+                <a href="">線上掛號</a>
               </li>
               <li>
-                <a href="team-page.html">看診進度查詢</a>
+                <a href="">看診進度查詢</a>
               </li>
             </ul>
           </li>
@@ -165,13 +194,13 @@
             <a href="#">部落格分享</a>
             <ul>
               <li>
-                <a href="sidebar-right.html">本周最新</a>
+                <a href="">本周最新</a>
               </li>
               <li>
-                <a href="sidebar-left.html">熱門文章</a>
+                <a href="">熱門文章</a>
               </li>
               <li>
-                <a href="sidebar-full.html">精選圖文</a>
+                <a href="">精選圖文</a>
               </li>
             </ul>
           </li>
@@ -185,7 +214,7 @@
     <!-- Navbar ends -->
 
 
-    <!-- Main Carousel Section -->
+    <!-- 輪播牆開始 -->
     <div id="carousel-area">
       <div id="carousel-slider" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -196,7 +225,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="assets/img/slider/bg-dog1-gray.jpg" alt="">
+            <img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">
             <div class="carousel-caption">
               <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
                 請用領養代替購買
@@ -210,50 +239,50 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="assets/img/slider/bg-cat1-gray.jpg" alt="">
+            <img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">
             <div class="carousel-caption">
               <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                Multi-purpose Template
+                中途見面會活動
               </h2>
               <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                2018/06/01 上午9:00 台北市復興南路一段
               </h3>
               <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
                 <i class="fa fa-coffee">
                 </i>
-                Learn More
+                詳細資訊
               </a>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="assets/img/slider/bg-dog2-gray.jpg" alt="">
+            <img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
             <div class="carousel-caption">
               <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                Refreshing Cool Design
+                New Arrival
               </h2>
               <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+               	最新商品上架
               </h3>
               <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
                 <i class="fa fa-download">
                 </i>
-                Download
+                看這裡
               </a>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="assets/img/slider/bg-rabbit1-gray.jpg" alt="">
+            <img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
             <div class="carousel-caption">
               <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                Refreshing Cool Design
+                LaLa醫生門診時間異動
               </h2>
               <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+               已掛號會員請更改看診時間
               </h3>
               <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
                 <i class="fa fa-download">
                 </i>
-                Download
+                點此更改
               </a>
             </div>
           </div>
@@ -268,117 +297,48 @@
         </a>
       </div>
     </div>
+    <!-- 輪播牆結束-->
   </header>
   <!-- Header-wrap Section End -->
 
-  <!-- Service Block-1 Section -->
+  <!-- 中途之家頁面 -->
   <section id="service-block-main" class="section">
-    <!-- Container Starts -->
+    <!-- 重複的內容開始 -->
     <div class="container">
       <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-        待領養專區
+        中途專區
       </h1>
+      <div class="row">
       <c:forEach var="animal" items="${animals}">
       
-      <div class="row">
         <div class="col-md-4">
-          <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="assets/img/adopt/cats/ad-cat1.jpg" width="100px" alt="待領養小貓">
-            <div class="card-body">
-              <p class="card-text">${animal.name}${animal.city}${animal.upload}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-common btn-sm mt-20">預覽</button>
-                  <button type="button" class="btn btn-common btn-sm mt-20">認養</button>
+          <div class="card mb-4 box-shadow" >
+            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">
+            編號：${animal.animalId}
+			綽號：${animal.name}
+			種類：${animal.specie}
+			顏色：${animal.color}
+			發現日期：${animal.found}
+			縣市：${animal.city}
+			鄉鎮市區：${animal.district}</p>
+              <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
+                <div class="btn-group" style="margin:0px">
+                  <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+                  <button type="button" class="btn btn-common btn-sm mt-10">認養</button>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small class="text-muted">${animal.upload}</small>
               </div>
             </div>
           </div>
         </div>
         </c:forEach>
-<!--         <div class="col-md-4"> -->
-<!--           <div class="card mb-4 box-shadow"> -->
-<!--             <img class="card-img-top" src="assets/img/adopt/cats/ad-cat2.jpg" 100px alt="待領養小貓"> -->
-<!--             <div class="card-body"> -->
-<!--               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-<!--               <div class="d-flex justify-content-between align-items-center"> -->
-<!--                 <div class="btn-group"> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">預覽</button> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">認養</button> -->
-<!--                 </div> -->
-<!--                 <small class="text-muted">9 mins</small> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--         <div class="col-md-4"> -->
-<!--           <div class="card mb-4 box-shadow"> -->
-<!--             <img class="card-img-top" src="assets/img/adopt/cats/ad-cat3.jpg" 100px alt="待領養小貓"> -->
-<!--             <div class="card-body"> -->
-<!--               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-<!--               <div class="d-flex justify-content-between align-items-center"> -->
-<!--                 <div class="btn-group"> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">預覽</button> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">認養</button> -->
-<!--                 </div> -->
-<!--                 <small class="text-muted">9 mins</small> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-
-<!--         <div class="col-md-4"> -->
-<!--           <div class="card mb-4 box-shadow"> -->
-<!--             <img class="card-img-top" src="assets/img/adopt/dogs/ad-dog1.jpg" alt="待領養小狗"> -->
-<!--             <div class="card-body"> -->
-<!--               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-<!--               <div class="d-flex justify-content-between align-items-center"> -->
-<!--                 <div class="btn-group"> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">預覽</button> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">認養</button> -->
-<!--                 </div> -->
-<!--                 <small class="text-muted">9 mins</small> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--         <div class="col-md-4"> -->
-<!--           <div class="card mb-4 box-shadow"> -->
-<!--             <img class="card-img-top" src="assets/img/adopt/dogs/ad-dog2.jpg" alt="待領養小狗"> -->
-<!--             <div class="card-body"> -->
-<!--               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-<!--               <div class="d-flex justify-content-between align-items-center"> -->
-<!--                 <div class="btn-group"> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">預覽</button> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">認養</button> -->
-<!--                 </div> -->
-<!--                 <small class="text-muted">9 mins</small> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-<!--         <div class="col-md-4"> -->
-<!--           <div class="card mb-4 box-shadow"> -->
-<!--             <img class="card-img-top" src="assets/img/adopt/dogs/ad-dog3.jpg" alt="待領養小狗"> -->
-<!--             <div class="card-body"> -->
-<!--               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-<!--               <div class="d-flex justify-content-between align-items-center"> -->
-<!--                 <div class="btn-group"> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">預覽</button> -->
-<!--                   <button type="button" class="btn btn-sm btn-outline-secondary">認養</button> -->
-<!--                 </div> -->
-<!--                 <small class="text-muted">9 mins</small> -->
-<!--               </div> -->
-<!--             </div> -->
-<!--           </div> -->
-<!--         </div> -->
-        <!-- Service-Block-1 Item Ends -->
       </div>
     </div>
-    <!-- Container Ends -->
+    <!-- 重複的內容結束 -->
   </section>
-  <!-- Service Main Section Ends -->
+  <!-- 中途之家結束 -->
 
   <!-- About Us Section Start -->
   <section class="split section">
@@ -387,7 +347,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="images">
-            <img src="assets/img/about/plain-why-choose-us-2.png" alt="">
+            <img src="/images/about/plain-why-choose-us-2.png" alt="">
           </div>
         </div>
         <div class="col-md-8 col-sm-6 col-xs-12">
@@ -596,7 +556,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img1.jpg" alt="" />
+                <img src="/images/portfolio/img1.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -623,7 +583,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding planning">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img2.jpg" alt="" />
+                <img src="/images/portfolio/img2.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -650,7 +610,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding research">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img3.jpg" alt="" />
+                <img src="/images/portfolio/img3.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -677,7 +637,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing research">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img4.jpg" alt="" />
+                <img src="/images/portfolio/img4.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -704,7 +664,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img5.jpg" alt="" />
+                <img src="/images/portfolio/img5.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -731,7 +691,7 @@
           <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning research">
             <div class="portfolio-item">
               <div class="portfolio-img">
-                <img src="assets/img/portfolio/img6.jpg" alt="" />
+                <img src="/images/portfolio/img6.jpg" alt="" />
               </div>
               <div class="portfoli-content">
                 <div class="sup-desc-wrap">
@@ -1036,7 +996,7 @@
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUpQuick" data-wow-delay="1s">
             <figure class="team-profile">
-              <img src="assets/img/team/team-01.jpg" alt="">
+              <img src="/images/team/team-01.jpg" alt="">
               <figcaption class="our-team">
                 <div class="details">
                   <p class="content-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -1072,7 +1032,7 @@
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUpQuick" data-wow-delay="1.4s">
             <figure class="team-profile">
-              <img src="assets/img/team/team-02.jpg" alt="">
+              <img src="/images/team/team-02.jpg" alt="">
               <figcaption class="our-team">
                 <div class="details">
                   <p class="content-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -1108,7 +1068,7 @@
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUpQuick" data-wow-delay="1.8s">
             <figure class="team-profile">
-              <img src="assets/img/team/team-03.jpg" alt="">
+              <img src="/images/team/team-03.jpg" alt="">
               <figcaption class="our-team">
                 <div class="details">
                   <p class="content-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -1144,7 +1104,7 @@
           <!-- Team Item Starts -->
           <div class="team-item wow fadeInUpQuick" data-wow-delay="2.2s">
             <figure class="team-profile">
-              <img src="assets/img/team/team-04.jpg" alt="">
+              <img src="/images/team/team-04.jpg" alt="">
               <figcaption class="our-team">
                 <div class="details">
                   <p class="content-white">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -1261,7 +1221,7 @@
             <div class="item">
               <div class="testimonial-inner">
                 <div class="testimonial-images">
-                  <img class="img-circle" src="assets/img/testimonial/img1.jpg" alt="">
+                  <img class="img-circle" src="/images/testimonial/img1.jpg" alt="">
                   <h4>
                     Steve Austin
                     <span>
@@ -1284,7 +1244,7 @@
             <div class="item">
               <div class="testimonial-inner">
                 <div class="testimonial-images">
-                  <img class="img-circle" src="assets/img/testimonial/img2.jpg" alt="">
+                  <img class="img-circle" src="/images/testimonial/img2.jpg" alt="">
                   <h4>
                     Chelsey Siltanen
                     <span>
@@ -1307,7 +1267,7 @@
             <div class="item">
               <div class="testimonial-inner">
                 <div class="testimonial-images">
-                  <img class="img-circle" src="assets/img/testimonial/img3.jpg" alt="">
+                  <img class="img-circle" src="/images/testimonial/img3.jpg" alt="">
                   <h4>
                     Pamela Fox
                     <span>
@@ -1330,7 +1290,7 @@
             <div class="item">
               <div class="testimonial-inner">
                 <div class="testimonial-images">
-                  <img class="img-circle" src="assets/img/testimonial/img4.jpg" alt="">
+                  <img class="img-circle" src="/images/testimonial/img4.jpg" alt="">
                   <h4>
                     janna Hagan
                     <span>
@@ -1353,7 +1313,7 @@
             <div class="item">
               <div class="testimonial-inner">
                 <div class="testimonial-images">
-                  <img class="img-circle" src="assets/img/testimonial/img5.jpg" alt="">
+                  <img class="img-circle" src="/images/testimonial/img5.jpg" alt="">
                   <h4>
                     Paul Tweedy
                     <span>
@@ -1397,7 +1357,7 @@
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="assets/img/blog/home-items/img1.jpg" alt="">
+                <img src="/images/blog/home-items/img1.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
@@ -1424,7 +1384,7 @@
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="assets/img/blog/home-items/img2.jpg" alt="">
+                <img src="/images/blog/home-items/img2.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
@@ -1452,7 +1412,7 @@
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="assets/img/blog/home-items/img3.jpg" alt="">
+                <img src="/images/blog/home-items/img3.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
@@ -1493,22 +1453,22 @@
         <!-- Row and Scroller Wrapper Starts -->
         <div class="row" id="clients-scroller">
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img1.png" alt="">
+            <img src="/images/clients/img1.png" alt="">
           </div>
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img2.png" alt="">
+            <img src="/images/clients/img2.png" alt="">
           </div>
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img3.png" alt="">
+            <img src="/images/clients/img3.png" alt="">
           </div>
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img4.png" alt="">
+            <img src="/images/clients/img4.png" alt="">
           </div>
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img5.png" alt="">
+            <img src="/images/clients/img5.png" alt="">
           </div>
           <div class="client-item-wrapper">
-            <img src="assets/img/clients/img6.png" alt="">
+            <img src="/images/clients/img6.png" alt="">
           </div>
         </div>
         <!-- Row and Scroller Wrapper Starts -->
@@ -1591,7 +1551,7 @@
           <ul class="image-list">
             <li>
               <figure class="overlay">
-                <img class="img-fluid" src="assets/img/art/a1.jpg" alt="">
+                <img class="img-fluid" src="/images/art/a1.jpg" alt="">
               </figure>
               <div class="post-content">
                 <h6 class="post-title">
@@ -1604,7 +1564,7 @@
             </li>
             <li>
               <figure class="overlay">
-                <img class="img-fluid" src="assets/img/art/a2.jpg" alt="">
+                <img class="img-fluid" src="/images/art/a2.jpg" alt="">
               </figure>
               <div class="post-content">
                 <h6 class="post-title">
@@ -1635,13 +1595,13 @@
               Instagram
             </h3>
             <a href="#" title="Pan Masala">
-              <img src="assets/img/flicker/img1.jpg" alt="">
+              <img src="/images/flicker/img1.jpg" alt="">
             </a>
             <a href="#" title="Sports Template for Joomla">
-              <img src="assets/img/flicker/img2.jpg" alt="">
+              <img src="/images/flicker/img2.jpg" alt="">
             </a>
             <a href="" title="Apple Keyboard">
-              <img src="assets/img/flicker/img3.jpg" alt="">
+              <img src="/images/flicker/img3.jpg" alt="">
             </a>
           </div>
         </div>
@@ -1692,26 +1652,26 @@
   </a>
 
   <!-- JavaScript & jQuery Plugins -->
-  <script src="assets/js/jquery-min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.mixitup.js"></script>
-  <script src="assets/js/smoothscroll.js"></script>
-  <script src="assets/js/wow.js"></script>
-  <script src="assets/js/owl.carousel.js"></script>
-  <script src="assets/js/waypoints.min.js"></script>
-  <script src="assets/js/jquery.counterup.min.js"></script>
-  <script src="assets/js/jquery.slicknav.js"></script>
-  <script src="assets/js/jquery.appear.js"></script>
-  <script src="assets/js/form-validator.min.js"></script>
-  <script src="assets/js/contact-form-script.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="/js/jquery-min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.mixitup.js"></script>
+  <script src="/js/smoothscroll.js"></script>
+  <script src="/js/wow.js"></script>
+  <script src="/js/owl.carousel.js"></script>
+  <script src="/js/waypoints.min.js"></script>
+  <script src="/js/jquery.counterup.min.js"></script>
+  <script src="/js/jquery.slicknav.js"></script>
+  <script src="/js/jquery.appear.js"></script>
+  <script src="/js/form-validator.min.js"></script>
+  <script src="/js/contact-form-script.min.js"></script>
+  <script src="/js/main.js"></script>
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-  <script src="../../../../assets/js/vendor/popper.min.js"></script>
-  <script src="../../../../dist/js/bootstrap.min.js"></script>
-  <script src="../../../../assets/js/vendor/holder.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/js/jquery-slim.min.js"><\/script>')</script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/vendor/holder.min.js"></script>
 
 </body>
 </html>
