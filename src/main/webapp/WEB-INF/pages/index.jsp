@@ -322,7 +322,8 @@
 			顏色：${animal.color}
 			發現日期：${animal.found}
 			縣市：${animal.city}
-			鄉鎮市區：${animal.district}</p>
+			鄉鎮市區：${animal.district}
+			</p>
               <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
                 <div class="btn-group" style="margin:0px">
                   <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
