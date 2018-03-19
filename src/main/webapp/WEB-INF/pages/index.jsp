@@ -50,8 +50,8 @@
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.jsp">
-            <img src="/images/logo.png" alt="">
+          <a class="navbar-brand" href="/">
+            <img style="position:left" src="/images/logo.png" alt="">
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false"
             aria-label="Toggle navigation">
