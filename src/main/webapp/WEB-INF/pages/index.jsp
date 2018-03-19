@@ -376,7 +376,45 @@
     <!-- Container Ends -->
   </section>
   <!-- 醫院結束 -->
-
+  
+	<!-- 討論區 -->
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        討論區
+      </h1>
+      <c:forEach var="article" items="${articles}">
+      <div class="row">
+      
+      
+        <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="xxx" width="60px" alt="討論區">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">最新文章　　:　${article.articleSubject}</p>
+              <p class="card-text" style="padding:0px">發文者　:　${article.postName}</p>
+              <p class="card-text" style="padding:0px">預覽　:　${article.articleContent}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳細</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">收藏</button>
+                </div>
+                <small class="text-muted">${article.postTime}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      </c:forEach>
+    </div>
+    
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 討論區結束 -->
 
   <!-- About Us Section Start -->
   <section class="split section">

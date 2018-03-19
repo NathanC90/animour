@@ -19,6 +19,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	private static final String deleteSTMT = "delete from article where articleId=?";
 	private static final String findAllSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article order by articleId";
 	private static final String findByIdSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article where articleId=?";
+	private static final String findNew = "select articleId, postName, articleSubject, articleContent, postTime from article order by postTime desc fetch first 3 rows only";
 	HikariDataSource ds = getConnection();
 
 	private HikariDataSource getConnection() {
@@ -129,13 +130,14 @@ public class ArticleDaoImpl implements ArticleDao {
 
 	@Override
 	public Article findOne(Long articleId) {
-		Article article = new Article();
+		Article article = null;
 		ResultSet rs = null;
 		try (Connection conn = ds.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);) {
 			pstmt.setLong(1, articleId);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
+				article = new Article();
 				article.setArticleId(rs.getLong("articleId"));
 				article.setPostName(rs.getString("postName"));
 				article.setArticleSubject(rs.getString("articleSubject"));
@@ -155,5 +157,34 @@ public class ArticleDaoImpl implements ArticleDao {
 		}
 		return article;
 	}
-
+	public ArrayList<Article> findNew(){
+		ResultSet rs = null;
+		Article article = new Article();
+		ArrayList<Article> articles = new ArrayList<Article>();
+		try (Connection conn = ds.getConnection(); 
+			 PreparedStatement pstmt = conn.prepareStatement(findNew);) {
+//			pstmt.setInt(1, rows);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				article = new Article();
+				article.setArticleId(rs.getLong("articleId"));
+				article.setPostName(rs.getString("postName"));
+				article.setArticleSubject(rs.getString("articleSubject"));
+				article.setArticleContent(rs.getString("articleContent"));
+				article.setPostTime(rs.getTimestamp("postTime"));
+				articles.add(article);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			if (rs!=null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} 
+			}
+		}
+		return articles;
+	}
 }

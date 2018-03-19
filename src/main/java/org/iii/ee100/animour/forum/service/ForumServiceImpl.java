@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.dao.ArticleDao;
+import org.iii.ee100.animour.forum.dao.ArticleDaoImpl;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,11 @@ public class ForumServiceImpl implements ForumService {
 	@Override
 	public Article getOne(Long id) {
 		return articleDao.findOne(id);
+	}
+	
+	public ArrayList<Article> getNew(){
+		org.iii.ee100.animour.forum.dao.ArticleDaoImpl articleDao1 = new ArticleDaoImpl();
+		return articleDao1.findNew();
 	}
 
 }

@@ -28,8 +28,8 @@ public class Article {
 	public String getArticleContent() {
 		return articleContent;
 	}
-	public void setArticleContent(String articleConrent) {
-		this.articleContent = articleConrent;
+	public void setArticleContent(String articleContent) {
+		this.articleContent = articleContent;
 	}
 
 	public java.sql.Timestamp getPostTime() {
