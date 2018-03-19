@@ -341,6 +341,43 @@
   </section>
   <!-- 中途之家結束 -->
 
+  <!-- 醫院開始 -->
+  <section id="service-block-main" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        醫院資訊專區
+      </h1>
+      <c:forEach var="hosp" items="${hospitals}">
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="xxx" width="60px" alt="醫院">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">醫院ID　　:　${hosp.veterinaryHospId}</p>
+              <p class="card-text" style="padding:0px">醫院名稱　:　${hosp.veterinaryHospName}</p>
+              <p class="card-text" style="padding:0px">醫院電話　:　${hosp.veterinaryHospTel}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳情</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">預約</button>
+                </div>
+                <small class="text-muted">bye</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </c:forEach>
+
+        <!-- Service-Block-000 Item Ends -->
+      </div>
+    <!-- Container Ends -->
+  </section>
+  <!-- 醫院結束 -->
+
+
   <!-- About Us Section Start -->
   <section class="split section">
     <!-- Container Starts -->
