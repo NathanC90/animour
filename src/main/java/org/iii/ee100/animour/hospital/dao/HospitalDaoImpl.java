@@ -11,7 +11,7 @@ import java.util.List;
 //import javax.naming.Context;
 //import javax.naming.InitialContext;
 //import javax.naming.NamingException;
-import javax.sql.DataSource;
+//import javax.sql.DataSource;
 
 import org.iii.ee100.animour.hospital.entity.Hospital;
 
@@ -21,14 +21,14 @@ import com.zaxxer.hikari.HikariDataSource;
 
 
 public class HospitalDaoImpl implements HospitalDao  {
-//	DataSource ds = null;
-//	public HospitalDaoImpl() {
+//	HikariDataSource ds = hikariDS();
+//	public HikariDataSource hikariDS() {
 //		try {
 //			Context context = new InitialContext();
-//			ds = (DataSource) context.lookup("java:comp/env/jdbc/postgres");
+//			ds = (HikariDataSource) context.lookup("java:comp/env/jdbc/postgres");
 //		} catch (NamingException e) {
 //			e.printStackTrace();
-//		}
+//		} return ds;
 //	}
 	
 	HikariDataSource ds=dataSource();
@@ -96,10 +96,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 			+ "where veterinaryHospId=? ";
 	
 	
-
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#updateHosp(org.iii.ee100.animour.hospital.entity.Hospital)
-	 */
 	@Override
 	public void updateHosp(Hospital hospital) {
 		try (Connection conn = ds.getConnection();
@@ -125,10 +121,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 
 	private static final String SELECT_BY_ID = "Select * from veterinaryHosp where veterinaryHospId = ?";
 
-
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#findOneHosp(java.lang.String)
-	 */
 	@Override
 	public Hospital findOneHosp(String id) {
 		Hospital result = null;
@@ -164,7 +156,7 @@ public class HospitalDaoImpl implements HospitalDao  {
 	
 	
 
-	private static final String SELECT_ALL = "Select * from veterinaryHosp ";
+	private static final String SELECT_ALL = "Select * from veterinaryHosp order by hospNo";
 	
 	@Override
 	public List<Hospital> findAllHosp() {
@@ -216,7 +208,46 @@ public class HospitalDaoImpl implements HospitalDao  {
 	}
 	}
 
+	
+	
+	
+	private static final String SELECT_BY_SEQNO = "Select * from veterinaryHosp where HospNO = ?";
 
+	@Override
+	public Hospital findOneHospbySEQNO(int no) {
+		Hospital result = null;
+
+		ResultSet rs = null;
+		try (Connection conn = ds.getConnection();
+			 PreparedStatement ps = conn.prepareStatement(SELECT_BY_SEQNO);
+			){			
+			ps.setInt(1, no);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				result = new Hospital();
+				result.setVeterinaryHospId(rs.getString("veterinaryHospId"));
+				result.setVeterinaryHospName(rs.getString("veterinaryHospName"));
+				result.setVeterinaryHospTel(rs.getString("veterinaryHospTel"));
+				result.setVeterinaryHospAddr(rs.getString("veterinaryHospAddr"));
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		return result;
+	}//end SELECT_BY_SEQNO
+	
+	
+	
 
 
 }

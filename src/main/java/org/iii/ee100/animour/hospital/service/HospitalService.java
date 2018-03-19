@@ -16,4 +16,6 @@ public interface HospitalService {
 
 	Hospital getOne(String veterinaryHospId);
 
+	List<Hospital> getThreeForIndex();
+
 }

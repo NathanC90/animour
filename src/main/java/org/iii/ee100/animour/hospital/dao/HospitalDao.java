@@ -16,4 +16,6 @@ public interface HospitalDao {
 
 	void deleteHosp(String id);
 
+	Hospital findOneHospbySEQNO(int no);
+
 }
