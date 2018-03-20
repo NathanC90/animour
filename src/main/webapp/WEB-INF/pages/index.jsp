@@ -348,12 +348,12 @@
       <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
         醫院資訊專區
       </h1>
-      <c:forEach var="hosp" items="${hospitals}">
       
       <div class="row">
+      <c:forEach var="hosp" items="${hospitals}">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
-            <img class="card-img-top" src="xxx" width="60px" alt="醫院">
+            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt="醫院">
             <div class="card-body" style="margin-bottom:5px">
               <p class="card-text" style="padding:0px">醫院ID　　:　${hosp.veterinaryHospId}</p>
               <p class="card-text" style="padding:0px">醫院名稱　:　${hosp.veterinaryHospName}</p>
@@ -368,8 +368,8 @@
             </div>
           </div>
         </div>
-        </div>
         </c:forEach>
+        </div>
 
         <!-- Service-Block-000 Item Ends -->
       </div>
