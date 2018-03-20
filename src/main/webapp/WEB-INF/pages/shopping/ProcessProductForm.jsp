@@ -12,7 +12,7 @@
 	<div>
 		<p>商品編號：${productOne.id}<br>商品名稱：${productOne.name}</p>
 		<p>價格：${productOne.price}<br>數量：${productOne.quantity}</p>
-		<p>製造日：${productOne.make}<br>保存期限：${productOne.expire}</p>
+		<p>製造日期：${productOne.make}<br>保存期限：${productOne.expire}</p>
 	</div>
 	<hr>
 

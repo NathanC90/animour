@@ -348,9 +348,9 @@
       <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
         醫院資訊專區
       </h1>
+      <c:forEach var="hosp" items="${hospitals}">
       
       <div class="row">
-      <c:forEach var="hosp" items="${hospitals}">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <img class="card-img-top" src="xxx" width="60px" alt="醫院">
@@ -368,8 +368,8 @@
             </div>
           </div>
         </div>
-        </c:forEach>
         </div>
+        </c:forEach>
 
         <!-- Service-Block-000 Item Ends -->
       </div>
@@ -377,7 +377,44 @@
   </section>
   <!-- 醫院結束 -->
   
-	
+	<!-- 討論區 -->
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        討論區
+      </h1>
+      <c:forEach var="article" items="${articles}">
+      <div class="row">
+      
+      
+        <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="xxx" width="60px" alt="討論區">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">最新文章　　:　${article.articleSubject}</p>
+              <p class="card-text" style="padding:0px">發文者　:　${article.postName}</p>
+              <p class="card-text" style="padding:0px">預覽　:　${article.articleContent}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳細</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">收藏</button>
+                </div>
+                <small class="text-muted">${article.postTime}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      </c:forEach>
+    </div>
+    
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 討論區結束 -->
 
   <!-- About Us Section Start -->
   <section class="split section">
@@ -565,6 +602,36 @@
       <h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
         寵物市集
       </h1>
+      <!-- 寵物市集頁面 -->
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <div class="row">
+      <c:forEach var="productBeans" items="${productBeans}">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow" >
+            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">商品編號：${productBeans.id}商品名稱：${productBeans.name}</p>
+              <p class="card-text" style="padding:0px">價格：${productBeans.price}數量：${productBeans.quantity}</p>
+              <p class="card-text" style="padding:0px">製造日期：${productBeans.make}</p>
+			  <p class="card-text" style="padding:0px">保存期限：${productBeans.expire}</p>
+              <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
+                <div class="btn-group" style="margin:0px">
+                  <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+                  <button type="button" class="btn btn-common btn-sm mt-10">購買</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 寵物市集結束 -->
+      
       <p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">At vero eos et accusamus et iusto odio dignissimos ducimus qui
         <br> blanditiis praesentium</p>
       <div class="row">
@@ -589,184 +656,9 @@
           </div>
           <!-- Portfolio Controller/Buttons Ends-->
         </div>
-
-        <!-- Portfolio Recent Projects -->
-        <div id="portfolio" class="row">
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img1.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding planning">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img2.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix branding research">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img3.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing research">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img4.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix marketing planning">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img5.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-4 col-xl-4 mix planning research">
-            <div class="portfolio-item">
-              <div class="portfolio-img">
-                <img src="/images/portfolio/img6.jpg" alt="" />
-              </div>
-              <div class="portfoli-content">
-                <div class="sup-desc-wrap">
-                  <div class="sup-desc-inner">
-                    <div class="sup-link">
-                      <a class="left-link" href="#">
-                        <i class="icon-link"></i>
-                      </a>
-                      <a class="right-link" href="#">
-                        <i class="icon-heart"></i>
-                      </a>
-                    </div>
-                    <div class="sup-meta-wrap">
-                      <a class="sup-title" href="#">
-                        <h4>TITLE HERE</h4>
-                      </a>
-                      <p class="sup-description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <!-- End Portfolio Recent Projects -->
-          <div class="text-center loadmore-button wow fadeInUpQuick" data-wow-delay=".6s">
-            <a href="#" class="btn btn-common">
-              <i class="fa fa-arrows"></i> Show More</a>
-          </div>
-        </div>
       </div>
     </div>
-    <!-- Container Ends -->
   </section>
-  <!-- Portfolio Section Ends -->
 
   <!-- Featured Section Starts -->
   <section id="featured" class="section">
@@ -1391,24 +1283,20 @@
         <br> blanditiis praesentium</p>
       <!-- Row Starts -->
       <div class="row">
-     
-          <c:forEach var="article" items="${articles}">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <!-- Blog Item Starts -->
-          
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="/images/adopt/cats/ad-cat1.jpg" alt="">
+                <img src="/images/blog/home-items/img1.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
               <h3 class="small-title">
-                <a href="#">${article.articleSubject}</a>
+                <a href="#">Amazing Blog Post One</a>
               </h3>
               <p>
-<!--               This year's Taipei-Shanghai City forum is set to take place in Taipei and the city's mayor, Ko Wen-je will be in the hot seat. It's an open secret that the DPP will be on the watch for any slip ups by the free-talking mayor as they consider whether to back him in the end-of-year mayoral race. But at least one city councilor already thinks the DPP has given Ko their tacit approval, saying it will be too late to put up an alternative candidate after the forum is over.  -->
-                ${article.articleContent}
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
               </p>
               <div class="blog-one-footer">
                 <a href="#">Read More</a>
@@ -1421,9 +1309,61 @@
           </div>
           <!-- Blog Item Wrapper Ends-->
         </div>
-          </c:forEach>
- 
-       
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Start-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img2.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Starts-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img3.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
       </div>
       <!-- Row Ends -->
     </div>
