@@ -6,22 +6,45 @@
 <head>
 <style>
 <!--text-->
-td{
+td,th{
 width:150px;
 boder:3px double black;
 text-align: center;
 margin:auto;
+padding:10px;
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>所有動物醫院資料查詢</title>
+<title>動物醫院資料查詢</title>
 </head>
 <body>
-	<H1>醫院資料</H1>
+
+
+
+<h2>查詢一筆醫院資料</H2>
 	<table>
 		<tbody>
+			<tr>
+				<th>醫院I D</th>
+				<th>醫院名稱</th>
+				<th>醫院電話</th>
+				<th>醫院地址</th>
+			</tr>
+				<tr>
+					<td>${onehospital.veterinaryHospId}</td>
+					<td>${onehospital.veterinaryHospName}</td>
+					<td>${onehospital.veterinaryHospTel}</td>
+					<td>${onehospital.veterinaryHospAddr}</td>
+				</tr>
+		</tbody>
 
-			<h3>所有動物醫院資料</h3>
+	</table>
+	<hr>
+
+
+	<h2>所有醫院資料</H2>
+	<table>
+		<tbody>
 			<tr>
 				<th>醫院I D</th>
 				<th>醫院名稱</th>
@@ -41,6 +64,56 @@ margin:auto;
 	</table>
 	<hr>
 
+	<h3>刪除一筆醫院資料</h3>
+	<c:if test="${!empty delete}">
+	刪除醫院ID：　${delete}的資料
+	</c:if>
+	<c:if test="${empty delete}">
+	沒有　${delete}的資料可以刪除
+	
+	</c:if>
+	
+	<hr>
 
+	<h3>新增一筆醫院資料</h3>
+	<table>
+		<tbody>
+			<tr>
+				<th>醫院I D</th>
+				<th>醫院名稱</th>
+				<th>醫院電話</th>
+				<th>醫院地址</th>
+			</tr>
+				<tr>
+					<td>${insert.veterinaryHospId}</td>
+					<td>${insert.veterinaryHospName}</td>
+					<td>${insert.veterinaryHospTel}</td>
+					<td>${insert.veterinaryHospAddr}</td>
+				</tr>
+		</tbody>
+	</table>
+	<hr>
+
+	<h3>修改一筆醫院資料</h3>
+	<c:if test="${!empty update}">
+	修改醫院ID：　${update.veterinaryHospId}的資料
+	</c:if>
+	<table> 
+		<tbody>
+			<tr>
+				<th>醫院I D</th>
+				<th>醫院名稱</th>
+				<th>醫院電話</th>
+				<th>醫院地址</th>
+			</tr>
+				<tr>
+					<td>${update.veterinaryHospId}</td>
+					<td>${update.veterinaryHospName}</td>
+					<td>${update.veterinaryHospTel}</td>
+					<td>${update.veterinaryHospAddr}</td>
+				</tr>
+		</tbody>
+	</table>
+	<hr>
 </body>
 </html>
