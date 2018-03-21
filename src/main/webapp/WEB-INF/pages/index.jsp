@@ -348,9 +348,9 @@
       <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
         醫院資訊專區
       </h1>
+      <c:forEach var="hosp" items="${hospitals}">
       
       <div class="row">
-      <c:forEach var="hosp" items="${hospitals}">
         <div class="col-md-4">
           <div class="card mb-4 box-shadow">
             <img class="card-img-top" src="xxx" width="60px" alt="醫院">
@@ -368,8 +368,8 @@
             </div>
           </div>
         </div>
-        </c:forEach>
         </div>
+        </c:forEach>
 
         <!-- Service-Block-000 Item Ends -->
       </div>
@@ -377,7 +377,44 @@
   </section>
   <!-- 醫院結束 -->
   
-	
+	<!-- 討論區 -->
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        討論區
+      </h1>
+      <c:forEach var="article" items="${articles}">
+      <div class="row">
+      
+      
+        <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="xxx" width="60px" alt="討論區">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">最新文章　　:　${article.articleSubject}</p>
+              <p class="card-text" style="padding:0px">發文者　:　${article.postName}</p>
+              <p class="card-text" style="padding:0px">預覽　:　${article.articleContent}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳細</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">收藏</button>
+                </div>
+                <small class="text-muted">${article.postTime}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      </c:forEach>
+    </div>
+    
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 討論區結束 -->
 
   <!-- About Us Section Start -->
   <section class="split section">
@@ -1391,24 +1428,20 @@
         <br> blanditiis praesentium</p>
       <!-- Row Starts -->
       <div class="row">
-     
-          <c:forEach var="article" items="${articles}">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <!-- Blog Item Starts -->
-          
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="/images/adopt/cats/ad-cat1.jpg" alt="">
+                <img src="/images/blog/home-items/img1.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
               <h3 class="small-title">
-                <a href="#">${article.articleSubject}</a>
+                <a href="#">Amazing Blog Post One</a>
               </h3>
               <p>
-<!--               This year's Taipei-Shanghai City forum is set to take place in Taipei and the city's mayor, Ko Wen-je will be in the hot seat. It's an open secret that the DPP will be on the watch for any slip ups by the free-talking mayor as they consider whether to back him in the end-of-year mayoral race. But at least one city councilor already thinks the DPP has given Ko their tacit approval, saying it will be too late to put up an alternative candidate after the forum is over.  -->
-                ${article.articleContent}
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
               </p>
               <div class="blog-one-footer">
                 <a href="#">Read More</a>
@@ -1421,9 +1454,61 @@
           </div>
           <!-- Blog Item Wrapper Ends-->
         </div>
-          </c:forEach>
- 
-       
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Start-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img2.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Starts-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img3.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
       </div>
       <!-- Row Ends -->
     </div>
