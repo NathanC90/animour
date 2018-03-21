@@ -25,7 +25,7 @@ public class ProductController {
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"), false));
 	}
 	
-	@RequestMapping("/productIndex")
+	@RequestMapping("/product/index")
 	public String productIndex(Model model) {
 		return "/shopping/ProductIndex";
 	}

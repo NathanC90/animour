@@ -55,10 +55,6 @@ public class HospitalDaoImpl implements HospitalDao  {
 			+ " values (?, ?, ?, ?)";
 	
 	
-
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hospital.dao.HospitalDao#insertHosp(org.iii.ee100.animour.hospital.entity.Hospital)
-	 */
 	@Override
 	public void insertHosp(Hospital hospital)  {
 		ResultSet rs = null;
@@ -101,10 +97,10 @@ public class HospitalDaoImpl implements HospitalDao  {
 		try (Connection conn = ds.getConnection();
 			 PreparedStatement ps = conn.prepareStatement(update);
 				){
-			ps.setString(1, hospital.getVeterinaryHospId());
-			ps.setString(2, hospital.getVeterinaryHospName());
-			ps.setString(3, hospital.getVeterinaryHospTel());
-			ps.setString(4, hospital.getVeterinaryHospAddr());
+			ps.setString(4, hospital.getVeterinaryHospId());
+			ps.setString(1, hospital.getVeterinaryHospName());
+			ps.setString(2, hospital.getVeterinaryHospTel());
+			ps.setString(3, hospital.getVeterinaryHospAddr());
 
 			
 			ps.executeUpdate();

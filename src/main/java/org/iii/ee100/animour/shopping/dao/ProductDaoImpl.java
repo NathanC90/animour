@@ -18,7 +18,7 @@ public class ProductDaoImpl implements ProductDao {
 	private static final String INSERT_STMT = "INSERT INTO products (name, price, quantity, make, expire) VALUES (?, ?, ?, ?, ?)";
 	private static final String UPDATE_STMT = "UPDATE products SET name = ?, price = ?, quantity = ?, make = ? , expire = ? WHERE id = ?";
 	private static final String DELETE_STMT = "DELETE FROM products WHERE id = ?";
-	private static final String FINDALL_STMT = "SELECT id, name, price, quantity, make, expire FROM products ORDER BY id";
+	private static final String FINDALL_STMT = "SELECT id, name, price, quantity, make, expire FROM products order by id desc fetch first 6 rows only";
 	private static final String FINDBYPK_STMT = "SELECT id, name, price, quantity, make, expire FROM products WHERE id = ?";
 	HikariDataSource ds = this.getConnection();
 	
