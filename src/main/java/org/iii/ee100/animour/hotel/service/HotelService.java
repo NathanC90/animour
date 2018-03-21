@@ -17,5 +17,7 @@ public interface HotelService {
 	public List<HotelBean> getAll();
 
 	public HotelBean getone(Long id);
+	
+	public List<HotelBean> getSix();
 
 }

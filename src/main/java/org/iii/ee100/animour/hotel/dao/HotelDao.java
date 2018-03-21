@@ -16,5 +16,7 @@ public interface HotelDao {
 	List<HotelBean> getAll();
 
 	HotelBean insert(HotelBean bean);
+	
+	List<HotelBean> getSix();
 
 }
