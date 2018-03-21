@@ -8,7 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:forEach var="avar" items="${beans}">
+
+${beansselect.hotelId}
+${beansselect.onwer}
+${beansselect.type}
+${beansselect.total}
+${beansselect.species}
+${beansselect.dogName}
+${beansselect.checkIn}
+
+
+
+
+<c:forEach var="avar" items="${beansfindall}">
 ${avar.hotelId}
 ${avar.onwer}
 ${avar.type}
