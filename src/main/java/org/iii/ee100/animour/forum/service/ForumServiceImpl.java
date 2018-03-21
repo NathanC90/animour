@@ -16,7 +16,12 @@ public class ForumServiceImpl implements ForumService {
 	public ForumServiceImpl() throws InstantiationException, IllegalAccessException, ClassNotFoundException  {
 		//file. IO get aniamlDao impl ?
 		String daoImplName = "org.iii.ee100.animour.forum.dao.ArticleDaoImpl";
+		
+		//Class.forName(daoImplName) => ArticleDaoImpl.class
 		articleDao = (org.iii.ee100.animour.forum.dao.ArticleDao) Class.forName(daoImplName).newInstance();
+	
+		Class<?> clz = Class.forName(daoImplName);
+		clz.newInstance();
 	}
 	@Override
 	public void insert(Article article) {
