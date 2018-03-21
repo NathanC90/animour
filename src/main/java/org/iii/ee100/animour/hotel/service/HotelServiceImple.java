@@ -16,33 +16,29 @@ public class HotelServiceImple implements HotelService {
 	
 
 	@Override
-	public void inser(HotelBean hotel) {
-		// TODO Auto-generated method stub
+	public HotelBean inser(HotelBean hotel) {
+		return hotelDao.insert(hotel);
 
 	}
 
 	@Override
-	public void update(HotelBean hotel) {
-		// TODO Auto-generated method stub
-
+	public HotelBean update(HotelBean hotel) {
+		return hotelDao.update(hotel);
 	}
 
 	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
-
+	public void delete(Long hotelId) {
+		hotelDao.delete(hotelId);
 	}
 
 	@Override
 	public List<HotelBean> getAll(){
-		// TODO Auto-generated method stub
 		return hotelDao.getAll();
 	}
 
 	@Override
-	public HotelBean getone(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public HotelBean getone(Long hotelId) {
+		return hotelDao.FindById(hotelId);
 	}
 
 }

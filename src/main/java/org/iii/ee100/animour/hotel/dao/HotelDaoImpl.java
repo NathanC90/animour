@@ -15,14 +15,12 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 public class HotelDaoImpl implements HotelDao {
-	private static final String InsertStmt = "INSERT INTO hotel ( hotelId, onwer, type, checkIn, total,species,dogName) VALUES ( ?, ?, ?, ?, ?,?)";
+	private static final String InsertStmt = "INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES ( ?, ?, ?, ?, ?,?)";
 	private static final String UpdateStmt = "UPDATE hotel SET  onwer=?, type=?, checkIn=?, total=?,species=?,dogName=? WHERE hotelId = ?";
 	private static final String DeleteStmt = "Delete from hotel WHERE hotelId = ?";
 	private static final String FindOneStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where hotelId=?";
 	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by hotelId";
 
-	
-	
 	private HikariDataSource getConnection() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
@@ -40,55 +38,67 @@ public class HotelDaoImpl implements HotelDao {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#insert(org.iii.ee100.animour.hotel.entity.HotelBean, java.util.Date)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.iii.ee100.animour.hotel.dao.HotelDaoImpl#insert(org.iii.ee100.animour.
+	 * hotel.entity.HotelBean, java.util.Date)
 	 */
 	@Override
-	public void insert(HotelBean hotel, java.util.Date checkIn) {
+	public HotelBean insert(HotelBean bean) {
 		ResultSet rs = null;
-
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(InsertStmt, Statement.RETURN_GENERATED_KEYS);) {
 
-			pstmt.setString(1, hotel.getOnwer());
-			pstmt.setString(2, hotel.getType());
-			pstmt.setInt(3, hotel.getTotal());
-			pstmt.setString(4, hotel.getSpecies());
-			pstmt.setString(5, hotel.getDogName());
-			Timestamp times = new Timestamp(System.currentTimeMillis());
-			hotel.setCheckIn(times);
-			pstmt.setTimestamp(6, hotel.getCheckIn());
+			pstmt.setString(1, bean.getOnwer());
+			pstmt.setString(2, bean.getType());
+			pstmt.setInt(4, bean.getTotal());
+			pstmt.setString(5, bean.getSpecies());
+			pstmt.setString(6, bean.getDogName());
+
+			pstmt.setTimestamp(3, bean.getCheckIn());
 			pstmt.executeUpdate();
 			rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
-				hotel.setHotelId(rs.getLong(1));
+				bean.setHotelId(rs.getLong(1));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return bean;
 
 	}
 
-	/* (non-Javadoc)
-	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#update(org.iii.ee100.animour.hotel.entity.HotelBean)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.iii.ee100.animour.hotel.dao.HotelDaoImpl#update(org.iii.ee100.animour.
+	 * hotel.entity.HotelBean)
 	 */
 	@Override
-	public void update(HotelBean customer){
+	public HotelBean update(HotelBean customer) {
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(UpdateStmt);) {
-			pstmt.setString(1, customer.getDogName());
-			pstmt.setString(2, customer.getOnwer());
-
+			pstmt.setString(6, customer.getDogName());
+			pstmt.setString(1, customer.getOnwer());
 			pstmt.setTimestamp(3, customer.getCheckIn());
+			pstmt.setString(5, customer.getSpecies());
+			pstmt.setInt(4, customer.getTotal());
+			pstmt.setString(2, customer.getType());
+			pstmt.setLong(7, customer.getHotelId());
+
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return customer;
 
 		// ResultSet rs =pstmt.getGeneratedKeys();
 		// if(rs.next()) {
@@ -96,11 +106,13 @@ public class HotelDaoImpl implements HotelDao {
 		// }
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#delete(java.lang.Long)
 	 */
 	@Override
-	public void delete(Long hotelId){
+	public void delete(Long hotelId) {
 
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
@@ -114,26 +126,28 @@ public class HotelDaoImpl implements HotelDao {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#FindByCno(java.lang.Long)
 	 */
 	@Override
-	public HotelBean FindById(Long hotelId){
+	public HotelBean FindById(Long hotelId) {
 		HotelBean hotels = null;
 		ResultSet rs = null;
 		try (HikariDataSource ds = getConnection();
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(FindOneStmt);) {
+			pstmt.setLong(1, hotelId);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 				hotels = new HotelBean();
-				hotels.setHotelId(rs.getLong("hotelid"));
 				hotels.setDogName(rs.getString("dogname"));
 				hotels.setOnwer(rs.getString("onwer"));
 				hotels.setCheckIn(rs.getTimestamp("checkin"));
-				hotels.setTotal(rs.getInt("email"));
-				hotels.setSpecies(rs.getString("password"));
+				hotels.setTotal(rs.getInt("total"));
+				hotels.setSpecies(rs.getString("species"));
 				hotels.setType(rs.getString("type"));
 
 			}
@@ -145,11 +159,13 @@ public class HotelDaoImpl implements HotelDao {
 		return hotels;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#getAll()
 	 */
 	@Override
-	public List<HotelBean> getAll(){
+	public List<HotelBean> getAll() {
 		HotelBean hotel = null;
 		List<HotelBean> hotels = new ArrayList<HotelBean>();
 		ResultSet rs = null;

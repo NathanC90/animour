@@ -8,9 +8,9 @@ public interface HotelService {
 	
 	
 	
-	public void inser(HotelBean hotel);
+	public HotelBean inser(HotelBean hotel);
 
-	public void update(HotelBean hotel);
+	public HotelBean update(HotelBean hotel);
 
 	public void delete(Long id);
 
