@@ -22,6 +22,7 @@ public class HotelDaoImpl implements HotelDao {
 	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by hotelId";
 	private static final String LastSixStmt="SELECT *  FROM  hotel ORDER BY hotel DESC LIMIT 6";
 	
+
 	private HikariDataSource getConnection() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
@@ -78,8 +79,8 @@ public class HotelDaoImpl implements HotelDao {
 				}
 			}
 		}
-
 		return bean;
+
 
 	}
 
