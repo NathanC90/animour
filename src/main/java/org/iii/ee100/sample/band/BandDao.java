@@ -4,10 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.iii.ee100.sample.shoebrand.Shoe;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
@@ -16,8 +15,8 @@ public class BandDao {
 	private static final String insertSTMT = "insert into band(name,member) values (?, ?)";
 	private static final String updateSTMT = "update game set name=?, member=?";
 	private static final String deleteSTMT = "delete from band where id=?";
-	private static final String findAllSTMT = "select id,name,member, from band order by id";
-	private static final String findByIdSTMT = "select id,name,member, from band where id=?";
+	private static final String findAllSTMT = "select id,name,member from band order by id";
+	private static final String findByIdSTMT = "select id,name,member from band where id=?";
 
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
@@ -25,7 +24,7 @@ public class BandDao {
 	private Connection getConnection() throws SQLException {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
-		String password = "postgress";
+		String password = "postgres";
 
 		// Connection conn = DriverManager.getConnection(connUrl, user, password);
 
@@ -45,7 +44,7 @@ public class BandDao {
 
 	public void insert(Band band) {
 		try {
-			PreparedStatement pstmt = getConnection().prepareStatement(insertSTMT);
+			PreparedStatement pstmt = getConnection().prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);
 			pstmt.setString(1, band.getName());
 			pstmt.setInt(2, band.getMember());
 			pstmt.executeUpdate();
@@ -61,7 +60,9 @@ public class BandDao {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -82,7 +83,9 @@ public class BandDao {
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -126,15 +129,20 @@ public class BandDao {
 				bands.add(band);
 			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
+
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
+
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -147,6 +155,7 @@ public class BandDao {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = getConnection().prepareStatement(findByIdSTMT);
+			System.out.println("id=" + id);
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
@@ -159,11 +168,16 @@ public class BandDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
+
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -195,11 +209,16 @@ public class BandDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
+				if (rs != null) {
+					rs.close();
+				}
+
 				if (pstmt != null) {
 					pstmt.close();
 				}
-				conn.close();
+				if (conn != null) {
+					conn.close();
+				}
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
