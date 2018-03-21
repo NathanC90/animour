@@ -20,7 +20,8 @@ public class HotelDaoImpl implements HotelDao {
 	private static final String DeleteStmt = "Delete from hotel WHERE hotelId = ?";
 	private static final String FindOneStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where hotelId=?";
 	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by hotelId";
-
+	private static final String LastSixStmt="SELECT *  FROM  hotel ORDER BY hotel DESC LIMIT 6";
+	
 	private HikariDataSource getConnection() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
@@ -67,7 +68,17 @@ public class HotelDaoImpl implements HotelDao {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		
+		} finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
+
 		return bean;
 
 	}
@@ -155,6 +166,14 @@ public class HotelDaoImpl implements HotelDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return hotels;
 	}
@@ -189,8 +208,44 @@ public class HotelDaoImpl implements HotelDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 
+		}finally {
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		return hotels;
 	}
+
+	@Override
+	public List<HotelBean> getSix() {
+		HotelBean hotel = new HotelBean();
+		List<HotelBean> sixHotels=new ArrayList<HotelBean>();
+		ResultSet rs = null;
+		try(HikariDataSource ds = getConnection();
+				Connection conn = ds.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(LastSixStmt);) {
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				hotel = new HotelBean();
+				hotel.setHotelId(rs.getLong("hotelid"));
+				hotel.setOnwer(rs.getString("onwer"));
+				hotel.setDogName(rs.getString("dogname"));
+				hotel.setSpecies(rs.getString("species"));
+				hotel.setTotal(rs.getInt("total"));
+				hotel.setType(rs.getString("type"));
+				hotel.setCheckIn(rs.getTimestamp("checkin"));
+				sixHotels.add(hotel);
+
+			}
+			
+		} catch (Exception e) {
+		}
+		return sixHotels;
+	}
+	
 
 }

@@ -41,4 +41,14 @@ public class HotelServiceImple implements HotelService {
 		return hotelDao.FindById(hotelId);
 	}
 
+
+	@Override
+	public List<HotelBean> getSix() {
+		
+		return hotelDao.getSix();
+	}
+	
+	
+	
+
 }
