@@ -340,6 +340,178 @@
     <!-- 重複的內容結束 -->
   </section>
   <!-- 中途之家結束 -->
+  <!-- 最新消息開始 -->
+  <section>
+    <!-- 輪播牆開始 -->
+    <div id="carousel-area">
+      <div id="carousel-slider" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-slider" data-slide-to="1"></li>
+          <li data-target="#carousel-slider" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-80" src="/images/slider/bg-dog1-gray.jpg" alt="">
+            <div class="carousel-caption">
+              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                活動主題1
+              </h2>
+              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">活動主題1</h3>
+              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+                <i class="fa fa-download">
+                </i>
+                
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-80" src="/images/slider/bg-cat1-gray.jpg" alt="">
+            <div class="carousel-caption">
+              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                活動主題2
+              </h2>
+              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+                 活動主題2
+              </h3>
+              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+                <i class="fa fa-coffee">
+                </i>
+                
+              </a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-80" src="/images/slider/bg-dog2-gray.jpg" alt="">
+            <div class="carousel-caption">
+              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+                 活動主題3
+              </h2>
+              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+               	 活動主題3
+              </h3>
+              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+                <i class="fa fa-download">
+                </i>
+                
+              </a>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+          <span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+          <span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+    <!-- 輪播牆結束-->
+    <!-- Container Starts -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        最新活動專區
+      </h1>
+      
+      <div class="row">
+      <c:forEach var="news" items="${allNews}">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt="醫院">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">活動編號：${news.seqno}</p>
+              <p class="card-text" style="padding:0px">活動名稱：${news.subject}</p>
+              <p class="card-text" style="padding:0px">活動內文：${news.content}</p>
+              <p class="card-text" style="padding:0px">更新時間：${news.updateTime}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳情</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">報名</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+        </div>
+
+        <!-- Service-Block-000 Item Ends -->
+      </div>
+    <!-- Container Ends -->
+    
+    
+  </section>
+  
+  <!-- 最新消息結束 -->
+  <!-- 寵物市集頁面 -->
+  <!-- Portfolio Section -->
+  <section id="portfolios" class="section">
+    <!-- Container Starts -->
+    <div class="container">
+      <h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
+        寵物市集
+      </h1>
+            <p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">全館商品九折優惠中！！
+        <br> blanditiis praesentium</p>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Portfolio Controller/Buttons -->
+          <div class="controls text-center">
+            <a class="filter active btn btn-common" data-filter="all">
+              全項商品
+            </a>
+            <a class="filter btn btn-common" data-filter=".branding">
+              狗
+            </a>
+            <a class="filter btn btn-common" data-filter=".marketing">
+              貓
+            </a>
+            <a class="filter btn btn-common" data-filter=".planning">
+              鼠
+            </a>
+            <a class="filter btn btn-common" data-filter=".research">
+              兔
+            </a>
+            <a class="filter btn btn-common" data-filter=".research">
+              其他 
+            </a>
+          </div>
+          <!-- Portfolio Controller/Buttons Ends-->
+        </div>
+      </div>
+    </div>
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <div class="row">
+      <c:forEach var="productBeans" items="${productBeans}">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow" >
+            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">商品編號：${productBeans.id}商品名稱：${productBeans.name}</p>
+              <p class="card-text" style="padding:0px">價格：${productBeans.price}數量：${productBeans.quantity}</p>
+              <p class="card-text" style="padding:0px">製造日期：${productBeans.make}</p>
+			  <p class="card-text" style="padding:0px">保存期限：${productBeans.expire}</p>
+              <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
+                <div class="btn-group" style="margin:0px">
+                  <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+                  <button type="button" class="btn btn-common btn-sm mt-10">購買</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+  </section>
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 寵物市集結束 -->
+  
 
   <!-- 醫院開始 -->
   <section id="service-block-main" class="section">
@@ -377,7 +549,44 @@
   </section>
   <!-- 醫院結束 -->
   
-	
+	<!-- 討論區 -->
+  <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        討論區
+      </h1>
+      <c:forEach var="article" items="${articles}">
+      <div class="row">
+      
+      
+        <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+            <img class="card-img-top" src="xxx" width="60px" alt="討論區">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">最新文章　　:　${article.articleSubject}</p>
+              <p class="card-text" style="padding:0px">發文者　:　${article.postName}</p>
+              <p class="card-text" style="padding:0px">預覽　:　${article.articleContent}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-common btn-sm mt-20">詳細</button>
+                  <button type="button" class="btn btn-common btn-sm mt-20">收藏</button>
+                </div>
+                <small class="text-muted">${article.postTime}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      </c:forEach>
+    </div>
+    
+    <!-- 重複的內容結束 -->
+  </section>
+  <!-- 討論區結束 -->
 
   <!-- About Us Section Start -->
   <section class="split section">
@@ -558,71 +767,7 @@
   </section>
   <!-- Other Services Section End -->
 
-  <!-- Portfolio Section -->
-  <section id="portfolios" class="section">
-    <!-- Container Starts -->
-    <div class="container">
-      <h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
-        寵物市集
-      </h1>
-      <!-- 寵物市集頁面 -->
-  <section id="service-block-main" class="section">
-    <!-- 重複的內容開始 -->
-    <div class="container">
-      <div class="row">
-      <c:forEach var="productBeans" items="${productBeans}">
-        <div class="col-md-4">
-          <div class="card mb-4 box-shadow" >
-            <img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
-            <div class="card-body" style="margin-bottom:5px">
-              <p class="card-text" style="padding:0px">商品編號：${productBeans.id}商品名稱：${productBeans.name}</p>
-              <p class="card-text" style="padding:0px">價格：${productBeans.price}數量：${productBeans.quantity}</p>
-              <p class="card-text" style="padding:0px">製造日期：${productBeans.make}</p>
-			  <p class="card-text" style="padding:0px">保存期限：${productBeans.expire}</p>
-              <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
-                <div class="btn-group" style="margin:0px">
-                  <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-                  <button type="button" class="btn btn-common btn-sm mt-10">購買</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        </c:forEach>
-      </div>
-    </div>
-    <!-- 重複的內容結束 -->
-  </section>
-  <!-- 寵物市集結束 -->
-      
-      <p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-        <br> blanditiis praesentium</p>
-      <div class="row">
-        <div class="col-md-12">
-          <!-- Portfolio Controller/Buttons -->
-          <div class="controls text-center">
-            <a class="filter active btn btn-common" data-filter="all">
-              All
-            </a>
-            <a class="filter btn btn-common" data-filter=".branding">
-              Branding
-            </a>
-            <a class="filter btn btn-common" data-filter=".marketing">
-              Marketing
-            </a>
-            <a class="filter btn btn-common" data-filter=".planning">
-              Planning
-            </a>
-            <a class="filter btn btn-common" data-filter=".research">
-              Research
-            </a>
-          </div>
-          <!-- Portfolio Controller/Buttons Ends-->
-        </div>
-      </div>
-    </div>
-  </section>
-
+ 
   <!-- Featured Section Starts -->
   <section id="featured" class="section">
     <!-- Container Starts -->
@@ -1246,24 +1391,20 @@
         <br> blanditiis praesentium</p>
       <!-- Row Starts -->
       <div class="row">
-     
-          <c:forEach var="article" items="${articles}">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
           <!-- Blog Item Starts -->
-          
           <div class="blog-item-wrapper">
             <div class="blog-item-img">
               <a href="#">
-                <img src="/images/adopt/cats/ad-cat1.jpg" alt="">
+                <img src="/images/blog/home-items/img1.jpg" alt="">
               </a>
             </div>
             <div class="blog-item-text">
               <h3 class="small-title">
-                <a href="#">${article.articleSubject}</a>
+                <a href="#">Amazing Blog Post One</a>
               </h3>
               <p>
-<!--               This year's Taipei-Shanghai City forum is set to take place in Taipei and the city's mayor, Ko Wen-je will be in the hot seat. It's an open secret that the DPP will be on the watch for any slip ups by the free-talking mayor as they consider whether to back him in the end-of-year mayoral race. But at least one city councilor already thinks the DPP has given Ko their tacit approval, saying it will be too late to put up an alternative candidate after the forum is over.  -->
-                ${article.articleContent}
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
               </p>
               <div class="blog-one-footer">
                 <a href="#">Read More</a>
@@ -1276,9 +1417,61 @@
           </div>
           <!-- Blog Item Wrapper Ends-->
         </div>
-          </c:forEach>
- 
-       
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Start-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img2.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <!-- Blog Item Wrapper Starts-->
+          <div class="blog-item-wrapper">
+            <div class="blog-item-img">
+              <a href="#">
+                <img src="/images/blog/home-items/img3.jpg" alt="">
+              </a>
+            </div>
+            <div class="blog-item-text">
+              <h3 class="small-title">
+                <a href="#">Amazing Blog Post One</a>
+              </h3>
+              <p>
+                Lorem ipsum dolor sit amet, adipisicing elit. Eos rerum dolorum, est voluptatem modi accusantium perspiciatis ...
+              </p>
+              <div class="blog-one-footer">
+                <a href="#">Read More</a>
+                <a href="#">
+                  <i class="icon-heart"></i> 59 Likes</a>
+                <a href="#">
+                  <i class="icon-bubbles"></i> 120 Comments</a>
+              </div>
+            </div>
+          </div>
+          <!-- Blog Item Wrapper Ends-->
+        </div>
       </div>
       <!-- Row Ends -->
     </div>
