@@ -2,31 +2,21 @@ package org.iii.ee100.animour.halfway.service;
 
 import java.util.List;
 
-import org.iii.ee100.animour.home.dao.AnimalDao;
-import org.iii.ee100.animour.home.dao.AnimalDaoImpl;
-import org.iii.ee100.animour.home.dao.DogDaoImpl;
-import org.iii.ee100.animour.home.entity.Animal;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AnimalServiceImpl implements AnimalService {
+public class AnimalServiceImpl {
 	
+	@Autowired
 	private org.iii.ee100.animour.halfway.dao.AnimalDao animalDao;
-	//AnimalDaoImpl dao = null;
 	
-	public AnimalServiceImpl() throws InstantiationException, IllegalAccessException, ClassNotFoundException  {
-		
-		//file. IO get aniamlDao impl ?
-		
-		String daoImplName = "org.iii.ee100.animour.halfway.dao.AnimalDaoImpl";
-		animalDao = (org.iii.ee100.animour.halfway.dao.AnimalDao) Class.forName(daoImplName).newInstance();
-	}
 	
-	public void insert(Animal animal) {
+	public void insert(org.iii.ee100.animour.halfway.entity.Animal animal) {
 		animalDao.insert(animal);
 	}
 
-	public void update(Animal animal) {
+	public void update(org.iii.ee100.animour.halfway.entity.Animal animal) {
 		animalDao.update(animal);		
 	}
 
@@ -34,16 +24,16 @@ public class AnimalServiceImpl implements AnimalService {
 		animalDao.delete(id);
 	}
 
-	public List<Animal> getAll() {
+	public List<org.iii.ee100.animour.halfway.entity.Animal> getAll() {
 		return animalDao.findAll();
 	}
 
-	public Animal getOne(Long id) {
+	public org.iii.ee100.animour.halfway.entity.Animal getOne(Long id) {
 		return animalDao.findOne(id);
 	}
 	
-	public List<Animal> getSix(){
-		org.iii.ee100.animour.halfway.dao.AnimalDaoImpl dao = new org.iii.ee100.animour.halfway.dao.AnimalDaoImpl();
+	public List<org.iii.ee100.animour.halfway.entity.Animal> getSix(){
+		org.iii.ee100.animour.halfway.dao.AnimalDao dao = new org.iii.ee100.animour.halfway.dao.AnimalDao();
 		return dao.findTopSix();
 	}
 
