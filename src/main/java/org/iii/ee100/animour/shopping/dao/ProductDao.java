@@ -8,7 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.iii.ee100.animour.shopping.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -22,30 +25,14 @@ public class ProductDao {
 	private static final String DELETE_STMT = "DELETE FROM products WHERE id = ?";
 	private static final String FINDALL_STMT = "SELECT id, name, price, quantity, make, expire FROM products order by id desc fetch first 6 rows only";
 	private static final String FINDBYPK_STMT = "SELECT id, name, price, quantity, make, expire FROM products WHERE id = ?";
-	HikariDataSource ds = this.getConnection();
-	
-	private HikariDataSource getConnection() {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
 
-		HikariConfig config = new HikariConfig();
-
-		config.setJdbcUrl(connUrl);
-		config.setUsername(user);
-		config.setPassword(password);
-		config.addDataSourceProperty("cachePrepStmts", "true");
-		config.addDataSourceProperty("prepStmtCacheSize", "250");
-		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-
-		HikariDataSource ds = new HikariDataSource(config);
-		return ds;
-	}
+	@Autowired
+	DataSource dataSource;
 	
 	//Insert Product
 	public void insert(Product product){
 		ResultSet rs = null;
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);) {
 			pstmt.setString(1, product.getName());
 			pstmt.setDouble(2, product.getPrice());
@@ -73,7 +60,7 @@ public class ProductDao {
 	//Update Product
 	public void update(Product product) {
 		ResultSet rs = null;
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);) {
 			pstmt.setString(1, product.getName());
 			pstmt.setDouble(2, product.getPrice());
@@ -98,7 +85,7 @@ public class ProductDao {
 	//Delete Product
 	public void delete(Long id) {
 		ResultSet rs = null;
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(DELETE_STMT);) {
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
@@ -120,7 +107,7 @@ public class ProductDao {
 		ResultSet rs = null;
 		Product products = null;
 		List<Product> productList = new ArrayList<Product>();
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(FINDALL_STMT);) {
 			
 			rs = pstmt.executeQuery();
@@ -152,7 +139,7 @@ public class ProductDao {
 	public Product findById(Long id) {		
 		Product products = null;
 		ResultSet rs = null;
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(FINDBYPK_STMT);) {
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
