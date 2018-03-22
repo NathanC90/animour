@@ -3,7 +3,7 @@ package org.iii.ee100.animour.news.service;
 import java.util.List;
 
 import org.iii.ee100.animour.news.entity.NewsBean;
-import org.iii.ee100.animour.shopping.entity.ProductBean;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.stereotype.Service;
 
 @Service

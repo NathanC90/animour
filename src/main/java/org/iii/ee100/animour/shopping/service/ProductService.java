@@ -2,18 +2,41 @@ package org.iii.ee100.animour.shopping.service;
 
 import java.util.List;
 
-import org.iii.ee100.animour.shopping.entity.ProductBean;
+import org.iii.ee100.animour.shopping.dao.ProductDao;
+import org.iii.ee100.animour.shopping.entity.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface ProductService {
+@Service
+public class ProductService {
+	
+	@Autowired
+	ProductDao productDao;
+	
+	
+	public ProductService() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-	void insert(ProductBean productbean);
+		String daoImplName = "org.iii.ee100.animour.shopping.dao.ProductDao";
+		productDao = (ProductDao) Class.forName(daoImplName).newInstance();
+	}
+	
+	public void insert(Product product) {
+		productDao.insert(product);
+	}
+	
+	public void update(Product product) {
+		productDao.update(product);
+	}
 
-	void update(ProductBean productbean);
+	public void delete(Long id) {
+		productDao.delete(id);
+	}
 
-	void delete(Long id);
+	public List<Product> getAll() {
+		return productDao.findAll();
+	}
 
-	List<ProductBean> getAll();
-
-	ProductBean getOne(Long id);
-
+	public Product getOne(Long id) {
+		return productDao.findById(id);
+	}
 }

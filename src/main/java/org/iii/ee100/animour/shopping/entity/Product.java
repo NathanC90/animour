@@ -1,6 +1,6 @@
 package org.iii.ee100.animour.shopping.entity;
 
-public class ProductBean {
+public class Product {
 	private Long id;
 	private String name;
 	private Double price;

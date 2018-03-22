@@ -9,7 +9,7 @@ import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
 import org.iii.ee100.animour.hotel.service.HotelServiceImple;
 import org.iii.ee100.animour.news.entity.NewsBean;
-import org.iii.ee100.animour.shopping.entity.ProductBean;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +23,9 @@ public class IndexController {
 	@Autowired
 	org.iii.ee100.animour.hospital.service.HospitalServiceImpl hosp;
 	@Autowired
-	org.iii.ee100.animour.forum.service.ForumService forumService;
+	org.iii.ee100.animour.forum.service.ForumServiceImpl fs;
 	@Autowired
-	org.iii.ee100.animour.shopping.service.ProductServiceImpl ps;
+	org.iii.ee100.animour.shopping.service.ProductService productService;
 	@Autowired
 	org.iii.ee100.animour.news.service.NewsServiceImpl ns;
 	@Autowired
@@ -39,12 +39,12 @@ public class IndexController {
 		List<Hospital> hospitalls =hosp.getThreeForIndex();		
 		model.addAttribute("hospitals", hospitalls);
 		
-		List<Article> articles = forumService.getNew();
+		List<Article> articles = fs.getNew();
 		System.out.println(articles);
 		model.addAttribute("articles", articles);
 		
-		List<ProductBean> productBeans = ps.getAll();
-		model.addAttribute("productBeans", productBeans);
+		List<Product> product = productService.getAll();
+		model.addAttribute("productBeans", product);
 		
 		List<NewsBean> bean =ns.getAll();
 		model.addAttribute("allNews", bean);

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hospital.service.HospitalServiceImpl;
-import org.iii.ee100.animour.shopping.entity.ProductBean;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

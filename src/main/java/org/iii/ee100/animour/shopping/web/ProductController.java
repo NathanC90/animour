@@ -2,7 +2,7 @@ package org.iii.ee100.animour.shopping.web;
 
 import java.text.SimpleDateFormat;
 
-import org.iii.ee100.animour.shopping.entity.ProductBean;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductController {
 	
 	@Autowired
-	ProductService product;
+	ProductService productService;
 	
 	@InitBinder
 	public void registerCustomerEditor(WebDataBinder webDataBinder) {
@@ -31,8 +31,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(path= {"/selectOneProduct"}, method={RequestMethod.GET})
-	public String selectOneProduct(ProductBean productBean, Model model) {
-		ProductBean pd = product.getOne(Long.valueOf(productBean.getId()));
+	public String selectOneProduct(Product product, Model model) {
+		Product pd = productService.getOne(Long.valueOf(product.getId()));
 		if (pd != null) {
 			model.addAttribute("productOne", pd);
 		}
@@ -41,28 +41,28 @@ public class ProductController {
 	
 	@RequestMapping(path= {"/selectAllProduct"}, method={RequestMethod.GET})
 	public String selectAllProduct(Model model) {
-		model.addAttribute("productAll", product.getAll());
+		model.addAttribute("productAll", productService.getAll());
 		return "/shopping/ProcessProductForm";
 	}
 	
 	@RequestMapping(path= {"/deleteOneProduct"}, method={RequestMethod.GET})
-	public String deleteOneProduct(ProductBean productBean, Model model) {
-		product.delete(productBean.getId());
-		model.addAttribute("deleteId", Long.valueOf(productBean.getId()));
+	public String deleteOneProduct(Product product, Model model) {
+		productService.delete(product.getId());
+		model.addAttribute("deleteId", Long.valueOf(product.getId()));
 		return "/shopping/ProcessProductForm";
 	}
 	
 	@RequestMapping(path= {"/insertProduct"}, method={RequestMethod.POST})
-	public String insertAnimal(ProductBean productBean, Model model) {
-		product.insert(productBean);
-		model.addAttribute("insertMember", productBean);
+	public String insertAnimal(Product product, Model model) {
+		productService.insert(product);
+		model.addAttribute("insertMember", product);
 		return "/shopping/ProcessProductForm";
 	}
 	
 	@RequestMapping(path= {"/updateProduct"}, method={RequestMethod.POST})
-	public String updateProduct(ProductBean productBean, Model model) {
-		product.update(productBean);
-		model.addAttribute("updateMember", productBean);
+	public String updateProduct(Product product, Model model) {
+		productService.update(product);
+		model.addAttribute("updateMember", product);
 		return "/shopping/ProcessProductForm";
 	}
 	
