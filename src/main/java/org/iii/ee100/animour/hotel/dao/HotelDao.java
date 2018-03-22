@@ -27,24 +27,24 @@ public class HotelDao{
 	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by hotelId";
 	private static final String LastSixStmt="SELECT *  FROM  hotel ORDER BY hotel DESC LIMIT 6";
 	@Autowired
-	DataSource datasource;
+	DataSource dataSource;
 
-	private HikariDataSource getConnection() {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(connUrl);
-		config.setUsername(user);
-		config.setPassword(password);
-		config.addDataSourceProperty("cachePrepStmts", "true");
-		config.addDataSourceProperty("prepStmtCacheSize", "250");
-		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-
-		HikariDataSource ds = new HikariDataSource(config);
-		return ds;
-
-	}
+//	private HikariDataSource getConnection() {
+//		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
+//		String user = "postgres";
+//		String password = "postgres";
+//		HikariConfig config = new HikariConfig();
+//		config.setJdbcUrl(connUrl);
+//		config.setUsername(user);
+//		config.setPassword(password);
+//		config.addDataSourceProperty("cachePrepStmts", "true");
+//		config.addDataSourceProperty("prepStmtCacheSize", "250");
+//		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+//
+//		HikariDataSource ds = new HikariDataSource(config);
+//		return ds;
+//
+//	}
 
 	/*
 	 * (non-Javadoc)
@@ -55,7 +55,8 @@ public class HotelDao{
 	 */
 	public HotelBean insert(HotelBean bean) {
 		ResultSet rs = null;
-		try (HikariDataSource ds = getConnection();
+		DataSource ds = null;
+		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(InsertStmt, Statement.RETURN_GENERATED_KEYS);) {
 
@@ -97,7 +98,9 @@ public class HotelDao{
 	 * hotel.entity.HotelBean)
 	 */
 	public HotelBean update(HotelBean customer) {
-		try (HikariDataSource ds = getConnection();
+		DataSource ds = null;
+
+		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(UpdateStmt);) {
 			pstmt.setString(6, customer.getDogName());
@@ -128,8 +131,10 @@ public class HotelDao{
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#delete(java.lang.Long)
 	 */
 	public void delete(Long hotelId) {
+		DataSource ds = null;
 
-		try (HikariDataSource ds = getConnection();
+
+		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(DeleteStmt);) {
 			pstmt.setLong(1, hotelId);
@@ -147,9 +152,11 @@ public class HotelDao{
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#FindByCno(java.lang.Long)
 	 */
 	public HotelBean FindById(Long hotelId) {
+		DataSource ds = null;
+
 		HotelBean hotels = null;
 		ResultSet rs = null;
-		try (HikariDataSource ds = getConnection();
+		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(FindOneStmt);) {
 			pstmt.setLong(1, hotelId);
@@ -187,11 +194,13 @@ public class HotelDao{
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#getAll()
 	 */
 	public List<HotelBean> getAll() {
+		DataSource ds = null;
+
 		HotelBean hotel = null;
 		List<HotelBean> hotels = new ArrayList<HotelBean>();
 		ResultSet rs = null;
 
-		try (HikariDataSource ds = getConnection();
+		try (
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(FindAllStmt);) {
 			rs = pstmt.executeQuery();
@@ -223,10 +232,14 @@ public class HotelDao{
 	}
 
 	public List<HotelBean> getSix() {
+		DataSource ds = null;
+
 		HotelBean hotel = new HotelBean();
 		List<HotelBean> sixHotels=new ArrayList<HotelBean>();
 		ResultSet rs = null;
-		try(HikariDataSource ds = getConnection();
+
+		try(
+
 				Connection conn = ds.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(LastSixStmt);) {
 			rs = pstmt.executeQuery();
