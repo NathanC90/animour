@@ -8,12 +8,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 //import javax.naming.Context;
 //import javax.naming.InitialContext;
 //import javax.naming.NamingException;
 //import javax.sql.DataSource;
 
 import org.iii.ee100.animour.hospital.entity.Hospital;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -31,8 +34,8 @@ public class HospitalDao  {
 //			e.printStackTrace();
 //		} return ds;
 //	}
-	
-	HikariDataSource ds=dataSource();
+	@Autowired
+	DataSource ds;
 	private HikariDataSource dataSource() {
 		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
 		String user = "postgres";
