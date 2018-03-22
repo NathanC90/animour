@@ -1389,19 +1389,23 @@
       <div class="row">
       
          <c:forEach var="article" items="${articles}">
-        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" >
           <!-- Blog Item Starts -->
-          <div class="blog-item-wrapper">
+          <div class="blog-item-wrapper" style="height:405px;">
             <div class="blog-item-img">
               <a href="#">
                  <img src="/images/adopt/cats/ad-cat1.jpg" alt="">
                </a>
              </div>
              <div class="blog-item-text">
+              
                <h3 class="small-title">
+               	
                  <a href="#">${article.articleSubject}</a>
+               
                </h3>
-               <p>
+            
+               <p style="text-overflow:ellipsis;overflow:hidden;white-space:nowrap;">
                  ${article.articleContent}
                </p>
                <div class="blog-one-footer">
