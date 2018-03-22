@@ -27,7 +27,7 @@ public class IndexController {
 	@Autowired
 	org.iii.ee100.animour.shopping.service.ProductServiceImpl ps;
 	@Autowired
-	org.iii.ee100.animour.news.service.NewsServiceImpl ns;
+	org.iii.ee100.animour.news.service.NewsService ns;
 	@Autowired
 	HotelServiceImple hotel;
 	
