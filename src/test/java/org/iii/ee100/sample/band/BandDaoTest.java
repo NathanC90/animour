@@ -9,22 +9,26 @@ public class BandDaoTest {
 	public void CRUDTest() {
 
 		BandDao dao = new BandDao();
-		Assert.assertEquals(0, dao.findAll().size());
+		int initialSize = dao.findAll().size();
+
+		Assert.assertEquals(initialSize, dao.findAll().size());
 
 		Band band = new Band();
 		band.setName("Children of Bodom");
 		band.setMember(5);
-
 		dao.insert(band);
-		Assert.assertEquals(1, dao.findAll().size());
 
-		band.setName("Bring Me The Horizen");
-		band.setMember(5);
-
+		Assert.assertEquals(initialSize + 1, dao.findAll().size());
 		Assert.assertEquals(band.getName(), dao.findById(band.getId()).getName());
 
 		dao.delete(band.getId());
-		Assert.assertEquals(0, dao.findAll().size());
+		Assert.assertEquals(initialSize, dao.findAll().size());
+		
+		
+		dao.update(band);
+		band.setName("Arch Enemy");
+		
+		System.out.println(band.getName()); 
 
 	}
 
