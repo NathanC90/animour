@@ -2,22 +2,49 @@ package org.iii.ee100.animour.hotel.service;
 
 import java.util.List;
 
+import org.iii.ee100.animour.hotel.dao.HotelDao;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+@Service
+public class HotelService{
+//	private HotelDao hotelDao;
+//	
+//	public HotelService () throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+//		String daoImplName = "org.iii.ee100.animour.hotel.dao.HotelDaoImpl";
+//		hotelDao =(HotelDao)Class.forName(daoImplName).newInstance();
+//	}
+	@Autowired
+	HotelDao hotelDao;
 
-public interface HotelService {
+	public HotelBean inser(HotelBean hotel) {
+		return hotelDao.insert(hotel);
+
+	}
+
+	public HotelBean update(HotelBean hotel) {
+		return hotelDao.update(hotel);
+	}
+
+	public void delete(Long hotelId) {
+		hotelDao.delete(hotelId);
+	}
+
+	public List<HotelBean> getAll(){
+		return hotelDao.getAll();
+	}
+
+	public HotelBean getone(Long hotelId) {
+		return hotelDao.FindById(hotelId);
+	}
+
+
+	public List<HotelBean> getSix() {
+		
+		return hotelDao.getSix();
+	}
 	
 	
 	
-	public HotelBean inser(HotelBean hotel);
-
-	public HotelBean update(HotelBean hotel);
-
-	public void delete(Long id);
-
-	public List<HotelBean> getAll();
-
-	public HotelBean getone(Long id);
-	
-	public List<HotelBean> getSix();
 
 }
