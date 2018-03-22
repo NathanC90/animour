@@ -13,13 +13,7 @@ public class ForumService {
 	private ArticleDao articleDao;
 	// AnimalDaoImpl dao = null;
 
-	public ForumService() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-		// file. IO get aniamlDao impl ?
-		String daoImplName = "org.iii.ee100.animour.forum.dao.ArticleDaoImpl";
 
-		articleDao = (org.iii.ee100.animour.forum.dao.ArticleDao) Class.forName(daoImplName).newInstance();
-
-	}
 
 	public void insert(Article article) {
 		articleDao.insert(article);
