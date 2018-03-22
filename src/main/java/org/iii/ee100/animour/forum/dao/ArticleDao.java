@@ -8,7 +8,10 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
+import javax.sql.DataSource;
+
 import org.iii.ee100.animour.forum.entity.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -21,29 +24,14 @@ public class ArticleDao{
 	private static final String findAllSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article order by articleId";
 	private static final String findByIdSTMT = "select articleId,postName,articleSubject,articleContent,postTime from article where articleId=?";
 	private static final String findNew = "select articleId, postName, articleSubject, articleContent, postTime from article order by postTime desc fetch first 3 rows only";
-	HikariDataSource ds = getConnection();
 
-	private HikariDataSource getConnection() {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String password = "postgres";
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(connUrl);
-		config.setUsername(user);
-		config.setPassword(password);
-		config.addDataSourceProperty("cachePrepStmts", "true");
-		config.addDataSourceProperty("prepStmtCacheSize", "250");
-		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-
-		HikariDataSource ds = new HikariDataSource(config);
-		return ds;
-
-	}
-
+	@Autowired
+	DataSource dataSource;
+	
 	
 	public void insert(Article article) {
 		ResultSet rs = null;
-		try (Connection conn = ds.getConnection();
+		try (Connection conn = dataSource.getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(insertSTMT, Statement.RETURN_GENERATED_KEYS);) {
 			pstmt.setString(1, article.getPostName());
 			pstmt.setString(2, article.getSubject());
@@ -72,7 +60,7 @@ public class ArticleDao{
 
 	
 	public void update(Article article) {
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = dataSource.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(updateSTMT);) {
 			pstmt.setString(1, article.getPostName());
 			pstmt.setString(2, article.getSubject());
@@ -88,7 +76,7 @@ public class ArticleDao{
 
 
 	public void delete(Long articleId) {
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = dataSource.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(deleteSTMT);) {
 			pstmt.setLong(1, articleId);
 			pstmt.executeUpdate();
@@ -103,7 +91,7 @@ public class ArticleDao{
 		ResultSet rs = null;
 		Article article = new Article();
 		ArrayList<Article> articles = new ArrayList<Article>();
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = dataSource.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(findAllSTMT);) {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -132,7 +120,7 @@ public class ArticleDao{
 	public Article findOne(Long articleId) {
 		Article article = null;
 		ResultSet rs = null;
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = dataSource.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(findByIdSTMT);) {
 			pstmt.setLong(1, articleId);
 			rs = pstmt.executeQuery();
@@ -161,7 +149,7 @@ public class ArticleDao{
 		ResultSet rs = null;
 		Article article = new Article();
 		ArrayList<Article> articles = new ArrayList<Article>();
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = dataSource.getConnection(); 
 			 PreparedStatement pstmt = conn.prepareStatement(findNew);) {
 //			pstmt.setInt(1, rows);
 			rs = pstmt.executeQuery();
