@@ -4,7 +4,6 @@ package org.iii.ee100.animour;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
-import org.iii.ee100.animour.home.entity.Animal;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
 import org.iii.ee100.animour.hotel.service.HotelService;
@@ -23,7 +22,7 @@ public class IndexController {
 	@Autowired
 	org.iii.ee100.animour.hospital.service.HospitalServiceImpl hosp;
 	@Autowired
-	org.iii.ee100.animour.forum.service.ForumServiceImpl fs;
+	org.iii.ee100.animour.forum.service.ForumService forumService;
 	@Autowired
 	org.iii.ee100.animour.shopping.service.ProductService productService;
 	@Autowired
@@ -39,7 +38,7 @@ public class IndexController {
 		List<Hospital> hospitalls =hosp.getThreeForIndex();		
 		model.addAttribute("hospitals", hospitalls);
 		
-		List<Article> articles = fs.getNew();
+		List<Article> articles = forumService.getNew();
 		System.out.println(articles);
 		model.addAttribute("articles", articles);
 		
