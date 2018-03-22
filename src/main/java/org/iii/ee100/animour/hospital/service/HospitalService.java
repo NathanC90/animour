@@ -5,21 +5,14 @@ import java.util.List;
 
 import org.iii.ee100.animour.hospital.dao.HospitalDao;
 import org.iii.ee100.animour.hospital.entity.Hospital;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class HospitalService  {
 
+	@Autowired
 	private HospitalDao hospitalDao;
-	
-	
-	
-	
-	public HospitalService() throws InstantiationException, IllegalAccessException, ClassNotFoundException  {
-		String daoImplName = "org.iii.ee100.animour.hospital.dao.HospitalDaoImpl";
-		hospitalDao = (org.iii.ee100.animour.hospital.dao.HospitalDao) Class.forName(daoImplName).newInstance();
-	}
-
 
 
 	public void insert(Hospital hospital)  {
