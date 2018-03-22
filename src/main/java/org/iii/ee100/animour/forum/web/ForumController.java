@@ -7,16 +7,16 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.forum.entity.Article;
-import org.iii.ee100.animour.forum.service.ForumServiceImpl;
+import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class forumController {
+public class ForumController {
 	@Autowired
-	ForumServiceImpl fs;
+	ForumService forumService;
 	
 	
 	@RequestMapping("/forum")
@@ -25,22 +25,22 @@ public class forumController {
 		return "/forum/forum";
 	}
 
-	@RequestMapping("/forum.findAll")
-	public String FindAll(HttpServletRequest req) {
-		ArrayList<Article> articles = fs.getAll();
+	@RequestMapping("/forum/findAll")
+	public String findAll(HttpServletRequest req) {
+		ArrayList<Article> articles = forumService.getAll();
 		System.out.println(articles);
 		req.setAttribute("articles", articles);
 
 		return "/forum/crudResult";
 	}
 
-	@RequestMapping("/forum.findOne")
-	public String FindOne(HttpServletRequest req) {
+	@RequestMapping("/forum/findOne")
+	public String findOne(HttpServletRequest req) {
 		HashMap<String,String> errors = new HashMap<>();
 		String articleId = req.getParameter("articleId");
 		if (articleId!=null && articleId.trim().length() != 0) {
 			Long id = Long.valueOf(articleId);
-			Article article = fs.getOne(id);
+			Article article = forumService.getOne(id);
 			req.setAttribute("article", article);
 		}else {
 			errors.put("err2", "FindOne Failed");
@@ -49,8 +49,8 @@ public class forumController {
 		return "/forum/crudResult";
 	}
 
-	@RequestMapping("/forum.insert")
-	public String Insert(HttpServletRequest req) {
+	@RequestMapping("/forum/insert")
+	public String insert(HttpServletRequest req) {
 		HashMap<String,String> errors = new HashMap<>();
 		String postName = req.getParameter("inname");
 		String subject = req.getParameter("insubject");
@@ -67,10 +67,10 @@ public class forumController {
 		if(errors!=null && errors.isEmpty()) {
 			Article a1 = new Article();
 			a1.setPostName(postName);
-			a1.setArticleSubject(subject);
-			a1.setArticleContent(content);
-			fs.insert(a1);
-			Article article = fs.getOne(a1.getArticleId());
+			a1.setSubject(subject);
+			a1.setContent(content);
+			forumService.insert(a1);
+			Article article = forumService.getOne(a1.getId());
 			req.setAttribute("insertArticle", article);
 		}else {
 			req.setAttribute("errors", errors);
@@ -78,8 +78,8 @@ public class forumController {
 		return "/forum/crudResult";
 	}
 
-	@RequestMapping("/forum.update")
-	public String Update(HttpServletRequest req) {
+	@RequestMapping("/forum/update")
+	public String update(HttpServletRequest req) {
 
 		String articleId = req.getParameter("uparticleId");
 		String postName = req.getParameter("upname");
@@ -111,13 +111,13 @@ public class forumController {
 		if (errors!=null && errors.isEmpty()) {
 			Long id = Long.valueOf(articleId);
 			
-			a1.setArticleId(id);
+			a1.setId(id);
 			a1.setPostName(postName);
-			a1.setArticleSubject(subject);
-			a1.setArticleContent(content);
+			a1.setSubject(subject);
+			a1.setContent(content);
 			
-			fs.update(a1);
-			Article article = fs.getOne(a1.getArticleId());
+			forumService.update(a1);
+			Article article = forumService.getOne(a1.getId());
 			req.setAttribute("updateArticle", article);
 		}else {
 			req.setAttribute("errors", errors);
@@ -125,17 +125,17 @@ public class forumController {
 		return "/forum/crudResult";
 	}
 
-	@RequestMapping("/forum.delete")
-	public String Delete(HttpServletRequest req) {
+	@RequestMapping("/forum/delete")
+	public String delete(HttpServletRequest req) {
 		String articleId = req.getParameter("dlarticleId");
 		HashMap<String,String> errors = new HashMap<>();
 		if (articleId != null && articleId.trim().length() != 0) {
 			Long id = Long.valueOf(articleId);
 
-			Article article = fs.getOne(id);
+			Article article = forumService.getOne(id);
 
 			if (article != null) {
-				fs.delete(article.getArticleId());
+				forumService.delete(article.getId());
 				req.setAttribute("deleteArticle", id);
 			}else {
 				errors.put("err1", "Delete Failed");

@@ -1,17 +1,16 @@
 package org.iii.ee100.animour.forum.entity;
 
 public class Article {
-	private Long articleId;
+	private Long id;
 	private String postName;
-	private String articleSubject;
-	private String articleContent;
+	private String subject;
+	private String content;
 	private java.sql.Timestamp postTime;
-	
-	public Long getArticleId() {
-		return articleId;
+	public Long getId() {
+		return id;
 	}
-	public void setArticleId(Long articleId) {
-		this.articleId = articleId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getPostName() {
 		return postName;
@@ -19,27 +18,25 @@ public class Article {
 	public void setPostName(String postName) {
 		this.postName = postName;
 	}
-	public String getArticleSubject() {
-		return articleSubject;
+	public String getSubject() {
+		return subject;
 	}
-	public void setArticleSubject(String articleSubject) {
-		this.articleSubject = articleSubject;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
-	public String getArticleContent() {
-		return articleContent;
+	public String getContent() {
+		return content;
 	}
-	public void setArticleContent(String articleContent) {
-		this.articleContent = articleContent;
+	public void setContent(String content) {
+		this.content = content;
 	}
-
 	public java.sql.Timestamp getPostTime() {
 		return postTime;
 	}
 	public void setPostTime(java.sql.Timestamp postTime) {
 		this.postTime = postTime;
 	}
-
-
+	
 	
 	
 }
