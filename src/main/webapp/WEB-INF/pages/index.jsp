@@ -342,73 +342,7 @@
   <!-- 中途之家結束 -->
   <!-- 最新消息開始 -->
   <section>
-    <!-- 輪播牆開始 -->
-    <div id="carousel-area">
-      <div id="carousel-slider" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-slider" data-slide-to="1"></li>
-          <li data-target="#carousel-slider" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-80" src="/images/slider/bg-dog1-gray.jpg" alt="">
-            <div class="carousel-caption">
-              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                活動主題1
-              </h2>
-              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">活動主題1</h3>
-              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-                <i class="fa fa-download">
-                </i>
-                
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-80" src="/images/slider/bg-cat1-gray.jpg" alt="">
-            <div class="carousel-caption">
-              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                活動主題2
-              </h2>
-              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-                 活動主題2
-              </h3>
-              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-                <i class="fa fa-coffee">
-                </i>
-                
-              </a>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-80" src="/images/slider/bg-dog2-gray.jpg" alt="">
-            <div class="carousel-caption">
-              <h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-                 活動主題3
-              </h2>
-              <h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-               	 活動主題3
-              </h3>
-              <a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-                <i class="fa fa-download">
-                </i>
-                
-              </a>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
-          <span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
-          <span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-    <!-- 輪播牆結束-->
+    
     <!-- Container Starts -->
     <div class="container">
       <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
