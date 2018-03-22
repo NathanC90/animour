@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AnimalController {
 
 	@Autowired
-	org.iii.ee100.animour.halfway.service.AnimalServiceImpl animalservice;
+	org.iii.ee100.animour.halfway.service.AnimalService animalservice;
 
 	@RequestMapping("/halfway/index")
 	public String index(Model model) {

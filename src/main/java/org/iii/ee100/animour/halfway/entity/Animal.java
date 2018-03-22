@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class Animal {
 
-	private Long Id;
+	private Long id;
 	private String name;
 	private String specie;
 	private String color;
@@ -18,11 +18,17 @@ public class Animal {
 	private Blob image;
 	private Long memberId;
 	
-	public Long getId() {
-		return Id;
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", name=" + name + ", specie=" + specie + ", color=" + color + ", found=" + found + ", upload=" + upload + ", city=" + city
+				+ ", district=" + district + ", hospitalized=" + hospitalized + ", cardNum=" + cardNum + ", image=" + image + ", memberId=" + memberId + "]";
 	}
-	public void setAnimalId(Long Id) {
-		this.Id = Id;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getName() {
 		return name;

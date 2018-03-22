@@ -8,11 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.iii.ee100.animour.home.entity.Animal;
+import javax.sql.DataSource;
+
+import org.iii.ee100.animour.halfway.entity.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
 public class AnimalDao {
@@ -25,31 +25,16 @@ public class AnimalDao {
 	private static final String slc6 = "SELECT animalId, name, specie, color, found, upload, city, district FROM animal ORDER BY upload DESC FETCH FIRST 6 ROWS ONLY";
 	
 	@Autowired
-	HikariDataSource hikariDataSource;
+	DataSource dataSource;
 
-//	private HikariDataSource getConnection() {
-//		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-//		String user = "postgres";
-//		String pswd = "postgres";
-//		HikariConfig config = new HikariConfig();
-//		config.setJdbcUrl(connUrl);
-//		config.setUsername(user);
-//		config.setPassword(pswd);
-//		config.addDataSourceProperty("cachePrepStmts", "true");
-//		config.addDataSourceProperty("prepStmtCacheSize", "250");
-//		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-//
-//		HikariDataSource ds = new HikariDataSource(config);
-//		return ds;
-//	}
 
 	public void insert(org.iii.ee100.animour.halfway.entity.Animal animal) {
 		ResultSet rs = null;
 
-		System.out.println("*** "+hikariDataSource);
+		System.out.println("*** "+dataSource);
 		
 		
-		try (Connection conn = this.hikariDataSource.getConnection();
+		try (Connection conn = this.dataSource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(insSql, Statement.RETURN_GENERATED_KEYS);) {
 
 			pstmt.setString(1, animal.getName());
@@ -65,7 +50,7 @@ public class AnimalDao {
 
 			rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
-				animal.setAnimalId(rs.getLong(1));
+				animal.setId(rs.getLong(1));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -83,7 +68,7 @@ public class AnimalDao {
 	public void update(org.iii.ee100.animour.halfway.entity.Animal animal) {
 		ResultSet rs = null;
 
-		try (Connection conn = this.hikariDataSource.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(upSql);) {
 
 			pstmt.setString(1, animal.getName());
@@ -112,7 +97,7 @@ public class AnimalDao {
 	public void delete(Long id) {
 		ResultSet rs = null;
 
-		try (Connection conn = this.hikariDataSource.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(delSql);) {
 			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
@@ -135,7 +120,7 @@ public class AnimalDao {
 		org.iii.ee100.animour.halfway.entity.Animal an = null;
 		List<org.iii.ee100.animour.halfway.entity.Animal> animals = new ArrayList<>();
 
-		try (Connection conn = this.hikariDataSource.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(slcSql)) {
 			rs = pstmt.executeQuery();
 
@@ -171,7 +156,7 @@ public class AnimalDao {
 		ResultSet rs = null;
 		org.iii.ee100.animour.halfway.entity.Animal an = null;
 
-		try (Connection conn = this.hikariDataSource.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(slconeSql);) {
 			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
@@ -179,7 +164,7 @@ public class AnimalDao {
 			if (rs.next()) {
 				an = new org.iii.ee100.animour.halfway.entity.Animal();
 
-				an.setAnimalId(rs.getLong("animalId"));
+				an.setId(rs.getLong("animalId"));
 				an.setName(rs.getString("name"));
 				an.setSpecie(rs.getString("specie"));
 				an.setColor(rs.getString("color"));
@@ -205,18 +190,18 @@ public class AnimalDao {
 	public List<org.iii.ee100.animour.halfway.entity.Animal> findTopSix() {
 		
 		
-		System.out.println("find 6:"+hikariDataSource);
+		System.out.println("find 6:"+dataSource);
 		ResultSet rs = null;
-		List<org.iii.ee100.animour.halfway.entity.Animal> sixanimals = new ArrayList<>();
+		List<Animal> sixanimals = new ArrayList<>();
 		Animal an = new Animal();
 
-		try (Connection conn = this.hikariDataSource.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(slc6)) {
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
 				an = new Animal();
-				an.setAnimalId(rs.getLong("animalId"));
+				an.setId(rs.getLong("animalId"));
 				an.setName(rs.getString("name"));
 				an.setSpecie(rs.getString("specie"));
 				an.setColor(rs.getString("color"));
@@ -225,7 +210,7 @@ public class AnimalDao {
 				an.setCity(rs.getString("city"));
 				an.setDistrict(rs.getString("district"));
 				
-				//sixanimals.add(an);
+				sixanimals.add(an);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
