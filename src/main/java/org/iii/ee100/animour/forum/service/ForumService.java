@@ -6,15 +6,15 @@ import java.util.List;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.entity.Article;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ForumService {
+	
+	@Autowired
 	private ArticleDao articleDao;
-	// AnimalDaoImpl dao = null;
-
-
-
+	
 	public void insert(Article article) {
 		articleDao.insert(article);
 
