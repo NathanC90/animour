@@ -4,42 +4,42 @@ import java.util.List;
 
 public class Hospital {
 
-	Integer no;
-	String id;
-	String name;
-	String tel;
-	String addr;
+	Integer hospNo;
+	String veterinaryHospId;
+	String veterinaryHospName;
+	String veterinaryHospTel;
+	String veterinaryHospAddr;
 	
 	
-	public Integer getNo() {
-		return no;
+	public Integer getHospNo() {
+		return hospNo;
 	}
-	public void setNo(Integer no) {
-		this.no = no;
+	public void setHospNo(Integer hospNo) {
+		this.hospNo = hospNo;
 	}
-	public String getId() {
-		return id;
+	public String getVeterinaryHospId() {
+		return veterinaryHospId;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setVeterinaryHospId(String veterinaryHospId) {
+		this.veterinaryHospId = veterinaryHospId;
 	}
-	public String getName() {
-		return name;
+	public String getVeterinaryHospName() {
+		return veterinaryHospName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setVeterinaryHospName(String veterinaryHospName) {
+		this.veterinaryHospName = veterinaryHospName;
 	}
-	public String getTel() {
-		return tel;
+	public String getVeterinaryHospTel() {
+		return veterinaryHospTel;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setVeterinaryHospTel(String veterinaryHospTel) {
+		this.veterinaryHospTel = veterinaryHospTel;
 	}
-	public String getAddr() {
-		return addr;
+	public String getVeterinaryHospAddr() {
+		return veterinaryHospAddr;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setVeterinaryHospAddr(String veterinaryHospAddr) {
+		this.veterinaryHospAddr = veterinaryHospAddr;
 	}
 
 
