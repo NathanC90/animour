@@ -39,8 +39,7 @@ public class ForumService {
 	}
 
 	public ArrayList<Article> getNew() {
-		org.iii.ee100.animour.forum.dao.ArticleDao articleDao1 = new ArticleDao();
-		return articleDao1.findNew();
+		return articleDao.findNew();
 	}
 
 }
