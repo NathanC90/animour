@@ -9,7 +9,7 @@
 <body>
 	<center>
 		<h3>查詢單筆討論串</h3>
-		<form name="selectOneForm" action="/forum.findOne" method="GET">
+		<form name="selectOneForm" action="/forum/findOne" method="GET">
 			<input id='num' name="articleId" value="" type="text"
 				size="14" style="text-align: left"> <input type="submit"
 				value="送出">
@@ -19,14 +19,14 @@
 		<hr>
 		<br>
 		<h3>查詢所有討論串</h3>
-		<form name="selectAllForm" action="/forum.findAll" method="GET">
+		<form name="selectAllForm" action="/forum/findAll" method="GET">
 			<input type="submit" value="查詢所有">
 		</form>
 		<br>
 		<hr>
 		<br>
 		<h3>刪除討論串</h3>
-		<form name="deleteForm" action="/forum.delete" method="GET">
+		<form name="deleteForm" action="/forum/delete" method="GET">
 			<input id='num' name="dlarticleId" value="" type="text"
 				size="14" style="text-align: left"> <input type="submit"
 				value="送出"> <input type="reset" value="清除">
@@ -35,7 +35,7 @@
 		<hr>
 		<br>
 		<h3>新增討論串</h3>
-		<form name="insertArticleForm" action="/forum.insert" method="POST">
+		<form name="insertArticleForm" action="/forum/insert" method="POST">
 			<table border="1">
 
 				<tbody>
@@ -66,7 +66,7 @@
 			<hr>
 			<br>
 		</form>
-		<form name="updateArticleForm" action="/forum.update" method="POST">
+		<form name="updateArticleForm" action="/forum/update" method="POST">
 			<table border="1">
 				<h3>修改討論串</h3>
 				<tbody>
