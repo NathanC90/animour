@@ -340,6 +340,48 @@
     <!-- 重複的內容結束 -->
   </section>
   <!-- 中途之家結束 -->
+    <!-- 寵物旅館開始 -->
+    <section id="service-block-main" class="section">
+    <!-- 重複的內容開始 -->
+    <div class="container">
+      <h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+        最新空房
+      </h1>
+      <div class="row">
+      <c:forEach var="avar" items="${hotelBean}">
+      
+        <div class="col-md-4">
+          <div class="card mb-4 box-shadow" >
+            <img class="card-img-top" src="/images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+            <div class="card-body" style="margin-bottom:5px">
+              <p class="card-text" style="padding:0px">
+            房號：${avar.hotelId}
+			房型：${avar.type}
+			</p>
+              <div class="d-flex justify-content-between align-items-center" style="max-height:100px">
+                <div class="btn-group" style="margin:0px">
+                  <button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+                  <button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+                </div>
+                <small class="text-muted">${avar.checkIn}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+      </div>
+    </div>
+    <!-- 重複的內容結束 -->
+  </section>
+    
+    <!-- 寵物旅館結束 -->
+  
+  
+  
+  
+  
+  
+  
 
   <!-- 醫院開始 -->
   <section id="service-block-main" class="section">

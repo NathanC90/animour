@@ -5,6 +5,7 @@ import java.util.List;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.home.entity.Animal;
 import org.iii.ee100.animour.hospital.entity.Hospital;
+import org.iii.ee100.animour.hotel.entity.HotelBean;
 import org.iii.ee100.animour.shopping.entity.ProductBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,8 @@ public class IndexController {
 	org.iii.ee100.animour.forum.service.ForumServiceImpl fs;
 	@Autowired
 	org.iii.ee100.animour.shopping.service.ProductServiceImpl ps;
+	@Autowired
+	org.iii.ee100.animour.hotel.service.HotelServiceImple hotel;
 	
 	@RequestMapping("/")
 	public String index(Model model,Model model2) {
@@ -37,6 +40,10 @@ public class IndexController {
 		
 		List<ProductBean> productBeans = ps.getAll();
 		model.addAttribute("productBeans", productBeans);
+		
+		List<HotelBean> hotelBean =hotel.getSix();
+		model.addAttribute("hotelBean",hotelBean);
+		
 		
 		return "/index";
 	}
