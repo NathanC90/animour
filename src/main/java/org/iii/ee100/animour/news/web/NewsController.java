@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class NewsController {
 	
 	@Autowired
-	NewsService news;	
+	NewsService newsService;	
 	
 	@RequestMapping("/news/index")
 	public String newsIndex(Model model) {
@@ -21,7 +21,7 @@ public class NewsController {
 	
 	@RequestMapping(path= {"/findOneNews"}, method={RequestMethod.GET})
 	public String findOne(NewsBean bean, Model model) {
-		NewsBean nb = news.getOne(Long.valueOf(bean.getSeqno()));
+		NewsBean nb = newsService.getOne(Long.valueOf(bean.getSeqno()));
 		if (nb != null) {
 			model.addAttribute("oneNews", nb);
 		}
@@ -30,27 +30,27 @@ public class NewsController {
 	
 	@RequestMapping(path= {"/findAllNews"}, method={RequestMethod.GET})
 	public String selectAll(Model model) {
-		model.addAttribute("allNews", news.getAll());
+		model.addAttribute("allNews", newsService.getAll());
 		return "/news/newsForm";
 	}
 	
 	@RequestMapping(path= {"/deleteNews"}, method={RequestMethod.GET})
 	public String deleteNews(NewsBean bean, Model model) {
-		news.delete(bean.getSeqno());
+		newsService.delete(bean.getSeqno());
 		model.addAttribute("delete", Long.valueOf(bean.getSeqno()));
 		return "/news/newsForm";
 	}
 	
 	@RequestMapping(path= {"/insertNews"}, method={RequestMethod.POST})
 	public String insertNews(NewsBean bean, Model model) {
-		news.insert(bean);
+		newsService.insert(bean);
 		model.addAttribute("insertNews", bean);
 		return "/news/newsForm";
 	}
 	
 	@RequestMapping(path= {"/updateNews"}, method={RequestMethod.GET})
 	public String updateNews(NewsBean bean, Model model) {
-		news.update(bean);
+		newsService.update(bean);
 		model.addAttribute("updateNews", bean);
 		return "/news/newsForm";
 	}

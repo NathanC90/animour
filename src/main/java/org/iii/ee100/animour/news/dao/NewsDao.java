@@ -8,7 +8,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 import org.iii.ee100.animour.news.entity.NewsBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.zaxxer.hikari.HikariConfig;
@@ -17,6 +20,9 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
 public class NewsDao{
+	@Autowired
+	DataSource dataSource;
+	
 //	public static void main(String[] args) {
 		//測試insert
 //		NewsDaoImpl insert = new NewsDaoImpl();
@@ -61,22 +67,7 @@ public class NewsDao{
 		
 //	}
 	
-	HikariDataSource ds=dataSource();
-	private HikariDataSource dataSource() {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String pswd = "postgres";
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(connUrl);
-		config.setUsername(user);
-		config.setPassword(pswd);
-		config.addDataSourceProperty("cachePrepStmts", "true");
-		config.addDataSourceProperty("prepStmtCacheSize", "250");
-		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-		HikariDataSource ds = new HikariDataSource(config);
-		return ds;
-	}
 	
 	
 	
@@ -88,7 +79,7 @@ public class NewsDao{
 	public void insert(NewsBean bean)  {
 		ResultSet rset = null;
 
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = this.dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(INSERT,Statement.RETURN_GENERATED_KEYS);
 			) {
 			pstmt.setString(1, bean.getSubject());
@@ -124,7 +115,7 @@ public class NewsDao{
 	
 	
 	public void update(NewsBean bean) {
-		try (Connection conn = ds.getConnection();
+		try (Connection conn = this.dataSource.getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(update);){
 			pstmt.setLong(5, bean.getSeqno());
 			pstmt.setString(1, bean.getSubject());
@@ -152,7 +143,7 @@ public class NewsDao{
 		NewsBean result = null;
 
 		ResultSet rset = null;
-		try (Connection conn = ds.getConnection();
+		try (Connection conn = this.dataSource.getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(SELECT_BY_SEQNO);
 			){			
 			pstmt.setLong(1, seqno);
@@ -190,7 +181,7 @@ public class NewsDao{
 		List<NewsBean> resultls = new ArrayList<NewsBean>();
 		ResultSet rset= null;
 		
-		try(Connection conn = ds.getConnection();
+		try(Connection conn = this.dataSource.getConnection();
 				 PreparedStatement pstmt = conn.prepareStatement(SELECT_ALL);
 				) {
 
@@ -225,7 +216,7 @@ public class NewsDao{
 	
 	public void delete(Long seqno) {
 
-		try (Connection conn = ds.getConnection(); 
+		try (Connection conn = this.dataSource.getConnection(); 
 				PreparedStatement pstmt = conn.prepareStatement(DELETE);) {
 			pstmt.setLong(1, seqno);
 			pstmt.executeUpdate();
