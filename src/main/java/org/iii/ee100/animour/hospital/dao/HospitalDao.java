@@ -25,33 +25,9 @@ import com.zaxxer.hikari.HikariDataSource;
 
 @Repository
 public class HospitalDao  {
-//	HikariDataSource ds = hikariDS();
-//	public HikariDataSource hikariDS() {
-//		try {
-//			Context context = new InitialContext();
-//			ds = (HikariDataSource) context.lookup("java:comp/env/jdbc/postgres");
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		} return ds;
-//	}
-	@Autowired
-	DataSource ds;
-	private HikariDataSource dataSource() {
-		String connUrl = "jdbc:postgresql://localhost:5432/testdb";
-		String user = "postgres";
-		String pswd = "postgres";
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl(connUrl);
-		config.setUsername(user);
-		config.setPassword(pswd);
-		config.addDataSourceProperty("cachePrepStmts", "true");
-		config.addDataSourceProperty("prepStmtCacheSize", "250");
-		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
 
-		HikariDataSource ds = new HikariDataSource(config);
-		return ds;
-	}
-	
+	@Autowired
+	DataSource ds;	
 	
 	
 	String INSERT = "insert into veterinaryHosp"

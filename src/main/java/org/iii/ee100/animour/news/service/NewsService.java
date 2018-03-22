@@ -14,8 +14,6 @@ public class NewsService{
 	
 	public NewsService() throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 
-		String daoImplName = "org.iii.ee100.animour.news.dao.NewsDaoImpl";
-		newsDao = (org.iii.ee100.animour.news.dao.NewsDao) Class.forName(daoImplName).newInstance();
 	}
 	
 	
