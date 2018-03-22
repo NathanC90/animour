@@ -7,7 +7,7 @@ import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.home.entity.Animal;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
-import org.iii.ee100.animour.hotel.service.HotelServiceImple;
+import org.iii.ee100.animour.hotel.service.HotelService;
 import org.iii.ee100.animour.news.entity.NewsBean;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class IndexController {
 	@Autowired
 	org.iii.ee100.animour.news.service.NewsServiceImpl ns;
 	@Autowired
-	HotelServiceImple hotel;
+	HotelService hotel;
 	
 	@RequestMapping("/")
 	public String index(Model model,Model model2) {
