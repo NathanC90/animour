@@ -20,13 +20,13 @@ public class IndexController {
 	@Autowired
 	org.iii.ee100.animour.halfway.service.AnimalServiceImpl animalserviceImpl ;
 	@Autowired
-	org.iii.ee100.animour.hospital.service.HospitalServiceImpl hosp;
+	org.iii.ee100.animour.hospital.service.HospitalService hospitalService;
 	@Autowired
 	org.iii.ee100.animour.forum.service.ForumService forumService;
 	@Autowired
 	org.iii.ee100.animour.shopping.service.ProductService productService;
 	@Autowired
-	org.iii.ee100.animour.news.service.NewsServiceImpl ns;
+	org.iii.ee100.animour.news.service.NewsService newsService;
 	@Autowired
 	HotelService hotel;
 	
@@ -35,7 +35,7 @@ public class IndexController {
 		List<org.iii.ee100.animour.halfway.entity.Animal> animals = animalserviceImpl.getSix();
 		model.addAttribute("animals", animals);
 	
-		List<Hospital> hospitalls =hosp.getThreeForIndex();		
+		List<Hospital> hospitalls =hospitalService.getThreeForIndex();		
 		model.addAttribute("hospitals", hospitalls);
 		
 		List<Article> articles = forumService.getNew();
@@ -45,7 +45,7 @@ public class IndexController {
 		List<Product> product = productService.getAll();
 		model.addAttribute("productBeans", product);
 		
-		List<NewsBean> bean =ns.getAll();
+		List<NewsBean> bean =newsService.getAll();
 		model.addAttribute("allNews", bean);
 		
 		List<HotelBean> hotelBean =hotel.getSix();
