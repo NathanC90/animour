@@ -1399,7 +1399,7 @@
              </div>
              <div class="blog-item-text">
               
-               <h3 class="small-title">
+               <h3 class="small-title"style="height:60px;">
                	
                  <a href="#">${article.articleSubject}</a>
                
