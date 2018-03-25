@@ -179,7 +179,7 @@ public class HospitalDao  {
 	
 	
 	
-	private static final String SELECT_BY_SEQNO = "Select * from Hosp where HospNO = ?";
+	private static final String SELECT_BY_SEQNO = "Select * from Hosp where NO = ?";
 
 	public Hospital findOneHospbySEQNO(int no) {
 		Hospital result = null;
