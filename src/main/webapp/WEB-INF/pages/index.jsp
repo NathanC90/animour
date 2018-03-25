@@ -482,13 +482,13 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="#">${article.articleSubject}</a>
+									<a href="#">${article.subject}</a>
 
 								</h3>
 
 								<p
 									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-									${article.articleContent}</p>
+									${article.content}</p>
 								<div class="blog-one-footer">
 									<a href="#">Read More</a> <a href="#"> <i
 										class="icon-heart"></i> 59 Likes

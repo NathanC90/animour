@@ -14,10 +14,10 @@
 			<h3>所有討論串</h3>
 			<c:forEach var="article" items="${articles}">
 				<tr>
-				<td>${article.articleId}</td>
+				<td>${article.id}</td>
 				<td>${article.postName}</td>
-				<td>${article.articleSubject}</td>
-				<td>${article.articleContent}</td>
+				<td>${article.subject}</td>
+				<td>${article.content}</td>
 				<td>${article.postTime}</td>
 				</tr>
 			</c:forEach>
@@ -30,11 +30,11 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${article.articleId}</td>
-				<td>${article.postName}</td>
-				<td>${article.articleSubject}</td>
-				<td>${article.articleContent}</td>
-				<td>${article.postTime}</td>
+				<td>${findOneArticle.id}</td>
+				<td>${findOneArticle.postName}</td>
+				<td>${findOneArticle.subject}</td>
+				<td>${findOneArticle.content}</td>
+				<td>${findOneArticle.postTime}</td>
 			</tr>
 		</tbody>
 	</table>
@@ -43,10 +43,10 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${updateArticle.articleId}</td>
+				<td>${updateArticle.id}</td>
 				<td>${updateArticle.postName}</td>
-				<td>${updateArticle.articleSubject}</td>
-				<td>${updateArticle.articleContent}</td>
+				<td>${updateArticle.subject}</td>
+				<td>${updateArticle.content}</td>
 				<td>${updateArticle.postTime}</td>
 			</tr>
 		</tbody>
@@ -56,10 +56,10 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${insertArticle.articleId}</td>
+				<td>${insertArticle.id}</td>
 				<td>${insertArticle.postName}</td>
-				<td>${insertArticle.articleSubject}</td>
-				<td>${insertArticle.articleContent}</td>
+				<td>${insertArticle.subject}</td>
+				<td>${insertArticle.content}</td>
 				<td>${insertArticle.postTime}</td>
 			</tr>
 		</tbody>
@@ -69,14 +69,14 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>刪除編號：${deleteArticle} 一筆資料</td>
+				<td>刪除編號：${deleteArticle.id} 一筆資料</td>
 
 			</tr>
 		</tbody>
 	</table>
-	<c:forEach var="err" items="${errors}">
-		<p>${err}</p>
+<%-- 	<c:forEach var="err" items="${errors}"> --%>
+<%-- 		<p>${err}</p> --%>
 
-	</c:forEach>
+<%-- 	</c:forEach> --%>
 </body>
 </html>

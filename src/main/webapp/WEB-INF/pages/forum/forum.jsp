@@ -10,7 +10,7 @@
 	<center>
 		<h3>查詢單筆討論串</h3>
 		<form name="selectOneForm" action="/forum/findOne" method="GET">
-			<input id='num' name="articleId" value="" type="text"
+			<input id='num' name="id" value="" type="text"
 				size="14" style="text-align: left"> <input type="submit"
 				value="送出">
 
@@ -27,7 +27,7 @@
 		<br>
 		<h3>刪除討論串</h3>
 		<form name="deleteForm" action="/forum/delete" method="GET">
-			<input id='num' name="dlarticleId" value="" type="text"
+			<input id='num' name="id" value="" type="text"
 				size="14" style="text-align: left"> <input type="submit"
 				value="送出"> <input type="reset" value="清除">
 		</form>
@@ -42,19 +42,19 @@
 					<tr bgcolor='tan'>
 						<td width="120" height="40">發文者:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="inname" value="" type="text" size="14"
+							name="postName" value="" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">標題:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="insubject" value="" type="text" size="14"
+							name="subject" value="" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">內容:</td>
 						<td width="600" height="40" align="left">
-						<textarea rows="5" cols="40" name="incontent" style="text-align: left"></textarea>
+						<textarea rows="5" cols="40" name="content" style="text-align: left"></textarea>
 						</td>
 					</tr>
 					
@@ -73,29 +73,29 @@
 					<tr bgcolor='tan'>
 						<td width="120" height="40">編號:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="uparticleId" value="" type="text" size="14"
+							name="id" value="" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">發文者:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="upname" value="" type="text" size="14"
+							name="postName" value="" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">標題:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="upsubject" value="" type="text" size="14"
+							name="subject" value="" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">內容:</td>
-						<td width="600" height="40" align="left"><textarea id='num' rows="5" cols="40" name="upcontent" value="" style="text-align: left"></textarea></td>
+						<td width="600" height="40" align="left"><textarea id='num' rows="5" cols="40" name="content" value="" style="text-align: left"></textarea></td>
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">發文時間:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="uptime" value="" type="text" size="14"
+							name="postTime" value="" type="text" size="14"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
 					</tr>
 					

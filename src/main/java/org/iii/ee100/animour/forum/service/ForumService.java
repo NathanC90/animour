@@ -1,9 +1,7 @@
 package org.iii.ee100.animour.forum.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;

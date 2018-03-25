@@ -13,9 +13,6 @@ import javax.sql.DataSource;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
 @Repository
 public class ArticleDao{
 	private static final String insertSTMT = "insert into article(postName,articleSubject,articleContent,postTime) values (?, ?, ?, ?)";
