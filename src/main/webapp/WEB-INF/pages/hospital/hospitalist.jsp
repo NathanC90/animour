@@ -31,10 +31,10 @@ padding:10px;
 				<th>醫院地址</th>
 			</tr>
 				<tr>
-					<td>${onehospital.veterinaryHospId}</td>
-					<td>${onehospital.veterinaryHospName}</td>
-					<td>${onehospital.veterinaryHospTel}</td>
-					<td>${onehospital.veterinaryHospAddr}</td>
+					<td>${onehospital.id}</td>
+					<td>${onehospital.name}</td>
+					<td>${onehospital.tel}</td>
+					<td>${onehospital.addr}</td>
 				</tr>
 		</tbody>
 
@@ -53,10 +53,10 @@ padding:10px;
 			</tr>
 			<c:forEach var="hosp" items="${alllist}">
 				<tr>
-					<td>${hosp.veterinaryHospId}</td>
-					<td>${hosp.veterinaryHospName}</td>
-					<td>${hosp.veterinaryHospTel}</td>
-					<td>${hosp.veterinaryHospAddr}</td>
+					<td>${hosp.id}</td>
+					<td>${hosp.name}</td>
+					<td>${hosp.tel}</td>
+					<td>${hosp.addr}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -85,10 +85,10 @@ padding:10px;
 				<th>醫院地址</th>
 			</tr>
 				<tr>
-					<td>${insert.veterinaryHospId}</td>
-					<td>${insert.veterinaryHospName}</td>
-					<td>${insert.veterinaryHospTel}</td>
-					<td>${insert.veterinaryHospAddr}</td>
+					<td>${insert.id}</td>
+					<td>${insert.name}</td>
+					<td>${insert.tel}</td>
+					<td>${insert.addr}</td>
 				</tr>
 		</tbody>
 	</table>
@@ -96,7 +96,7 @@ padding:10px;
 
 	<h3>修改一筆醫院資料</h3>
 	<c:if test="${!empty update}">
-	修改醫院ID：　${update.veterinaryHospId}的資料
+	修改醫院ID：　${update.id}的資料
 	</c:if>
 	<table> 
 		<tbody>
@@ -107,10 +107,10 @@ padding:10px;
 				<th>醫院地址</th>
 			</tr>
 				<tr>
-					<td>${update.veterinaryHospId}</td>
-					<td>${update.veterinaryHospName}</td>
-					<td>${update.veterinaryHospTel}</td>
-					<td>${update.veterinaryHospAddr}</td>
+					<td>${update.id}</td>
+					<td>${update.name}</td>
+					<td>${update.tel}</td>
+					<td>${update.addr}</td>
 				</tr>
 		</tbody>
 	</table>

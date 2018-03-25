@@ -433,11 +433,11 @@
 								width="80px" alt="醫院">
 							<div class="card-body" style="margin-bottom: 5px">
 								<p class="card-text" style="padding: 0px">醫院ID :
-									${hosp.veterinaryHospId}</p>
+									${hosp.id}</p>
 								<p class="card-text" style="padding: 0px">醫院名稱 :
-									${hosp.veterinaryHospName}</p>
+									${hosp.name}</p>
 								<p class="card-text" style="padding: 0px">醫院電話 :
-									${hosp.veterinaryHospTel}</p>
+									${hosp.tel}</p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 										<button type="button" class="btn btn-common btn-sm mt-20">詳情</button>

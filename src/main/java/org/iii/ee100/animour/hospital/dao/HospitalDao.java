@@ -19,9 +19,6 @@ import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
 
 @Repository
 public class HospitalDao  {
@@ -30,7 +27,7 @@ public class HospitalDao  {
 	DataSource ds;	
 	
 	
-	String INSERT = "insert into veterinaryHosp"
+	String INSERT = "insert into Hosp"
 			+ " (id ,   Name , Tel , Addr  ) "
 			+ " values (?, ?, ?, ?)";
 	
@@ -66,7 +63,7 @@ public class HospitalDao  {
 		}
 	}// end of insert
 	
-	String update = "update veterinaryHosp"
+	String update = "update Hosp"
 			+ " set  Name=? , Tel=? , Addr=? "
 			+ "where Id=? ";
 	
@@ -93,7 +90,7 @@ public class HospitalDao  {
 	
 	
 
-	private static final String SELECT_BY_ID = "Select * from veterinaryHosp where Id = ?";
+	private static final String SELECT_BY_ID = "Select * from Hosp where Id = ?";
 
 	public Hospital findOneHosp(String id) {
 		Hospital result = null;
@@ -129,7 +126,7 @@ public class HospitalDao  {
 	
 	
 
-	private static final String SELECT_ALL = "Select * from veterinaryHosp order by No";
+	private static final String SELECT_ALL = "Select * from Hosp order by No";
 	
 	public List<Hospital> findAllHosp() {
 		List<Hospital> resultls = new ArrayList<Hospital>();
@@ -164,7 +161,7 @@ public class HospitalDao  {
 	}
 
 
-	private static final String DELETE = "DELETE FROM veterinaryHosp WHERE Id=?";
+	private static final String DELETE = "DELETE FROM Hosp WHERE Id=?";
 
 	public void deleteHosp(String id) {
 
@@ -182,7 +179,7 @@ public class HospitalDao  {
 	
 	
 	
-	private static final String SELECT_BY_SEQNO = "Select * from veterinaryHosp where HospNO = ?";
+	private static final String SELECT_BY_SEQNO = "Select * from Hosp where HospNO = ?";
 
 	public Hospital findOneHospbySEQNO(int no) {
 		Hospital result = null;

@@ -29,7 +29,7 @@
 		<br>
 		<h3>刪除動物醫院資料</h3>
 		<form name="deleteHospitalForm" action="/deletehospital" method="POST">
-			醫院ID：<input id='num' name="veterinaryHospId" value="${param.id}" type="text"
+			醫院ID：<input id='num' name="id" value="${param.id}" type="text"
 				size="14" style="text-align: left"> <input type="submit"
 				value="送出"> <input type="reset" value="清除">
 		</form>
@@ -44,25 +44,25 @@
 					<tr bgcolor='tan'>
 						<td width="120" height="40">ID:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospId" value="${param.veterinaryHospId}" type="text" size="14"
+							name="id" value="${param.id}" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">醫院名稱:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospName" value="${param.veterinaryHospName}" type="text"
+							name="name" value="${param.name}" type="text"
 							size="14" style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">電話:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospTel" value="${param.veterinaryHospTel}" type="text"
+							name="tel" value="${param.tel}" type="text"
 							size="14" style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">地址:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospAddr" value="${param.veterinaryHospAddr}" type="text"
+							name="addr" value="${param.addr}" type="text"
 							size="14" style="text-align: left"></td>
 					</tr>
 
@@ -81,25 +81,25 @@
 					<tr bgcolor='tan'>
 						<td width="120" height="40">ID:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospId" value="${param.veterinaryHospId}" type="text" size="14"
+							name="id" value="${param.id}" type="text" size="14"
 							style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">醫院名稱:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospName" value="${param.veterinaryHospName}" type="text"
+							name="name" value="${param.name}" type="text"
 							size="14" style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">電話:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospTel" value="${param.veterinaryHospTel}" type="text"
+							name="tel" value="${param.tel}" type="text"
 							size="14" style="text-align: left">
 					</tr>
 					<tr bgcolor='tan'>
 						<td width="120" height="40">地址:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="veterinaryHospAddr" value="${param.veterinaryHospAddr}" type="text"
+							name="addr" value="${param.addr}" type="text"
 							size="14" style="text-align: left"></td>
 					</tr>
 
