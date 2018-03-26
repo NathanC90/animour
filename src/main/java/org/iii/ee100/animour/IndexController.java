@@ -3,6 +3,8 @@ package org.iii.ee100.animour;
 
 import java.util.List;
 
+import org.iii.ee100.animour.donate.entity.Donate;
+import org.iii.ee100.animour.donate.service.DonateService;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@Autowired
-	org.iii.ee100.animour.halfway.service.AnimalService animalserviceImpl ;
+	org.iii.ee100.animour.halfway.service.AnimalService animalserviceImpl;
 	@Autowired
 	org.iii.ee100.animour.hospital.service.HospitalService hospitalService;
 	@Autowired
@@ -29,7 +31,9 @@ public class IndexController {
 	org.iii.ee100.animour.news.service.NewsService newsService;
 	@Autowired
 	HotelService hotel;
-	
+	@Autowired
+	DonateService donateService;
+
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<org.iii.ee100.animour.halfway.entity.Animal> animals = animalserviceImpl.getSix();
@@ -45,21 +49,21 @@ public class IndexController {
 		List<Product> product = productService.getAll();
 		model.addAttribute("productBeans", product);
 		
-		List<NewsBean> bean =newsService.getAll();
+		List<NewsBean> bean = newsService.getAll();
 		model.addAttribute("allNews", bean);
 		
-		List<HotelBean> hotelBean =hotel.getSix();
+		List<HotelBean> hotelBean = hotel.getSix();
 		model.addAttribute("hotelBean",hotelBean);
+		
+		List<Donate> donates = donateService.getAll();
+		model.addAttribute("donates", donates);
 		
 		return "/index";
 	}
-	
-//	@RequestMapping("/hello")
-//	public String hello() {
-//		return "/hello";
-//	}
-	
-	
-	
-	
+
+	// @RequestMapping("/hello")
+	// public String hello() {
+	// return "/hello";
+	// }
+
 }

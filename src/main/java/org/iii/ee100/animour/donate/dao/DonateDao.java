@@ -72,7 +72,7 @@ public class DonateDao {
 		}
 	}
 
-	public void delete() {
+	public void delete(Long id) {
 		Donate donate = new Donate();
 		ResultSet rs = null;
 		try (Connection conn = dataSource.getConnection();
