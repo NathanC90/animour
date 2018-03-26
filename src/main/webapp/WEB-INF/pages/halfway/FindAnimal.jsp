@@ -12,7 +12,7 @@
 	<table>
 		<h3>所有動物資料</h3>
 		<c:forEach var="animal" items="${animals}">
-			<td>${animal.animalId}</td>
+			<td>${animal.id}</td>
 			<td>${animal.name}</td>
 			<td>${animal.specie}</td>
 			<td>${animal.color}</td>
@@ -29,7 +29,7 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${animal.animalId}</td>
+				<td>${animal.id}</td>
 				<td>${animal.name}</td>
 				<td>${animal.specie}</td>
 				<td>${animal.color}</td>
@@ -45,7 +45,7 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${upanimal.animalId}</td>
+				<td>${upanimal.id}</td>
 				<td>${upanimal.name}</td>
 				<td>${upanimal.specie}</td>
 				<td>${upanimal.color}</td>
@@ -61,7 +61,7 @@
 	<table>
 		<tbody>
 			<tr>
-				<td>${inanimal.animalId}</td>
+				<td>${inanimal.id}</td>
 				<td>${inanimal.name}</td>
 				<td>${inanimal.specie}</td>
 				<td>${inanimal.color}</td>

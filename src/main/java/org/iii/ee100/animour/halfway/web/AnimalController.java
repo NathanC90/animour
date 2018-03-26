@@ -1,89 +1,67 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class AnimalController {
 
 	@Autowired
-	org.iii.ee100.animour.halfway.service.AnimalService animalservice;
+	AnimalService animalservice;
 
-	@RequestMapping("/halfway/index")
+	@RequestMapping(path = { "/halfway/index" }, method = { RequestMethod.GET })
 	public String index(Model model) {
 
 		return "/halfway/InsertAnimalForm";
 	}
 
-	@RequestMapping("/insertAnimal.do")
-	public String insertAnimal(HttpServletRequest request) {
-		org.iii.ee100.animour.halfway.entity.Animal an = new org.iii.ee100.animour.halfway.entity.Animal();
-
-		an.setName(request.getParameter("name"));
-		an.setSpecie(request.getParameter("specie"));
-		an.setColor(request.getParameter("colo	as r"));
-		an.setFound(java.sql.Date.valueOf(request.getParameter("found")));
-		an.setCity(request.getParameter("city"));
-		an.setDistrict(request.getParameter("district"));
-
+	@RequestMapping(path = { "/insertAnimal" }, method = { RequestMethod.POST })
+	public String insertAnimal(Animal an, Model model) {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		an.setUpload(ts);
 		animalservice.insert(an);
-		request.setAttribute("inanimal", an);
+		model.addAttribute("inanimal", an);
 
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping("/updateAnimal.do")
-	public String updateAnimal(HttpServletRequest request) {
-		org.iii.ee100.animour.halfway.entity.Animal an = animalservice.getOne(Long.valueOf(request.getParameter("animalId")));
+	@RequestMapping(path = { "/updateAnimal" }, method = { RequestMethod.POST })
+	public String updateAnimal(Animal an, Model model) {
 		if (an != null) {
-			an.setName(request.getParameter("upname"));
-			an.setSpecie(request.getParameter("upspecie"));
-			an.setColor(request.getParameter("upcolor"));
-			an.setFound(java.sql.Date.valueOf(request.getParameter("upfound")));
-			an.setCity(request.getParameter("upcity"));
-			an.setDistrict(request.getParameter("updistrict"));
-
 			Timestamp ts = new Timestamp(System.currentTimeMillis());
 			an.setUpload(ts);
 			animalservice.update(an);
-			request.setAttribute("upanimal", an);
+			model.addAttribute("upanimal", an);
 		}
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping("/deleteAnimal.do")
-	public String deleteAnimal(HttpServletRequest request) {
-		org.iii.ee100.animour.halfway.entity.Animal an = animalservice.getOne(Long.valueOf(request.getParameter("animalId")));
+	@RequestMapping(path = { "/deleteAnimal" }, method = { RequestMethod.GET })
+	public String deleteAnimal(Animal an, Model model) {
+		an = animalservice.getOne(an.getId());
 		if (an != null) {
-			animalservice.delete(Long.valueOf(request.getParameter("animalId")));
-			request.setAttribute("dlanimalId", request.getParameter("animalId"));
+			animalservice.delete(an.getId());
+			model.addAttribute("dlanimalId", an.getId());
 		}
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping("/selectAllAnimal.do")
+	@RequestMapping("/selectAllAnimal")
 	public String findAllAnimal(Model model) {
-
-		List<org.iii.ee100.animour.halfway.entity.Animal> animals = animalservice.getAll();
-		model.addAttribute("animals", animals);
-
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping("/selectOneAnimal.do")
-	public String findOneAnimal(HttpServletRequest request) {
-		org.iii.ee100.animour.halfway.entity.Animal an = animalservice.getOne(Long.valueOf(request.getParameter("animalId")));
+	@RequestMapping("/selectOneAnimal")
+	public String findOneAnimal(Animal an, Model model) {
+		an = animalservice.getOne(an.getId());
 		if (an != null) {
-			request.setAttribute("animal", an);
+			model.addAttribute("animal", an);
 		}
 		return "/halfway/FindAnimal";
 	}

@@ -4,11 +4,17 @@ package org.iii.ee100.animour;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.forum.service.ForumService;
+import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.hospital.entity.Hospital;
+import org.iii.ee100.animour.hospital.service.HospitalService;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
 import org.iii.ee100.animour.hotel.service.HotelService;
 import org.iii.ee100.animour.news.entity.NewsBean;
+import org.iii.ee100.animour.news.service.NewsService;
 import org.iii.ee100.animour.shopping.entity.Product;
+import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,21 +24,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@Autowired
-	org.iii.ee100.animour.halfway.service.AnimalService animalserviceImpl ;
+	AnimalService animalserviceImpl ;
 	@Autowired
-	org.iii.ee100.animour.hospital.service.HospitalService hospitalService;
+	HospitalService hospitalService;
 	@Autowired
-	org.iii.ee100.animour.forum.service.ForumService forumService;
+	ForumService forumService;
 	@Autowired
-	org.iii.ee100.animour.shopping.service.ProductService productService;
+	ProductService productService;
 	@Autowired
-	org.iii.ee100.animour.news.service.NewsService newsService;
+	NewsService newsService;
 	@Autowired
 	HotelService hotel;
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		List<org.iii.ee100.animour.halfway.entity.Animal> animals = animalserviceImpl.getSix();
+		List<Animal> animals = animalserviceImpl.getSix();
 		model.addAttribute("animals", animals);
 	
 		List<Hospital> hospitalls =hospitalService.getThreeForIndex();		
