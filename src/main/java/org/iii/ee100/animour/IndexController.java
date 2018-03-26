@@ -2,11 +2,12 @@
 package org.iii.ee100.animour;
 
 import java.util.List;
-
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
+import org.iii.ee100.animour.donate.entity.Donate;
+import org.iii.ee100.animour.donate.service.DonateService;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hospital.service.HospitalService;
 import org.iii.ee100.animour.hotel.entity.HotelBean;
@@ -24,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@Autowired
-	AnimalService animalserviceImpl ;
+	AnimalService animalserviceImpl;
 	@Autowired
 	HospitalService hospitalService;
 	@Autowired
@@ -35,37 +36,39 @@ public class IndexController {
 	NewsService newsService;
 	@Autowired
 	HotelService hotel;
-	
+	@Autowired
+	DonateService donateService;
+
 	@RequestMapping("/")
 	public String index(Model model) {
 		List<Animal> animals = animalserviceImpl.getSix();
 		model.addAttribute("animals", animals);
-	
-		List<Hospital> hospitalls =hospitalService.getThreeForIndex();		
+
+		List<Hospital> hospitalls = hospitalService.getThreeForIndex();
 		model.addAttribute("hospitals", hospitalls);
-		
+
 		List<Article> articles = forumService.getNew();
 		System.out.println(articles);
 		model.addAttribute("articles", articles);
-		
+
 		List<Product> product = productService.getAll();
 		model.addAttribute("productBeans", product);
-		
-		List<NewsBean> bean =newsService.getAll();
+
+		List<NewsBean> bean = newsService.getAll();
 		model.addAttribute("allNews", bean);
-		
-		List<HotelBean> hotelBean =hotel.getSix();
-		model.addAttribute("hotelBean",hotelBean);
-		
+
+		List<HotelBean> hotelBean = hotel.getSix();
+		model.addAttribute("hotelBean", hotelBean);
+
+		List<Donate> donates = donateService.getAll();
+		model.addAttribute("donates", donates);
+
 		return "/index";
 	}
-	
-//	@RequestMapping("/hello")
-//	public String hello() {
-//		return "/hello";
-//	}
-	
-	
-	
-	
+
+	// @RequestMapping("/hello")
+	// public String hello() {
+	// return "/hello";
+	// }
+
 }

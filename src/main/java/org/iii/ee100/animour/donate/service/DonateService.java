@@ -13,16 +13,16 @@ public class DonateService {
 	@Autowired
 	DonateDao donateDao;
 
-	public void insert() {
+	public void insert(Donate donate) {
 		donateDao.insert();
 	}
 
-	public void delete() {
-		donateDao.insert();
+	public void delete(Long id) {
+		donateDao.delete(id);
 	}
 
-	public void update() {
-		donateDao.insert();
+	public void update(Donate donate) {
+		donateDao.update();
 	}
 
 	public List<Donate> getAll() {
