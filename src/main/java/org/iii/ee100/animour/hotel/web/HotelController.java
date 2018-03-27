@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HotelController {
 	@Autowired
-	HotelService hotelService;
+	private HotelService hotelService;
 	
 	@RequestMapping("/hotel/select")
 	public String select(HotelBean hotelbean,Model model) {
