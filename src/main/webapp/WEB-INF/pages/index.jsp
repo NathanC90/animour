@@ -90,7 +90,7 @@
 									class="dropdown-item" href="l">寵物飲食</a> <a
 									class="dropdown-item" href="">寵物用品</a>
 							</div></li>
-						</li>
+						
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">寵物旅店</a>
@@ -595,7 +595,6 @@
 	<!-- Pricing Table  End -->
 
 
-	F
 	<!-- Footer Section -->
 	<footer>
 		<!-- Container Starts -->

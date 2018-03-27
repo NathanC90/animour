@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
 	@Autowired
-	AnimalService animalserviceImpl;
+	AnimalService animalservice;
 	@Autowired
 	HospitalService hospitalService;
 	@Autowired
@@ -41,7 +41,7 @@ public class IndexController {
 
 	@RequestMapping("/")
 	public String index(Model model) {
-		List<Animal> animals = animalserviceImpl.getSix();
+		List<Animal> animals = animalservice.getSix();
 		model.addAttribute("animals", animals);
 
 		List<Hospital> hospitalls = hospitalService.getThreeForIndex();

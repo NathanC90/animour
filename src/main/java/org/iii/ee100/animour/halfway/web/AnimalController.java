@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.List;
+
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,12 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
-	@RequestMapping(path = { "/halfway/index" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/halfway" }, method = { RequestMethod.GET })
 	public String index(Model model) {
-
-		return "/halfway/InsertAnimalForm";
+		List<Animal> animals = animalservice.getAll();
+		model.addAttribute("animals", animals);
+		
+		return "/halfway/halfwayIndex";
 	}
 
 	@RequestMapping(path = { "/insertAnimal" }, method = { RequestMethod.POST })
