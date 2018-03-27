@@ -28,7 +28,7 @@ public class ForumController {
 		if (articles != null) {
 			model.addAttribute("articles", articles);
 		}
-		return "/forum/crudResult";
+		return "/forum/article";
 	}
 
 	@RequestMapping(path= {"/forum/findOne"}, method={RequestMethod.GET})
