@@ -52,20 +52,20 @@
 <body>
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
-	
+
 		<!-- Navbar Starts -->
-		<jsp:include page="../navbar.jsp"></jsp:include>
-		<!-- Navbar ends -->
-		<div>
+<%-- 		<jsp:include page="../navbar.jsp"></jsp:include>
+ --%>		<!-- Navbar ends -->
+<div>
 			<h3>查詢單筆動物資料</h3>
-			<form name="/hotel/select" action="/hotel/select" method="GET">
-				<input id='num' name="hotelId" value="${param.hotelId}" type="text"
+			<form name="/hotel/selectType" action="/hotel/selectType" method="GET">
+				<input id='num' name="hotelId" value="${selectType.hotelId}" type="text"
 					size="14" style="text-align: left"> <input type="submit"
 					value="送出">
 
 			</form>
 		</div>
-
+ 
 
 		<!-- 輪播牆開始 -->
 		<div id="carousel-area">
