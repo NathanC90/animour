@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.iii.ee100.animour.news.dao.NewsDao;
 import org.iii.ee100.animour.news.entity.NewsBean;
-import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

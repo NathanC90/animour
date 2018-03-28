@@ -14,8 +14,7 @@ import org.iii.ee100.animour.news.entity.NewsBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+
 
 
 @Repository
