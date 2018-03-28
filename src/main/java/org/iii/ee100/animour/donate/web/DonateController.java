@@ -14,36 +14,36 @@ public class DonateController {
 	@Autowired
 	DonateService DonateService;
 
-	@RequestMapping("donate/index")
+	@RequestMapping("/donate")
 	public String donateIndex(Model model) {
-		return "donate/donateIndex";
+		return "donate/donate";
 	}
 
-	@RequestMapping(path = { "/selectOneDonate" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/donate/selectOneDonate" }, method = { RequestMethod.GET })
 	public String selectOneDonate(Donate donate, Model model) {
 		Donate dn = DonateService.getOne(Long.valueOf(donate.getId()));
 		if (dn != null) {
 			model.addAttribute("donateOne", dn);
 		}
-		return "/donate/ProcessDonateForm";
+		return "/donate/DonateForm";
 	}
 
 	@RequestMapping(path = { "/selectAllDonate" }, method = { RequestMethod.GET })
 	public String selectAllDonate(Model model) {
 		model.addAttribute("donateAll", DonateService.getAll());
-		return "/donate/ProcessDonateForm";
+		return "/donate/DonateForm";
 	}
 
 	@RequestMapping(path = { "/deleteOneDonate" }, method = { RequestMethod.GET })
 	public String deleteOneDonate(Donate donate, Model model) {
 		DonateService.delete(donate.getId());
-		return "/donate/ProcessDonateForm";
+		return "/donate/DonateForm";
 	}
 	
 	@RequestMapping(path = {"/updateDonate"}, method = {RequestMethod.POST})
 	public String updateDonate(Donate donate, Model model) {
 		DonateService.update(donate);
-		return "/donate/ProcessDonateForm";
+		return "/donate/DonateForm";
 	}
 	
 	@RequestMapping(path = {"/insertDonate"}, method = {RequestMethod.POST})

@@ -4,6 +4,7 @@ public class Donate {
 	private Long id;
 	private String name;
 	private Integer price;
+	private String email;
 
 	public Long getId() {
 		return id;
@@ -27,6 +28,14 @@ public class Donate {
 
 	public void setPrice(Integer price) {
 		this.price = price;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

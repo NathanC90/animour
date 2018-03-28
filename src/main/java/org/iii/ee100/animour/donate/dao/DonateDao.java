@@ -17,11 +17,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class DonateDao {
 
-	private static final String INSERT_STMT = "ISNERT INTO donate (name, price) values (?, ?)";
-	private static final String UPDATE_STMT = "UPDATE donate SET , name = ?, price = ? WHERE id = ?";
+	private static final String INSERT_STMT = "ISNERT INTO donate (name, price, email) values (?, ?, ?)";
+	private static final String UPDATE_STMT = "UPDATE donate SET name = ?, price = ?, email = ? WHERE id = ?";
 	private static final String DELETE_STMT = "DELETE FROM donate WHERE id = ?";
-	private static final String FINDALL_STMT = "SELECT id, name, price FROM donate order by id desc fetch first 6 rows only";
-	private static final String FINDBYID_STMT = "SELECT id, name, price FROM donate WHERE id = ?";
+	private static final String FINDALL_STMT = "SELECT id, name, price, email FROM donate order by id desc fetch first 6 rows only";
+	private static final String FINDBYID_STMT = "SELECT id, name, price, email FROM donate WHERE id = ?";
 
 	@Autowired
 	DataSource dataSource;
@@ -33,6 +33,7 @@ public class DonateDao {
 				PreparedStatement pstmt = conn.prepareStatement(INSERT_STMT, Statement.RETURN_GENERATED_KEYS);) {
 			pstmt.setString(1, donate.getName());
 			pstmt.setInt(2, donate.getPrice());
+			pstmt.setString(3, donate.getEmail());
 			pstmt.executeUpdate();
 			rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
@@ -58,6 +59,7 @@ public class DonateDao {
 				PreparedStatement pstmt = conn.prepareStatement(UPDATE_STMT);) {
 			pstmt.setString(1, donate.getName());
 			pstmt.setInt(2, donate.getPrice());
+			pstmt.setString(3, donate.getEmail());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -107,6 +109,7 @@ public class DonateDao {
 				donate.setId(rs.getLong("id"));
 				donate.setName(rs.getString("name"));
 				donate.setPrice(rs.getInt("price"));
+				donate.setEmail(rs.getString("email"));
 				lst.add(donate);
 			}
 		} catch (SQLException e) {
@@ -137,6 +140,7 @@ public class DonateDao {
 				donate.setId(rs.getLong("id"));
 				donate.setName(rs.getString("name"));
 				donate.setPrice(rs.getInt("price"));
+				donate.setEmail(rs.getString("email"));
 			}
 
 		} catch (SQLException e) {
