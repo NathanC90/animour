@@ -11,7 +11,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.iii.ee100.animour.hotel.entity.HotelBean;
+import org.iii.ee100.animour.hotel.entity.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -21,10 +21,10 @@ import com.zaxxer.hikari.HikariDataSource;
 @Repository
 public class HotelDao{
 	private static final String InsertStmt = "INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES ( ?, ?, ?, ?, ?,?)";
-	private static final String UpdateStmt = "UPDATE hotel SET  onwer=?, type=?, checkIn=?, total=?,species=?,dogName=? WHERE hotelId = ?";
-	private static final String DeleteStmt = "Delete from hotel WHERE hotelId = ?";
-	private static final String FindOneStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where hotelId=?";
-	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by hotelId";
+	private static final String UpdateStmt = "UPDATE hotel SET  onwer=?, type=?, checkIn=?, total=?,species=?,dogName=? WHERE Id = ?";
+	private static final String DeleteStmt = "Delete from hotel WHERE Id = ?";
+	private static final String FindOneStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where Id=?";
+	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by Id";
 	private static final String LastSixStmt="SELECT *  FROM  hotel ORDER BY hotel DESC LIMIT 6";
 	@Autowired
 	DataSource datasource;
@@ -53,23 +53,23 @@ public class HotelDao{
 	 * org.iii.ee100.animour.hotel.dao.HotelDaoImpl#insert(org.iii.ee100.animour.
 	 * hotel.entity.HotelBean, java.util.Date)
 	 */
-	public HotelBean insert(HotelBean bean) {
+	public Hotel insert(Hotel hotel) {
 		ResultSet rs = null;
 		try (
 				Connection conn = this.datasource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(InsertStmt, Statement.RETURN_GENERATED_KEYS);) {
 
-			pstmt.setString(1, bean.getOnwer());
-			pstmt.setString(2, bean.getType());
-			pstmt.setInt(4, bean.getTotal());
-			pstmt.setString(5, bean.getSpecies());
-			pstmt.setString(6, bean.getDogName());
+			pstmt.setString(1, hotel.getOnwer());
+			pstmt.setString(2, hotel.getType());
+			pstmt.setInt(4, hotel.getTotal());
+			pstmt.setString(5, hotel.getSpecies());
+			pstmt.setString(6, hotel.getDogName());
 
-			pstmt.setTimestamp(3, bean.getCheckIn());
+			pstmt.setTimestamp(3, hotel.getCheckIn());
 			pstmt.executeUpdate();
 			rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
-				bean.setHotelId(rs.getLong(1));
+				hotel.setId(rs.getLong(1));
 			}
 
 		} catch (SQLException e) {
@@ -84,7 +84,7 @@ public class HotelDao{
 				}
 			}
 		}
-		return bean;
+		return hotel;
 
 
 	}
@@ -96,26 +96,25 @@ public class HotelDao{
 	 * org.iii.ee100.animour.hotel.dao.HotelDaoImpl#update(org.iii.ee100.animour.
 	 * hotel.entity.HotelBean)
 	 */
-	public HotelBean update(HotelBean customer) {
+	public Hotel update(Hotel hotel) {
 
 		try (
 				Connection conn = this.datasource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(UpdateStmt);) {
-			pstmt.setString(6, customer.getDogName());
-			pstmt.setString(1, customer.getOnwer());
-			pstmt.setTimestamp(3, customer.getCheckIn());
-			pstmt.setString(5, customer.getSpecies());
-			pstmt.setInt(4, customer.getTotal());
-			pstmt.setString(2, customer.getType());
-			pstmt.setLong(7, customer.getHotelId());
+			pstmt.setString(6, hotel.getDogName());
+			pstmt.setString(1, hotel.getOnwer());
+			pstmt.setTimestamp(3, hotel.getCheckIn());
+			pstmt.setString(5, hotel.getSpecies());
+			pstmt.setInt(4, hotel.getTotal());
+			pstmt.setString(2, hotel.getType());
+			pstmt.setLong(7, hotel.getId());
 
 			pstmt.executeUpdate();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return customer;
+		return hotel;
 
 		// ResultSet rs =pstmt.getGeneratedKeys();
 		// if(rs.next()) {
@@ -128,16 +127,15 @@ public class HotelDao{
 	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#delete(java.lang.Long)
 	 */
-	public void delete(Long hotelId) {
+	public void delete(Long id) {
 
 
 		try (
 				Connection conn = this.datasource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(DeleteStmt);) {
-			pstmt.setLong(1, hotelId);
+			pstmt.setLong(1, id);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -148,18 +146,18 @@ public class HotelDao{
 	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#FindByCno(java.lang.Long)
 	 */
-	public HotelBean FindById(Long hotelId) {
+	public Hotel FindById(Long id) {
 
-		HotelBean hotels = null;
+		Hotel hotels = null;
 		ResultSet rs = null;
 		try (
 				Connection conn = this.datasource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(FindOneStmt);) {
-			pstmt.setLong(1, hotelId);
+			pstmt.setLong(1, id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				hotels = new HotelBean();
+				hotels = new Hotel();
 				hotels.setDogName(rs.getString("dogname"));
 				hotels.setOnwer(rs.getString("onwer"));
 				hotels.setCheckIn(rs.getTimestamp("checkin"));
@@ -189,10 +187,10 @@ public class HotelDao{
 	 * 
 	 * @see org.iii.ee100.animour.hotel.dao.HotelDaoImpl#getAll()
 	 */
-	public List<HotelBean> getAll() {
+	public List<Hotel> getAll() {
 
-		HotelBean hotel = null;
-		List<HotelBean> hotels = new ArrayList<HotelBean>();
+		Hotel hotel = null;
+		List<Hotel> hotels = new ArrayList<Hotel>();
 		ResultSet rs = null;
 
 		try (
@@ -200,8 +198,8 @@ public class HotelDao{
 				PreparedStatement pstmt = conn.prepareStatement(FindAllStmt);) {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				hotel = new HotelBean();
-				hotel.setHotelId(rs.getLong("hotelid"));
+				hotel = new Hotel();
+				hotel.setId(rs.getLong("id"));
 				hotel.setOnwer(rs.getString("onwer"));
 				hotel.setDogName(rs.getString("dogname"));
 				hotel.setSpecies(rs.getString("species"));
@@ -226,10 +224,10 @@ public class HotelDao{
 		return hotels;
 	}
 
-	public List<HotelBean> getSix() {
+	public List<Hotel> getSix() {
 
-		HotelBean hotel = new HotelBean();
-		List<HotelBean> sixHotels=new ArrayList<HotelBean>();
+		Hotel hotel = new Hotel();
+		List<Hotel> sixHotels=new ArrayList<Hotel>();
 		ResultSet rs = null;
 
 		try(
@@ -238,8 +236,8 @@ public class HotelDao{
 				PreparedStatement pstmt = conn.prepareStatement(LastSixStmt);) {
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				hotel = new HotelBean();
-				hotel.setHotelId(rs.getLong("hotelid"));
+				hotel = new Hotel();
+				hotel.setId(rs.getLong("id"));
 				hotel.setOnwer(rs.getString("onwer"));
 				hotel.setDogName(rs.getString("dogname"));
 				hotel.setSpecies(rs.getString("species"));

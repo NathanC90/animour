@@ -1,5 +1,5 @@
 create table hotel(
-hotelId   bigserial primary key,
+Id   bigserial primary key,
   onwer   varchar(50),
  type varchar(30),
 checkIn date,
@@ -20,8 +20,8 @@ INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES
 ('lun5', 'big', '2021-07-03', 5,'poodle','阿狗'),
 ('lun6', 'big', '2021-07-03', 5,'poodle','小會');
 
-UPDATE hotel SET  onwer='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dogName='hichu' WHERE hotelId = 1
+UPDATE hotel SET  onwer='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dogName='hichu' WHERE Id = 1
 
-Delete from hotel WHERE hotelId = 1
+Delete from hotel WHERE Id = 1
 
-SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where hotelId=2
+SELECT Id, onwer, type, checkIn, total,species,dogName from hotel where Id=2

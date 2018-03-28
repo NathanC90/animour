@@ -10,7 +10,7 @@ import org.iii.ee100.animour.donate.entity.Donate;
 import org.iii.ee100.animour.donate.service.DonateService;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hospital.service.HospitalService;
-import org.iii.ee100.animour.hotel.entity.HotelBean;
+import org.iii.ee100.animour.hotel.entity.Hotel;
 import org.iii.ee100.animour.hotel.service.HotelService;
 import org.iii.ee100.animour.news.entity.NewsBean;
 import org.iii.ee100.animour.news.service.NewsService;
@@ -35,7 +35,7 @@ public class IndexController {
 	@Autowired
 	NewsService newsService;
 	@Autowired
-	HotelService hotel;
+	HotelService hotelService;
 	@Autowired
 	DonateService donateService;
 
@@ -57,8 +57,8 @@ public class IndexController {
 		List<NewsBean> bean = newsService.getAll();
 		model.addAttribute("allNews", bean);
 
-		List<HotelBean> hotelBean = hotel.getSix();
-		model.addAttribute("hotelBean", hotelBean);
+		List<Hotel> hotel = hotelService.getSix();
+		model.addAttribute("hotel", hotel);
 
 		List<Donate> donates = donateService.getAll();
 		model.addAttribute("donates", donates);

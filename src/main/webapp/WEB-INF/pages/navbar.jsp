@@ -42,7 +42,7 @@
 
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="#" 
 					aria-haspopup="true" aria-expanded="false">寵物市集</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="">新品上市</a> <a class="dropdown-item"
@@ -51,7 +51,7 @@
 					</div></li>
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/hotel/selectType" 
 					aria-haspopup="true" aria-expanded="false">寵物旅店</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="">旅店簡介</a> <a class="dropdown-item"

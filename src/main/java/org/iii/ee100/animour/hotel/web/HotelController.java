@@ -1,16 +1,13 @@
 package org.iii.ee100.animour.hotel.web;
 
-import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.iii.ee100.animour.hotel.entity.HotelBean;
+import org.iii.ee100.animour.hotel.entity.Hotel;
 import org.iii.ee100.animour.hotel.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HotelController {
@@ -18,9 +15,9 @@ public class HotelController {
 	private HotelService hotelService;
 	
 	@RequestMapping("/hotel/select")
-	public String select(HotelBean hotelbean,Model model) {
+	public String select(Hotel hotelbean,Model model) {
 		
-		model.addAttribute("beansselect", hotelService.getone(hotelbean.getHotelId()));
+		model.addAttribute("beansselect", hotelService.getone(hotelbean.getId()));
 		return"/hotel/index";
 	}
 	
@@ -32,7 +29,7 @@ public class HotelController {
 	}
 	
 	@RequestMapping("/hotel/insertHotel")
-	public String insertHotel(HotelBean hotelbean,Model model) {
+	public String insertHotel(Hotel hotelbean,Model model) {
 		hotelService.inser(hotelbean);
 		model.addAttribute("hotelkey", hotelbean);
 		return "hotel/InsertAnimalForm";
@@ -41,7 +38,7 @@ public class HotelController {
 	
 //	@RequestMapping(path= {"/hotel/updateHotel"},method= {RequestMethod.POST})
 	@RequestMapping("/hotel/updateHotel")
-	public String updateHotel(HotelBean hotelbean,Model model) {
+	public String updateHotel(Hotel hotelbean,Model model) {
 		hotelService.update(hotelbean);
 		model.addAttribute("hotelkey2",hotelbean);
 		return "/hotel/InsertAnimalForm";
@@ -50,17 +47,17 @@ public class HotelController {
 	
 	
 	@RequestMapping("/hotel/delete")
-	public String delete (HotelBean hotelbean,Model model,long hotelId) {
-		hotelService.delete(hotelId);
+	public String delete (Hotel hotelbean,Model model,long id) {
+		hotelService.delete(id);
 		model.addAttribute("hotelkey3", hotelbean);
 		return "hotel/index";
 		
 	}
 	
 	@RequestMapping("/hotel/selectType")
-	public String selectType (Model model,long hotelId,HotelBean hotelbean) {
-		System.out.println(Long.valueOf(hotelId));
-		hotelService.getone(Long.valueOf(hotelId));
+	public String selectType (Model model,long Id,Hotel hotelbean) {
+
+		hotelService.getone(Long.valueOf(Id));
 		model.addAttribute("selectType", hotelbean);
 		return"hotel/checkinpage";
 	}

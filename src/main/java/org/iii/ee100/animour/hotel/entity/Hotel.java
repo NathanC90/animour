@@ -1,7 +1,7 @@
 package org.iii.ee100.animour.hotel.entity;
 
-public class HotelBean {
-	private Long hotelId;
+public class Hotel {
+	private Long id;
 	private String onwer;
 	private String type;
 	private int total;
@@ -12,7 +12,7 @@ public class HotelBean {
 
 	@Override
 	public String toString() {
-		return "HotelBean [hotelId=" + hotelId + ", onwer=" + onwer + ", type=" + type + ", total=" + total
+		return "HotelBean [hotelId=" + id + ", onwer=" + onwer + ", type=" + type + ", total=" + total
 				+ ", species=" + species + ", dogName=" + dogName + ", checkIn=" + checkIn +"\n";
 	}
 
@@ -64,12 +64,12 @@ public class HotelBean {
 		this.checkIn = checkIn;
 	}
 
-	public Long getHotelId() {
-		return hotelId;
+	public Long getId() {
+		return id;
 	}
 
-	public void setHotelId(Long hotelId) {
-		this.hotelId = hotelId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
