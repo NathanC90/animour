@@ -168,7 +168,7 @@
 						<c:forEach var="news" items="${allNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt="醫院">
+									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt="">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">活動編號：${news.seqno}</p>
 										<p class="card-text" style="padding: 0px">活動名稱：${news.subject}</p>
