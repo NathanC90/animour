@@ -57,6 +57,13 @@ public class HotelController {
 		
 	}
 	
+	@RequestMapping("/hotel/selectType")
+	public String selectType (Model model,long hotelId,HotelBean hotelbean) {
+		System.out.println(Long.valueOf(hotelId));
+		hotelService.getone(Long.valueOf(hotelId));
+		model.addAttribute("selectType", hotelbean);
+		return"hotel/checkinpage";
+	}
 	
 
 }
