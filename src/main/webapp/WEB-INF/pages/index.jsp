@@ -92,7 +92,7 @@
 							</div></li>
 						
 						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+							class="nav-link dropdown-toggle" href="/hotel/selectType" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">寵物旅店</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item" href="">旅店簡介</a> <a
