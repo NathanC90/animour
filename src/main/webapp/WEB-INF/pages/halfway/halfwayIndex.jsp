@@ -3,20 +3,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Required meta tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--Icon Tags start -->
+<link rel="apple-touch-icon" sizes="57x57"
+	href="/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+	href="/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+	href="/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+	href="/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/images/icon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<title>Halfway</title>
+<!--Icon Tags end -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animal Shelter</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -38,23 +60,23 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+
+
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 
-<link rel="stylesheet" type="text/css" href="/css/halfway/navbar.css">
-
-
-
-<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
-	
-</script>
-<script
-	src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
-	
-</script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
 </head>
+
 <body>
+
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
@@ -95,7 +117,7 @@
 									class="dropdown-item" href="l">寵物飲食</a> <a
 									class="dropdown-item" href="">寵物用品</a>
 							</div></li>
-
+						<!-- 						</li> -->
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">寵物旅店</a>
@@ -190,183 +212,169 @@
 		</div>
 	</div>
 	<!-- Page Header End -->
-	    <!-- Call to action section -->
-    <section class="cta-section section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="cta-area">
-              <div class="cta-content text-center">
-                <h2>幫助浪浪找到他們的家</h2>
-                <p>Share your problem with us and we will solve</p>
-                <a href="#" class="btn btn-common"><i class="fa fa-envelope"></i> Contact Us</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- End of call to action section -->
-	<!-- Search Bar -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="input-group" id="adv-search">
-					<input type="text" class="form-control"
-						placeholder="Search for snippets" />
-					<div class="input-group-btn">
-						<div class="btn-group" role="group">
-							<div class="dropdown dropdown-lg">
-								<button type="button" class="btn btn-default dropdown-toggle"
-									data-toggle="dropdown" aria-expanded="false">
-									<span class="caret"></span>
-								</button>
-								<div class="dropdown-menu dropdown-menu-right" role="menu">
-									<form class="form-horizontal" role="form">
-										<div class="form-group">
-											<label for="filter">Filter by</label> <select
-												class="form-control">
-												<option value="0" selected>All Snippets</option>
-												<option value="1">Featured</option>
-												<option value="2">Most popular</option>
-												<option value="3">Top rated</option>
-												<option value="4">Most commented</option>
-											</select>
-										</div>
-										<div class="form-group">
-											<label for="contain">Author</label> <input
-												class="form-control" type="text" />
-										</div>
-										<div class="form-group">
-											<label for="contain">Contains the words</label> <input
-												class="form-control" type="text" />
-										</div>
-										<button type="submit" class="btn btn-primary">
-											<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-										</button>
-									</form>
-								</div>
-							</div>
-							<button type="button" class="btn btn-primary">
-								<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-							</button>
+
+	<!-- Call to action section -->
+	<section class="cta-section section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="cta-area">
+						<div class="cta-content text-center">
+							<h2>幫助浪浪找到他們的家</h2>
+							<p>Share your problem with us and we will solve</p>
+							<a href="#" class="btn btn-common"><i class="fa fa-envelope"></i>
+								Contact Us</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- end of toolbar -->
-	<!-- 中途之家頁面 -->
-	<section id="blog-post-content" class="section">
-	<div class="blog-post clearfix">
-		<!-- 重複的內容開始 -->
-		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-				待認養動物</h1>
-			<div class="row">
-				<c:forEach var="animal" items="${animals}">
+	</section>
+	<!-- End of call to action section -->
 
-					<div class="col-md-3">
-						<div class="card mb-3 box-shadow">
-							<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
-								width="100px" alt="待領養小貓">
-							<div class="card-body" style="margin-bottom: 5px">
-								<p class="card-text" style="padding: 0px">
-									編號：${animal.id} 綽號：${animal.name} 種類：${animal.specie}
-									顏色：${animal.color} 發現日期：${animal.found} 縣市：${animal.city}
-									鄉鎮市區：${animal.district}</p>
-								<div class="d-flex justify-content-between align-items-center"
-									style="max-height: 100px">
-									<div class="btn-group" style="margin: 0px">
-										<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-										<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+	<!-- Classic Blog Section -->
+	<section class="classic-blog-section section">
+		<div class="container">
+			<div class="row">
+				<!-- Blog Sidebar Section -->
+				<div class="col-md-3">
+					<div class="sidebar-area">
+						<!-- Search Bar -->
+						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
+							<form>
+								<input type="text" placeholder="Search" class="form-control">
+								<button type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+							</form>
+						</aside>
+						<!-- Text Widgets -->
+						<aside class="widget text-widgets wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Text Widget</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
+								officiis sit labore a aspernatur quisquam. In, unde.</p>
+						</aside>
+
+						<!--Start of Category -->
+						<aside class="widget flickr-widget wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Category</h2>
+							<ul class="category-menu">
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Dog (31) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Cat (16) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Bird (2) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Rabbit (7) </label>
+									</div></li>
+							</ul>
+						</aside>
+						<!--End of Category -->
+
+						<!--Start of Region -->
+						<aside class="widget flickr-widget wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Category</h2>
+							<ul class="category-menu">
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taipei City (64) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taichung City (39) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taoyuan City (23) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> New Taipei City (71) </label>
+									</div></li>
+							</ul>
+						</aside>
+						<!--End of Region -->
+					</div>
+				</div>
+				<!-- End -->
+
+				<!-- BLog Article Section -->
+				<div class="col-md-9">
+					<!-- Single Blog Post -->
+					<div class="row">
+						<c:forEach var="animal" items="${animals}">
+
+							<div class="col-md-3">
+								<div class="card mb-3 box-shadow">
+									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
+										width="100px" alt="待領養小貓">
+									<div class="card-body" style="margin-bottom: 5px">
+										<p class="card-text" style="padding: 0px">編號：${animal.id}
+											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
+											發現日期：${animal.found} 縣市：${animal.city}
+											鄉鎮市區：${animal.district}</p>
+										<div class="d-flex justify-content-between align-items-center"
+											style="max-height: 100px">
+											<div class="btn-group" style="margin: 0px">
+												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+											</div>
+											<small class="text-muted">${animal.upload}</small>
+										</div>
 									</div>
-									<small class="text-muted">${animal.upload}</small>
 								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
-				</c:forEach>
+					<!-- Slider Post -->
+
+					<!-- Blog Pagination -->
+					<div class="blog-pagination clearfix wow fadeIn"
+						data-wow-delay="0.3s">
+						<nav aria-label="..." class="">
+							<ul class="pagination">
+								<li class="page-item disabled"><a class="page-link"
+									href="#" tabindex="-1" aria-label="Previous"> <i
+										class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item active"><a class="page-link" href="#">1
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> Next <i class="fa fa-angle-right"></i> <span
+										class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+				<!-- End -->
 			</div>
 		</div>
-		<!-- 重複的內容結束 -->
-		</div>
 	</section>
-	<!-- 中途之家結束 -->
-
-	<!-- Blog Sidebar Section -->
-	<div class="col-md-3">
-		<div class="sidebar-area">
-
-			<!-- Text Widgets -->
-			<aside class="widget text-widgets wow fadeIn" data-wow-delay="0.3s">
-				<h2 class="widget-title">Text Widget</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
-					officiis sit labore a aspernatur quisquam. In, unde.</p>
-			</aside>
-
-			<!--Start of Category -->
-			<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
-				<h2 class="widget-title">Category</h2>
-				<ul class="category-menu">
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Dog (31) </label>
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Cat (16) </label>
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Bird (2) </label>
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Rabbit (7) </label>
-						</div></li>
-				</ul>
-			</aside>
-			<!--End of Category -->
-
-			<!--Start of Region -->
-			<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
-				<h2 class="widget-title">Category</h2>
-				<ul class="category-menu">
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Taipei City (64) </label>
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Taichung City (39) </label> 
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> Taoyuan City (23) </label> 
-						</div></li>
-					<li><div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> New Taipei City (71) </label> 
-						</div></li>
-				</ul>
-			</aside>
-			<!--End of Region -->
-
-		</div>
-	</div>
-	<!-- End -->
-	
 	<!-- Classic Blog Section End -->
 
 	<!-- Footer Section -->
@@ -507,18 +515,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<!-- 	<script src="/js/vendor/holder.min.js"></script> -->
 
 </body>
+
 </html>
