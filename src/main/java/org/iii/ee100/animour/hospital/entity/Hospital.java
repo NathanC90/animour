@@ -2,14 +2,26 @@ package org.iii.ee100.animour.hospital.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="VESTHOSP")
 public class Hospital {
 
+	@Id
+	@Column(name="NO")
 	Integer no;
+	@Column(name="ID")
 	String id;
+	@Column(name="NAME")
 	String name;
+	@Column(name="TEL")
 	String tel;
+	@Column(name="ADDR")
 	String addr;
-	
 	
 	public Integer getNo() {
 		return no;
