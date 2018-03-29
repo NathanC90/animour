@@ -16,7 +16,7 @@ public class DonateController {
 
 	@RequestMapping("/donate")
 	public String donateIndex(Model model) {
-		return "donate/donate";
+		return "/donate/donate";
 	}
 
 	@RequestMapping(path = { "/donate/selectOneDonate" }, method = { RequestMethod.GET })
@@ -28,28 +28,28 @@ public class DonateController {
 		return "/donate/DonateForm";
 	}
 
-	@RequestMapping(path = { "/selectAllDonate" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/donate/selectAllDonate" }, method = { RequestMethod.GET })
 	public String selectAllDonate(Model model) {
 		model.addAttribute("donateAll", DonateService.getAll());
 		return "/donate/DonateForm";
 	}
 
-	@RequestMapping(path = { "/deleteOneDonate" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/donate/deleteOneDonate" }, method = { RequestMethod.GET })
 	public String deleteOneDonate(Donate donate, Model model) {
 		DonateService.delete(donate.getId());
 		return "/donate/DonateForm";
 	}
 	
-	@RequestMapping(path = {"/updateDonate"}, method = {RequestMethod.POST})
+	@RequestMapping(path = {"/donate/updateDonate"}, method = {RequestMethod.POST})
 	public String updateDonate(Donate donate, Model model) {
 		DonateService.update(donate);
 		return "/donate/DonateForm";
 	}
 	
-	@RequestMapping(path = {"/insertDonate"}, method = {RequestMethod.POST})
+	@RequestMapping(path = {"/donate/insertDonate"}, method = {RequestMethod.POST})
 	public String insertDonate(Donate donate, Model model) {
 		DonateService.insert(donate);
-		return "/donate/ProcessDonateForm";
+		return "/donate/DonateForm";
 	}
 	
 	
