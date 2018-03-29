@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.iii.ee100.animour.news.entity.NewsBean;
+import org.iii.ee100.animour.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -75,7 +75,7 @@ public class NewsDao{
 	
 	
 	
-	public void insert(NewsBean bean)  {
+	public void insert(News bean)  {
 		ResultSet rset = null;
 
 		try(Connection conn = this.dataSource.getConnection();
@@ -113,7 +113,7 @@ public class NewsDao{
 	
 	
 	
-	public void update(NewsBean bean) {
+	public void update(News bean) {
 		try (Connection conn = this.dataSource.getConnection();
 			 PreparedStatement pstmt = conn.prepareStatement(update);){
 			pstmt.setLong(5, bean.getSeqno());
@@ -138,8 +138,8 @@ public class NewsDao{
 
 	
 	
-	public NewsBean findOne(Long seqno) {
-		NewsBean result = null;
+	public News findOne(Long seqno) {
+		News result = null;
 
 		ResultSet rset = null;
 		try (Connection conn = this.dataSource.getConnection();
@@ -148,7 +148,7 @@ public class NewsDao{
 			pstmt.setLong(1, seqno);
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
-				result = new NewsBean();
+				result = new News();
 				result.setSeqno(rset.getLong("seqno"));
 				result.setSubject(rset.getString("subject"));
 				result.setContent(rset.getString("content"));
@@ -176,8 +176,8 @@ public class NewsDao{
 	
 	
 	
-	public List<NewsBean> findAll() {
-		List<NewsBean> resultls = new ArrayList<NewsBean>();
+	public List<News> findAll() {
+		List<News> resultls = new ArrayList<News>();
 		ResultSet rset= null;
 		
 		try(Connection conn = this.dataSource.getConnection();
@@ -186,7 +186,7 @@ public class NewsDao{
 
 			rset = pstmt.executeQuery();
 			while (rset.next()) {
-				NewsBean bean=new NewsBean();	
+				News bean=new News();	
 				bean.setSeqno(rset.getLong("seqno"));
 				bean.setSubject(rset.getString("subject"));
 				bean.setContent(rset.getString("content"));

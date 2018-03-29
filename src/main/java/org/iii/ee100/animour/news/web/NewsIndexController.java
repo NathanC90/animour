@@ -2,7 +2,7 @@ package org.iii.ee100.animour.news.web;
 
 import java.util.List;
 
-import org.iii.ee100.animour.news.entity.NewsBean;
+import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class NewsIndexController {
 
 	@RequestMapping("/NewsIndex")
 	public String index2(Model model) {
-		List<NewsBean> news =newsService.getAll();
+		List<News> news =newsService.getAll();
 		model.addAttribute("allNews", news);		
 		return "/news/NewsIndex";
 	}

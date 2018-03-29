@@ -3,7 +3,7 @@ package org.iii.ee100.animour.news.service;
 import java.util.List;
 
 import org.iii.ee100.animour.news.dao.NewsDao;
-import org.iii.ee100.animour.news.entity.NewsBean;
+import org.iii.ee100.animour.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,13 @@ public class NewsService{
 	
 	
 	
-	public void insert(NewsBean bean) {
+	public void insert(News bean) {
 		newsDao.insert(bean);
 	}
 	
 	
 	
-	public void update(NewsBean bean) {
+	public void update(News bean) {
 		newsDao.update(bean);
 	}
 
@@ -33,13 +33,13 @@ public class NewsService{
 
 	
 	
-	public List<NewsBean> getAll() {
+	public List<News> getAll() {
 		return newsDao.findAll();
 	}
 
 	
 	
-	public NewsBean getOne(Long seqno) {
+	public News getOne(Long seqno) {
 		return newsDao.findOne(seqno);
 	}
 }
