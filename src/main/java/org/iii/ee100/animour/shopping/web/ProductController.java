@@ -27,6 +27,7 @@ public class ProductController {
 	
 	@RequestMapping("/product/index")
 	public String productIndex(Model model) {
+		model.addAttribute("productAll", productService.getNewSex());
 		return "/shopping/ProductIndex";
 	}
 	
