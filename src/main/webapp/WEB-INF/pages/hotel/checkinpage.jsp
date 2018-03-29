@@ -99,178 +99,95 @@
 
 	<!-- 輪播牆放這邊 section begin -->
 	<section class="cta-section section">
-						<div id="carousel-area">
-					<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-slider" data-slide-to="1"></li>
-							<li data-target="#carousel-slider" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="d-block w-100" src="/images/room/cage1.jpg" alt="">
-								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-										熱門籠子</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">給動物一個舒適的環境</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 點擊預約
-									</a>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/room/cage2.jpg" alt="">
-								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">可愛寵物赤裸裸
-									</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-										各種寵物應有盡有</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-coffee">
-										</i> 點擊直播
-									</a>
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/room/cage3.jpg" alt="">
-								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">最新房型
-									</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新房型上架</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 點擊看房型
-									</a>
-								</div>
-							</div>
-							
+		<div id="carousel-area">
+			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-slider" data-slide-to="1"></li>
+					<li data-target="#carousel-slider" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="d-block w-100" src="/images/room/cage1.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">熱門籠子</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">給動物一個舒適的環境</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i
+								class="fa fa-download"> </i> 點擊預約
+							</a>
 						</div>
-						<a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
-							<span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
-							<span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
 					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="/images/room/cage2.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">可愛寵物赤裸裸
+							</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+								各種寵物應有盡有</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-coffee">
+							</i> 點擊直播
+							</a>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="/images/room/cage3.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">最新房型</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新房型上架</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i
+								class="fa fa-download"> </i> 點擊看房型
+							</a>
+						</div>
+					</div>
+
 				</div>
+				<a class="carousel-control-prev" href="#carousel-slider"
+					role="button" data-slide="prev"> <span
+					class="carousel-control carousel-control-prev-icon"
+					aria-hidden="true"></span> <span class="sr-only">Previous</span>
+				</a> <a class="carousel-control-next" href="#carousel-slider"
+					role="button" data-slide="next"> <span
+					class="carousel-control carousel-control-next-icon"
+					aria-hidden="true"></span> <span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
 
 	</section>
 	<!-- 輪播牆end </section> -->
-	<h3>查詢房型資料</h3>
-	<form name="//hotel/selectType" action="/hotel/selectType" method="GET">
-	<input id='num' name="id" value="${selectType.id}" type="text" size="14" style="text-align: left">
-	<input type="submit" value="送出"> 
-	
-</form>
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-				<!-- Blog Sidebar Section -->
-				<div class="col-md-3">
-					<div class="sidebar-area">
-						<!-- Search Bar -->
-						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form>
-								<input type="text" placeholder="Search" class="form-control">
-								<button type="submit">
-									<i class="fa fa-search"></i>
-								</button>
-							</form>
-						</aside>
-						<!-- Text Widgets -->
-						<aside class="widget text-widgets wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">Text Widget</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
-								officiis sit labore a aspernatur quisquam. In, unde.</p>
-						</aside>
-
-						<!--Start of Category -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">Category</h2>
-							<ul class="category-menu">
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Dog (31) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Cat (16) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Bird (2) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Rabbit (7) </label>
-									</div></li>
-							</ul>
-						</aside>
-						<!--End of Category -->
-
-						<!--Start of Region -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">Category</h2>
-							<ul class="category-menu">
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taipei City (64) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taichung City (39) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taoyuan City (23) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> New Taipei City (71) </label>
-									</div></li>
-							</ul>
-						</aside>
-						<!--End of Region -->
-					</div>
-				</div>
-				<!-- End -->
-
+	<div>
+	<h3>查詢房型資料</h3>
+	<form name="/hotel/selectType" action="/hotel/selectType" method="GET">
+		<input id='num' name="id" value="${selectType.id}" type="text"
+			size="14" style="text-align: left"> <input type="submit"
+			value="送出">
+	</form>
+	
 				<!-- BLog Article Section -->
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
 					<div class="row">
-						<c:forEach var="animal" items="${animals}">
+						<c:forEach var="animal" items="${beansfindall}">
 
 							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
+									<img class="card-img-top" src="/images/room/cage3.jpg"
 										width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">編號：${animal.id}
-											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-											發現日期：${animal.found} 縣市：${animal.city}
-											鄉鎮市區：${animal.district}</p>
+										<p class="card-text" style="padding: 0px">房號：${animal.id}
+											主人：${animal.onwer} 房型：${animal.type} 種類：${animal.species}
+											入住日期：${animal.checkIn}</p>
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+												<button type="button" class="btn btn-common btn-sm mt-10">預訂</button>
 											</div>
-											<small class="text-muted">${animal.upload}</small>
 										</div>
 									</div>
 								</div>

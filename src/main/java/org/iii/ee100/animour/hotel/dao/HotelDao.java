@@ -23,8 +23,8 @@ public class HotelDao{
 	private static final String InsertStmt = "INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES ( ?, ?, ?, ?, ?,?)";
 	private static final String UpdateStmt = "UPDATE hotel SET  onwer=?, type=?, checkIn=?, total=?,species=?,dogName=? WHERE Id = ?";
 	private static final String DeleteStmt = "Delete from hotel WHERE Id = ?";
-	private static final String FindOneStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel where Id=?";
-	private static final String FindAllStmt = "SELECT hotelId, onwer, type, checkIn, total,species,dogName from hotel order by Id";
+	private static final String FindOneStmt = "SELECT Id, onwer, type, checkIn, total,species,dogName from hotel where Id=?";
+	private static final String FindAllStmt = "SELECT Id, onwer, type, checkIn, total,species,dogName from hotel order by Id";
 	private static final String LastSixStmt="SELECT *  FROM  hotel ORDER BY hotel DESC LIMIT 6";
 	@Autowired
 	DataSource datasource;

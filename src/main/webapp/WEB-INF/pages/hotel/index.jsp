@@ -21,7 +21,7 @@ ${beansselect.checkIn}
 
 
 <c:forEach var="avar" items="${beansfindall}">
-${avar.hotelId}
+${avar.id}
 ${avar.onwer}
 ${avar.type}
 ${avar.total}

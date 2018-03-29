@@ -26,8 +26,8 @@ public class HotelService{
 		return hotelDao.update(hotel);
 	}
 
-	public void delete(Long hotelId) {
-		hotelDao.delete(hotelId);
+	public void delete(Long id) {
+		hotelDao.delete(id);
 	}
 
 	public List<Hotel> getAll(){
