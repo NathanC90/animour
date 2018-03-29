@@ -24,7 +24,7 @@ public class HotelController {
 	@RequestMapping("/hotel/findAllType")
 	public String findALl(Model model) {
 		
-		model.addAttribute("beansfindall", hotelService.getAll());
+	//	model.addAttribute("beansfindall", hotelService.getAll());
 		return"/hotel/checkinpage";
 	}
 	
@@ -56,6 +56,7 @@ public class HotelController {
 	
 	@RequestMapping("/hotel/selectType")
 	public String selectType (Model model,Hotel hotelbean) {
+		model.addAttribute("beansfindall", hotelService.getAll());
 
 		model.addAttribute("selectType", hotelService.getone(hotelbean.getId()));
 		return"hotel/checkinpage";
