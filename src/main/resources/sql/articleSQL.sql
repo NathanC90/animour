@@ -8,7 +8,7 @@ CREATE TABLE article (
     postTime timestamp
 );
 
-insert into article (postName,articleSubject,articleContent,postTime) values ('阿泰','好人做到底！　「完整救貓SOP」擺脫半手愛心
+insert into article (postName,subject,content,postTime) values ('阿泰','好人做到底！　「完整救貓SOP」擺脫半手愛心
 ','俗話說：「好人做到底，送佛送到西。」在遇到街貓（或狗，以下都以貓為代表）的時候，尤其是看起來弱不禁風、惹人憐惜的街貓、小貓，心中的惻隱之心很容易在此時發酵，讓自己忍不住出手幫忙。
 
 可是，出手之後呢？不少朋友因為缺乏信心與經驗，有時候因為家人、房東、室友的因素而暫時無法安置街貓，常在撈起街貓之後，大多往動物醫院或是自己知道的貓中途（愛媽）的區域一丟了事。好事不是都已經進行一半了嗎？美好的故事都已經開始接近尾聲了，讓事情整個圓滿，不是更美好嗎？
@@ -28,7 +28,7 @@ insert into article (postName,articleSubject,articleContent,postTime) values ('�
 街貓，尤其是小貓進收容所，等於判死刑；而隨便將貓咪換地點，貓除了會等不到救援而先死，還可能會將傳染病傳播他觸而造成貓感染甚至死亡（原居貓與外來貓相互傳染）。','1999-01-08 04:05:06');
 
 
-insert into article (postName,articleSubject,articleContent,postTime) values ('小傑','養貓心得：如何找到最適合自己的貓咪!!','常常很多人看到身旁的朋友或是在路上看到路人帶著可愛的貓咪，就會想要自己也養一隻，但是每隻貓咪的性情和個性都是不同的，要怎麼樣才能找到合適自己的貓咪呢？合適的貓咪能順利地培養彼此的感情喔。
+insert into article (postName,subject,content,postTime) values ('小傑','養貓心得：如何找到最適合自己的貓咪!!','常常很多人看到身旁的朋友或是在路上看到路人帶著可愛的貓咪，就會想要自己也養一隻，但是每隻貓咪的性情和個性都是不同的，要怎麼樣才能找到合適自己的貓咪呢？合適的貓咪能順利地培養彼此的感情喔。
 
 一、什麼樣的貓咪適合你
 
@@ -77,7 +77,7 @@ insert into article (postName,articleSubject,articleContent,postTime) values ('�
 
 
 
-insert into article (postName,articleSubject,articleContent,postTime) values ('MINDY NORTON','Be Prepared (The Pet Version)','The great things about a dog park are the fenced areas where you can play off-leash with your pet.  Be a responsible owner by making sure your dog is up-to-date on all shots, and clean up after your pet.  Another responsible thing for every owner to do is to be prepared for unexpected emergencies!**************
+insert into article (postName,subject,content,postTime) values ('MINDY NORTON','Be Prepared (The Pet Version)','The great things about a dog park are the fenced areas where you can play off-leash with your pet.  Be a responsible owner by making sure your dog is up-to-date on all shots, and clean up after your pet.  Another responsible thing for every owner to do is to be prepared for unexpected emergencies!**************
 
 Today is National Animal Disaster Preparedness Day, a time to remind every pet owner to be ready for an emergency. Whether it’s flooding, or a tornado or hurricane, or an earthquake or fire, an unexpected disaster can put you and your best friend at risk. You might ensure that both of you survive if you plan ahead.
 
