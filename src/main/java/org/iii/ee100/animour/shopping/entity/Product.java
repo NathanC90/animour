@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.shopping.entity;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Product {
 	private Long id;
 	private String name;
