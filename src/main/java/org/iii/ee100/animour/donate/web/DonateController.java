@@ -1,12 +1,12 @@
 package org.iii.ee100.animour.donate.web;
 
+import org.iii.ee100.animour.donate.entity.Donate;
+import org.iii.ee100.animour.donate.service.DonateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.iii.ee100.animour.donate.entity.Donate;
-import org.iii.ee100.animour.donate.service.DonateService;
 
 @Controller
 public class DonateController {
@@ -19,7 +19,7 @@ public class DonateController {
 		return "/donate/donate";
 	}
 
-	@RequestMapping(path = { "/donate/selectOneDonate" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/donate/DonateForm" }, method = { RequestMethod.GET })
 	public String selectOneDonate(Donate donate, Model model) {
 		Donate dn = DonateService.getOne(Long.valueOf(donate.getId()));
 		if (dn != null) {

@@ -1,10 +1,10 @@
 drop table article;
 
 CREATE TABLE article (
-    articleId bigserial primary key,
+    id bigserial primary key,
     postName character varying(30),
-    articleSubject character varying(80),
-    articleContent text,
+    subject character varying(80),
+    content text,
     postTime timestamp
 );
 

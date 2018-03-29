@@ -1,11 +1,28 @@
 package org.iii.ee100.animour.forum.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ARTICLE")
 public class Article {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
 	private Long id;
+	@Column(name="POSTNAME")
 	private String postName;
+	@Column(name="SUBJECT")
 	private String subject;
+	@Column(name="CONTENT")
 	private String content;
+	@Column(name="POSTTIME")
 	private java.sql.Timestamp postTime;
+	
 	public Long getId() {
 		return id;
 	}
