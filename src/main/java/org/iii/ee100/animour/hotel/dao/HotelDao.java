@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 import org.iii.ee100.animour.hotel.entity.Hotel;
@@ -16,6 +18,17 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class HotelDao{
+	
+	@PersistenceContext
+    private EntityManager entityManager;
+	
+	
+	
+	
+	
+	
+	
+	
 	private static final String InsertStmt = "INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES ( ?, ?, ?, ?, ?,?)";
 	private static final String UpdateStmt = "UPDATE hotel SET  onwer=?, type=?, checkIn=?, total=?,species=?,dogName=? WHERE Id = ?";
 	private static final String DeleteStmt = "Delete from hotel WHERE Id = ?";
