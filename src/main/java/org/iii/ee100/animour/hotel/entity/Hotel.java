@@ -1,12 +1,27 @@
 package org.iii.ee100.animour.hotel.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="HOTEL")
 public class Hotel {
+	@Id
+	@Column(name="ID")
 	private Long id;
+	@Column(name="ONWER")
 	private String onwer;
+	@Column(name="TYPE")
 	private String type;
+	@Column(name="TOTAL")
 	private int total;
+	@Column(name="SPECIES")
 	private String species;
+	@Column(name="DOGNAME")
 	private String dogName;
+	@Column(name="CHECKIN")
 	private java.sql.Timestamp checkIn;
 	
 
