@@ -19,7 +19,7 @@ public class DonateController {
 		return "/donate/donate";
 	}
 
-	@RequestMapping(path = { "/donate/DonateForm" }, method = { RequestMethod.GET })
+	@RequestMapping(path = { "/donate/selectOneDonate" }, method = { RequestMethod.GET })
 	public String selectOneDonate(Donate donate, Model model) {
 		Donate dn = DonateService.getOne(Long.valueOf(donate.getId()));
 		if (dn != null) {
