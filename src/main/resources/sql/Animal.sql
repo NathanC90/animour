@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS animal CASCADE;
 
 create table animal(
-	animalId bigserial PRIMARY KEY,
+	Id bigserial PRIMARY KEY,
     name varchar(50),
     specie varchar(50) NOT NULL, 
 	color varchar(50),
@@ -12,6 +12,7 @@ create table animal(
     hospitlaized boolean default false,
 	cardNum varchar(30),
 	image bytea,
+	filename varchar(200),
 	memberId bigint
 );
 

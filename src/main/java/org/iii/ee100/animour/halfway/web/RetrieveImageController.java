@@ -16,13 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+//@Controller
 public class RetrieveImageController {
 
-	@Autowired
+	//@Autowired
 	AnimalDao dao;
 
-	@RequestMapping (value="/halfway/image")
+	//@RequestMapping (value="/halfway/image")
 	public String retrieveImage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws SQLException, IOException {
 		OutputStream os = null;

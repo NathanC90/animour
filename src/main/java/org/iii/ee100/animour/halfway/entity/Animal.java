@@ -43,16 +43,16 @@ public class Animal {
 	@Column(name="HOSPITALIZED")
 	private boolean hospitalized;
 	
-	@Column(name="CARDNUM")
+	@Column(name="CARD_NUM")
 	private String cardNum;
 	
 	@Column(name="IMAGE")
 	private Blob image;
 	
-	@Column(name="FILENAME")
+	@Column(name="FILE_NAME")
 	private String fileName;
 	
-	@Column(name="MEMBERID")
+	@Column(name="MEMBER_ID")
 	private Long memberId;
 	
 
