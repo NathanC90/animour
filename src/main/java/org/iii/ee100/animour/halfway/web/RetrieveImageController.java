@@ -16,13 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-//@Controller
+@Controller
 public class RetrieveImageController {
 
-	//@Autowired
+	@Autowired
 	AnimalDao dao;
 
-	//@RequestMapping (value=)
+	@RequestMapping (value="/halfway/image")
 	public String retrieveImage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws SQLException, IOException {
 		OutputStream os = null;
@@ -56,7 +56,7 @@ public class RetrieveImageController {
 
 		// 如果圖片的來源有問題，就送回預設圖片(/images/NoImage.jpg)
 		if (is == null) {
-			is = context.getResourceAsStream("/images/NoImage.jpg");
+			is = context.getResourceAsStream("/images/logo.png");
 		}
 
 		int len = 0;
