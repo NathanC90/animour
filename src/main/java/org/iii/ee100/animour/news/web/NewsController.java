@@ -20,8 +20,8 @@ public class NewsController {
 	}
 	
 	@RequestMapping(path= {"/findOneNews"}, method={RequestMethod.GET})
-	public String findOne(News bean, Model model) {
-		News nb = newsService.getOne(Long.valueOf(bean.getSeqno()));
+	public String findOne(News news, Model model) {
+		News nb = newsService.getOne(Long.valueOf(news.getSeqno()));
 		if (nb != null) {
 			model.addAttribute("oneNews", nb);
 		}
@@ -35,23 +35,23 @@ public class NewsController {
 	}
 	
 	@RequestMapping(path= {"/deleteNews"}, method={RequestMethod.GET})
-	public String deleteNews(News bean, Model model) {
-		newsService.delete(bean.getSeqno());
-		model.addAttribute("delete", Long.valueOf(bean.getSeqno()));
+	public String deleteNews(News news, Model model) {
+		newsService.delete(news.getSeqno());
+		model.addAttribute("delete", Long.valueOf(news.getSeqno()));
 		return "/news/newsForm";
 	}
 	
 	@RequestMapping(path= {"/insertNews"}, method={RequestMethod.POST})
-	public String insertNews(News bean, Model model) {
-		newsService.insert(bean);
-		model.addAttribute("insertNews", bean);
+	public String insertNews(News news, Model model) {
+		newsService.insert(news);
+		model.addAttribute("insertNews", news);
 		return "/news/newsForm";
 	}
 	
 	@RequestMapping(path= {"/updateNews"}, method={RequestMethod.GET})
-	public String updateNews(News bean, Model model) {
-		newsService.update(bean);
-		model.addAttribute("updateNews", bean);
+	public String updateNews(News news, Model model) {
+		newsService.update(news);
+		model.addAttribute("updateNews", news);
 		return "/news/newsForm";
 	}
 	

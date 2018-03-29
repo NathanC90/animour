@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="NEWSBEAN")
+@Table(name="NEWS")
 public class News {
 
 	@Id
@@ -39,7 +39,7 @@ public class News {
 	
 	@Override
 	public String toString() {
-		return "NewsBean [seqno=" + seqno + ", subject=" + subject + ", content=" + content + ", publishTime="
+		return "News [seqno=" + seqno + ", subject=" + subject + ", content=" + content + ", publishTime="
 				+ publishTime + ", publishTimeEnd=" + publishTimeEnd + ", createUser=" + createUser + ", createTime="
 				+ createTime + "]";
 	}
