@@ -23,6 +23,11 @@ public class Article {
 	@Column(name="POST_TIME")
 	private java.sql.Timestamp postTime;
 	
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", postName=" + postName + ", subject=" + subject + ", content=" + content
+				+ ", postTime=" + postTime + "]";
+	}
 	public Long getId() {
 		return id;
 	}
