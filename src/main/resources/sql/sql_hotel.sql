@@ -4,7 +4,7 @@ Id   bigserial primary key,
  type varchar(30),
 checkIn date,
 total   int,
-species   varchar(30),
+specie   varchar(30),
 dogName   varchar(60)
 )
 
@@ -12,7 +12,7 @@ select *from hotel
 
 drop table hotel
 
-INSERT INTO hotel ( onwer, type, checkIn, total,species,dogName) VALUES 
+INSERT INTO hotel ( onwer, type, checkIn, total,specie,dogName) VALUES 
 ('lun', 'small', '2018-03-03', 2,'poodle','lili'),
 ('lun2', 'small', '2020-07-03', 3,'poodle','cucu'),
 ('lun3', 'small', '2020-07-03', 2,'poodle','阿狗'),
