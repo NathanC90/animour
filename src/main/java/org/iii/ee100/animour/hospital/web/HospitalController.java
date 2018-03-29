@@ -25,11 +25,11 @@ public class HospitalController {
 		return "/hospital/form";
 	}
 	
-	@RequestMapping(path= {"/selectonehospital"},method={RequestMethod.POST})
-	public String selectOneHospital(HttpServletRequest request, Model model) {
-		model.addAttribute("onehospital", hospitalService.getOne(request.getParameter("id")));
-		return "/hospital/hospitalist";
-	}
+//	@RequestMapping(path= {"/selectonehospital"},method={RequestMethod.POST})
+//	public String selectOneHospital(Hospital hospital, Model model) {
+//		model.addAttribute("onehospital", hospitalService.getOne(hospital.getNo());
+//		return "/hospital/hospitalist";
+//	}
 
 	@RequestMapping("/selectallhospital")
 	public String findAllHospital(Model model)  {
@@ -50,7 +50,7 @@ public class HospitalController {
 	
 	@RequestMapping(path= {"/deletehospital"}, method={RequestMethod.POST})
 	public String deleteOneProduct(Hospital hospital, Model model) {
-		hospitalService.delete(hospital.getId());
+		hospitalService.delete(hospital.getNo());
 		model.addAttribute("delete", hospital.getId());
 		return "/hospital/hospitalist";
 	}

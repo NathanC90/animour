@@ -14,7 +14,7 @@ public class Hospital {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="NO")
-	Integer no;
+	Long no;
 	@Column(name="ID")
 	String id;
 	@Column(name="NAME")
@@ -24,10 +24,10 @@ public class Hospital {
 	@Column(name="ADDR")
 	String addr;
 	
-	public Integer getNo() {
+	public Long getNo() {
 		return no;
 	}
-	public void setNo(Integer no) {
+	public void setNo(Long no) {
 		this.no = no;
 	}
 	public String getId() {
