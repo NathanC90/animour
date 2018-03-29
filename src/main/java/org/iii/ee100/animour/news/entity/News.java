@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="NEWSBEAN")
+@Table(name="NEWS")
 public class News {
 
 	@Id
@@ -19,27 +19,27 @@ public class News {
 	private String subject;
 	@Column(name="CONTENT")
 	private String content;
-	@Column(name="PUBLISH_TIME")
+	@Column(name="PUBLISHTIME")
 	private java.sql.Date publishTime;
-	@Column(name="PUBLISH_TIME_END")
+	@Column(name="PUBLISHTIMEEND")
 	private java.sql.Date publishTimeEnd;
-	@Column(name="CREATE_USER")
+	@Column(name="CREATEUSER")
 	private String createUser;
-	@Column(name="CREATE_TIME")
+	@Column(name="CREATETIME")
 	private java.sql.Timestamp createTime;
-	@Column(name="UPDATE_USER")
+	@Column(name="UPDATEUSER")
 	private String updateUser;
-	@Column(name="UPDATE_TIME")
+	@Column(name="UPDATETIME")
 	private java.sql.Timestamp updateTime;
-	@Column(name="IS_DEL")
+	@Column(name="ISDEL")
 	private String isDel;
-	@Column(name="IS_ON")
+	@Column(name="ISON")
 	private String isOn;
 	
 	
 	@Override
 	public String toString() {
-		return "NewsBean [seqno=" + seqno + ", subject=" + subject + ", content=" + content + ", publishTime="
+		return "News [seqno=" + seqno + ", subject=" + subject + ", content=" + content + ", publishTime="
 				+ publishTime + ", publishTimeEnd=" + publishTimeEnd + ", createUser=" + createUser + ", createTime="
 				+ createTime + "]";
 	}
