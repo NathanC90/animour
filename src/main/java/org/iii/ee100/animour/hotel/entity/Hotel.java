@@ -22,7 +22,7 @@ public class Hotel {
 	private int total;
 	@Column(name="SPECIE")
 	private String specie;
-	@Column(name="DOG_NAME")
+	@Column(name="DOGNAME")
 	private String dogName;
 	@Column(name="CHECKIN")
 	private java.sql.Timestamp checkIn;

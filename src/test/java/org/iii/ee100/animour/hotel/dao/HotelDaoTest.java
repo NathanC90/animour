@@ -23,7 +23,6 @@ public class HotelDaoTest {
 			System.out.println(hotel);
 		}
 		
-		fail("Not yet implemented");
 	}
 
 }
