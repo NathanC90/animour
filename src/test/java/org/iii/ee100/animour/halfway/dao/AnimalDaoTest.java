@@ -1,29 +1,30 @@
 package org.iii.ee100.animour.halfway.dao;
 
-import java.util.List;
+import static org.junit.Assert.fail;
 
-import org.iii.ee100.animour.halfway.BaseTest;
+
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 
-public class AnimalDaoTest extends BaseTest {
-	
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class AnimalDaoTest {
+
 	@Autowired
 	private AnimalDao animalDao;
 
 	@Test
-	public void testFindTopSix() {
-		List<Animal> animals = animalDao.findTopSix();
-		System.out.println("*********************************");
-		for(Animal animal: animals) {
-			
+	public void testFindAll() {
+		Iterable<Animal> animals = animalDao.findAll();
+
+		for (Animal animal : animals) {
 			System.out.println(animal);
 		}
-		System.out.println("*********************************");
-		
-		
 	}
 
 }
