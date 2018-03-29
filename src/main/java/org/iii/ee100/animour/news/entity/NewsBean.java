@@ -1,17 +1,39 @@
 package org.iii.ee100.animour.news.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="NEWSBEAN")
 public class NewsBean {
 
+	@Id
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column(name="SEQNO")
 	private Long seqno;
+	@Column(name="SUBJECT")
 	private String subject;
+	@Column(name="CONTENT")
 	private String content;
+	@Column(name="PUBLISHTIME")
 	private java.sql.Date publishTime;
+	@Column(name="PUBLISHTIMEEND")
 	private java.sql.Date publishTimeEnd;
+	@Column(name="CREATEUSER")
 	private String createUser;
+	@Column(name="CREATETIME")
 	private java.sql.Timestamp createTime;
+	@Column(name="UPDATEUSER")
 	private String updateUser;
+	@Column(name="UPDATETIME")
 	private java.sql.Timestamp updateTime;
+	@Column(name="ISDEL")
 	private String isDel;
+	@Column(name="ISON")
 	private String isOn;
 	
 	
