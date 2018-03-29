@@ -14,13 +14,13 @@ public class Article {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID")
 	private Long id;
-	@Column(name="POSTNAME")
+	@Column(name="POST_NAME")
 	private String postName;
 	@Column(name="SUBJECT")
 	private String subject;
 	@Column(name="CONTENT")
 	private String content;
-	@Column(name="POSTTIME")
+	@Column(name="POST_TIME")
 	private java.sql.Timestamp postTime;
 	
 	@Override
