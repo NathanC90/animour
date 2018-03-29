@@ -3,19 +3,42 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
+
 <head>
-<!-- Required meta tags -->
+<!--Icon Tags start -->
+<link rel="apple-touch-icon" sizes="57x57"
+	href="/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+	href="/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+	href="/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+	href="/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/images/icon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+
+<!--Icon Tags end -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<title>Animour</title>
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animal Shelter</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -37,9 +60,12 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+
+
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
+
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
@@ -50,137 +76,237 @@
 </head>
 
 <body>
+
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
-
-		<!-- Navbar Starts -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
-		<!-- Navbar ends -->
-		
+	</header>
+	<!-- Header-wrap Section End -->
 
-
-		<!-- 輪播牆開始 -->
-		<div id="carousel-area">
-			
-			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-slider" data-slide-to="1"></li>
-					<li data-target="#carousel-slider" data-slide-to="2"></li>
-					<li data-target="#carousel-slider" data-slide-to="3"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								請用領養代替購買</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點擊認養
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">中途見面會活動
-							</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-								2018/06/01 上午9:00 台北市復興南路一段</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-coffee">
-							</i> 詳細資訊
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New
-								Arrival</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新商品上架</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 看這裡
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							src="/images/slider/bg-rabbit1-gray.jpg" alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								LaLa醫生門診時間異動</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-								已掛號會員請更改看診時間</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點此更改
-							</a>
-						</div>
+	<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>房型價格</h2>
 					</div>
 				</div>
-				<a class="carousel-control-prev" href="#carousel-slider"
-					role="button" data-slide="prev"> <span
-					class="carousel-control carousel-control-prev-icon"
-					aria-hidden="true"></span> <span class="sr-only">Previous</span>
-				</a> <a class="carousel-control-next" href="#carousel-slider"
-					role="button" data-slide="next"> <span
-					class="carousel-control carousel-control-next-icon"
-					aria-hidden="true"></span> <span class="sr-only">Next</span>
-				</a>
 			</div>
 		</div>
-		<!-- 輪播牆結束-->
-	</header>
-	<div>
-			<h3>查詢動物房間資料</h3>
-			<form name="/hotel/selectType" action="/hotel/selectType"
-				method="GET">
-				<input id='num' name="hotelId" value="${selectType.hotelId}"
-					type="text" size="14" style="text-align: left"> <input
-					type="submit" value="送出">
+	</div>
+	<!-- Page Header End -->
 
-			</form>
-		</div>
-	<!-- Header-wrap Section End -->
-			<section id="service-block-main" class="section">
-				<!-- 重複的內容開始 -->
-				<div class="container">
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-						最新空房</h1>
+	<!-- 輪播牆放這邊 section begin -->
+	<section class="cta-section section">
+						<div id="carousel-area">
+					<div id="carousel-slider" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel-slider" data-slide-to="1"></li>
+							<li data-target="#carousel-slider" data-slide-to="2"></li>
+						</ol>
+						<div class="carousel-inner">
+							<div class="carousel-item active">
+								<img class="d-block w-100" src="/images/room/cage1.jpg" alt="">
+								<div class="carousel-caption">
+									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
+										熱門籠子</h2>
+									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">給動物一個舒適的環境</h3>
+									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+										<i class="fa fa-download"> </i> 點擊預約
+									</a>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/images/room/cage2.jpg" alt="">
+								<div class="carousel-caption">
+									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">可愛寵物赤裸裸
+									</h2>
+									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+										各種寵物應有盡有</h3>
+									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+										<i class="fa fa-coffee">
+										</i> 點擊直播
+									</a>
+								</div>
+							</div>
+							<div class="carousel-item">
+								<img class="d-block w-100" src="/images/room/cage3.jpg" alt="">
+								<div class="carousel-caption">
+									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">最新房型
+									</h2>
+									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新房型上架</h3>
+									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
+										<i class="fa fa-download"> </i> 點擊看房型
+									</a>
+								</div>
+							</div>
+							
+						</div>
+						<a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
+							<span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a>
+						<a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
+							<span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+
+	</section>
+	<!-- 輪播牆end </section> -->
+	<h3>查詢房型資料</h3>
+	<form name="//hotel/selectType" action="/hotel/selectType" method="GET">
+	<input id='num' name="id" value="${selectType.id}" type="text" size="14" style="text-align: left">
+	<input type="submit" value="送出"> 
+	
+</form>
+	<!-- Classic Blog Section -->
+	<section class="classic-blog-section section">
+		<div class="container">
+			<div class="row">
+				<!-- Blog Sidebar Section -->
+				<div class="col-md-3">
+					<div class="sidebar-area">
+						<!-- Search Bar -->
+						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
+							<form>
+								<input type="text" placeholder="Search" class="form-control">
+								<button type="submit">
+									<i class="fa fa-search"></i>
+								</button>
+							</form>
+						</aside>
+						<!-- Text Widgets -->
+						<aside class="widget text-widgets wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Text Widget</h2>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+								Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
+								officiis sit labore a aspernatur quisquam. In, unde.</p>
+						</aside>
+
+						<!--Start of Category -->
+						<aside class="widget flickr-widget wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Category</h2>
+							<ul class="category-menu">
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Dog (31) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Cat (16) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Bird (2) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Rabbit (7) </label>
+									</div></li>
+							</ul>
+						</aside>
+						<!--End of Category -->
+
+						<!--Start of Region -->
+						<aside class="widget flickr-widget wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">Category</h2>
+							<ul class="category-menu">
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taipei City (64) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taichung City (39) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> Taoyuan City (23) </label>
+									</div></li>
+								<li><div class="form-check">
+										<input class="form-check-input" type="checkbox" value=""
+											id="defaultCheck1"> <label class="form-check-label"
+											for="defaultCheck1"> New Taipei City (71) </label>
+									</div></li>
+							</ul>
+						</aside>
+						<!--End of Region -->
+					</div>
+				</div>
+				<!-- End -->
+
+				<!-- BLog Article Section -->
+				<div class="col-md-9">
+					<!-- Single Blog Post -->
 					<div class="row">
-						<c:forEach var="avar" items="${hotelBean}">
+						<c:forEach var="animal" items="${animals}">
 
-							<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+							<div class="col-md-3">
+								<div class="card mb-3 box-shadow">
+									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
+										width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">
-											房號：${avar.hotelId} 房型：${avar.type}</p>
-										<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
+										<p class="card-text" style="padding: 0px">編號：${animal.id}
+											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
+											發現日期：${animal.found} 縣市：${animal.city}
+											鄉鎮市區：${animal.district}</p>
+										<div class="d-flex justify-content-between align-items-center"
+											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
 												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
 											</div>
-											<small class="text-muted">${avar.checkIn}</small>
+											<small class="text-muted">${animal.upload}</small>
 										</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
 					</div>
+					<!-- Slider Post -->
+
+					<!-- Blog Pagination -->
+					<div class="blog-pagination clearfix wow fadeIn"
+						data-wow-delay="0.3s">
+						<nav aria-label="..." class="">
+							<ul class="pagination">
+								<li class="page-item disabled"><a class="page-link"
+									href="#" tabindex="-1" aria-label="Previous"> <i
+										class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item active"><a class="page-link" href="#">1
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> Next <i class="fa fa-angle-right"></i> <span
+										class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</nav>
+					</div>
 				</div>
-				<!-- 重複的內容結束 -->
-			</section>
-
-
-
+				<!-- End -->
+			</div>
+		</div>
+	</section>
+	<!-- Classic Blog Section End -->
 
 	<!-- Footer Section -->
 	<footer>
@@ -320,18 +446,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/vendor/holder.min.js"></script>
 
 </body>
+
 </html>

@@ -21,11 +21,11 @@ public class HotelController {
 		return"/hotel/index";
 	}
 	
-	@RequestMapping("/hotel/findAll")
+	@RequestMapping("/hotel/findAllType")
 	public String findALl(Model model) {
 		
 		model.addAttribute("beansfindall", hotelService.getAll());
-		return"/hotel/index";
+		return"/hotel/checkinpage";
 	}
 	
 	@RequestMapping("/hotel/insertHotel")
@@ -55,12 +55,13 @@ public class HotelController {
 	}
 	
 	@RequestMapping("/hotel/selectType")
-	public String selectType (Model model,long Id,Hotel hotelbean) {
+	public String selectType (Model model,Hotel hotelbean) {
 
-		hotelService.getone(Long.valueOf(Id));
-		model.addAttribute("selectType", hotelbean);
+		model.addAttribute("selectType", hotelService.getone(hotelbean.getId()));
 		return"hotel/checkinpage";
 	}
+	
+
 	
 
 }
