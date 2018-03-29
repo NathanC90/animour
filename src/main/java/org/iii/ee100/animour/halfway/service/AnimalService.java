@@ -2,6 +2,7 @@ package org.iii.ee100.animour.halfway.service;
 
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,11 @@ public class AnimalService {
 	
 	
 	public void insert(Animal animal) {
-		animalDao.insert(animal);
+		animalDao.save(animal);
 	}
 
 	public void update(Animal animal) {
-		animalDao.update(animal);		
+		animalDao.save(animal);		
 	}
 
 	public void delete(Long id) {
@@ -27,16 +28,16 @@ public class AnimalService {
 	}
 
 	public List<Animal> getAll() {
-		return animalDao.findAll();
+		return Lists.newArrayList(animalDao.findAll());
 	}
 
 	public Animal getOne(Long id) {
 		return animalDao.findOne(id);
 	}
 	
-	public List<Animal> getSix(){
-		return animalDao.findTopSix();
-	}
+//	public List<Animal> getSix(){
+//		return animalDao.findTopSix();
+//	}
 
 
 	
