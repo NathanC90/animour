@@ -20,9 +20,9 @@ public class Hotel {
 	private String type;
 	@Column(name="TOTAL")
 	private int total;
-	@Column(name="SPECIES")
-	private String species;
-	@Column(name="DOGNAME")
+	@Column(name="SPECIE")
+	private String specie;
+	@Column(name="DOG_NAME")
 	private String dogName;
 	@Column(name="CHECKIN")
 	private java.sql.Timestamp checkIn;
@@ -31,7 +31,7 @@ public class Hotel {
 	@Override
 	public String toString() {
 		return "HotelBean [hotelId=" + id + ", onwer=" + onwer + ", type=" + type + ", total=" + total
-				+ ", species=" + species + ", dogName=" + dogName + ", checkIn=" + checkIn +"\n";
+				+ ", species=" + specie + ", dogName=" + dogName + ", checkIn=" + checkIn +"\n";
 	}
 
 	public String getOnwer() {
@@ -59,11 +59,11 @@ public class Hotel {
 	}
 
 	public String getSpecies() {
-		return species;
+		return specie;
 	}
 
 	public void setSpecies(String species) {
-		this.species = species;
+		this.specie = species;
 	}
 
 	public String getDogName() {
