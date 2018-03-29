@@ -1,14 +1,26 @@
 package org.iii.ee100.animour.shopping.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="PRODUCTS")
 public class Product {
+	
+	@Id
+	@Column(name="ID")
 	private Long id;
+	@Column(name="NAME")
 	private String name;
+	@Column(name="PRICE")
 	private Double price;
+	@Column(name="QUANTITY")
 	private Long quantity;
+	@Column(name="MAKE")
 	private java.sql.Timestamp make;
+	@Column(name="EXPIRE")
 	private Integer expire;
 	
 	@Override
@@ -16,7 +28,7 @@ public class Product {
 		return "ProductBean [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", make="
 				+ make + ", expire=" + expire + "]";
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
