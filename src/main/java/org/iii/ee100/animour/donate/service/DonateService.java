@@ -2,6 +2,7 @@ package org.iii.ee100.animour.donate.service;
 
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.donate.dao.DonateDao;
 import org.iii.ee100.animour.donate.entity.Donate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class DonateService {
 	DonateDao donateDao;
 
 	public void insert(Donate donate) {
-		donateDao.insert();
+		donateDao.save(donate);
 	}
 
 	public void delete(Long id) {
@@ -22,15 +23,15 @@ public class DonateService {
 	}
 
 	public void update(Donate donate) {
-		donateDao.update();
+		donateDao.save(donate);
 	}
 
 	public List<Donate> getAll() {
-		return donateDao.findAll();
+		return Lists.newArrayList(donateDao.findAll());
 	}
 
 	public Donate getOne(Long id) {
-		return donateDao.findById(id);
+		return donateDao.findOne(id);
 	}
 
 }

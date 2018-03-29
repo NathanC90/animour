@@ -24,10 +24,7 @@ public class ForumController {
 	
 	@RequestMapping(path= {"/forum/findAll"}, method={RequestMethod.GET})
 	public String findAll(Model model) {
-		ArrayList<Article> articles = forumService.getAll();
-		if (articles != null) {
-			model.addAttribute("articles", articles);
-		}
+			model.addAttribute("articles", forumService.getAll());
 		return "/forum/article";
 	}
 

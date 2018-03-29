@@ -1,7 +1,9 @@
 package org.iii.ee100.animour.forum.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,12 @@ public class ForumService {
 	private ArticleDao articleDao;
 	
 	public void insert(Article article) {
-		articleDao.insert(article);
+		articleDao.save(article);
 
 	}
 
 	public void update(Article article) {
-		articleDao.update(article);
+		articleDao.save(article);
 
 	}
 
@@ -28,16 +30,16 @@ public class ForumService {
 
 	}
 
-	public ArrayList<Article> getAll() {
-		return articleDao.findAll();
+	public List<Article> getAll() {
+		return Lists.newArrayList(articleDao.findAll());
 	}
 
 	public Article getOne(Long id) {
 		return articleDao.findOne(id);
 	}
 
-	public ArrayList<Article> getNew() {
-		return articleDao.findNew();
-	}
+//	public ArrayList<Article> getNew() {
+//		return articleDao.findNew();
+//	}
 
 }
