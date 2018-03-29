@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 //@Controller
 public class RetrieveImageController {
