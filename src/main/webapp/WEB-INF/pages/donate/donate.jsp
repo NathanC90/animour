@@ -13,7 +13,7 @@
 		<hr>
 		<br>	
 		<h5>輸入您的捐款編號，即可查詢您的單筆捐款紀錄</h5>
-		<form name="selectOneDonate" action="/donate/DonateForm" method="GET">
+		<form name="selectOneDonate" action="/donate/selectOneDonate" method="GET">
 		
 			<input id='num' name="id" value="" type="text"
 				size="14" style="text-align: left"> <input type="submit"
