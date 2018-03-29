@@ -16,6 +16,7 @@ public class Animal {
 	private boolean hospitalized;
 	private String cardNum;
 	private Blob image;
+	private String fileName;
 	private Long memberId;
 	
 
@@ -89,6 +90,12 @@ public class Animal {
 	}
 	public void setImage(Blob image) {
 		this.image = image;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	public Long getMemberId() {
 		return memberId;

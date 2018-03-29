@@ -24,6 +24,12 @@ public class AnimalController {
 		
 		return "/halfway/halfwayIndex";
 	}
+	
+	@RequestMapping(path= {"/insertAnimalForm"}, method = {RequestMethod.GET})
+	public String animalForm() {
+		
+		return "/halfway/InsertAnimalForm";
+	}
 
 	@RequestMapping(path = { "/insertAnimal" }, method = { RequestMethod.POST })
 	public String insertAnimal(Animal an, Model model) {

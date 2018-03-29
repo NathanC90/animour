@@ -35,7 +35,11 @@ public class ProductService {
 	public List<Product> getAll() {
 		return productDao.findAll();
 	}
-
+	
+	public List<Product> getNewSex() {
+		return productDao.findNewSix();
+	}
+	
 	public Product getOne(Long id) {
 		return productDao.findById(id);
 	}

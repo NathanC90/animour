@@ -25,11 +25,11 @@
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 				
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/NewsIndex" 
 					aria-haspopup="true" aria-expanded="false">最新消息</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="">認養活動</a> <a class="dropdown-item"
-							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a>
+						<!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
+							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a> -->
 
 					</div></li>
 				<li class="nav-item dropdown"><a
@@ -42,12 +42,12 @@
 
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" 
-					aria-haspopup="true" aria-expanded="false">寵物市集</a>
+					class="nav-link dropdown-toggle" href="/product/index" >寵物市集</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="">新品上市</a> <a class="dropdown-item"
-							href="l">好康優惠</a> <a class="dropdown-item" href="l">寵物飲食</a> <a
-							class="dropdown-item" href="">寵物用品</a>
+						<a class="dropdown-item" href="/product/index">新品上市</a> 
+<!-- 						<a class="dropdown-item" href="l">好康優惠</a> -->
+<!-- 						<a class="dropdown-item" href="l">寵物飲食</a> -->
+<!-- 						<a class="dropdown-item" href="l">寵物用品</a> -->
 					</div></li>
 
 				<li class="nav-item dropdown"><a
@@ -91,11 +91,11 @@
 		<ul class="wpb-mobile-menu">
 			<li><a class="active" href="index.jsp">首頁</a></li>
 			<li><a href="#">最新消息</a>
-				<ul>
+				<!-- <ul>
 					<li><a href="">認養活動</a></li>
 					<li><a href="">寵物保健</a></li>
 					<li><a href="">演講座談</a></li>
-				</ul></li>
+				</ul>--></li>
 			<li><a href="#">寵物市集</a>
 				<ul>
 					<li><a href="">新品上市</a></li>

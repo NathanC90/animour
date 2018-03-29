@@ -14,9 +14,6 @@ import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
-
 @Repository
 public class ProductDao {
 	
@@ -24,6 +21,7 @@ public class ProductDao {
 	private static final String UPDATE_STMT = "UPDATE products SET name = ?, price = ?, quantity = ?, make = ? , expire = ? WHERE id = ?";
 	private static final String DELETE_STMT = "DELETE FROM products WHERE id = ?";
 	private static final String FINDALL_STMT = "SELECT id, name, price, quantity, make, expire FROM products order by id desc fetch first 6 rows only";
+	private static final String FINDALL_NEW_SIX = "SELECT id, name, price, quantity, make, expire FROM products";
 	private static final String FINDBYPK_STMT = "SELECT id, name, price, quantity, make, expire FROM products WHERE id = ?";
 
 	@Autowired
@@ -165,4 +163,38 @@ public class ProductDao {
 		}
 		return products;
 	}
+	
+	//FindAll Product
+		public List<Product> findNewSix() {
+			ResultSet rs = null;
+			Product products = null;
+			List<Product> productList = new ArrayList<Product>();
+			try(Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(FINDALL_NEW_SIX);) {
+				
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					products = new Product();
+					products.setId(rs.getLong("id"));
+					products.setName(rs.getString("name"));
+					products.setPrice(rs.getDouble("price"));
+					products.setQuantity(rs.getLong("quantity"));
+					products.setMake(rs.getTimestamp("make"));
+					products.setExpire(rs.getInt("expire"));
+					productList.add(products);
+				} 
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			return productList;
+		}
+	
 }
