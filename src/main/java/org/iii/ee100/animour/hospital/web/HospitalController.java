@@ -25,11 +25,14 @@ public class HospitalController {
 		return "/hospital/form";
 	}
 	
-//	@RequestMapping(path= {"/selectonehospital"},method={RequestMethod.POST})
-//	public String selectOneHospital(Hospital hospital, Model model) {
-//		model.addAttribute("onehospital", hospitalService.getOne(hospital.getNo());
-//		return "/hospital/hospitalist";
-//	}
+	@RequestMapping(path= {"/selectonehospital"},method={RequestMethod.POST})
+	public String selectOneHospital(Hospital hospital, Model model) {
+		hospital=hospitalService.getOne(hospital.getNo());
+		if (hospital != null) {
+		model.addAttribute("onehospital", hospital);
+		}
+		return "/hospital/hospitalist";
+	}
 
 	@RequestMapping("/selectallhospital")
 	public String findAllHospital(Model model)  {
