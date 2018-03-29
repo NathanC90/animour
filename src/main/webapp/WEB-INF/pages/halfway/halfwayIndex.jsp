@@ -90,6 +90,8 @@
 				<div class="page-header-area">
 					<div class="page-header-content">
 						<h2>中途專區</h2>
+							<img class="card-img-top" src="/halfway/image"
+										width="100px" alt="待領養小貓">
 					</div>
 				</div>
 			</div>

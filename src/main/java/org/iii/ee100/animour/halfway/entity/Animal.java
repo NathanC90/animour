@@ -3,20 +3,56 @@ package org.iii.ee100.animour.halfway.entity;
 import java.sql.Blob;
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ANIMAL")
 public class Animal {
 
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="ID")
 	private Long id;
+	
+	@Column(name="NAME") 
 	private String name;
+	
+	@Column(name="SPECIE")
 	private String specie;
+	
+	@Column(name="COLOR")
 	private String color;
+	
+	@Column(name="FOUND")
 	private java.sql.Date found;
+	
+	@Column(name="UPLOAD")
 	private Timestamp upload;
+	
+	@Column(name="CITY")
 	private String city;
+	
+	@Column(name="DISTRICT")
 	private String district;
+	
+	@Column(name="HOSPITALIZED")
 	private boolean hospitalized;
+	
+	@Column(name="CARDNUM")
 	private String cardNum;
+	
+	@Column(name="IMAGE")
 	private Blob image;
+	
+	@Column(name="FILENAME")
 	private String fileName;
+	
+	@Column(name="MEMBERID")
 	private Long memberId;
 	
 
