@@ -13,13 +13,13 @@ import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.springframework.ui.Model;
 
-@Controller
+//@Controller
 public class RetrieveImageController {
 
-	@Autowired
+	//@Autowired
 	AnimalDao dao;
 
-	@RequestMapping (value="/halfway/image")
+	//@RequestMapping (value="/halfway/image")
 	public String retrieveImage(HttpServletRequest request, HttpServletResponse response, Model model)
 			throws SQLException, IOException {
 		OutputStream os = null;
