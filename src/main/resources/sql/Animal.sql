@@ -9,11 +9,11 @@ create table animal(
 	upload timestamp,
 	city varchar(50) NOT NULL, 
 	district varchar(50),
-    hospitlaized boolean default false,
-	cardNum varchar(30),
+    hospitalized boolean default false,
+	card_Num varchar(30),
 	image bytea,
-	filename varchar(200),
-	memberId bigint
+	file_name varchar(200),
+	member_Id bigint
 );
 
 select* from animal;
