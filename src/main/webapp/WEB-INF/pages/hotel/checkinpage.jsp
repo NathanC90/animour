@@ -180,7 +180,7 @@
 										width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">房號：${animal.id}
-											主人：${animal.onwer} 房型：${animal.type} 種類：${animal.species}
+											主人：${animal.owner} 房型：${animal.type} 種類：${animal.specie}
 											入住日期：${animal.checkIn}</p>
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
