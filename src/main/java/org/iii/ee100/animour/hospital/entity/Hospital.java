@@ -8,32 +8,25 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="HOSP")
+@Table(name="HOSPITAL")
 public class Hospital {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="NO")
-	Long no;
 	@Column(name="ID")
-	String id;
+	Long id;
+//	@Column(name="ID")
+//	String id;
 	@Column(name="NAME")
 	String name;
 	@Column(name="TEL")
 	String tel;
-	@Column(name="ADDR")
-	String addr;
-	
-	public Long getNo() {
-		return no;
-	}
-	public void setNo(Long no) {
-		this.no = no;
-	}
-	public String getId() {
+	@Column(name="ADDRESS")
+	String address;
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -48,12 +41,18 @@ public class Hospital {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getAddr() {
-		return addr;
+	public String getAddress() {
+		return address;
 	}
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+	@Override
+	public String toString() {
+		return "Hospital [id=" + id + ", name=" + name + ", tel=" + tel + ", address=" + address + "]";
+	}
+	
+
 
 
 	

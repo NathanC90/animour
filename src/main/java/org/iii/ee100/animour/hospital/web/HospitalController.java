@@ -27,7 +27,7 @@ public class HospitalController {
 	
 	@RequestMapping(path= {"/selectonehospital"},method={RequestMethod.POST})
 	public String selectOneHospital(Hospital hospital, Model model) {
-		hospital=hospitalService.getOne(hospital.getNo());
+		hospital=hospitalService.getOne(hospital.getId());
 		if (hospital != null) {
 		model.addAttribute("onehospital", hospital);
 		}
@@ -53,7 +53,7 @@ public class HospitalController {
 	
 	@RequestMapping(path= {"/deletehospital"}, method={RequestMethod.POST})
 	public String deleteOneProduct(Hospital hospital, Model model) {
-		hospitalService.delete(hospital.getNo());
+		hospitalService.delete(hospital.getId());
 		model.addAttribute("delete", hospital.getId());
 		return "/hospital/hospitalist";
 	}
