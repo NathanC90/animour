@@ -92,7 +92,7 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form name="insertAnimalForm" action="/insertAnimal" method="POST">
+				<form name="insertAnimalForm" action="/saveMultipart" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						姓名:<input type="text" class="form-control" id="anname"
 							aria-describedby="emailHelp" name="name" value="${param.name}"
@@ -122,7 +122,7 @@
 					</div>
 
 					<div class="form-group">
-						請上傳動物照片 <input type="file" class="form-control-file" id="image">
+						請上傳動物照片 <input type="file" class="form-control-file" id="image" name="file">
 					</div>
 
 					<div class="form-check">
