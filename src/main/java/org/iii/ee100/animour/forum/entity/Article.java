@@ -5,40 +5,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.iii.ee100.animour.member.entity.Member;
 
 @Entity
 @Table(name="ARTICLE")
 public class Article {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
-	@Column(name="POST_NAME")
-	private String postName;
 	@Column(name="SUBJECT")
 	private String subject;
 	@Column(name="CONTENT")
 	private String content;
 	@Column(name="POST_TIME")
 	private java.sql.Timestamp postTime;
+	@Column(name="UPDATE_TIME")
+	private java.sql.Timestamp updateTime;
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
+	private Member member;
+	@Column(name="CLICK")
+	private Long click;
 	
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", postName=" + postName + ", subject=" + subject + ", content=" + content
-				+ ", postTime=" + postTime + "]";
-	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public String getPostName() {
-		return postName;
-	}
-	public void setPostName(String postName) {
-		this.postName = postName;
 	}
 	public String getSubject() {
 		return subject;
@@ -58,7 +56,29 @@ public class Article {
 	public void setPostTime(java.sql.Timestamp postTime) {
 		this.postTime = postTime;
 	}
-	
+	public java.sql.Timestamp getUpdateTime() {
+		return updateTime;
+	}
+	public void setUpdateTime(java.sql.Timestamp updateTime) {
+		this.updateTime = updateTime;
+	}
+	public Member getMember() {
+		return member;
+	}
+	public void setMember(Member member) {
+		this.member = member;
+	}
+	public Long getClick() {
+		return click;
+	}
+	public void setClick(Long click) {
+		this.click = click;
+	}
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", subject=" + subject + ", content=" + content + ", postTime=" + postTime
+				+ ", updateTime=" + updateTime + ", member=" + member + ", click=" + click + "]";
+	}
 	
 	
 }
