@@ -18,6 +18,8 @@ public class Article {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
+	@ManyToOne
+	private Category category;
 	@Column(name="SUBJECT")
 	private String subject;
 	@Column(name="CONTENT")
@@ -27,7 +29,7 @@ public class Article {
 	@Column(name="UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
 	@ManyToOne
-	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
+//	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
 	@Column(name="CLICK")
 	private Long click;
