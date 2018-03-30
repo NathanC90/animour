@@ -1,7 +1,5 @@
 package org.iii.ee100.animour.forum.web;
 
-import java.util.ArrayList;
-
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +44,7 @@ public class ForumController {
 
 	@RequestMapping(path= {"/forum/update"}, method={RequestMethod.POST})
 	public String update(Article article,Model model) {
-		forumService.update(article);;
+		forumService.update(article);
 		model.addAttribute("updateArticle",article);
 		return "/forum/crudResult";
 	}
