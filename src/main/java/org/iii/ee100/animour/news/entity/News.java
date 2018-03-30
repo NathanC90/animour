@@ -12,28 +12,28 @@ import javax.persistence.Table;
 public class News {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="SEQNO")
 	private Long seqno;
 	@Column(name="SUBJECT")
 	private String subject;
 	@Column(name="CONTENT")
 	private String content;
-	@Column(name="PUBLISHTIME")
+	@Column(name="PUBLISH_TIME")
 	private java.sql.Date publishTime;
-	@Column(name="PUBLISHTIMEEND")
+	@Column(name="PUBLISH_TIME_END")
 	private java.sql.Date publishTimeEnd;
-	@Column(name="CREATEUSER")
+	@Column(name="CREATE_USER")
 	private String createUser;
-	@Column(name="CREATETIME")
+	@Column(name="CREATE_TIME")
 	private java.sql.Timestamp createTime;
-	@Column(name="UPDATEUSER")
+	@Column(name="UPDATE_USER")
 	private String updateUser;
-	@Column(name="UPDATETIME")
+	@Column(name="UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
-	@Column(name="ISDEL")
+	@Column(name="IS_DEL")
 	private String isDel;
-	@Column(name="ISON")
+	@Column(name="IS_ON")
 	private String isOn;
 	
 	
