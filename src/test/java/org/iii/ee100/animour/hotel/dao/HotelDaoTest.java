@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.hotel.dao;
 
-import static org.junit.Assert.fail;
 
 import org.iii.ee100.animour.hotel.entity.Hotel;
 import org.junit.Test;

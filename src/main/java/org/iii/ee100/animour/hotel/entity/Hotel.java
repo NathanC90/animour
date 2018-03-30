@@ -14,15 +14,15 @@ public class Hotel {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID")
 	private Long id;
-	@Column(name="ONWER")
-	private String onwer;
+	@Column(name="OWNER")
+	private String owner;
 	@Column(name="TYPE")
 	private String type;
 	@Column(name="TOTAL")
 	private int total;
 	@Column(name="SPECIE")
 	private String specie;
-	@Column(name="DOGNAME")
+	@Column(name="DOG_NAME")
 	private String dogName;
 	@Column(name="CHECKIN")
 	private java.sql.Timestamp checkIn;
@@ -30,16 +30,16 @@ public class Hotel {
 
 	@Override
 	public String toString() {
-		return "HotelBean [hotelId=" + id + ", onwer=" + onwer + ", type=" + type + ", total=" + total
+		return "HotelBean [Id=" + id + ", owner=" + owner + ", type=" + type + ", total=" + total
 				+ ", species=" + specie + ", dogName=" + dogName + ", checkIn=" + checkIn +"\n";
 	}
 
 	public String getOnwer() {
-		return onwer;
+		return owner;
 	}
 
 	public void setOnwer(String onwer) {
-		this.onwer = onwer;
+		this.owner = onwer;
 	}
 
 	public String getType() {
