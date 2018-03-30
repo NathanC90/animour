@@ -1,6 +1,6 @@
 package org.iii.ee100.animour.member.entity;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,10 +13,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.member.dao.MemberDao;
 
 @Entity
 @Table(name="MEMBER")
 public class Member {
+	
+		
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
@@ -39,9 +42,10 @@ public class Member {
 //	String address;//地址
 	
 	@OneToMany(
-			cascade= CascadeType.DETACH,fetch=FetchType.LAZY
+			mappedBy="member"
+			,cascade= {CascadeType.ALL}
 	)
-	private Set<Article> article;
+	private List<Article> article;
 	
 	
 	
@@ -108,15 +112,28 @@ public class Member {
 		this.email = email;
 	}
 
-	public Set<Article> getArticle() {
+	public List<Article> getArticle() {
 		return article;
 	}
 
-	public void setArticle(Set<Article> article) {
+	public void setArticle(List<Article> article) {
 		this.article = article;
 	}
-	
 
+	public Member(String account, String password, String name) {
+		super();
+		this.account = account;
+		this.password = password;
+		this.name = name;
+	}
+	
+	public Member(String account) {
+		super();
+		this.account = account;
+	}
+
+	public Member() {
+	}
 	
 	
 	
