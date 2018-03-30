@@ -25,13 +25,13 @@ public class AnimalController {
 		return "/halfway/halfwayIndex";
 	}
 	
-	@RequestMapping(path= {"/insertAnimalForm"}, method = {RequestMethod.GET})
+	@RequestMapping(value= "/insertAnimalForm", method = {RequestMethod.GET})
 	public String animalForm() {
 		
 		return "/halfway/InsertAnimalForm";
 	}
 
-	@RequestMapping(path = { "/insertAnimal" }, method = { RequestMethod.POST })
+	@RequestMapping(value =  "/insertAnimal" , method = { RequestMethod.POST })
 	public String insertAnimal(Animal an, Model model) {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		an.setUpload(ts);
@@ -41,7 +41,7 @@ public class AnimalController {
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping(path = { "/updateAnimal" }, method = { RequestMethod.POST })
+	@RequestMapping(value=  "/updateAnimal" , method = { RequestMethod.POST })
 	public String updateAnimal(Animal an, Model model) {
 		if (an != null) {
 			Timestamp ts = new Timestamp(System.currentTimeMillis());
@@ -52,7 +52,7 @@ public class AnimalController {
 		return "/halfway/FindAnimal";
 	}
 
-	@RequestMapping(path = { "/deleteAnimal" }, method = { RequestMethod.GET })
+	@RequestMapping(value = "/deleteAnimal" , method = { RequestMethod.GET })
 	public String deleteAnimal(Animal an, Model model) {
 		an = animalservice.getOne(an.getId());
 		if (an != null) {
