@@ -135,7 +135,7 @@
 
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
+									<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">
 											編號：${animal.id} 綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color} 發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}

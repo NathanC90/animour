@@ -92,7 +92,7 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form name="insertAnimalForm" action="/saveMultipart" method="POST" enctype="multipart/form-data">
+				<form name="insertAnimalForm" action="/insertAnimal" method="POST" enctype="multipart/form-data">
 					<div class="form-group">
 						姓名:<input type="text" class="form-control" id="anname"
 							aria-describedby="emailHelp" name="name" value="${param.name}"
