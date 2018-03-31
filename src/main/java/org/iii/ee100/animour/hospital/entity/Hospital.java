@@ -12,17 +12,25 @@ import javax.persistence.Table;
 public class Hospital {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	Long id;
-//	@Column(name="ID")
-//	String id;
 	@Column(name="NAME")
 	String name;
+	@Column(name="ENGLISHNAME")
+	String englishName;	
+	
 	@Column(name="TEL")
 	String tel;
 	@Column(name="ADDRESS")
 	String address;
+	@Column(name="POSTCODE")
+	String postcode;
+	@Override
+	public String toString() {
+		return "Hospital [id=" + id + ", name=" + name + ", tel=" + tel + ", address=" + address + ", postcode="
+				+ postcode + "]";
+	}
 	public Long getId() {
 		return id;
 	}
@@ -47,10 +55,13 @@ public class Hospital {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "Hospital [id=" + id + ", name=" + name + ", tel=" + tel + ", address=" + address + "]";
+	public String getPostcode() {
+		return postcode;
 	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+	
 	
 
 

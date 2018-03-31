@@ -44,6 +44,7 @@ public class Member {
 	@OneToMany(
 			mappedBy="member"
 			,cascade= {CascadeType.ALL}
+//			,fetch=FetchType.EAGER
 	)
 	private List<Article> article;
 	
