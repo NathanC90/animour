@@ -17,12 +17,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AnimalDao {
 
-	private static final String insSql = "INSERT INTO animal(name, specie, color, found, upload, city, district) VALUES(?, ?, ?, ?, ?, ?, ?)";
+	private static final String insSql = "INSERT INTO animal(name, specie, color, found, upload, city, district, file_name) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 	private static final String upSql = "UPDATE animal SET name=?, specie=?, color=?, found=?, upload=?, city=?, district=? WHERE animalId = ?";
 	private static final String delSql = "DELETE FROM animal WHERE animalId=?";
-	private static final String slcSql = "SELECT animalId, name, specie, color, found, upload, city, district FROM animal ORDER BY animalId";
+	private static final String slcSql = "SELECT animalId, name, specie, color, found, upload, city, district, file_name FROM animal ORDER BY animalId";
 	private static final String slconeSql = "SELECT animalId, name, specie, color, found, upload, city, district  FROM animal WHERE animalId=?";
-	private static final String slc6 = "SELECT animalId, name, specie, color, found, upload, city, district FROM animal ORDER BY upload DESC FETCH FIRST 6 ROWS ONLY";
+	private static final String slc6 = "SELECT animalId, name, specie, color, found, upload, city, district, file_name  FROM animal ORDER BY upload DESC FETCH FIRST 6 ROWS ONLY";
 	
 	@Autowired
 	DataSource dataSource;
@@ -45,7 +45,7 @@ public class AnimalDao {
 			pstmt.setTimestamp(5, now);
 			pstmt.setString(6, animal.getCity());
 			pstmt.setString(7, animal.getDistrict());
-			//pstmt.setBlob(8, animal.getImage());
+			pstmt.setString(8, animal.getFileName());
 			pstmt.executeUpdate();
 
 			rs = pstmt.getGeneratedKeys();
@@ -134,6 +134,7 @@ public class AnimalDao {
 				an.setUpload(rs.getTimestamp("upload"));
 				an.setCity(rs.getString("city"));
 				an.setDistrict(rs.getString("district"));
+				an.setFileName(rs.getString("file_name"));
 
 				animals.add(an);
 			}
@@ -209,6 +210,7 @@ public class AnimalDao {
 				an.setUpload(rs.getTimestamp("upload"));
 				an.setCity(rs.getString("city"));
 				an.setDistrict(rs.getString("district"));
+				an.setFileName(rs.getString("file_name"));
 				
 				sixanimals.add(an);
 			}

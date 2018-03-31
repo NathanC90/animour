@@ -210,7 +210,9 @@
 
 							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
+<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
+<!-- 										width="100px" alt="待領養小貓"> -->
+																			<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}"
 										width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
