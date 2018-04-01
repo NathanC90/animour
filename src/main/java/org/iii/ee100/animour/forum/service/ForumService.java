@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.forum.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;

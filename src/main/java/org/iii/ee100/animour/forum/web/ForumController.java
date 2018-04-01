@@ -1,5 +1,7 @@
 package org.iii.ee100.animour.forum.web;
 
+import java.util.List;
+
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ForumController {
 	@Autowired
 	ForumService forumService;
-	
-	
+		
 	@RequestMapping("/forum")
 	public String Forum(Model model) {
 
@@ -22,7 +23,18 @@ public class ForumController {
 	
 	@RequestMapping(path= {"/forum/findAll"}, method={RequestMethod.GET})
 	public String findAll(Model model) {
-			model.addAttribute("articles", forumService.getAll());
+		List<Article> articles = forumService.getAll();
+		
+		//試著抓出Member的帳號與文章分類存入article的memberAccount屬性中
+		for(Article article:articles) {
+			String memberAccount = article.getMember().getAccount();
+			article.setMemberAccount(memberAccount);
+			
+			String categoryName = article.getCategory().getName();
+			article.setCategoryName(categoryName);
+		}
+		
+		model.addAttribute("articles", forumService.getAll());
 		return "/forum/article";
 	}
 

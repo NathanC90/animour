@@ -270,11 +270,11 @@
                   </li>
                   <li>
                     <i class="fa fa-user"></i>
-                    <a href="#">${article.postName}</a>
+                    <a href="#">${article.memberAccount}</a>
                   </li>
                   <li>
                     <i class="fa fa-pencil-square-o"></i>
-                    <a href="#">Pet</a>
+                    <a href="#">${article.categoryName}</a>
                   </li>
                   <li>
                     <i class="fa fa-comments"></i>
