@@ -5,6 +5,7 @@ create table animal(
     name varchar(50),
     specie varchar(50) NOT NULL, 
 	color varchar(50),
+	gender varchar(50),
 	found date,
 	upload timestamp,
 	city varchar(50) NOT NULL, 

@@ -28,6 +28,9 @@ public class Animal {
 	@Column(name="COLOR")
 	private String color;
 	
+	@Column(name="GENDER")
+	private String gender;
+	
 	@Column(name="FOUND")
 	private java.sql.Date found;
 	
