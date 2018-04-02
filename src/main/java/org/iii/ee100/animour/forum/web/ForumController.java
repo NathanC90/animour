@@ -34,7 +34,7 @@ public class ForumController {
 			article.setCategoryName(categoryName);
 		}
 		
-		model.addAttribute("articles", forumService.getAll());
+		model.addAttribute("articles", articles);
 		return "/forum/article";
 	}
 

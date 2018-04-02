@@ -132,10 +132,11 @@ public class Article {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", category=" + category + ", categoryName=" + categoryName + ", subject="
-				+ subject + ", content=" + content + ", postTime=" + postTime + ", updateTime=" + updateTime
-				+ ", member=" + member + ", memberAccount=" + memberAccount + ", click=" + click + "]";
+		return "Article [id=" + id + ", categoryName=" + categoryName + ", subject=" + subject + ", content=" + content
+				+ ", postTime=" + postTime + ", updateTime=" + updateTime + ", memberAccount=" + memberAccount
+				+ ", click=" + click + "]";
 	}
+
 
 
 	
