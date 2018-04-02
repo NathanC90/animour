@@ -59,7 +59,6 @@ public class IndexController {
 //		model.addAttribute("articles", articles);
 		
 		List<Article> articles = forumService.getAll();
-		System.out.println(articles);
 		model.addAttribute("articles", articles);
 
 		List<Product> product = productService.getAll();
@@ -79,10 +78,5 @@ public class IndexController {
 
 		return "/index";
 	}
-
-	// @RequestMapping("/hello")
-	// public String hello() {
-	// return "/hello";
-	// }
 
 }

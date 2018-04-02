@@ -33,7 +33,7 @@
 
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/halfway"
 					aria-haspopup="true" aria-expanded="false">中途專區</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/halfway">認養搜尋</a> 
@@ -59,7 +59,7 @@
 							class="dropdown-item" href="">線上訂房</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/hospitalindex"
 					aria-haspopup="true" aria-expanded="false">寵物醫院</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/hospitalindex">各區醫院</a>
@@ -67,7 +67,7 @@
 						<!-- 								 <a class="dropdown-item" href="">看診進度查詢</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/forum/findAll"
 					aria-haspopup="true" aria-expanded="false">部落格分享</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/forum/findAll">本周最新</a>

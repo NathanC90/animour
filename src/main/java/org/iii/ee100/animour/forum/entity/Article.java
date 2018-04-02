@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.iii.ee100.animour.member.entity.Member;
 
@@ -22,21 +23,29 @@ public class Article {
 	@ManyToOne
 	private Category category;
 	
+	@Transient
+	private String categoryName;
+	
 	@Column(name="SUBJECT")
 	private String subject;
 	
-	@Column(name="CONTENT")
+	@Column(name="CONTENT",length=20000)
 	private String content;
 	
 	@Column(name="POST_TIME")
+//	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	private java.sql.Timestamp postTime;
 	
 	@Column(name="UPDATE_TIME")
+//	@DateTimeFormat(pattern = "yyyy/MM/dd HH:mm")
 	private java.sql.Timestamp updateTime;
 	
 	@ManyToOne
 //	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
+	
+	@Transient
+	private String memberAccount;
 	
 	@Column(name="CLICK")
 	private Long click;
@@ -49,6 +58,22 @@ public class Article {
 		this.id = id;
 	}
 	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 	public String getSubject() {
 		return subject;
 	}
@@ -89,6 +114,14 @@ public class Article {
 		this.member = member;
 	}
 	
+	public String getMemberAccount() {
+		return memberAccount;
+	}
+
+	public void setMemberAccount(String memberAccount) {
+		this.memberAccount = memberAccount;
+	}
+
 	public Long getClick() {
 		return click;
 	}
@@ -96,12 +129,17 @@ public class Article {
 	public void setClick(Long click) {
 		this.click = click;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Article [id=" + id + ", subject=" + subject + ", content=" + content + ", postTime=" + postTime
-				+ ", updateTime=" + updateTime + ", member=" + member + ", click=" + click + "]";
+		return "Article [id=" + id + ", categoryName=" + categoryName + ", subject=" + subject + ", content=" + content
+				+ ", postTime=" + postTime + ", updateTime=" + updateTime + ", memberAccount=" + memberAccount
+				+ ", click=" + click + "]";
 	}
+
+
+
+	
 	
 	
 }
