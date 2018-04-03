@@ -8,7 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;import org.springframework.test.annotation.DirtiesContext.MethodMode;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="ADOPTION")
@@ -31,13 +32,14 @@ public class Adoption {
 	@Column(name="GIVE_MEMBER_ID")
 	private Long giveMemeberId;
 	
-	@Column(name="ANIMAL_IDS")
-	private List<Long> animalIds;
+	@Transient
+	private List<Animal> animals;
+	
 	
 	@Override
 	public String toString() {
 		return "Adoption [id=" + id + ", orderDate=" + orderDate + ", feedback=" + feedback + ", adoptMemberId="
-				+ adoptMemberId + ", giveMemeberId=" + giveMemeberId + ", animalIds=" + animalIds + "]";
+				+ adoptMemberId + ", giveMemeberId=" + giveMemeberId + ", animals=" + animals + "]";
 	}
 	public Long getId() {
 		return id;
@@ -69,11 +71,11 @@ public class Adoption {
 	public void setGiveMemeberId(Long giveMemeberId) {
 		this.giveMemeberId = giveMemeberId;
 	}
-	public List<Long> getAnimalIds() {
-		return animalIds;
+	public List<Animal> getAnimals() {
+		return animals;
 	}
-	public void setAnimalIds(List<Long> animalIds) {
-		this.animalIds = animalIds;
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
 	}
 	
 }

@@ -1,8 +1,6 @@
 package org.iii.ee100.animour.halfway.entity;
 
-import java.sql.Blob;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +16,9 @@ public class Animal {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID")
 	private Long id;
+	
+	@Column(name="STATUS")
+	private String status;
 	
 	@Column(name="NAME") 
 	private String name;
@@ -48,9 +49,12 @@ public class Animal {
 	
 	@Column(name="CARD_NUM")
 	private String cardNum;
+
+	@Column(name="NEUTER")
+	private String neuter;
 	
-	@Column(name="IMAGE")
-	private Blob image;
+	@Column(name="REMARK")
+	private String remark;
 	
 	@Column(name="FILE_NAME")
 	private String fileName;
@@ -58,11 +62,37 @@ public class Animal {
 	@Column(name="MEMBER_ID")
 	private Long memberId;
 	
-
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", name=" + name + ", specie=" + specie + ", color=" + color + ", found=" + found + ", upload=" + upload + ", city=" + city
-				+ ", district=" + district + ", hospitalized=" + hospitalized + ", cardNum=" + cardNum + ", image=" + image + ", memberId=" + memberId + "]";
+		return "Animal [id=" + id + ", status=" + status + ", name=" + name + ", specie=" + specie + ", color=" + color
+				+ ", gender=" + gender + ", found=" + found + ", upload=" + upload + ", city=" + city + ", district="
+				+ district + ", hospitalized=" + hospitalized + ", cardNum=" + cardNum + ", neuter=" + neuter
+				+ ", remark=" + remark + ", fileName=" + fileName + ", memberId=" + memberId + "]";
+	}
+// Getter/Setter
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getNeuter() {
+		return neuter;
+	}
+	public void setNeuter(String neuter) {
+		this.neuter = neuter;
+	}
+	public String getRemark() {
+		return remark;
+	}
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 	public Long getId() {
 		return id;
@@ -123,12 +153,6 @@ public class Animal {
 	}
 	public void setCardNum(String cardNum) {
 		this.cardNum = cardNum;
-	}
-	public Blob getImage() {
-		return image;
-	}
-	public void setImage(Blob image) {
-		this.image = image;
 	}
 	public String getFileName() {
 		return fileName;
