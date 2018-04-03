@@ -45,7 +45,7 @@ public class IndexController {
 //		List<Animal> animals = animalservice.getSix();
 //		model.addAttribute("animals", animals);
 		
-		List<Animal> animals = animalservice.getAll();
+		List<Animal> animals = animalservice.getSix();
 		model.addAttribute("animals", animals);
 
 //		List<Hospital> hospitalls = hospitalService.getThreeForIndex();

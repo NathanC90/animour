@@ -48,6 +48,9 @@ public class AnimalController {
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		an.setUpload(ts);
+		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
+		animalservice.insert(an);
+		
 		// 圖片
 		String fileName = null;
 		String uploadRootPath = request.getServletContext().getRealPath("images/halfway/animal/");
@@ -64,7 +67,8 @@ public class AnimalController {
 
 		if ((!image.isEmpty()) && ((fileType.equals("jpeg")) || (fileType.equals("png")))) {
 			try {
-				fileName = image.getOriginalFilename();
+				String originName = image.getOriginalFilename();
+				fileName = "id_"+an.getId()+originName.substring(originName.lastIndexOf(".")).trim();
 				// 把讀進來的檔案，轉成byte陣列
 				byte[] bytes = image.getBytes();
 				BufferedOutputStream buffout = new BufferedOutputStream(
@@ -79,7 +83,8 @@ public class AnimalController {
 		}
 		System.out.println(fileName);
 		an.setFileName(fileName);
-		animalservice.insert(an);
+		// 儲存圖片之後，更新檔名
+		animalservice.update(an);
 		model.addAttribute("inanimal", an);
 
 		return "/halfway/FindAnimal";

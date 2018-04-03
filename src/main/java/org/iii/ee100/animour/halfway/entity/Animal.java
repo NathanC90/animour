@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Animal {
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
 	
@@ -44,7 +44,7 @@ public class Animal {
 	@Column(name="DISTRICT")
 	private String district;
 	
-	@Column(name="HOSPITALIZED")
+	@Column(name="HOSPITALIZED" , columnDefinition="BOOLEAN default 'FALSE'")
 	private boolean hospitalized;
 	
 	@Column(name="CARD_NUM")
@@ -53,7 +53,7 @@ public class Animal {
 	@Column(name="NEUTER")
 	private String neuter;
 	
-	@Column(name="REMARK")
+	@Column(name="REMARK", columnDefinition="TEXT")
 	private String remark;
 	
 	@Column(name="FILE_NAME")
