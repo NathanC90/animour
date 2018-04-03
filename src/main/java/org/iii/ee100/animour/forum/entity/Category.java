@@ -1,13 +1,10 @@
 package org.iii.ee100.animour.forum.entity;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="CATEGORY")
@@ -16,11 +13,9 @@ public class Category {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
+	
 	@Column(name="NAME")
 	private String name;
-	@OneToMany
-	private Set<Article> article;
-	
 	
 	@Override
 	public String toString() {

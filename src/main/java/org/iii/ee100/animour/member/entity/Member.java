@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,13 +12,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.forum.entity.Article;
-import org.iii.ee100.animour.member.dao.MemberDao;
 
 @Entity
 @Table(name="MEMBER")
 public class Member {
 	
-		
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
@@ -47,9 +44,6 @@ public class Member {
 //			,fetch=FetchType.EAGER
 	)
 	private List<Article> article;
-	
-	
-	
 
 	@Override
 	public String toString() {
