@@ -63,7 +63,7 @@
 					aria-haspopup="true" aria-expanded="false">寵物醫院</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/hospitalindex">各區醫院</a>
-						<!-- 								 <a class="dropdown-item" href="">線上掛號</a> -->
+						<a class="dropdown-item" href="/hospital/appointmentdate">線上掛號</a>
 						<!-- 								 <a class="dropdown-item" href="">看診進度查詢</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
