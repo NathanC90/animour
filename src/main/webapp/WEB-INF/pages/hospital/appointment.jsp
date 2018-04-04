@@ -15,7 +15,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Animour</title>
+<title>填寫預約資料</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -431,7 +431,7 @@
           <!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
 		<form name="insertdateForm" action="/insert_app_date" method="POST">
-			<h3>新增動物醫院資料</h3>
+			<h3>填寫預約資料</h3>
 			<table border="1">
 				<tbody>
 					<tr bgcolor='tan'>
