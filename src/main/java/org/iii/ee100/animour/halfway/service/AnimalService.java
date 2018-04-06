@@ -40,6 +40,10 @@ public class AnimalService {
 	public List<Animal> getSix(){
 		return animalDao.findTop6ByOrderByUploadDesc();
 	}
+	
+	public List<Animal> getAllDesc(){
+		return animalDao.findByOrderByUploadDesc();
+	}
 
 
 	

@@ -90,8 +90,6 @@
 				<div class="page-header-area">
 					<div class="page-header-content">
 						<h2>中途專區</h2>
-							<img class="card-img-top" src="/halfway/image"
-										width="100px" alt="待領養小貓">
 					</div>
 				</div>
 			</div>
@@ -100,7 +98,7 @@
 	<!-- Page Header End -->
 
 	<!-- Call to action section -->
-	<section class="cta-section section">
+	<section class="cta-section section" style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height:100%; position: relative;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -348,7 +346,7 @@
 						</a> <a href="#" title="Sports Template for Joomla"> <img
 							src="/images/flicker/img2.jpg" alt="">
 						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/flicker/img3.jpg" alt="">
+							src="/images/halfway/halfwayindex.jpg" alt="">
 						</a>
 					</div>
 				</div>

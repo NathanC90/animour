@@ -27,7 +27,7 @@ public class AnimalController {
 
 	@RequestMapping(path = { "/halfway" }, method = { RequestMethod.GET })
 	public String index(Model model) {
-		List<Animal> animals = animalservice.getAll();
+		List<Animal> animals = animalservice.getAllDesc();
 		model.addAttribute("animals", animals);
 
 		return "/halfway/halfwayIndex";
@@ -36,7 +36,7 @@ public class AnimalController {
 	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
 	public String animalForm() {
 
-		return "/halfway/InsertAnimalForm";
+		return "/halfway/insertAnimalForm";
 	}
 
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
@@ -87,7 +87,7 @@ public class AnimalController {
 		animalservice.update(an);
 		model.addAttribute("inanimal", an);
 
-		return "/halfway/FindAnimal";
+		return "/halfway/insertSuccess";
 	}
 
 	@RequestMapping(value = "/updateAnimal", method = { RequestMethod.POST })

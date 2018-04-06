@@ -9,5 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface AnimalDao extends CrudRepository<Animal, Long> {
 	//List<Animal> findTop6ByUpload(Timestamp upload, Pageable pageable);
+	List<Animal> findByOrderByUploadDesc();
 	List<Animal> findTop6ByOrderByUploadDesc();
 }
