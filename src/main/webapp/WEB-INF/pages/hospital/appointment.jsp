@@ -50,202 +50,7 @@
     
 <!-- style/css -->
 <style>
-.table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 1rem;
-	background-color: transparent
-}
 
-.table td, .table th {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #dee2e6
-}
-
-.table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6
-}
-
-.table tbody+tbody {
-	border-top: 2px solid #dee2e6
-}
-
-.table .table {
-	background-color: #fff
-}
-
-.table-sm td, .table-sm th {
-	padding: .3rem
-}
-
-.table-bordered {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered td, .table-bordered th {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered thead td, .table-bordered thead th {
-	border-bottom-width: 2px
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
-}
-
-.table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-primary, .table-primary>td, .table-primary>th {
-	background-color: #b8daff
-}
-
-.table-hover .table-primary:hover {
-	background-color: #9fcdff
-}
-
-.table-hover .table-primary:hover>td, .table-hover .table-primary:hover>th
-	{
-	background-color: #9fcdff
-}
-
-.table-secondary, .table-secondary>td, .table-secondary>th {
-	background-color: #d6d8db
-}
-
-.table-hover .table-secondary:hover {
-	background-color: #c8cbcf
-}
-
-.table-hover .table-secondary:hover>td, .table-hover .table-secondary:hover>th
-	{
-	background-color: #c8cbcf
-}
-
-.table-success, .table-success>td, .table-success>th {
-	background-color: #c3e6cb
-}
-
-.table-hover .table-success:hover {
-	background-color: #b1dfbb
-}
-
-.table-hover .table-success:hover>td, .table-hover .table-success:hover>th
-	{
-	background-color: #b1dfbb
-}
-
-.table-info, .table-info>td, .table-info>th {
-	background-color: #bee5eb
-}
-
-.table-hover .table-info:hover {
-	background-color: #abdde5
-}
-
-.table-hover .table-info:hover>td, .table-hover .table-info:hover>th {
-	background-color: #abdde5
-}
-
-.table-warning, .table-warning>td, .table-warning>th {
-	background-color: #ffeeba
-}
-
-.table-hover .table-warning:hover {
-	background-color: #ffe8a1
-}
-
-.table-hover .table-warning:hover>td, .table-hover .table-warning:hover>th
-	{
-	background-color: #ffe8a1
-}
-
-.table-danger, .table-danger>td, .table-danger>th {
-	background-color: #f5c6cb
-}
-
-.table-hover .table-danger:hover {
-	background-color: #f1b0b7
-}
-
-.table-hover .table-danger:hover>td, .table-hover .table-danger:hover>th
-	{
-	background-color: #f1b0b7
-}
-
-.table-light, .table-light>td, .table-light>th {
-	background-color: #fdfdfe
-}
-
-.table-hover .table-light:hover {
-	background-color: #ececf6
-}
-
-.table-hover .table-light:hover>td, .table-hover .table-light:hover>th {
-	background-color: #ececf6
-}
-
-.table-dark, .table-dark>td, .table-dark>th {
-	background-color: #c6c8ca
-}
-
-.table-hover .table-dark:hover {
-	background-color: #b9bbbe
-}
-
-.table-hover .table-dark:hover>td, .table-hover .table-dark:hover>th {
-	background-color: #b9bbbe
-}
-
-.table-active, .table-active>td, .table-active>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover>td, .table-hover .table-active:hover>th
-	{
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table .thead-dark th {
-	color: #fff;
-	background-color: #212529;
-	border-color: #32383e
-}
-
-.table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: #dee2e6
-}
-
-.table-dark {
-	color: #fff;
-	background-color: #212529
-}
-
-.table-dark td, .table-dark th, .table-dark thead th {
-	border-color: #32383e
-}
-
-.table-dark.table-bordered {
-	border: 0
-}
-
-.table-dark.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(255, 255, 255, .05)
-}
-
-.table-dark.table-hover tbody tr:hover {
-	background-color: rgba(255, 255, 255, .075)
-}
 </style>
 <!-- style/css:end -->    
 </head>
@@ -432,32 +237,33 @@
 					<!-- 每頁不同的內容從這裡開始 -->
 		<form name="insertdateForm" action="/insert_app_date" method="POST">
 			<h3>填寫預約資料</h3>
-			<table border="1">
+			<table id="table1"
+						class="table table-bordered table-striped table-hover">
 				<tbody>
-					<tr bgcolor='tan'>
+					<tr>
 						<td width="120" height="40">醫院:</td>
 						<td width="600" height="40" align="left">${onehospital.id} , ${onehospital.name}</td>
 					</tr>
 					
-					<tr bgcolor='tan'>
+					<tr>
 						<td width="120" height="40">姓名:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="name" value="${param.name}" type="text"
 							size="14" style="text-align: left">
 					</tr>
-					<tr bgcolor='tan'>
+					<tr>
 						<td width="120" height="40">手機:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="cell" value="${param.cell}" type="text"
 							size="14" style="text-align: left">
 					</tr>
-					<tr bgcolor='tan'>
+					<tr>
 						<td width="120" height="40">信箱:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="email" value="${param.email}" type="text"
 							size="14" style="text-align: left"></td>
 					</tr>				
-					<tr bgcolor='tan'>
+					<tr>
 						<td width="120" height="40">時間:</td>
 						<td width="600" height="40" align="left">
 						<input id='num'
@@ -522,122 +328,8 @@
 
 	
 	<!-- Footer Section -->
-	<footer>
-		<!-- Container Starts -->
-		<div class="container">
-			<!-- Row Starts -->
-			<div class="row section">
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">About Us</h3>
-					<p></p>
-					<ul class="mb-3">
-						<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
-						<!-- 						<li><i class="fa fa-phone"></i></li> -->
-						<!-- 						<li><i class="fa fa-phone"></i></li> -->
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">Quick Links</h3>
-					<ul class="menu">
-						<li><a href="#">首頁</a></li>
-						<li><a href="#">中途專區</a></li>
-						<li><a href="#">最新活動專區</a></li>
-						<li><a href="#">寵物市集</a></li>
-						<li><a href="#">最新空房</a></li>
-						<li><a href="#">醫院資訊專區</a></li>
-						<li><a href="#">THE BLOG</a></li>
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">Popular Posts</h3>
-					<ul class="image-list">
-						<li>
-							<figure class="overlay">
-								<img class="img-fluid" src="" alt="">
-							</figure>
-							<div class="post-content">
-								<h6 class="post-title">
-									<a href="blog-single.html"></a>
-								</h6>
-								<div class="meta">
-									<span class="date"></span>
-								</div>
-							</div>
-						</li>
-						<li>
-							<figure class="overlay">
-								<img class="img-fluid" src="" alt="">
-							</figure>
-							<div class="post-content">
-								<h6 class="post-title">
-									<a href="blog-single.html"></a>
-								</h6>
-								<div class="meta">
-									<span class="date"></span>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">EMail Us</h3>
-					<form>
-						<input type="text" placeholder="Email here">
-						<button type="submit">
-							<i class="fa fa-paper-plane-o"></i>
-						</button>
-					</form>
-					<div class="flicker-gallery">
-						<h3 class="small-title">Social Media Link</h3>
-						<a href="#" title="Pan Masala"> <img
-							src="/images/flicker/img1.jpg" alt="">
-						</a> <a href="#" title="Sports Template for Joomla"> <img
-							src="/images/flicker/img2.jpg" alt="">
-						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/flicker/img3.jpg" alt="">
-						</a>
-					</div>
-				</div>
-				<!-- Footer Widget Ends -->
-			</div>
-			<!-- Row Ends -->
-		</div>
-		<!-- Container Ends -->
-
-		<!-- Copyright -->
-		<div id="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<p class="copyright-text">
-							© 2018 Animour All right reserved, Designed by <a href="#">iii-ee100</a>
-						</p>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<div class="social-footer text-right">
-							<a href="#"> <i class="fa fa-facebook icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-twitter icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-linkedin icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-google-plus icon-round"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Copyright  End-->
-
-	</footer>
+	<!-- (footer.jsp) -->
+			<jsp:include page="../footer.jsp"></jsp:include>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->

@@ -15,7 +15,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>醫院清單列表</title>
+<title>Animour</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -430,36 +430,30 @@
         <div class="col-md-9">
           <!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
-					<table id="table1"
+
+	<h3>預約資料</h3>
+	<table id="table1"
 						class="table table-bordered table-striped table-hover">
-						<thead>
-							<tr>
-								<th>醫院名稱</th>
-								<th>電話</th>
-								<th>地址</th>
-								<th>預約</th>
-								
-							</tr>
-						</thead>
-						<tbody>
-					<c:forEach var="hosp" items="${alllist}">
-					<tr>
-					<td>${hosp.name}</td>
-					<td>${hosp.tel}</td>
-					<td>${hosp.address}</td>
-					<td>
-					<form method="POST" action="/hospital/appointmentdate">
-					<input type="hidden" name="id" value="${hosp.id}" />
-					<input type="submit" value="預約" name="id"/>
-			
-					</form>
-					
-					
-					</td>
-					</tr>
-			</c:forEach>
-						</tbody>
-					</table>
+						
+		<tbody>
+			<tr>
+				<th>流水號</th>
+				<th>醫院名稱</th>
+				<th>主人姓名</th>
+				<th>電話</th>
+				<th>預約時間</th>
+
+
+			</tr>
+				<tr>
+					<td>${inserta.id} </td>
+					<td>${inserta.hospital_id} ,${hospital_insertApp.id} : ${hospital_insertApp.name}</td>
+					<td>${inserta.name}</td>
+					<td>${inserta.cell}</td>
+					<td>${inserta.targetTime}</td>
+				</tr>
+		</tbody>
+	</table>
 					<!-- 每頁不同的內容到這裡結束 -->
 
         </div>
@@ -508,8 +502,7 @@
 	
 	<!-- Footer Section -->
 	<!-- (footer.jsp) -->
-	<jsp:include page="../footer.jsp"></jsp:include>
-	<!-- Footer Section End-->
+			<jsp:include page="../footer.jsp"></jsp:include>	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
 	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>

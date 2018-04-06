@@ -24,16 +24,18 @@ public class HospitalIndexController {
 
 	@Autowired
 	HospitalService hospitalService;
+	@Autowired
+	AppointmentService appointmentService;
 	
-	
-
-	@RequestMapping("/hospitalindex")
+	//寵物醫院&各區醫院
+	@RequestMapping("/hospital")
 	public String index2(Model model) {
 		List<Hospital> hospital =hospitalService.getAll();
 		model.addAttribute("alllist", hospital);		
 		return "/hospital/hospitalindex";
 	}
 
+	//預約醫院
 	@RequestMapping(path= {"/hospital/appointmentdate"},method={RequestMethod.POST})
 	public String order(Model model, Hospital hospital) {
 		if(hospital !=null) {
@@ -47,9 +49,8 @@ public class HospitalIndexController {
 		}
 		}
 
-	@Autowired
-	AppointmentService appointmentService;	
 	
+	//填寫預約資訊
 	@RequestMapping("/insert_app_date")
 	public String order(Model model,Appointment appointment
 			,Hospital hospital
@@ -65,7 +66,9 @@ public class HospitalIndexController {
 		return "/hospital/appointmentList";
 	}
 	
-	@RequestMapping("/findOrder")
+	
+	//查詢預約資料
+	@RequestMapping("/findorder")
 	public String order(Model model
 			) {
 		Iterable<Appointment> allorder=appointmentService.getAll();

@@ -15,7 +15,10 @@ public class AppointmentService {
 	public void insertAppoint(Appointment appointment)  {
 		appointmentdao.save(appointment);
 	}
-
+	
+	public void deleteAppoint(long id) {
+		appointmentdao.delete(id);
+	}
 	
 	public Appointment getOne(long id)  {
 		return appointmentdao.findOne(id);
