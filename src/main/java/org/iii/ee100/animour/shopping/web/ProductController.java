@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ProductController {
 	
 	@Autowired
-	ProductService productService;
+	private ProductService productService;
 	
 	@InitBinder
 	public void registerCustomerEditor(WebDataBinder webDataBinder) {
@@ -27,7 +27,7 @@ public class ProductController {
 	
 	@RequestMapping("/product/index")
 	public String productIndex(Model model) {
-		model.addAttribute("productAll", productService.getNewSex());
+		model.addAttribute("productAll", productService.getAll());
 		return "/shopping/ProductIndex";
 	}
 	

@@ -61,8 +61,8 @@ public class IndexController {
 		List<Article> articles = forumService.getAll();
 		model.addAttribute("articles", articles);
 
-		List<Product> product = productService.getAll();
-		model.addAttribute("productBeans", product);
+		List<Product> product = productService.getNewSex();
+		model.addAttribute("product", product);
 
 		List<News> bean = newsService.getAll();
 		model.addAttribute("allNews", bean);
