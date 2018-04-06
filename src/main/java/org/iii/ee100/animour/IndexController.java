@@ -58,7 +58,7 @@ public class IndexController {
 //		System.out.println(articles);
 //		model.addAttribute("articles", articles);
 		
-		List<Article> articles = forumService.getAll();
+		List<Article> articles = forumService.getNewPostThree();
 		model.addAttribute("articles", articles);
 
 		List<Product> product = productService.getNewSex();
