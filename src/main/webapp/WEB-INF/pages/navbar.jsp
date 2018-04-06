@@ -59,11 +59,11 @@
 							class="dropdown-item" href="">線上訂房</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/hospitalindex"
+					class="nav-link dropdown-toggle" href="/hospital"
 					aria-haspopup="true" aria-expanded="false">寵物醫院</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/hospitalindex">各區醫院</a>
-						<a class="dropdown-item" href="/hospital/appointmentdate">線上掛號</a>
+						<a class="dropdown-item" href="/hospital">各區醫院</a>
+						<a class="dropdown-item" href="/findorder">預約結果查詢</a>
 						<!-- 								 <a class="dropdown-item" href="">看診進度查詢</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
@@ -113,8 +113,8 @@
 			<li><a href="#">寵物醫院</a>
 				<ul>
 					<li><a href="">各區醫院</a></li>
-					<li><a href="">線上掛號</a></li>
-					<li><a href="">看診進度查詢</a></li>
+					<li><a href="">預約結果查詢</a></li>
+					<li><a href=""></a></li>
 				</ul></li>
 			<li><a href="#">部落格分享</a>
 				<ul>

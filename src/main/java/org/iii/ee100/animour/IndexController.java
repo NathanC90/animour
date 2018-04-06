@@ -48,11 +48,11 @@ public class IndexController {
 		List<Animal> animals = animalservice.getSix();
 		model.addAttribute("animals", animals);
 
-//		List<Hospital> hospitalls = hospitalService.getThreeForIndex();
-//		model.addAttribute("hospitals", hospitalls);
-		
-		List<Hospital> hospitalls = hospitalService.getAll();
+		List<Hospital> hospitalls = hospitalService.getThreeHospital();
 		model.addAttribute("hospitals", hospitalls);
+		
+//		List<Hospital> hospitalls = hospitalService.getAll();
+//		model.addAttribute("hospitals", hospitalls);
 
 //		List<Article> articles = forumService.getNew();
 //		System.out.println(articles);
