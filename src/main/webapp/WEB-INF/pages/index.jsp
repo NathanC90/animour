@@ -230,14 +230,14 @@
 					<!-- 重複的內容開始 -->
 					<div class="container">
 						<div class="row">
-							<c:forEach var="productBeans" items="${productBeans}">
+							<c:forEach var="productBeans" items="${product}">
 								<div class="col-md-4">
 									<div class="card mb-4 box-shadow">
 										<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="100px" alt="待領養小貓">
 										<div class="card-body" style="margin-bottom: 5px">
 											<p class="card-text" style="padding: 0px">商品編號：${productBeans.id}商品名稱：${productBeans.name}</p>
 											<p class="card-text" style="padding: 0px">價格：${productBeans.price}數量：${productBeans.quantity}</p>
-											<p class="card-text" style="padding: 0px">製造日期：${productBeans.make}</p>
+											<p class="card-text" style="padding: 0px">製造日期：${productBeans.makeDate}</p>
 											<p class="card-text" style="padding: 0px">保存期限：${productBeans.expire}</p>
 											<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
 												<div class="btn-group" style="margin: 0px">

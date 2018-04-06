@@ -56,7 +56,7 @@
 					<tr>
 						<td width="120" height="40">製造日期:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="make" value="${param.make}" type="text" size="50"
+							name="make" value="${param.makeDate}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
 					</tr>
 					<tr>
@@ -104,7 +104,7 @@
 					<tr>
 						<td width="120" height="40">製造日期:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="make" value="${param.make}" type="text" size="50"
+							name="make" value="${param.makeDate}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
 					</tr>
 					<tr>

@@ -12,7 +12,7 @@
 	<div>
 		<p>商品編號：${productOne.id}<br>商品名稱：${productOne.name}</p>
 		<p>價格：${productOne.price}<br>數量：${productOne.quantity}</p>
-		<p>製造日期：${productOne.make}<br>保存期限：${productOne.expire}</p>
+		<p>製造日期：${productOne.makeDate}<br>保存期限：${productOne.expire}</p>
 	</div>
 	<hr>
 
@@ -21,7 +21,7 @@
 		<c:forEach var="product" items="${productAll}">
 			<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
 			<p>價格：${product.price}<br>數量：${product.quantity}</p>
-			<p>製造日：${product.make}<br>保存期限：${product.expire}</p>
+			<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 			<hr>
 		</c:forEach>
 	</table>
@@ -35,7 +35,7 @@
 	<div>
 		<p>商品編號：${insertMember.id}<br>產商品名稱：${insertMember.name}</p>
 		<p>價格：${insertMember.price}<br>數量：${insertMember.quantity}</p>
-		<p>製造日：${insertMember.make}<br>保存期限：${insertMember.expire}</p>
+		<p>製造日：${insertMember.makeDate}<br>保存期限：${insertMember.expire}</p>
 	</div>
 	<hr>
 
@@ -43,7 +43,7 @@
 	<div>
 		<p>商品編號：${updateMember.id}<br>產商品名稱：${updateMember.name}</p>
 		<p>價格：${updateMember.price}<br>數量：${updateMember.quantity}</p>
-		<p>製造日：${updateMember.make}<br>保存期限：${updateMember.expire}</p>
+		<p>製造日：${updateMember.makeDate}<br>保存期限：${updateMember.expire}</p>
 	</div>
 </body>
 </html>

@@ -37,8 +37,11 @@ public class ForumService {
 		return articleDao.findOne(id);
 	}
 
-//	public ArrayList<Article> getNew() {
-//		return articleDao.findNew();
-//	}
+	public List<Article> getNewPostThree() {
+		return articleDao.findTop3ByOrderByPostTimeDesc();
+	}
 
+	public List<Article> getNewUpdateFour() {
+		return articleDao.findTop4ByOrderByUpdateTimeDesc();
+	}
 }

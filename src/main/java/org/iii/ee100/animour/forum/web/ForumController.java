@@ -25,7 +25,7 @@ public class ForumController {
 	public String findAll(Model model) {
 		List<Article> articles = forumService.getAll();
 		
-		//試著抓出Member的帳號與文章分類存入article的memberAccount屬性中
+		//試著抓出Member的帳號與文章分類存入article的memberAccount與categoryName屬性中
 		for(Article article:articles) {
 			String memberAccount = article.getMember().getAccount();
 			article.setMemberAccount(memberAccount);
