@@ -1,17 +1,23 @@
 package org.iii.ee100.animour.shopping.web;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
+import java.util.Map;
 
 import org.iii.ee100.animour.shopping.entity.Product;
+import org.iii.ee100.animour.shopping.service.ClassifyService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {
@@ -19,16 +25,31 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private ClassifyService classifyService;
+	
 	@InitBinder
 	public void registerCustomerEditor(WebDataBinder webDataBinder) {
 		webDataBinder.registerCustomEditor(java.sql.Timestamp.class,
 				new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss"), false));
 	}
 	
+	//product and page
 	@RequestMapping("/product/index")
-	public String productIndex(Model model) {
+	public String productIndex(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, 
+			Map<String, Object> map, Model model) {
+		int pageNo = 1;
+		try {
+			pageNo = Integer.parseInt(pageNoStr);
+			if(pageNo < 1 ) {
+				pageNo = 1;
+			}
+		} catch (NumberFormatException e) {}
+		Page<Product> page = productService.getPage(pageNo, 6);
+		map.put("page", page);
 		model.addAttribute("productAll", productService.getAll());
 		return "/shopping/ProductIndex";
+//		return "/shopping/TestCRUDindex";
 	}
 	
 	@RequestMapping(path= {"/selectOneProduct"}, method={RequestMethod.GET})
@@ -53,11 +74,12 @@ public class ProductController {
 		return "/shopping/ProcessProductForm";
 	}
 	
-	@RequestMapping(path= {"/insertProduct"}, method={RequestMethod.POST})
-	public String insertAnimal(Product product, Model model) {
+	//Insert Product
+	@RequestMapping(value="/insertProduct", method={RequestMethod.POST})
+	public String insertProduct(Product product, Model model) {
 		productService.insert(product);
 		model.addAttribute("insertMember", product);
-		return "/shopping/ProcessProductForm";
+		return "redirect:/productPage";
 	}
 	
 	@RequestMapping(path= {"/updateProduct"}, method={RequestMethod.POST})
@@ -65,6 +87,32 @@ public class ProductController {
 		productService.update(product);
 		model.addAttribute("updateMember", product);
 		return "/shopping/ProcessProductForm";
+	}
+	
+	//KeyWord Select By Product
+	@RequestMapping(path= {"/selectByNameKeyWord"}, method={RequestMethod.GET})
+	public String selectByNameKeyWord(Product product, Model model) {
+		List<Product> pd = productService.getByNameKeyWord(product.getName());
+		if (pd != null) {
+			model.addAttribute("productByNameKeyWord", pd);
+		}
+		return "/shopping/ProcessProductForm";
+	}
+	
+	//page
+	@RequestMapping("/productPage")
+	public String list(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, Map<String, Object> map) {
+		int pageNo = 1;
+		try {
+			pageNo = Integer.parseInt(pageNoStr);
+			if(pageNo < 1 ) {
+				pageNo = 1;
+			}
+		} catch (NumberFormatException e) {}
+		Page<Product> page = productService.getPage(pageNo, 6);
+		map.put("page", page);
+		return "/shopping/ProductIndex";
+//		return "/shopping/ProcessProductForm";
 	}
 	
 }

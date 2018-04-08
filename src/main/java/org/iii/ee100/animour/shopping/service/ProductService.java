@@ -6,13 +6,22 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.shopping.dao.ProductDao;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductService {
 	
 	@Autowired
 	ProductDao productDao;
+	
+	@Transactional(readOnly=true)
+	public Page<Product> getPage(int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		return productDao.findAll(pageable);
+	}
 	
 	public void insert(Product product) {
 		productDao.save(product);
@@ -40,5 +49,10 @@ public class ProductService {
 	
 	public Product getByName(String name) {
 		return productDao.findByName(name);
+	}
+	
+	//KeyWord Select By Product
+	public List<Product> getByNameKeyWord(String name) {
+		return productDao.findByNameKeyWord(name);
 	}
 }

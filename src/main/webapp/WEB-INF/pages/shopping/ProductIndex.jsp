@@ -92,7 +92,7 @@
 						<h2>寵物市集</h2>
 					</div>
 				</div>
-			</div>
+ 			</div>
 		</div>
 	</div>
 	<!-- Page Header End -->
@@ -103,19 +103,17 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-				<!-- Blog Sidebar Section -->
+<!-- 				Blog Sidebar Section -->
 				<div class="col-md-3">
 					<div class="sidebar-area">
-						<!-- Search Bar -->
+<!-- 						Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form>
-								<input type="text" placeholder="Search" class="form-control">
-								<button type="submit">
-									<i class="fa fa-search"></i>
-								</button>
+							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
+								<input name="name" value="${param.name}" type="text" placeholder="Search" class="form-control">
+								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
 						</aside>
-						<!--Start of Category -->
+<!-- 						Start of Category -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">商品分類</h2>
@@ -142,17 +140,20 @@
 									</div></li>
 							</ul>
 						</aside>
-						<!--End of Category -->
+<!-- 						End of Category -->
 					</div>
 				</div>
-				<!-- End -->
-
+<!-- 				End -->
+				
+				<c:if test="${page == null || page.numberOfElements == 0}">
+					沒有任何商品資料
+				</c:if>
+				<c:if test="${page != null || page.numberOfElements > 0}">
 				<div class="col-md-9">
-					<!-- Single Blog Post -->
+<!-- 					Single Blog Post -->
 					<div class="row">
-						<c:forEach var="product" items="${productAll}">
-
-							<div class="col-md-3">
+						<c:forEach var="product" items="${page.content}">
+							<div class="col-md-4">
 								<div class="card mb-3 box-shadow">
 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
 										width="100px" alt="商品列表">
@@ -164,8 +165,24 @@
 								</div>
 							</div>
 						</c:forEach>
+						
 					</div>
-				</div>
+						<div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
+							<nav aria-label="..." class="">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
+									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+									<span class="sr-only">Previous</span></a></li>
+									<li class="page-item active"><a class="page-link" href="#">第${page.number + 1}頁
+											<span class="sr-only">(current)</span></a></li>
+									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
+										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+										<span class="sr-only">Next</span></a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</section>
@@ -176,14 +193,14 @@
 		<div class="container">
 			<!-- Row Starts -->
 			<div class="row section">
-				<!-- Footer Widget Starts -->
+				Footer Widget Starts
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">About Us</h3>
 					<p></p>
 				</div>
-				<!-- Footer Widget Ends -->
+				Footer Widget Ends
 
-				<!-- Footer Widget Starts -->
+				Footer Widget Starts
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">Quick Links</h3>
 					<ul class="menu">
@@ -196,9 +213,9 @@
 						<li><a href="#">THE BLOG</a></li>
 					</ul>
 				</div>
-				<!-- Footer Widget Ends -->
+				Footer Widget Ends
 
-				<!-- Footer Widget Starts -->
+				Footer Widget Starts
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">Popular Posts</h3>
 					<ul class="image-list">
@@ -230,9 +247,9 @@
 						</li>
 					</ul>
 				</div>
-				<!-- Footer Widget Ends -->
+				Footer Widget Ends
 
-				<!-- Footer Widget Starts -->
+				Footer Widget Starts
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">EMail Us</h3>
 					<form>
@@ -252,7 +269,7 @@
 						</a>
 					</div>
 				</div>
-				<!-- Footer Widget Ends -->
+				Footer Widget Ends
 			</div>
 			<!-- Row Ends -->
 		</div>
@@ -279,14 +296,14 @@
 				</div>
 			</div>
 		</div>
-		<!-- Copyright  End-->
+		<!-- Copyright  End -->
 
 	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
-	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
-	</a>
+<!-- 	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i> -->
+<!-- 	</a> -->
 
 	<!-- JavaScript & jQuery Plugins -->
 	<script src="/js/jquery-min.js"></script>
@@ -303,7 +320,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-
+	
 </body>
 
 </html>

@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "PRODUCT")
@@ -36,6 +39,10 @@ public class Product {
 	private java.sql.Date shelvesDate;
 	@Column(name = "DESCRIPTION", length = 2000)
 	private String description;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="CLASSIFY_ID")
+	private Classify classify;
 
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name = "PRODUCT_ORDERS",
@@ -47,7 +54,7 @@ public class Product {
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", makeDate="
 				+ makeDate + ", expire=" + expire + ", shelvesDate=" + shelvesDate + ", description=" + description
-				+ ", orders=" + orders + "]";
+				+ ", classify=" + classify + ", orders=" + orders + "]";
 	}
 
 	public Long getId() {
@@ -121,4 +128,13 @@ public class Product {
 	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
 	}
+
+	public Classify getClassify() {
+		return classify;
+	}
+
+	public void setClassify(Classify classify) {
+		this.classify = classify;
+	}
+	
 }

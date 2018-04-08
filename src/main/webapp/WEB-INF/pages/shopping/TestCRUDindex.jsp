@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +11,11 @@
 </head>
 <body>
 	<center>
+	<form action="/product/upload" method="POST" enctype="multipart/form-data">
+		圖片:<input type="file" name="file">
+		<input type="submit" value="上傳">
+	</form>
+	
 	<h3>查詢一筆商品</h3>
 	<form name="selectOneForm" action="<c:url value="/selectOneProduct"/>" method="GET">
 	<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
@@ -56,13 +62,25 @@
 					<tr>
 						<td width="120" height="40">製造日期:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="make" value="${param.makeDate}" type="text" size="50"
+							name="makeDate" value="${param.makeDate}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
 					</tr>
 					<tr>
 						<td width="120" height="40">保存期限:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="expire" value="${param.expire}" type="text" size="50"
+							style="text-align: left"></td>
+					</tr>
+					<tr>
+						<td width="120" height="40">上架日期:</td>
+						<td width="600" height="40" align="left"><input id='num'
+							name="shelvesDate" value="${param.shelvesDate}" type="text" size="50"
+							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
+					</tr>
+					<tr>
+						<td width="120" height="40">商品類別:</td>
+						<td width="600" height="40" align="left"><input id='num'
+							name="classify.classifyName" value="${param.classify}" type="text" size="50"
 							style="text-align: left"></td>
 					</tr>
 				</tbody>
