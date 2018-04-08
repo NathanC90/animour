@@ -1,11 +1,13 @@
 package org.iii.ee100.animour.forum.web;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +19,36 @@ public class ForumController {
 	@Autowired
 	ForumService forumService;
 
-	@RequestMapping("/forum")
-	public String Forum(Model model) {
-
-		return "/forum/forum";
+	@RequestMapping("/insertArticleForm")
+	public String forum(Model model) {
+		// sidebar要用的
+		sidebar(model);
+		return "/forum/insertArticleForm";
+	}
+	
+	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.POST })
+	public String post(Long memberId,Long categoryId,Article article,Model model) {
+		if (memberId!=null && categoryId!=null) {
+			article.setCategory(forumService.getOneCateGory(categoryId));
+			article.setMember(forumService.getOneMember(memberId));
+			Timestamp now = new Timestamp(System.currentTimeMillis());
+			article.setPostTime(now);
+			article.setUpdateTime(now);
+			article.setClick(0L);
+			article.setCommentLength(0);
+			forumService.insert(article);
+		}
+		Article atc = forumService.getOne(Long.valueOf(article.getId()));
+		if (atc != null) {
+			List<Comment> comts = atc.getComment();
+			if (comts != null) {
+				model.addAttribute("comments", comts);
+			}
+			model.addAttribute("article", atc);
+		}
+		// sidebar要用的
+		sidebar(model);
+		return "/forum/singleArticle";
 	}
 
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })
@@ -38,9 +66,11 @@ public class ForumController {
 	public String findOne(Article article, Model model) {
 		Article atc = forumService.getOne(Long.valueOf(article.getId()));
 		if (atc != null) {
-			List<Comment> comts = forumService.getCommentByArticleId(Long.valueOf(article.getId()));
+			Long click = atc.getClick();
+			atc.setClick(click+1);
+			forumService.update(atc);
+			List<Comment> comts = atc.getComment();
 			if (comts != null) {
-				atc.setCommentLength(comts.size());
 				model.addAttribute("comments", comts);
 			}
 			model.addAttribute("article", atc);
@@ -58,7 +88,7 @@ public class ForumController {
 		sidebar(model);
 		return "/forum/article";
 	}
-	
+
 	@RequestMapping(path = { "/forum/category" }, method = { RequestMethod.GET })
 	public String findByCategory(Long categoryId, Model model) {
 		List<Article> articles = forumService.getSearchByCategoryId(categoryId);
@@ -68,12 +98,35 @@ public class ForumController {
 		return "/forum/article";
 	}
 
+	@RequestMapping(path = { "/forum/comment" }, method = { RequestMethod.POST })
+	public String newComment(Long memberId, Long articleId, Comment comment, Model model) {
+		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		Article atc = forumService.getOne(articleId);
+		if (atc != null) {
+			List<Comment> comts = atc.getComment();
+			if (comts != null) {
+				model.addAttribute("comments", comts);
+			}
+
+			comment.setArticle(atc);
+			model.addAttribute("article", atc);
+		}
+		Member member = forumService.getOneMember(memberId);
+		if (member != null) {
+			comment.setMember(member);
+		}
+		forumService.insertComment(comment);
+		// sidebar要用的
+		sidebar(model);
+		return "/forum/singleArticle";
+	}
+
 	public void sidebar(Model model) {
 		List<Article> popular = forumService.getPopularFour();
 		if (popular != null) {
 			model.addAttribute("popular", popular);
 		}
-		List<Category> categorys = forumService.getAllCategory();	
+		List<Category> categorys = forumService.getAllCategory();
 		if (categorys != null) {
 			model.addAttribute("categorys", categorys);
 		}

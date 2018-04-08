@@ -1,11 +1,15 @@
 package org.iii.ee100.animour.forum.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -44,6 +48,12 @@ public class Article {
 	
 	@Transient
 	private String memberAccount;
+	
+	@OneToMany(
+			mappedBy="article"
+			,cascade= {CascadeType.ALL}
+	)
+	private List<Comment> comment;
 	
 	@Transient
 	private int commentLength;
@@ -122,9 +132,20 @@ public class Article {
 	public void setMemberAccount(String memberAccount) {
 		this.memberAccount = memberAccount;
 	}
+	
+	public List<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
 
 	public int getCommentLength() {
-		return commentLength;
+		if (getComment()!=null) {
+			return getComment().size();
+		}
+		return 0;
 	}
 
 	public void setCommentLength(int commentLength) {

@@ -25,6 +25,16 @@
 <!--               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem fuga ad corrupti, ullam, eos natus, -->
 <!--                 repellat officiis sit labore a aspernatur quisquam. In, unde.</p> -->
 <!--             </aside> -->
+
+			 <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
+              <h2 class="widget-title">Post Somthing</h2>
+              <div class="subscribe-area">
+                <p></p>
+                <form class="form-group" name="Post" action="/insertArticleForm" method="GET">
+                  <button type="submit" class="mt-10 btn btn-common btn-block">Post</button>
+                </form>
+              </div>
+            </aside>
             <!-- Recent Post Widgets -->
             <aside class="widget popular-post wow fadeIn" data-wow-delay="0.3s">
               <h2 class="widget-title">Popular Post</h2>
@@ -60,60 +70,61 @@
                 </c:forEach>
               </ul>
             </aside>
+            
             <!-- Subscribe Widget -->
-            <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
-              <h2 class="widget-title">Subscribe</h2>
-              <div class="subscribe-area">
-                <p>Subscribe to our news latter to get regular update and blog posts.</p>
-                <form class="form-group">
-                  <div class="input-group">
-                    <input type="email" class="form-control input-block-level" placeholder="hello@youremail.com">
-                  </div>
-                  <button type="submit" class="mt-10 btn btn-common btn-block">Subscribe</button>
-                </form>
-              </div>
-            </aside>
+<!--             <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s"> -->
+<!--               <h2 class="widget-title">Subscribe</h2> -->
+<!--               <div class="subscribe-area"> -->
+<!--                 <p>Subscribe to our news latter to get regular update and blog posts.</p> -->
+<!--                 <form class="form-group"> -->
+<!--                   <div class="input-group"> -->
+<!--                     <input type="email" class="form-control input-block-level" placeholder="hello@youremail.com"> -->
+<!--                   </div> -->
+<!--                   <button type="submit" class="mt-10 btn btn-common btn-block">Subscribe</button> -->
+<!--                 </form> -->
+<!--               </div> -->
+<!--             </aside> -->
             <!-- Tag Cloud -->
-            <aside class="widget tag-cloud wow fadeIn" data-wow-delay="0.3s">
-              <h2 class="widget-title">Tag clouds</h2>
-              <div class="clearfix">
-                <ul>
-                  <li>
-                    <a href="#">Download</a>
-                  </li>
-                  <li>
-                    <a href="#">PSD</a>
-                  </li>
-                  <li>
-                    <a href="#">Coding</a>
-                  </li>
-                  <li>
-                    <a href="#">UI</a>
-                  </li>
-                  <li>
-                    <a href="#">Sublime</a>
-                  </li>
-                  <li>
-                    <a href="#">Web Design</a>
-                  </li>
-                  <li>
-                    <a href="#">Hosting</a>
-                  </li>
-                  <li>
-                    <a href="#">Design</a>
-                  </li>
-                  <li>
-                    <a href="#">Arts</a>
-                  </li>
-                  <li>
-                    <a href="#">Marketing</a>
-                  </li>
-                  <li>
-                    <a href="#">Technology</a>
-                  </li>
-                </ul>
-              </div>
-            </aside>
+<!--             <aside class="widget tag-cloud wow fadeIn" data-wow-delay="0.3s"> -->
+<!--               <h2 class="widget-title">Tag clouds</h2> -->
+<!--               <div class="clearfix"> -->
+<!--                 <ul> -->
+<!--                   <li> -->
+<!--                     <a href="#">Download</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">PSD</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Coding</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">UI</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Sublime</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Web Design</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Hosting</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Design</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Arts</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Marketing</a> -->
+<!--                   </li> -->
+<!--                   <li> -->
+<!--                     <a href="#">Technology</a> -->
+<!--                   </li> -->
+<!--                 </ul> -->
+<!--               </div> -->
+<!--             </aside> -->
           </div>
         </div>
         <!-- End -->

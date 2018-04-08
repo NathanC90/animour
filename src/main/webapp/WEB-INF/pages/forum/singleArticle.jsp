@@ -199,30 +199,19 @@
               </ul>
               <div class="new-comment mt-5">
                 <h3 class="small-title">Post new Comment</h3>
-                <form class="mt-30">
+                <form class="mt-30" name="commentForm" action="/forum/comment?articleId=${article.id}" method="POST">
                   <div class="row">
                     <div class="col-md-4 ">
-                      <div class="form-group">
+                        <div class="form-group">
                         <label class="sr-only" for="username">Name</label>
-                        <input type="text" placeholder="Full Name" id="username" required="" class="form-control">
-                      </div>
-                    </div><!-- /.col-md-4  -->
-                    <div class="col-md-4 ">
-                      <div class="form-group">
-                        <label class="sr-only" for="useremail">Email</label>
-                        <input type="email" placeholder="Email Address" id="useremail" required="" class="form-control">
-                      </div>
-                    </div><!-- /.col-md-4  -->
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label class="sr-only" for="userurl">Website</label>
-                        <input type="text" placeholder="Your Website" id="userurl" required="" class="form-control">
-                      </div>
+                        <input type="text" name="memberId" placeholder="memberId" id="username" required="" class="form-control">
+                      
                     </div>
                   </div><!-- /.col-md-4  -->  
+                  </div>
                   <div class="form-group">
                     <label class="sr-only" for="usermessage">Message</label>
-                    <textarea placeholder="Type here message" id="usermessage" rows="7" required="" class="form-control"></textarea>
+                    <textarea name="content" placeholder="Type here message" id="usermessage" rows="4" required="" class="form-control"></textarea>
                   </div> 
                   <button class="btn btn-common" type="submit"><i class="fa fa-comment"></i> Post Comment</button>      
               </form>
@@ -239,120 +228,7 @@
 
     <!-- Footer Section -->
     <footer>
-      <!-- Container Starts -->
-      <div class="container">
-        <!-- Row Starts -->
-        <div class="row section">
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-            <h3 class="small-title">
-              About Us
-            </h3>
-            <p>
-              Etiam ornare condimentum massa et scelerisque. Mauris nibh ipsum, laoreet at venenatis ac, 
-            </p> 
-            <ul class="mb-3">
-              <li><i class="fa fa-map-marke"></i> Nash Street , Dearborn, Michigan</li>
-              <li><i class="fa fa-phone"></i> +68 313-240-405</li>
-              <li><i class="fa fa-phone"></i> +68 32-543-876</li>              
-            </ul>   
-          </div><!-- Footer Widget Ends -->
-          
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-            <h3 class="small-title">
-              Quick Links
-            </h3>
-            <ul class="menu">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Sitemap</a></li>
-              <li><a href="#">FAQ</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Contact</a></li>
-              <li><a href="#">Blog</a></li>
-              <li><a href="#">Branches</a></li>
-              <li><a href="#">Press Kits</a></li>
-            </ul>
-          </div>
-          <!-- Footer Widget Ends -->
-
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-            <h3 class="small-title">
-              Popular Posts
-            </h3>
-            <ul class="image-list">
-              <li>
-                <figure class="overlay">
-                  <img class="img-fluid" src="/images/art/a1.jpg" alt="">
-                </figure>
-                <div class="post-content">
-                  <h6 class="post-title"> <a href="blog-single.html">Business Management Tutorials</a> </h6>
-                  <div class="meta">
-                    <span class="date">5 Comments</span>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <figure class="overlay">
-                  <img class="img-fluid" src="/images/art/a2.jpg" alt="">
-                </figure>
-                <div class="post-content">
-                  <h6 class="post-title"><a href="blog-single.html">Top 10 Business Apps and Web Tools</a></h6>
-                  <div class="meta">
-                    <span class="date">2 Comments</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- Footer Widget Ends -->
-
-          <!-- Footer Widget Starts -->
-          <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-            <h3 class="small-title">
-              Newsletter
-            </h3>
-            <form>
-              <input type="text" placeholder="Email here">
-              <button type="submit"><i class="fa fa-paper-plane-o"></i></button>
-            </form>
-            <div class="flicker-gallery">
-              <h3 class="small-title">
-                Instagram
-              </h3>
-              <a href="#" title="Pan Masala"><img src="/images/flicker/img1.jpg" alt=""></a>
-              <a href="#" title="Sports Template for Joomla"><img src="/images/flicker/img2.jpg" alt=""></a>
-              <a href="" title="Apple Keyboard"><img src="/images/flicker/img3.jpg" alt=""></a>
-            </div>
-          </div><!-- Footer Widget Ends -->
-        </div><!-- Row Ends -->
-      </div><!-- Container Ends -->
-      
-      <!-- Copyright -->
-      <div id="copyright">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-sm-6">
-              <p class="copyright-text">
-                Â© 2018 Engage All right reserved, Designed by <a href="#">GrayGrids</a>
-              </p>
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <div class="social-footer text-right">
-                <a href="#"><i class="fa fa-facebook icon-round"></i></a>
-                <a href="#"><i class="fa fa-twitter icon-round"></i></a>
-                <a href="#"><i class="fa fa-linkedin icon-round"></i></a>
-                <a href="#"><i class="fa fa-google-plus icon-round"></i></a>
-              </div>       
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Copyright  End-->
-      
+      <jsp:include page="../footer.jsp"></jsp:include>
     </footer>
     <!-- Footer Section End-->
     

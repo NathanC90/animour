@@ -100,7 +100,7 @@
             <!-- Author Info -->
             <header class="author-info">
               <h2 class="blog-post-title">
-                <a href="#">${article.subject}</a>
+                <a href="/forum/findOne?id=${article.id}">${article.subject}</a>
               </h2>
               <div class="tag-posted-in">
                 <ul class="list-unstyled">
@@ -118,7 +118,7 @@
                   </li>
                   <li>
                     <i class="fa fa-comments"></i>
-                    <a href="#">No comment</a>
+                    <a href="#">${article.commentLength} comment</a>
                   </li>
                 </ul>
               </div>
@@ -143,8 +143,8 @@
               <ul class="post-meta pull-right">
                 <li>
                   <span>
-                    <a href="#">
-                      <i class="fa fa-comments"></i> 25</a>
+                    <a href="/forum/findOne?id=${article.id}">
+                      <i class="fa fa-comments"></i> ${article.commentLength}</a>
                   </span>
                 </li>
                 <li>
@@ -160,7 +160,7 @@
                   </span>
                 </li>
               </ul>
-              <a href="#" class="pull-left btn btn-common btn-xs">Read more</a>
+              <a href="/forum/findOne?id=${article.id}" class="pull-left btn btn-common btn-xs">Read more</a>
             </div>
           </article>
           </c:forEach>
@@ -501,168 +501,7 @@
 
   <!-- Footer Section -->
   <footer>
-    <!-- Container Starts -->
-    <div class="container">
-      <!-- Row Starts -->
-      <div class="row section">
-        <!-- Footer Widget Starts -->
-        <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-          <h3 class="small-title">
-            About Us
-          </h3>
-          <p>
-            Etiam ornare condimentum massa et scelerisque. Mauris nibh ipsum, laoreet at venenatis ac,
-          </p>
-          <ul class="mb-3">
-            <li>
-              <i class="fa fa-map-marke"></i> Nash Street , Dearborn, Michigan</li>
-            <li>
-              <i class="fa fa-phone"></i> +68 313-240-405</li>
-            <li>
-              <i class="fa fa-phone"></i> +68 32-543-876</li>
-          </ul>
-        </div>
-        <!-- Footer Widget Ends -->
-
-        <!-- Footer Widget Starts -->
-        <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-          <h3 class="small-title">
-            Quick Links
-          </h3>
-          <ul class="menu">
-            <li>
-              <a href="#">About Us</a>
-            </li>
-            <li>
-              <a href="#">Team</a>
-            </li>
-            <li>
-              <a href="#">Terms of Service</a>
-            </li>
-            <li>
-              <a href="#">Sitemap</a>
-            </li>
-            <li>
-              <a href="#">FAQ</a>
-            </li>
-            <li>
-              <a href="#">Events</a>
-            </li>
-            <li>
-              <a href="#">Contact</a>
-            </li>
-            <li>
-              <a href="#">Blog</a>
-            </li>
-            <li>
-              <a href="#">Branches</a>
-            </li>
-            <li>
-              <a href="#">Press Kits</a>
-            </li>
-          </ul>
-        </div>
-        <!-- Footer Widget Ends -->
-
-        <!-- Footer Widget Starts -->
-        <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-          <h3 class="small-title">
-            Popular Posts
-          </h3>
-          <ul class="image-list">
-            <li>
-              <figure class="overlay">
-                <img class="img-fluid" src="/images/art/a1.jpg" alt="">
-              </figure>
-              <div class="post-content">
-                <h6 class="post-title">
-                  <a href="blog-single.html">Business Management Tutorials</a>
-                </h6>
-                <div class="meta">
-                  <span class="date">5 Comments</span>
-                </div>
-              </div>
-            </li>
-            <li>
-              <figure class="overlay">
-                <img class="img-fluid" src="/images/art/a2.jpg" alt="">
-              </figure>
-              <div class="post-content">
-                <h6 class="post-title">
-                  <a href="blog-single.html">Top 10 Business Apps and Web Tools</a>
-                </h6>
-                <div class="meta">
-                  <span class="date">2 Comments</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <!-- Footer Widget Ends -->
-
-        <!-- Footer Widget Starts -->
-        <div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-          <h3 class="small-title">
-            Newsletter
-          </h3>
-          <form>
-            <input type="text" placeholder="Email here">
-            <button type="submit">
-              <i class="fa fa-paper-plane-o"></i>
-            </button>
-          </form>
-          <div class="flicker-gallery">
-            <h3 class="small-title">
-              Instagram
-            </h3>
-            <a href="#" title="Pan Masala">
-              <img src="/images/flicker/img1.jpg" alt="">
-            </a>
-            <a href="#" title="Sports Template for Joomla">
-              <img src="/images/flicker/img2.jpg" alt="">
-            </a>
-            <a href="" title="Apple Keyboard">
-              <img src="/images/flicker/img3.jpg" alt="">
-            </a>
-          </div>
-        </div>
-        <!-- Footer Widget Ends -->
-      </div>
-      <!-- Row Ends -->
-    </div>
-    <!-- Container Ends -->
-
-    <!-- Copyright -->
-    <div id="copyright">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-6">
-            <p class="copyright-text">
-              Â© 2018 Engage All right reserved, Designed by
-              <a href="#">GrayGrids</a>
-            </p>
-          </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="social-footer text-right">
-              <a href="#">
-                <i class="fa fa-facebook icon-round"></i>
-              </a>
-              <a href="#">
-                <i class="fa fa-twitter icon-round"></i>
-              </a>
-              <a href="#">
-                <i class="fa fa-linkedin icon-round"></i>
-              </a>
-              <a href="#">
-                <i class="fa fa-google-plus icon-round"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Copyright  End-->
-
+<jsp:include page="../footer.jsp"></jsp:include>
   </footer>
   <!-- Footer Section End-->
 

@@ -9,11 +9,16 @@ import org.iii.ee100.animour.forum.dao.CommentDao;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
+import org.iii.ee100.animour.member.dao.MemberDao;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ForumService {
+	
+	@Autowired
+	private MemberDao memberDao;
 	
 	@Autowired
 	private ArticleDao articleDao;
@@ -26,6 +31,11 @@ public class ForumService {
 
 	public void insert(Article article) {
 		articleDao.save(article);
+
+	}
+	
+	public void insertComment(Comment comment) {
+		commentDao.save(comment);
 
 	}
 
@@ -45,6 +55,14 @@ public class ForumService {
 
 	public Article getOne(Long id) {
 		return articleDao.findOne(id);
+	}
+	
+	public Member getOneMember(Long id) {
+		return memberDao.findOne(id);
+	}
+
+	public Category getOneCateGory(Long id) {
+		return categoryDao.findOne(id);
 	}
 
 	public List<Article> getNewPostThree() {

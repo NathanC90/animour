@@ -3,7 +3,6 @@ package org.iii.ee100.animour.forum.dao;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
-import org.iii.ee100.animour.forum.entity.Category;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 @Repository
