@@ -74,67 +74,74 @@
     </script>
     <![endif]-->
 </head>
-
 <body>
-	<div id="loginbox" style="margin-top: 50px; margin:auto"
-		class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-		<div class="panel panel-info" style="border: 1px ">
-			<div class="panel-heading"
-				style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-				<div class="panel-title">新增動物資料</div>
-				<div
-					style="float: right; font-size: 80%; position: relative; top: -10px">
-					<a href="#">Forgot password?</a>
-				</div>
-			</div>
 
-			<div style="padding-top: 30px" class="panel-body">
-				<div style="display: none" id="login-alert"
-					class="alert alert-danger col-sm-12"></div>
+<!-- 	<table> -->
+<!-- 		<h3>所有動物資料</h3> -->
+<%-- 		<c:forEach var="animal" items="${animals}"> --%>
+<%-- 			<td>${animal.id}</td> --%>
+<%-- 			<td>${animal.name}</td> --%>
+<%-- 			<td>${animal.specie}</td> --%>
+<%-- 			<td>${animal.color}</td> --%>
+<%-- 			<td>${animal.found}</td> --%>
+<%-- 			<td>${animal.upload}</td> --%>
+<%-- 			<td>${animal.city}</td> --%>
+<%-- 			<td>${animal.district}</td> --%>
+<!-- 			</tbody> -->
+<%-- 		</c:forEach> --%>
+<!-- 	</table> -->
+<!-- 	<hr> -->
 
-				<form name="insertAnimalForm" action="/insertAnimal" method="POST" enctype="multipart/form-data">
-					<div class="form-group">
-						姓名:<input type="text" class="form-control" id="anname"
-							aria-describedby="emailHelp" name="name" value="${param.name}"
-							placeholder="">
-					</div>
-					<div class="form-group">
-						種類: <input type="text" class="form-control" id="specie"
-							placeholder="" name="specie" value="${param.specie}">
-					</div>
-					<div class="form-group">
-						顏色: <input type="text" class="form-control" id="color"
-							placeholder="" name="color" value="${param.color}">
-					</div>
-					<div class="form-group">
-						發現日期: <input type="text" class="form-control" id="found"
-							placeholder="" name="found" value="${param.found}">
-					</div>
-					<div class="row">
-						<div class="col">
-							縣市: <input type="text" class="form-control" id="city"
-								placeholder="" name="city" value="${param.city}">
-						</div>
-						<div class="col">
-							鄉鎮市區: <input type="text" class="form-control" id="district"
-								placeholder="" name="district" value="${param.district}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						請上傳動物照片 <input type="file" class="form-control-file" id="image" name="file">
-					</div>
-
-					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1">Check
-							me out</label>
-					</div>
-					<input type="submit" class="btn btn-common" value="送出">
-
-				</form>
-			</div>
-		</div>
-	</div>
+<!-- 	<h3>查詢一筆動物資料</h3> -->
+<!-- 	<table> -->
+<!-- 		<tbody> -->
+<!-- 			<tr> -->
+<%-- 				<td>${animal.id}</td> --%>
+<%-- 				<td>${animal.name}</td> --%>
+<%-- 				<td>${animal.specie}</td> --%>
+<%-- 				<td>${animal.color}</td> --%>
+<%-- 				<td>${animal.found}</td> --%>
+<%-- 				<td>${animal.upload}</td> --%>
+<%-- 				<td>${animal.city}</td> --%>
+<%-- 				<td>${animal.district}</td> --%>
+<!-- 			</tr> -->
+<!-- 		</tbody> -->
+<!-- 	</table> -->
+<!-- 	<hr> -->
+<!-- 	<h3>修改一筆動物資料</h3> -->
+<!-- 	<table> -->
+<!-- 		<tbody> -->
+<!-- 			<tr> -->
+<%-- 				<td>${upanimal.id}</td> --%>
+<%-- 				<td>${upanimal.name}</td> --%>
+<%-- 				<td>${upanimal.specie}</td> --%>
+<%-- 				<td>${upanimal.color}</td> --%>
+<%-- 				<td>${upanimal.found}</td> --%>
+<%-- 				<td>${upanimal.upload}</td> --%>
+<%-- 				<td>${upanimal.city}</td> --%>
+<%-- 				<td>${upanimal.district}</td> --%>
+<!-- 			</tr> -->
+<!-- 		</tbody> -->
+<!-- 	</table> -->
+<!-- 	<hr> -->
+	<h3>新增一筆動物資料成功</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td>${inanimal.id}</td>
+				<td>${inanimal.status}</td>
+				<td>${inanimal.name}</td>
+				<td>${inanimal.specie}</td>
+				<td>${inanimal.color}</td>
+				<td>${inanimal.gender}</td>
+				<td>${inanimal.found}</td>
+				<td>${inanimal.upload}</td>
+				<td>${inanimal.city}</td>
+				<td>${inanimal.district}</td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="/halfway" class="btn btn-common">
+								完成</a>
 </body>
 </html>
