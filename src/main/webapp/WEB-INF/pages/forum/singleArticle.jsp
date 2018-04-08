@@ -104,8 +104,8 @@
                   <ul class="list-unstyled">
                     <li><i class="fa fa fa-calendar"></i> <a href="#">${article.updateTime}</a></li>
                     <li><i class="fa fa-user"></i> <a href="#">${article.memberAccount}</a></li>
-                    <li><i class="fa fa-pencil-square-o"></i> <a href="#">${article.category}</a></li>
-                    <li><i class="fa fa-comments"></i> <a href="#">No comment</a></li>
+                    <li><i class="fa fa-pencil-square-o"></i> <a href="#">${article.categoryName}</a></li>
+                    <li><i class="fa fa-comments"></i> <a href="#">${article.commentLength} comment</a></li>
                   </ul>
                 </div>
               </header>
