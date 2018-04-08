@@ -1,11 +1,14 @@
 package org.iii.ee100.animour.forum.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -65,7 +68,7 @@ public class Article {
 	}
 
 	public String getCategoryName() {
-		return categoryName;
+		return getCategory().getName();
 	}
 
 	public void setCategoryName(String categoryName) {
@@ -113,7 +116,7 @@ public class Article {
 	}
 	
 	public String getMemberAccount() {
-		return memberAccount;
+		return getMember().getAccount();
 	}
 
 	public void setMemberAccount(String memberAccount) {

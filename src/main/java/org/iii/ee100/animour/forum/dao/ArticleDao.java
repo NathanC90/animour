@@ -12,5 +12,5 @@ public interface ArticleDao extends CrudRepository<Article, Long>{
 	List<Article> findTop3ByOrderByPostTimeDesc();
 	
 	//FROM Article ORDER BY UpdateTime DESC FETCH FIRST 4 ROWS ONLY
-	List<Article> findTop4ByOrderByUpdateTimeDesc();
+	List<Article> findTop4ByOrderByClickDesc();
 }

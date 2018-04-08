@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
+import org.iii.ee100.animour.forum.dao.CommentDao;
 import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.forum.entity.Comment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,9 @@ public class ForumService {
 	
 	@Autowired
 	private ArticleDao articleDao;
+	
+	@Autowired
+	private CommentDao commentDao;
 	
 	public void insert(Article article) {
 		articleDao.save(article);
@@ -42,6 +47,10 @@ public class ForumService {
 	}
 
 	public List<Article> getNewUpdateFour() {
-		return articleDao.findTop4ByOrderByUpdateTimeDesc();
+		return articleDao.findTop4ByOrderByClickDesc();
+	}
+	
+	public List<Comment> getCommentByArticleId(Long id){
+		return commentDao.findByArticleId(id);
 	}
 }
