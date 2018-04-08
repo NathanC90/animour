@@ -5,15 +5,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,8 +34,37 @@ public class AnimalController {
 		List<Animal> animals = animalservice.getAllDesc();
 		model.addAttribute("animals", animals);
 
+		Map<String, Integer> citycount = new HashMap<>();
+		List<String> citys = animalservice.searchDistinctCity();
+		for (String city: citys) {
+			//System.out.println(city);
+			citycount.put(city, animalservice.getCityCount(city));
+		}
+		model.addAttribute("citys", citys);
+		model.addAttribute("citycount", citycount);
 		return "/halfway/halfwayIndex";
 	}
+	
+	// 分頁處理
+	@RequestMapping(value = "/halfway/{pageNumber}", method = RequestMethod.GET)
+	public String getRunbookPage(@PathVariable Integer pageNumber, Model model) {
+	    
+		Page<Animal> page = animalservice.getAnimalPage(pageNumber);
+		System.out.println(page);
+		int current = page.getNumber() + 1;
+	    int begin = Math.max(1, current - 5);
+	    int end = Math.min(begin + 10, page.getTotalPages());
+	    
+	    model.addAttribute("animalpage", page);
+	    model.addAttribute("beginIndex", begin);
+	    model.addAttribute("endIndex", end);
+	    model.addAttribute("currentIndex", current);
+	    
+	    return "/halfway/animalpage";
+	}	
+	
+	
+	
 
 	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
 	public String animalForm() {

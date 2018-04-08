@@ -17,7 +17,7 @@ public class Animal {
 	@Column(name = "ID") // for system
 	private Long id;
 
-	@Column(name = "STATUS", columnDefinition=" default '開放認養'") // for system
+	@Column(name = "STATUS", columnDefinition="VARCHAR default '開放認養'") // for system
 	private String status;
 
 	@Column(name = "NAME")
@@ -47,8 +47,8 @@ public class Animal {
 	@Column(name = "HOSPITALIZED", columnDefinition = "BOOLEAN default 'FALSE'")
 	private Boolean hospitalized;
 
-	@Column(name = "HOSPITALNAME")
-	private String hospitalname;
+	@Column(name = "HOSPITAL_NAME")
+	private String hospitalName;
 
 	@Column(name = "CARD_NUM")
 	private String cardNum;
@@ -69,7 +69,7 @@ public class Animal {
 	public String toString() {
 		return "Animal [id=" + id + ", status=" + status + ", name=" + name + ", specie=" + specie + ", color=" + color
 				+ ", gender=" + gender + ", found=" + found + ", upload=" + upload + ", city=" + city + ", district="
-				+ district + ", hospitalized=" + hospitalized + ", hospitalname=" + hospitalname + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark=" + remark + ", fileName="
+				+ district + ", hospitalized=" + hospitalized + ", hospitalName=" + hospitalName + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark=" + remark + ", fileName="
 				+ fileName + ", memberId=" + memberId + "]";
 	}
 
@@ -163,11 +163,11 @@ public class Animal {
 	}
 
 	public String getHospitalname() {
-		return hospitalname;
+		return hospitalName;
 	}
 
 	public void setHospitalname(String hospitalname) {
-		this.hospitalname = hospitalname;
+		this.hospitalName = hospitalname;
 	}
 
 	public String getCardNum() {

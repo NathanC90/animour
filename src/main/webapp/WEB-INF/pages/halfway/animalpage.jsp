@@ -4,6 +4,10 @@
 <!doctype html>
 <html lang="en">
 
+<c:url var="firstUrl" value="/pages/1" />
+<c:url var="lastUrl" value="/pages/${deploymentLog.totalPages}" />
+<c:url var="prevUrl" value="/pages/${currentIndex - 1}" />
+<c:url var="nextUrl" value="/pages/${currentIndex + 1}" />
 <head>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
@@ -97,162 +101,76 @@
 	</div>
 	<!-- Page Header End -->
 
-	<!-- Call to action section -->
-	<section class="cta-section section"
-		style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height: 100%; position: relative;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="cta-area">
-						<div class="cta-content text-center">
-							<h2>幫助浪浪找到他們的家</h2>
-							<p>也別讓他們成為浪浪TT</p>
-							<a href="/insertAnimalForm" class="btn btn-common"><i
-								class="fa fa-envelope"></i> 我要送養</a>
+
+	<!-- BLog Article Section -->
+	<div class="col-md-9">
+		<!-- Single Blog Post -->
+		<div class="row">
+			<c:forEach var="animal" items="${animalpage}">
+
+				<div class="col-md-3">
+					<div class="card mb-3 box-shadow">
+						<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
+						<!-- 										width="100px" alt="待領養小貓"> -->
+						<img class="card-img-top"
+							src="/showAnimalImage?fileName=${animal.fileName}" width="100px"
+							alt="${animal.id}">
+						<div class="card-body" style="margin-bottom: 5px">
+							<p class="card-text" style="padding: 0px">編號：${animal.id}
+								綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
+								發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p>
+							<small class="text-muted">${animal.upload}</small>
+							<div class="d-flex justify-content-between align-items-center"
+								style="max-height: 100px">
+								<div class="btn-group" style="margin: 0px">
+									<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+									<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
-	</section>
-	<!-- End of call to action section -->
+		<!-- Slider Post -->
 
-	<!-- Classic Blog Section -->
-	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-				<!-- Blog Sidebar Section -->
-				<div class="col-md-3">
-					<div class="sidebar-area">
-						<!-- Search Bar -->
-						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form>
-								<input type="text" placeholder="Search" class="form-control">
-								<button type="submit">
-									<i class="fa fa-search"></i>
-								</button>
-							</form>
-						</aside>
-						<!-- Text Widgets -->
-						<aside class="widget text-widgets wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">Text Widget</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
-								officiis sit labore a aspernatur quisquam. In, unde.</p>
-						</aside>
-
-						<!--Start of Category -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">Category</h2>
-							<ul class="category-menu">
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Dog (31) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Cat (16) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Bird (2) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Rabbit (7) </label>
-									</div></li>
-							</ul>
-						</aside>
-						<!--End of Category -->
-
-						<!--Start of Region -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">縣市</h2>
-							<form name="/queryByCity" action="/queryByCity" method="GET">
-							<ul class="category-menu">
-								<c:forEach var="citys" items="${citys}">
-									<li><div class="form-check">
-											<input class="form-check-input" type="checkbox" value="${citys}"
-												id="defaultCheck1" name="city"> <label class="form-check-label"
-												for="defaultCheck1">${citys} (${citycount[citys]}) </label>
-										</div></li>
-								</c:forEach>
-							</ul>
-							<input type="submit" class="btn btn-common" value="搜尋"> 
-							</form>
-						</aside>
-						<!--End of Region -->
-					</div>
-				</div>
-				<!-- End -->
-
-				<!-- BLog Article Section -->
-				<div class="col-md-9">
-					<!-- Single Blog Post -->
-					<div class="row">
-						<c:forEach var="animal" items="${animals}">
-
-							<div class="col-md-3">
-								<div class="card mb-3 box-shadow">
-									<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
-									<!-- 										width="100px" alt="待領養小貓"> -->
-									<img class="card-img-top"
-										src="/showAnimalImage?fileName=${animal.fileName}"
-										width="100px" alt="${animal.id}">
-									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">編號：${animal.id}
-											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-											發現日期：${animal.found} 縣市：${animal.city}
-											鄉鎮市區：${animal.district}</p>
-										<small class="text-muted">${animal.upload}</small>
-										<div class="d-flex justify-content-between align-items-center"
-											style="max-height: 100px">
-											<div class="btn-group" style="margin: 0px">
-												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<!-- Slider Post -->
-
-					<!-- Blog Pagination -->
-					<div class="blog-pagination clearfix wow fadeIn"
-						data-wow-delay="0.3s">
-						<nav aria-label="..." class="">
-							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link"
-									href="#" tabindex="-1" aria-label="Previous"> <i
-										class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1
-										<span class="sr-only">(current)</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> Next <i class="fa fa-angle-right"></i> <span
-										class="sr-only">Next</span>
-								</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-				<!-- End -->
-			</div>
+		<div class="pagination">
+			<ul>
+				<c:choose>
+					<c:when test="${currentIndex == 1}">
+						<li class="disabled"><a href="#">&lt;&lt;</a></li>
+						<li class="disabled"><a href="#">&lt;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${firstUrl}">&lt;&lt;</a></li>
+						<li><a href="${prevUrl}">&lt;</a></li>
+					</c:otherwise>
+				</c:choose>
+				<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+					<c:url var="pageUrl" value="/pages/${i}" />
+					<c:choose>
+						<c:when test="${i == currentIndex}">
+							<li class="active"><a href="${pageUrl}"><c:out
+										value="${i}" /></a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				<c:choose>
+					<c:when test="${currentIndex == animalpage.totalPages}">
+						<li class="disabled"><a href="#">&gt;</a></li>
+						<li class="disabled"><a href="#">&gt;&gt;</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${nextUrl}">&gt;</a></li>
+						<li><a href="${lastUrl}">&gt;&gt;</a></li>
+					</c:otherwise>
+				</c:choose>
+			</ul>
 		</div>
-	</section>
+	</div>
 	<!-- Classic Blog Section End -->
 
 	<!-- Footer Section -->
