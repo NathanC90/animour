@@ -75,7 +75,7 @@
 						<!-- 								<a class="dropdown-item" href="">精選圖文</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/sign_in" 
 					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a></li>
 			</ul>
 			<form class="form-inline">
