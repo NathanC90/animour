@@ -52,11 +52,11 @@
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/hotel/selectType" 
-					aria-haspopup="true" aria-expanded="false">寵物旅店</a>
+					aria-haspopup="true" aria-expanded="false">寵物salon</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="">旅店簡介</a> <a class="dropdown-item"
-							href="">房型價格</a> <a class="dropdown-item" href="">特色設備</a> <a
-							class="dropdown-item" href="">線上訂房</a>
+						<a class="dropdown-item" href="">salon簡介</a> <a class="dropdown-item"
+							href="">salon價格</a> <a class="dropdown-item" href="">特色設備</a> <a
+							class="dropdown-item" href="">reservation</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/hospital"

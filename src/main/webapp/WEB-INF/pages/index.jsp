@@ -255,7 +255,7 @@
 				<!-- 重複的內容結束 -->
 			</section>
 			<!-- 寵物市集結束 -->
-			<!-- 寵物旅館開始 -->
+			<!-- 寵物沙龍開始 -->
 			<section id="service-block-main" class="section">
 				<!-- 重複的內容開始 -->
 				<div class="container">
