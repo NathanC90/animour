@@ -36,35 +36,32 @@ public class AnimalController {
 
 		Map<String, Integer> citycount = new HashMap<>();
 		List<String> citys = animalservice.searchDistinctCity();
-		for (String city: citys) {
-			//System.out.println(city);
+		for (String city : citys) {
+			// System.out.println(city);
 			citycount.put(city, animalservice.getCityCount(city));
 		}
 		model.addAttribute("citys", citys);
 		model.addAttribute("citycount", citycount);
 		return "/halfway/halfwayIndex";
 	}
-	
+
 	// 分頁處理
-	@RequestMapping(value = "/halfway/{pageNumber}", method = RequestMethod.GET)
-	public String getRunbookPage(@PathVariable Integer pageNumber, Model model) {
-	    
-		Page<Animal> page = animalservice.getAnimalPage(pageNumber);
-		System.out.println(page);
-		int current = page.getNumber() + 1;
-	    int begin = Math.max(1, current - 5);
-	    int end = Math.min(begin + 10, page.getTotalPages());
-	    
-	    model.addAttribute("animalpage", page);
-	    model.addAttribute("beginIndex", begin);
-	    model.addAttribute("endIndex", end);
-	    model.addAttribute("currentIndex", current);
-	    
-	    return "/halfway/animalpage";
-	}	
-	
-	
-	
+	@RequestMapping(value = "/halfway/pageQueryAll", method = RequestMethod.GET)
+	public String getAnimalPage(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
+		model.addAttribute("animalpage", page);
+		
+		// System.out.println(page);
+//		int current = page.getNumber() + 1;
+//		int begin = Math.max(1, current - 5);
+//		int end = Math.min(begin + 10, page.getTotalPages());
+//		model.addAttribute("beginIndex", begin);
+//		model.addAttribute("endIndex", end);
+//		model.addAttribute("currentIndex", current);
+
+		return "/halfway/halfwayIndex";
+	}
 
 	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
 	public String animalForm() {
@@ -83,7 +80,7 @@ public class AnimalController {
 		an.setUpload(ts);
 		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
 		animalservice.insert(an);
-		
+
 		// 圖片
 		String fileName = null;
 		String uploadRootPath = request.getServletContext().getRealPath("images/halfway/animal/");
@@ -96,12 +93,12 @@ public class AnimalController {
 		}
 
 		String contentType = image.getContentType();
-		String fileType = contentType.substring(contentType.indexOf("/")+1);
+		String fileType = contentType.substring(contentType.indexOf("/") + 1);
 
 		if ((!image.isEmpty()) && ((fileType.equals("jpeg")) || (fileType.equals("png")))) {
 			try {
 				String originName = image.getOriginalFilename();
-				fileName = "id_"+an.getId()+originName.substring(originName.lastIndexOf(".")).trim();
+				fileName = "id_" + an.getId() + originName.substring(originName.lastIndexOf(".")).trim();
 				// 把讀進來的檔案，轉成byte陣列
 				byte[] bytes = image.getBytes();
 				BufferedOutputStream buffout = new BufferedOutputStream(
@@ -109,7 +106,7 @@ public class AnimalController {
 				// 利用Outputstream 把檔案內容(byte陣列)透過write方法寫出，至硬碟端檔案(檔案名稱為"/tmp"+fileName)
 				buffout.write(bytes);
 				buffout.close();
-			
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

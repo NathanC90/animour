@@ -92,7 +92,7 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form name="insertAnimalForm" action="/insertAnimal" method="GET"
+				<form name="insertAnimalForm" action="/insertAnimal" method="POST"
 					enctype="multipart/form-data">
 					<div class="form-row">
 						<div class="form-group col-md-6">
