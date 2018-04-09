@@ -163,6 +163,7 @@
                 </div>
               </div>
             </div>
+            <a name="comment"></a>
             <div class="comments-area clearfix mt-5 wow fadeIn" data-wow-delay="0.3s">
               <h3 class="small-title"><i class="fa fa-comment"></i> Comments</h3>
               <ul class="media-left comment-list mt-30">

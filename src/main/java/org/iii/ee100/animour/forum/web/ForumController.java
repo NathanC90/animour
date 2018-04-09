@@ -9,6 +9,7 @@ import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,12 +53,19 @@ public class ForumController {
 	}
 
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })
-	public String findAll(Model model) {
-		List<Article> articles = forumService.getAll();
-		if (articles != null) {
-			model.addAttribute("articles", articles);
+	public String findAll(int pageNo,Model model) {
+		//分頁
+		if(pageNo < 1 ) {
+			pageNo = 1;
 		}
-		// sidebar要用的
+		Page<Article> page = forumService.getPage(pageNo, 3);
+		int totalPage = page.getTotalPages();
+		if(pageNo > totalPage) {
+			pageNo = totalPage;
+		}
+		page = forumService.getPage(pageNo, 3);
+		model.addAttribute("page", page);
+		// sidebar
 		sidebar(model);
 		return "/forum/article";
 	}
@@ -90,9 +98,20 @@ public class ForumController {
 	}
 
 	@RequestMapping(path = { "/forum/category" }, method = { RequestMethod.GET })
-	public String findByCategory(Long categoryId, Model model) {
-		List<Article> articles = forumService.getSearchByCategoryId(categoryId);
-		model.addAttribute("articles", articles);
+	public String findByCategory(int pageNo,Long categoryId, Model model) {
+		//分頁
+		if(pageNo < 1 ) {
+			pageNo = 1;
+		}
+		Page<Article> page = forumService.getSearchByCategoryId(categoryId,pageNo,3);
+		int totalPage = page.getTotalPages();
+		if(pageNo > totalPage) {
+			pageNo = totalPage;
+		}
+		page = forumService.getSearchByCategoryId(categoryId,pageNo,3);
+		model.addAttribute("page", page);
+		String categoryQueryString = "categoryId="+categoryId+"&";
+		model.addAttribute("categoryQueryString", categoryQueryString);
 		// sidebar要用的
 		sidebar(model);
 		return "/forum/article";

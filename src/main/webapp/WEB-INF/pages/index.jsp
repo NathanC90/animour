@@ -359,12 +359,12 @@
 										<p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
 											${article.content}</p>
 										<div class="blog-one-footer">
-											<a href="#">Read More</a>
+											<a href="/forum/findOne?id=${article.id}">Read More</a>
 											<a href="#">
-												<i class="icon-heart"></i> 59 Likes
+												<i class="icon-heart"></i> 0 Likes
 											</a>
-											<a href="#">
-												<i class="icon-bubbles"></i> 120 Comments
+											<a href="/forum/findOne?id=${article.id}#comment">
+												<i class="icon-bubbles"></i> ${article.commentLength} Comments
 											</a>
 										</div>
 									</div>

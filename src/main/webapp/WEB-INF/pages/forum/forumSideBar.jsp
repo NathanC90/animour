@@ -65,7 +65,7 @@
               <ul class="category-menu">
                 <c:forEach var="category" items="${categorys}">
                 <li>
-                  <a href="/forum/category?categoryId=${category.id}">${category.name}(${category.articleQuantity})</a>
+                  <a href="/forum/category?categoryId=${category.id}&pageNo=1">${category.name}(${category.articleQuantity})</a>
                 </li>
                 </c:forEach>
               </ul>
