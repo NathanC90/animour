@@ -1,11 +1,15 @@
 package org.iii.ee100.animour.forum.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -45,6 +49,15 @@ public class Article {
 	@Transient
 	private String memberAccount;
 	
+	@OneToMany(
+			mappedBy="article"
+			,cascade= {CascadeType.ALL}
+	)
+	private List<Comment> comment;
+	
+	@Transient
+	private int commentLength;
+	
 	@Column(name="CLICK")
 	private Long click;
 	
@@ -65,7 +78,7 @@ public class Article {
 	}
 
 	public String getCategoryName() {
-		return categoryName;
+		return getCategory().getName();
 	}
 
 	public void setCategoryName(String categoryName) {
@@ -113,11 +126,30 @@ public class Article {
 	}
 	
 	public String getMemberAccount() {
-		return memberAccount;
+		return getMember().getAccount();
 	}
 
 	public void setMemberAccount(String memberAccount) {
 		this.memberAccount = memberAccount;
+	}
+	
+	public List<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(List<Comment> comment) {
+		this.comment = comment;
+	}
+
+	public int getCommentLength() {
+		if (getComment()!=null) {
+			return getComment().size();
+		}
+		return 0;
+	}
+
+	public void setCommentLength(int commentLength) {
+		this.commentLength = commentLength;
 	}
 
 	public Long getClick() {

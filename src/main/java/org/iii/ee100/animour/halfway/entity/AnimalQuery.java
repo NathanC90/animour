@@ -8,70 +8,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "ANIMAL")
-public class Animal {
+public class AnimalQuery {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID") // for system
 	private Long id;
 
-	@Column(name = "STATUS", columnDefinition="VARCHAR default '開放認養'") // for system
 	private String status;
-
-	@Column(name = "NAME")
 	private String name;
-
-	@Column(name = "SPECIE")
 	private String specie;
-
-	@Column(name = "COLOR")
 	private String color;
-
-	@Column(name = "GENDER")
 	private String gender;
-
-	@Column(name = "FOUND")
 	private java.sql.Date found;
-
-	@Column(name = "UPLOAD") // for system
 	private Timestamp upload;
-
-	@Column(name = "CITY")
 	private String city;
-
-	@Column(name = "DISTRICT")
 	private String district;
-
-	@Column(name = "HOSPITALIZED", columnDefinition = "BOOLEAN default 'FALSE'")
 	private Boolean hospitalized;
-
-	@Column(name = "HOSPITAL_NAME")
 	private String hospitalName;
-
-	@Column(name = "CARD_NUM")
 	private String cardNum;
-
-	@Column(name = "NEUTER", columnDefinition = "BOOLEAN default 'FALSE'")
 	private Boolean neuter;
-
-	@Column(name = "REMARK", columnDefinition = "TEXT")
 	private String remark;
-
-	@Column(name = "FILE_NAME")
 	private String fileName;
-
-	@Column(name = "MEMBER_ID")
 	private Long memberId;
-
-	@Override
-	public String toString() {
-		return "Animal [id=" + id + ", status=" + status + ", name=" + name + ", specie=" + specie + ", color=" + color
-				+ ", gender=" + gender + ", found=" + found + ", upload=" + upload + ", city=" + city + ", district="
-				+ district + ", hospitalized=" + hospitalized + ", hospitalName=" + hospitalName + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark=" + remark + ", fileName="
-				+ fileName + ", memberId=" + memberId + "]";
-	}
 
 	// Getter/Setter
 	public Long getId() {

@@ -209,7 +209,7 @@
 						<div class="col-md-12">
 							<!-- Portfolio Controller/Buttons -->
 							<div class="controls text-center">
-								<a class="filter active btn btn-common" data-filter="all">
+								<a href="/product/index" class="filter active btn btn-common" data-filter="all">
 									全項商品 </a>
 								<a class="filter btn btn-common" data-filter=".branding">
 									狗 </a>

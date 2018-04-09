@@ -25,7 +25,7 @@ public class TicketController {
 	public String findOne(Ticket tickets, Model model) {
 		Ticket ticket = ticketService.getOne(Long.valueOf(tickets.getSubject_id()));
 		if (ticket != null) {
-			model.addAttribute("oneNews", tickets);
+			model.addAttribute("oneTicket", tickets);
 		}
 		return "/news/ticket";
 	}

@@ -90,8 +90,6 @@
 				<div class="page-header-area">
 					<div class="page-header-content">
 						<h2>中途專區</h2>
-							<img class="card-img-top" src="/halfway/image"
-										width="100px" alt="待領養小貓">
 					</div>
 				</div>
 			</div>
@@ -100,7 +98,8 @@
 	<!-- Page Header End -->
 
 	<!-- Call to action section -->
-	<section class="cta-section section">
+	<section class="cta-section section"
+		style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height: 100%; position: relative;">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -108,8 +107,8 @@
 						<div class="cta-content text-center">
 							<h2>幫助浪浪找到他們的家</h2>
 							<p>也別讓他們成為浪浪TT</p>
-							<a href="/insertAnimalForm" class="btn btn-common"><i class="fa fa-envelope"></i>
-								我要送養</a>
+							<a href="/insertAnimalForm" class="btn btn-common"><i
+								class="fa fa-envelope"></i> 我要送養</a>
 						</div>
 					</div>
 				</div>
@@ -175,29 +174,19 @@
 						<!--Start of Region -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
-							<h2 class="widget-title">Category</h2>
+							<h2 class="widget-title">縣市</h2>
+							<form name="/queryByCity" action="/queryByCity" method="GET">
 							<ul class="category-menu">
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taipei City (64) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taichung City (39) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> Taoyuan City (23) </label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1"> New Taipei City (71) </label>
-									</div></li>
+								<c:forEach var="citys" items="${citys}">
+									<li><div class="form-check">
+											<input class="form-check-input" type="checkbox" value="${citys}"
+												id="defaultCheck1" name="city"> <label class="form-check-label"
+												for="defaultCheck1">${citys} (${citycount[citys]}) </label>
+										</div></li>
+								</c:forEach>
 							</ul>
+							<input type="submit" class="btn btn-common" value="搜尋"> 
+							</form>
 						</aside>
 						<!--End of Region -->
 					</div>
@@ -212,22 +201,23 @@
 
 							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
-<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
-<!-- 										width="100px" alt="待領養小貓"> -->
-																			<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}"
-										width="100px" alt="待領養小貓">
+									<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
+									<!-- 										width="100px" alt="待領養小貓"> -->
+									<img class="card-img-top"
+										src="/showAnimalImage?fileName=${animal.fileName}"
+										width="100px" alt="${animal.id}">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
 											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
 											發現日期：${animal.found} 縣市：${animal.city}
 											鄉鎮市區：${animal.district}</p>
+										<small class="text-muted">${animal.upload}</small>
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
 												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
 											</div>
-											<small class="text-muted">${animal.upload}</small>
 										</div>
 									</div>
 								</div>
@@ -348,7 +338,7 @@
 						</a> <a href="#" title="Sports Template for Joomla"> <img
 							src="/images/flicker/img2.jpg" alt="">
 						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/flicker/img3.jpg" alt="">
+							src="/images/halfway/halfwayindex.jpg" alt="">
 						</a>
 					</div>
 				</div>
