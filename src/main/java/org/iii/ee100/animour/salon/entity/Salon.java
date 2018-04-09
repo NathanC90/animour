@@ -46,7 +46,14 @@ public class Salon {
 	@Column(name="MEMBERID")
     private Long memberId;
 	
+	
 
+	@Override
+	public String toString() {
+		return "Salon [id=" + id + ", reservation=" + reservation + ", owner=" + owner + ", phone=" + phone
+				+ ", dogName=" + dogName + ", type=" + type + ", gender=" + gender + ", finishDate=" + finishDate
+				+ ", spending=" + spending + ", designer=" + designer + ", memberId=" + memberId + "]";
+	}
 	public Long getId() {
 		return id;
 	}
