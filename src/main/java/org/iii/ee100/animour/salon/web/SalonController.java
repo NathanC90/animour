@@ -16,6 +16,6 @@ public class SalonController {
 	@RequestMapping(path= {"salon/getOne"},method = { RequestMethod.POST } ) 
 	public String select(Model model) {
 		
-		return "/salon/salonIndex";
+		return "salon/salonIndex";
 	}
 }
