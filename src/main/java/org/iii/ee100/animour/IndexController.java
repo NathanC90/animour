@@ -11,10 +11,10 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hospital.service.HospitalService;
-import org.iii.ee100.animour.hotel.entity.Hotel;
-import org.iii.ee100.animour.hotel.service.HotelService;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
+import org.iii.ee100.animour.salon.entity.Salon;
+import org.iii.ee100.animour.salon.service.SalonService;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class IndexController {
 	@Autowired
 	NewsService newsService;
 	@Autowired
-	HotelService hotelService;
+	SalonService salonService;
 	@Autowired
 	DonateService donateService;
 
@@ -67,11 +67,8 @@ public class IndexController {
 		List<News> bean = newsService.getAll();
 		model.addAttribute("allNews", bean);
 
-//		List<Hotel> hotel = hotelService.getSix();
-//		model.addAttribute("hotel", hotel);
-		
-		List<Hotel> hotel = hotelService.getAll();
-		model.addAttribute("hotel", hotel);
+		List<Salon>salon=salonService.getAll();
+		model.addAttribute("salon",salon);
 
 		List<Donate> donates = donateService.getAll();
 		model.addAttribute("donates", donates);

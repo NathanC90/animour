@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.salon.service;
 
-import org.iii.ee100.animour.hotel.entity.Hotel;
+import java.util.List;
+
+import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.salon.dao.SalonDao;
 import org.iii.ee100.animour.salon.entity.Salon;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,8 @@ public class SalonService {
 		salonDao.delete(salon);
 	}
 
-	public Iterable<Salon> findAll() {
-		return salonDao.findAll();
+	public List<Salon> getAll() {
+		return Lists.newArrayList(salonDao.findAll());
 	}
 
 	public Salon findOne(Long id) {
