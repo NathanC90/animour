@@ -26,18 +26,18 @@ public class productTest {
 	@Autowired
 	private OrdersDao ordersDao;
 	
-	@Test
-	public void TestInsertProduct() {
-		Product product1 = new Product();
-		product1.setName("法國皇家PRP30 貴賓成犬 1.5 公斤");
-		product1.setPrice(600);
-		product1.setQuantity(20L);
-		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
-		product1.setExpire(90);
-		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-2"));
-		
-		productDao.save(product1);
-	}
+//	@Test
+//	public void TestInsertProduct() {
+//		Product product1 = new Product();
+//		product1.setName("法國皇家PRP30 貴賓成犬 1.5 公斤");
+//		product1.setPrice(600);
+//		product1.setQuantity(20L);
+//		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
+//		product1.setExpire(90);
+//		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-2"));
+//		
+//		productDao.save(product1);
+//	}
 	
 /*	@Test
 	public void TestManyToMany() {
@@ -154,6 +154,8 @@ public class productTest {
 //		List<Product> products = productDao.findByNameInAndPriceLessThan(Arrays.asList("Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅",
 //				"法國皇家PRP30 貴賓成貓 2.5 公斤", "法國皇家PRP30 貴賓成犬 1.5 公斤"), 599);
 //		System.out.println(products);
+		
+		System.out.println(productDao.findByNameContaining("法國皇家"));
 	}
 	
 	

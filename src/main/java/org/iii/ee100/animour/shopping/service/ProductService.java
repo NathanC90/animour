@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ProductService {
@@ -17,7 +16,6 @@ public class ProductService {
 	@Autowired
 	ProductDao productDao;
 	
-	@Transactional(readOnly=true)
 	public Page<Product> getPage(int pageNo, int pageSize) {
 		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
 		return productDao.findAll(pageable);
@@ -53,6 +51,6 @@ public class ProductService {
 	
 	//KeyWord Select By Product
 	public List<Product> getByNameKeyWord(String name) {
-		return productDao.findByNameKeyWord(name);
+		return productDao.findByNameContaining("%" + name + "%");
 	}
 }
