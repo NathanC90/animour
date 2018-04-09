@@ -16,7 +16,7 @@ public class NewsController {
 	
 	@RequestMapping("/news/index")
 	public String newsIndex(Model model) {
-		return "/news/NewsIndex";
+		return "/news/newsIndex";
 	}
 	
 	@RequestMapping(path= {"/findOneNews"}, method={RequestMethod.GET})

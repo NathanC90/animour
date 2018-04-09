@@ -25,7 +25,7 @@
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 				
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/NewsIndex" 
+					class="nav-link dropdown-toggle" href="/newsIndex" 
 					aria-haspopup="true" aria-expanded="false">最新消息</a>
 					<div class="dropdown-menu">
 						<!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
