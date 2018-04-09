@@ -51,7 +51,7 @@
 					</div></li>
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/hotel/selectType" 
+					class="nav-link dropdown-toggle" href="salon/getAll" 
 					aria-haspopup="true" aria-expanded="false">寵物salon</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="">salon簡介</a> <a class="dropdown-item"

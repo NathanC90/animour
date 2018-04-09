@@ -162,7 +162,7 @@
 	<section class="classic-blog-section section">
 	<div>
 	<h3>查詢房型資料</h3>
-	<form name="/hotel/selectType" action="/hotel/selectType" method="GET">
+	<form name="/hotel/selectType" action="/hotel/selectType" method="post">
 		<input id='num' name="id" value="${selectType.id}" type="text"
 			size="14" style="text-align: left"> <input type="submit"
 			value="送出">

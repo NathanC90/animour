@@ -262,7 +262,7 @@
 					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 						最新空房</h1>
 					<div class="row">
-						<c:forEach var="avar" items="${hotel}">
+						<c:forEach var="avar" items="${Salon}">
 
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
