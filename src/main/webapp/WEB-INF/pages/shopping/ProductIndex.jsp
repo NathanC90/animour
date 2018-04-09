@@ -150,7 +150,7 @@
 				</c:if>
 				<c:if test="${page != null || page.numberOfElements > 0}">
 				<div class="col-md-9">
-<!-- 					Single Blog Post -->
+				<ul class="pagination"><li class="page-item active"><p class="page-link">商品資料共有 ${page.totalElements} 筆</p></li></ul>
 					<div class="row">
 						<c:forEach var="product" items="${page.content}">
 							<div class="col-md-4">
@@ -173,7 +173,7 @@
 									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
 									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
 									<span class="sr-only">Previous</span></a></li>
-									<li class="page-item active"><a class="page-link" href="#">第${page.number + 1}頁
+									<li class="page-item active"><a class="page-link" href="#">第 ${page.number + 1}/${page.totalPages} 頁
 											<span class="sr-only">(current)</span></a></li>
 									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
 										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
