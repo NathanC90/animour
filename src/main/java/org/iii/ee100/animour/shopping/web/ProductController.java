@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.iii.ee100.animour.shopping.entity.Product;
-import org.iii.ee100.animour.shopping.service.ClassifyService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,9 +22,6 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
-	
-	@Autowired
-	private ClassifyService classifyService;
 	
 	@InitBinder
 	public void registerCustomerEditor(WebDataBinder webDataBinder) {
@@ -41,11 +36,17 @@ public class ProductController {
 		int pageNo = 1;
 		try {
 			pageNo = Integer.parseInt(pageNoStr);
-			if(pageNo < 1 ) {
-				pageNo = 1;
-			}
 		} catch (NumberFormatException e) {}
+		
+		if(pageNo < 1 ) {
+			pageNo = 1;
+		}
 		Page<Product> page = productService.getPage(pageNo, 6);
+		int totalPage = page.getTotalPages();
+		if(pageNo > totalPage) {
+			pageNo = totalPage;
+		}
+		page = productService.getPage(pageNo, 6);
 		map.put("page", page);
 		model.addAttribute("productAll", productService.getAll());
 		return "/shopping/ProductIndex";
@@ -79,7 +80,7 @@ public class ProductController {
 	public String insertProduct(Product product, Model model) {
 		productService.insert(product);
 		model.addAttribute("insertMember", product);
-		return "redirect:/productPage";
+		return "/shopping/ProcessProductForm";
 	}
 	
 	@RequestMapping(path= {"/updateProduct"}, method={RequestMethod.POST})
@@ -97,22 +98,6 @@ public class ProductController {
 			model.addAttribute("productByNameKeyWord", pd);
 		}
 		return "/shopping/ProcessProductForm";
-	}
-	
-	//page
-	@RequestMapping("/productPage")
-	public String list(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, Map<String, Object> map) {
-		int pageNo = 1;
-		try {
-			pageNo = Integer.parseInt(pageNoStr);
-			if(pageNo < 1 ) {
-				pageNo = 1;
-			}
-		} catch (NumberFormatException e) {}
-		Page<Product> page = productService.getPage(pageNo, 6);
-		map.put("page", page);
-		return "/shopping/ProductIndex";
-//		return "/shopping/ProcessProductForm";
 	}
 	
 }
