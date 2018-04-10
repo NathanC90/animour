@@ -170,14 +170,32 @@
 						<div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
 							<nav aria-label="..." class="">
 								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
-									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-									<span class="sr-only">Previous</span></a></li>
+								<c:choose>
+									<c:when test="${page.number + 1 - 1 le 0}">
+										<li class="page-item disabled"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
+											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+										<span class="sr-only">Previous</span></a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
+											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+										<span class="sr-only">Previous</span></a></li>
+									</c:otherwise>
+									</c:choose>
 									<li class="page-item active"><a class="page-link" href="#">第 ${page.number + 1}/${page.totalPages} 頁
 											<span class="sr-only">(current)</span></a></li>
-									<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
-										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-										<span class="sr-only">Next</span></a></li>
+									<c:choose>
+										<c:when test="${page.number+1 ge page.totalPages}">
+											<li class="page-item disabled"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
+												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+											<span class="sr-only">Next</span></a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
+												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+											<span class="sr-only">Next</span></a></li>
+										</c:otherwise>
+									</c:choose>
 								</ul>
 							</nav>
 						</div>
