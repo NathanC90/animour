@@ -3,6 +3,7 @@ package org.iii.ee100.animour.salon.web;
 import java.util.List;
 
 import org.iii.ee100.animour.salon.entity.Salon;
+import org.iii.ee100.animour.salon.service.ReservationService;
 import org.iii.ee100.animour.salon.service.SalonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SalonController {
 
 	@Autowired
-	private  SalonService salonService;
+	private SalonService salonService;
+	
 	
 	@RequestMapping(path= {"salon/getAll"},method = { RequestMethod.GET } ) 
 	public String select(Model model) {
@@ -23,4 +25,6 @@ public class SalonController {
 		model.addAttribute("Salon",Salon);
 		return "salon/salonIndex";
 	}
+	
+	
 }
