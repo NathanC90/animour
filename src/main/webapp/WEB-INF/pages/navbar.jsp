@@ -25,7 +25,7 @@
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 				
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/NewsIndex" 
+					class="nav-link dropdown-toggle" href="/newsIndex" 
 					aria-haspopup="true" aria-expanded="false">最新消息</a>
 					<div class="dropdown-menu">
 						<!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
@@ -67,7 +67,7 @@
 						<!-- 								 <a class="dropdown-item" href="">看診進度查詢</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/forum/findAll"
+					class="nav-link dropdown-toggle" href="/forum/findAll?pageNo=1"
 					aria-haspopup="true" aria-expanded="false">部落格分享</a>
 					<div class="dropdown-menu">
 <!-- 						<a class="dropdown-item" href="/forum/findAll">本周最新</a> -->
@@ -75,7 +75,7 @@
 						<!-- 								<a class="dropdown-item" href="">精選圖文</a> -->
 					</div></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+					class="nav-link dropdown-toggle" href="/sign_in" 
 					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a></li>
 			</ul>
 			<form class="form-inline">

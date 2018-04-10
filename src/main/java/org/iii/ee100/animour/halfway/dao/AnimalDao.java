@@ -13,7 +13,6 @@ public interface AnimalDao extends JpaRepository<Animal, Long>,JpaSpecificationE
 	List<Animal> findTop6ByOrderByUploadDesc();
 	List<Animal> findBySpecieOrderByUploadDesc(String specie);
 	List<Animal> findByCity(String city);
-	//Page<Animal> findALL(Pageable pageable);
 	
 	@Query(value="SELECT DISTINCT city FROM ANIMAL", nativeQuery = true)
 	List<String> findDistinctCity();

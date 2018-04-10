@@ -3,10 +3,12 @@ package org.iii.ee100.animour.forum.dao;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 @Repository
-public interface ArticleDao extends CrudRepository<Article, Long>{
+public interface ArticleDao extends JpaRepository<Article, Long>{
 	
 	//FROM Article ORDER BY PostTime DESC FETCH FIRST 3 ROWS ONLY
 	List<Article> findTop3ByOrderByPostTimeDesc();
@@ -16,5 +18,5 @@ public interface ArticleDao extends CrudRepository<Article, Long>{
 	
 	List<Article> findBySubjectContaining(String subject);
 	
-	List<Article> findByCategoryId(Long categoryId);
+	Page<Article> findByCategoryId(Long categoryId, Pageable pageable);
 }

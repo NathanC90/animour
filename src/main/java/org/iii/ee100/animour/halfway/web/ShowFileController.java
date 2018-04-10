@@ -23,6 +23,9 @@ public class ShowFileController {
 			HttpServletResponse response, Model model) {
 				OutputStream os = null;
 				FileInputStream fis = null;
+				if (fileName.isEmpty() || fileName == null) {
+					fileName = "noimage.png";
+				}
 				
 				try {
 					String uploadRootPath = request.getServletContext().getRealPath("images/halfway/animal/");

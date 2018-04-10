@@ -12,6 +12,8 @@ import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +30,11 @@ public class ForumService {
 	
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	public Page<Article> getPage(int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo-1, pageSize);
+		return articleDao.findAll(pageable);
+	}
 
 	public void insert(Article article) {
 		articleDao.save(article);
@@ -81,8 +88,9 @@ public class ForumService {
 		return articleDao.findBySubjectContaining(subject);
 	}
 	
-	public List<Article> getSearchByCategoryId(Long categoryId){
-		return articleDao.findByCategoryId(categoryId);
+	public Page<Article> getSearchByCategoryId(Long categoryId,int pageNo,int pageSize){
+		PageRequest pageable = new PageRequest(pageNo-1, pageSize);
+		return articleDao.findByCategoryId(categoryId, pageable);
 	}
 	
 	public List<Category> getAllCategory(){

@@ -17,11 +17,11 @@ public class NewsIndexController {
 	
 	
 
-	@RequestMapping("/NewsIndex")
+	@RequestMapping("/newsIndex")
 	public String index2(Model model) {
 		List<News> news =newsService.getAll();
 		model.addAttribute("allNews", news);		
-		return "/news/NewsIndex";
+		return "/news/newsIndex";
 	}
 	
 	

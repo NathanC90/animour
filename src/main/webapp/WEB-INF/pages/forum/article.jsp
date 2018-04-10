@@ -95,7 +95,7 @@
         <!-- BLog Article Section -->
         <div class="col-md-9">
           <!-- Single Blog Post -->
-          <c:forEach var="article" items="${articles}">
+          <c:forEach var="article" items="${page.content}">
           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
             <!-- Author Info -->
             <header class="author-info">
@@ -143,7 +143,7 @@
               <ul class="post-meta pull-right">
                 <li>
                   <span>
-                    <a href="/forum/findOne?id=${article.id}">
+                    <a href="/forum/findOne?id=${article.id}#comment">
                       <i class="fa fa-comments"></i> ${article.commentLength}</a>
                   </span>
                 </li>
@@ -165,333 +165,23 @@
           </article>
           </c:forEach>
           <!-- Slider Post -->
-          
-          
-          
-<!--           <article class="blog-post-wrapper format-slider wow fadeIn" data-wow-delay="0.3s"> -->
-<!--             Author Info -->
-<!--             <header class="author-info"> -->
-<!--               <h2 class="blog-post-title"> -->
-<!--                 <a href="#">Microw photography Basics</a> -->
-<!--               </h2> -->
-<!--               <div class="tag-posted-in"> -->
-<!--                 <ul class="list-unstyled"> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa fa-calendar"></i> -->
-<!--                     <a href="#">Jully 17, 2018</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-user"></i> -->
-<!--                     <a href="#">Admin</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-pencil-square-o"></i> -->
-<!--                     <a href="#">Business</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-comments"></i> -->
-<!--                     <a href="#">No comment</a> -->
-<!--                   </li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </header> -->
-<!--             Featured Content -->
-<!--             <section class="featured-wrapper"> -->
-<!--               <div id="carousel-image-slider" class="owl-carousel"> -->
-<!--                 <div class="item"> -->
-<!--                   <img src="/images/blog/blog-slider/carousel-01.jpg" alt=""> -->
-<!--                 </div> -->
-<!--                 <div class="item"> -->
-<!--                   <img src="/images/blog/blog-slider/carousel-02.jpg" alt=""> -->
-<!--                 </div> -->
-<!--                 <div class="item"> -->
-<!--                   <img src="/images/blog/blog-slider/carousel-03.jpg" alt=""> -->
-<!--                 </div> -->
-<!--                 <div class="item"> -->
-<!--                   <img src="/images/blog/blog-slider/carousel-04.jpg" alt=""> -->
-<!--                 </div> -->
-<!--               </div> -->
-<!--             </section> -->
-<!--             Post Content -->
-<!--             <section class="blog-post-content"> -->
-<!--               <div class="blog-post"> -->
-<!--                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint beatae incidunt unde aliquid dolorum qui voluptatibus -->
-<!--                   ipsa voluptatem aliquam quisquam quis a enim quas reprehenderit dicta, expedita. Vel repellat sunt qui, -->
-<!--                   repudiandae ratione perferendis, dicta provident, laboriosam dolorum repellendus ad!</p> -->
-<!--               </div> -->
-<!--             </section> -->
-<!--             Footer -->
-<!--             <div class="blog-post-footer clearfix"> -->
-<!--               Post Meta -->
-<!--               <ul class="post-meta pull-right"> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-comments"></i> 25</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-thumbs-up"></i> 250</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-share"></i> Share</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--               </ul> -->
-<!--               <a href="#" class="pull-left btn btn-common btn-xs">Read more</a> -->
-<!--             </div> -->
-<!--           </article> -->
-<!--           Video Post -->
-<!--           <article class="blog-post-wrapper format-video wow fadeIn" data-wow-delay="0.3s"> -->
-<!--             Author Info -->
-<!--             <header class="author-info"> -->
-<!--               <h2 class="blog-post-title"> -->
-<!--                 <a href="#">Fundamental of video editing</a> -->
-<!--               </h2> -->
-<!--               <div class="tag-posted-in"> -->
-<!--                 <ul class="list-unstyled"> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa fa-calendar"></i> -->
-<!--                     <a href="#">Jully 17, 2018</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-user"></i> -->
-<!--                     <a href="#">Admin</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-pencil-square-o"></i> -->
-<!--                     <a href="#">Business</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-comments"></i> -->
-<!--                     <a href="#">No comment</a> -->
-<!--                   </li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </header> -->
-<!--             Featured Content -->
-<!--             <section class="featured-wrapper"> -->
-<!--               <iframe height="350" width="100%" src="https://www.youtube.com/embed/JGobj8RGMs4" frameborder="0" allow="autoplay; encrypted-media" -->
-<!--                 allowfullscreen></iframe> -->
-<!--             </section> -->
-<!--             Post Content -->
-<!--             <section class="blog-post-content"> -->
-<!--               <div class="blog-post"> -->
-<!--                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint beatae incidunt unde aliquid dolorum qui voluptatibus -->
-<!--                   ipsa voluptatem aliquam quisquam quis a enim quas reprehenderit dicta, expedita. Vel repellat sunt qui, -->
-<!--                   repudiandae ratione perferendis, dicta provident, laboriosam dolorum repellendus ad!</p> -->
-<!--               </div> -->
-<!--             </section> -->
-<!--             Footer -->
-<!--             <div class="blog-post-footer clearfix"> -->
-<!--               Post Meta -->
-<!--               <ul class="post-meta pull-right"> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-comments"></i> 25</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-thumbs-up"></i> 250</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-share"></i> Share</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--               </ul> -->
-<!--               <a href="#" class="pull-left btn btn-common btn-xs">Read more</a> -->
-<!--             </div> -->
-<!--           </article> -->
-<!--           No thumbnail Post -->
-<!--           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"> -->
-<!--             Author Info -->
-<!--             <header class="author-info"> -->
-<!--               <h2 class="blog-post-title"> -->
-<!--                 <a href="#">Post without featured image</a> -->
-<!--               </h2> -->
-<!--               <div class="tag-posted-in"> -->
-<!--                 <ul class="list-unstyled"> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa fa-calendar"></i> -->
-<!--                     <a href="#">Jully 17, 2018</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-user"></i> -->
-<!--                     <a href="#">Admin</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-pencil-square-o"></i> -->
-<!--                     <a href="#">Business</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-comments"></i> -->
-<!--                     <a href="#">No comment</a> -->
-<!--                   </li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </header> -->
-<!--             Post Content -->
-<!--             <section class="blog-post-content"> -->
-<!--               <div class="blog-post"> -->
-<!--                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint beatae incidunt unde aliquid dolorum qui voluptatibus -->
-<!--                   ipsa voluptatem aliquam quisquam quis a enim quas reprehenderit dicta, expedita. Vel repellat sunt qui, -->
-<!--                   repudiandae ratione perferendis, dicta provident, laboriosam dolorum repellendus ad!</p> -->
-<!--               </div> -->
-<!--             </section> -->
-<!--             Footer -->
-<!--             <div class="blog-post-footer clearfix"> -->
-<!--               Post Meta -->
-<!--               <ul class="post-meta pull-right"> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-comments"></i> 25</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-thumbs-up"></i> 250</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-share"></i> Share</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--               </ul> -->
-<!--               <a href="#" class="pull-left btn btn-common btn-xs">Read more</a> -->
-<!--             </div> -->
-<!--           </article> -->
-<!--           Audio Post -->
-<!--           <article class="blog-post-wrapper format-audio wow fadeIn" data-wow-delay="0.3s"> -->
-<!--             Author Info -->
-<!--             <header class="author-info"> -->
-<!--               <h2 class="blog-post-title"> -->
-<!--                 <a href="#">Soundcloud audio embed post</a> -->
-<!--               </h2> -->
-<!--               <div class="tag-posted-in"> -->
-<!--                 <ul class="list-unstyled"> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa fa-calendar"></i> -->
-<!--                     <a href="#">Jully 17, 2018</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-user"></i> -->
-<!--                     <a href="#">Admin</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-pencil-square-o"></i> -->
-<!--                     <a href="#">Business</a> -->
-<!--                   </li> -->
-<!--                   <li> -->
-<!--                     <i class="fa fa-comments"></i> -->
-<!--                     <a href="#">No comment</a> -->
-<!--                   </li> -->
-<!--                 </ul> -->
-<!--               </div> -->
-<!--             </header> -->
-<!--             Featured Content -->
-<!--             <section class="featured-wrapper"> -->
-<!--               <iframe width="100%" height="200" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/181436429&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe> -->
-<!--             </section> -->
-<!--             Post Content -->
-<!--             <section class="blog-post-content"> -->
-<!--               <div class="blog-post"> -->
-<!--                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint beatae incidunt unde aliquid dolorum qui voluptatibus -->
-<!--                   ipsa voluptatem aliquam quisquam quis a enim quas reprehenderit dicta, expedita. Vel repellat sunt qui, -->
-<!--                   repudiandae ratione perferendis, dicta provident, laboriosam dolorum repellendus ad!</p> -->
-<!--               </div> -->
-<!--             </section> -->
-<!--             Footer -->
-<!--             <div class="blog-post-footer clearfix"> -->
-<!--               Post Meta -->
-<!--               <ul class="post-meta pull-right"> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-comments"></i> 25</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-thumbs-up"></i> 250</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--                 <li> -->
-<!--                   <span> -->
-<!--                     <a href="#"> -->
-<!--                       <i class="fa fa-share"></i> Share</a> -->
-<!--                   </span> -->
-<!--                 </li> -->
-<!--               </ul> -->
-<!--               <a href="#" class="pull-left btn btn-common btn-xs">Read more</a> -->
-<!--             </div> -->
-<!--           </article> -->
-<!--           Quote Post -->
-<!--           <article class="blog-post-wrapper format-qoute wow fadeIn" data-wow-delay="0.3s"> -->
-<!--             Post Content -->
-<!--             <section class="blog-post-content"> -->
-<!--               <blockquote class="blockquote"> -->
-<!--                 <p>Infuse your life with action. Don't wait for it to happen. Make it happen. Make your own future. Make your -->
-<!--                   own hope. Make your own love. And whatever your beliefs, honor your creator, not by passively waiting for -->
-<!--                   grace to come down from upon high, but by doing what you can to make grace happen... yourself, right now, -->
-<!--                   right down here on Earth.</p> -->
-<!--                 <a href="#"> -->
-<!--                   <span>- Bradley Whitford</span> -->
-<!--                 </a> -->
-<!--               </blockquote> -->
-<!--             </section> -->
-<!--           </article> -->
+
 
           <!-- Blog Pagination -->
           <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
-            <nav aria-label="..." class="">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-                    <i class="fa fa-angle-left"></i>
-                    Prev
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    Next
-                    <i class="fa fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+							<nav aria-label="..." class="">
+								<ul class="pagination">
+									<li class="page-item"><a class="page-link" href="?${categoryQueryString}pageNo=${page.number}" 
+									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+									<span class="sr-only">Previous</span></a></li>
+									<li class="page-item active"><a class="page-link" href="">第 ${page.number+1}/${page.totalPages} 頁
+											<span class="sr-only">(current)</span></a></li>
+									<li class="page-item"><a class="page-link" href="?${categoryQueryString}pageNo=${page.number+2}"
+										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+										<span class="sr-only">Next</span></a></li>
+								</ul>
+							</nav>
+						</div>
         </div>
         <!-- End -->
       </div>

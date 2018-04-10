@@ -126,11 +126,8 @@
 						<c:forEach var="news" items="${allNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="">
+									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" href="/event">
 									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">活動編號：${news.seqno}</p>
-										<p class="card-text" style="padding: 0px">活動名稱：${news.subject}</p>
-										<p class="card-text" style="padding: 0px">活動內文：${news.content}</p>
 									</div>
 								</div>
 							</div>

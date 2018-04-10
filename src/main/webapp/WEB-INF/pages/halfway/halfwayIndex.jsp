@@ -176,16 +176,17 @@
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">縣市</h2>
 							<form name="/queryByCity" action="/queryByCity" method="GET">
-							<ul class="category-menu">
-								<c:forEach var="citys" items="${citys}">
-									<li><div class="form-check">
-											<input class="form-check-input" type="checkbox" value="${citys}"
-												id="defaultCheck1" name="city"> <label class="form-check-label"
-												for="defaultCheck1">${citys} (${citycount[citys]}) </label>
-										</div></li>
-								</c:forEach>
-							</ul>
-							<input type="submit" class="btn btn-common" value="搜尋"> 
+								<ul class="category-menu">
+									<c:forEach var="citys" items="${citys}">
+										<li><div class="form-check">
+												<input class="form-check-input" type="checkbox"
+													value="${citys}" id="defaultCheck1" name="city"> <label
+													class="form-check-label" for="defaultCheck1">${citys}
+													(${citycount[citys]}) </label>
+											</div></li>
+									</c:forEach>
+								</ul>
+								<input type="submit" class="btn btn-common" value="搜尋">
 							</form>
 						</aside>
 						<!--End of Region -->
@@ -197,7 +198,7 @@
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
 					<div class="row">
-						<c:forEach var="animal" items="${animals}">
+						<c:forEach var="animal" items="${animalpage.content}">
 
 							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
@@ -227,24 +228,80 @@
 					<!-- Slider Post -->
 
 					<!-- Blog Pagination -->
+					<c:choose>
+						<c:when test="${animalpage.totalPages <=3}">
+							<c:set var="begin" value="1" />
+							<c:set var="end" value="${animalpage.totalPages}" />
+						</c:when>
+						<c:otherwise>
+							<c:set var="begin" value="${animalpage.number+1-1}" />
+							<c:set var="end" value="${animalpage.number+1+2}" />
+							<c:if test="${begin < 2 }">
+								<c:set var="begin" value="1" />
+								<c:set var="end" value="3" />
+							</c:if>
+							<c:if test="${end > animalpage.totalPages}">
+								<c:set var="begin" value="${animalpage.totalPages-2 }" />
+								<c:set var="end" value="${animalpage.totalPages}" />
+							</c:if>
+						</c:otherwise>
+					</c:choose>
+
 					<div class="blog-pagination clearfix wow fadeIn"
 						data-wow-delay="0.3s">
 						<nav aria-label="..." class="">
 							<ul class="pagination">
-								<li class="page-item disabled"><a class="page-link"
-									href="#" tabindex="-1" aria-label="Previous"> <i
-										class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
-								</a></li>
-								<li class="page-item active"><a class="page-link" href="#">1
-										<span class="sr-only">(current)</span>
-								</a></li>
-								<li class="page-item"><a class="page-link" href="#">2</a></li>
-								<li class="page-item"><a class="page-link" href="#">3</a></li>
-								<li class="page-item"><a class="page-link" href="#">4</a></li>
-								<li class="page-item"><a class="page-link" href="#"
-									aria-label="Next"> Next <i class="fa fa-angle-right"></i> <span
-										class="sr-only">Next</span>
-								</a></li>
+								<!-- 		如果現在在首頁，隱藏上一頁 -->
+								<c:choose>
+									<%-- first 回傳布林值 --%>
+									<c:when test="${animalpage.first}">
+										<%-- 結果為true代表現在在第一頁，隱藏上一頁 --%>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="/halfway/pageQueryAll?page=${animalpage.number}"
+											tabindex="-1" aria-label="Previous"> <i
+												class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
+										</a></li>
+									</c:otherwise>
+								</c:choose>
+								<!-- 	顯示第一頁的頁碼 -->
+								<c:if test="${begin >=2}">
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+								</c:if>
+
+								<c:forEach begin="${begin}" end="${end}" var="i">
+									<c:choose>
+										<c:when test="${i eq animalpage.number+1}">
+											<li class="page-item active"><a class="page-link"
+												href="/halfway/pageQueryAll?page=${animalpage.number}">${i}
+													<span class="sr-only">(current)</span>
+											</a></li>
+										</c:when>
+										<c:otherwise>
+											<li class="page-item"><a class="page-link"
+												href="/halfway/pageQueryAll?page=${i}">${i}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								<%-- 顯示最後一頁數字 --%>
+								<c:if test="${end < animalpage.totalPages}">
+									<li class="page-item"><a class="page-link"
+										href="/halfway/pageQueryAll?page=${animalpage.totalPages}">${animalpage.totalPages}</a>
+									</li>
+								</c:if>
+								<%--現在是最後一頁隱藏下一頁--%>
+								<c:choose>
+									<c:when test="${animalpage.number+1 eq animalpage.totalPages}">
+									</c:when>
+									<c:otherwise>
+										<li class="page-item"><a class="page-link"
+											href="/halfway/pageQueryAll?page=${animalpage.number+2}"
+											aria-label="Next"> Next <i class="fa fa-angle-right"></i>
+												<span class="sr-only">Next</span>
+										</a></li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 						</nav>
 					</div>

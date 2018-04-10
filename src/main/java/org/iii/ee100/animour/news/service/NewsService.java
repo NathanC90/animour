@@ -6,12 +6,19 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.news.dao.NewsDao;
 import org.iii.ee100.animour.news.entity.News;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NewsService{
 	@Autowired
 	private NewsDao newsDao;
+	
+//	public Page<News> getPage(int pageNo, int pageSize) {
+//		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+//		return newsDao.findAll(pageable);
+//	}
 		
 	
 	

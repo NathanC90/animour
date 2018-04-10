@@ -6,7 +6,7 @@ create table city(
     animal_count bigint
 );
 
-INSERT INTO CITY (id, name) VALUES (
+INSERT INTO CITY (id, name) VALUES 
 (1, '台北市'),
 (2, '基隆市'),
 (3, '新北市'),
@@ -29,5 +29,5 @@ INSERT INTO CITY (id, name) VALUES (
 (20, '澎湖縣'),
 (21, '金門縣'),
 (22, '連江縣')
-);
-select
+
+select * from city
