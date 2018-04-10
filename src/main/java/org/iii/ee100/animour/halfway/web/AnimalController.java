@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +29,11 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
-	@RequestMapping(path = { "/halfway" }, method = { RequestMethod.GET })
-	public String index(Model model) {
+	@RequestMapping(value = "/halfway", method = RequestMethod.GET)
+	public String index(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
+		model.addAttribute("animalpage", page);
 		List<Animal> animals = animalservice.getAllDesc();
 		model.addAttribute("animals", animals);
 
@@ -63,12 +66,28 @@ public class AnimalController {
 		return "/halfway/halfwayIndex";
 	}
 
+	// 轉跳至insert表單
 	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
 	public String animalForm() {
 
 		return "/halfway/insertAnimalForm";
 	}
+	
+	// 轉跳至詳情頁面
+	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
+	public String animalDetail(Long id, Model model) {
+		// 暫時先給一個假的member
+		Member member = new Member();
+		member.setId(1L);
+		member.setName("資策會金太妍");
+		Animal animal = animalservice.getOne(id);
+		animal.setMember(member);
+		
+		model.addAttribute("animal", animal);
 
+		return "/halfway/animalDetail";
+	}
+	
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
 	// @RequestParam = request.getParameter("file")
 	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
