@@ -126,8 +126,9 @@
 						<c:forEach var="news" items="${allNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" href="/event">
-									<div class="card-body" style="margin-bottom: 5px">
+								<a href="/">
+									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" >
+									</a><div class="card-body" style="margin-bottom: 5px">
 									</div>
 								</div>
 							</div>
