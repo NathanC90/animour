@@ -16,7 +16,7 @@ public class Classify {
 	private Long id;
 	@Column(name="CLASSIFY_NAME", length = 50, nullable = false)
 	private String classifyName;
-
+	
 	@Override
 	public String toString() {
 		return "Classify [id=" + id + ", classifyName=" + classifyName + "]";
@@ -37,5 +37,4 @@ public class Classify {
 	public void setClassifyName(String classifyName) {
 		this.classifyName = classifyName;
 	}
-
 }

@@ -55,12 +55,12 @@ public class ForumController {
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })
 	public String findAll(int pageNo,Model model) {
 		//分頁
-		if(pageNo < 1 ) {
+		if(pageNo < 1) {
 			pageNo = 1;
 		}
 		Page<Article> page = forumService.getPage(pageNo, 3);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage) {
+		if(pageNo > totalPage && totalPage!=0) {
 			pageNo = totalPage;
 		}
 		page = forumService.getPage(pageNo, 3);
@@ -89,9 +89,20 @@ public class ForumController {
 	}
 
 	@RequestMapping(path = { "/forum/search" }, method = { RequestMethod.GET })
-	public String search(String search, Model model) {
-		List<Article> articles = forumService.getSearchBySubject("%" + search + "%");
-		model.addAttribute("articles", articles);
+	public String search(int pageNo,String search, Model model) {
+		//分頁
+				if(pageNo < 1 ) {
+					pageNo = 1;
+				}
+				Page<Article> page = forumService.getSearchBySubject("%" + search + "%",pageNo,3);
+				int totalPage = page.getTotalPages();
+				if(pageNo > totalPage && totalPage!=0) {
+					pageNo = totalPage;
+				}
+				page = forumService.getSearchBySubject("%" + search + "%",pageNo,3);
+				model.addAttribute("page", page);
+				String queryString = "search="+search+"&";
+				model.addAttribute("queryString", queryString);
 		// sidebar要用的
 		sidebar(model);
 		return "/forum/article";
@@ -105,13 +116,13 @@ public class ForumController {
 		}
 		Page<Article> page = forumService.getSearchByCategoryId(categoryId,pageNo,3);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage) {
+		if(pageNo > totalPage && totalPage!=0) {
 			pageNo = totalPage;
 		}
 		page = forumService.getSearchByCategoryId(categoryId,pageNo,3);
 		model.addAttribute("page", page);
-		String categoryQueryString = "categoryId="+categoryId+"&";
-		model.addAttribute("categoryQueryString", categoryQueryString);
+		String queryString = "categoryId="+categoryId+"&";
+		model.addAttribute("queryString", queryString);
 		// sidebar要用的
 		sidebar(model);
 		return "/forum/article";

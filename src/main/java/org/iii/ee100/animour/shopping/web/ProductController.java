@@ -43,7 +43,7 @@ public class ProductController {
 		}
 		Page<Product> page = productService.getPage(pageNo, 6);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage) {
+		if(pageNo > totalPage && totalPage != 0) {
 			pageNo = totalPage;
 		}
 		page = productService.getPage(pageNo, 6);

@@ -18,21 +18,21 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ForumService {
-	
+
 	@Autowired
 	private MemberDao memberDao;
-	
+
 	@Autowired
 	private ArticleDao articleDao;
-	
+
 	@Autowired
 	private CommentDao commentDao;
-	
+
 	@Autowired
 	private CategoryDao categoryDao;
-	
+
 	public Page<Article> getPage(int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo-1, pageSize);
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
 		return articleDao.findAll(pageable);
 	}
 
@@ -40,7 +40,7 @@ public class ForumService {
 		articleDao.save(article);
 
 	}
-	
+
 	public void insertComment(Comment comment) {
 		commentDao.save(comment);
 
@@ -63,7 +63,7 @@ public class ForumService {
 	public Article getOne(Long id) {
 		return articleDao.findOne(id);
 	}
-	
+
 	public Member getOneMember(Long id) {
 		return memberDao.findOne(id);
 	}
@@ -79,22 +79,23 @@ public class ForumService {
 	public List<Article> getPopularFour() {
 		return articleDao.findTop4ByOrderByClickDesc();
 	}
-	
-	public List<Comment> getCommentByArticleId(Long id){
+
+	public List<Comment> getCommentByArticleId(Long id) {
 		return commentDao.findByArticleId(id);
 	}
-	
-	public List<Article> getSearchBySubject(String subject){
-		return articleDao.findBySubjectContaining(subject);
+
+	public Page<Article> getSearchBySubject(String subject, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		return articleDao.findBySubjectContaining(subject, pageable);
 	}
-	
-	public Page<Article> getSearchByCategoryId(Long categoryId,int pageNo,int pageSize){
-		PageRequest pageable = new PageRequest(pageNo-1, pageSize);
+
+	public Page<Article> getSearchByCategoryId(Long categoryId, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
 		return articleDao.findByCategoryId(categoryId, pageable);
 	}
-	
-	public List<Category> getAllCategory(){
+
+	public List<Category> getAllCategory() {
 		return Lists.newArrayList(categoryDao.findAll());
 	}
-	
+
 }

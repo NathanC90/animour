@@ -26,20 +26,20 @@ public class productTest {
 	@Autowired
 	private OrdersDao ordersDao;
 	
-//	@Test
-//	public void TestInsertProduct() {
-//		Product product1 = new Product();
-//		product1.setName("法國皇家PRP30 貴賓成犬 1.5 公斤");
-//		product1.setPrice(600);
-//		product1.setQuantity(20L);
-//		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
-//		product1.setExpire(90);
-//		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-2"));
-//		
-//		productDao.save(product1);
-//	}
+	@Test
+	public void TestInsertProduct() {
+		Product product1 = new Product();
+		product1.setName("法國皇家PRP30 貴賓成犬 1.5 公斤");
+		product1.setPrice(600);
+		product1.setQuantity(20L);
+		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
+		product1.setExpire(90);
+		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-2"));
+		
+		productDao.save(product1);
+	}
 	
-/*	@Test
+	@Test
 	public void TestManyToMany() {
 		Classify classify1 = new Classify();
 		classify1.setClassifyName("狗商品");
@@ -105,7 +105,7 @@ public class productTest {
 		orders1.getProducts().add(product2);
 		orders1.getProducts().add(product3);
 		ordersDao.save(orders1);
-	}*/
+	}
 	
 	
 //	@Test
