@@ -1,12 +1,19 @@
 package org.iii.ee100.animour.halfway.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.iii.ee100.animour.member.entity.Member;
 
 @Entity
 @Table(name = "ANIMAL")
@@ -17,8 +24,18 @@ public class Animal {
 	@Column(name = "ID") // for system
 	private Long id;
 
-	@Column(name = "STATUS", columnDefinition="VARCHAR default '開放認養'") // for system
-	private String status;
+	@ManyToOne
+	// @JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
+	private Member member;
+
+	@OneToMany(mappedBy = "animal", cascade = { CascadeType.ALL })
+	private List<Adoption> adoptions;
+
+	// @ManyToOne
+	// private City city;
+
+	@Column(name = "STATUS") // for system
+	private String status = "開放認養";
 
 	@Column(name = "NAME")
 	private String name;
@@ -62,24 +79,39 @@ public class Animal {
 	@Column(name = "FILE_NAME")
 	private String fileName;
 
-	@Column(name = "MEMBER_ID")
-	private Long memberId;
+//	@Column(name = "MEMBER_ID")
+//	private Long memberId;
 
-	@Override
-	public String toString() {
-		return "Animal [id=" + id + ", status=" + status + ", name=" + name + ", specie=" + specie + ", color=" + color
-				+ ", gender=" + gender + ", found=" + found + ", upload=" + upload + ", city=" + city + ", district="
-				+ district + ", hospitalized=" + hospitalized + ", hospitalName=" + hospitalName + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark=" + remark + ", fileName="
-				+ fileName + ", memberId=" + memberId + "]";
-	}
+	
 
 	// Getter/Setter
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", member=" + member + ", adoptions=" + adoptions + ", status=" + status + ", name="
+				+ name + ", specie=" + specie + ", color=" + color + ", gender=" + gender + ", found=" + found
+				+ ", upload=" + upload + ", city=" + city + ", district=" + district + ", hospitalized=" + hospitalized
+				+ ", hospitalName=" + hospitalName + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark="
+				+ remark + ", fileName=" + fileName + "]";
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
+	}
+
+	public List<Adoption> getAdoptions() {
+		return adoptions;
+	}
+
+	public void setAdoptions(List<Adoption> adoptions) {
+		this.adoptions = adoptions;
 	}
 
 	public String getStatus() {
@@ -162,12 +194,12 @@ public class Animal {
 		this.hospitalized = hospitalized;
 	}
 
-	public String getHospitalname() {
+	public String getHospitalName() {
 		return hospitalName;
 	}
 
-	public void setHospitalname(String hospitalname) {
-		this.hospitalName = hospitalname;
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
 	}
 
 	public String getCardNum() {
@@ -202,12 +234,17 @@ public class Animal {
 		this.fileName = fileName;
 	}
 
-	public Long getMemberId() {
-		return memberId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setMemberId(Long memberId) {
-		this.memberId = memberId;
-	}
+//
+//	public Long getMemberId() {
+//		return memberId;
+//	}
+//
+//	public void setMemberId(Long memberId) {
+//		this.memberId = memberId;
+//	}
 
 }

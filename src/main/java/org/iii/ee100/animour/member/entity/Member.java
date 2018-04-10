@@ -9,9 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.halfway.entity.Adoption;
+import org.iii.ee100.animour.halfway.entity.Animal;
 
 @Entity
 @Table(name="MEMBER")
@@ -44,6 +47,13 @@ public class Member {
 //			,fetch=FetchType.EAGER
 	)
 	private List<Article> article;
+	
+	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
+	private List<Animal> animals;
+	
+	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
+	private Adoption adoption;
+
 
 	@Override
 	public String toString() {

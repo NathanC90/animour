@@ -216,8 +216,7 @@
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
-												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+												<button type="button" onclick="location.href='/halfway/detail?id=${animal.id}';" class="btn btn-common btn-sm mt-10">詳情</button>
 											</div>
 										</div>
 									</div>

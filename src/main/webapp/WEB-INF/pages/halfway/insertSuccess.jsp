@@ -76,72 +76,73 @@
 </head>
 <body>
 
-<!-- 	<table> -->
-<!-- 		<h3>所有動物資料</h3> -->
-<%-- 		<c:forEach var="animal" items="${animals}"> --%>
-<%-- 			<td>${animal.id}</td> --%>
-<%-- 			<td>${animal.name}</td> --%>
-<%-- 			<td>${animal.specie}</td> --%>
-<%-- 			<td>${animal.color}</td> --%>
-<%-- 			<td>${animal.found}</td> --%>
-<%-- 			<td>${animal.upload}</td> --%>
-<%-- 			<td>${animal.city}</td> --%>
-<%-- 			<td>${animal.district}</td> --%>
-<!-- 			</tbody> -->
-<%-- 		</c:forEach> --%>
-<!-- 	</table> -->
-<!-- 	<hr> -->
+	<!-- 	<table> -->
+	<!-- 		<h3>所有動物資料</h3> -->
+	<%-- 		<c:forEach var="animal" items="${animals}"> --%>
+	<%-- 			<td>${animal.id}</td> --%>
+	<%-- 			<td>${animal.name}</td> --%>
+	<%-- 			<td>${animal.specie}</td> --%>
+	<%-- 			<td>${animal.color}</td> --%>
+	<%-- 			<td>${animal.found}</td> --%>
+	<%-- 			<td>${animal.upload}</td> --%>
+	<%-- 			<td>${animal.city}</td> --%>
+	<%-- 			<td>${animal.district}</td> --%>
+	<!-- 			</tbody> -->
+	<%-- 		</c:forEach> --%>
+	<!-- 	</table> -->
+	<!-- 	<hr> -->
 
-<!-- 	<h3>查詢一筆動物資料</h3> -->
-<!-- 	<table> -->
-<!-- 		<tbody> -->
-<!-- 			<tr> -->
-<%-- 				<td>${animal.id}</td> --%>
-<%-- 				<td>${animal.name}</td> --%>
-<%-- 				<td>${animal.specie}</td> --%>
-<%-- 				<td>${animal.color}</td> --%>
-<%-- 				<td>${animal.found}</td> --%>
-<%-- 				<td>${animal.upload}</td> --%>
-<%-- 				<td>${animal.city}</td> --%>
-<%-- 				<td>${animal.district}</td> --%>
-<!-- 			</tr> -->
-<!-- 		</tbody> -->
-<!-- 	</table> -->
-<!-- 	<hr> -->
-<!-- 	<h3>修改一筆動物資料</h3> -->
-<!-- 	<table> -->
-<!-- 		<tbody> -->
-<!-- 			<tr> -->
-<%-- 				<td>${upanimal.id}</td> --%>
-<%-- 				<td>${upanimal.name}</td> --%>
-<%-- 				<td>${upanimal.specie}</td> --%>
-<%-- 				<td>${upanimal.color}</td> --%>
-<%-- 				<td>${upanimal.found}</td> --%>
-<%-- 				<td>${upanimal.upload}</td> --%>
-<%-- 				<td>${upanimal.city}</td> --%>
-<%-- 				<td>${upanimal.district}</td> --%>
-<!-- 			</tr> -->
-<!-- 		</tbody> -->
-<!-- 	</table> -->
-<!-- 	<hr> -->
-	<h3>新增一筆動物資料成功</h3>
-	<table>
-		<tbody>
-			<tr>
-				<td>${inanimal.id}</td>
-				<td>${inanimal.status}</td>
-				<td>${inanimal.name}</td>
-				<td>${inanimal.specie}</td>
-				<td>${inanimal.color}</td>
-				<td>${inanimal.gender}</td>
-				<td>${inanimal.found}</td>
-				<td>${inanimal.upload}</td>
-				<td>${inanimal.city}</td>
-				<td>${inanimal.district}</td>
-			</tr>
-		</tbody>
-	</table>
-	<a href="/halfway" class="btn btn-common">
-								完成</a>
+	<!-- 	<h3>查詢一筆動物資料</h3> -->
+	<!-- 	<table> -->
+	<!-- 		<tbody> -->
+	<!-- 			<tr> -->
+	<%-- 				<td>${animal.id}</td> --%>
+	<%-- 				<td>${animal.name}</td> --%>
+	<%-- 				<td>${animal.specie}</td> --%>
+	<%-- 				<td>${animal.color}</td> --%>
+	<%-- 				<td>${animal.found}</td> --%>
+	<%-- 				<td>${animal.upload}</td> --%>
+	<%-- 				<td>${animal.city}</td> --%>
+	<%-- 				<td>${animal.district}</td> --%>
+	<!-- 			</tr> -->
+	<!-- 		</tbody> -->
+	<!-- 	</table> -->
+	<!-- 	<hr> -->
+	<!-- 	<h3>修改一筆動物資料</h3> -->
+	<!-- 	<table> -->
+	<!-- 		<tbody> -->
+	<!-- 			<tr> -->
+	<%-- 				<td>${upanimal.id}</td> --%>
+	<%-- 				<td>${upanimal.name}</td> --%>
+	<%-- 				<td>${upanimal.specie}</td> --%>
+	<%-- 				<td>${upanimal.color}</td> --%>
+	<%-- 				<td>${upanimal.found}</td> --%>
+	<%-- 				<td>${upanimal.upload}</td> --%>
+	<%-- 				<td>${upanimal.city}</td> --%>
+	<%-- 				<td>${upanimal.district}</td> --%>
+	<!-- 			</tr> -->
+	<!-- 		</tbody> -->
+	<!-- 	</table> -->
+	<!-- 	<hr> -->
+	<div style="margin:auto">
+		<h3>新增一筆動物資料成功</h3>
+		<table>
+			<tbody>
+				<tr>
+					<td>${inanimal.id}</td>
+					<td>${inanimal.status}</td>
+					<td>${inanimal.name}</td>
+					<td>${inanimal.specie}</td>
+					<td>${inanimal.color}</td>
+					<td>${inanimal.gender}</td>
+					<td>${inanimal.found}</td>
+					<td>${inanimal.upload}</td>
+					<td>${inanimal.city}</td>
+					<td>${inanimal.district}</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="/halfway" class="btn btn-common"> 完成</a>
+	</div>
 </body>
 </html>
