@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<!doctype html>
-		<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
+<html lang="en">
 
 		<head>
 			<!-- Required meta tags -->
@@ -47,7 +47,7 @@
 			<!-- Header area wrapper starts -->
 			<header id="header-wrap">
 				<!-- Navbar Starts -->
-				<jsp:include page="navbar.jsp"></jsp:include>
+ 			<jsp:include page="../navbar.jsp"></jsp:include>
 
 				<!-- Navbar ends -->
 
@@ -101,7 +101,7 @@
 								<img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-										醫生門診時間異動</h2>
+										LaLa醫生門診時間異動</h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
 										已掛號會員請更改看診時間</h3>
 									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
@@ -121,11 +121,130 @@
 					</div>
 				</div>
 				<!-- 輪播牆結束-->
+			</header>
+			<!-- Header-wrap Section End -->
+
+			<!-- 寵物沙龍開始 -->
+			<section id="service-block-main" class="section">
+				<!-- 重複的內容開始 -->
+				<div class="container">
+					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+						最新空房</h1>
+					<div class="row">
+						<c:forEach var="avar" items="${reservation}">
+
+							<div class="col-md-4">
+								<div class="card mb-4 box-shadow">
+									<img class="card-img-top" src="/images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+									<div class="card-body" style="margin-bottom: 5px">
+										<p class="card-text" style="padding: 0px">
+											房號：${avar.id} 房型：${avar.type}</p>
+										<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
+											<div class="btn-group" style="margin: 0px">
+												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
+											</div>
+											<small class="text-muted">${avar.checkIn}</small>
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+				<!-- 重複的內容結束 -->
+			</section>
+
+			<!-- 寵物旅館結束 -->
+
+
+
+
+			<!-- Pricing Table Section -->
+			<section id="pricing" class="section">
+				<div class="container">
+					<h1 class="section-title wow fadeInUpQuick" data-wow-delay=".2s">
+						Our Pricing</h1>
+					<p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".3s">
+						At vero eos et accusamus et iusto odio dignissimos ducimus qui
+						<br> blanditiis praesentium
+					</p>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="pricing-table pricing-table-x">
+								<div class="table-header">
+									<h3>贊助我們</h3>
+								</div>
+								<div class="plan">
+									<h3 class="price">NT49</h3>
+								</div>
+								<div class="plan-info">
+									<p>
+										<i class="fa fa-check"></i> 100點紅利積點
+									</p>
+									<p>
+										<i class="fa fa-check"></i> 最新商品8折優惠
+									</p>
+									<div class="button-area">
+										<a href="#" class="btn btn-common"> 贊助 </a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="pricing-table pricing-table-x">
+								<div class="table-header highlight">
+									<h3>贊助我們</h3>
+								</div>
+								<div class="plan">
+									<h3 class="price">NT259</h3>
+								</div>
+								<div class="plan-info">
+									<p>
+										<i class="fa fa-check"></i>每月新增上限50隻
+									</p>
+									<p>
+										<i class="fa fa-check"></i>300點紅利積點
+									</p>
+									<div class="button-area">
+										<a href="#" class="btn btn-common">贊助</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 wow">
+							<div class="pricing-table pricing-table-x">
+								<div class="table-header">
+									<h3>成為VIP</h3>
+								</div>
+								<div class="plan">
+									<h3 class="price">每月NT199</h3>
+								</div>
+								<div class="plan-info">
+									<p>
+										<i class="fa fa-check"></i> 不限次數使用本站功能
+									</p>
+									<p>
+										<i class="fa fa-check"></i> 600點紅利積點
+									</p>
+									<div class="button-area">
+										<a href="#" class="btn btn-common">贊助</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<!-- Pricing Table  End -->
 
 
 			<!-- Footer Section -->
 			<!-- (footer.jsp) -->
-			<jsp:include page="footer.jsp"></jsp:include>
+ 			<jsp:include page="../footer.jsp"></jsp:include>
 
 			<!-- Footer Section End-->
 

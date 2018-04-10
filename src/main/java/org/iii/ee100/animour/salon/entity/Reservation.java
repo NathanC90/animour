@@ -20,7 +20,7 @@ public class Reservation {
 	private String service;
 	
 	@Column(name="PRICE")
-	private int price;
+	private Integer price;
 	
 	@Override
 	public String toString() {
@@ -41,7 +41,7 @@ public class Reservation {
 	public int getPrice() {
 		return price;
 	}
-	public void setPrice(int price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	

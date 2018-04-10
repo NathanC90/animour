@@ -23,7 +23,7 @@ public class Salon {
 	private String owner;
 	
 	@Column(name="PHONE")
-	private int phone;
+	private Integer phone;
 	
 	@Column(name="DOG_NAME")
 	private String dogName;
@@ -38,7 +38,7 @@ public class Salon {
 	private java.sql.Date finishDate;
 	
 	@Column(name="SPENDING")
-    private int spending;
+    private Integer spending;
 	
 	@Column(name="DESIGNER")
     private String designer;
@@ -75,7 +75,7 @@ public class Salon {
 	public int getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
 	public String getDogName() {
@@ -105,7 +105,7 @@ public class Salon {
 	public int getSpending() {
 		return spending;
 	}
-	public void setSpending(int spending) {
+	public void setSpending(Integer spending) {
 		this.spending = spending;
 	}
 	public String getDesigner() {

@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.salon.web;
 
+import java.util.List;
+
+import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +16,12 @@ public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;
 	
-	@RequestMapping(path= {"/appointment"},method = { RequestMethod.POST })
+	@RequestMapping(path= {"/appointment"},method = { RequestMethod.GET })
 	public String reservationTime(Model model) {
-		
+		List<Reservation> reservation = reservationService.getAll();
+		model.addAttribute("reservation",reservation);
 		return "salon/reservation";
-		
+//		return "salon/test";
 	}
 	
 
