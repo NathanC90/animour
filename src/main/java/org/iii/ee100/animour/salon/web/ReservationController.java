@@ -21,8 +21,9 @@ public class ReservationController {
 		List<Reservation> reservation = reservationService.getAll();
 		model.addAttribute("reservation",reservation);
 		return "salon/reservation";
-//		return "salon/test";
 	}
+	
+
 	
 
 }

@@ -128,14 +128,17 @@
 			<section id="service-block-main" class="section">
 				<!-- 重複的內容開始 -->
 				<div class="container">
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-						最新空房</h1>
+					<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+						服務項目</h3>
+					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">洗澡</h1>
+					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">腳指甲</h1>
+						
 					<div class="row">
 						<c:forEach var="avar" items="${reservation}">
 
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+									<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">
 											房號：${avar.id} 房型：${avar.type}</p>
