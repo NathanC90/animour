@@ -53,8 +53,8 @@ INSERT INTO news (subject, content, publish_Time, publish_Time_End, create_User,
 INSERT INTO news (subject, content, publish_Time, publish_Time_End, create_User, create_Time )
  values ('活動標題10', '活動內文10',  '2018-01-01', '2018-06-01', 'admin', '2018-01-01 08:00:00');
  
-INSERT INTO news (subject, content, publishTime, publishTimeEnd, createUser, createTime ) values (?, ?,  ?, ?, ?, ?)";
-UPDATE news SET subject=? , content=? , updateUser=?, updateTime=? where seqno=?;
-SELECT seqno, subject, content, updatetime FROM news WHERE seqno = ?";
-SELECT seqno, subject, content, updateTime FROM news ORDER BY seqno desc fetch first 6 rows only";
+INSERT INTO news (subject, content, publish_Time, publish_Time_End, create_User, create_Time ) values (?, ?,  ?, ?, ?, ?)";
+UPDATE news SET subject=? , content=? , update_User=?, update_Time=? where seqno=?;
+SELECT seqno, subject, content, update_Time FROM news WHERE seqno = ?";
+SELECT seqno, subject, content, update_Time FROM news ORDER BY seqno desc fetch first 6 rows only";
 DELETE FROM news WHERE seqno=?;
