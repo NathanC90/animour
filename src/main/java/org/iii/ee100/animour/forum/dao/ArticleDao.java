@@ -16,7 +16,7 @@ public interface ArticleDao extends JpaRepository<Article, Long>{
 	//FROM Article ORDER BY UpdateTime DESC FETCH FIRST 4 ROWS ONLY
 	List<Article> findTop4ByOrderByClickDesc();
 	
-	List<Article> findBySubjectContaining(String subject);
+	Page<Article> findBySubjectContaining(String subject,Pageable pageable);
 	
 	Page<Article> findByCategoryId(Long categoryId, Pageable pageable);
 }
