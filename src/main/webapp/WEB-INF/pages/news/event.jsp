@@ -72,8 +72,8 @@
 <div class="container">
 	<div>
 	<form>
-		<p>活動編號：${oneNews.seqno}<br>活動名稱：${oneNews.subject}</p>
-		<p>活動內文：${oneNews.content}<br>更新時間：${oneNews.updateTime}</p>
+		<p>活動名稱：${oneNews.subject}<br>活動日期：${oneNews.event_date}</p>
+		<p>活動地點：${oneNews.address}<br>活動內文：${oneNews.content}</p>
 	</form>
 	</div>
 	<hr>
@@ -81,8 +81,8 @@
 	<h3>查詢所有活動資料</h3>
 	<table>
 		<c:forEach var="news" items="${allNews}">
-		<p>活動編號：${news.seqno}<br>活動名稱：${news.subject}</p>
-		<p>活動內文：${news.content}<br>更新時間：${news.updateTime}</p>
+		<p>活動名稱：${news.subject}<br>活動日期：${news.event_date}</p>
+		<p>活動地點：${news.address}<br>
 		<hr>
 		</c:forEach>
 	</table>

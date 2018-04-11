@@ -120,7 +120,7 @@
 						活動一覽</h1>
 
 					<div class="row">
-						<c:forEach var="news" items="${allNews}">
+						<c:forEach var="news" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
 								<a href="/">
@@ -131,6 +131,7 @@
 							</div>
 						</c:forEach>
 					</div>
+					
 					
 
 					<!-- Service-Block-000 Item Ends -->

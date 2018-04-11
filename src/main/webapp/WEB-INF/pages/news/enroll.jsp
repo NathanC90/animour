@@ -78,7 +78,7 @@
 <form method="get">
 <table>票券資訊
 <tr><td>票券名稱</td><td>票券票價</td><td>張數</td></tr>
-<tr><td>${oneTicket.subject_id}</td><td>${oneTicket.price}</td><td>${oneTicket.quantity}</td></tr>
+<tr><td>${oneNews.subject}</td><td>${oneTicket.price}</td><td>${oneTicket.quantity}</td></tr>
 
 </table>
 </form>
