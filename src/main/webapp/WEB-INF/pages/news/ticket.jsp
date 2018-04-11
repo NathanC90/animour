@@ -65,7 +65,7 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>最新消息</title>
+<title>Animour</title>
 </head>
 <body>
 	<header id="header-wrap">
@@ -80,7 +80,7 @@
 						<c:forEach var="news" items="${allNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" href="/event">
+									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="">
 									<div class="card-body" style="margin-bottom: 5px">
 									</div>
 								</div>
