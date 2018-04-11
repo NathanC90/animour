@@ -129,13 +129,9 @@
 				<!-- 重複的內容開始 -->
 				<div class="container">
 					<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-						服務項目</h3>
-					<a class="section-title wow fadeIn animated" data-wow-delay=".2s" href="/appointment/designer">洗澡 2hr</a>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">剪指甲 1hr</h1>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">剪毛 1hr</h1>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">造型 2hr</h1>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total hours:</h1>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total pay:</h1>
+						設計師選擇</h3>
+					<a class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">小美</a>
+
 						
 					<div class="row">
 						<c:forEach var="avar" items="${reservation}">

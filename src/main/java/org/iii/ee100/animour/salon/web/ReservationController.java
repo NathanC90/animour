@@ -28,6 +28,18 @@ public class ReservationController {
 		model.addAttribute("reservation",reservation);
 		return "salon/reservation";
 	}
+	@RequestMapping(path= {"/appointment/designer"},method = { RequestMethod.GET })
+	public String reservationDesigner(Model model) {
+		List<Reservation> reservationDesigner = reservationService.getAll();
+		model.addAttribute("reservationDesigner",reservationDesigner);
+		return "salon/chooseDesigner";
+	}
+	@RequestMapping(path= {"/appointment/showFreeTime"},method = { RequestMethod.GET })
+	public String showReservationTime(Model model) {
+		List<Reservation> showReservationTime = reservationService.getAll();
+		model.addAttribute("showReservationTime",showReservationTime);
+		return "salon/showFreeTime";
+	}
 	
 	
 
