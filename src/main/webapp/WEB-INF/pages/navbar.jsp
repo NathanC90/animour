@@ -37,9 +37,7 @@
 					aria-haspopup="true" aria-expanded="false">中途專區</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/halfway">認養搜尋</a> 
-<!-- 						<a class="dropdown-item" -->
-<!-- 							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a> -->
-
+						<a class="dropdown-item" href="/halfway/showAdoption">查詢通知</a> 
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/product/index" >寵物市集</a>

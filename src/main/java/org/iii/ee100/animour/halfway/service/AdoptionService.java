@@ -29,4 +29,8 @@ public class AdoptionService {
 	public Adoption getOne(Long id) {
 		return adoptionDao.findOne(id);
 	}
+	
+	public List<Adoption> getCheckAdoption() {
+		return adoptionDao.findByacceptRequestIsNull();
+	}
 }
