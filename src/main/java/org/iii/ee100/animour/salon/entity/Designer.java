@@ -27,9 +27,11 @@ public class Designer {
 	@Column(name="ONEFREE")
 	private Integer oneFree;
 	
+	
 	@Override
 	public String toString() {
-		return "Designer [designer=" + designer + ", freeTime=" + freeTime + "]";
+		return "Designer [id=" + id + ", designer=" + designer + ", freeTime=" + freeTime + ", oneFree=" + oneFree
+				+ "]";
 	}
 	public Long getId() {
 		return id;
@@ -49,5 +51,12 @@ public class Designer {
 	public void setFreeTime(Timestamp freeTime) {
 		this.freeTime = freeTime;
 	}
+	public Integer getOneFree() {
+		return oneFree;
+	}
+	public void setOneFree(Integer oneFree) {
+		this.oneFree = oneFree;
+	}
+	
 	
 }

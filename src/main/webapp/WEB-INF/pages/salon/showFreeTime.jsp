@@ -129,25 +129,25 @@
 				<!-- 重複的內容開始 -->
 				<div class="container">
 					<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-						設計師選擇</h3>
-					<a class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">小美</a>
+						預約確認</h3>
 
 						
 					<div class="row">
+					<h1>QQQQQQQQQQ</h1>
 						<c:forEach var="avar" items="${showReservationTime}">
 
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+									<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待預約設計師">
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">
-											房號：${avar.id} 房型：${avar.type}</p>
+										設計師名稱：${avar.designer} 空閒時間：${avar.freeTime}</p>
 										<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
 												<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
 											</div>
-											<small class="text-muted">${avar.checkIn}</small>
+<%-- 											<small class="text-muted">${avar.checkIn}</small> --%>
 										</div>
 									</div>
 								</div>
