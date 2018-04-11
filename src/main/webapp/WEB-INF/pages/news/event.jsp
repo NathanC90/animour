@@ -69,11 +69,12 @@
 </head>
 <body>
 		<!-- Container Starts -->
-				<div class="container">
-<h3>查詢一筆活動資料</h3>
+<div class="container">
 	<div>
+	<form>
 		<p>活動編號：${oneNews.seqno}<br>活動名稱：${oneNews.subject}</p>
 		<p>活動內文：${oneNews.content}<br>更新時間：${oneNews.updateTime}</p>
+	</form>
 	</div>
 	<hr>
 
