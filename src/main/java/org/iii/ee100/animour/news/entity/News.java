@@ -17,6 +17,10 @@ public class News {
 	private Long seqno;
 	@Column(name="SUBJECT")
 	private String subject;
+	@Column(name="EVENT_DATE")
+	private java.sql.Date eventDate;
+	@Column(name="ADDRESS")
+	private String address;
 	@Column(name="CONTENT")
 	private String content;
 	@Column(name="PUBLISH_TIME")
