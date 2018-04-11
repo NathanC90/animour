@@ -80,7 +80,7 @@
 					<tr>
 						<td width="120" height="40">商品類別:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="classify.classifyName" value="${param.classify}" type="text" size="50"
+							name="classify" value="${param.classify}" type="text" size="50"
 							style="text-align: left"></td>
 					</tr>
 				</tbody>
@@ -122,13 +122,25 @@
 					<tr>
 						<td width="120" height="40">製造日期:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="make" value="${param.makeDate}" type="text" size="50"
+							name="makeDate" value="${param.makeDate}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
 					</tr>
 					<tr>
 						<td width="120" height="40">保存期限:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="expire" value="${param.expire}" type="text" size="50"
+							style="text-align: left"></td>
+					</tr>
+					<tr>
+						<td width="120" height="40">上架日期:</td>
+						<td width="600" height="40" align="left"><input id='num'
+							name="shelvesDate" value="${param.shelvesDate}" type="text" size="50"
+							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
+					</tr>
+					<tr>
+						<td width="120" height="40">商品類別:</td>
+						<td width="600" height="40" align="left"><input id='num'
+							name="classify" value="${param.classify}" type="text" size="50"
 							style="text-align: left"></td>
 					</tr>
 				

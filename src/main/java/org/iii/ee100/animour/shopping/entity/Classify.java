@@ -11,15 +11,15 @@ import javax.persistence.Table;
 @Table(name="CLASSIFY")
 public class Classify {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
-	@Column(name="CLASSIFY_NAME", length = 50, nullable = false)
-	private String classifyName;
+	@Column(name="NAME", length = 50, nullable = false)
+	private String name;
 	
 	@Override
 	public String toString() {
-		return "Classify [id=" + id + ", classifyName=" + classifyName + "]";
+		return "Classify [id=" + id + ", name=" + name + "]";
 	}
 
 	public Long getId() {
@@ -30,11 +30,12 @@ public class Classify {
 		this.id = id;
 	}
 
-	public String getClassifyName() {
-		return classifyName;
+	public String getName() {
+		return name;
 	}
 
-	public void setClassifyName(String classifyName) {
-		this.classifyName = classifyName;
+	public void setName(String name) {
+		this.name = name;
 	}
+
 }
