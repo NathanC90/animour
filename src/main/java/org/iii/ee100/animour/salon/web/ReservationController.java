@@ -22,6 +22,13 @@ public class ReservationController {
 		model.addAttribute("reservation",reservation);
 		return "salon/reservation";
 	}
+	@RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
+	public String reservationDetail(Model model) {
+		List<Reservation> reservation = reservationService.getAll();
+		model.addAttribute("reservation",reservation);
+		return "salon/reservation";
+	}
+	
 	
 
 	

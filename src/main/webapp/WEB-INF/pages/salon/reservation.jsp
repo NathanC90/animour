@@ -130,8 +130,8 @@
 				<div class="container">
 					<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 						服務項目</h3>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">洗澡</h1>
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">腳指甲</h1>
+					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">洗澡</h1>
+					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">腳指甲</h1>
 						
 					<div class="row">
 						<c:forEach var="avar" items="${reservation}">
