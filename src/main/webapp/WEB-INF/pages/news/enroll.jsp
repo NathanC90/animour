@@ -75,13 +75,46 @@
 	</header>
 		<!-- Container Starts -->
 				<div class="container">
-<form method="get">
-<table>票券資訊
-<tr><td>票券名稱</td><td>票券票價</td><td>張數</td></tr>
-<tr><td>${oneNews.subject}</td><td>${oneTicket.price}</td><td>${oneTicket.quantity}</td></tr>
 
-</table>
-</form>
+<form class="jotform-form" action="https://submit.jotform.me/submit/81005416515447/" method="post" name="form_81005416515447" id="81005416515447" accept-charset="utf-8">
+  <input type="hidden" name="formID" value="81005416515447" />
+  <div class="form-all">
+    <ul class="form-section page-section">
+      <li id="cid_7" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group ">
+          <div class="header-text httal htvam">
+            <h1 id="header_7" class="form-header" data-component="header">
+              ${oneNews.subject}
+            </h1>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_text" id="id_3">
+        <div id="cid_3" class="form-input-wide">
+          <div id="text_3" class="form-html" data-component="text">
+          <c:forEach var="news" items="${oneNews}">
+							<div class="col-md-4">
+								<div class="card mb-4 box-shadow">
+									<img class="card-img-top" src="/images/news/dogtable.jpg" width="80px" alt="">
+									<div class="card-body" style="margin-bottom: 5px">
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+            <p><span style="color:#575757;"><strong>活動名稱：</strong>${oneNews.subject}</span></p>
+            
+            <p><span style="color:#575757;"><strong>活動日期：</strong>${oneNews.event_Date}</span></p>
+            
+            <p><span style="color:#575757;"><strong>活動地點：</strong>${oneNews.address}</span></p>
+            <div style="width:400px;height:500px;border:2px gray solid;">活動簡介：${oneNews.content}寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</div>
+            
+            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.004965796966!2d121.5412095148038!3d25.033905544449656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xec12a62666a81e3d!2sNo.+390%2C+Section+1%2C+Fuxing+South+Road%2C+Da%E2%80%99an+District%2C+Taipei+City%2C+106!5e0!3m2!1sen!2stw!4v1523468006587" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+ </form>
 					<!-- Service-Block-000 Item Ends -->
 				</div>
 				<!-- Container Ends -->
