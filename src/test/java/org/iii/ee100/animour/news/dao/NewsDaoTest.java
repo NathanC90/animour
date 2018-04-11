@@ -3,6 +3,7 @@ package org.iii.ee100.animour.news.dao;
 import static org.junit.Assert.fail;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.iii.ee100.animour.news.entity.News;
 import org.junit.Test;
@@ -22,6 +23,14 @@ public class NewsDaoTest {
 		Iterable<News> newsAll = newsDao.findAll();
 		
 		for(News news:newsAll) {
+			System.out.println(news);
+		}
+	}
+	
+	@Test
+	public void testFindSixNews() {
+		List<News> newsList = newsDao.findTop6ByOrderBySeqnoDesc();
+		for(News news:newsList) {
 			System.out.println(news);
 		}
 	}
