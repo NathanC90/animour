@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NewsDao extends JpaRepository<News, Long>{
 	//SELECT seqno, subject, content, updateTime FROM news ORDER BY seqno desc fetch first 6 rows only";
-	//List<News> findTopSixOrderBySeqnoDesc();	
+	List<News> findTop6ByOrderBySeqnoDesc();	
 
 }
