@@ -168,18 +168,16 @@
 						<c:forEach var="news" items="${allNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt="">
+								<a href="/">
+									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt=""></a>
 									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">活動編號：${news.seqno}</p>
-										<p class="card-text" style="padding: 0px">活動名稱：${news.subject}</p>
-										<p class="card-text" style="padding: 0px">活動內文：${news.content}</p>
-										<p class="card-text" style="padding: 0px">更新時間：${news.updateTime}</p>
-										<div class="d-flex justify-content-between align-items-center">
-											<div class="btn-group">
-												<button type="button" class="btn btn-common btn-sm mt-20">詳情</button>
-												<button type="button" class="btn btn-common btn-sm mt-20">報名</button>
-											</div>
-										</div>
+										
+<!-- 										<div class="d-flex justify-content-between align-items-center"> -->
+<!-- 											<div class="btn-group"> -->
+<!-- 												<button type="button" class="btn btn-common btn-sm mt-20">詳情</button> -->
+<!-- 												<button type="button" class="btn btn-common btn-sm mt-20">報名</button> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
 									</div>
 								</div>
 							</div>
