@@ -19,11 +19,11 @@ import javax.persistence.Table;
 @Table(name="ORDERS")
 public class Orders {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private Long id;
-	@Column(name="ORDERS_NAME")
-	private String ordersName;
+	@Column(name="NAME")
+	private String name;
 	
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinTable(name="PRODUCT_ORDERS",	
@@ -31,25 +31,25 @@ public class Orders {
 			inverseJoinColumns= {@JoinColumn(name="PRODUCT_ID", referencedColumnName="ID")})
 	Set<Product> products = new HashSet<Product>();
 
-	public Long getId() {
-		return id;
-	}
-
 	@Override
 	public String toString() {
-		return "Orders [id=" + id + ", ordersName=" + ordersName + "]";
+		return "Orders [id=" + id + ", name=" + name + ", products=" + products + "]";
+	}
+
+	public Long getId() {
+		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getOrdersName() {
-		return ordersName;
+	public String getName() {
+		return name;
 	}
 
-	public void setOrdersName(String ordersName) {
-		this.ordersName = ordersName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Set<Product> getProducts() {
@@ -59,4 +59,6 @@ public class Orders {
 	public void setProducts(Set<Product> products) {
 		this.products = products;
 	}
+
+	
 }

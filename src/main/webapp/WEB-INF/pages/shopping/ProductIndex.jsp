@@ -119,7 +119,7 @@
 							<h2 class="widget-title">商品分類</h2>
 							<ul class="category-menu">
 								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
+										<input class="form-check-input" type="checkbox" value="" checked="checked"
 											id="defaultCheck1"> <label class="form-check-label"
 											for="defaultCheck1">寵物伺料</label>
 									</div></li>
@@ -161,6 +161,7 @@
 											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
 											<p>價格：${product.price}<br>數量：${product.quantity}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
+											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
 								</div>
 							</div>
