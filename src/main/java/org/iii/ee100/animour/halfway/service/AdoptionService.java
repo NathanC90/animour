@@ -6,7 +6,9 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.halfway.dao.AdoptionDao;
 import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AdoptionService {
 
 	@Autowired
