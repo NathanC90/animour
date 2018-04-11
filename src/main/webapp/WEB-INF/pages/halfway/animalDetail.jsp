@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
+<html lang="en">
+
 <head>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
@@ -37,7 +38,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animour</title>
+<title>Animal Detail</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -64,32 +65,91 @@
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>最新消息</title>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
 </head>
 <body>
-<header id="header-wrap">
-		<!-- Navbar Starts -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
-		<!-- Navbar ends -->
-	</header>
-		<!-- Container Starts -->
-				<div class="container">
-<form method="get">
-<table>票券資訊
-<tr><td>票券名稱</td><td>票券票價</td><td>張數</td></tr>
-<tr><td>${oneTicket.subject_id}</td><td>${oneTicket.price}</td><td>${oneTicket.quantity}</td></tr>
 
-</table>
-</form>
-					<!-- Service-Block-000 Item Ends -->
+	<!-- Header area wrapper starts -->
+	<header id="header-wrap">
+		<jsp:include page="../navbar.jsp"></jsp:include>
+	</header>
+	<!-- Header-wrap Section End -->
+
+	<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>動物認養詳情</h2>
+					</div>
 				</div>
-				<!-- Container Ends -->
-				
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+
+	<!-- Page Content Start 重複的內容開始 -->
+	<section class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 about2-intro-image">
+					<img class="card-img-top"
+						src="/showAnimalImage?fileName=${animal.fileName}" width="100px"
+						alt="${animal.id}">
+				</div>
+				<div class="col-md-6">
+					<h3 class="small-title">會員"${animal.member.name}"的送養動物</h3>
+					<p>We are unique and had working! We work for better product.</p>
+					<div id="default-tab" class="mt-10">
+						<!-- Nav tabs -->
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item"><a class="nav-link active" href="#home"
+								aria-controls="home" role="tab" data-toggle="tab">關於我</a></li>
+							<li class="nav-item"><a class="nav-link" href="#messages"
+								aria-controls="messages" role="tab" data-toggle="tab">備註</a></li>
+							<li class="nav-item"><a class="nav-link" href="#settings"
+								aria-controls="settings" role="tab" data-toggle="tab">給主人的話</a></li>
+						</ul>
+
+						<!-- Tab panes -->
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="home">
+								<p class="card-text" style="padding: 0px">編號：${animal.id}
+									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
+									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="messages">
+								<p>${animal.remark}</p>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="settings">
+								<form name="requestComment" action="/halfway/adoptionRequest"
+									method="POST">
+									<textarea class="form-control" id="remark" name="remark"
+										rows="3"></textarea>
+									<input type="submit" class="btn btn-common" value="確定認養">
+									<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 重複的內容結束 -->
+
 	<!-- Footer Section -->
-	<footer>
+	<!-- (footer.jsp) -->
 	<jsp:include page="../footer.jsp"></jsp:include>
-	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -111,7 +171,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	
 
 </body>
+
 </html>

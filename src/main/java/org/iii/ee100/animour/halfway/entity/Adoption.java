@@ -1,81 +1,132 @@
+
 package org.iii.ee100.animour.halfway.entity;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+
+import org.iii.ee100.animour.member.entity.Member;
 
 @Entity
-@Table(name="ADOPTION")
+@Table(name = "ADOPTION")
 public class Adoption {
-	
+
 	@Id
-	@Column(name="ID")
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
-	@Column(name="ORDER_DATE")
+
+	// 提出認養的時間
+	@Column(name = "REQUEST_DATE")
+	private Timestamp requestDate;
+
+	// 提出認養時的意見
+	@Column(name = "REQUEST_COMMENT", columnDefinition = "TEXT")
+	private String requestComment;
+
+	// 紀錄主人是否接受認養要求
+	@Column(name = "ACCEPT_REQUEST")
+	private Boolean acceptRequest;
+
+	// 訂單成立時間
+	@Column(name = "ORDER_DATE")
 	private Timestamp orderDate;
-	
-	@Column(name="FEEDBACK")
+
+	// 訂單處理狀態
+	@Column(name = "STATUS")
+	private String status;
+
+	@Column(name = "FEEDBACK")
 	private String feedback;
-	
-	@Column(name="ADOPT_MEMBER_ID")
-	private Long adoptMemberId;
-	
-	@Column(name="GIVE_MEMBER_ID")
-	private Long giveMemeberId;
-	
-	@Transient
-	private List<Animal> animals;
-	
-	
-	@Override
-	public String toString() {
-		return "Adoption [id=" + id + ", orderDate=" + orderDate + ", feedback=" + feedback + ", adoptMemberId="
-				+ adoptMemberId + ", giveMemeberId=" + giveMemeberId + ", animals=" + animals + "]";
-	}
+
+	// 提出認養的人
+	@OneToOne
+	//@JoinColumn(name = "user_id", nullable = false)
+	private Member member;
+
+	@ManyToOne
+	private Animal animal;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public Timestamp getRequestDate() {
+		return requestDate;
+	}
+
+	public void setRequestDate(Timestamp requestDate) {
+		this.requestDate = requestDate;
+	}
+
+	public String getRequestComment() {
+		return requestComment;
+	}
+
+	public void setRequestComment(String requestComment) {
+		this.requestComment = requestComment;
+	}
+
+	public Boolean getAcceptRequest() {
+		return acceptRequest;
+	}
+
+	public void setAcceptRequest(Boolean acceptRequest) {
+		this.acceptRequest = acceptRequest;
+	}
+
 	public Timestamp getOrderDate() {
 		return orderDate;
 	}
+
 	public void setOrderDate(Timestamp orderDate) {
 		this.orderDate = orderDate;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getFeedback() {
 		return feedback;
 	}
+
 	public void setFeedback(String feedback) {
 		this.feedback = feedback;
 	}
-	public Long getAdoptMemberId() {
-		return adoptMemberId;
+
+	public Member getMember() {
+		return member;
 	}
-	public void setAdoptMemberId(Long adoptMemberId) {
-		this.adoptMemberId = adoptMemberId;
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
-	public Long getGiveMemeberId() {
-		return giveMemeberId;
+
+	public Animal getAnimal() {
+		return animal;
 	}
-	public void setGiveMemeberId(Long giveMemeberId) {
-		this.giveMemeberId = giveMemeberId;
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
 	}
-	public List<Animal> getAnimals() {
-		return animals;
-	}
-	public void setAnimals(List<Animal> animals) {
-		this.animals = animals;
-	}
+
+	
 	
 }
