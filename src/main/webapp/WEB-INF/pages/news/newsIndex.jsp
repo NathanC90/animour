@@ -73,7 +73,7 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
 	</header>
-	<!-- Carousel Starts -->
+				<div class="container">
 					<!-- 輪播牆開始 -->
 				<div id="carousel-area">
 					<div id="carousel-slider" class="carousel slide" data-ride="carousel">
@@ -116,9 +116,6 @@
 					</div>
 				</div>
 				<!-- 輪播牆結束-->
-	
-	<!-- Container Starts -->
-				<div class="container">
 					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 						活動一覽</h1>
 
@@ -134,6 +131,7 @@
 							</div>
 						</c:forEach>
 					</div>
+					
 
 					<!-- Service-Block-000 Item Ends -->
 				</div>
