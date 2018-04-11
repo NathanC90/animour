@@ -37,7 +37,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animal Shelter</title>
+<title>Animour</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -68,136 +68,27 @@
 <title>最新消息</title>
 </head>
 <body>
+<header id="header-wrap">
+		<!-- Navbar Starts -->
+	<jsp:include page="../navbar.jsp"></jsp:include>
+		<!-- Navbar ends -->
+	</header>
 		<!-- Container Starts -->
 				<div class="container">
-<form method="post">
+<form method="get">
 <table>票券資訊
 <tr><td>票券名稱</td><td>票券票價</td><td>張數</td></tr>
 <tr><td>${oneTicket.subject_id}</td><td>${oneTicket.price}</td><td>${oneTicket.quantity}</td></tr>
 
 </table>
 </form>
-
-
 					<!-- Service-Block-000 Item Ends -->
 				</div>
 				<!-- Container Ends -->
-<!-- Footer Section -->
+				
+	<!-- Footer Section -->
 	<footer>
-		<!-- Container Starts -->
-		<div class="container">
-			<!-- Row Starts -->
-			<div class="row section">
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">About Us</h3>
-					<p></p>
-					<ul class="mb-3">
-						<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
-						<!-- 						<li><i class="fa fa-phone"></i></li> -->
-						<!-- 						<li><i class="fa fa-phone"></i></li> -->
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">Quick Links</h3>
-					<ul class="menu">
-						<li><a href="#">最新消息</a></li>
-						<li><a href="#">中途專區</a></li>
-						<li><a href="#">最新活動專區</a></li>
-						<li><a href="#">寵物市集</a></li>
-						<li><a href="#">寵物旅店</a></li>
-						<li><a href="#">醫院資訊專區</a></li>
-						<li><a href="#">THE BLOG</a></li>
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">Popular Posts</h3>
-					<ul class="image-list">
-						<li>
-							<figure class="overlay">
-								<img class="img-fluid" src="" alt="">
-							</figure>
-							<div class="post-content">
-								<h6 class="post-title">
-									<a href="blog-single.html"></a>
-								</h6>
-								<div class="meta">
-									<span class="date"></span>
-								</div>
-							</div>
-						</li>
-						<li>
-							<figure class="overlay">
-								<img class="img-fluid" src="" alt="">
-							</figure>
-							<div class="post-content">
-								<h6 class="post-title">
-									<a href="blog-single.html"></a>
-								</h6>
-								<div class="meta">
-									<span class="date"></span>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- Footer Widget Ends -->
-
-				<!-- Footer Widget Starts -->
-				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-					<h3 class="small-title">EMail Us</h3>
-					<form>
-						<input type="text" placeholder="Email here">
-						<button type="submit">
-							<i class="fa fa-paper-plane-o"></i>
-						</button>
-					</form>
-					<div class="flicker-gallery">
-						<h3 class="small-title">Social Media Link</h3>
-						<a href="#" title="Pan Masala"> <img
-							src="/images/flicker/img1.jpg" alt="">
-						</a> <a href="#" title="Sports Template for Joomla"> <img
-							src="/images/flicker/img2.jpg" alt="">
-						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/flicker/img3.jpg" alt="">
-						</a>
-					</div>
-				</div>
-				<!-- Footer Widget Ends -->
-			</div>
-			<!-- Row Ends -->
-		</div>
-		<!-- Container Ends -->
-
-		<!-- Copyright -->
-		<div id="copyright">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-sm-6">
-						<p class="copyright-text">
-							© 2018 Animour All right reserved, Designed by <a href="#">iii-ee100</a>
-						</p>
-					</div>
-					<div class="col-md-6 col-sm-6">
-						<div class="social-footer text-right">
-							<a href="#"> <i class="fa fa-facebook icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-twitter icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-linkedin icon-round"></i>
-							</a> <a href="#"> <i class="fa fa-google-plus icon-round"></i>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- Copyright  End-->
-
+	<jsp:include page="../footer.jsp"></jsp:include>
 	</footer>
 	<!-- Footer Section End-->
 
