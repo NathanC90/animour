@@ -52,3 +52,16 @@ UPDATE news SET subject=? , content=? , update_User=?, update_Time=? where seqno
 SELECT seqno, subject, content, update_Time FROM news WHERE seqno = ?";
 SELECT seqno, subject, content, update_Time FROM news ORDER BY seqno desc fetch first 6 rows only";
 DELETE FROM news WHERE seqno=?;
+
+===================================================================================================================================================================
+
+
+drop table ticket;
+
+create table ticket(
+subject_id bigserial primary key,
+subject varchar(200),
+ticket_price INTEGER,
+quantity INTEGER);
+
+INSERT INTO ticket (subject, ticket_price, quantity) values ('活動標題1', '300', '300');
