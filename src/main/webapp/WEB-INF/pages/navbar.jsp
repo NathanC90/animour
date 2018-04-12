@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,15 +74,32 @@
 						<!-- 								<a class="dropdown-item" href="">熱門文章</a>  -->
 						<!-- 								<a class="dropdown-item" href="">精選圖文</a> -->
 					</div></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/sign_in" 
-					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
-				</li>
-				<li class="nav-item dropdown">${member.account} 您好
+<!-- 				<li class="nav-item dropdown"><a -->
+<!-- 					class="nav-link dropdown-toggle" href="/sign_in"  -->
+<!-- 					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a> -->
+<!-- 				</li> -->
+<%-- 				<li class="nav-item dropdown">${member.account} 您好 --%>
+<!-- 				<div class="dropdown-menu"> -->
+<!-- 						<a class="dropdown-item" href="/logout">登出</a> -->
+<!-- 					</div> -->
+<!-- 				</li>	 -->
+
+<c:choose>
+   <c:when test="${!empty username}"> 
+   				<li class="nav-item dropdown">${username} 您好
 				<div class="dropdown-menu">
 						<a class="dropdown-item" href="/logout">登出</a>
 					</div>
 				</li>	
+   </c:when>
+   
+   <c:otherwise> 
+   				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="/sign_in" 
+					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
+				</li>
+   </c:otherwise> 
+</c:choose>
 					
 			</ul>
 			<form class="form-inline">
