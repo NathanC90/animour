@@ -2,6 +2,7 @@ package org.iii.ee100.animour.salon.web;
 
 import java.util.List;
 
+import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ReservationController {
 	}
 	@RequestMapping(path= {"/appointment/showFreeTime"},method = { RequestMethod.GET })
 	public String showReservationTime(Model model) {
-		List<Reservation> showReservationTime = reservationService.getAll();
+		List<Designer> showReservationTime = reservationService.getAllFreeTime();
 		model.addAttribute("showReservationTime",showReservationTime);
 		return "salon/showFreeTime";
 	}

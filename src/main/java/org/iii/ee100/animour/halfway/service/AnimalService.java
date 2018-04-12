@@ -8,6 +8,7 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -58,8 +59,9 @@ public class AnimalService {
 		return animalDao.findCityCount(city);
 	}
 	
-	public List<Animal>  getByCity(String city){
-		return animalDao.findByCity(city);
+	public Page<Animal> getByCity(String city, Integer pageNumber, Integer pageSize){
+		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+		return animalDao.findByCity(city, request);
 	}
 	
 	// pageSize=一頁幾筆資料
@@ -67,6 +69,13 @@ public class AnimalService {
 		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
 		return animalDao.findAll(request);
 	}
+	
+	public Page<Animal> getAnimalConatainingPage(String name, Integer pageNumber, Integer pageSize){ 
+		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+		return animalDao.findByNameContaining(name, request);
+	}
+	
+
 	
 //	public Page<Animal> getAnimalPage(Pageable pageable){
 //		return animalDao.findAll(pageable);
