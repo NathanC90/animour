@@ -27,7 +27,7 @@
 //		.and()
 //		.formLogin() //若未不符合authorize條件，則產生預設login表單
 //		.and()
-//		.httpBasic(); //產生基本表單
+//		.loginPage("/sign_in"); //產生基本表單
 //}
 //    
 //    @Autowired

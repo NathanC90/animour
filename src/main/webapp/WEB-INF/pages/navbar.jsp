@@ -86,11 +86,14 @@
 
 <c:choose>
    <c:when test="${!empty username}"> 
-   				<li class="nav-item dropdown">${username} 您好
-				<div class="dropdown-menu">
+   				
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="/profile"
+					aria-haspopup="true" aria-expanded="false">${username} 您好</a>
+					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/logout">登出</a>
-					</div>
-				</li>	
+						
+					</div></li>				
    </c:when>
    
    <c:otherwise> 
