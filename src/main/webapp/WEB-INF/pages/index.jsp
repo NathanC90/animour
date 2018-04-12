@@ -362,7 +362,7 @@
 						<!-- Blog Item Starts -->
 						<div class="blog-item-wrapper" style="height: 405px;">
 							<div class="blog-item-img">
-								<a href="#"> <img src="/images/adopt/cats/ad-cat1.jpg"
+								<a href="/forum/findOne?id=${article.id}"> <img src="/images/adopt/cats/ad-cat1.jpg"
 									alt="">
 								</a>
 							</div>
@@ -370,7 +370,7 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="#">${article.subject}</a>
+									<a href="/forum/findOne?id=${article.id}">${article.subject}</a>
 
 								</h3>
 
