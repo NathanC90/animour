@@ -1,8 +1,5 @@
 package org.iii.ee100.animour.news.web;
 
-import java.util.Map;
-
-import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +74,13 @@ public class NewsController {
 		model.addAttribute("updateNews", news);
 		return "/news/enroll";
 	}
+	
+	@RequestMapping(path= {"/findSixNews"}, method={RequestMethod.GET})
+	public String findSixNews(Model model) {
+		model.addAttribute("sixNews", newsService.getSixNews());
+		return "/news/newsIndex";
+	}
+	
+	
 	
 }

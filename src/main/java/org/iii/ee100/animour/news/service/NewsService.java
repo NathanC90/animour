@@ -50,4 +50,7 @@ public class NewsService{
 	public News getOne(Long seqno) {
 		return newsDao.findOne(seqno);
 	}
+	public List<News> getSixNews(){
+		return newsDao.findTop6ByOrderByEventDateDesc();
+	}
 }

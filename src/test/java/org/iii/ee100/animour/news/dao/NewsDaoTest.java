@@ -19,21 +19,22 @@ public class NewsDaoTest {
 	@Autowired
 	private NewsDao newsDao;
 
-	@Test
-	public void testFindAll() {
-		Iterable<News> newsAll = newsDao.findAll();
-		
-		for(News news:newsAll) {
-			System.out.println(news);
-		}
-	}
+//	@Test
+//	public void testFindAll() {
+//		Iterable<News> newsAll = newsDao.findAll();
+//		
+//		for(News news:newsAll) {
+//			System.out.println(news);
+//		}
+//	}
 	
 	@Test
 	public void testFindSixNews() {
-		Page<News> newsList = newsDao.findTop6ByOrderBySeqnoDesc(null);
+		List<News> newsList = newsDao.findTop6ByOrderByEventDateDesc();
 		for(News news:newsList) {
 			System.out.println(news);
 		}
 	}
+	
 
 }

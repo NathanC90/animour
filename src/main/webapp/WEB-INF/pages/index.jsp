@@ -186,7 +186,7 @@
 				最新活動專區</h1>
 
 			<div class="row">
-				<c:forEach var="news" items="${allNews}">
+				<c:forEach var="news" items="${sixNews}">
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
 							<a href="/"> <img class="card-img-top"
