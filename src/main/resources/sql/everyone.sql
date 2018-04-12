@@ -28,16 +28,19 @@ insert into animal(status, name, specie, color, found, upload, city, district) v
 insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'YellowBird', 'BIRD', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', '台南市', '西區');
 
 /*4 article */
- INSERT INTO CATEGORY(NAME) 
- VALUES ('PET');
+INSERT INTO CATEGORY(NAME) 
+VALUES ('PET');
  
- INSERT INTO CATEGORY(NAME) 
- VALUES ('SHARE');
+INSERT INTO CATEGORY(NAME) 
+VALUES ('SHARE');
  
- insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID) values ('aaaaa','aaaaaaaaaaaaaa','1999-01-08 04:05:06','1999-01-08 04:05:06',1,0,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID) values ('Tips for Living with a Cat in a Apartment','Cats Can be Good Roommates
+Having a cat living inside the home is known to produce a number of positive health benefits for people. Pets – especially cats - are increasingly being allowed in many rental units. Even dogs - especially small ones – are finding their way into apartments in both urban and suburban settings. Indoor living also has quite a few advantages for the cats: they are at much less risk of being hit by cars, getting into fights, getting lost, becoming pregnant or impregnating other cats, catching contagious diseases and becoming infested with external and internal parasites. Cats are among the best-suited of all companion animals to living their lives entirely inside of an apartment or other small dwelling. However, before bringing a cat into a home, rented or otherwise, prospective owners should consider whether or not this arrangement is going to be right for them, and for their cats, over the long haul.','1999-01-08 04:05:06','1999-01-08 04:05:06',1,0,1);
 
-insert into comment (content,update_Time,Article_Id,Member_Id) values ('aaa','2018-04-01 00:00:00',1,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID) values ('Living with Cats in Apartments: How to Make It Work in a Tiny Space','I’m almost living the dream. Well, my dream. My tiny dream. While some people dream about mansions or penthouses, I dream of wee little homes on wheels with snug lofts and crannies. I don’t quite have my wheeled house of dreams yet, but in moving to Japan I got pretty darn close. My apartment is the smallest I’ve ever inhabited, and I LOVE IT. But living with cats in apartments does have its challenges:','2015-01-07 00:00:00','2015-01-07 00:00:00',1,0,1);
 
+
+insert into comment (content,update_Time,Article_Id,Member_Id) values ('nice!','2018-04-01 00:00:00',1,1);
 /*5 donate */
 insert into donate (id, name, price, email)
 values (1, 'Serena van der Woodsen', 30000, 'serena1203@gmail.com');
