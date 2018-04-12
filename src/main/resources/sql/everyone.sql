@@ -16,16 +16,16 @@ insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('l
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('WellvetAnimalHospitalital',  '台大良一動物醫院',  '02-24263021',  '基隆市信義區義九路2號','10000' );  
 
 /*3 Animal */
-insert into animal(name, specie, color, found, upload, city, district) values  ('BlackDog', 'DOG', 'BLACK', '2017-01-01', '2018-03-10 12:00:00', 'TAIPEI', 'BEITOU');
-insert into animal(name, specie, color, found, upload, city, district) values  ('YellowDog', 'DOG', 'YELLOW', '2017-02-01', '2018-03-10 13:00:00', 'KAOHSIUNG', 'ZHOUYING');
-insert into animal(name, specie, color, found, upload, city, district) values  ('WhiteDog', 'DOG', 'WHITE', '2017-03-01', '2018-03-10 14:00:00', 'TAIPEI', 'SHINYI');
-insert into animal(name, specie, color, found, upload, city, district) values  ('BrownDog', 'DOG', 'BROWN', '2018-04-01', '2018-03-10 15:00:00', 'TAICHUNG', 'EAST');
-insert into animal(name, specie, color, found, upload, city, district) values  ('BlackCat', 'CAT', 'BLACK', '2017-05-01', '2018-03-10 16:00:00', 'KAOHSIUNG', 'ZHOUYING');
-insert into animal(name, specie, color, found, upload, city, district) values  ('BlueCat', 'CAT', 'BLUE', '2017-06-01', '2018-03-10 17:00:00', 'TAIPEI', 'BEITOU');
-insert into animal(name, specie, color, found, upload, city, district) values  ('OrangeCat', 'CAT', 'ORANGE', '2017-07-01', '2018-03-10 18:00:00', 'KAOHSIUNG', 'ZHOUYING');
-insert into animal(name, specie, color, found, upload, city, district) values  ('WhiteRabbit', 'RABBIT', 'BLACK', '2017-08-01', '2018-03-10 19:00:00', 'TAIPEI', 'BEITOU');
-insert into animal(name, specie, color, found, upload, city, district) values  ('GreyRabbit', 'RABBIT', 'BLACK', '2017-09-01', '2018-03-10 20:00:00', 'TAICHUNG', 'WEST');
-insert into animal(name, specie, color, found, upload, city, district) values  ('YellowBird', 'BIRD', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', 'TAINAN', 'BEITOU');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlackDog', 'DOG', 'BLACK', '2017-01-01', '2018-03-10 12:00:00', '台北市', '北投區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'YellowDog', 'DOG', 'YELLOW', '2017-02-01', '2018-03-10 13:00:00', '高雄市', '左營區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'WhiteDog', 'DOG', 'WHITE', '2017-03-01', '2018-03-10 14:00:00', '台北市', '大安區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BrownDog', 'DOG', 'BROWN', '2018-04-01', '2018-03-10 15:00:00', '台中市', '東區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlackCat', 'CAT', 'BLACK', '2017-05-01', '2018-03-10 16:00:00', '高雄市', '左營區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlueCat', 'CAT', 'BLUE', '2017-06-01', '2018-03-10 17:00:00', '台北市', '北投區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'OrangeCat', 'CAT', 'ORANGE', '2017-07-01', '2018-03-10 18:00:00', '高雄市', '左營區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'WhiteRabbit', 'RABBIT', 'BLACK', '2017-08-01', '2018-03-10 19:00:00', '台北市', '北投區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'GreyRabbit', 'RABBIT', 'BLACK', '2017-09-01', '2018-03-10 20:00:00', '台中市', '西區');
+insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'YellowBird', 'BIRD', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', '台南市', '西區');
 
 /*4 article */
  INSERT INTO CATEGORY(NAME) 

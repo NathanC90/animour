@@ -27,10 +27,11 @@ public class AnimalSearchController {
 	AnimalDao animalDao;
 
 	@RequestMapping(value="/queryByCity",method = { RequestMethod.GET })
-	public String queryAnimalByCity(@RequestParam("city") String city, Model model) {
+	public String queryAnimalByCity(@RequestParam("city") String city, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		
-		List<Animal> animals = animalservice.getByCity(city);
-		model.addAttribute("animals", animals);
+		Page<Animal> page = animalservice.getByCity(city, pageNumber, pageSize);
+		model.addAttribute("animalpage", page);
 		
 		Map<String, Integer> citycount = new HashMap<>();
 		List<String> citys = animalservice.searchDistinctCity();
@@ -42,6 +43,30 @@ public class AnimalSearchController {
 		model.addAttribute("citycount", citycount);
 		return "/halfway/halfwayIndex";
 	}
+	
+	@RequestMapping(value="/queryContaining",method = { RequestMethod.GET })
+	public String queryAnimalByName(@RequestParam("name") String name, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+		
+		
+		Page<Animal> page = animalservice.getAnimalConatainingPage(name, pageNumber, pageSize);
+		model.addAttribute("animalpage", page);
+		
+		Map<String, Integer> citycount = new HashMap<>();
+		List<String> citys = animalservice.searchDistinctCity();
+		for (String onecity: citys) {
+			//System.out.println(city);
+			citycount.put(onecity, animalservice.getCityCount(onecity));
+		}
+		model.addAttribute("citys", citys);
+		model.addAttribute("citycount", citycount);
+		return "/halfway/halfwayIndex";
+	}
+	
+	
+	
+	
+	
 
 //	@RequestMapping(value="", method= {RequestMethod.GET})
 //	public Page<Animal> getEntryByPageable(@PageableDefault(value=2, sort= {"id"}, direction = Sort.Direction.DESC) Pageable pageable){

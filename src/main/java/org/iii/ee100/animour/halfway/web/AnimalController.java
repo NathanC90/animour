@@ -34,8 +34,8 @@ public class AnimalController {
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
-		List<Animal> animals = animalservice.getAllDesc();
-		model.addAttribute("animals", animals);
+//		List<Animal> animals = animalservice.getAllDesc();
+//		model.addAttribute("animals", animals);
 
 		Map<String, Integer> citycount = new HashMap<>();
 		List<String> citys = animalservice.searchDistinctCity();

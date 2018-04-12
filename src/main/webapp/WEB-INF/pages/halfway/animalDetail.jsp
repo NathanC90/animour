@@ -135,9 +135,7 @@
 									action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
 									<textarea class="form-control" id="requestComment"
 										name="requestComment" rows="3"></textarea>
-									<input type="submit" class="btn btn-common" value="確定認養" disabled>
-											<input type="submit" class="btn btn-common" value="確定認養"
-												disabled>
+									<input type="submit" class="btn btn-common" value="確定認養">
 									<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
 								</form>
 							</div>

@@ -126,8 +126,8 @@
 					<div class="sidebar-area">
 						<!-- Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form>
-								<input type="text" placeholder="Search" class="form-control">
+							<form action="/queryContaining">
+								<input type="text" placeholder="Search" class="form-control" name="name">
 								<button type="submit">
 									<i class="fa fa-search"></i>
 								</button>
