@@ -74,7 +74,14 @@
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/sign_in" 
-					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a></li>
+					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
+				</li>
+				<li class="nav-item dropdown">${member.account} 您好
+				<div class="dropdown-menu">
+						<a class="dropdown-item" href="/logout">登出</a>
+					</div>
+				</li>	
+					
 			</ul>
 			<form class="form-inline">
 				<div class="top_search_con">
@@ -83,6 +90,7 @@
 					</span>
 				</div>
 			</form>
+			
 		</div>
 
 		<!-- Mobile Menu Start -->
