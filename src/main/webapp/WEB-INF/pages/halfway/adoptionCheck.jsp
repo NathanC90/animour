@@ -38,7 +38,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animal Detail</title>
+<title>查看認養通知</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -88,7 +88,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>動物認養詳情</h2>
+						<h2>認養通知</h2>
 					</div>
 				</div>
 			</div>
@@ -96,55 +96,40 @@
 	</div>
 	<!-- Page Header End -->
 
-	<!-- Page Content Start 重複的內容開始 -->
+	<!-- 表格內容開始 -->
 	<section class="section">
 		<div class="container">
+			<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">認養請求確認</h1>
 			<div class="row">
-				<div class="col-md-6 about2-intro-image">
-					<img class="card-img-top"
-						src="/showAnimalImage?fileName=${animal.fileName}" width="100px"
-						alt="${animal.id}">
-				</div>
-				<div class="col-md-6">
-					<h3 class="small-title">會員"${animal.member.name}"的送養動物</h3>
-					<p>We are unique and had working! We work for better product.</p>
-					<div id="default-tab" class="mt-10">
-						<!-- Nav tabs -->
-						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item"><a class="nav-link active" href="#home"
-								aria-controls="home" role="tab" data-toggle="tab">關於我</a></li>
-							<li class="nav-item"><a class="nav-link" href="#messages"
-								aria-controls="messages" role="tab" data-toggle="tab">備註</a></li>
-							<li class="nav-item"><a class="nav-link" href="#settings"
-								aria-controls="settings" role="tab" data-toggle="tab">給主人的話</a></li>
-						</ul>
-
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="home">
-								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-								<p class="card-text" style="padding: 0px">編號：${animal.id}
-									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="messages">
-								<p>${animal.remark}</p>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="settings">
-								<form name="requestComment"
-									action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
-									<textarea class="form-control" id="requestComment"
-										name="requestComment" rows="3"></textarea>
-									<input type="submit" class="btn btn-common" value="確定認養" disabled>
-											<input type="submit" class="btn btn-common" value="確定認養"
-												disabled>
-									<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+				<table class="table">
+					<thead class="thead-light">
+						<tr>
+							<th scope="col">會員</th>
+							<th scope="col">動物名稱</th>
+							<th scope="col">時間</th>
+							<th scope="col">認養備註</th>
+							<th scope="col">確認</th>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="adoption" items="${adoption}">
+						<tr>
+							<th scope="row">${adoption.member.name}</th>
+							<td>${adoption.animal.name}</td>
+							<td>${adoption.requestDate}</td>
+							<td>${adoption.requestComment}</td>
+							<td><button type="button"
+									onclick="location.href='/halfway/adoptionCheck?acceptRequest=true&id=${adoption.id}';"
+									class="btn btn-common btn-sm mt-10">接受</button>
+								<button type="button"
+									onclick="location.href='/halfway/adoptionCheck?acceptRequest=false&id=${adoption.id}';"
+									class="btn btn-common btn-sm mt-10">拒絕</button></td>
+						</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
+
 		</div>
 	</section>
 

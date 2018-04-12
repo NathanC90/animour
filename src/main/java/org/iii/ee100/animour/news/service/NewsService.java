@@ -17,7 +17,7 @@ public class NewsService{
 	
 	public Page<News> getPage(int pageNo, int pageSize) {
 		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
-		return newsDao.findAll(pageable);
+		return newsDao.findTop6ByOrderBySeqnoDesc(pageable);
 	}
 		
 	
@@ -49,5 +49,8 @@ public class NewsService{
 	
 	public News getOne(Long seqno) {
 		return newsDao.findOne(seqno);
+	}
+	public List<News> getSixNews(){
+		return newsDao.findTop6ByOrderByEventDateDesc();
 	}
 }

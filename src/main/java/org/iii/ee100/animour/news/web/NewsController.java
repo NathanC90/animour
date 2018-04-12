@@ -1,7 +1,5 @@
 package org.iii.ee100.animour.news.web;
 
-import java.util.Map;
-
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +20,20 @@ public class NewsController {
 //	public String newsIndex(Model model) {
 //		return "/news/newsIndex";
 //	}
-	
 	@RequestMapping("/news/index")
-	public String newsIndex(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, 
-			Map<String, Object> map, Model model) {
-		int pageNo = 1;
-		try {
-			pageNo = Integer.parseInt(pageNoStr);
-		} catch (NumberFormatException e) {}
-		
-		if(pageNo < 1 ) {
+	public String findAll(int pageNo,Model model) {
+		//分頁
+		if(pageNo < 1) {
 			pageNo = 1;
 		}
-		Page<News> page = newsService.getPage(pageNo, 6);
+		Page<News> page = newsService.getPage(pageNo, 3);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage && totalPage != 0) {
+		if(pageNo > totalPage && totalPage!=0) {
 			pageNo = totalPage;
 		}
-		page = newsService.getPage(pageNo, 6);
-		map.put("page", page);
-		model.addAttribute("allNews", newsService.getAll());
+		page = newsService.getPage(pageNo, 3);
+		model.addAttribute("page", page);
+		
 		return "/news/newsIndex";
 	}
 	
@@ -82,5 +74,13 @@ public class NewsController {
 		model.addAttribute("updateNews", news);
 		return "/news/enroll";
 	}
+	
+	@RequestMapping(path= {"/findSixNews"}, method={RequestMethod.GET})
+	public String findSixNews(Model model) {
+		model.addAttribute("sixNews", newsService.getSixNews());
+		return "/news/newsIndex";
+	}
+	
+	
 	
 }

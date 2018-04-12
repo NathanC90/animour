@@ -84,19 +84,19 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-60" src="/images/news/catexpo.jpg" alt="">
+								<img class="d-block w-60" src="/images/news/dogtable.jpg" alt="">
 								<div class="carousel-caption">
 								
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-60" src="/images/news/cattrip.jpg" alt="">
+								<img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
 								<div class="carousel-caption">
 							
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-60" src="/images/news/10mustknow.jpg" alt="">
+								<img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
 								<div class="carousel-caption">
 									
 									
@@ -118,20 +118,22 @@
 				<!-- 輪播牆結束-->
 					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 						活動一覽</h1>
-
+						
 					<div class="row">
-						<c:forEach var="news" items="${allNews}">
+						<c:forEach var="news" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-								<a href="/">
+								<a href="/news/index?pageNo=1">
 									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" >
 									</a><div class="card-body" style="margin-bottom: 5px">
+									 <p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
+											<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">詳情</button></a>
+                 							<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">報名</button></a>									
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-					</div>
-					
+					</div>					
 
 					<!-- Service-Block-000 Item Ends -->
 				</div>

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +27,7 @@
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 				
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/newsIndex" 
+					class="nav-link dropdown-toggle" href="/news/index?pageNo=1" 
 					aria-haspopup="true" aria-expanded="false">最新消息</a>
 					<div class="dropdown-menu">
 						<!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
@@ -37,9 +39,7 @@
 					aria-haspopup="true" aria-expanded="false">中途專區</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/halfway">認養搜尋</a> 
-<!-- 						<a class="dropdown-item" -->
-<!-- 							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a> -->
-
+						<a class="dropdown-item" href="/halfway/showAdoption">查詢通知</a> 
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/product/index" >寵物市集</a>
@@ -74,9 +74,33 @@
 						<!-- 								<a class="dropdown-item" href="">熱門文章</a>  -->
 						<!-- 								<a class="dropdown-item" href="">精選圖文</a> -->
 					</div></li>
-				<li class="nav-item dropdown"><a
+<!-- 				<li class="nav-item dropdown"><a -->
+<!-- 					class="nav-link dropdown-toggle" href="/sign_in"  -->
+<!-- 					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a> -->
+<!-- 				</li> -->
+<%-- 				<li class="nav-item dropdown">${member.account} 您好 --%>
+<!-- 				<div class="dropdown-menu"> -->
+<!-- 						<a class="dropdown-item" href="/logout">登出</a> -->
+<!-- 					</div> -->
+<!-- 				</li>	 -->
+
+<c:choose>
+   <c:when test="${!empty username}"> 
+   				<li class="nav-item dropdown">${username} 您好
+				<div class="dropdown-menu">
+						<a class="dropdown-item" href="/logout">登出</a>
+					</div>
+				</li>	
+   </c:when>
+   
+   <c:otherwise> 
+   				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/sign_in" 
-					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a></li>
+					aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
+				</li>
+   </c:otherwise> 
+</c:choose>
+					
 			</ul>
 			<form class="form-inline">
 				<div class="top_search_con">
@@ -85,6 +109,7 @@
 					</span>
 				</div>
 			</form>
+			
 		</div>
 
 		<!-- Mobile Menu Start -->

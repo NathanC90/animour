@@ -28,5 +28,7 @@ public interface ProductDao extends JpaRepository<Product, Long> {
 	
 	//WHERE name IN (?,?,?) AND price = ?
 	List<Product> findByNameInAndPriceLessThan(List<String> name, Integer price);
+	
+	List<Product> findByClassify_id(Long id);
 
 }

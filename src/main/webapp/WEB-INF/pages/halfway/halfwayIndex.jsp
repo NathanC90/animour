@@ -208,6 +208,7 @@
 										src="/showAnimalImage?fileName=${animal.fileName}"
 										width="100px" alt="${animal.id}">
 									<div class="card-body" style="margin-bottom: 5px">
+									<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
 											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
 											發現日期：${animal.found} 縣市：${animal.city}

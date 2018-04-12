@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Table(name = "PRODUCT")
 public class Product {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 	@Column(name = "NAME", length = 50, nullable = false)
@@ -39,7 +39,7 @@ public class Product {
 	private String description;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="CLASSIFY_ID")
+	@JoinColumn(name="CLASSIFY_ID", nullable = false)
 	private Classify classify;
 
 	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
