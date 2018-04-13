@@ -1,4 +1,4 @@
-﻿
+
 drop table news;
 create table news(
 seqno bigserial primary key,
@@ -53,15 +53,28 @@ SELECT seqno, subject, content, update_Time FROM news WHERE seqno = ?";
 SELECT seqno, subject, content, update_Time FROM news ORDER BY seqno desc fetch first 6 rows only";
 DELETE FROM news WHERE seqno=?;
 
+select * from news;
+
 ===================================================================================================================================================================
 
 
 drop table ticket;
 
-create table ticket(
+create table event(
 subject_id bigserial primary key,
 subject varchar(200),
 ticket_price INTEGER,
-quantity INTEGER);
+ticket_quantity INTEGER);
 
-INSERT INTO ticket (subject, ticket_price, quantity) values ('活動標題1', '300', '300');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題1', '300', '300');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題2', '600', '200');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題3', '800', '600');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題4', '1000', '1200');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題5', '500', '400');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題6', '450', '300');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題7', '320', '100');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題8', '900', '700');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題9', '1200', '200');
+INSERT INTO event (subject, ticket_price, ticket_quantity) values ('活動標題10', '3600', '1500');
+
+select * from event;
