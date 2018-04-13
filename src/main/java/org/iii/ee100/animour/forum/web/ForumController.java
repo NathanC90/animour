@@ -39,7 +39,7 @@ public class ForumController {
 			article.setCommentLength(0);
 			forumService.insert(article);
 		}
-		Article atc = forumService.getOne(Long.valueOf(article.getId()));
+		Article atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
 		if (atc != null) {
 			List<Comment> comts = atc.getComment();
 			if (comts != null) {
@@ -72,7 +72,7 @@ public class ForumController {
 
 	@RequestMapping(path = { "/forum/findOne" }, method = { RequestMethod.GET })
 	public String findOne(Article article, Model model) {
-		Article atc = forumService.getOne(Long.valueOf(article.getId()));
+		Article atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
 		if (atc != null) {
 			Long click = atc.getClick();
 			atc.setClick(click+1);
@@ -131,7 +131,7 @@ public class ForumController {
 	@RequestMapping(path = { "/forum/comment" }, method = { RequestMethod.POST })
 	public String newComment(Long memberId, Long articleId, Comment comment, Model model) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-		Article atc = forumService.getOne(articleId);
+		Article atc = (Article) forumService.getOne(articleId);
 		if (atc != null) {
 			List<Comment> comts = atc.getComment();
 			if (comts != null) {

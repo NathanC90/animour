@@ -186,19 +186,14 @@
 				最新活動專區</h1>
 
 			<div class="row">
-				<c:forEach var="news" items="${allNews}">
+				<c:forEach var="news" items="${sixNews}">
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
-							<a href="/"> <img class="card-img-top"
-								src="/images/adopt/cats/ad-cat2.jpg" width="80px" alt=""></a>
+							<a href="/news/index?pageNo=1"> <img class="card-img-top"
+								src="/images/news/catexpo.jpg" width="80px" alt=""></a>
 							<div class="card-body" style="margin-bottom: 5px">
-
-								<!-- 										<div class="d-flex justify-content-between align-items-center"> -->
-								<!-- 											<div class="btn-group"> -->
-								<!-- 												<button type="button" class="btn btn-common btn-sm mt-20">詳情</button> -->
-								<!-- 												<button type="button" class="btn btn-common btn-sm mt-20">報名</button> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
+							<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">詳情</button></a>
+                 			<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">報名</button></a>	
 							</div>
 						</div>
 					</div>

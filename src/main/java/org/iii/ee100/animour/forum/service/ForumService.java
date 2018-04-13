@@ -17,7 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ForumService {
+public class ForumService extends GenericService{
 
 	@Autowired
 	private MemberDao memberDao;
@@ -36,33 +36,33 @@ public class ForumService {
 		return articleDao.findAll(pageable);
 	}
 
-	public void insert(Article article) {
-		articleDao.save(article);
-
-	}
+//	public void insert(Article article) {
+//		articleDao.save(article);
+//
+//	}
 
 	public void insertComment(Comment comment) {
 		commentDao.save(comment);
 
 	}
 
-	public void update(Article article) {
-		articleDao.save(article);
+//	public void update(Article article) {
+//		articleDao.save(article);
+//
+//	}
 
-	}
+//	public void delete(Long id) {
+//		articleDao.delete(id);
+//
+//	}
 
-	public void delete(Long id) {
-		articleDao.delete(id);
+//	public ArrayList<Object> getAll() {
+//		return Lists.newArrayList(articleDao.findAll());
+//	}
 
-	}
-
-	public List<Article> getAll() {
-		return Lists.newArrayList(articleDao.findAll());
-	}
-
-	public Article getOne(Long id) {
-		return articleDao.findOne(id);
-	}
+//	public Article getOne(Long id) {
+//		return articleDao.findOne(id);
+//	}
 
 	public Member getOneMember(Long id) {
 		return memberDao.findOne(id);
