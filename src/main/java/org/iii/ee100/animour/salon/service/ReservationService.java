@@ -27,5 +27,9 @@ public class ReservationService {
 		return Lists.newArrayList(designerDao.findAll());
 		
 	}
+	
+	public void update(Designer designer) {
+		designerDao.save(designer);
+	}
 
 }

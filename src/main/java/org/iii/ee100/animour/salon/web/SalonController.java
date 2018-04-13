@@ -23,7 +23,7 @@ public class SalonController {
 		
 		List<Salon> Salon = salonService.getAll();
 		model.addAttribute("Salon",Salon);
-		return "salon/salonIndex";
+		return "/salon/salonIndex";
 	}
 	
 	

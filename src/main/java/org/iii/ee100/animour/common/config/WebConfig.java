@@ -15,7 +15,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.
 		authorizeRequests()
-		.antMatchers("/").permitAll() //不須驗證
+		.antMatchers("/**").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 "/css/**",
                 "/icon/**",
