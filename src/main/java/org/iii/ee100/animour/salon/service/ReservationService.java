@@ -29,7 +29,13 @@ public class ReservationService {
 	}
 	
 	public void update(Designer designer) {
+		
+		designer.setOneFree(0);
 		designerDao.save(designer);
+	}
+	
+	public Designer getOne(Long id) {
+		return designerDao.findOne(id);
 	}
 
 }

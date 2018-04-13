@@ -146,9 +146,9 @@
 
 			<div class="row">
 				<form action="/appointment/showSuccess" method="GET">
-					<select name="freeTime">
+					<select name=oneFree>
 						<c:forEach var="avar1" items="${showReservationTime}">
-							<option value="${avar1.freeTime}">${avar1.freeTime}</option>
+							<option value="${avar1.id}">${avar1.freeTime}</option>
 
 						</c:forEach>
 					</select> <input type="submit" value="預約確認">
