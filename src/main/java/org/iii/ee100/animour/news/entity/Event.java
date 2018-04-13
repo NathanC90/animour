@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="TICKET")
-public class Ticket {
+@Table(name="Event")
+public class Event {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -19,14 +19,14 @@ public class Ticket {
 	private String subject;
 	@Column(name="TICKET_PRICE")
 	private int ticket_price;
-	@Column(name="QUANTITY")
-	private int quantity;
+	@Column(name="TICKET_QUANTITY")
+	private int ticket_quantity;
 	
-	
+
 	@Override
 	public String toString() {
-		return "Ticket [subject_id=" + subject_id + ", subject=" + subject + ", ticket_price=" + ticket_price
-				+ ", quantity=" + quantity + "]";
+		return "Event [subject_id=" + subject_id + ", subject=" + subject + ", ticket_price=" + ticket_price
+				+ ", ticket_quantity=" + ticket_quantity + "]";
 	}
 	
 	public Long getSubject_id() {
@@ -47,11 +47,11 @@ public class Ticket {
 	public void setTicket_price(int ticket_price) {
 		this.ticket_price = ticket_price;
 	}
-	public int getQuantity() {
-		return quantity;
+	public int getTicket_quantity() {
+		return ticket_quantity;
 	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public void setTicket_quantity(int ticket_quantity) {
+		this.ticket_quantity = ticket_quantity;
 	}
-	
+		
 }

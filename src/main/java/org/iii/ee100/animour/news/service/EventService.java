@@ -3,44 +3,44 @@ package org.iii.ee100.animour.news.service;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.iii.ee100.animour.news.dao.TicketDao;
-import org.iii.ee100.animour.news.entity.Ticket;
+import org.iii.ee100.animour.news.dao.EventDao;
+import org.iii.ee100.animour.news.entity.Event;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TicketService{
+public class EventService{
 	@Autowired
-	private TicketDao ticketDao;
+	private EventDao eventDao;
 		
 	
 	
 	
-	public void insert(Ticket tickets) {
-		ticketDao.save(tickets);
+	public void insert(Event tickets) {
+		eventDao.save(tickets);
 	}
 	
 	
 	
-	public void update(Ticket tickets) {
-		ticketDao.save(tickets);
+	public void update(Event tickets) {
+		eventDao.save(tickets);
 	}
 
 	
 	
 	public void delete(Long subject_id) {
-		ticketDao.delete(subject_id);
+		eventDao.delete(subject_id);
 	}
 
 	
 	
-	public List<Ticket> getAll() {
-		return Lists.newArrayList(ticketDao.findAll());
+	public List<Event> getAll() {
+		return Lists.newArrayList(eventDao.findAll());
 	}
 
 	
 	
-	public Ticket getOne(Long subject_id) {
-		return ticketDao.findOne(subject_id);
+	public Event getOne(Long subject_id) {
+		return eventDao.findOne(subject_id);
 	}
 }
