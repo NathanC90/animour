@@ -12,26 +12,32 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ArticleDaoTest {
-// @Autowired
-// private ArticleDao articleDao;
- 
- @Autowired
- private ForumService forumService;
+	// @Autowired
+	// private ArticleDao articleDao;
+
+	@Autowired
+	private ForumService forumService;
+
 	@Test
 	public void testFindAll() {
-		Iterable<Article> articles = forumService.getAll();
-		
-		for(GenericEntity ar:articles) {
-			System.out.println(ar);
+		Iterable<Article> articles;
+		try {
+			articles = forumService.getAll();
+			for (GenericEntity ar : articles) {
+				System.out.println(ar);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 	}
 
-//	@Test
-//	public void testFindOne() {
-//		Article article = articleDao.findOne(1L);
-//		
-//		
-//		System.out.println(article);
-//		
-//	}
+	// @Test
+	// public void testFindOne() {
+	// Article article = articleDao.findOne(1L);
+	//
+	//
+	// System.out.println(article);
+	//
+	// }
 }

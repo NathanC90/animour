@@ -37,9 +37,20 @@ public class ForumController {
 			article.setUpdateTime(now);
 			article.setClick(0L);
 			article.setCommentLength(0);
-			forumService.insert(article);
+			try {
+				forumService.insert(article);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "/rollback";
+			}
 		}
-		Article atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
+		Article atc;
+		try {
+			atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		if (atc != null) {
 			List<Comment> comts = atc.getComment();
 			if (comts != null) {
@@ -72,11 +83,22 @@ public class ForumController {
 
 	@RequestMapping(path = { "/forum/findOne" }, method = { RequestMethod.GET })
 	public String findOne(Article article, Model model) {
-		Article atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
+		Article atc;
+		try {
+			atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		if (atc != null) {
 			Long click = atc.getClick();
 			atc.setClick(click+1);
-			forumService.update(atc);
+			try {
+				forumService.update(atc);
+			} catch (Exception e) {
+				e.printStackTrace();
+				return "/rollback";
+			}
 			List<Comment> comts = atc.getComment();
 			if (comts != null) {
 				model.addAttribute("comments", comts);
@@ -131,7 +153,13 @@ public class ForumController {
 	@RequestMapping(path = { "/forum/comment" }, method = { RequestMethod.POST })
 	public String newComment(Long memberId, Long articleId, Comment comment, Model model) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-		Article atc = (Article) forumService.getOne(articleId);
+		Article atc;
+		try {
+			atc = (Article) forumService.getOne(articleId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		if (atc != null) {
 			List<Comment> comts = atc.getComment();
 			if (comts != null) {
@@ -164,21 +192,36 @@ public class ForumController {
 
 	@RequestMapping(path = { "/forum/insert" }, method = { RequestMethod.POST })
 	public String insert(Article article, Model model) {
-		forumService.insert(article);
+		try {
+			forumService.insert(article);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		model.addAttribute("insertArticle", article);
 		return "/forum/crudResult";
 	}
 
 	@RequestMapping(path = { "/forum/update" }, method = { RequestMethod.POST })
 	public String update(Article article, Model model) {
-		forumService.update(article);
+		try {
+			forumService.update(article);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		model.addAttribute("updateArticle", article);
 		return "/forum/crudResult";
 	}
 
 	@RequestMapping(path = { "/forum/delete" }, method = { RequestMethod.GET })
 	public String delete(Article article, Model model) {
-		forumService.delete(Long.valueOf(article.getId()));
+		try {
+			forumService.delete(Long.valueOf(article.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
 		model.addAttribute("deleteArticle", article);
 		return "/forum/crudResult";
 	}

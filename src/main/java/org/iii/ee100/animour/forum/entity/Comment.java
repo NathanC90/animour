@@ -10,16 +10,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
 @Entity
 @Table(name="COMMENT")
-public class Comment {
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Long id;
+public class Comment extends GenericEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "ARTICLE_ID",referencedColumnName="ID")
@@ -37,14 +33,6 @@ public class Comment {
 	
 	@Column(name="UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Article getArticle() {
 		return article;
