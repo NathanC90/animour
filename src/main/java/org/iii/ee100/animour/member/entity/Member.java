@@ -1,5 +1,7 @@
 package org.iii.ee100.animour.member.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,119 +17,162 @@ import javax.persistence.Table;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.iii.ee100.animour.halfway.entity.Animal;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-@Table(name="MEMBER")
-public class Member {
-	
+@Table(name = "MEMBER")
+public class Member implements UserDetails {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
-	Long  id;
-	@Column(name="ACCOUNT")
-	String account;//帳號
-	@Column(name="PASSWORD")
-	String password;//密碼
-	
-	@Column(name="NAME")
-	String name;//姓名
-	@Column(name="NICK")	
-	String nick;//暱稱
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
+	Long id;
+	@Column(name = "ACCOUNT")
+	String account;// 帳號
+	@Column(name = "PASSWORD")
+	String password;// 密碼
 
-	@Column(name="CELL")
-	String cell;//手機
-	@Column(name="EMAIL")
-	String email;//信箱
-    @Column(name="ADDRESS")
-    String address;//地址
-    @Column(name="REGISTRATIONTIME")
-    java.sql.Date registrationTime;
-    @Column(name="Freq")
-    Integer freq;
+	@Column(name = "NAME")
+	String name;// 姓名
+	@Column(name = "NICK")
+	String nick;// 暱稱
 
-	@OneToMany(
-			mappedBy="member"
-			,cascade= {CascadeType.ALL}
-//			,fetch=FetchType.EAGER
-	)    
+	@Column(name = "CELL")
+	String cell;// 手機
+	@Column(name = "EMAIL")
+	String email;// 信箱
+	@Column(name = "ADDRESS")
+	String address;// 地址
+	@Column(name = "REGISTRATIONTIME")
+	java.sql.Date registrationTime;
+	@Column(name = "Freq")
+	Integer freq;
+
+	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL }
+	// ,fetch=FetchType.EAGER
+	)
 	private List<Article> article;
-	
+
 	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
 	private List<Animal> animals;
-	
+
 	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
 	private Adoption adoption;
 
-
-    
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getAccount() {
 		return account;
 	}
+
 	public void setAccount(String account) {
 		this.account = account;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getNick() {
 		return nick;
 	}
+
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
+
 	public String getCell() {
 		return cell;
 	}
+
 	public void setCell(String cell) {
 		this.cell = cell;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	public java.sql.Date getRegistrationTime() {
 		return registrationTime;
 	}
+
 	public void setRegistrationTime(java.sql.Date registrationTime) {
 		this.registrationTime = registrationTime;
 	}
+
 	public Integer getFreq() {
 		return freq;
 	}
+
 	public void setFreq(Integer freq) {
 		this.freq = freq;
 	}
 
-	
-	
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		GrantedAuthority auth = new SimpleGrantedAuthority("Member");
+		authorities.add(auth);
+		return authorities;
+	}
 
+	@Override
+	public String getUsername() {
+		return account;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
 
 }
-
-
-	
-	
-
