@@ -107,7 +107,9 @@
             
             <p><span style="color:#575757;"><strong>活動地點：</strong>${oneNews.address}</span></p>
             <div style="width:400px;height:500px;border:2px gray solid;">活動簡介：${oneNews.content}寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</div>
-            
+            <!-- Facebook Login starts -->
+            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+            <!-- Facebook Login ends -->
             <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.004965796966!2d121.5412095148038!3d25.033905544449656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xec12a62666a81e3d!2sNo.+390%2C+Section+1%2C+Fuxing+South+Road%2C+Da%E2%80%99an+District%2C+Taipei+City%2C+106!5e0!3m2!1sen!2stw!4v1523468006587" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
           </div>
         </div>
@@ -143,7 +145,17 @@
 	<script src="/js/jquery.appear.js"></script>
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
-	<script src="/js/main.js"></script>
+	<script src="/js/main.js"></script>	
+<!-- Facebook Login JavaScript SDK-->
+Step 1: Include the JavaScript SDK on your page once, ideally right after the opening body tag.
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+<!-- Facebook Login JavaScript SDK -->
 	
 
 </body>
