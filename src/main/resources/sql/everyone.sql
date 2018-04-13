@@ -82,7 +82,7 @@ INSERT INTO hotel ( owner, type, checkIn, total,specie,dog_Name) VALUES
 ('lun5', 'big', '2021-07-03', 5,'poodle','阿狗'),
 ('lun6', 'big', '2021-07-03', 5,'poodle','小會');
 
-UPDATE hotel SET  owner='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dog_Name='hichu' WHERE Id = 1
+/*UPDATE hotel SET  owner='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dog_Name='hichu' WHERE Id = 1*/
 
 /*7 news*/
 INSERT INTO news (subject, content, publish_Time, publish_Time_End, create_User, create_Time )
