@@ -21,25 +21,31 @@ public class ReservationController {
 	public String reservationTime(Model model) {
 		List<Reservation> reservation = reservationService.getAll();
 		model.addAttribute("reservation",reservation);
-		return "salon/reservation";
+		return "/salon/reservation";
 	}
 	@RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
 	public String reservationDetail(Model model) {
 		List<Reservation> reservation = reservationService.getAll();
 		model.addAttribute("reservation",reservation);
-		return "salon/reservation";
+		return "/salon/reservation";
 	}
 	@RequestMapping(path= {"/appointment/designer"},method = { RequestMethod.GET })
 	public String reservationDesigner(Model model) {
 		List<Reservation> reservationDesigner = reservationService.getAll();
 		model.addAttribute("reservationDesigner",reservationDesigner);
-		return "salon/chooseDesigner";
+		return "/salon/chooseDesigner";
 	}
 	@RequestMapping(path= {"/appointment/showFreeTime"},method = { RequestMethod.GET })
 	public String showReservationTime(Model model) {
 		List<Designer> showReservationTime = reservationService.getAllFreeTime();
 		model.addAttribute("showReservationTime",showReservationTime);
-		return "salon/showFreeTime";
+		return "/salon/showFreeTime";
+	}
+	@RequestMapping(path= {"/appointment/showSuccess"},method = { RequestMethod.GET })
+	public String showSuccess(Model model) {
+		List<Designer> showSuccess = reservationService.getAllFreeTime();
+		model.addAttribute("showSuccess",showSuccess);
+		return "/salon/successReservation";
 	}
 	
 	

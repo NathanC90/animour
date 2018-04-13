@@ -141,19 +141,19 @@
 		<!-- 重複的內容開始 -->
 		<div class="container">
 			<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-				預約</h3>
+				預約成功</h3>
 
 
 			<div class="row">
 				<form action="/appointment/showSuccess" method="GET">
-					<select name="freeTime">
-						<c:forEach var="avar1" items="${showReservationTime}">
+					<select name="showSuccess">
+						<c:forEach var="avar1" items="${showSuccess}">
 							<option value="${avar1.freeTime}">${avar1.freeTime}</option>
 
 						</c:forEach>
 					</select> <input type="submit" value="預約確認">
 				</form>
-				<c:forEach var="avar" items="${showReservationTime}">
+				<c:forEach var="avar" items="${showSuccess}">
 
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
