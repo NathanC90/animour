@@ -1,7 +1,7 @@
 /*1 Member*/
  INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICK,CELL,EMAIL,Address) 
  VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
- 
+
 /*2 Hospital*/
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('AAAAAAAA',  'A8',  '01-000',  '路上','10000' );  
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('aurora_animal',  '極光動物醫院',  '02-27848211',  '台北市大安區建國南路二段31號','10000' );  
@@ -82,6 +82,7 @@ INSERT INTO hotel ( owner, type, checkIn, total,specie,dog_Name) VALUES
 ('lun5', 'big', '2021-07-03', 5,'poodle','阿狗'),
 ('lun6', 'big', '2021-07-03', 5,'poodle','小會');
 
+
 /*UPDATE hotel SET  owner='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dog_Name='hichu' WHERE Id = 1*/
 
 /*7 news*/
@@ -125,24 +126,29 @@ INSERT INTO news (subject, content, publish_Time, publish_Time_End, create_User,
  
  
 /*8 product*/
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180);
-insert into products (NAME, PRICE, QUANTITY, MAKE, EXPIRE)
-values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150);
-insert into products (NAME, PRICE, QUANTITY,MAKE, EXPIRE)
-values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360);
+insert into classify (name) values('寵物伺料');
+insert into classify (name) values('寵物用品');
+insert into classify (name) values('寵物玩具');
+insert into classify (name) values('其它');
+
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365, '2018-3-3', 'dddddddddddddddddddd', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150, '2018-3-9', 'eeeeeeeeeeeeeeeee', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365, '2018-2-10', 'fffffffffffffffff', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100, '2018-2-15', 'gggggggggggggggg', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90, '2018-3-22', 'hhhhhhhhhhhhhh', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180, '2018-4-2', 'iiiiiiiiiiiiii', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 1);
+insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
 

@@ -16,14 +16,14 @@ public class EventController {
 	
 	@RequestMapping("/news/event")
 	public String newsIndex(Model model) {
-		return "/news/ticket";
+		return "/news/event";
 	}
 	
 	@RequestMapping(path= {"/findOneEvent"}, method={RequestMethod.GET})
-	public String findOne(Event tickets, Model model) {
-		Event ticket = eventService.getOne(Long.valueOf(tickets.getSubject_id()));
-		if (ticket != null) {
-			model.addAttribute("oneEvent", tickets);
+	public String findOne(Event events, Model model) {
+		Event event = eventService.getOne(Long.valueOf(events.getSubject_id()));
+		if (event != null) {
+			model.addAttribute("oneEvent", events);
 		}
 		return "/news/event";
 	}
@@ -35,23 +35,23 @@ public class EventController {
 	}
 	
 	@RequestMapping(path= {"/deleteEvent"}, method={RequestMethod.GET})
-	public String deleteNews(Event tickets, Model model) {
-		eventService.delete(tickets.getSubject_id());
-		model.addAttribute("delete", Long.valueOf(tickets.getSubject_id()));
+	public String deleteNews(Event events, Model model) {
+		eventService.delete(events.getSubject_id());
+		model.addAttribute("delete", Long.valueOf(events.getSubject_id()));
 		return "/news/event";
 	}
 	
 	@RequestMapping(path= {"/insertEvent"}, method={RequestMethod.POST})
-	public String insertNews(Event tickets, Model model) {
-		eventService.insert(tickets);
-		model.addAttribute("insertNews", tickets);
+	public String insertNews(Event events, Model model) {
+		eventService.insert(events);
+		model.addAttribute("insertEvent", events);
 		return "/news/event";
 	}
 	
 	@RequestMapping(path= {"/updateEvent"}, method={RequestMethod.GET})
-	public String updateNews(Event tickets, Model model) {
-		eventService.update(tickets);
-		model.addAttribute("updateEvent", tickets);
+	public String updateNews(Event events, Model model) {
+		eventService.update(events);
+		model.addAttribute("updateEvent", events);
 		return "/news/event";
 	}
 	
