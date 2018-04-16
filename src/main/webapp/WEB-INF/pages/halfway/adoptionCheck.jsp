@@ -114,7 +114,7 @@
 					<tbody>
 					<c:forEach var="adoption" items="${adoption}">
 						<tr>
-							<th scope="row">${adoption.member.name}</th>
+							<th scope="row">${adoption.member.account}</th>
 							<td>${adoption.animal.name}</td>
 							<td>${adoption.requestDate}</td>
 							<td>${adoption.requestComment}</td>

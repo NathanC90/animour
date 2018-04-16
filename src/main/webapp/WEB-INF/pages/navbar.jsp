@@ -81,7 +81,7 @@
                                 </li>
 
 								
-                                <sec:authorize access="hasAuthority('Member')"><!-- 會員可讀 -->
+                                <sec:authorize access="hasRole('Member')"><!-- 會員可讀 -->
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="/homepage" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" /> 您好</a>

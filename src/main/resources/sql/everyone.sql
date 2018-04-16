@@ -1,8 +1,8 @@
 /*1 Member*/
  INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICK,CELL,EMAIL,Address) 
  VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
- INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICKNAME,CELL,EMAIL,Address) 
- VALUES ('Annie','123','Annie Wu','Alex','0900-000000','annie@gmail.com','台北市中正區');
+ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICK,CELL,EMAIL,Address) 
+ VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
 
 /*2 Hospital*/
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('AAAAAAAA',  'A8',  '01-000',  '路上','10000' );  
@@ -18,16 +18,16 @@ insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('l
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('WellvetAnimalHospitalital',  '台大良一動物醫院',  '02-24263021',  '基隆市信義區義九路2號','10000' );  
 
 /*3 Animal */
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlackDog', 'DOG', 'BLACK', '2017-01-01', '2018-03-10 12:00:00', '台北市', '北投區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'YellowDog', 'DOG', 'YELLOW', '2017-02-01', '2018-03-10 13:00:00', '高雄市', '左營區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'WhiteDog', 'DOG', 'WHITE', '2017-03-01', '2018-03-10 14:00:00', '台北市', '大安區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BrownDog', 'DOG', 'BROWN', '2018-04-01', '2018-03-10 15:00:00', '台中市', '東區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlackCat', 'CAT', 'BLACK', '2017-05-01', '2018-03-10 16:00:00', '高雄市', '左營區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'BlueCat', 'CAT', 'BLUE', '2017-06-01', '2018-03-10 17:00:00', '台北市', '北投區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'OrangeCat', 'CAT', 'ORANGE', '2017-07-01', '2018-03-10 18:00:00', '高雄市', '左營區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'WhiteRabbit', 'RABBIT', 'BLACK', '2017-08-01', '2018-03-10 19:00:00', '台北市', '北投區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'GreyRabbit', 'RABBIT', 'BLACK', '2017-09-01', '2018-03-10 20:00:00', '台中市', '西區');
-insert into animal(status, name, specie, color, found, upload, city, district) values  ('開放認養', 'YellowBird', 'BIRD', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', '台南市', '西區');
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'BlackDog', 'DOG', 'BLACK', '2017-01-01', '2018-03-10 12:00:00', '台北市', '北投區', 1);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'YellowDog', 'DOG', 'YELLOW', '2017-02-01', '2018-03-10 13:00:00', '高雄市', '左營區', 1);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'WhiteDog', 'DOG', 'WHITE', '2017-03-01', '2018-03-10 14:00:00', '台北市', '大安區'), 1;
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'BrownDog', 'DOG', 'BROWN', '2018-04-01', '2018-03-10 15:00:00', '台中市', '東區', 1);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'BlackCat', 'CAT', 'BLACK', '2017-05-01', '2018-03-10 16:00:00', '高雄市', '左營區', 1);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'BlueCat', 'CAT', 'BLUE', '2017-06-01', '2018-03-10 17:00:00', '台北市', '北投區',2 );
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'OrangeCat', 'CAT', 'ORANGE', '2017-07-01', '2018-03-10 18:00:00', '高雄市', '左營區',2);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'WhiteRabbit', 'RABBIT', 'BLACK', '2017-08-01', '2018-03-10 19:00:00', '台北市', '北投區',2);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'GreyRabbit', 'RABBIT', 'BLACK', '2017-09-01', '2018-03-10 20:00:00', '台中市', '西區',2);
+insert into animal(status, name, specie, color, found, upload, city, district, member_id) values  ('開放認養', 'YellowBird', 'BIRD', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', '台南市', '西區',2);
 
 /*4 article */
 INSERT INTO CATEGORY(NAME) 

@@ -145,7 +145,7 @@ public class Member extends GenericEntity implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		GrantedAuthority auth = new SimpleGrantedAuthority("Member");
+		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
 		authorities.add(auth);
 		return authorities;
 	}
