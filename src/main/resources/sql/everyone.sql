@@ -1,6 +1,8 @@
 /*1 Member*/
  INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICK,CELL,EMAIL,Address) 
  VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
+ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,NICKNAME,CELL,EMAIL,Address) 
+ VALUES ('Annie','123','Annie Wu','Alex','0900-000000','annie@gmail.com','台北市中正區');
 
 /*2 Hospital*/
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('AAAAAAAA',  'A8',  '01-000',  '路上','10000' );  

@@ -317,12 +317,17 @@
 			<tr>
 				<td></td><!-- 帳號 -->
 				<td>${profile.account}</td>
+				<td></td>
 			</tr>
 			
 			<tr><td></td>  
-				<td>${profile.nick}</td> <!-- 暱稱 --> <tr>
+				<td>${profile.nick}</td>
+				<td></td>
+				 <!-- 暱稱 --> <tr>
 			<tr><td>登入次數</td>
-				<td></td></tr>
+				<td></td>
+				<td></td>
+				</tr>
 
 		</tbody>
 	</table>
