@@ -7,6 +7,20 @@
 <title>test</title>
 </head>
 <body>
-${param.id}
+<%-- ${selectOne.id} --%>
+<%-- ${selectOne.designer} --%>
+
+<h3>查詢一筆空閒時間</h3>
+	<table>
+		<tbody>
+			<tr>
+				<td>${selectOne.id}</td>
+				<td>${selectOne.designer}</td>
+				<td>${selectOne.freeTime}</td>
+				<td>(數字1為有空,0為沒有空):${selectOne.oneFree}</td>
+				
+			</tr>
+		</tbody>
+	</table>
 </body>
 </html>

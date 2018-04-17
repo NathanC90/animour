@@ -11,7 +11,7 @@
 <body>
 	<center>
 	<h3>查詢單筆動物資料</h3>
-	<form name="/appointment/testForm" action="/appointment/testForm" method="GET">
+	<form name="/appointment/testSelectForm" action="/appointment/testSelectForm" method="GET">
 	<input id='num' name="id" value="${param.id}" type="text" size="14" style="text-align: left">
 	<input type="submit" value="送出"> 
 	

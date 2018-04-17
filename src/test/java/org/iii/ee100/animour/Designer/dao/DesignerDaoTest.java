@@ -59,13 +59,13 @@ public class DesignerDaoTest {
 
 	}
 	
-	@Test
-	public void TestUpdate() {
-		
-		Designer designer = designerDao.findOne(5L);
-		designer.setOneFree(0);
-		designerDao.save(designer);
-	}
+//	@Test
+//	public void TestUpdate() {
+//		
+//		Designer designer = designerDao.findOne(5L);
+//		designer.setOneFree(0);
+//		designerDao.save(designer);
+//	}
 	
 	
 	@Test
