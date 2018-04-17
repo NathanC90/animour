@@ -49,7 +49,7 @@ public class ReservationController {
 	public String showSuccess(Model model,Designer designer) {
 		List<Designer> showSuccess = reservationService.getAllFreeTime();
 		
-		reservationService.update(designer);
+	//	reservationService.update(designer);
 		model.addAttribute("showSuccess",showSuccess);
 		return "/salon/successReservation";
 	}
@@ -70,6 +70,18 @@ public class ReservationController {
 		return "/salon/test";
 		
 	}
+	
+	@RequestMapping(path= {"/appointment/testUpdateForm"},method = { RequestMethod.POST })
+	public String updateOne(Model model,Long id,Designer designer) {
+		Designer getId = reservationService.getOne(id);
+		reservationService.updateToZero(getId);
+		model.addAttribute("updateOne",getId);
+		model.addAttribute("newInformation",designer);
+		
+		return "/salon/test";
+		
+	}
+	
 //	@RequestMapping(path= {"/appointment/testForm"},method = { RequestMethod.GET })
 //	public String select(Model model,Designer designer,Long id) {
 //		//List<Designer> selectOne = reservationService.getAllFreeTime();

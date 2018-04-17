@@ -85,52 +85,36 @@
 			<hr>
 			<br>
 		</form>
-		<form name="/hotel/updateHotel" action="/hotel/updateHotel" method="POST">
+		<form name="/appointment/testUpdateForm" action="/appointment/testUpdateForm" method="POST">
 			<table border="1">
-				<h3>修改房間資料</h3>
+				<h3>修改空閒時間資料</h3>
 				<tbody>
 					<tr bgcolor='tan'>
-						<td width="120" height="40">房號:</td>
+						<td width="120" height="40">編號:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="hotelId" value="${param.hotelId}" type="text" size="14"
+							name="id" value="${param.id}" type="text" size="14"
 							style="text-align: left">
 					</tr>
+					
+<!-- 					<tr bgcolor='tan'> -->
+<!-- 						<td width="120" height="40">設計師姓名:</td> -->
+<!-- 						<td width="600" height="40" align="left"><input id='num' -->
+<%-- 							name="designer" value="${param.designer}" type="text" size="14" --%>
+<!-- 							style="text-align: left"> -->
+<!-- 					</tr> -->
+<!-- 					<tr bgcolor='tan'> -->
+<!-- 						<td width="120" height="40">空閒時間:</td> -->
+<!-- 						<td width="600" height="40" align="left"><input id='num' -->
+<%-- 							name="freeTime" value="${param.freeTime}" type="text" size="14" --%>
+<!-- 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td> -->
+<!-- 					</tr> -->
 					<tr bgcolor='tan'>
-						<td width="120" height="40">主人姓名:</td>
+						<td width="120" height="40">預約:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="onwer" value="${param.onwer}" type="text" size="14"
-							style="text-align: left">
-					</tr>
-					<tr bgcolor='tan'>
-						<td width="120" height="40">房間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="type" value="${param.type}" type="text" size="14"
-							style="text-align: left">
-					</tr>
-					<tr bgcolor='tan'>
-						<td width="120" height="40">總數:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="total" value="${param.total}" type="text" size="14"
+							name="oneFree" value="${param.oneFree}" type="text" size="14"
 							style="text-align: left"></td>
 					</tr>
-					<tr bgcolor='tan'>
-						<td width="120" height="40">入住時間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="checkIn" value="${param.checkIn}" type="text" size="14"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
-					</tr>
-					<tr bgcolor='tan'>
-						<td width="120" height="40">狗名:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="dogName" value="${param.dogName}" type="text" size="14"
-							style="text-align: left"></td>
-					</tr>
-					<tr bgcolor='tan'>
-						<td width="120" height="40">種類:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="species" value="${param.species}" type="text" size="14"
-							style="text-align: left"></td>
-					</tr>
+
 				
 				</tbody>
 			</table>

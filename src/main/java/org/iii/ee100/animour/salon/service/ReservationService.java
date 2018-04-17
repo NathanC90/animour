@@ -30,8 +30,7 @@ public class ReservationService extends GenericService<Reservation>{
 		
 	}
 	
-	public void update(Designer designer) {
-		
+	public void updateToZero(Designer designer) {
 		designer.setOneFree(0);
 		designerDao.save(designer);
 	}

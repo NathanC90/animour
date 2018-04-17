@@ -22,5 +22,19 @@
 			</tr>
 		</tbody>
 	</table>
+		<hr>
+	
+	<table>
+		<tbody>
+			<tr>
+				<td>${updateOne.id}</td>
+				<td>${newInformation.designer}</td>
+				<td>${newInformation.freeTime}</td>
+				<td>(數字1為有空,0為沒有空):${newInformation.oneFree}</td>
+				
+			</tr>
+		</tbody>
+	</table>
+	
 </body>
 </html>
