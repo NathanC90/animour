@@ -19,8 +19,15 @@ public class MemberService extends GenericService<Member> {
 		memberDao.save(member);
 	}
 
-	public void update(Member member)  {
-		memberDao.save(member);		
+	public void update(String password,String name,String nickname,String cell,String email,String account)  {
+		Member memberToUpdate = memberDao.findByAccount(account);
+				memberToUpdate.setPassword(password);
+				memberToUpdate.setName(name);
+				memberToUpdate.setNickname(nickname);
+				memberToUpdate.setCell(cell);
+				memberToUpdate.setEmail(email);
+				
+		memberDao.save(memberToUpdate);
 	}
 
 	public Member getOne(Long id) {

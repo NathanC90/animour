@@ -12,8 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberController {
@@ -37,7 +39,6 @@ public class MemberController {
 		return "/member/update";
 	}
 
-
 	// 送出註冊資料(新增會員)
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(Member member) {
@@ -49,12 +50,16 @@ public class MemberController {
 
 	// 修改個人頁面
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updatemember(Member member) {
-		
-		memberService.update(member);
-		return "/member/homepage";
-	}		
-	
+	public String updatemember(@RequestParam("name") String name, @RequestParam("nickname") String nickname,
+			@RequestParam("password") String password, @RequestParam("cell") String cell,
+			@RequestParam("email") String email, @RequestParam("address") String address,
+			@RequestParam("account") String account, Model model) {
+
+		memberService.update(password, name, nickname, cell, email, account);
+		;
+		return "redirect:/";
+	}
+
 	// 列出(全部)會員
 	@RequestMapping("/allmember")
 	public String findAll(Model model) {
