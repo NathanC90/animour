@@ -23,16 +23,29 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ForumController {
 	@Autowired
 	ForumService forumService;
+	
+	//sidebar用的方法，在所有@RequestMapping之前被執行
+	@ModelAttribute
+	public void sidebar(Model model) {
+		List<Article> popular = forumService.getPopularFour();
+		if (popular != null) {
+			model.addAttribute("popular", popular);
+		}
+		List<Category> categorys = forumService.getAllCategory();
+		if (categorys != null) {
+			model.addAttribute("categorys", categorys);
+		}
+	}
 
+	//前往空白表單並送出一個空的Article物件
 	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.GET })
 	public String articleForm(Model model) {
 		Article article = new Article();
 		model.addAttribute("article", article);
-		// sidebar要用的
-		sidebar(model);
 		return "/forum/insertArticleForm";
 	}
-
+	
+	//將使用者輸入自動接收轉型填入前一個方法傳入的Article物件
 	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.POST })
 	public String articlePost(@ModelAttribute("article") Article article, Model model) {
 		if (article.getCategory() != null) {
@@ -41,7 +54,7 @@ public class ForumController {
 			article.setUpdateTime(now);
 			article.setClick(0L);
 			article.setCommentLength(0);
-			// 設定登入的會員
+			// 取得登入中會員的身分
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			if (principal instanceof Member) {
 				article.setMember((Member) principal);
@@ -58,11 +71,10 @@ public class ForumController {
 		} else {
 			return "redirect:/postArticle";
 		}
-		// sidebar要用的
-		sidebar(model);
 		return "/forum/singleArticle";
 	}
-
+	
+	//給下拉式category選單使用的方法
 	@ModelAttribute("categoryList")
 	public Map<Long, String> getCategoryList() {
 		Map<Long, String> categoryMap = new HashMap<>();
@@ -72,7 +84,8 @@ public class ForumController {
 		}
 		return categoryMap;
 	}
-
+	
+	//綜覽文章頁面
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })
 	public String findAll(Integer pageNo, Model model) {
 		// 分頁
@@ -86,11 +99,10 @@ public class ForumController {
 		}
 		page = forumService.getPage(pageNo, 3);
 		model.addAttribute("page", page);
-		// sidebar
-		sidebar(model);
 		return "/forum/article";
 	}
-
+	
+	//查詢一筆文章
 	@RequestMapping(path = { "/forum/findOne" }, method = { RequestMethod.GET })
 	public String findOne(Article article, Model model) {
 		Article atc;
@@ -114,11 +126,10 @@ public class ForumController {
 			model.addAttribute("article", atc);
 			model.addAttribute("comments", comments);
 		}
-		// sidebar要用的
-		sidebar(model);
 		return "/forum/singleArticle";
 	}
-
+	
+	//搜尋文章標題
 	@RequestMapping(path = { "/forum/search" }, method = { RequestMethod.GET })
 	public String search(int pageNo, String search, Model model) {
 		// 分頁
@@ -134,11 +145,10 @@ public class ForumController {
 		model.addAttribute("page", page);
 		String queryString = "search=" + search + "&";
 		model.addAttribute("queryString", queryString);
-		// sidebar要用的
-		sidebar(model);
 		return "/forum/article";
 	}
-
+	
+	//按照文章類別查詢
 	@RequestMapping(path = { "/forum/category" }, method = { RequestMethod.GET })
 	public String findByCategory(int pageNo, Long categoryId, Model model) {
 		// 分頁
@@ -154,11 +164,10 @@ public class ForumController {
 		model.addAttribute("page", page);
 		String queryString = "categoryId=" + categoryId + "&";
 		model.addAttribute("queryString", queryString);
-		// sidebar要用的
-		sidebar(model);
 		return "/forum/article";
 	}
-
+	
+	//新增留言
 	@RequestMapping(path = { "/forum/comment" }, method = { RequestMethod.POST })
 	public String newComment(Long articleId, Comment comment, Model model) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
@@ -178,7 +187,7 @@ public class ForumController {
 			comment.setArticle(atc);
 			model.addAttribute("article", atc);
 		}
-		// 設定登入的會員
+		// 取得登入中會員身分
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof Member) {
 			comment.setMember((Member) principal);
@@ -186,57 +195,44 @@ public class ForumController {
 			String account = principal.toString();
 			System.out.println(account);
 		}
-		
+
 		forumService.insertComment(comment);
-		// sidebar要用的
-		sidebar(model);
 		return "redirect:findOne?id=" + articleId;
 	}
 
-	public void sidebar(Model model) {
-		List<Article> popular = forumService.getPopularFour();
-		if (popular != null) {
-			model.addAttribute("popular", popular);
-		}
-		List<Category> categorys = forumService.getAllCategory();
-		if (categorys != null) {
-			model.addAttribute("categorys", categorys);
-		}
-	}
-
-	@RequestMapping(path = { "/forum/insert" }, method = { RequestMethod.POST })
-	public String insert(Article article, Model model) {
-		try {
-			forumService.insert(article);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "/rollback";
-		}
-		model.addAttribute("insertArticle", article);
-		return "/forum/crudResult";
-	}
-
-	@RequestMapping(path = { "/forum/update" }, method = { RequestMethod.POST })
-	public String update(Article article, Model model) {
-		try {
-			forumService.update(article);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "/rollback";
-		}
-		model.addAttribute("updateArticle", article);
-		return "/forum/crudResult";
-	}
-
-	@RequestMapping(path = { "/forum/delete" }, method = { RequestMethod.GET })
-	public String delete(Article article, Model model) {
-		try {
-			forumService.delete(Long.valueOf(article.getId()));
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "/rollback";
-		}
-		model.addAttribute("deleteArticle", article);
-		return "/forum/crudResult";
-	}
+	// @RequestMapping(path = { "/forum/insert" }, method = { RequestMethod.POST })
+	// public String insert(Article article, Model model) {
+	// try {
+	// forumService.insert(article);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// return "/rollback";
+	// }
+	// model.addAttribute("insertArticle", article);
+	// return "/forum/crudResult";
+	// }
+	//
+	// @RequestMapping(path = { "/forum/update" }, method = { RequestMethod.POST })
+	// public String update(Article article, Model model) {
+	// try {
+	// forumService.update(article);
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// return "/rollback";
+	// }
+	// model.addAttribute("updateArticle", article);
+	// return "/forum/crudResult";
+	// }
+	//
+	// @RequestMapping(path = { "/forum/delete" }, method = { RequestMethod.GET })
+	// public String delete(Article article, Model model) {
+	// try {
+	// forumService.delete(Long.valueOf(article.getId()));
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// return "/rollback";
+	// }
+	// model.addAttribute("deleteArticle", article);
+	// return "/forum/crudResult";
+	// }
 }
