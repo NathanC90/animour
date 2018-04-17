@@ -17,7 +17,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.
 		authorizeRequests()
-		.antMatchers("/**").permitAll() //不須驗證
+		.antMatchers("/","/showAnimalImage").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 	 "/css/**",
                 	 "/icon/**",
@@ -28,7 +28,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest()    //對象為所有網址
 		.authenticated() //存取必須通過驗證
 		.and()
-		.formLogin() 
+		.formLogin().and().csrf().disable()
 		//.loginPage("/sign_in")
 		;
 }

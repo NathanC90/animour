@@ -16,6 +16,8 @@ import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +36,8 @@ public class AnimalController {
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
-//		List<Animal> animals = animalservice.getAllDesc();
-//		model.addAttribute("animals", animals);
+		// List<Animal> animals = animalservice.getAllDesc();
+		// model.addAttribute("animals", animals);
 
 		Map<String, Integer> citycount = new HashMap<>();
 		List<String> citys = animalservice.searchDistinctCity();
@@ -54,14 +56,14 @@ public class AnimalController {
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
-		
+
 		// System.out.println(page);
-//		int current = page.getNumber() + 1;
-//		int begin = Math.max(1, current - 5);
-//		int end = Math.min(begin + 10, page.getTotalPages());
-//		model.addAttribute("beginIndex", begin);
-//		model.addAttribute("endIndex", end);
-//		model.addAttribute("currentIndex", current);
+		// int current = page.getNumber() + 1;
+		// int begin = Math.max(1, current - 5);
+		// int end = Math.min(begin + 10, page.getTotalPages());
+		// model.addAttribute("beginIndex", begin);
+		// model.addAttribute("endIndex", end);
+		// model.addAttribute("currentIndex", current);
 
 		return "/halfway/halfwayIndex";
 	}
@@ -72,27 +74,36 @@ public class AnimalController {
 
 		return "/halfway/insertAnimalForm";
 	}
-	
+
 	// 轉跳至詳情頁面
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
 	public String animalDetail(Long id, Model model) {
 		// 暫時先給一個假的member
-		Member member = new Member();
-		member.setId(1L);
-		member.setName("資策會金太妍");
+		// Member member = new Member();
+		// member.setId(1L);
+		// member.setName("資策會金太妍");
 		Animal animal = animalservice.getOne(id);
-		animal.setMember(member);
-		
+		// animal.setMember(member);
+
 		model.addAttribute("animal", animal);
 
 		return "/halfway/animalDetail";
 	}
-	
+
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
 	// @RequestParam = request.getParameter("file")
 	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
 	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image, Animal an,
 			HttpServletRequest request, Model model) {
+
+		// 設定當前會員
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails && principal instanceof Member) {
+			an.setMember((Member) principal);
+		} else {
+			String account = principal.toString();
+			System.out.println(account);
+		}
 
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());

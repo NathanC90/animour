@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.iii.ee100.animour.halfway.entity.Animal;
@@ -23,7 +24,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "MEMBER")
-public class Member implements UserDetails {
+public class Member extends GenericEntity implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +47,7 @@ public class Member implements UserDetails {
 	@Column(name = "ADDRESS")
 	String address;// 地址
 	@Column(name = "REGISTRATIONTIME")
-	java.sql.Date registrationTime;
+	java.sql.Timestamp registrationTime;
 	@Column(name = "Freq")
 	Integer freq;
 
@@ -125,11 +126,11 @@ public class Member implements UserDetails {
 		this.address = address;
 	}
 
-	public java.sql.Date getRegistrationTime() {
+	public java.sql.Timestamp getRegistrationTime() {
 		return registrationTime;
 	}
 
-	public void setRegistrationTime(java.sql.Date registrationTime) {
+	public void setRegistrationTime(java.sql.Timestamp registrationTime) {
 		this.registrationTime = registrationTime;
 	}
 
@@ -144,7 +145,7 @@ public class Member implements UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		GrantedAuthority auth = new SimpleGrantedAuthority("Member");
+		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
 		authorities.add(auth);
 		return authorities;
 	}

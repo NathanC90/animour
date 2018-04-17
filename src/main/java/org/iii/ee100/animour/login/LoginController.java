@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,7 @@ public class LoginController {
 	@Autowired
 	MemberService memberService;
 
-	@RequestMapping("/sign_in")
+	@RequestMapping("/sign_in")//導向登入頁面
 	public String login() {
 
 		return "/login/login";
@@ -30,11 +31,10 @@ public class LoginController {
 		Member member = memberService.getOneByAccount(account);
 		if (member != null && member.getPassword().equals(password)){
 			session.setAttribute("username", account);
-			model.addAttribute("profile", member);
-		return "/member/homepage";
+			model.addAttribute("profile", member);			
+			return "/member/homepage";
 		}
 		else if(member !=null) {
-			String s=member.getPassword();
 			return "redirect:/";
 		}
 		else {
@@ -44,11 +44,12 @@ public class LoginController {
 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) throws Exception {
+	    SecurityContextHolder.clearContext();
 
 		// session失效
 		session.invalidate();
 		// 重導向index
-		return "index";
+		return "/index";
 
 	}
 
