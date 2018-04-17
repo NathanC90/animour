@@ -365,13 +365,13 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="/forum/findOne?id=${article.id}">${article.subject}</a>
+									<a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
 
 								</h3>
 
 								<p
 									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-									${article.content}</p>
+									<c:out value="${article.content}"/></p>
 								<div class="blog-one-footer">
 									<a href="/forum/findOne?id=${article.id}">Read More</a> <a
 										href="#"> <i class="icon-heart"></i> 0 Likes

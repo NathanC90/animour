@@ -50,7 +50,7 @@
                     </div>
                     <div class="media-body">
                       <h4>
-                        <a href="/forum/findOne?id=${pop.id}">${pop.subject}</a>
+                        <a href="/forum/findOne?id=${pop.id}"><c:out value="${pop.subject}"/></a>
                       </h4>
                       <span class="published-time">
                         <i class="fa fa-calendar"></i>${pop.updateTime}</span>

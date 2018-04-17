@@ -100,7 +100,7 @@
             <!-- Author Info -->
             <header class="author-info">
               <h2 class="blog-post-title">
-                <a href="/forum/findOne?id=${article.id}">${article.subject}</a>
+                <a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
               </h2>
               <div class="tag-posted-in">
                 <ul class="list-unstyled">
@@ -135,7 +135,7 @@
             <section class="blog-post-content" >
               <div class="blog-post">
 <!--               處理文章內容過多問題的CSS -->
-                <p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">${article.content}</p>
+                <p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;"><c:out value="${article.content}"/></p>
               </div>
             </section>
             <div class="blog-post-footer clearfix">

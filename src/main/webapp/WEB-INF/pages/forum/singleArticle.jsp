@@ -180,7 +180,7 @@
                         <a href="#">${comment.member.account}</a>
                         <span class="published-time"><i class="fa fa-calendar"></i>${comment.updateTime}</span>
                       </div>
-                      <p>${comment.content}</p>
+                      <p><c:out value="${comment.content}"/></p>
                     </div>
 <!--                     <div class="media reply"> -->
 <!--                       <div class="media-body"> -->
