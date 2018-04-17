@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -50,7 +53,6 @@
 
 <!-- style/css -->
 <style>
-
 </style>
 <!-- style/css:end -->
 </head>
@@ -75,75 +77,100 @@
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
-					<div class="panel-heading">
-						<h4 class="panel-title">註冊</h4>
+					<div id="loginbox" style="margin-top: 50px; margin: auto"
+						class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+						<div class="panel panel-info" style="border: 1px">
+							<div class="panel-heading"
+								style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
+								<div class="panel-title">填寫個人資料</div>
+								<div
+									style="float: right; font-size: 80%; position: relative; top: -10px">
+									<a href="#"></a>
+								</div>
+							</div>
+
+							<div style="padding-top: 30px" class="panel-body">
+								<div style="display: none" id="login-alert"
+									class="alert alert-danger col-sm-12"></div>
+
+								<!-- 								<form name="insertMember" action="/sign_up" -->
+								<!-- 									method="POST" enctype="multipart/form-data"> -->
+								<form:form method='POST' modelAttribute="member"
+									class='form-horizontal'>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											帳號:
+											<form:input id="account" path="account" type='text'
+												class='form:input-large' />
+											<!-- 											<input type="text" class="form-control" id="anname" -->
+											<!-- 												placeholder="" name="account" value=""> -->
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											密碼:
+											<form:input id="password" path="password" type='password'
+												class='form:input-large' />
+											<!-- 											<input type="text" class="form-control" id="anname" -->
+											<!-- 												placeholder="" name="password" value=""> -->
+										</div>
+									</div>
+
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											主人姓名:
+											<form:input id="name" path="name" type='text'
+												class='form:input-large' />
+											<!-- 											<input type="text" class="form-control" id="anname" -->
+											<!-- 												placeholder="" name="name" value=""> -->
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											暱稱:
+											<form:input id="nickname" path="nickname" type='text'
+												class='form:input-large' />
+											<!-- 												<input type="text" class="form-control" id="anname" -->
+											<!-- 												placeholder="" name="nickname" value=""> -->
+										</div>
+									</div>
+
+
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											手機:
+											<form:input id="cell" path="cell" type='text'
+												class='form:input-large' />
+										</div>
+										<div class="form-group col-md-6">
+											信箱:
+											<form:input id="email" path="email" type='text'
+												class='form:input-large' />
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											地址:
+											<form:input id="address" path="address" type='text'
+												class='form:input-large' />
+										</div>
+									</div>
+									<input type="submit" class="btn btn-common" value="送出">
+									<input type="reset" class="btn btn-common" value="清除">
+									<a href="/" class="btn btn-common"> 回首頁</a>
+								</form:form>
+
+							</div>
+						</div>
 					</div>
-					<div>
-						<form name="insertdateForm" action="/login?" method="POST">
-							<table>
-								<tbody>
-									<tr>
-										<td width="120" height="40">帳號</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="account" value="${param.account}" type="text" size="14"
-											style="text-align: left">
-									</tr>
-									<tr>
-										<td width="120" height="40">密碼</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="password" value="" type="password" size="14"
-											style="text-align: left">
-									</tr>
+					<!-- 每頁不同的內容到這裡結束 -->
 
-									<tr>
-										<td width="120" height="40">姓名</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="name" value="" type="text" size="14"
-											style="text-align: left">
-									</tr>
-									<tr>
-										<td width="120" height="40">暱稱</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="nick" value="" type="text" size="14"
-											style="text-align: left">
-									</tr>
-									<tr>
-										<td width="120" height="40">手機</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="cell" value="" type="text" size="14"
-											style="text-align: left">
-									</tr>
-									<tr>
-										<td width="120" height="40">信箱</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="email" value="" type="text" size="14"
-											style="text-align: left">
-									</tr>
-
-									<tr>
-										<td width="120" height="40">地址</td>
-										<td width="600" height="40" align="left"><input id='num'
-											name="address" value="" type="text" size="14"
-											style="text-align: left">
-									</tr>
-
-
-
-								</tbody>
-							</table>
-							<input type="submit" value="送出"> 
-							<input type="reset"  value="清除"> <br>
-							<hr>
-							<br>
-						</form>
-						<!-- 每頁不同的內容到這裡結束 -->
-
-					</div>
-					<!-- Blog Pagination -->
-					<!-- 頁碼 -->
 				</div>
-				<!-- End -->
+				<!-- Blog Pagination -->
+				<!-- 頁碼 -->
 			</div>
+			<!-- End -->
+		</div>
 		</div>
 	</section>
 	<!-- Classic Blog Section End -->

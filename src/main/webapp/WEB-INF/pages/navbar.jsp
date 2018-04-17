@@ -87,6 +87,8 @@
                                             <sec:authentication property="principal.username" /> 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/homepage">個人首頁</a>
+                                            <a class="dropdown-item" href="/update">修改個人資料</a>
+
                                             <a class="dropdown-item" href="/logout">登出</a>
 
                                         </div>
@@ -95,6 +97,10 @@
                                 <sec:authorize access="isAnonymous()"><!-- 匿名者 -->
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/login" aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
+                                         <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/sign_up">註冊</a>
+                                        </div>
+                                    
                                 </li>
                                 </sec:authorize>
                             </ul>

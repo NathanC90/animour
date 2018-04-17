@@ -282,13 +282,13 @@
               <h2 class="widget-title">Category</h2>
               <ul class="category-menu">
                 <li>
-                  <a href="#"></a>
+                  <a href="#">#</a>
                 </li>
                 <li>
-                  <a href="#">個人收藏</a>
+                  <a href="#">黑名單</a>
                 </li>
                 <li>
-                  <a href="#">修改個人資料</a>
+                  <a href="#">管理訊息</a>
                 </li>
                 <li>
                   <a href="#">登出</a>
@@ -315,19 +315,24 @@
 						
 		<tbody>
 			<tr>
-				<td></td><!-- 帳號 -->
-				<td>${profile.account}</td>
-				<td></td>
+				<th></th>
+				<th>帳號</th>
+				<th>暱稱</th>
+				<th>手機</th>
+				<th>信箱</th>
+
 			</tr>
-			
-			<tr><td></td>  
-				<td>${profile.nickname}</td>
+		<c:forEach var="member" items="${memberlist}">
+			<tr>
 				<td></td>
-				 <!-- 暱稱 --> <tr>
-			<tr><td>登入次數</td>
-				<td></td>
-				<td></td>
-				</tr>
+				<td>${member.account}</td>
+				<td>${member.nickname}</td>
+				<td>${member.cell}</td>
+				<td>${member.email}</td>
+				
+
+			</tr>
+		</c:forEach>
 
 		</tbody>
 	</table>
