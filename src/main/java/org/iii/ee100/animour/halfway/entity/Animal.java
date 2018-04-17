@@ -31,9 +31,6 @@ public class Animal {
 	@OneToMany(mappedBy = "animal", cascade = { CascadeType.ALL })
 	private List<Adoption> adoptions;
 
-	// @ManyToOne
-	// private City city;
-
 	@Column(name = "STATUS") // for system
 	private String status = "開放認養";
 
@@ -55,8 +52,8 @@ public class Animal {
 	@Column(name = "UPLOAD") // for system
 	private Timestamp upload;
 
-	@Column(name = "CITY")
-	private String city;
+	@ManyToOne
+	private City city;
 
 	@Column(name = "DISTRICT")
 	private String district;
@@ -79,16 +76,6 @@ public class Animal {
 	@Column(name = "FILE_NAME")
 	private String fileName;
 
-//	@Column(name = "MEMBER_ID")
-//	private Long memberId;
-
-	
-
-	// Getter/Setter
-	public Long getId() {
-		return id;
-	}
-
 	@Override
 	public String toString() {
 		return "Animal [id=" + id + ", member=" + member + ", adoptions=" + adoptions + ", status=" + status + ", name="
@@ -96,6 +83,14 @@ public class Animal {
 				+ ", upload=" + upload + ", city=" + city + ", district=" + district + ", hospitalized=" + hospitalized
 				+ ", hospitalName=" + hospitalName + ", cardNum=" + cardNum + ", neuter=" + neuter + ", remark="
 				+ remark + ", fileName=" + fileName + "]";
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Member getMember() {
@@ -170,11 +165,11 @@ public class Animal {
 		this.upload = upload;
 	}
 
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 
@@ -234,17 +229,6 @@ public class Animal {
 		this.fileName = fileName;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-//
-//	public Long getMemberId() {
-//		return memberId;
-//	}
-//
-//	public void setMemberId(Long memberId) {
-//		this.memberId = memberId;
-//	}
-
+// getter/setter
+	
 }

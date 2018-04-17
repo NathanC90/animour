@@ -137,7 +137,7 @@
 					<td>${inanimal.gender}</td>
 					<td>${inanimal.found}</td>
 					<td>${inanimal.upload}</td>
-					<td>${inanimal.city}</td>
+					<td>${inanimal.city.name}</td>
 					<td>${inanimal.district}</td>
 				</tr>
 			</tbody>
