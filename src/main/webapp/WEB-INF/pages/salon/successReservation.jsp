@@ -111,7 +111,7 @@
 							src="/images/slider/bg-rabbit1-gray.jpg" alt="">
 						<div class="carousel-caption">
 							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								LaLa醫生門診時間異動</h2>
+							</h2>
 							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
 								已掛號會員請更改看診時間</h3>
 							<a class="btn btn-lg btn-common fadeInUp wow"
@@ -146,12 +146,7 @@
 
 			<div class="row">
 				<form action="/appointment/showSuccess" method="GET">
-					<select name="showSuccess">
-						<c:forEach var="avar1" items="${showSuccess}">
-							<option value="${avar1.freeTime}">${avar1.freeTime}</option>
-
-						</c:forEach>
-					</select> <input type="submit" value="預約確認">
+					
 				</form>
 				<c:forEach var="avar" items="${showSuccess}">
 

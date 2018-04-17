@@ -39,17 +39,22 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(path= {"/appointment/showFreeTime"},method = { RequestMethod.GET })
-	public String showReservationTime(Model model) {
+	public String showReservationTime(Model model,Designer designer,Long id) {
 		List<Designer> showReservationTime = reservationService.getAllFreeTime();
+	//	Designer getId = reservationService.getOne(id);
+	//	model.addAttribute("chooseId",getId);
 		model.addAttribute("showReservationTime",showReservationTime);
 		return "/salon/showFreeTime";
 	}
 	
 	@RequestMapping(path= {"/appointment/showSuccess"},method = { RequestMethod.GET })
-	public String showSuccess(Model model,Designer designer) {
+	public String showSuccess(Model model,Designer designer,Long id) {
 		List<Designer> showSuccess = reservationService.getAllFreeTime();
+		Designer getId = reservationService.getOne(id);
+			model.addAttribute("chooseId",getId);
 		
-	//	reservationService.update(designer);
+		
+		reservationService.updateToZero(designer);
 		model.addAttribute("showSuccess",showSuccess);
 		return "/salon/successReservation";
 	}

@@ -111,7 +111,7 @@
 							src="/images/slider/bg-rabbit1-gray.jpg" alt="">
 						<div class="carousel-caption">
 							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								LaLa醫生門診時間異動</h2>
+								</h2>
 							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
 								已掛號會員請更改看診時間</h3>
 							<a class="btn btn-lg btn-common fadeInUp wow"
