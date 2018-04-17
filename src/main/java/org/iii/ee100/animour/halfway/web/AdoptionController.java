@@ -38,7 +38,7 @@ public class AdoptionController {
 		// 設定登入的會員
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails && principal instanceof Member ) {
-			adoption.setMember((Member) principal);
+			adoption.setMember((Member) principal); // 在這邊setMember，資料庫會存的事 member_id
 			// String account = ((UserDetails)principal).getUsername();
 		} else {
 			String account = principal.toString();

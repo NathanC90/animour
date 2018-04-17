@@ -42,6 +42,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/halfway">認養搜尋</a>
                                         <a class="dropdown-item" href="/halfway/showAdoption">查詢通知</a>
+                                        <a class="dropdown-item" href="/halfway/updateAnimal">資料維護</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
