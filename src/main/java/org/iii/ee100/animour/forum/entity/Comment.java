@@ -2,13 +2,9 @@ package org.iii.ee100.animour.forum.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
@@ -24,9 +20,6 @@ public class Comment extends GenericEntity{
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
-	
-	@Transient
-	private String memberAccount;
 	
 	@Column(name="CONTENT",columnDefinition="TEXT")
 	private String content;
@@ -48,14 +41,6 @@ public class Comment extends GenericEntity{
 
 	public void setMember(Member member) {
 		this.member = member;
-	}
-
-	public String getMemberAccount() {
-		return getMember().getAccount();
-	}
-
-	public void setMemberAccount(String memberAccount) {
-		this.memberAccount = memberAccount;
 	}
 
 	public String getContent() {

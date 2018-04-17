@@ -31,7 +31,7 @@
               <h2 class="widget-title">Post Somthing</h2>
               <div class="subscribe-area">
                 <p></p>
-                <form class="form-group" name="Post" action="/insertArticleForm" method="GET">
+                <form class="form-group" name="Post" action="/postArticle" method="GET">
                   <button type="submit" class="mt-10 btn btn-common btn-block">Post</button>
                 </form>
               </div>

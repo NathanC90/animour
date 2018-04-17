@@ -110,11 +110,11 @@
                   </li>
                   <li>
                     <i class="fa fa-user"></i>
-                    <a href="#">${article.memberAccount}</a>
+                    <a href="#">${article.member.account}</a>
                   </li>
                   <li>
                     <i class="fa fa-pencil-square-o"></i>
-                    <a href="#">${article.categoryName}</a>
+                    <a href="#">${article.category.name}</a>
                   </li>
                   <li>
                     <i class="fa fa-comments"></i>
