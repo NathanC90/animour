@@ -24,12 +24,12 @@ public class ReservationController {
 		return "/salon/reservation";
 	}
 	
-	@RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
-	public String reservationDetail(Model model) {
-		List<Reservation> reservation = reservationService.getAll();
-		model.addAttribute("reservation",reservation);
-		return "/salon/reservation";
-	}
+//	@RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
+//	public String reservationDetail(Model model) {
+//		List<Reservation> reservation = reservationService.getAll();
+//		model.addAttribute("reservation",reservation);
+//		return "/salon/reservation";
+//	}
 	
 	@RequestMapping(path= {"/appointment/designer"},method = { RequestMethod.GET })
 	public String reservationDesigner(Model model) {
@@ -53,6 +53,22 @@ public class ReservationController {
 		model.addAttribute("showSuccess",showSuccess);
 		return "/salon/successReservation";
 	}
+	@RequestMapping(path= {"/appointment/testForm"},method = { RequestMethod.GET })
+	public String TestIndex(Model model,Designer designer,Long id) {
+		//List<Designer> selectOne = reservationService.getAllFreeTime();
+		
+		//designer =reservationService.getOne(id);
+		model.addAttribute("selectOne",designer);
+		return "/salon/InsertAnimalForm";
+	}
+//	@RequestMapping(path= {"/appointment/testForm"},method = { RequestMethod.GET })
+//	public String select(Model model,Designer designer,Long id) {
+//		//List<Designer> selectOne = reservationService.getAllFreeTime();
+//		
+//		designer =reservationService.getOne(id);
+//		model.addAttribute("selectOne",designer);
+//		return "/salon/InsertAnimalForm";
+//	}
 	
 	
 	

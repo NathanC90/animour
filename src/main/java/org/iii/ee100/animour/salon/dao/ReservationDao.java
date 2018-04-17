@@ -2,9 +2,9 @@ package org.iii.ee100.animour.salon.dao;
 
 import java.util.List;
 
+import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.salon.entity.Reservation;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ReservationDao extends JpaRepository<Reservation, Long> {
+public interface ReservationDao extends GenericDao<Reservation> {
 List<Reservation>findAll();
 }

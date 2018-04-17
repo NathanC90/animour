@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
+
 @Entity
 @Table(name="DESIGNER")
-public class Designer {
+public class Designer extends GenericEntity{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

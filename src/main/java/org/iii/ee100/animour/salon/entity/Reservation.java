@@ -5,9 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
+
 @Entity
 @Table(name="Reservation")
-public class Reservation {
+public class Reservation extends GenericEntity{
 	
 	@Id
 	@Column(name="ID")

@@ -1,8 +1,10 @@
 package org.iii.ee100.animour.salon.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
+import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.entity.Designer;
@@ -11,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ReservationService {
+public class ReservationService extends GenericService<Reservation>{
 	
 	@Autowired
 	ReservationDao reservationDao;
@@ -19,7 +21,7 @@ public class ReservationService {
 	@Autowired
 	DesignerDao designerDao;
 	
-	public List<Reservation> getAll() {
+	public ArrayList<Reservation> getAll() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
 	

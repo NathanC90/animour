@@ -7,9 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
+
 @Entity
 @Table(name="salon")
-public class Salon {
+public class Salon extends GenericEntity{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
