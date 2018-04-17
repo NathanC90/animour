@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 
@@ -141,8 +142,17 @@
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							縣市: <input type="text" class="form-control" id="city"
-								placeholder="" name="city" value="${param.city}">
+							縣市:
+							<%-- 							<form:select path="name"> --%>
+							<%-- 								<form:option value="-1" label="請選擇縣市" /> --%>
+							<%-- 								<form:options items="${citys.name}" /> --%>
+							<%-- 							</form:select> --%>
+							<select id="city" class="form-control" name="city">
+								<option selected>請選擇縣市</option>
+								<c:forEach var="city" items="${citys}">
+									<option value="${city.id}">${city.name}</option>
+								</c:forEach>
+							</select> 
 						</div>
 						<div class="form-group col-md-6">
 							鄉鎮市區: <input type="text" class="form-control" id="district"
@@ -181,17 +191,15 @@
 					</div>
 					<div class="form-group">
 						備註:
-						<textarea class="form-control" id="remark" name="remark"
-							rows="2"></textarea>
+						<textarea class="form-control" id="remark" name="remark" rows="2"></textarea>
 					</div>
 					<div class="form-group">
 						請上傳動物照片 <input type="file" class="form-control-file" id="image"
 							name="file">
 					</div>
-					<input type="submit" class="btn btn-common" value="送出"> 
-					<input type="reset" class="btn btn-common" value="清除">
-					<a href="/halfway" class="btn btn-common">
-								回上頁</a>
+					<input type="submit" class="btn btn-common" value="送出"> <input
+						type="reset" class="btn btn-common" value="清除"> <a
+						href="/halfway" class="btn btn-common"> 回上頁</a>
 				</form>
 			</div>
 		</div>

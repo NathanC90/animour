@@ -1,11 +1,13 @@
 package org.iii.ee100.animour.halfway.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.entity.City;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -27,20 +29,21 @@ public class AnimalSearchController {
 	AnimalDao animalDao;
 
 	@RequestMapping(value="/queryByCity",method = { RequestMethod.GET })
-	public String queryAnimalByCity(@RequestParam("city") String city, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+	public String queryAnimalByCity(@RequestParam("city") City city, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		
 		Page<Animal> page = animalservice.getByCity(city, pageNumber, pageSize);
 		model.addAttribute("animalpage", page);
 		
-		Map<String, Integer> citycount = new HashMap<>();
-		List<String> citys = animalservice.searchDistinctCity();
-		for (String onecity: citys) {
-			//System.out.println(city);
-			citycount.put(onecity, animalservice.getCityCount(onecity));
+		animalservice.updateAnimalCount();
+		List<City> citys = new ArrayList<>();
+		
+		for (City cityforeach :  animalservice.getAllCity()) {
+			if (cityforeach.getAnimalCount() >0) {
+				citys.add(cityforeach);
+			}
 		}
 		model.addAttribute("citys", citys);
-		model.addAttribute("citycount", citycount);
 		return "/halfway/halfwayIndex";
 	}
 	
@@ -52,14 +55,15 @@ public class AnimalSearchController {
 		Page<Animal> page = animalservice.getAnimalConatainingPage(name, pageNumber, pageSize);
 		model.addAttribute("animalpage", page);
 		
-		Map<String, Integer> citycount = new HashMap<>();
-		List<String> citys = animalservice.searchDistinctCity();
-		for (String onecity: citys) {
-			//System.out.println(city);
-			citycount.put(onecity, animalservice.getCityCount(onecity));
+		animalservice.updateAnimalCount();
+		List<City> citys = new ArrayList<>();
+		
+		for (City city :  animalservice.getAllCity()) {
+			if (city.getAnimalCount() >0) {
+				citys.add(city);
+			}
 		}
 		model.addAttribute("citys", citys);
-		model.addAttribute("citycount", citycount);
 		return "/halfway/halfwayIndex";
 	}
 	

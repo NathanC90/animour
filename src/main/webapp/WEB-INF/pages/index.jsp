@@ -157,7 +157,7 @@
 								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 								<p class="card-text" style="padding: 0px">編號：${animal.id}
 									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}
+									發現日期：${animal.found} 縣市：${animal.city.name} 鄉鎮市區：${animal.district}
 								</p>
 								<div class="d-flex justify-content-between align-items-center"
 									style="max-height: 100px">

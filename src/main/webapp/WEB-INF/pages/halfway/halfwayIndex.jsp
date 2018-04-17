@@ -180,9 +180,9 @@
 									<c:forEach var="citys" items="${citys}">
 										<li><div class="form-check">
 												<input class="form-check-input" type="checkbox"
-													value="${citys}" id="defaultCheck1" name="city"> <label
-													class="form-check-label" for="defaultCheck1">${citys}
-													(${citycount[citys]}) </label>
+													value="${citys.id}" id="defaultCheck1" name="city"> <label
+													class="form-check-label" for="defaultCheck1">${citys.name}
+													(${citys.animalCount}) </label>
 											</div></li>
 									</c:forEach>
 								</ul>
@@ -211,7 +211,7 @@
 									<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
 											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-											發現日期：${animal.found} 縣市：${animal.city}
+											發現日期：${animal.found} 縣市：${animal.city.name}
 											鄉鎮市區：${animal.district}</p>
 										<small class="text-muted">${animal.upload}</small>
 										<div class="d-flex justify-content-between align-items-center"
