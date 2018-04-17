@@ -93,9 +93,7 @@
 								<div style="display: none" id="login-alert"
 									class="alert alert-danger col-sm-12"></div>
 
-								<!-- 								<form name="insertMember" action="/sign_up" -->
-								<!-- 									method="POST" enctype="multipart/form-data"> -->
-								<form:form method='POST' modelAttribute="member"
+								<form:form method='POST' modelAttribute="member" 
 									class='form-horizontal'>
 									<div class="form-row">
 										<div class="form-group col-md-6">
@@ -119,10 +117,8 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											主人姓名:
-											<form:input id="name" path="name" type='text'
+											<form:input id="name" path="name" type='text' 
 												class='form:input-large' />
-											<!-- 											<input type="text" class="form-control" id="anname" -->
-											<!-- 												placeholder="" name="name" value=""> -->
 										</div>
 									</div>
 									<div class="form-row">
@@ -130,8 +126,6 @@
 											暱稱:
 											<form:input id="nickname" path="nickname" type='text'
 												class='form:input-large' />
-											<!-- 												<input type="text" class="form-control" id="anname" -->
-											<!-- 												placeholder="" name="nickname" value=""> -->
 										</div>
 									</div>
 
