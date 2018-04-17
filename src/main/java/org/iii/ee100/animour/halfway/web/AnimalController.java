@@ -1,14 +1,7 @@
 package org.iii.ee100.animour.halfway.web;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,7 +31,7 @@ public class AnimalController {
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
-		
+
 		animalservice.updateAnimalCount();
 		List<City> citys = animalservice.getQueryCity();
 		model.addAttribute("citys", citys);
@@ -61,7 +54,7 @@ public class AnimalController {
 	// 轉跳至insert表單
 	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
 	public String animalForm(Model model) {
-		
+
 		List<City> citys = animalservice.getAllCity();
 		model.addAttribute("citys", citys);
 		return "/halfway/insertAnimalForm";
@@ -77,11 +70,22 @@ public class AnimalController {
 
 		return "/halfway/animalDetail";
 	}
+	
+	// 轉跳至修改頁面
+		@RequestMapping(value = "/halfway/toUpdate", method = { RequestMethod.GET })
+		public String toUpdate(Long id, Model model) {
+			Animal animal = animalservice.getOne(id);
+			// animal.setMember(member);
+
+			model.addAttribute("animal", animal);
+
+			return "/halfway/updateAnimalForm";
+		}
 
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
 	// @RequestParam = request.getParameter("file")
 	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
-	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image,  Animal an,
+	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image, Animal an,
 			HttpServletRequest request, Model model) {
 
 		// 設定當前會員
@@ -92,44 +96,13 @@ public class AnimalController {
 			String account = principal.toString();
 			System.out.println(account);
 		}
-		//an.setCity(animalservice.getCityById(cityId));
-
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		an.setUpload(ts);
 		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
 		animalservice.insert(an);
-
-		// 圖片
-		String fileName = null;
-		String uploadRootPath = request.getServletContext().getRealPath("images/halfway/animal/");
-		System.out.println("uploadRootPath=" + uploadRootPath);
-
-		// 如果檔案路徑不存在，創造一個
-		File uploadRootDir = new File(uploadRootPath);
-		if (!uploadRootDir.exists()) {
-			uploadRootDir.mkdirs();
-		}
-
-		String contentType = image.getContentType();
-		String fileType = contentType.substring(contentType.indexOf("/") + 1);
-
-		if ((!image.isEmpty()) && ((fileType.equals("jpeg")) || (fileType.equals("png")))) {
-			try {
-				String originName = image.getOriginalFilename();
-				fileName = "id_" + an.getId() + originName.substring(originName.lastIndexOf(".")).trim();
-				// 把讀進來的檔案，轉成byte陣列
-				byte[] bytes = image.getBytes();
-				BufferedOutputStream buffout = new BufferedOutputStream(
-						new FileOutputStream(new File(uploadRootPath + fileName)));
-				// 利用Outputstream 把檔案內容(byte陣列)透過write方法寫出，至硬碟端檔案(檔案名稱為"/tmp"+fileName)
-				buffout.write(bytes);
-				buffout.close();
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
+		String fileName = animalservice.readImage(image, request, an);
+		
 		System.out.println(fileName);
 		an.setFileName(fileName);
 		// 儲存圖片之後，更新檔名
@@ -139,17 +112,34 @@ public class AnimalController {
 		return "/halfway/insertSuccess";
 	}
 
-	@RequestMapping(value = "/updateAnimal", method = { RequestMethod.POST })
-	public String updateAnimal(Animal an, Model model) {
-		if (an != null) {
+	@RequestMapping(value = "/halfway/updateAnimal", method = { RequestMethod.POST })
+		public String updateAnimal(@RequestParam(value = "file", required = false) MultipartFile image, Animal an,
+				HttpServletRequest request, Model model) {
+
+			// 設定當前會員
+			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			if (principal instanceof UserDetails && principal instanceof Member) {
+				an.setMember((Member) principal);
+			} else {
+				String account = principal.toString();
+				System.out.println(account);
+			}
+			// 普通表單
 			Timestamp ts = new Timestamp(System.currentTimeMillis());
 			an.setUpload(ts);
+			// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
+			animalservice.insert(an);
+			String fileName = animalservice.readImage(image, request, an);
+			
+			System.out.println(fileName);
+			an.setFileName(fileName);
+			// 儲存圖片之後，更新檔名
 			animalservice.update(an);
-			model.addAttribute("upanimal", an);
-		}
-		return "/halfway/FindAnimal";
-	}
+			model.addAttribute("inanimal", an);
 
+			return "/halfway/insertSuccess";
+		}
+	
 	@RequestMapping(value = "/deleteAnimal", method = { RequestMethod.GET })
 	public String deleteAnimal(Animal an, Model model) {
 		an = animalservice.getOne(an.getId());
@@ -173,10 +163,5 @@ public class AnimalController {
 		}
 		return "/halfway/FindAnimal";
 	}
-	
-//	@ModelAttribute("citys")
-//	public List<City> getAllCity(){
-//		return animalservice.getAllCity();
-//	}
 
 }
