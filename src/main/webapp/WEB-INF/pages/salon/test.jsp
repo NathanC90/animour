@@ -7,6 +7,6 @@
 <title>test</title>
 </head>
 <body>
-
+${param.id}
 </body>
 </html>

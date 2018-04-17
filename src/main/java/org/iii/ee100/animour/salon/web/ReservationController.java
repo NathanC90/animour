@@ -58,8 +58,15 @@ public class ReservationController {
 		//List<Designer> selectOne = reservationService.getAllFreeTime();
 		
 		//designer =reservationService.getOne(id);
-		model.addAttribute("selectOne",designer);
+	    //model.addAttribute("selectOne",designer);
 		return "/salon/InsertAnimalForm";
+	}
+	public String selectOne(Model model) {
+		List<Designer> selectOne = reservationService.getAllFreeTime();
+		model.addAttribute("selectOne",selectOne);
+		
+		return "/salon/test";
+		
 	}
 //	@RequestMapping(path= {"/appointment/testForm"},method = { RequestMethod.GET })
 //	public String select(Model model,Designer designer,Long id) {

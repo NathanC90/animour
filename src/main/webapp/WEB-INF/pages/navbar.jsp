@@ -59,7 +59,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="">salon簡介</a>
                                         <a class="dropdown-item" href="">salon價格</a>
-                                        <a class="dropdown-item" href="">test</a>
+                                        <a class="dropdown-item" href="/appointment/testForm">test</a>
                                         <a class="dropdown-item" href="/appointment">reservation</a>
                                     </div>
                                 </li>
