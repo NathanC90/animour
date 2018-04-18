@@ -1,7 +1,9 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +17,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,42 +53,33 @@ public class AnimalController {
 		model.addAttribute("citys", citys);
 		return "/halfway/halfwayIndex";
 	}
-
-	// 轉跳至insert表單
-	@RequestMapping(value = "/insertAnimalForm", method = { RequestMethod.GET })
-	public String animalForm(Model model) {
-
-		List<City> citys = animalservice.getAllCity();
-		model.addAttribute("citys", citys);
-		return "/halfway/insertAnimalForm";
-	}
-
 	// 轉跳至詳情頁面
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
 	public String animalDetail(Long id, Model model) {
 		Animal animal = animalservice.getOne(id);
 		// animal.setMember(member);
-
+		
 		model.addAttribute("animal", animal);
-
+		
 		return "/halfway/animalDetail";
 	}
 	
-	// 轉跳至修改頁面
-		@RequestMapping(value = "/halfway/toUpdate", method = { RequestMethod.GET })
-		public String toUpdate(Long id, Model model) {
-			Animal animal = animalservice.getOne(id);
-			// animal.setMember(member);
 
-			model.addAttribute("animal", animal);
+	// 轉跳至insert表單
+	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.GET })
+	public String animalForm(Model model) {
+		Animal an = new Animal();
+		model.addAttribute("animal", an);
+		List<City> citys = animalservice.getAllCity();
+		model.addAttribute("citys", citys);
+		return "/halfway/insertAnimalForm";
+	}
 
-			return "/halfway/updateAnimalForm";
-		}
 
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
 	// @RequestParam = request.getParameter("file")
 	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
-	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image, Animal an,
+	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image, @ModelAttribute("animal") Animal an,
 			HttpServletRequest request, Model model) {
 
 		// 設定當前會員
@@ -162,6 +156,21 @@ public class AnimalController {
 			model.addAttribute("animal", an);
 		}
 		return "/halfway/FindAnimal";
+	}
+	
+	@ModelAttribute("allCity")
+	public Map<Long, String> getAllCity(){
+		Map<Long, String> cityMap = new HashMap<>();
+		List<City> citys = animalservice.getAllCity();
+		for (City city:citys) {
+			cityMap.put(city.getId(), city.getName());
+		}
+		return cityMap;
+	}
+	
+	@ModelAttribute("allSpecie")
+	public List<String> getAllSpecie(){
+		return animalservice.setSpecie();
 	}
 
 }

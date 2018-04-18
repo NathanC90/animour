@@ -107,7 +107,7 @@
 						<div class="cta-content text-center">
 							<h2>幫助浪浪找到他們的家</h2>
 							<p>也別讓他們成為浪浪TT</p>
-							<a href="/insertAnimalForm" class="btn btn-common"><i
+							<a href="/insertAnimal" class="btn btn-common"><i
 								class="fa fa-envelope"></i> 我要送養</a>
 						</div>
 					</div>
@@ -218,7 +218,9 @@
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" onclick="location.href='/halfway/detail?id=${animal.id}';" class="btn btn-common btn-sm mt-10">詳情</button>
+<%-- 												<c:if test="${animal.member.id = }"> --%>
 												<button type="button" onclick="location.href='/halfway/toUpdate?id=${animal.id}';" class="btn btn-common btn-sm mt-10">更新</button>
+<%-- 											</c:if> --%>
 											</div>
 										</div>
 									</div>

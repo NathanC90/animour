@@ -93,48 +93,68 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form name="insertAnimalForm" action="/insertAnimal" method="POST"
-					enctype="multipart/form-data">
+				<%-- 				<form name="insertAnimalForm" action="/insertAnimal" method="POST" --%>
+				<%-- 					enctype="multipart/form-data"> --%>
+				<form:form method="POST" enctype="multipart/form-data"
+					modelAttribute="animal">
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							暱稱: <input type="text" class="form-control" id="anname"
-								placeholder="" name="name" value="${param.name}">
+							暱稱:
+							<form:input type="text" class="form-control" id="name"
+								path="name" />
 						</div>
 						<div class="form-group col-md-6">
-							種類: <select id="specie" class="form-control" name="specie">
-								<option selected>請選擇種類</option>
-								<option value="DOG">狗</option>
-								<option value="CAT">貓</option>
-								<option value="RABBIT">兔</option>
-								<option value="BIRD">鳥</option>
-								<option value="OTHER">其他</option>
-							</select>
+							種類:
+							<form:select path="specie" class="form-control">
+								<form:option value="-1" label="請選擇種類" />
+								<form:options items="${allSpecie}" />
+							</form:select>
+
+							<!-- 							<select id="specie" class="form-control" name="specie"> -->
+							<!-- 								<option selected>請選擇種類</option> -->
+							<!-- 								<option value="DOG">狗</option> -->
+							<!-- 								<option value="CAT">貓</option> -->
+							<!-- 								<option value="RABBIT">兔</option> -->
+							<!-- 								<option value="BIRD">鳥</option> -->
+							<!-- 								<option value="OTHER">其他</option> -->
+							<!-- 							</select> -->
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							顏色: <input type="text" class="form-control" id="color"
-								placeholder="" name="color" value="${param.color}">
+							顏色:
+							<!-- 							<input type="text" class="form-control" id="color" -->
+							<%-- 								placeholder="" name="color" value="${param.color}"> --%>
+							<form:input type="text" class="form-control" id="color"
+								path="color" />
+
 						</div>
 						<div class="form-group col-md-6">
 							性別:<br>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender"
-									id="male" value="male${param.gender}"> 公
+								<form:radiobutton path="gender" value="male"
+									class="form-check-input" /> 公
+							
+<!-- 								<input class="form-check-input" type="radio" name="gender" -->
+<%-- 									id="male" value="male${param.gender}"> 公 --%>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender"
-									id="female" value="female${param.gender}"> 母
+<!-- 								<input class="form-check-input" type="radio" name="gender" -->
+<%-- 									id="female" value="female${param.gender}"> 母 --%>
+								<form:radiobutton path="gender" value="female"
+									class="form-check-input" /> 母
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender"
-									id="unknown" value="option1"> 尚未確認
+							<form:radiobutton path="gender" value="unknown"
+									class="form-check-input" /> 尚未確認
+<!-- 								<input class="form-check-input" type="radio" name="gender" -->
+<!-- 									id="unknown" value="option1"> 尚未確認 -->
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						發現日期: <input type="date" class="form-control" id="found"
-							name="found" placeholder="ex:yyyy-MM-dd" value="${param.found}">
+						發現日期: <form:input type="date" class="form-control" id="found"
+							path="found" placeholder="ex:yyyy-MM-dd" />
 						<span id="p3" class="correct"></span> <small
 							id="passwordHelpBlock" class="form-text text-muted">(格式:西元年-月-日&nbsp
 							yyyy-MM-dd)</small>
@@ -143,64 +163,73 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							縣市:
-							<%-- 							<form:select path="name"> --%>
-							<%-- 								<form:option value="-1" label="請選擇縣市" /> --%>
-							<%-- 								<form:options items="${citys.name}" /> --%>
-							<%-- 							</form:select> --%>
-							<select id="city" class="form-control" name="city">
-								<option selected>請選擇縣市</option>
-								<c:forEach var="city" items="${citys}">
-									<option value="${city.id}">${city.name}</option>
-								</c:forEach>
-							</select> 
+							<form:select path="city" class="form-control">
+								<form:option value="-1" label="請選擇縣市" />
+								<form:options items="${allCity}" />
+							</form:select>
+							<!-- 							<select id="city" class="form-control" name="city"> -->
+							<!-- 								<option selected>請選擇縣市</option> -->
+							<%-- 								<c:forEach var="city" items="${citys}"> --%>
+							<%-- 									<option value="${city.id}">${city.name}</option> --%>
+							<%-- 								</c:forEach> --%>
+							<!-- 							</select>  -->
 						</div>
 						<div class="form-group col-md-6">
-							鄉鎮市區: <input type="text" class="form-control" id="district"
-								placeholder="" name="district" value="${param.district}">
+							鄉鎮市區: <form:input type="text" class="form-control" id="district"
+								 path="district" />
 						</div>
 					</div>
 					<div class="form-row align-items-center">
 						<div class="form-group col-md-4">
 							就醫紀錄(預設為無):<br>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="hospitalized1"
-									name="hospitalized" value="false${param.hospitalized}">無
+							<form:radiobutton path="hospitalized" value="false"
+									class="form-check-input" /> 無
+<!-- 								<input class="form-check-input" type="radio" id="hospitalized1" -->
+<%-- 									name="hospitalized" value="false${param.hospitalized}">無 --%>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="hospitalized2"
-									name="hospitalized" value="true${param.hospitalized}">
-								有
+							<form:radiobutton path="hospitalized" value="true"
+									class="form-check-input" /> 有
+<!-- 								<input class="form-check-input" type="radio" id="hospitalized2" -->
+<%-- 									name="hospitalized" value="true${param.hospitalized}"> --%>
+<!-- 								有 -->
 							</div>
 						</div>
 						<div class="form-group col-md-4">
 							結紮(預設為無):<br>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="neuter1"
-									name="neuter" value="false${param.neuter}">無
+							<form:radiobutton path="neuter" value="false"
+									class="form-check-input" /> 無
+<!-- 								<input class="form-check-input" type="radio" id="neuter1" -->
+<%-- 									name="neuter" value="false${param.neuter}">無 --%>
 							</div>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" id="neuter2"
-									name="neuter" value="true${param.neuter}"> 有
+									<form:radiobutton path="neuter" value="true"
+									class="form-check-input" /> 有
+<!-- 								<input class="form-check-input" type="radio" id="neuter2" -->
+<%-- 									name="neuter" value="true${param.neuter}"> 有 --%>
 							</div>
 						</div>
 						<div class="form-group col-md-4">
-							動物晶片號碼(非必填): <input type="text"
-								class="form-control form-control-sm" id="city" placeholder=""
-								name="cardNum" value="${param.cardNum}">
+							動物晶片號碼(非必填): <form:input type="text"
+								class="form-control form-control-sm" id="cardNum"
+								path="cardNum"/>
 						</div>
 					</div>
 					<div class="form-group">
 						備註:
-						<textarea class="form-control" id="remark" name="remark" rows="2"></textarea>
+						<form:textarea class="form-control" id="remark" path="remark" rows="2"/>
 					</div>
 					<div class="form-group">
 						請上傳動物照片 <input type="file" class="form-control-file" id="image"
 							name="file">
 					</div>
-					<input type="submit" class="btn btn-common" value="送出"> <input
-						type="reset" class="btn btn-common" value="清除"> <a
-						href="/halfway" class="btn btn-common"> 回上頁</a>
-				</form>
+					<input type="submit" class="btn btn-common" value="送出">
+					<input type="reset" class="btn btn-common" value="清除">
+					<a href="/halfway" class="btn btn-common"> 回上頁</a>
+					<%-- 				</form> --%>
+				</form:form>
 			</div>
 		</div>
 	</div>
