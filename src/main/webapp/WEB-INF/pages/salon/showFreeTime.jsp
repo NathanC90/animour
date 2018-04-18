@@ -146,7 +146,7 @@
 
 			<div class="row">
 				<form action="/appointment/showSuccess" method="GET">
-					<select name=oneFree>
+					<select name=id>
 						<c:forEach var="avar1" items="${showReservationTime}">
 							<option value="${avar1.id}">${avar1.freeTime}</option>
 

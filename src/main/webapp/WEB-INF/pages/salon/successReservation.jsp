@@ -145,9 +145,15 @@
 
 
 			<div class="row">
-				<form action="/appointment/showSuccess" method="GET">
-					
-				</form>
+<%-- 				<form action="/appointment/showSuccess" method="GET">
+					<select name="showSuccess">
+						<c:forEach var="avar1" items="${showSuccess}">
+							<option value="${avar1.freeTime}">${avar1.freeTime}</option>
+
+						</c:forEach>
+					</select> <input type="submit" value="預約確認">
+				</form> --%>
+				
 				<c:forEach var="avar" items="${showSuccess}">
 
 					<div class="col-md-4">
@@ -156,7 +162,7 @@
 								width="100px" alt="待預約設計師">
 							<div class="card-body" style="margin-bottom: 5px">
 								<p class="card-text" style="padding: 0px">
-									設計師名稱：${avar.designer} 空閒時間：${avar.freeTime}</p>
+									設計師名稱：${avar.designer} 空閒時間：${avar.freeTime} 0為沒有沒有空:${avar.oneFree}</p>
 								<div class="d-flex justify-content-between align-items-center"
 									style="max-height: 100px">
 									<div class="btn-group" style="margin: 0px">

@@ -20,6 +20,8 @@ public class ReservationService extends GenericService<Reservation>{
 	
 	@Autowired
 	DesignerDao designerDao;
+     @Autowired
+	 ReservationService reservice;
 	
 	public ArrayList<Reservation> getAll() {
 		return Lists.newArrayList(reservationDao.findAll());
@@ -31,6 +33,7 @@ public class ReservationService extends GenericService<Reservation>{
 	}
 	
 	public void updateToZero(Designer designer) {
+
 		designer.setOneFree(0);
 		designerDao.save(designer);
 	}
