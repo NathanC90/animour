@@ -12,45 +12,66 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberController {
-
 	@Autowired
 	MemberService memberService;
 
 	// 註冊頁面
-	@RequestMapping("/sign_up")
-	public String sign() {
-		return "/login/register";
+	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
+	public String sign(Model model) {
+		Member member = new Member();
+		model.addAttribute("member", member);
+		return "/member/register";
 
 	}
 
-	// 送出註冊資料
-	@RequestMapping("/login")
-	public String register(Model model, Member member) {
+	// 修改個人頁面
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update(Model model) {
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		model.addAttribute("member", userDetails);
+		return "/member/update";
+	}
+
+	// 送出註冊資料(新增會員)
+	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
+	public String register(Member member) {
 		member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 		memberService.insert(member);
-		return "/login/login";// 註冊成功跳轉 login
+		return "redirect:/";// 註冊成功跳轉 login
 
+	}
+
+	// 修改個人頁面
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updatemember(@RequestParam("name") String name, @RequestParam("nickname") String nickname,
+			@RequestParam("password") String password, @RequestParam("cell") String cell,
+			@RequestParam("email") String email, @RequestParam("address") String address,
+			@RequestParam("account") String account, Model model) {
+
+		memberService.update(password, name, nickname, cell, email, account);
+		;
+		return "redirect:/";
 	}
 
 	// 列出(全部)會員
 	@RequestMapping("/allmember")
 	public String findAll(Model model) {
 		model.addAttribute("memberlist", memberService.getAll());
-		return "/login/login";// 註冊成功跳轉 login
+		return "/member/users";
 
 	}
 
 	// 顯示個人首頁
-	@RequestMapping(value="/homepage", method = RequestMethod.GET)
-	public String profile(Member member,Model model) {
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()  
-																	 .getAuthentication()  
-																	 .getPrincipal();				
+	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
+	public String profile(Member member, Model model) {
+		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		model.addAttribute("profile", userDetails);
 		return "/member/homepage";
 

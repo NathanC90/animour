@@ -6,5 +6,5 @@ import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.forum.entity.Comment;
 
 public interface CommentDao extends GenericDao<Comment>{
-	List<Comment> findByArticleId(Long id);
+	List<Comment> findByArticleIdOrderByUpdateTime(Long id);
 }

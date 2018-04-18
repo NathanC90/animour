@@ -61,7 +61,7 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public List<Comment> getCommentByArticleId(Long id) {
-		return commentDao.findByArticleId(id);
+		return commentDao.findByArticleIdOrderByUpdateTime(id);
 	}
 
 	public Page<Article> getSearchBySubject(String subject, int pageNo, int pageSize) {

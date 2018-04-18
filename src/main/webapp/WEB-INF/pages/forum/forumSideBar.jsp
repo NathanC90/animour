@@ -31,7 +31,7 @@
               <h2 class="widget-title">Post Somthing</h2>
               <div class="subscribe-area">
                 <p></p>
-                <form class="form-group" name="Post" action="/insertArticleForm" method="GET">
+                <form class="form-group" name="Post" action="/postArticle" method="GET">
                   <button type="submit" class="mt-10 btn btn-common btn-block">Post</button>
                 </form>
               </div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="media-body">
                       <h4>
-                        <a href="/forum/findOne?id=${pop.id}">${pop.subject}</a>
+                        <a href="/forum/findOne?id=${pop.id}"><c:out value="${pop.subject}"/></a>
                       </h4>
                       <span class="published-time">
                         <i class="fa fa-calendar"></i>${pop.updateTime}</span>

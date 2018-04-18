@@ -157,7 +157,7 @@
 								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 								<p class="card-text" style="padding: 0px">編號：${animal.id}
 									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}
+									發現日期：${animal.found} 縣市：${animal.city.name} 鄉鎮市區：${animal.district}
 								</p>
 								<div class="d-flex justify-content-between align-items-center"
 									style="max-height: 100px">
@@ -365,13 +365,13 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="/forum/findOne?id=${article.id}">${article.subject}</a>
+									<a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
 
 								</h3>
 
 								<p
 									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-									${article.content}</p>
+									<c:out value="${article.content}"/></p>
 								<div class="blog-one-footer">
 									<a href="/forum/findOne?id=${article.id}">Read More</a> <a
 										href="#"> <i class="icon-heart"></i> 0 Likes

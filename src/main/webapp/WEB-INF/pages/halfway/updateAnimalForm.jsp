@@ -39,7 +39,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>新增送養動物</title>
+<title>更新動物資料</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -98,7 +98,7 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							暱稱: <input type="text" class="form-control" id="anname"
-								placeholder="" name="name" value="${param.name}">
+								placeholder="" name="name" value="${animal.name}">
 						</div>
 						<div class="form-group col-md-6">
 							種類: <select id="specie" class="form-control" name="specie">
@@ -114,17 +114,17 @@
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							顏色: <input type="text" class="form-control" id="color"
-								placeholder="" name="color" value="${param.color}">
+								placeholder="" name="color" value="${animal.color}">
 						</div>
 						<div class="form-group col-md-6">
 							性別:<br>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="gender"
-									id="male" value="male${param.gender}"> 公
+									id="male" value="male${animal.gender}"> 公
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="gender"
-									id="female" value="female${param.gender}"> 母
+									id="female" value="female${animal.gender}"> 母
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" name="gender"
@@ -134,7 +134,7 @@
 					</div>
 					<div class="form-group">
 						發現日期: <input type="date" class="form-control" id="found"
-							name="found" placeholder="ex:yyyy-MM-dd" value="${param.found}">
+							name="found" placeholder="ex:yyyy-MM-dd" value="${animal.found}">
 						<span id="p3" class="correct"></span> <small
 							id="passwordHelpBlock" class="form-text text-muted">(格式:西元年-月-日&nbsp
 							yyyy-MM-dd)</small>
@@ -156,7 +156,7 @@
 						</div>
 						<div class="form-group col-md-6">
 							鄉鎮市區: <input type="text" class="form-control" id="district"
-								placeholder="" name="district" value="${param.district}">
+								placeholder="" name="district" value="${animal.district}">
 						</div>
 					</div>
 					<div class="form-row align-items-center">
@@ -164,11 +164,11 @@
 							就醫紀錄(預設為無):<br>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" id="hospitalized1"
-									name="hospitalized" value="false${param.hospitalized}">無
+									name="hospitalized" value="false${animal.hospitalized}">無
 							</div>
 							<div class="form-check form-check-inline">
 								<input class="form-check-input" type="radio" id="hospitalized2"
-									name="hospitalized" value="true${param.hospitalized}">
+									name="hospitalized" value="true${animal.hospitalized}">
 								有
 							</div>
 						</div>
@@ -186,17 +186,18 @@
 						<div class="form-group col-md-4">
 							動物晶片號碼(非必填): <input type="text"
 								class="form-control form-control-sm" id="city" placeholder=""
-								name="cardNum" value="${param.cardNum}">
+								name="cardNum" value="${animal.cardNum}">
 						</div>
 					</div>
 					<div class="form-group">
 						備註:
-						<textarea class="form-control" id="remark" name="remark" rows="2"></textarea>
+						<textarea class="form-control" id="remark" name="remark" rows="2" >${animal.remark}</textarea>
 					</div>
 					<div class="form-group">
 						請上傳動物照片 <input type="file" class="form-control-file" id="image"
 							name="file">
 					</div>
+					<input type="hidden" name="id" value="animal">
 					<input type="submit" class="btn btn-common" value="送出"> <input
 						type="reset" class="btn btn-common" value="清除"> <a
 						href="/halfway" class="btn btn-common"> 回上頁</a>

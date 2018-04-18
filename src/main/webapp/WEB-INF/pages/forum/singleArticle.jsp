@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html lang="en">
   <head>
@@ -103,8 +105,8 @@
                 <div class="tag-posted-in">
                   <ul class="list-unstyled">
                     <li><i class="fa fa fa-calendar"></i> <a href="#">${article.updateTime}</a></li>
-                    <li><i class="fa fa-user"></i> <a href="#">${article.memberAccount}</a></li>
-                    <li><i class="fa fa-pencil-square-o"></i> <a href="#">${article.categoryName}</a></li>
+                    <li><i class="fa fa-user"></i> <a href="#">${article.member.account}</a></li>
+                    <li><i class="fa fa-pencil-square-o"></i> <a href="#">${article.category.name}</a></li>
                     <li><i class="fa fa-comments"></i> <a href="#">${article.commentLength} comment</a></li>
                   </ul>
                 </div>
@@ -175,10 +177,10 @@
                   <div class="media-body">
                     <div class="commentor-info">
                       <div class="comment-author">
-                        <a href="#">${comment.memberAccount}</a>
+                        <a href="#">${comment.member.account}</a>
                         <span class="published-time"><i class="fa fa-calendar"></i>${comment.updateTime}</span>
                       </div>
-                      <p>${comment.content}</p>
+                      <p><c:out value="${comment.content}"/></p>
                     </div>
 <!--                     <div class="media reply"> -->
 <!--                       <div class="media-body"> -->
@@ -202,13 +204,9 @@
                 <h3 class="small-title">Post new Comment</h3>
                 <form class="mt-30" name="commentForm" action="/forum/comment?articleId=${article.id}" method="POST">
                   <div class="row">
-                    <div class="col-md-4 ">
-                        <div class="form-group">
-                        <label class="sr-only" for="username">Name</label>
-                        <input type="text" name="memberId" placeholder="memberId" id="username" required="" class="form-control">
-                      
-                    </div>
-                  </div><!-- /.col-md-4  -->  
+                        <sec:authorize access="hasRole('Member')">
+                        <sec:authentication property="principal.username" />:
+                        </sec:authorize>
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="usermessage">Message</label>

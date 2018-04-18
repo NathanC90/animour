@@ -20,9 +20,6 @@ public class Article extends GenericEntity {
 	@ManyToOne
 	private Category category;
 
-	@Transient
-	private String categoryName;
-
 	@Column(name = "SUBJECT")
 	private String subject;
 
@@ -39,9 +36,6 @@ public class Article extends GenericEntity {
 	// @JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
 
-	@Transient
-	private String memberAccount;
-
 	@OneToMany(mappedBy = "article", cascade = { CascadeType.ALL })
 	private List<Comment> comment;
 
@@ -57,14 +51,6 @@ public class Article extends GenericEntity {
 
 	public void setCategory(Category category) {
 		this.category = category;
-	}
-
-	public String getCategoryName() {
-		return getCategory().getName();
-	}
-
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
 	}
 
 	public String getSubject() {
@@ -107,14 +93,6 @@ public class Article extends GenericEntity {
 		this.member = member;
 	}
 
-	public String getMemberAccount() {
-		return getMember().getAccount();
-	}
-
-	public void setMemberAccount(String memberAccount) {
-		this.memberAccount = memberAccount;
-	}
-
 	public List<Comment> getComment() {
 		return comment;
 	}
@@ -144,9 +122,8 @@ public class Article extends GenericEntity {
 
 	@Override
 	public String toString() {
-		return "Article [id=" + getId() + ", categoryName=" + categoryName + ", subject=" + subject + ", content=" + content
-				+ ", postTime=" + postTime + ", updateTime=" + updateTime + ", memberAccount=" + memberAccount
-				+ ", click=" + click + "]";
+		return "Article [subject=" + subject + ", content=" + content + ", postTime=" + postTime + ", updateTime="
+				+ updateTime + ", comment=" + comment + ", commentLength=" + commentLength + ", click=" + click + "]";
 	}
 
 }

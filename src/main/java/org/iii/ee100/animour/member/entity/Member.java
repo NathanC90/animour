@@ -26,34 +26,35 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
 
+	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
+	private List<Role> role;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
-	Long id;
+	private Long id;
 	@Column(name = "ACCOUNT")
-	String account;// 帳號
+	private String account;// 帳號
 	@Column(name = "PASSWORD")
-	String password;// 密碼
+	private String password;// 密碼
 
 	@Column(name = "NAME")
-	String name;// 姓名
-	@Column(name = "NICK")
-	String nick;// 暱稱
+	private String name;// 姓名
+	@Column(name = "NICKNAME")
+	private String nickname;// 暱稱
 
 	@Column(name = "CELL")
-	String cell;// 手機
+	private String cell;// 手機
 	@Column(name = "EMAIL")
-	String email;// 信箱
+	private String email;// 信箱
 	@Column(name = "ADDRESS")
-	String address;// 地址
+	private String address;// 地址
 	@Column(name = "REGISTRATIONTIME")
-	java.sql.Timestamp registrationTime;
+	private java.sql.Timestamp registrationTime;
 	@Column(name = "Freq")
-	Integer freq;
+	private Integer freq;
 
-	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL }
-	// ,fetch=FetchType.EAGER
-	)
+	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL }	)
 	private List<Article> article;
 
 	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
@@ -94,12 +95,12 @@ public class Member extends GenericEntity implements UserDetails {
 		this.name = name;
 	}
 
-	public String getNick() {
-		return nick;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNick(String nick) {
-		this.nick = nick;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
 	public String getCell() {
@@ -144,7 +145,7 @@ public class Member extends GenericEntity implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		ArrayList<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+		ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
 		authorities.add(auth);
 		return authorities;
