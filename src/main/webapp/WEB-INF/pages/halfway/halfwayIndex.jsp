@@ -219,7 +219,7 @@
 											<div class="btn-group" style="margin: 0px">
 												<button type="button" onclick="location.href='/halfway/detail?id=${animal.id}';" class="btn btn-common btn-sm mt-10">詳情</button>
 <%-- 												<c:if test="${animal.member.id = }"> --%>
-												<button type="button" onclick="location.href='/halfway/toUpdate?id=${animal.id}';" class="btn btn-common btn-sm mt-10">更新</button>
+												<button type="button" onclick="location.href='/halfway/updateAnimal?id=${animal.id}';" class="btn btn-common btn-sm mt-10">更新</button>
 <%-- 											</c:if> --%>
 											</div>
 										</div>
