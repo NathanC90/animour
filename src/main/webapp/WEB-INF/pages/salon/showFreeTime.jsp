@@ -161,7 +161,7 @@
 								width="100px" alt="待預約設計師">
 							<div class="card-body" style="margin-bottom: 5px">
 								<p class="card-text" style="padding: 0px">
-									設計師名稱：${avar.designer} 空閒時間：${avar.freeTime}</p>
+									設計師名稱：${avar.designer} 空閒時間：${avar.freeTime} 數字0為已預約:${avar.oneFree}</p>
 								<div class="d-flex justify-content-between align-items-center"
 									style="max-height: 100px">
 									<div class="btn-group" style="margin: 0px">

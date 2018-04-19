@@ -30,7 +30,9 @@ public class ReservationController {
 	// model.addAttribute("reservation",reservation);
 	// return "/salon/reservation";
 	// }
-
+	
+	
+	//return designer 
 	@RequestMapping(path = { "/appointment/designer" }, method = { RequestMethod.GET })
 	public String reservationDesigner(Model model) {
 		List<Reservation> reservationDesigner = reservationService.getAll();
@@ -38,6 +40,7 @@ public class ReservationController {
 		return "/salon/chooseDesigner";
 	}
 
+	//return show all free time page
 	@RequestMapping(path = { "/appointment/showFreeTime" }, method = { RequestMethod.GET })
 	public String showReservationTime(Model model, Designer designer, Long id) {
 		List<Designer> showReservationTime = reservationService.getAllFreeTime();
@@ -46,7 +49,17 @@ public class ReservationController {
 		model.addAttribute("showReservationTime", showReservationTime);
 		return "/salon/showFreeTime";
 	}
+	
+	@RequestMapping(path = { "/appointment/firstPage" }, method = { RequestMethod.GET })
+	public String showServiceType(Model model) {
+		
+		
+		return null;		
+	}
 
+	
+	
+	//return success page
 	@RequestMapping(path = { "/appointment/showSuccess" }, method = { RequestMethod.GET })
 	public String showSuccess(Model model, Designer designer, Long id) {
 		List<Designer> showSuccess = reservationService.getAllFreeTime();

@@ -7,6 +7,7 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
+import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,9 @@ public class ReservationService extends GenericService<Reservation>{
 	
 	@Autowired
 	DesignerDao designerDao;
-     @Autowired
-	 ReservationService reservice;
+    
+	@Autowired
+	ServiceContentDao serviceContentDao;
 	
 	public ArrayList<Reservation> getAll() {
 		return Lists.newArrayList(reservationDao.findAll());
@@ -41,5 +43,7 @@ public class ReservationService extends GenericService<Reservation>{
 	public Designer getOne(Long id) {
 		return designerDao.findOne(id);
 	}
+	
+	
 
 }
