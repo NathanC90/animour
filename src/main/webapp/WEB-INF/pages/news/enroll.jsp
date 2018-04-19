@@ -72,6 +72,19 @@
 		<!-- Navbar Starts -->
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
+		<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>報名活動</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
 	</header>
 		<!-- Container Starts -->
 				<div class="container">
@@ -79,8 +92,8 @@
 <form class="jotform-form" action="https://submit.jotform.me/submit/81005416515447/" method="post" name="form_81005416515447" id="81005416515447" accept-charset="utf-8">
   <input type="hidden" name="formID" value="81005416515447" />
   <div class="form-all">
-    <ul class="form-section page-section">
-      <li id="cid_7" class="form-input-wide" data-type="control_head">
+    
+     
         <div class="form-header-group ">
           <div class="header-text httal htvam">
             <h1 id="header_7" class="form-header" data-component="header">
@@ -88,8 +101,8 @@
             </h1>
           </div>
         </div>
-      </li>
-      <li class="form-line" data-type="control_text" id="id_3">
+     
+      
         <div id="cid_3" class="form-input-wide">
           <div id="text_3" class="form-html" data-component="text">
           <c:forEach var="news" items="${oneNews}">
@@ -113,8 +126,8 @@
             <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.004965796966!2d121.5412095148038!3d25.033905544449656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xec12a62666a81e3d!2sNo.+390%2C+Section+1%2C+Fuxing+South+Road%2C+Da%E2%80%99an+District%2C+Taipei+City%2C+106!5e0!3m2!1sen!2stw!4v1523468006587" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
           </div>
         </div>
-      </li>
-    </ul>
+      
+    
   </div>
  </form>
 					<!-- Service-Block-000 Item Ends -->

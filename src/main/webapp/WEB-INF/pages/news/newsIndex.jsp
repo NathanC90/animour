@@ -127,8 +127,8 @@
 									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" >
 									</a><div class="card-body" style="margin-bottom: 5px">
 									 <p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
-											<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">詳情</button></a>
-                 							<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">報名</button></a>									
+											<a href="/news/event"><button type="button" class="btn btn-common">詳情</button></a>
+                 							<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>									
 									</div>
 								</div>
 							</div>
