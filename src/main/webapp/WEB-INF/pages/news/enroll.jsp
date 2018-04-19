@@ -119,7 +119,8 @@
             <p><span style="color:#575757;"><strong>活動日期：</strong>${oneNews.event_Date}</span></p>
             
             <p><span style="color:#575757;"><strong>活動地點：</strong>${oneNews.address}</span></p>
-            <div style="width:400px;height:500px;border:2px gray solid;">活動簡介：${oneNews.content}寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</div>
+            <div style="width:600px;height:400px;border:2px gray solid;"><strong>活動簡介：${oneNews.content}</strong>寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</div>
+            <br>
             <!-- Facebook Login starts -->
             <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
             <!-- Facebook Login ends -->
