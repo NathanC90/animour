@@ -4,6 +4,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -82,7 +83,7 @@ public class AnimalService {
 	public List<City> getAllCity() {
 		return cityDao.findByOrderById();
 	}
-	
+
 	public List<City> getQueryCity() {
 		return cityDao.findByAnimalCountGreaterThanOrderByAnimalCountDesc(0L);
 	}
@@ -97,7 +98,7 @@ public class AnimalService {
 			city.setAnimalCount(new Long(city.getAnimals().size()));
 		}
 	}
-	
+
 	public String readImage(MultipartFile image, HttpServletRequest request, Animal an) {
 		// 圖片
 		String fileName = null;
@@ -130,6 +131,17 @@ public class AnimalService {
 			}
 		}
 		return fileName;
+	}
+
+	public List<String> setSpecie() {
+		List<String> species = new ArrayList<>();
+		species.add("狗");
+		species.add("貓");
+		species.add("兔");
+		species.add("鼠");
+		species.add("鳥");
+		species.add("其他");
+		return species;
 	}
 
 }

@@ -68,6 +68,24 @@
 <title>最新消息</title>
 </head>
 <body>
+<header id="header-wrap">
+		<!-- Navbar Starts -->
+	<jsp:include page="../navbar.jsp"></jsp:include>
+		<!-- Navbar ends -->
+		<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>活動詳情</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+	</header>
 		<!-- Container Starts -->
 <div class="container">
 	<div>
