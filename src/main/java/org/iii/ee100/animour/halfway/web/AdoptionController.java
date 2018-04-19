@@ -31,6 +31,8 @@ public class AdoptionController {
 			Model model) {
 		// 設定對應動物
 		adoption.setAnimal(animalService.getOne(id));
+		// 設定動物主人 ID
+		adoption.setOwnerId(animalService.getOne(id).getMember().getId());
 		// 設定送出時間
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		adoption.setRequestDate(ts);
@@ -54,18 +56,15 @@ public class AdoptionController {
 	// 產生查看認養請求的頁面
 	@RequestMapping(value = "/halfway/showAdoption", method = { RequestMethod.GET })
 	public String showAdoptionCheck(Model model) {
-		List<Adoption> adoptions = adoptionService.getCheckAdoption();
-		model.addAttribute("adoption", adoptions);
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails && principal instanceof Member ) {
-			model.addAttribute("currentmember", ((Member) principal));
-			// String account = ((UserDetails)principal).getUsername();
+			List<Adoption> adoptions = adoptionService.getCheckAdoption(((Member) principal).getId());
+			model.addAttribute("adoption", adoptions);
 		} else {
 			String account = principal.toString();
 			System.out.println(account);
 		}
-
 		return "/halfway/adoptionCheck";
 	}
 

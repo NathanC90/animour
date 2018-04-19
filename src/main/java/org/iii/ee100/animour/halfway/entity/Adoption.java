@@ -48,11 +48,16 @@ public class Adoption {
 
 	// 提出認養的人
 	@OneToOne
-	//@JoinColumn(name = "user_id", nullable = false)
+	// @JoinColumn(name = "user_id", nullable = false)
 	private Member member;
 
+	// 想要認養的動物
 	@ManyToOne
 	private Animal animal;
+
+	// 動物的主人的 ID
+	@Column(name="OWNER_ID")
+	private Long ownerId;
 
 	public Long getId() {
 		return id;
@@ -126,6 +131,12 @@ public class Adoption {
 		this.animal = animal;
 	}
 
-	
-	
+	public Long getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
+
 }

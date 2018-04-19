@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdoptionDao extends JpaRepository<Adoption, Long>{
 
-	List<Adoption> findByacceptRequestIsNull();
+	List<Adoption> findByOwnerIdOrderByRequestDateDesc(Long ownerId);
+
 }
