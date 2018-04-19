@@ -11,41 +11,27 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.member.entity.Member;
 
+import lombok.Data;
+
 @Entity
-@Table(name="THUMBSUP")
+@Table(name = "THUMBSUP")
+@Data
 public class ThumbsUp {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private Long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
+	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
 	private Member member;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "ARTICLE_ID",referencedColumnName="ID")
+	@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ID")
 	private Article article;
-	
-	@Column(name="THUMB")
+
+	@Column(name = "THUMB")
 	private Boolean thumb;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Boolean getThumb() {
-		return thumb;
-	}
-
-	public void setThumb(Boolean thumb) {
-		this.thumb = thumb;
-	}
-
-	
 }

@@ -11,8 +11,11 @@ import javax.persistence.Transient;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "CATEGORY")
+@Data
 public class Category extends GenericEntity {
 
 	@Column(name = "NAME", unique = true)
@@ -27,30 +30,6 @@ public class Category extends GenericEntity {
 	@Override
 	public String toString() {
 		return "Category [id=" + getId() + ", name=" + name + ", articleQuantity=" + articleQuantity + "]";
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getArticleQuantity() {
-		return getArticle().size();
-	}
-
-	public void setArticleQuantity(int articleQuantity) {
-		this.articleQuantity = articleQuantity;
-	}
-
-	public List<Article> getArticle() {
-		return article;
-	}
-
-	public void setArticle(List<Article> article) {
-		this.article = article;
 	}
 
 }

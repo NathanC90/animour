@@ -13,8 +13,11 @@ import javax.persistence.Transient;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
+import lombok.Data;
+
 @Entity
 @Table(name = "ARTICLE")
+@Data
 public class Article extends GenericEntity {
 
 	@ManyToOne
@@ -44,86 +47,5 @@ public class Article extends GenericEntity {
 
 	@Column(name = "CLICK")
 	private Long click;
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public String getSubject() {
-		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public java.sql.Timestamp getPostTime() {
-		return postTime;
-	}
-
-	public void setPostTime(java.sql.Timestamp postTime) {
-		this.postTime = postTime;
-	}
-
-	public java.sql.Timestamp getUpdateTime() {
-		return updateTime;
-	}
-
-	public void setUpdateTime(java.sql.Timestamp updateTime) {
-		this.updateTime = updateTime;
-	}
-
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
-	public List<Comment> getComment() {
-		return comment;
-	}
-
-	public void setComment(List<Comment> comment) {
-		this.comment = comment;
-	}
-
-	public int getCommentLength() {
-		if (getComment() != null) {
-			return getComment().size();
-		}
-		return 0;
-	}
-
-	public void setCommentLength(int commentLength) {
-		this.commentLength = commentLength;
-	}
-
-	public Long getClick() {
-		return click;
-	}
-
-	public void setClick(Long click) {
-		this.click = click;
-	}
-
-	@Override
-	public String toString() {
-		return "Article [subject=" + subject + ", content=" + content + ", postTime=" + postTime + ", updateTime="
-				+ updateTime + ", comment=" + comment + ", commentLength=" + commentLength + ", click=" + click + "]";
-	}
 
 }
