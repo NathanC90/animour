@@ -19,13 +19,18 @@ public class EventController {
 		return "/news/event";
 	}
 	
+	@RequestMapping("/news/enroll")
+	public String newsEnroll(Model model) {
+		return "/news/enroll";
+	}
+	
 	@RequestMapping(path= {"/findOneEvent"}, method={RequestMethod.GET})
 	public String findOne(Event events, Model model) {
 		Event event = eventService.getOne(Long.valueOf(events.getSubject_id()));
 		if (event != null) {
 			model.addAttribute("oneEvent", events);
 		}
-		return "/news/event";
+		return "/news/enroll";
 	}
 	
 	@RequestMapping(path= {"/findAllEvents"}, method={RequestMethod.GET})
