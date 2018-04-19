@@ -1,9 +1,11 @@
 package org.iii.ee100.animour.salon.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
+import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,12 +19,12 @@ public class ReservationController {
 	@Autowired
 	private ReservationService reservationService;
 
-	@RequestMapping(path = { "/appointment" }, method = { RequestMethod.GET })
-	public String reservationTime(Model model) {
-		List<Reservation> reservation = reservationService.getAll();
-		model.addAttribute("reservation", reservation);
-		return "/salon/reservation";
-	}
+//	@RequestMapping(path = { "/appointment" }, method = { RequestMethod.GET })
+//	public String reservationTime(Model model) {
+//		List<Reservation> reservation = reservationService.getAll();
+//		model.addAttribute("reservation", reservation);
+//		return "/salon/reservation";
+//	}
 
 	// @RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
 	// public String reservationDetail(Model model) {
@@ -50,11 +52,12 @@ public class ReservationController {
 		return "/salon/showFreeTime";
 	}
 	
+	//選取服務種類
 	@RequestMapping(path = { "/appointment/firstPage" }, method = { RequestMethod.GET })
 	public String showServiceType(Model model) {
-		
-		
-		return null;		
+		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+		model.addAttribute("allType",allType);
+		return "/salon/reservation";		
 	}
 
 	
