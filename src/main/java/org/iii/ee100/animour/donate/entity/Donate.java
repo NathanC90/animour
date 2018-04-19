@@ -7,12 +7,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
+import org.iii.ee100.animour.common.entity.GenericEntity;
 
 @Entity
-@Data
+
 @Table(name = "DONATE")
-public class Donate {
+public class Donate extends GenericEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
