@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
@@ -30,7 +31,15 @@ public class AdoptionService {
 		return adoptionDao.findOne(id);
 	}
 	
-	public List<Adoption> getCheckAdoption() {
-		return adoptionDao.findByacceptRequestIsNull();
+	public List<Adoption> getCheckAdoption(Long ownerId) {
+		List<Adoption> adoptions = new ArrayList<>();
+		for (Adoption adoption: adoptionDao.findByOwnerIdOrderByRequestDateDesc(ownerId)) {
+			if (adoption.getAcceptRequest() == null ) {
+				adoptions.add(adoption);
+			}
+		}
+		return adoptions;
 	}
+	
+	
 }

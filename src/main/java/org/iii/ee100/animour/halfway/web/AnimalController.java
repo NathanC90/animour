@@ -36,6 +36,15 @@ public class AnimalController {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
 
+		// 設定當前會員
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails && principal instanceof Member) {
+			model.addAttribute("currentMember", (Member) principal);
+		} else {
+			String account = principal.toString();
+			System.out.println(account);
+		}
+		
 		animalservice.updateAnimalCount();
 		List<City> citys = animalservice.getQueryCity();
 		model.addAttribute("citys", citys);
@@ -49,6 +58,15 @@ public class AnimalController {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		model.addAttribute("animalpage", page);
 
+		// 設定當前會員
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails && principal instanceof Member) {
+			model.addAttribute("currentMember", (Member) principal);
+		} else {
+			String account = principal.toString();
+			System.out.println(account);
+		}
+
 		animalservice.updateAnimalCount();
 		List<City> citys = animalservice.getQueryCity();
 		model.addAttribute("citys", citys);
@@ -60,9 +78,16 @@ public class AnimalController {
 		Animal animal = animalservice.getOne(id);
 		// animal.setMember(member);
 		model.addAttribute("animal", animal);
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails && principal instanceof Member) {
+			model.addAttribute("currentMember", (Member) principal);
+		} else {
+			String account = principal.toString();
+			System.out.println(account);
+		}
 		return "/halfway/animalDetail";
 	}
-
 	// 轉跳至insert表單
 	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.GET })
 	public String animalForm(Model model) {

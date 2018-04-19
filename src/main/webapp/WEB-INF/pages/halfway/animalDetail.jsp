@@ -106,7 +106,7 @@
 						alt="${animal.id}">
 				</div>
 				<div class="col-md-6">
-					<h3 class="small-title">會員"${animal.member.name}"的送養動物</h3>
+					<h3 class="small-title">會員"${animal.member.account}"的送養動物</h3>
 					<p>We are unique and had working! We work for better product.</p>
 					<div id="default-tab" class="mt-10">
 						<!-- Nav tabs -->
@@ -115,8 +115,10 @@
 								aria-controls="home" role="tab" data-toggle="tab">關於我</a></li>
 							<li class="nav-item"><a class="nav-link" href="#messages"
 								aria-controls="messages" role="tab" data-toggle="tab">備註</a></li>
-							<li class="nav-item"><a class="nav-link" href="#settings"
-								aria-controls="settings" role="tab" data-toggle="tab">給主人的話</a></li>
+							<c:if test="${animal.member.id ne currentMember.id}">
+								<li class="nav-item"><a class="nav-link" href="#settings"
+									aria-controls="settings" role="tab" data-toggle="tab">給主人的話</a></li>
+							</c:if>
 						</ul>
 
 						<!-- Tab panes -->
@@ -125,20 +127,24 @@
 								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 								<p class="card-text" style="padding: 0px">編號：${animal.id}
 									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city.name} 鄉鎮市區：${animal.district}</p>
+									發現日期：${animal.found} 縣市：${animal.city.name}
+									鄉鎮市區：${animal.district}</p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="messages">
 								<p>${animal.remark}</p>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="settings">
-								<form name="requestComment"
-									action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
-									<textarea class="form-control" id="requestComment"
-										name="requestComment" rows="3"></textarea>
-									<input type="submit" class="btn btn-common" value="確定認養">
-									<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
-								</form>
-							</div>
+							<c:if test="${animal.member.id ne currentMember.id}">
+								<div role="tabpanel" class="tab-pane" id="settings">
+									<form name="requestComment"
+										action="/halfway/adoptionRequest?id=${animal.id}"
+										method="POST">
+										<textarea class="form-control" id="requestComment"
+											name="requestComment" rows="3"></textarea>
+										<input type="submit" class="btn btn-common" value="確定認養">
+										<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
+									</form>
+								</div>
+							</c:if>
 						</div>
 					</div>
 				</div>

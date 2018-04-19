@@ -34,6 +34,7 @@
 					<li><a href="/hotel/selectType">最新空房</a></li>
 					<li><a href="/hospital">醫院資訊專區</a></li>
 					<li><a href="/forum/findAll">THE BLOG</a></li>
+					<li><a href="/donate">贊助我們</a></li>
 				</ul>
 			</div>
 			<!-- Footer Widget Ends -->
