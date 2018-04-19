@@ -5,7 +5,10 @@ import java.sql.Timestamp;
 
 
 import org.iii.ee100.animour.salon.dao.DesignerDao;
+import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.ServiceContent;
+import org.iii.ee100.animour.salon.service.ReservationService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,11 @@ public class DesignerDaoTest {
 
 	@Autowired
 	private DesignerDao designerDao;
+//	@Autowired
+//	private ServiceContentDao serviceContenDao;
+	@Autowired
+	private ReservationService reservationService;
+
 
 //	@Test
 //	public void TestInsertDesigner() {
@@ -59,18 +67,23 @@ public class DesignerDaoTest {
 //
 //	}
 	
-	@Test
-	public void TestUpdate() {
-		
-		Designer designer = designerDao.findOne(5L);
-		designer.setOneFree(0);
-		designerDao.save(designer);
-	}
+//	@Test
+//	public void TestUpdate() {
+//		
+//		Designer designer = designerDao.findOne(5L);
+//		designer.setOneFree(0);
+//		designerDao.save(designer);
+//	}
 	
 	
+//	@Test
+//	public void TestfindAll() {
+//		System.out.println(designerDao.findAll());
+//	}
+	
 	@Test
-	public void TestfindAll() {
-		System.out.println(designerDao.findAll());
+	public void TestfindContentall() {
+		System.out.println(reservationService.getAllServiceContent());
 	}
 
 }

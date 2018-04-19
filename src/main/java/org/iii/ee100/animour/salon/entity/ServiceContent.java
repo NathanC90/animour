@@ -6,8 +6,11 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import lombok.Data;
+
 @Entity
 @Table(name="SERVICECONTENT")
+@Data
 public class ServiceContent extends GenericEntity{
 
 	@Column(name ="CONTENT")
@@ -21,40 +24,4 @@ public class ServiceContent extends GenericEntity{
 	
 
 	
-	@Override
-	public String toString() {
-		return "ServiceContent [Content=" + Content + ", time=" + time + ", price=" + price + ", getId()=" + getId()
-				+ "]";
 	}
-	@Override
-	public Long getId() {
-		// TODO Auto-generated method stub
-		return super.getId();
-	}
-	@Override
-	public void setId(Long id) {
-		// TODO Auto-generated method stub
-		super.setId(id);
-	}
-	public String getContent() {
-		return Content;
-	}
-	public void setContent(String content) {
-		Content = content;
-	}
-	public Integer getTime() {
-		return time;
-	}
-	public void setTime(Integer time) {
-		this.time = time;
-	}
-	public Integer getPrice() {
-		return price;
-	}
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-	
-	
-	
-}

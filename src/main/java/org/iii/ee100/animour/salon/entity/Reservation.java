@@ -7,8 +7,11 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import lombok.Data;
+
 @Entity
 @Table(name="Reservation")
+@Data
 public class Reservation extends GenericEntity{
 	
 	@Id
@@ -24,27 +27,5 @@ public class Reservation extends GenericEntity{
 	@Column(name="PRICE")
 	private Integer price;
 	
-	@Override
-	public String toString() {
-		return "Reservation [time=" + time + ", service=" + service + ", price=" + price + "]";
-	}
-	public java.sql.Timestamp getTime() {
-		return time;
-	}
-	public void setTime(java.sql.Timestamp time) {
-		this.time = time;
-	}
-	public String getService() {
-		return service;
-	}
-	public void setService(String service) {
-		this.service = service;
-	}
-	public int getPrice() {
-		return price;
-	}
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
 	
 }
