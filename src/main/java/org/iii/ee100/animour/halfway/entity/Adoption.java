@@ -14,6 +14,9 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.member.entity.Member;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "ADOPTION")
 public class Adoption {
@@ -58,85 +61,5 @@ public class Adoption {
 	// 動物的主人的 ID
 	@Column(name="OWNER_ID")
 	private Long ownerId;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Timestamp getRequestDate() {
-		return requestDate;
-	}
-
-	public void setRequestDate(Timestamp requestDate) {
-		this.requestDate = requestDate;
-	}
-
-	public String getRequestComment() {
-		return requestComment;
-	}
-
-	public void setRequestComment(String requestComment) {
-		this.requestComment = requestComment;
-	}
-
-	public Boolean getAcceptRequest() {
-		return acceptRequest;
-	}
-
-	public void setAcceptRequest(Boolean acceptRequest) {
-		this.acceptRequest = acceptRequest;
-	}
-
-	public Timestamp getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(Timestamp orderDate) {
-		this.orderDate = orderDate;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public String getFeedback() {
-		return feedback;
-	}
-
-	public void setFeedback(String feedback) {
-		this.feedback = feedback;
-	}
-
-	public Member getMember() {
-		return member;
-	}
-
-	public void setMember(Member member) {
-		this.member = member;
-	}
-
-	public Animal getAnimal() {
-		return animal;
-	}
-
-	public void setAnimal(Animal animal) {
-		this.animal = animal;
-	}
-
-	public Long getOwnerId() {
-		return ownerId;
-	}
-
-	public void setOwnerId(Long ownerId) {
-		this.ownerId = ownerId;
-	}
 
 }

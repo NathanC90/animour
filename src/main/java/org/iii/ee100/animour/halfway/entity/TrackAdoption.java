@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name="TRACK_ADOPTION")
 public class TrackAdoption {
@@ -18,22 +21,5 @@ public class TrackAdoption {
 	
 	@Column(name="ADOPTION_ID")
 	private Long adoptionId;
-	
-	@Override
-	public String toString() {
-		return "TrackAdoption [id=" + id + ", adoptionId=" + adoptionId + "]";
-	}
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public Long getAdoptionId() {
-		return adoptionId;
-	}
-	public void setAdoptionId(Long adoptionId) {
-		this.adoptionId = adoptionId;
-	}
 
 }
