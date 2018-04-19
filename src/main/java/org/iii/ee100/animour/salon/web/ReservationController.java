@@ -18,6 +18,7 @@ public class ReservationController {
 
 	@Autowired
 	private ReservationService reservationService;
+	
 
 //	@RequestMapping(path = { "/appointment" }, method = { RequestMethod.GET })
 //	public String reservationTime(Model model) {
@@ -36,7 +37,10 @@ public class ReservationController {
 	
 	//return designer 
 	@RequestMapping(path = { "/appointment/designer" }, method = { RequestMethod.GET })
-	public String reservationDesigner(Model model) {
+	public String reservationDesigner(Model model,Designer designer) {
+		
+		
+		
 		List<Reservation> reservationDesigner = reservationService.getAll();
 		model.addAttribute("reservationDesigner", reservationDesigner);
 		return "/salon/chooseDesigner";
