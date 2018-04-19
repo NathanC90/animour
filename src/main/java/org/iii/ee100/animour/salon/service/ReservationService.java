@@ -10,6 +10,7 @@ import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
+import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +45,9 @@ public class ReservationService extends GenericService<Reservation>{
 		return designerDao.findOne(id);
 	}
 	
-	
+	public ArrayList<ServiceContent> getAllServiceContent(){
+		return Lists.newArrayList(serviceContentDao.findAll());
+		
+	}
 
 }

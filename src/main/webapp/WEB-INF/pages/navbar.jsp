@@ -61,7 +61,7 @@
                                         <a class="dropdown-item" href="">salon簡介</a>
                                         <a class="dropdown-item" href="">salon價格</a>
                                         <a class="dropdown-item" href="/appointment/testForm">test</a>
-                                        <a class="dropdown-item" href="/appointment">reservation</a>
+                                        <a class="dropdown-item" href="/appointment/firstPage">reservation</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
