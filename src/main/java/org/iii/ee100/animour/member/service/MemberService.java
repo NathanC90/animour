@@ -29,6 +29,14 @@ public class MemberService extends GenericService<Member> {
 				
 		memberDao.save(memberToUpdate);
 	}
+	
+	
+	public void delete(String account) {
+		Member deletemember = memberDao.findByAccount(account);
+		deletemember.setStatus(0);
+		memberDao.save(deletemember);
+
+	}
 
 	public Member getOne(Long id) {
 		return memberDao.findOne(id);

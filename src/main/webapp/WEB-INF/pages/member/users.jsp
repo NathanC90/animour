@@ -320,7 +320,7 @@
 				<th>暱稱</th>
 				<th>手機</th>
 				<th>信箱</th>
-
+				<th>管理</th>
 			</tr>
 		<c:forEach var="member" items="${memberlist}">
 			<tr>
@@ -329,7 +329,12 @@
 				<td>${member.nickname}</td>
 				<td>${member.cell}</td>
 				<td>${member.email}</td>
-				
+				<td>
+				<form action="/deletemember" method="POST">
+				<input type="hidden" name="account" value="${member.account}"/>
+				<input type="submit" value="刪除"  onclick="${member.account}"/>
+				</form>
+				</td>
 
 			</tr>
 		</c:forEach>

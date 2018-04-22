@@ -38,17 +38,18 @@ public class MemberController {
 		model.addAttribute("member", userDetails);
 		return "/member/update";
 	}
-
+	
 	// 送出註冊資料(新增會員)
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(Member member) {
 		member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
+		member.setStatus(1);
 		memberService.insert(member);
 		return "redirect:/";// 註冊成功跳轉 login
 
 	}
 
-	// 修改個人頁面
+	// 修改個人頁面(註冊資料)
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updatemember(@RequestParam("name") String name, @RequestParam("nickname") String nickname,
 			@RequestParam("password") String password, @RequestParam("cell") String cell,
@@ -59,6 +60,14 @@ public class MemberController {
 		;
 		return "redirect:/";
 	}
+	
+	//刪除會員(管理員才有資格)
+	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
+	public String delete(@RequestParam("account") String account,Model model) {
+		memberService.delete(account);
+		return "redirect:/";//回到主頁
+	}	
+	
 
 	// 列出(全部)會員
 	@RequestMapping("/allmember")
