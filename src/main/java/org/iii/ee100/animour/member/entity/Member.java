@@ -22,12 +22,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import lombok.Data;
+
+@Data
 @Entity
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
 
-	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
-	private List<Role> role;
+//	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
+//	private List<Role> role;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,8 +54,11 @@ public class Member extends GenericEntity implements UserDetails {
 	private String address;// 地址
 	@Column(name = "REGISTRATIONTIME")
 	private java.sql.Timestamp registrationTime;
-	@Column(name = "Freq")
+	@Column(name = "FREQ")
 	private Integer freq;
+	@Column(name = "STATUS")//狀態
+	private Integer status;
+		
 
 	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL }	)
 	private List<Article> article;
@@ -63,85 +69,85 @@ public class Member extends GenericEntity implements UserDetails {
 	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
 	private Adoption adoption;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getAccount() {
-		return account;
-	}
-
-	public void setAccount(String account) {
-		this.account = account;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	public String getCell() {
-		return cell;
-	}
-
-	public void setCell(String cell) {
-		this.cell = cell;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public java.sql.Timestamp getRegistrationTime() {
-		return registrationTime;
-	}
-
-	public void setRegistrationTime(java.sql.Timestamp registrationTime) {
-		this.registrationTime = registrationTime;
-	}
-
-	public Integer getFreq() {
-		return freq;
-	}
-
-	public void setFreq(Integer freq) {
-		this.freq = freq;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//
+//	public String getAccount() {
+//		return account;
+//	}
+//
+//	public void setAccount(String account) {
+//		this.account = account;
+//	}
+//
+//	public String getPassword() {
+//		return password;
+//	}
+//
+//	public void setPassword(String password) {
+//		this.password = password;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getNickname() {
+//		return nickname;
+//	}
+//
+//	public void setNickname(String nickname) {
+//		this.nickname = nickname;
+//	}
+//
+//	public String getCell() {
+//		return cell;
+//	}
+//
+//	public void setCell(String cell) {
+//		this.cell = cell;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public String getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(String address) {
+//		this.address = address;
+//	}
+//
+//	public java.sql.Timestamp getRegistrationTime() {
+//		return registrationTime;
+//	}
+//
+//	public void setRegistrationTime(java.sql.Timestamp registrationTime) {
+//		this.registrationTime = registrationTime;
+//	}
+//
+//	public Integer getFreq() {
+//		return freq;
+//	}
+//
+//	public void setFreq(Integer freq) {
+//		this.freq = freq;
+//	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
