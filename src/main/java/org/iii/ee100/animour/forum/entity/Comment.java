@@ -9,11 +9,13 @@ import javax.persistence.Table;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "COMMENT")
-@Data
+@Setter
+@Getter
 public class Comment extends GenericEntity {
 
 	@ManyToOne

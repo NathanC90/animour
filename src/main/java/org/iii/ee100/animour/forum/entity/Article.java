@@ -13,11 +13,13 @@ import javax.persistence.Transient;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "ARTICLE")
-@Data
+@Setter
+@Getter
 public class Article extends GenericEntity {
 
 	@ManyToOne
@@ -43,7 +45,7 @@ public class Article extends GenericEntity {
 	private List<Comment> comment;
 
 	@Transient
-	private int commentLength = comment.size();
+	private int commentLength;
 
 	@Column(name = "CLICK")
 	private Long click;
