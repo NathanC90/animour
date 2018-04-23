@@ -32,11 +32,7 @@ public class Member extends GenericEntity implements UserDetails {
 
 //	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
 //	private List<Role> role;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Long id;
+
 	@Column(name = "ACCOUNT")
 	private String account;// 帳號
 	@Column(name = "PASSWORD")
@@ -59,10 +55,6 @@ public class Member extends GenericEntity implements UserDetails {
 	private Integer freq;
 	@Column(name = "STATUS")//狀態
 	private Integer status;
-		
-
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "member", cascade = CascadeType.ALL)
-	private List<Article> article;
 
 	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
 	private List<Animal> animals;

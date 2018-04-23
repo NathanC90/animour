@@ -95,7 +95,7 @@
         <!-- BLog Article Section -->
         <div class="col-md-9">
           <!-- Single Blog Post -->
-          <c:forEach var="article" items="${page.content}">
+          <c:forEach var="article" items="${page}">
           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
             <!-- Author Info -->
             <header class="author-info">

@@ -73,7 +73,7 @@
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="/forum/findAll?pageNo=1" aria-haspopup="true" aria-expanded="false">部落格分享</a>
+                                    <a class="nav-link dropdown-toggle" href="/forum/findAll" aria-haspopup="true" aria-expanded="false">部落格分享</a>
                                     <div class="dropdown-menu">
                                         <!-- 						<a class="dropdown-item" href="/forum/findAll">本周最新</a> -->
                                         <!-- 								<a class="dropdown-item" href="">熱門文章</a>  -->

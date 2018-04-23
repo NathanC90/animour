@@ -24,11 +24,6 @@ import lombok.Setter;
 @Table(name = "ADOPTION")
 public class Adoption extends GenericEntity{
 
-	@Id
-	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-
 	// 提出認養的時間
 	@Column(name = "REQUEST_DATE")
 	private Timestamp requestDate;

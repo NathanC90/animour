@@ -1,12 +1,10 @@
 package org.iii.ee100.animour.forum.entity;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -22,7 +20,8 @@ import lombok.Setter;
 @Getter
 public class Article extends GenericEntity {
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "CATEGORY_ID",referencedColumnName="ID")
 	private Category category;
 
 	@Column(name = "SUBJECT")
@@ -37,12 +36,9 @@ public class Article extends GenericEntity {
 	@Column(name = "UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
 
-	@ManyToOne
-	// @JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
-
-	@OneToMany(mappedBy = "article", cascade = { CascadeType.ALL })
-	private List<Comment> comment;
 
 	@Transient
 	private int commentLength;

@@ -19,11 +19,6 @@ import lombok.Setter;
 @Table(name="TRACK_ADOPTION")
 public class TrackAdoption extends GenericEntity{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Long id;
-	
 	@Column(name="ADOPTION_ID")
 	private Long adoptionId;
 

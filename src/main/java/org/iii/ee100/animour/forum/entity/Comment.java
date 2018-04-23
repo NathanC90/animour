@@ -2,6 +2,7 @@ package org.iii.ee100.animour.forum.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,11 +19,11 @@ import lombok.Setter;
 @Getter
 public class Comment extends GenericEntity {
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ID")
 	private Article article;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
 	private Member member;
 

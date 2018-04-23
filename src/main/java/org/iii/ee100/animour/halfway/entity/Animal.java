@@ -25,11 +25,6 @@ import lombok.Setter;
 @Table(name = "ANIMAL")
 public class Animal extends GenericEntity{
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID") // for system
-	private Long id;
-
 	@ManyToOne
 	// @JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;

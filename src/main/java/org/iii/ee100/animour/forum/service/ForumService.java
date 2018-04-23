@@ -13,8 +13,6 @@ import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,14 +32,28 @@ public class ForumService extends GenericService<Article> {
 	@Autowired
 	private CategoryDao categoryDao;
 
-	public Page<Article> getPage(int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
-		return articleDao.findAll(pageable);
+	public List<Article> getArticleList() {
+		System.out.println("呼叫getArticleList方法");
+		List<Article> articleList = articleDao.findAll();
+		for (Article article : articleList) {
+			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		}
+		return articleList;
+	}
+
+	@Override
+	public Article getOne(Long id) {
+		System.out.println("呼叫getOne方法");
+		Article article = articleDao.getOne(id);
+		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		System.out.println(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size()+"============");
+		return article;
 	}
 
 	public void insertComment(Comment comment) {
 		commentDao.save(comment);
-
+		Article article = comment.getArticle();
+		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 	}
 
 	public Member getOneMember(Long id) {
@@ -49,11 +61,17 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public Category getOneCateGory(Long id) {
-		return categoryDao.findOne(id);
+		Category category = categoryDao.findOne(id);
+		category.setArticleQuantity(getArticlesByCategoryId(id).size());
+		return category;
 	}
 
 	public List<Article> getNewPostThree() {
-		return articleDao.findTop3ByOrderByPostTimeDesc();
+		List<Article> articleList = articleDao.findTop3ByOrderByPostTimeDesc();
+		for (Article article : articleList) {
+			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		}
+		return articleList;
 	}
 
 	public List<Article> getPopularFour() {
@@ -64,18 +82,21 @@ public class ForumService extends GenericService<Article> {
 		return commentDao.findByArticleIdOrderByUpdateTime(id);
 	}
 
-	public Page<Article> getSearchBySubject(String subject, int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
-		return articleDao.findBySubjectContaining(subject, pageable);
+	public List<Article> getArticlesSearchBySubject(String subject) {
+		return articleDao.findBySubjectContaining(subject);
 	}
 
-	public Page<Article> getSearchByCategoryId(Long categoryId, int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
-		return articleDao.findByCategoryId(categoryId, pageable);
+	public List<Article> getArticlesByCategoryId(Long categoryId) {
+		return articleDao.findByCategoryId(categoryId);
 	}
 
 	public List<Category> getAllCategory() {
-		return Lists.newArrayList(categoryDao.findAll());
+		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
+		for(Category category:categoryList) {
+			category.setArticleQuantity(getArticlesByCategoryId(category.getId()).size());
+			System.out.println("呼叫getAllCategory方法"+getArticlesByCategoryId(category.getId()).size());
+		}
+		return categoryList;
 	}
-
+	
 }

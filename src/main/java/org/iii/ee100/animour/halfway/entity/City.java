@@ -20,10 +20,6 @@ import lombok.Setter;
 @Table(name="CITY")
 public class City extends GenericEntity{
 	
-	@Id
-	@Column(name="ID")
-	private Long id;
-	
 	@Column(name="NAME")
 	private String name;
 	
