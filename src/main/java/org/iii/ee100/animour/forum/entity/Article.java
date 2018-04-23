@@ -43,7 +43,7 @@ public class Article extends GenericEntity {
 	private List<Comment> comment;
 
 	@Transient
-	private int commentLength;
+	private int commentLength = comment.size();
 
 	@Column(name = "CLICK")
 	private Long click;

@@ -53,7 +53,6 @@ public class ForumController {
 			article.setPostTime(now);
 			article.setUpdateTime(now);
 			article.setClick(0L);
-			article.setCommentLength(0);
 			// 取得登入中會員的身分
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			if (principal instanceof Member) {

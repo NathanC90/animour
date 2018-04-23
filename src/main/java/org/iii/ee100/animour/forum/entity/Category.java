@@ -27,9 +27,4 @@ public class Category extends GenericEntity {
 	@OneToMany(mappedBy = "category", cascade = { CascadeType.ALL })
 	private List<Article> article;
 
-	@Override
-	public String toString() {
-		return "Category [id=" + getId() + ", name=" + name + ", articleQuantity=" + articleQuantity + "]";
-	}
-
 }
