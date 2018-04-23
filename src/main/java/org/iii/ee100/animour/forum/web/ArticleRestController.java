@@ -1,6 +1,7 @@
 package org.iii.ee100.animour.forum.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
@@ -31,12 +32,14 @@ public class ArticleRestController {
 		return json;
 	}
 
-	// 查詢一筆文章AJAX用的
+	// 查詢一筆文章AJAX用的     現在會壞
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json" })
 	public String findOne(@PathVariable(value = "id") Long id) {
 		Gson gson = new Gson();
 		Article article = forumService.getOne(id);
-		String json = gson.toJson(article);
+		List<Article> articleList = new ArrayList<>();
+		articleList.add(article);
+		String json = gson.toJson(articleList);
 		return json;
 	}
 

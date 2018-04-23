@@ -37,6 +37,7 @@ public class ForumService extends GenericService<Article> {
 		List<Article> articleList = articleDao.findAll();
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
 		}
 		return articleList;
 	}
@@ -62,7 +63,7 @@ public class ForumService extends GenericService<Article> {
 
 	public Category getOneCateGory(Long id) {
 		Category category = categoryDao.findOne(id);
-		category.setArticleQuantity(getArticlesByCategoryId(id).size());
+		category.setArticleQuantity(articleDao.findByCategoryId(id).size());
 		return category;
 	}
 
@@ -93,7 +94,7 @@ public class ForumService extends GenericService<Article> {
 	public List<Category> getAllCategory() {
 		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
 		for(Category category:categoryList) {
-			category.setArticleQuantity(getArticlesByCategoryId(category.getId()).size());
+			category.setArticleQuantity(articleDao.findByCategoryId(category.getId()).size());
 			System.out.println("呼叫getAllCategory方法"+getArticlesByCategoryId(category.getId()).size());
 		}
 		return categoryList;
