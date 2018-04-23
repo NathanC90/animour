@@ -39,14 +39,18 @@ public class AdoptionController {
 
 		// 設定登入的會員
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails && principal instanceof Member ) {
+		if (principal instanceof UserDetails && principal instanceof Member) {
 			adoption.setMember((Member) principal); // 在這邊setMember，資料庫會存的事 member_id
 			// String account = ((UserDetails)principal).getUsername();
 		} else {
 			String account = principal.toString();
 			System.out.println(account);
 		}
-		adoptionService.insert(adoption);
+		try {
+			adoptionService.insert(adoption);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("inadoption", adoption);
 
 		System.out.println("controller 有被呼叫");
@@ -58,7 +62,7 @@ public class AdoptionController {
 	public String showAdoptionCheck(Model model) {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails && principal instanceof Member ) {
+		if (principal instanceof UserDetails && principal instanceof Member) {
 			List<Adoption> adoptions = adoptionService.getCheckAdoption(((Member) principal).getId());
 			model.addAttribute("adoption", adoptions);
 		} else {
@@ -72,28 +76,28 @@ public class AdoptionController {
 	@RequestMapping(value = "/halfway/adoptionCheck", method = { RequestMethod.GET })
 	public String adoptionCheck(@RequestParam(value = "id") Long id,
 			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an, Model model) {
-
-		System.out.println("Controller有被呼叫");
 		if (acceptRequest) {
-
-			adoption = adoptionService.getOne(id);
-			adoption.setAcceptRequest(acceptRequest);
-			adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
-			adoption.setStatus("認養洽談中");
-			adoptionService.update(adoption);
-
-			an = adoptionService.getOne(id).getAnimal(); // 這裡的id adoption的id
-			an.setStatus("認養洽談中");
-			animalService.update(an);
-
+			try {
+				adoption = (Adoption) adoptionService.getOne(id);
+				adoption.setAcceptRequest(acceptRequest);
+				adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
+				adoption.setStatus("認養洽談中");
+				adoptionService.update(adoption);
+				an = ((Adoption) adoptionService.getOne(id)).getAnimal(); // 這裡的id adoption的id
+				an.setStatus("認養洽談中");
+				animalService.update(an);
+			} catch (Exception e) {
+			}
 			return "redirect:/halfway/showAdoption";
 		} else {
-			adoption = adoptionService.getOne(id);
-			adoption.setAcceptRequest(acceptRequest);
-			adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
-			adoption.setStatus("認養被拒");
-			adoptionService.update(adoption);
-
+			try {
+				adoption = (Adoption) adoptionService.getOne(id);
+				adoption.setAcceptRequest(acceptRequest);
+				adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
+				adoption.setStatus("認養被拒");
+				adoptionService.update(adoption);
+			} catch (Exception e) {
+			}
 			return "redirect:/halfway/showAdoption";
 		}
 	}

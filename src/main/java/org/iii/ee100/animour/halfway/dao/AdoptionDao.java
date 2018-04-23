@@ -2,10 +2,10 @@ package org.iii.ee100.animour.halfway.dao;
 
 import java.util.List;
 
+import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.halfway.entity.Adoption;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdoptionDao extends JpaRepository<Adoption, Long>{
+public interface AdoptionDao extends GenericDao<Adoption>{
 
 	List<Adoption> findByOwnerIdOrderByRequestDateDesc(Long ownerId);
 

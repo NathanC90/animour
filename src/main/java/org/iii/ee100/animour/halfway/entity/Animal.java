@@ -13,14 +13,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "ANIMAL")
-public class Animal {
+public class Animal extends GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

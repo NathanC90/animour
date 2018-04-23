@@ -12,14 +12,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "ADOPTION")
-public class Adoption {
+public class Adoption extends GenericEntity{
 
 	@Id
 	@Column(name = "ID")

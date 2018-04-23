@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.assertj.core.util.Lists;
+import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.dao.CityDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
@@ -24,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Transactional
 @Service
-public class AnimalService {
+public class AnimalService extends GenericService<Animal>{
 
 	@Autowired
 	private AnimalDao animalDao;
@@ -44,7 +45,7 @@ public class AnimalService {
 		animalDao.delete(id);
 	}
 
-	public List<Animal> getAll() {
+	public ArrayList<Animal> getAll() {
 		return Lists.newArrayList(animalDao.findAll());
 	}
 

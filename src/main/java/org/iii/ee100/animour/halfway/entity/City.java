@@ -9,12 +9,16 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Data;
+import org.iii.ee100.animour.common.entity.GenericEntity;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 @Entity
 @Table(name="CITY")
-public class City {
+public class City extends GenericEntity{
 	
 	@Id
 	@Column(name="ID")

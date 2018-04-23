@@ -2,14 +2,14 @@ package org.iii.ee100.animour.halfway.dao;
 
 import java.util.List;
 
+import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface AnimalDao extends JpaRepository<Animal, Long>,JpaSpecificationExecutor<Animal> {
+public interface AnimalDao extends GenericDao<Animal>,JpaSpecificationExecutor<Animal> {
 	//List<Animal> findTop6ByUpload(Timestamp upload, Pageable pageable);
 	List<Animal> findByOrderByUploadDesc();
 	List<Animal> findTop6ByOrderByUploadDesc();
