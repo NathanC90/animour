@@ -146,7 +146,15 @@ public class Member extends GenericEntity implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
+		GrantedAuthority auth2;
+		if(account.equals("admin")) {
+			auth2 = new SimpleGrantedAuthority("ROLE_Admin");
+		}
+		else {
+			auth2=null;
+		}
 		authorities.add(auth);
+		authorities.add(auth2);
 		return authorities;
 	}
 

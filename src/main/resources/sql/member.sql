@@ -14,4 +14,5 @@ Member
  
  INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL) 
  VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com');
- 
+ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME) 
+ VALUES ('Admin','123','管理員');

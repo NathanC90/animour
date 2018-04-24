@@ -5,7 +5,11 @@
  VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
  INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
  VALUES ('Sony','123','Apple Wu','Apple','0900-000000','apple@gmail.com','台北市萬華區');
+ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME) 
+ VALUES ('Admin','123','管理員');
 
+ 
+ 
 /*2 Hospital*/
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('AAAAAAAA',  'A8',  '01-000',  '路上','10000' );  
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('aurora_animal',  '極光動物醫院',  '02-27848211',  '台北市大安區建國南路二段31號','10000' );  
