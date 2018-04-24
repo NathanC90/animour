@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,6 +32,7 @@ public class City extends GenericEntity{
 	@Column(name="ANIMAL_COUNT")
 	private Long animalCount;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "city", cascade = { CascadeType.ALL })
 	private List<Animal> animals;
 

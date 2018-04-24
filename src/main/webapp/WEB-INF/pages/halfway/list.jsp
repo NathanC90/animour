@@ -66,6 +66,7 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
@@ -197,13 +198,11 @@
 				<!-- BLog Article Section -->
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
-					<div class="row">
+					<div class="row" id="each">
 						<c:forEach var="animal" items="${animalpage.content}">
 
 							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
-									<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
-									<!-- 										width="100px" alt="待領養小貓"> -->
 									<img class="card-img-top"
 										src="/showAnimalImage?fileName=${animal.fileName}"
 										width="100px" alt="${animal.id}">
@@ -438,95 +437,40 @@
 	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
 	</a>
 	<script>
-		$(document).ready(function() {
-			$('#buttonGet').click(function() {
-				//練習一使用get()
-				//1. 呼叫Parameter
-				//2. 傳 name=Jack及age=30的資料給FirstServlet
-				//3. 將Server端回傳的結果加上h2的標籤,顯示在show的div中
-				$.get('Parameter',{"name":"Jack","age":30},function(data){
-					//data 就是Server回傳的結果
-					$('#show').html("<h2>" + data + "</h2>");
-				})
-			});
+	$(document).ready(function(){
+		initSubmitForm();
+	});
 
-			$('#buttonPost').click(function() {
-				//練習二使用post()
-				//1. 呼叫Parameter
-				//2. 傳 name=Mary及age=的25資料給Parameter.jsp
-				//3. 將Server端回傳的結果加上h2的標籤,顯示在show的div中
-				$.post('Parameter',{"name":"Mary","age":25},function(data){
-					//data 就是Server回傳的結果
-					$('#show').html("<h2>" + data + "</h2>");
-				})
-			});
-
-
-			$('#buttonGetJSON').click(function() {
-				//練習三使用getJSON()
-				//1. 呼叫apiln.json
-				//2. 讀出回傳JSON格式中的景點圖片(Image)
-				//3. 將景點圖片顯示在show的div中
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-// 				var docFragment = $(document.createDocumentFragment());
-// 				$.getJSON('apiIn.json',{},function(datas){
-// 					$.each(datas,function(idx,park){
+	var initSubmitForm = function() {
+	    // 使用 ajax() 來呼叫 REST API
+	    var docFragment = $(document.createDocumentFragment());
+				$.getJSON('/halfway/animal',{},function(datas){
+					$.each(datas,function(idx,animal){
+						var fileName = animal.fileName;
+						var img = $("<img />").attr('src','/showAnimalImage?fileName='+fileName).addClass('card-img-top');
+						
+						
+// 						console.log(datas)
 // 						var title = park.ParkName + "-"  + park.Name;
 // 						var img = $("<img />").attr('src',park.Image).addClass('thumb img-thumbnail');
 // 						var a = $("<a></a>").attr({'href':park.Image,'data-lightbox':'park','data-title':title}).append(img);
-// 						docFragment.append(a);
-// 					});
-// 					$('#show').append(docFragment);
-// 				})
-
-			});
-			
-			
-			$('#buttonAjax').click(function() {
-				//練習四使用ajax()
-// 				1. 呼叫travel.xml
-				//2. 讀出回傳xml格式中的景點圖片(Image)
-				//3. 將景點圖片顯示在show的div中
-				
-				
-				
-				
-				
-
-// 				$.ajax({
-// 					'type':'GET',
-// 					'url':'travel.xml',
-// 					'dataType':'xml'
-// 				}).done(function(datas){
-// 					var docFragment = $(document.createDocumentFragment());
-// 					$(datas).find('Section').each(function(){
-// 						var imgPath = $(this).find('img:first').text();
-// 						var title = $(this).find('img:first').attr("description");
-// 						var img = $("<img />").attr('src',imgPath).addClass('thumb img-responsive img-thumbnail');
-// 						var a = $("<a></a>").attr({'href':imgPath,'data-lightbox':'park','data-title':title}).append(img);
-// 						docFragment.append(a);
-// 					})
-// 					$('#show').append(docFragment);
-// 				})
-			});
-
-			//顯示server端的程式正在執行
-			$('#img1').hide();
-		})
-		
+						docFragment.append(img);
+					});
+					$('#each').append(docFragment);
+				})
+// 	    $.ajax({
+// 	        "url": "/halfway/animal",
+// 	        "type": "GET",
+// 	        "dataType": "json",
+// 	        complete: function(data, textStatus, jqXHR) {
+// 	            console.log(textStatus);
+// 	        },
+// 	        success: function (data, textStatus, jqXHR) {
+// 	            console.log(data);
+// 	        }
+// 	    });
+// 	    return false;
+	};
 	</script>
 
 	<!-- JavaScript & jQuery Plugins -->
@@ -544,7 +488,6 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	<script src="/js/jquery-3.3.1.min.js"></script>
 
 </body>
 

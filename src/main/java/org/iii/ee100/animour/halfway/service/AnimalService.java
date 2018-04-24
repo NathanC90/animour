@@ -15,10 +15,13 @@ import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.dao.CityDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -143,6 +146,17 @@ public class AnimalService extends GenericService<Animal>{
 		species.add("鳥");
 		species.add("其他");
 		return species;
+	}
+	
+	public Member getCurrentMember() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails && principal instanceof Member) {
+			return (Member) principal;
+		} else {
+			String account = principal.toString();
+			System.out.println(account);
+			return null;
+		}
 	}
 
 }

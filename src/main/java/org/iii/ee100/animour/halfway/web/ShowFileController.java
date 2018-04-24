@@ -23,7 +23,7 @@ public class ShowFileController {
 			HttpServletResponse response, Model model) {
 				OutputStream os = null;
 				FileInputStream fis = null;
-				if (fileName.isEmpty() || fileName == null) {
+				if (fileName.isEmpty() || fileName == null || fileName.equalsIgnoreCase("null")) {
 					fileName = "noimage.png";
 				}
 				

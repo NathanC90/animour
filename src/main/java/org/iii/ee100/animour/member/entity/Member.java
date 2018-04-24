@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,12 +15,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
-import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -61,12 +61,14 @@ public class Member extends GenericEntity implements UserDetails {
 	private Integer status;
 		
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "member", cascade = CascadeType.ALL)
-	private List<Article> article;
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "member", cascade = CascadeType.ALL)
+	//private List<Article> article;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
 	private List<Animal> animals;
 
+	@JsonIgnore
 	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
 	private Adoption adoption;
 
