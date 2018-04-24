@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class AnimalController {
+public class AnimalController_copy {
 
 	@Autowired
 	AnimalService animalservice;
@@ -188,12 +188,6 @@ public class AnimalController {
 	@ModelAttribute("allSpecie")
 	public List<String> getAllSpecie(){
 		return animalservice.setSpecie();
-	}
-	
-	@RequestMapping(value="/list") //findAll
-	public String List() {
-		
-		return "/list";
 	}
 
 }
