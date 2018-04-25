@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -17,7 +18,7 @@ public class LoginController {
 	@Autowired
 	MemberService memberService;
 
-	@RequestMapping("/sign_in")//導向登入頁面
+	@RequestMapping(value="/login",method=RequestMethod.GET)//導向登入頁面
 	public String login() {
 
 		return "/login/login";

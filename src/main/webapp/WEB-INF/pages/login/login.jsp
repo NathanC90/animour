@@ -58,12 +58,13 @@
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
+		-
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
 	</header>
 	<br>
 	<!-- Classic Blog Section -->
-	<section class="classic-blog-section section">
+	<section class="login-content">
 		<div class="container">
 			<div class="row">
 				<!-- Blog Sidebar Section -->
@@ -72,72 +73,75 @@
 				<!-- End -->
 
 				<!-- BLog Article Section -->
-				<div class="col-md-9">
-					<!-- Single Blog Post -->
-					<!-- 每頁不同的內容從這裡開始 -->
+				<section>
+					<div class="col-md-9">
+						<!-- Single Blog Post -->
+						<!-- 每頁不同的內容從這裡開始 -->
 
-					<div>
-						<form name="insertdateForm" action="/profile" method="POST">
-<!-- 						logo -->
-							<span class="login-form-logo"> 
-							<img src='../images/login/user.png'/>
-							
-<!-- 						<i class="zmdi zmdi-landscape"></i> -->
-							</span> 
-<!-- 						title -->						
-<br>
-							<span class="login-form-title"> Log in </span>
-							
-<!-- 						輸入帳號 -->						
-						<div class="wrap-input validate-input" data-validate="Enter username">
-						<input class="input" type="text" name="account" placeholder="Username">
-						<span class="focus-input" data-placeholder=""></span>
-						</div>	
-<!-- 						輸入密碼 -->
-						<div class="wrap-input100 validate-input" data-validate="Enter username">
-						<input class="input" type="password" name="password" placeholder="Password">						<span class="focus-input" data-placeholder=""></span>
-						</div>							
-<!-- 						remember me -->
-						<div class="contact-form-checkbox">
-						<input class="input-checkbox" id="ckb1" type="checkbox" name="remember-me">
-						<label class="label-checkbox" for="ckb1">
-							Remember me
-						</label>
-						</div>					
-									
-<!-- 						Log in button -->				
-						<div class="container-login-form-btn">
-<!-- 						<button class="login-form-btn"> -->
-<!-- 							Login -->
-<!-- 						</button> -->
-
-						<input type="submit" value="Login" class="login-form-btn">
-						</div>
-							
-<!-- 						忘記密碼 -->				
-						<div class="text-center p-t-90">
-						<a class="txt1" href="#">
-							Forgot Password?
-						</a>
-						</div>						
-						
-<!-- 						加入會員 -->				
-						<div class="text-center p-t-90">
-						<a class="txt1" href="/sign_up">
-							(register)
-						</a>
-						</div>								
-
-						</form>
-						</div>
+						<div></div>
 						<!-- 每頁不同的內容到這裡結束 -->
 
-					
-					<!-- Blog Pagination -->
-					<!-- 燈入頁面不需要頁碼 -->
-				</div>
-				<!-- End -->
+						<div class="login-box">
+							<form class="login-form" action="/login" method="POST">
+								<h3 class="login-head">
+									<i class="fa fa-lg fa-fw fa-user"></i>SIGN IN
+								</h3>
+								<div class="form-group">
+									<label class="control-label">USERNAME</label> <input
+										class="form-control" type="text" placeholder="account"
+										autofocus="" name="username">
+								</div>
+								<div class="form-group">
+									<label class="control-label">PASSWORD</label> <input
+										class="form-control" type="password" placeholder="Password"
+										name="password">
+								</div>
+								<div class="form-group">
+									<div class="utility">
+										<div class="animated-checkbox">
+											<label> <input type="checkbox"><span
+												class="label-text">Remember Me</span>
+											</label>
+										</div>
+										<p class="semibold-text mb-2">
+											<a href="#" data-toggle="flip">Forgot Password ?</a>
+										</p>
+									</div>
+								</div>
+								<div class="form-group btn-container">
+									<button class="btn btn-primary btn-block">
+										<i class="fa fa-sign-in fa-lg fa-fw"></i>SIGN IN
+									</button>
+								</div>
+							</form>
+
+							<form class="forget-form" action="/">
+								<h3 class="login-head">
+									<i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?
+								</h3>
+								<div class="form-group">
+									<label class="control-label">EMAIL</label> <input
+										class="form-control" type="text" placeholder="Email">
+								</div>
+								<div class="form-group btn-container">
+									<button class="btn btn-primary btn-block">
+										<i class="fa fa-unlock fa-lg fa-fw"></i>RESET
+									</button>
+								</div>
+								<div class="form-group mt-3">
+									<p class="semibold-text mb-0">
+										<a href="#" data-toggle="flip"><i
+											class="fa fa-angle-left fa-fw"></i> Back to Login</a>
+									</p>
+								</div>
+							</form>
+						</div>
+				</section>
+				<!-- Blog Pagination -->
+				<!-- 燈入頁面不需要頁碼 -->
 			</div>
+			<!-- End -->
+		</div>
 		</div>
 	</section>
 	<!-- Classic Blog Section End -->
@@ -181,5 +185,13 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/vendor/holder.min.js"></script>
 
+	<script src="/js/pace.min.js"></script>
+	<script type="text/javascript">
+		// Login Page Flipbox control
+		$('.login-content [data-toggle="flip"]').click(function() {
+			$('.login-box').toggleClass('flipped');
+			return false;
+		});
+	</script>
 </body>
 </html>
