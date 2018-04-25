@@ -201,7 +201,7 @@
 					<div class="row" id="each">
 						<c:forEach var="animal" items="${animalpage.content}">
 
-							<div class="col-md-3">
+							<div class="col-md-3" id=>
 								<div class="card mb-3 box-shadow">
 									<img class="card-img-top"
 										src="/showAnimalImage?fileName=${animal.fileName}"
@@ -211,8 +211,14 @@
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
 											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
 											發現日期：${animal.found} 縣市：${animal.city.name}
-											鄉鎮市區：${animal.district}</p>
+											鄉鎮市區：${animal.district}
+											</p>
 										<small class="text-muted">${animal.upload}</small>
+											<ul>
+											<li>
+											縣市：${animal.city.name}
+											</li>
+											</ul>
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
@@ -446,15 +452,34 @@
 	    var docFragment = $(document.createDocumentFragment());
 				$.getJSON('/halfway/animal',{},function(datas){
 					$.each(datas,function(idx,animal){
+						console.log(datas);
+						console.log(animal.name);
 						var fileName = animal.fileName;
-						var img = $("<img />").attr('src','/showAnimalImage?fileName='+fileName).addClass('card-img-top');
+						var img = $("<img />").attr({'src':'/showAnimalImage?fileName='+fileName, 'width':'100px', 'alt':animal.id}).addClass('card-img-top');
 						
+
+						var p1 =  $("<p></p>").attr({'style':'padding: 0px'}).addClass('card-text').append(animal.status);
+                        var li1 =  $("<li></li>").attr({'style':'margin: 0px'}).append(['編號:'+animal.id]);
+                        var li2 =  $("<li></li>").append(['綽號:'+animal.name]);
+                        var li3 =  $("<li></li>").append(['種類:'+animal.specie]);
+                        var li4 =  $("<li></li>").append(['發現日期:'+animal.found]);
+                        var li5 =  $("<li></li>").append(['縣市:'+animal.city.name]);
+                        var ul =  $("<ul></ul>").attr({'style':'margin:0; padding:0; list-style:none;'}).append([li1,li2,li3,li4,li5]);
+						var small =  $("<small></small>").addClass('text-muted').append(animal.upload);
+						
+						var button1 = $("<button></button>").attr({'type':'button', 'onclick':"location.href='/halfway/detail?id="+animal.id+"'"}).addClass('btn btn-common btn-sm mt-10').append("詳情");
+                        var eachdiv5 = $("<div></div>").attr({'id':'eachdiv5'}).addClass('btn-group').append(button1);
+                        var eachdiv4 = $("<div></div>").attr({'id':'eachdiv4', 'width':'max-height: 100px'}).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
+                        var eachdiv3 = $("<div></div>").attr({'id':'eachdiv3'}).addClass('card-body').append([p1,ul,small,eachdiv4]);
+						var eachdiv2 = $("<div></div>").attr({'id':'eachdiv2'}).addClass('card mb-3 box-shadow').append([img,eachdiv3]);
 						
 // 						console.log(datas)
 // 						var title = park.ParkName + "-"  + park.Name;
 // 						var img = $("<img />").attr('src',park.Image).addClass('thumb img-thumbnail');
 // 						var a = $("<a></a>").attr({'href':park.Image,'data-lightbox':'park','data-title':title}).append(img);
-						docFragment.append(img);
+						var eachdiv1 = $("<div></div>").attr({'class':'col-md-3','id':'eachdiv1'}).append(eachdiv2);
+						docFragment.append(eachdiv1);
+						console.log(animal.name);
 					});
 					$('#each').append(docFragment);
 				})

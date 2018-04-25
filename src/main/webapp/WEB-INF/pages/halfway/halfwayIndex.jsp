@@ -197,23 +197,43 @@
 				<!-- BLog Article Section -->
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
-					<div class="row">
+					<div class="row" id="each">
 						<c:forEach var="animal" items="${animalpage.content}">
 
-							<div class="col-md-3">
-								<div class="card mb-3 box-shadow">
+							<div class="col-md-3" id="eachdiv1">
+								<div class="card mb-3 box-shadow" id="eachdiv2">
 									<!-- 									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg" -->
 									<!-- 										width="100px" alt="待領養小貓"> -->
 									<img class="card-img-top"
 										src="/showAnimalImage?fileName=${animal.fileName}"
 										width="100px" alt="${animal.id}">
-									<div class="card-body" style="margin-bottom: 5px">
+									<div class="card-body" style="margin-bottom: 5px" >
 									<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
 										<p class="card-text" style="padding: 0px">編號：${animal.id}
 											綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
 											發現日期：${animal.found} 縣市：${animal.city.name}
 											鄉鎮市區：${animal.district}</p>
 										<small class="text-muted">${animal.upload}</small>
+																					<ul>
+											<li>
+											縣市：${animal.city.name}
+											</li>
+											<li>
+											綽號：${animal.name}
+											</li>
+											<li>
+											發現日期：${animal.found} 
+											</li>
+											<li>
+											鄉鎮市區：${animal.district}
+											</li>
+											<li>
+											縣市：${animal.city.name}
+											</li>
+											<li>
+											縣市：${animal.city.name}
+											</li>
+											</ul>
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
