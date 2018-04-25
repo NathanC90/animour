@@ -2,7 +2,6 @@ package org.iii.ee100.animour.forum.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -51,4 +50,6 @@ public class Article extends GenericEntity {
 	@Column(name = "CLICK")
 	private Long click;
 
+	@Transient
+	private int totalPage;
 }
