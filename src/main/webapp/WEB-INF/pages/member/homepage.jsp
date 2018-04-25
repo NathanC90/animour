@@ -50,202 +50,7 @@
     
 <!-- style/css -->
 <style>
-.table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 1rem;
-	background-color: transparent
-}
 
-.table td, .table th {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #dee2e6
-}
-
-.table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6
-}
-
-.table tbody+tbody {
-	border-top: 2px solid #dee2e6
-}
-
-.table .table {
-	background-color: #fff
-}
-
-.table-sm td, .table-sm th {
-	padding: .3rem
-}
-
-.table-bordered {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered td, .table-bordered th {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered thead td, .table-bordered thead th {
-	border-bottom-width: 2px
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
-}
-
-.table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-primary, .table-primary>td, .table-primary>th {
-	background-color: #b8daff
-}
-
-.table-hover .table-primary:hover {
-	background-color: #9fcdff
-}
-
-.table-hover .table-primary:hover>td, .table-hover .table-primary:hover>th
-	{
-	background-color: #9fcdff
-}
-
-.table-secondary, .table-secondary>td, .table-secondary>th {
-	background-color: #d6d8db
-}
-
-.table-hover .table-secondary:hover {
-	background-color: #c8cbcf
-}
-
-.table-hover .table-secondary:hover>td, .table-hover .table-secondary:hover>th
-	{
-	background-color: #c8cbcf
-}
-
-.table-success, .table-success>td, .table-success>th {
-	background-color: #c3e6cb
-}
-
-.table-hover .table-success:hover {
-	background-color: #b1dfbb
-}
-
-.table-hover .table-success:hover>td, .table-hover .table-success:hover>th
-	{
-	background-color: #b1dfbb
-}
-
-.table-info, .table-info>td, .table-info>th {
-	background-color: #bee5eb
-}
-
-.table-hover .table-info:hover {
-	background-color: #abdde5
-}
-
-.table-hover .table-info:hover>td, .table-hover .table-info:hover>th {
-	background-color: #abdde5
-}
-
-.table-warning, .table-warning>td, .table-warning>th {
-	background-color: #ffeeba
-}
-
-.table-hover .table-warning:hover {
-	background-color: #ffe8a1
-}
-
-.table-hover .table-warning:hover>td, .table-hover .table-warning:hover>th
-	{
-	background-color: #ffe8a1
-}
-
-.table-danger, .table-danger>td, .table-danger>th {
-	background-color: #f5c6cb
-}
-
-.table-hover .table-danger:hover {
-	background-color: #f1b0b7
-}
-
-.table-hover .table-danger:hover>td, .table-hover .table-danger:hover>th
-	{
-	background-color: #f1b0b7
-}
-
-.table-light, .table-light>td, .table-light>th {
-	background-color: #fdfdfe
-}
-
-.table-hover .table-light:hover {
-	background-color: #ececf6
-}
-
-.table-hover .table-light:hover>td, .table-hover .table-light:hover>th {
-	background-color: #ececf6
-}
-
-.table-dark, .table-dark>td, .table-dark>th {
-	background-color: #c6c8ca
-}
-
-.table-hover .table-dark:hover {
-	background-color: #b9bbbe
-}
-
-.table-hover .table-dark:hover>td, .table-hover .table-dark:hover>th {
-	background-color: #b9bbbe
-}
-
-.table-active, .table-active>td, .table-active>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover>td, .table-hover .table-active:hover>th
-	{
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table .thead-dark th {
-	color: #fff;
-	background-color: #212529;
-	border-color: #32383e
-}
-
-.table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: #dee2e6
-}
-
-.table-dark {
-	color: #fff;
-	background-color: #212529
-}
-
-.table-dark td, .table-dark th, .table-dark thead th {
-	border-color: #32383e
-}
-
-.table-dark.table-bordered {
-	border: 0
-}
-
-.table-dark.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(255, 255, 255, .05)
-}
-
-.table-dark.table-hover tbody tr:hover {
-	background-color: rgba(255, 255, 255, .075)
-}
 </style>
 <!-- style/css:end -->    
 </head>
@@ -315,19 +120,19 @@
 						
 		<tbody>
 			<tr>
-				<td></td><!-- 帳號 -->
-				<td>${profile.account}</td>
+				<td></td>帳號
+				<td id="acco">${profile.account}</td>
 				<td></td>
 			</tr>
 			
-			<tr><td></td>  
-				<td>${profile.nickname}</td>
-				<td></td>
-				 <!-- 暱稱 --> <tr>
-			<tr><td>登入次數</td>
-				<td></td>
-				<td></td>
-				</tr>
+<!-- 			<tr><td></td>   -->
+<%-- 				<td>${profile.nickname}</td> --%>
+<!-- 				<td></td> -->
+<!-- 				 暱稱 <tr> -->
+<!-- 			<tr><td>登入次數</td> -->
+<!-- 				<td></td> -->
+<!-- 				<td></td> -->
+<!-- 				</tr> -->
 
 		</tbody>
 	</table>
@@ -335,40 +140,11 @@
 
         </div>
  <!-- Blog Pagination -->
+ <!-- 分頁開始 -->
           <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
-            <nav aria-label="..." class="">
-              <ul class="pagination">
-                <li class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-                    <i class="fa fa-angle-left"></i>
-                    Prev
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1
-                    <span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    Next
-                    <i class="fa fa-angle-right"></i>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
+
           </div>
+ <!-- 分頁結束 -->          
         </div>
         <!-- End -->
       </div>
@@ -411,7 +187,20 @@
 	</script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/vendor/holder.min.js"></script>
 
+
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+
+<script>
+var account=$("#acco").text();
+console.log(account);
+$(document).ready(function() {
+	$.getJSON('/rest_users/'+account, {}, function (data) {
+		console.log(data);
+	})
+})
+	
+</script>
 </body>
 </html>

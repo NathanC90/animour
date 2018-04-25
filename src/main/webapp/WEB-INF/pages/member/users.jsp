@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Animour</title>
+<title>會員清單</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -53,7 +55,8 @@
 <style>
 
 </style>
-<!-- style/css:end -->    
+<!-- style/css:end --> 
+
 </head>
 
 <body>
@@ -113,9 +116,14 @@
           <!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
 
-	<h3>個人主頁</h3>
+	<h3>會員資料表</h3>
+	<sec:authorize access="hasRole('Member')">
 	
+	<h3>你不是Admin!!</h3>
 	
+	</sec:authorize>
+	
+	<sec:authorize access="hasRole('Admin')">
 	<table id="table1"
 						class="table table-bordered table-striped table-hover">
 						
@@ -148,6 +156,7 @@
 <%-- 		</c:forEach> --%>
 	</tbody>
 	</table>
+	</sec:authorize>
 					<!-- 每頁不同的內容到這裡結束 -->
 
         </div>
@@ -232,35 +241,20 @@
 
 	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	
 <script>
 $(document).ready(function() {
-// 	 var table = $('#table1').DataTable({
-// 		 "ajax": {
-// 	            "url": "/rest_users",
-// 	            "type": "GET"
-// 	        },
-// //			"sAjaxDataProp": "",
-// 			"order": [[ 0, "asc" ]],
-// //			"aoColumns": [
-// 			"Columns": [
-// 			   	  { "mData": "id"},
-// 		    	  { "mData": "account" },
-// 				  { "mData": "name" },
-// 				  { "mData": "nickname" },
-// 				  { "mData": "email" },
-// 			]
-// 	 }
 $.getJSON('/rest_users', {  }, function (data) {
-        
+        console.log(data);
         $('#table1>tbody').empty();
         $.each(data, function (i, member) {
-        	console.log(member.id);
             var cell1 = $("<td></td>").text(member.id);
             var cell2 = $("<td></td>").text(member.name);
             var cell3 = $("<td></td>").text(member.nickname);
             var cell4 = $("<td></td>").text(member.cell);
             var cell5 = $("<td></td>").text(member.email);
-            var cell6 = $("<td></td>").text(member.status);
+            var cell6 = $("<td></td>").html('<button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>   <button class="btn btn-info"><i class="fas fa-edit"></i></button>');
 
             var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6]);
 
