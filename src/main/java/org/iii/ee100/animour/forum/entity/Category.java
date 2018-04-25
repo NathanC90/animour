@@ -7,6 +7,8 @@ import javax.persistence.Transient;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,7 @@ public class Category extends GenericEntity {
 	@Column(name = "NAME", unique = true)
 	private String name;
 
+	@JsonIgnore
 	@Transient
 	private int articleQuantity;
 
