@@ -20,11 +20,10 @@ public class AnimalRestController {
 
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public List<Animal> listAnimal(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+	public List<Animal> listAnimal(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
 		List<Animal> animals = page.getContent();
-
 		return animals;
 	}
 

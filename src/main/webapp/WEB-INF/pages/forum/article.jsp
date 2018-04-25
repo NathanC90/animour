@@ -220,10 +220,11 @@
   <script src="/js/main.js"></script>
 
 	<script>
+	var pageNo = 1;
+	var articlesString = "";
+	var scroll = true;
 	
 	$(document).ready(function(){
-		var pageNo = 1;
-		var articlesString = "";
 		$(window).scroll(function(){
 			  // Returns height of browser viewport
 			  var window_height = $( window ).height();
@@ -231,16 +232,18 @@
 			  var window_scrollTop = $(window).scrollTop();
 			 
 			  // Returns height of HTML document
-			  var div_height = $(document).height();
-// 			  var div_height = $("#bloglist").height();
+// 			  var div_height = $(document).height();
+			  var div_height = $("#bloglist").height();
 			  
 // 			  console.log(window_height);
 // 			  console.log(window_scrollTop);
 // 			  console.log(div_height);
 			  
-			   if(window_height + window_scrollTop == div_height){
+			   if(window_height + window_scrollTop >= div_height && scroll == true){
 // 			     alert('到底部觸發ajax');
+				 scroll = false;
 			     $.getJSON("/articles",{"pageNo":pageNo},function(datas){
+			    	 if(pageNo<=datas[0].totalPage && datas!=null){
 			 			$.each(datas,function(idx,article){
 			          	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
 			        		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ article.postTime
@@ -252,17 +255,19 @@
 			        		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
 			                 +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
 			          	articlesString = articlesString + articleString;
-			          	pageNo += 1;
 						});
+			          	pageNo += 1;
 						$("#show").html(articlesString);
+			     		}
 						console.log(datas);
-					})
+					});
+			     setTimeout(setScroll,1000);
 			   }
-
 			});
-		
-		 
 	});
+function setScroll(){
+	scroll = true;
+	}
 	</script>
 </body>
 
