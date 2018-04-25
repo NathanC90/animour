@@ -86,8 +86,8 @@ public class ArticlePageController {
 	//綜覽文章頁面
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })
 	public String findAllPage(Model model) {	
-		List<Article> articleList = forumService.getArticleList();
-		model.addAttribute("page", articleList);
+//		List<Article> articleList = forumService.getArticleList();
+//		model.addAttribute("page", articleList);
 		return "/forum/article";
 	}
 	

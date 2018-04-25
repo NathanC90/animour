@@ -1,12 +1,14 @@
 package org.iii.ee100.animour.forum.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +24,15 @@ public class ArticleRestController {
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findAll() {	
-		List<Article> articleList = forumService.getArticleList();
+	public List<Article> findAll(int pageNo) {	
+		Page<Article> articlePage = forumService.getPage(pageNo, 1);
+		int totalPage = articlePage.getTotalPages();
+		System.out.println(totalPage);
+		if(pageNo > totalPage && totalPage != 0) {
+			List<Article> end = new ArrayList<Article>();
+			return end;
+		}
+		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
 
