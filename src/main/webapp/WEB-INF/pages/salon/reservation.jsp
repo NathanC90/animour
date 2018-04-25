@@ -132,7 +132,7 @@
 
 						<div class="col-md-4">
 							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待領養小貓">
+								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待預約小貓">
 								<div class="card-body" style="margin-bottom: 5px">
 									<p class="card-text" style="padding: 0px">服務：${avar.content} 耗時：${avar.time}時 價錢:${avar.price}元</p>
 									<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
@@ -269,16 +269,7 @@
 			<script src="/js/form-validator.min.js"></script>
 			<script src="/js/contact-form-script.min.js"></script>
 			<script src="/js/main.js"></script>
-			<script>
-				$(document).ready(function () {
 
-					$('#addNumber').on("click", function () {
-						console.log("aaa")
-						// $('#number1').append("one")
-					})
-				});
-
-			</script>
 			<!-- Placed at the end of the document so the pages load faster -->
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 			 crossorigin="anonymous"></script>
@@ -287,9 +278,18 @@
 					|| document
 						.write('<script src="/js/jquery-slim.min.js"><\/script>')
 			</script>
-			<script src="/js/popper.min.js"></script>
-			<script src="/js/bootstrap.min.js"></script>
-			<script src="/js/vendor/holder.min.js"></script>
+
+
+			<script>
+				$(document).ready(function () {
+
+					$('div > input').on("click", function () {
+						//console.log("aaa")
+						$('#number1').append("one")
+					})
+				});
+
+			</script>
 
 		</body>
 
