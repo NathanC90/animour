@@ -1,7 +1,6 @@
 package org.iii.ee100.animour.forum.web;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.forum.entity.Article;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.Gson;
-
 @RestController
 @RequestMapping("/articles")
 public class ArticleRestController {
@@ -25,40 +22,30 @@ public class ArticleRestController {
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-	public String findAll() {
-		Gson gson = new Gson();
+	public List<Article> findAll() {	
 		List<Article> articleList = forumService.getArticleList();
-		String json = gson.toJson(articleList);
-		return json;
+		return articleList;
 	}
 
 	// 查詢一筆文章AJAX用的     現在會壞
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json" })
-	public String findOne(@PathVariable(value = "id") Long id) {
-		Gson gson = new Gson();
+	public Article findOne(@PathVariable(value = "id") Long id) {
 		Article article = forumService.getOne(id);
-		List<Article> articleList = new ArrayList<>();
-		articleList.add(article);
-		String json = gson.toJson(articleList);
-		return json;
+		return article;
 	}
 
 	// 搜尋文章標題AJAX用的
 	@RequestMapping(value = "/search/{search}", method = RequestMethod.GET, produces = { "application/json" })
-	public String search(@PathVariable(value = "search") String search) {
-		Gson gson = new Gson();
+	public List<Article> search(@PathVariable(value = "search") String search) {	
 		List<Article> articleList = forumService.getArticlesSearchBySubject(search);
-		String json = gson.toJson(articleList);
-		return json;
+		return articleList;
 	}
 
 	// 按照文章類別查詢
 	@RequestMapping(path = { "/category/{categoryId}" }, method = RequestMethod.GET, produces = { "application/json" })
-	public String findByCategory(@PathVariable(value = "categoryId") Long categoryId) {
-		Gson gson = new Gson();
+	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId) {
 		List<Article> articleList = forumService.getArticlesByCategoryId(categoryId);
-		String json = gson.toJson(articleList);
-		return json;
+		return articleList;
 	}
 
 	// 新增留言
@@ -70,10 +57,8 @@ public class ArticleRestController {
 
 	//讓COMMENT的AJAX呼叫用的
 	@RequestMapping(value = { "/comment/{articleId}" }, method = RequestMethod.GET, produces = { "application/json" })
-	public String getComment(@PathVariable(value = "articleId") Long articleId) {
-		Gson gson = new Gson();
+	public List<Comment> getComment(@PathVariable(value = "articleId") Long articleId) {
 		List<Comment> commentList = forumService.getCommentByArticleId(articleId);
-		String json = gson.toJson(commentList);
-		return json;
+		return commentList;
 	}
 }

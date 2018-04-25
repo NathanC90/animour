@@ -11,6 +11,9 @@ import javax.persistence.Transient;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +21,10 @@ import lombok.Setter;
 @Table(name = "ARTICLE")
 @Setter
 @Getter
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Article extends GenericEntity {
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "CATEGORY_ID",referencedColumnName="ID")
 	private Category category;
 
@@ -36,10 +40,11 @@ public class Article extends GenericEntity {
 	@Column(name = "UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
-
+	
+	@JsonInclude(JsonInclude.Include.NON_NULL)
 	@Transient
 	private int commentLength;
 
