@@ -70,11 +70,10 @@ public class MemberController {
 	
 
 	// 列出(全部)會員
-	@RequestMapping("/allmember")
-	public String findAll(Model model) {
-		model.addAttribute("memberlist", memberService.getAll());
-		return "/member/users";
-
+	@RequestMapping("/users")
+	public String findAll() {
+//		model.addAttribute("memberlist", memberService.getAll());
+		return "/member/users";//先傳送頁面
 	}
 
 	// 顯示個人首頁

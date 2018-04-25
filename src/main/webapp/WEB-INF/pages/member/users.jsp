@@ -49,203 +49,9 @@
     <![endif]-->
     
 <!-- style/css -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.css"/>
 <style>
-.table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 1rem;
-	background-color: transparent
-}
 
-.table td, .table th {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #dee2e6
-}
-
-.table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6
-}
-
-.table tbody+tbody {
-	border-top: 2px solid #dee2e6
-}
-
-.table .table {
-	background-color: #fff
-}
-
-.table-sm td, .table-sm th {
-	padding: .3rem
-}
-
-.table-bordered {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered td, .table-bordered th {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered thead td, .table-bordered thead th {
-	border-bottom-width: 2px
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
-}
-
-.table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-primary, .table-primary>td, .table-primary>th {
-	background-color: #b8daff
-}
-
-.table-hover .table-primary:hover {
-	background-color: #9fcdff
-}
-
-.table-hover .table-primary:hover>td, .table-hover .table-primary:hover>th
-	{
-	background-color: #9fcdff
-}
-
-.table-secondary, .table-secondary>td, .table-secondary>th {
-	background-color: #d6d8db
-}
-
-.table-hover .table-secondary:hover {
-	background-color: #c8cbcf
-}
-
-.table-hover .table-secondary:hover>td, .table-hover .table-secondary:hover>th
-	{
-	background-color: #c8cbcf
-}
-
-.table-success, .table-success>td, .table-success>th {
-	background-color: #c3e6cb
-}
-
-.table-hover .table-success:hover {
-	background-color: #b1dfbb
-}
-
-.table-hover .table-success:hover>td, .table-hover .table-success:hover>th
-	{
-	background-color: #b1dfbb
-}
-
-.table-info, .table-info>td, .table-info>th {
-	background-color: #bee5eb
-}
-
-.table-hover .table-info:hover {
-	background-color: #abdde5
-}
-
-.table-hover .table-info:hover>td, .table-hover .table-info:hover>th {
-	background-color: #abdde5
-}
-
-.table-warning, .table-warning>td, .table-warning>th {
-	background-color: #ffeeba
-}
-
-.table-hover .table-warning:hover {
-	background-color: #ffe8a1
-}
-
-.table-hover .table-warning:hover>td, .table-hover .table-warning:hover>th
-	{
-	background-color: #ffe8a1
-}
-
-.table-danger, .table-danger>td, .table-danger>th {
-	background-color: #f5c6cb
-}
-
-.table-hover .table-danger:hover {
-	background-color: #f1b0b7
-}
-
-.table-hover .table-danger:hover>td, .table-hover .table-danger:hover>th
-	{
-	background-color: #f1b0b7
-}
-
-.table-light, .table-light>td, .table-light>th {
-	background-color: #fdfdfe
-}
-
-.table-hover .table-light:hover {
-	background-color: #ececf6
-}
-
-.table-hover .table-light:hover>td, .table-hover .table-light:hover>th {
-	background-color: #ececf6
-}
-
-.table-dark, .table-dark>td, .table-dark>th {
-	background-color: #c6c8ca
-}
-
-.table-hover .table-dark:hover {
-	background-color: #b9bbbe
-}
-
-.table-hover .table-dark:hover>td, .table-hover .table-dark:hover>th {
-	background-color: #b9bbbe
-}
-
-.table-active, .table-active>td, .table-active>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover>td, .table-hover .table-active:hover>th
-	{
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table .thead-dark th {
-	color: #fff;
-	background-color: #212529;
-	border-color: #32383e
-}
-
-.table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: #dee2e6
-}
-
-.table-dark {
-	color: #fff;
-	background-color: #212529
-}
-
-.table-dark td, .table-dark th, .table-dark thead th {
-	border-color: #32383e
-}
-
-.table-dark.table-bordered {
-	border: 0
-}
-
-.table-dark.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(255, 255, 255, .05)
-}
-
-.table-dark.table-hover tbody tr:hover {
-	background-color: rgba(255, 255, 255, .075)
-}
 </style>
 <!-- style/css:end -->    
 </head>
@@ -313,7 +119,7 @@
 	<table id="table1"
 						class="table table-bordered table-striped table-hover">
 						
-		<tbody>
+		<thead>
 			<tr>
 				<th></th>
 				<th>帳號</th>
@@ -322,24 +128,25 @@
 				<th>信箱</th>
 				<th>管理</th>
 			</tr>
-		<c:forEach var="member" items="${memberlist}">
-			<tr>
-				<td></td>
-				<td>${member.account}</td>
-				<td>${member.nickname}</td>
-				<td>${member.cell}</td>
-				<td>${member.email}</td>
-				<td>
-				<form action="/deletemember" method="POST">
-				<input type="hidden" name="account" value="${member.account}"/>
-				<input type="submit" value="刪除"  onclick="${member.account}"/>
-				</form>
-				</td>
+		</thead>
+		<tbody>
+<%-- 		<c:forEach var="member" items="${memberlist}"> --%>
+<!-- 			<tr> -->
+<!-- 				<td></td> -->
+<%-- 				<td>${member.account}</td> --%>
+<%-- 				<td>${member.nickname}</td> --%>
+<%-- 				<td>${member.cell}</td> --%>
+<%-- 				<td>${member.email}</td> --%>
+<!-- 				<td> -->
+<!-- 				<form action="/deletemember" method="POST"> -->
+<%-- 				<input type="hidden" name="account" value="${member.account}"/> --%>
+<%-- 				<input type="submit" value="刪除"  onclick="${member.account}"/> --%>
+<!-- 				</form> -->
+<!-- 				</td> -->
 
-			</tr>
-		</c:forEach>
-
-		</tbody>
+<!-- 			</tr> -->
+<%-- 		</c:forEach> --%>
+	</tbody>
 	</table>
 					<!-- 每頁不同的內容到這裡結束 -->
 
@@ -421,7 +228,49 @@
 	</script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/vendor/holder.min.js"></script>
+<!-- 	<script src="/js/vendor/holder.min.js"></script> -->
 
+	<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+<script>
+$(document).ready(function() {
+// 	 var table = $('#table1').DataTable({
+// 		 "ajax": {
+// 	            "url": "/rest_users",
+// 	            "type": "GET"
+// 	        },
+// //			"sAjaxDataProp": "",
+// 			"order": [[ 0, "asc" ]],
+// //			"aoColumns": [
+// 			"Columns": [
+// 			   	  { "mData": "id"},
+// 		    	  { "mData": "account" },
+// 				  { "mData": "name" },
+// 				  { "mData": "nickname" },
+// 				  { "mData": "email" },
+// 			]
+// 	 }
+$.getJSON('/rest_users', {  }, function (data) {
+        
+        $('#table1>tbody').empty();
+        $.each(data, function (i, member) {
+        	console.log(member.id);
+            var cell1 = $("<td></td>").text(member.id);
+            var cell2 = $("<td></td>").text(member.name);
+            var cell3 = $("<td></td>").text(member.nickname);
+            var cell4 = $("<td></td>").text(member.cell);
+            var cell5 = $("<td></td>").text(member.status);
+          
+
+            var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4,cell5]);
+
+            $('#table1>tbody').append(row);
+        });
+
+    
+    }	 
+	 )
+});
+</script>
 </body>
 </html>
