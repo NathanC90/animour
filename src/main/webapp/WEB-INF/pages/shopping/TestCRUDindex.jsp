@@ -6,36 +6,27 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 </head>
 <title>ProductIndex</title>
 </head>
 <body>
 	<center>
-	<form action="/product/upload" method="POST" enctype="multipart/form-data">
-		圖片:<input type="file" name="file">
-		<input type="submit" value="上傳">
-	</form>
-	
-	<h3>查詢一筆商品</h3>
-	<form name="selectOneForm" action="<c:url value="/selectOneProduct"/>" method="GET">
-	<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
-	<input type="submit" value="查詢單筆"> 
-	</form>
+	<h3>測試取出JSON資料</h3>
+	<div id="show" class="row"></div>
 	<hr>
 	
-	<h3>查詢所有商品</h3>
-	<form name="selectAllForm" action="<c:url value="/selectAllProduct"/>" method="GET">
-	<input type="submit" value="查詢所有">
-	</form>
-	<hr>
+	<c:forEach var='category' items='${Classifies}' >
+		<a href='products/${category.id}'>${category.name}</a><br>
+	</c:forEach>
 	
-	<h3>刪除一筆商品</h3>
-	<form name="deleteForm" action="<c:url value="/deleteOneProduct"/>" method="GET">
-	<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
-	<input type="submit" value="送出"> 
-	<input type="reset" value="清除"> 
-	</form>
-	<hr>
+		<hr>
+	<form:form action="${pageContent.request.contextPath}/product/insert" method="POST" modelAttribute="product">
+		商品類別:<form:radiobuttons path="classify" items="${Classifies}" itemLabel="name" itemValue="id" ></form:radiobuttons>
+	</form:form>
+		<hr>
+	
+	
 	
 	<h3>新增商品資料</h3>
 		<form name="insertForm" action="<c:url value="/insertProduct"/>" method="POST">
@@ -61,9 +52,12 @@
 					</tr>
 					<tr>
 						<td width="120" height="40">製造日期:</td>
-						<td width="600" height="40" align="left"><input id='num'
+						<td width="600" height="40" align="left">
+<%-- 						 <input id="num" type="datetime-local" name="makeDate" value="${param.makeDate}"> --%>
+						<input id='num'
 							name="makeDate" value="${param.makeDate}" type="text" size="50"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
+							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss
+						</td>
 					</tr>
 					<tr>
 						<td width="120" height="40">保存期限:</td>
@@ -77,79 +71,68 @@
 							name="shelvesDate" value="${param.shelvesDate}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
 					</tr>
-					<tr>
-						<td width="120" height="40">商品類別:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="classify" value="${param.classify}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
+						
+<!-- 					<tr> -->
+<!-- 						<td width="120" height="40">商品類別:</td> -->
+<!-- 						<td width="600" height="40" align="left"><input id='num' -->
+<%-- 							name="classify" value="${param.classify}" type="text" size="50" --%>
+<!-- 							style="text-align: left"></td> -->
+<!-- 					</tr> -->
 				</tbody>
 			</table>
+				 類別:<select id="classify" class="form-control" name="classify">
+				 	<option selected>請選擇類別</option>
+						<c:forEach var="classify" items="${classifies}">
+							<option value="${classify.id}">${classify.name}</option>
+		                </c:forEach>
+					</select>
 			<br>
 				<input type="submit" value="確定新增">
 				<input type="reset" value="清除">
 			<hr>
 		</form>
-		
-		<form name="updateProductForm" action="/updateProduct" method="POST">
-			<h3>修改商品資料</h3>
-			<table border="1">
-				<tbody>
-					<tr>
-						<td width="120" height="40">商品編號:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="id" value="${param.id}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">商品名稱:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="name" value="${param.name}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">商品價格:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="price" value="${param.price}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">商品數量:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="quantity" value="${param.quantity}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-					<tr>
-						<td width="120" height="40">製造日期:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="makeDate" value="${param.makeDate}" type="text" size="50"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
-					</tr>
-					<tr>
-						<td width="120" height="40">保存期限:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="expire" value="${param.expire}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-					<tr>
-						<td width="120" height="40">上架日期:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="shelvesDate" value="${param.shelvesDate}" type="text" size="50"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
-					</tr>
-					<tr>
-						<td width="120" height="40">商品類別:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="classify" value="${param.classify}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-				
-				</tbody>
-			</table>
-			<br>
-			<input type="submit" value="確定修改">
+	
+	
+	
+	<h3>新增商品資料1</h3>
+	<form:form action="${pageContent.request.contextPath}/product/insert" method="POST" modelAttribute="product">
+		商品名稱:<form:input path="name"/><br>
+		商品價格:<form:input path="price"/><br>
+		商品數量:<form:input path="quantity"/><br>
+		製造日期:<form:input path="makeDate"/><br>
+		保存期限:<form:input path="expire"/><br>
+		上架日期:<form:input path="shelvesDate"/><br>
+		商品類別:<form:select path="classify" items="${Classifies}" itemLabel="name" itemValue="id"></form:select>
+		<br>
+			<input type="submit" value="確定新增">
 			<input type="reset" value="清除">
-		</form>
+		<hr>
+	</form:form>
+	
 	</center>
+	
+	
+	<script>
+		$(document).ready(function() {
+			var docFragment = $(document.createDocumentFragment());
+				$.getJSON('/shopping/product',{},function(datas){
+					$.each(datas,function(idx,product){
+						console.log(datas)
+
+						var cell1 = $('<td></td>').text("編號:" + product.id);
+						var cell2 = $('<td></td>').text("名稱:" + product.name);
+						var cell3 = $('<td></td>').text("價格:" + product.price);
+						var cell4 = $('<td></td>').text("數量:" + product.quantity);
+						var cell5 = $('<td></td>').text("日期:" + product.makeDate);
+						var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5]);
+						docFragment.append(row);
+					});
+					$('#show').append(docFragment);
+				})
+			
+		});
+		
+	</script>
+	
 </body>
 </html>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 
@@ -113,34 +114,39 @@
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
 						</aside>
-<!-- 						Start of Category -->
+
+						<!--Start of Classify -->
+						
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">商品分類</h2>
-							<ul class="category-menu">
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value="" checked="checked"
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1">寵物伺料</label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1">寵物用品</label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1">寵物玩具</label>
-									</div></li>
-								<li><div class="form-check">
-										<input class="form-check-input" type="checkbox" value=""
-											id="defaultCheck1"> <label class="form-check-label"
-											for="defaultCheck1">其它</label>
-									</div></li>
-							</ul>
+							<form:form action="/products/${category}" method="POST" modelAttribute="product">
+								<ul class="category-menu">
+									<c:forEach var="classify" items="${classifies}">
+										<li><div class="form-check">
+											<input class="form-check-input" type="radio"
+												value="${classify.id}" id="classify" name="classify">
+											<label class="form-check-label" for="defaultCheck1">${classify.name}</label>
+										</div></li>
+									</c:forEach>
+								</ul>
+								<input type="submit" class="btn btn-common" value="搜尋">
+							</form:form>
 						</aside>
-<!-- 						End of Category -->
+						<!--End of Classify -->
+						
+						<!--Start of Price -->
+						<aside class="widget flickr-widget wow fadeIn"
+							data-wow-delay="0.3s">
+							<h2 class="widget-title">價格篩選</h2>
+							<form name="selectPriceForm" action="/selectPrice" method="GET">
+								<input type="range" name="price" min="0" max="1000" value="${param.price}"><br><br>
+								<input type="submit" class="btn btn-common" value="查尋">
+							</form>
+						</aside>
+						<!--End of Price -->
+						
+						
 					</div>
 				</div>
 <!-- 				End -->
@@ -155,13 +161,19 @@
 						<c:forEach var="product" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
+									<img class="card-img-top" src="/images/shopping/product/pd1.jpg"
 										width="100px" alt="商品列表">
 									<div class="card-body" style="margin-bottom: 5px">
 											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
 											<p>價格：${product.price}<br>數量：${product.quantity}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
+									</div>
+									<div class="d-flex justify-content-between align-items-center"
+										style="max-height: 100px">
+										<div class="btn-group" style="margin: 0px">
+											<button type="button" onclick="location.href='/shopping/ProductIndex';" class="btn btn-common btn-sm mt-10">詳情</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -212,14 +224,19 @@
 		<div class="container">
 			<!-- Row Starts -->
 			<div class="row section">
-				Footer Widget Starts
+				<!-- Footer Widget Starts -->
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">About Us</h3>
 					<p></p>
+					<ul class="mb-3">
+						<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
+						<!-- 						<li><i class="fa fa-phone"></i></li> -->
+						<!-- 						<li><i class="fa fa-phone"></i></li> -->
+					</ul>
 				</div>
-				Footer Widget Ends
+				<!-- Footer Widget Ends -->
 
-				Footer Widget Starts
+				<!-- Footer Widget Starts -->
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">Quick Links</h3>
 					<ul class="menu">
@@ -232,9 +249,9 @@
 						<li><a href="#">THE BLOG</a></li>
 					</ul>
 				</div>
-				Footer Widget Ends
+				<!-- Footer Widget Ends -->
 
-				Footer Widget Starts
+				<!-- Footer Widget Starts -->
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">Popular Posts</h3>
 					<ul class="image-list">
@@ -266,9 +283,9 @@
 						</li>
 					</ul>
 				</div>
-				Footer Widget Ends
+				<!-- Footer Widget Ends -->
 
-				Footer Widget Starts
+				<!-- Footer Widget Starts -->
 				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
 					<h3 class="small-title">EMail Us</h3>
 					<form>
@@ -284,11 +301,11 @@
 						</a> <a href="#" title="Sports Template for Joomla"> <img
 							src="/images/flicker/img2.jpg" alt="">
 						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/flicker/img3.jpg" alt="">
+							src="/images/halfway/halfwayindex.jpg" alt="">
 						</a>
 					</div>
 				</div>
-				Footer Widget Ends
+				<!-- Footer Widget Ends -->
 			</div>
 			<!-- Row Ends -->
 		</div>
@@ -315,14 +332,14 @@
 				</div>
 			</div>
 		</div>
-		<!-- Copyright  End -->
+		<!-- Copyright  End-->
 
 	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
-<!-- 	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i> -->
-<!-- 	</a> -->
+	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
+	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
 	<script src="/js/jquery-min.js"></script>
