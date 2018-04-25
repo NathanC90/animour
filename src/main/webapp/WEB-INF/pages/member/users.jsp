@@ -259,10 +259,10 @@ $.getJSON('/rest_users', {  }, function (data) {
             var cell2 = $("<td></td>").text(member.name);
             var cell3 = $("<td></td>").text(member.nickname);
             var cell4 = $("<td></td>").text(member.cell);
-            var cell5 = $("<td></td>").text(member.status);
-          
+            var cell5 = $("<td></td>").text(member.email);
+            var cell6 = $("<td></td>").text(member.status);
 
-            var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4,cell5]);
+            var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6]);
 
             $('#table1>tbody').append(row);
         });
