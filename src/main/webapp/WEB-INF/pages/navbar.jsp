@@ -81,6 +81,19 @@
                                     </div>
                                 </li>
 
+                                <sec:authorize access="hasRole('Admin')"><!-- 管理員可讀 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/homepage" aria-haspopup="true" aria-expanded="false">
+                                            <sec:authentication property="principal.username" /> 您好</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/users">會員資料</a>
+                                            <a class="dropdown-item" href="/logout">登出</a>
+
+                                        </div>
+                                    </li>
+                                </sec:authorize>
+
+
 								
                                 <sec:authorize access="hasRole('Member')"><!-- 會員可讀 -->
                                     <li class="nav-item dropdown">
