@@ -28,8 +28,10 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		.anyRequest()    //對象為所有網址
 		.authenticated() //存取必須通過驗證
 		.and()
-		.formLogin().and().csrf().disable()
-		//.loginPage("/sign_in")
+		.formLogin()
+		.loginPage("/login")
+//		.loginProcessingUrl("/perform_login").permitAll()
+		.and().csrf().disable()
 		;
 }
     
