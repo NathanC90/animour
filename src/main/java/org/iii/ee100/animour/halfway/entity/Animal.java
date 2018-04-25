@@ -6,15 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +28,7 @@ public class Animal extends GenericEntity{
 	// @JoinColumn(name = "MEMBER_ID",referencedColumnName="ID")
 	private Member member;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "animal", cascade = { CascadeType.ALL })
 	private List<Adoption> adoptions;
 
