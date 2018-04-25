@@ -56,27 +56,22 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "STATUS")//狀態
 	private Integer status;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
-	private List<Animal> animals;
-
-	@JsonIgnore
-	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
-	private Adoption adoption;
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
+//	private List<Animal> animals;
+//
+//	@JsonIgnore
+//	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
+//	private Adoption adoption;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
-		GrantedAuthority auth2;
-		if(account.equals("admin")) {
-			auth2 = new SimpleGrantedAuthority("ROLE_Admin");
-		}
-		else {
-			auth2=null;
-		}
+		if(account.equals("Admin")) {
+			auth = new SimpleGrantedAuthority("ROLE_Admin");
+		}		
 		authorities.add(auth);
-		authorities.add(auth2);
 		return authorities;
 	}
 

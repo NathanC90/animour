@@ -7,6 +7,8 @@ import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -51,5 +53,15 @@ public class MemberService extends GenericService<Member> {
 		return memberDao.findByAccount(account);
 	}
 	
+	
+	public UserDetails getCurrentMember() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if(principal instanceof UserDetails) {
+			return (UserDetails) principal;
+		}else {
+			return null;
+		}
+		
+	}
 }
 

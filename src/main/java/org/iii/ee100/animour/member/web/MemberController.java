@@ -78,8 +78,8 @@ public class MemberController {
 
 	// 顯示個人首頁
 	@RequestMapping(value = "/homepage", method = RequestMethod.GET)
-	public String profile(Member member, Model model) {
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	public String profile(Model model) {
+		Member userDetails=(Member) memberService.getCurrentMember();
 		model.addAttribute("profile", userDetails);
 		return "/member/homepage";
 
