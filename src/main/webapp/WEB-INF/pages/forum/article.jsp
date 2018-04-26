@@ -225,6 +225,7 @@
 	var scroll = true;
 	
 	$(document).ready(function(){
+		getArticle();
 		$(window).scroll(function(){
 			  // Returns height of browser viewport
 			  var window_height = $( window ).height();
@@ -242,25 +243,7 @@
 			   if(window_height + window_scrollTop >= div_height && scroll == true){
 // 			     alert('到底部觸發ajax');
 				 scroll = false;
-			     $.getJSON("/articles",{"pageNo":pageNo},function(datas){
-			    	 if(pageNo<=datas[0].totalPage && datas!=null){
-			 			$.each(datas,function(idx,article){
-			          	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
-			        		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ article.postTime
-			        		 +'</a></li><li><i class="fa fa-user"></i><a href="#">'+ article.member.account
-			        		 +'</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">'+ article.category.name
-			        		 +'</a></li><li><i class="fa fa-comments"></i><a href="#">'+ article.commentLength
-			        		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
-			        		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
-			        		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
-			                 +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
-			          	articlesString = articlesString + articleString;
-						});
-			          	pageNo += 1;
-						$("#show").html(articlesString);
-			     		}
-						console.log(datas);
-					});
+				 getArticle();
 			     setTimeout(setScroll,1000);
 			   }
 			});
@@ -268,6 +251,29 @@
 function setScroll(){
 	scroll = true;
 	}
+	
+function getArticle(){
+	$.getJSON("/articles",{"pageNo":pageNo},function(datas){
+   	 if(pageNo<=datas[0].totalPage && datas!=null){
+			$.each(datas,function(idx,article){
+         	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
+       		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ article.postTime
+       		 +'</a></li><li><i class="fa fa-user"></i><a href="#">'+ article.member.account
+       		 +'</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">'+ article.category.name
+       		 +'</a></li><li><i class="fa fa-comments"></i><a href="#">'+ article.commentLength
+       		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
+       		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
+       		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
+                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
+         	articlesString = articlesString + articleString;
+			});
+         	pageNo += 1;
+			$("#show").html(articlesString);
+    		}
+			console.log(datas);
+		});
+	}
+	
 	</script>
 </body>
 
