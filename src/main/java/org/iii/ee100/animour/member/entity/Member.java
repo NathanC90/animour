@@ -53,8 +53,12 @@ public class Member extends GenericEntity implements UserDetails {
 	private java.sql.Timestamp registrationTime;
 	@Column(name = "FREQ")
 	private Integer freq;
-	@Column(name = "STATUS")//狀態
+	@Column(name = "STATUS")//(0:封鎖,1:使用)
 	private Integer status;
+	@Column(name = "ROLE")//("member","admin")
+	private String role;
+	
+	
 
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
