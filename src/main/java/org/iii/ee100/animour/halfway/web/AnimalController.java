@@ -29,7 +29,7 @@ public class AnimalController {
 	AnimalService animalservice;
 
 	// 首頁
-	@RequestMapping(value = "/halfway", method = RequestMethod.GET)
+	//@RequestMapping(value = "/halfway", method = RequestMethod.GET)
 	public String index(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
@@ -46,7 +46,7 @@ public class AnimalController {
 	}
 
 	// 首頁分頁處理
-	@RequestMapping(value = { "/halfway/pageQueryAll" }, method = RequestMethod.GET)
+	//@RequestMapping(value = { "/halfway/pageQueryAll" }, method = RequestMethod.GET)
 	public String getAnimalPage(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
@@ -84,27 +84,27 @@ public class AnimalController {
 		return "/halfway/insertAnimalForm";
 	}
 
-	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
-	// @RequestParam = request.getParameter("file")
-	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
-	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image,
-			@ModelAttribute("animal") Animal an, HttpServletRequest request, Model model) {
-		// 設定當前會員
-		Member current = animalservice.getCurrentMember();
-		an.setMember(current);
-		// 普通表單
-		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		an.setUpload(ts);
-		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
-		animalservice.insert(an);
-		String fileName = animalservice.readImage(image, request, an);
-
-		an.setFileName(fileName);
-		// 儲存圖片之後，更新檔名
-		animalservice.update(an);
-		model.addAttribute("inanimal", an);
-		return "/halfway/insertSuccess";
-	}
+//	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
+//	// @RequestParam = request.getParameter("file")
+//	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
+//	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image,
+//			@ModelAttribute("animal") Animal an, HttpServletRequest request, Model model) {
+//		// 設定當前會員
+//		Member current = animalservice.getCurrentMember();
+//		an.setMember(current);
+//		// 普通表單
+//		Timestamp ts = new Timestamp(System.currentTimeMillis());
+//		an.setUpload(ts);
+//		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
+//		animalservice.insert(an);
+//		String fileName = animalservice.readImage(image, request, an);
+//
+//		an.setFileName(fileName);
+//		// 儲存圖片之後，更新檔名
+//		animalservice.update(an);
+//		model.addAttribute("inanimal", an);
+//		return "/halfway/insertSuccess";
+//	}
 
 	// 轉跳至update表單
 	@RequestMapping(value = "/halfway/updateAnimal", method = { RequestMethod.GET })
@@ -171,7 +171,7 @@ public class AnimalController {
 		return animalservice.setSpecie();
 	}
 
-	@RequestMapping(value = "/list") // findAll
+	@RequestMapping(value = "/halfway") // findAll
 	public String listPage(Model model) {
 		// 設定當前會員
 		Member current = animalservice.getCurrentMember();
@@ -182,5 +182,15 @@ public class AnimalController {
 		model.addAttribute("citys", citys);
 		return "/halfway/list";
 	}
+	
+	@RequestMapping(value = "/add", method = { RequestMethod.GET })
+	public String addPage(Model model) {
+		Animal an = new Animal();
+		model.addAttribute("animal", an);
+		List<City> citys = animalservice.getAllCity();
+		model.addAttribute("citys", citys);
+		return "/halfway/add";
+	}
+	
 
 }
