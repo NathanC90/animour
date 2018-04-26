@@ -12,6 +12,9 @@ import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -47,6 +50,13 @@ public class ReservationService extends GenericService<Reservation>{
 	
 	public ArrayList<ServiceContent> getAllServiceContent(){
 		return Lists.newArrayList(serviceContentDao.findAll());
+		
+	}
+	
+	public Page<Designer> getDesignerPage(Integer pageNumber, Integer pageSize) {
+		PageRequest request = new PageRequest(pageNumber-1, pageSize, Sort.Direction.DESC, "upload");
+		
+		return designerDao.findAll(request);
 		
 	}
 
