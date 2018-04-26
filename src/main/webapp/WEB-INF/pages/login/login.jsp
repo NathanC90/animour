@@ -32,6 +32,7 @@
 	href="/fonts/simple-line-icons.css">
 
 <!-- Extras -->
+<link rel="stylesheet" type="text/css" href="/css/login.css">
 <link rel="stylesheet" type="text/css"
 	href="/extras/owl/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
