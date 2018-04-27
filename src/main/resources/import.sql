@@ -1,14 +1,8 @@
-/*1 Member*/
- INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
- VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
- INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
- VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
- INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
- VALUES ('Sony','123','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區');
- INSERT INTO MEMBERa(ACCOUNT,PASSWORD,NAME) 
-  VALUES ('Apple','123','Apple Wu','Apple','0900-000000','apple@gmail.com','台北市內湖區');
- INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME) 
- VALUES ('Admin','123','管理員');
+
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
+VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME) 
+VALUES ('Admin','123','管理員');
 
  
  
@@ -88,14 +82,16 @@ insert into donate (id, name, price, email)
 values (10, 'Georgina Sparks', 5000, 'georgina1027@gmail.com');
 
 
-/*6 hotel*/
-INSERT INTO hotel ( owner, type, checkIn, total,specie,dog_Name) VALUES 
-('lun', 'small', '2018-03-03', 2,'poodle','lili'),
-('lun2', 'small', '2020-07-03', 3,'poodle','cucu'),
-('lun3', 'small', '2020-07-03', 2,'poodle','阿狗'),
-('lun4', 'big', '2020-07-03', 4,'poodle','阿狗'),
-('lun5', 'big', '2021-07-03', 5,'poodle','阿狗'),
-('lun6', 'big', '2021-07-03', 5,'poodle','小會');
+/*6 designer*/
+insert into designer (id, designer,freetime,onefree)values
+('小美','2000-10-11 09:00:00',1),
+('阿明','2010-10-12 10:00:00',1),
+('阿中','2020-10-13 11:00:00',1),
+('阿利','2021-10-14 12:00:00',1),
+('小小','2023-10-15 14:00:00',1),
+('大大','2024-10-15 15:00:00',1),
+('安安','2025-10-15 16:00:00',1),
+('學泰','2026-10-15 17:00:00',1);
 
 
 /*UPDATE hotel SET  owner='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dog_Name='hichu' WHERE Id = 1*/
