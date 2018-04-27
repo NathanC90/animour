@@ -5,6 +5,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=BIG5">
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 <title>Process Product Form</title>
 </head>
 <body>
@@ -14,63 +15,7 @@
 </div>
 <p>${message}</p>
 
-	<h3>查詢一筆商品資料</h3>
-	<div>
-		<p>商品編號：${productOne.id}<br>商品名稱：${productOne.name}</p>
-		<p>價格：${productOne.price}<br>數量：${productOne.quantity}</p>
-		<p>製造日期：${productOne.makeDate}<br>保存期限：${productOne.expire}</p>
-		<p>上架日期：${productOne.shelvesDate}<br>商品描述：${productOne.description}</p>
-		<p>商品類別：${productOne.classify.name}</p>
-	</div>
-	<hr>
 
-	<h3>查詢所有商品資料</h3>
-	<table>
-		<c:forEach var="product" items="${productAll}">
-			<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
-			<p>價格：${product.price}<br>數量：${product.quantity}</p>
-			<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
-			<p>上架日期：${product.shelvesDate}<br>商品描述：${product.description}</p>
-			<p>商品類別：${product.classify.name}</p>
-			<hr>
-		</c:forEach>
-	</table>
-	<hr>
-	
-	<h3>以KeyWord查詢商品資料</h3>
-	<table>
-		<c:forEach var="productByNameKeyWord" items="${productByNameKeyWord}">
-			<p>商品編號：${productByNameKeyWord.id}<br>產商品名稱：${productByNameKeyWord.name}</p>
-			<p>價格：${productByNameKeyWord.price}<br>數量：${productByNameKeyWord.quantity}</p>
-			<p>製造日：${productByNameKeyWord.makeDate}<br>保存期限：${productByNameKeyWord.expire}</p>
-			<hr>
-		</c:forEach>
-	</table>
-	<hr>
-	
-	<h3>刪除一筆商品資料</h3>
-		<p>刪除編號：${deleteId} 一筆資料</p>
-	<hr>
-
-	<h3>新增一筆商品資料</h3>
-	<div>
-		<p>商品編號：${insertMember.id}<br>產商品名稱：${insertMember.name}</p>
-		<p>價格：${insertMember.price}<br>數量：${insertMember.quantity}</p>
-		<p>製造日：${insertMember.makeDate}<br>保存期限：${insertMember.expire}</p>
-		<p>上架日期：${insertMember.shelvesDate}<br>商品描述：${insertMember.description}</p>
-		<p>商品類別：${insertMember.classify.name}</p>
-	</div>
-	<hr>
-
-	<h3>修改一筆商品資料</h3>
-	<div>
-		<p>商品編號：${updateMember.id}<br>產商品名稱：${updateMember.name}</p>
-		<p>價格：${updateMember.price}<br>數量：${updateMember.quantity}</p>
-		<p>製造日：${updateMember.makeDate}<br>保存期限：${updateMember.expire}</p>
-		<p>上架日期：${updateMember.shelvesDate}<br>商品描述：${updateMember.description}</p>
-		<p>商品類別：${updateMember.classify.name}</p>
-	</div>
-	
 	<c:if test="${page == null || page.numberOfElements == 0}">
 		沒有任何商品資料
 	</c:if>
@@ -95,7 +40,7 @@
 						<td>${products.quantity}</td>
 						<td>${products.makeDate}</td>
 						<td>${products.expire}</td>
-						<td>${products.classify.classifyName}</td>
+						<td>${products.classify.name}</td>
 						<td><a href="">編輯</a></td>
 						<td><a href="">刪除</a></td>
 					</tr>
@@ -111,5 +56,6 @@
 				</tr>
 		</table>
 	</c:if>
+	
 </body>
 </html>

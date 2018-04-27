@@ -2,15 +2,19 @@ package org.iii.ee100.animour.product.dao;
 
 import java.util.List;
 
+import org.iii.ee100.animour.shopping.dao.ClassifyDao;
 import org.iii.ee100.animour.shopping.dao.OrdersDao;
 import org.iii.ee100.animour.shopping.dao.ProductDao;
 import org.iii.ee100.animour.shopping.entity.Product;
+import org.iii.ee100.animour.shopping.service.ClassifyService;
+import org.iii.ee100.animour.shopping.service.ProductService;
 import org.iii.ee100.animour.shopping.entity.Classify;
 import org.iii.ee100.animour.shopping.entity.Orders;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -23,11 +27,45 @@ public class productTest {
 	@Autowired
 	private OrdersDao ordersDao;
 	
+	@Autowired
+	private ClassifyDao classifyDao;
+	
+	@Autowired
+	private ProductService productService;
+	
+	@Autowired
+	private ClassifyService classifyService;
+	
+	@Test
+	public void testListProduct() {
+		Page<Product> page = productService.getPage(1, 6);
+		List<Product> products = page.getContent();
+		for(Product product:products) {
+			System.out.println(product.getName());
+		}
+	}
+	
+//	@Test
+//	public void testFindAllClassify() {
+//		System.out.println(productDao.findByClassify_id(1L));
+//	}
+	
 	@Test
 	public void testInsertProduct() {
-		Classify classify1 = new Classify();
-		classify1.setName("寵物伺料");
+//		Classify classify1 = new Classify();
+//		classify1.setName("寵物伺料");
+//		classifyDao.save(classify1);
 //		
+//		List<Classify> classifies = classifyDao.findAll();
+//		long i = 0;
+//		for(Classify classify:classifies) {
+//			i = classify.getId();
+//		}
+//		System.out.println(i);
+		
+//		classifyDao.deleteAll();
+//		System.out.println(productDao.findAll());
+		
 //		Classify classify2 = new Classify();
 //		classify2.setName("寵物用品");
 //		
@@ -42,16 +80,15 @@ public class productTest {
 //		classifyDao.save(classify3);
 //		classifyDao.save(classify4);
 		
-		
-		Product product1 = new Product();
-		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
-		product1.setPrice(391);
-		product1.setQuantity(100L);
-		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
-		product1.setExpire(365);
-		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
-		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
-		productDao.save(product1);
+//		Product product1 = new Product();
+//		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
+//		product1.setPrice(391);
+//		product1.setQuantity(100L);
+//		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
+//		product1.setExpire(365);
+//		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
+//		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
+//		productDao.save(product1);
 	}
 	
 	@Test
@@ -59,10 +96,10 @@ public class productTest {
 		//keyword test
 //		System.out.println(productDao.findByNameContaining("磅"));
 		
-		//FK test
+		//依類別查詢商品
 //		List<Product> lists = productDao.findByClassify_id(1L);
 //		for(Product list:lists) {
-//			System.out.println(list.getClassify().getName());
+//			System.out.println(list.getClassify().getId() + " " + list.getClassify().getName() + " " + list.getName());
 //		}
 	}
 	
@@ -112,12 +149,12 @@ public class productTest {
 */
 	
 //	@Test
-//	public void TestDelete() {
+//	public void testDelete() {
 //		productDao.delete(7L);
 //	}
 	
 //	@Test
-//	public void TestGetNewSex() {
+//	public void testGetNewSex() {
 //		List<Product> products = productDao.findTop6ByOrderByShelvesDateDesc();
 //		for(Product product:products) {
 //			System.out.println(product);
@@ -129,6 +166,7 @@ public class productTest {
 //		Product product = productDao.findByName("Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅");
 //		System.err.println(product);
 		
+		//依價格<=查詢
 //		List<Product> products = productDao.findByPriceLessThanEqual(600);
 //		for(Product product:products) {
 //			System.out.println(product);

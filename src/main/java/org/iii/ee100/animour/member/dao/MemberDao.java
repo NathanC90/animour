@@ -1,5 +1,7 @@
 package org.iii.ee100.animour.member.dao;
 
+import java.util.List;
+
 import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,4 +13,9 @@ public interface MemberDao extends GenericDao<Member>{
 
 	Member findByAccount(String account);
 
+	//From member where role=? order by id;
+	List<Member> findByRoleOrderById(String role);
+	
+	//From member where role=? and status=? order by id;
+	List<Member> findByRoleAndStatusOrderById(String role,Integer status);
 }

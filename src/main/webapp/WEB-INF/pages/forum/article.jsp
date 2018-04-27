@@ -93,7 +93,7 @@
         <!-- End -->
 
         <!-- BLog Article Section -->
-        <div class="col-md-9">
+        <div id="bloglist"class="col-md-9">
           <!-- Single Blog Post -->
           <c:forEach var="article" items="${page}">
           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
@@ -164,24 +164,25 @@
             </div>
           </article>
           </c:forEach>
+          <div id = "show"></div>
           <!-- Slider Post -->
 
 
           <!-- Blog Pagination -->
-          <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
-							<nav aria-label="..." class="">
-								<ul class="pagination">
-									<li class="page-item"><a class="page-link" href="?${categoryQueryString}pageNo=${page.number}" 
-									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-									<span class="sr-only">Previous</span></a></li>
-									<li class="page-item active"><a class="page-link" href="">第 ${page.number+1}/${page.totalPages} 頁
-											<span class="sr-only">(current)</span></a></li>
-									<li class="page-item"><a class="page-link" href="?${queryString}pageNo=${page.number+2}"
-										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-										<span class="sr-only">Next</span></a></li>
-								</ul>
-							</nav>
-						</div>
+<!--           <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s"> -->
+<!-- 							<nav aria-label="..." class=""> -->
+<!-- 								<ul class="pagination"> -->
+<%-- 									<li class="page-item"><a class="page-link" href="?${categoryQueryString}pageNo=${page.number}"  --%>
+<!-- 									tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁  -->
+<!-- 									<span class="sr-only">Previous</span></a></li> -->
+<%-- 									<li class="page-item active"><a class="page-link" href="">第 ${page.number+1}/${page.totalPages} 頁 --%>
+<!-- 											<span class="sr-only">(current)</span></a></li> -->
+<%-- 									<li class="page-item"><a class="page-link" href="?${queryString}pageNo=${page.number+2}" --%>
+<!-- 										aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i> -->
+<!-- 										<span class="sr-only">Next</span></a></li> -->
+<!-- 								</ul> -->
+<!-- 							</nav> -->
+<!-- 						</div> -->
         </div>
         <!-- End -->
       </div>
@@ -202,6 +203,7 @@
   </a>
 
   <!-- JavaScript & jQuery Plugins -->
+  <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
   <script src="/js/jquery-min.js"></script>
   <script src="/js/popper.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
@@ -217,6 +219,62 @@
   <script src="/js/contact-form-script.min.js"></script>
   <script src="/js/main.js"></script>
 
+	<script>
+	var pageNo = 1;
+	var articlesString = "";
+	var scroll = true;
+	
+	$(document).ready(function(){
+		getArticle();
+		$(window).scroll(function(){
+			  // Returns height of browser viewport
+			  var window_height = $( window ).height();
+			  
+			  var window_scrollTop = $(window).scrollTop();
+			 
+			  // Returns height of HTML document
+// 			  var div_height = $(document).height();
+			  var div_height = $("#bloglist").height();
+			  
+// 			  console.log(window_height);
+// 			  console.log(window_scrollTop);
+// 			  console.log(div_height);
+			  
+			   if(window_height + window_scrollTop >= div_height && scroll == true){
+// 			     alert('到底部觸發ajax');
+				 scroll = false;
+				 getArticle();
+			     setTimeout(setScroll,1000);
+			   }
+			});
+	});
+function setScroll(){
+	scroll = true;
+	}
+	
+function getArticle(){
+	$.getJSON("/articles",{"pageNo":pageNo},function(datas){
+   	 if(pageNo<=datas[0].totalPage && datas!=null){
+			$.each(datas,function(idx,article){
+         	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
+       		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ new Date(article.postTime)
+       		 +'</a></li><li><i class="fa fa-user"></i><a href="#">'+ article.member.account
+       		 +'</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">'+ article.category.name
+       		 +'</a></li><li><i class="fa fa-comments"></i><a href="#">'+ article.commentLength
+       		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
+       		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
+       		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
+                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
+         	articlesString = articlesString + articleString;
+			});
+         	pageNo += 1;
+			$("#show").html(articlesString);
+    		}
+			console.log(datas);
+		});
+	}
+	
+	</script>
 </body>
 
 </html>

@@ -7,6 +7,7 @@ import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,17 @@ public class ArticleRestController {
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findAll() {	
-		List<Article> articleList = forumService.getArticleList();
+	public List<Article> findAll(int pageNo) {	
+		Page<Article> articlePage = forumService.getPage(pageNo, 3);
+		int totalPage = articlePage.getTotalPages();
+		for(Article article:articlePage) {
+			article.setTotalPage(totalPage);
+		}
+		System.out.println(totalPage+"=========="+pageNo);
+		if(pageNo > totalPage && totalPage != 0) {
+			return null;
+		}
+		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
 
@@ -36,17 +46,36 @@ public class ArticleRestController {
 
 	// 搜尋文章標題AJAX用的
 	@RequestMapping(value = "/search/{search}", method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> search(@PathVariable(value = "search") String search) {	
-		List<Article> articleList = forumService.getArticlesSearchBySubject(search);
+	public List<Article> search(@PathVariable(value = "search") String search, int pageNo) {	
+		Page<Article> articlePage = forumService.getPageSearchBySubject(search, pageNo, 3);
+		int totalPage = articlePage.getTotalPages();
+		for(Article article:articlePage) {
+			article.setTotalPage(totalPage);
+		}
+		System.out.println(totalPage+"=========="+pageNo);
+		if(pageNo > totalPage && totalPage != 0) {
+			return null;
+		}
+		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
 
 	// 按照文章類別查詢
 	@RequestMapping(path = { "/category/{categoryId}" }, method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId) {
-		List<Article> articleList = forumService.getArticlesByCategoryId(categoryId);
+	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId,int pageNo) {
+		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageNo, 3);
+		int totalPage = articlePage.getTotalPages();
+		for(Article article:articlePage) {
+			article.setTotalPage(totalPage);
+		}
+		System.out.println(totalPage+"=========="+pageNo);
+		if(pageNo > totalPage && totalPage != 0) {
+			return null;
+		}
+		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
+	
 
 	// 新增留言
 	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST, consumes = { "application/json" })

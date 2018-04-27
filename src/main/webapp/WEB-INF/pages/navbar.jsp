@@ -48,7 +48,7 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/product/index">寵物市集</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/product/index">新品上市</a>
+                                        <a class="dropdown-item" href="/product/insert">新品上市</a>
                                         <!-- 						<a class="dropdown-item" href="l">好康優惠</a> -->
                                         <!-- 						<a class="dropdown-item" href="l">寵物飲食</a> -->
                                         <!-- 						<a class="dropdown-item" href="l">寵物用品</a> -->

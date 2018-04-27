@@ -7,22 +7,23 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "PRODUCT")
-public class Product {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Long id;
+public class Product extends GenericEntity {
+
 	@Column(name = "NAME", length = 50, nullable = false)
 	private String name;
 	@Column(name = "PRICE", nullable = false)
@@ -48,91 +49,4 @@ public class Product {
 			inverseJoinColumns = {@JoinColumn(name = "ORDERS_ID", referencedColumnName = "ID")})
 	private Set<Orders> orders = new HashSet<Orders>();
 
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + ", makeDate="
-				+ makeDate + ", expire=" + expire + ", shelvesDate=" + shelvesDate + ", description=" + description
-				+ ", classify=" + classify + ", orders=" + orders + "]";
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Integer getPrice() {
-		return price;
-	}
-
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-
-	public Long getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Long quantity) {
-		this.quantity = quantity;
-	}
-
-	public java.sql.Timestamp getMakeDate() {
-		return makeDate;
-	}
-
-	public void setMakeDate(java.sql.Timestamp makeDate) {
-		this.makeDate = makeDate;
-	}
-
-	public Integer getExpire() {
-		return expire;
-	}
-
-	public void setExpire(Integer expire) {
-		this.expire = expire;
-	}
-
-	public java.sql.Date getShelvesDate() {
-		return shelvesDate;
-	}
-
-	public void setShelvesDate(java.sql.Date shelvesDate) {
-		this.shelvesDate = shelvesDate;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Set<Orders> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(Set<Orders> orders) {
-		this.orders = orders;
-	}
-
-	public Classify getClassify() {
-		return classify;
-	}
-
-	public void setClassify(Classify classify) {
-		this.classify = classify;
-	}
-	
 }

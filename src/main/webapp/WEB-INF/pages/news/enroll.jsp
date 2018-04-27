@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -68,11 +68,8 @@
 <title>最新消息</title>
 </head>
 <body>
-<header id="header-wrap">
-		<!-- Navbar Starts -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
-		<!-- Navbar ends -->
-		<!-- Page Header -->
+	<header id="header-wrap"> <!-- Navbar Starts --> <jsp:include
+		page="../navbar.jsp"></jsp:include> <!-- Navbar ends --> <!-- Page Header -->
 	<div class="page-header-section">
 		<div class="container">
 			<div class="row">
@@ -84,61 +81,119 @@
 			</div>
 		</div>
 	</div>
-	<!-- Page Header End -->
-	</header>
-		<!-- Container Starts -->
-				<div class="container">
+	<!-- Page Header End --> </header>
+	<!-- Container Starts -->
+	<div class="container">
 
-<form class="jotform-form" action="https://submit.jotform.me/submit/81005416515447/" method="post" name="form_81005416515447" id="81005416515447" accept-charset="utf-8">
-  <input type="hidden" name="formID" value="81005416515447" />
-  <div class="form-all">
-    
-     
-        <div class="form-header-group ">
-          <div class="header-text httal htvam">
-            <h1 id="header_7" class="form-header" data-component="header">
-              ${oneNews.subject}
-            </h1>
-          </div>
-        </div>
-     
-      
-        <div id="cid_3" class="form-input-wide">
-          <div id="text_3" class="form-html" data-component="text">
-          <c:forEach var="news" items="${oneNews}">
+		<form class="jotform-form"
+			action="https://submit.jotform.me/submit/81005416515447/"
+			method="post" name="form_81005416515447" id="81005416515447"
+			accept-charset="utf-8">
+			<input type="hidden" name="formID" value="81005416515447" />
+			<div class="form-all">
+
+
+				<div class="form-header-group ">
+					<div class="header-text httal htvam">
+						<h1 id="header_7" class="form-header" data-component="header">
+							${oneNews.subject}</h1>
+					</div>
+				</div>
+
+
+				<div id="cid_3" class="form-input-wide">
+					<div id="text_3" class="form-html" data-component="text">
+						<c:forEach var="news" items="${oneNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/news/dogtable.jpg" width="80px" alt="">
-									<div class="card-body" style="margin-bottom: 5px">
-									</div>
+									<img class="card-img-top" src="/images/news/dogtable.jpg"
+										width="80px" alt="">
+									<div class="card-body" style="margin-bottom: 5px"></div>
 								</div>
 							</div>
 						</c:forEach>
-            <p><span style="color:#575757;"><strong>活動名稱：</strong>${oneNews.subject}</span></p>
-            
-            <p><span style="color:#575757;"><strong>活動日期：</strong>${oneNews.event_Date}</span></p>
-            
-            <p><span style="color:#575757;"><strong>活動地點：</strong>${oneNews.address}</span></p>
-            <div style="width:600px;height:400px;border:2px gray solid;"><strong>活動簡介：${oneNews.content}</strong>寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</div>
-            <br>
-            <!-- Facebook Login starts -->
-            <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-            <!-- Facebook Login ends -->
-            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.004965796966!2d121.5412095148038!3d25.033905544449656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xec12a62666a81e3d!2sNo.+390%2C+Section+1%2C+Fuxing+South+Road%2C+Da%E2%80%99an+District%2C+Taipei+City%2C+106!5e0!3m2!1sen!2stw!4v1523468006587" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
-          </div>
-        </div>
-      
-    
-  </div>
- </form>
-					<!-- Service-Block-000 Item Ends -->
+						<p>
+							<span style="color: #575757;"><strong>活動名稱：</strong>${oneNews.subject}</span>
+						</p>
+
+						<p>
+							<span style="color: #575757;"><strong>活動日期：</strong>${oneNews.event_Date}</span>
+						</p>
+
+						<p>
+							<span style="color: #575757;"><strong>活動地點：</strong>${oneNews.address}</span>
+						</p>
+						<div style="width: 600px; height: 400px; border: 2px gray solid;">
+							<strong>活動簡介：${oneNews.content}</strong>寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務
+						</div>
+						<br>
+						<!-- Facebook Login starts -->
+
+						<fb:login-button scope="public_profile,email"
+							onlogin="checkLoginState();">
+						</fb:login-button>
+
+
+						<script>
+						  window.fbAsyncInit = function() {
+						    FB.init({
+						      appId      : '{1807394549310831}',
+						      cookie     : true,
+						      xfbml      : true,
+						      version    : '{v2.12}'
+						    });
+						      
+						    FB.AppEvents.logPageView();   
+						      
+						  };
+						
+						  (function(d, s, id){
+						     var js, fjs = d.getElementsByTagName(s)[0];
+						     if (d.getElementById(id)) {return;}
+						     js = d.createElement(s); js.id = id;
+						     js.src = "https://connect.facebook.net/zh_TW/sdk.js";
+						     fjs.parentNode.insertBefore(js, fjs);
+						   }(document, 'script', 'facebook-jssdk'));
+						   
+						FB.getLoginStatus(function(response) {
+						    statusChangeCallback(response);
+						});
+						
+						{
+						    status: 'connected',
+						    authResponse: {
+						        accessToken: '...',
+						        expiresIn:'...',
+						        signedRequest:'...',
+						        userID:'...'
+						    }
+						}
+						
+						function checkLoginState() {
+						  FB.getLoginStatus(function(response) {
+						    statusChangeCallback(response);
+						  });
+						}
+						</script>
+						<!-- Facebook Login ends -->
+						<p>
+							<iframe
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3615.004965796966!2d121.5412095148038!3d25.033905544449656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442abd379a5ec97%3A0xec12a62666a81e3d!2sNo.+390%2C+Section+1%2C+Fuxing+South+Road%2C+Da%E2%80%99an+District%2C+Taipei+City%2C+106!5e0!3m2!1sen!2stw!4v1523468006587"
+								width="600" height="450" frameborder="0" style="border: 0"
+								allowfullscreen></iframe>
+						</p>
+					</div>
 				</div>
-				<!-- Container Ends -->
-				
+
+
+			</div>
+		</form>
+		<!-- Service-Block-000 Item Ends -->
+	</div>
+	<!-- Container Ends -->
+
 	<!-- Footer Section -->
-	<footer>
-	<jsp:include page="../footer.jsp"></jsp:include>
-	</footer>
+	<footer> <jsp:include page="../footer.jsp"></jsp:include> </footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -159,18 +214,19 @@
 	<script src="/js/jquery.appear.js"></script>
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
-	<script src="/js/main.js"></script>	
-<!-- Facebook Login JavaScript SDK-->
-Step 1: Include the JavaScript SDK on your page once, ideally right after the opening body tag.
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
+	<script src="/js/main.js"></script>
+	<!-- Facebook Login JavaScript SDK-->
+	Step 1: Include the JavaScript SDK on your page once, ideally right
+	after the opening body tag.
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
   js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.12';
   fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
-<!-- Facebook Login JavaScript SDK -->
-	
+	<!-- Facebook Login JavaScript SDK -->
+
 
 </body>
 </html>

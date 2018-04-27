@@ -13,6 +13,8 @@ import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,16 +33,43 @@ public class ForumService extends GenericService<Article> {
 
 	@Autowired
 	private CategoryDao categoryDao;
-
-	public List<Article> getArticleList() {
-		System.out.println("呼叫getArticleList方法");
-		List<Article> articleList = articleDao.findAll();
+	
+	public Page<Article> getPage(int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Page<Article> articleList = articleDao.findAll(pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
 		}
 		return articleList;
 	}
+	public Page<Article> getPageSearchByCategoryId(Long categoryId, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
+		for (Article article : articleList) {
+			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+		}
+		return articleList;
+	}
+	public Page<Article> getPageSearchBySubject(String subject,int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Page<Article> articleList = articleDao.findBySubjectContaining(subject, pageable);
+		for (Article article : articleList) {
+			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+		}
+		return articleList;
+	}
+
+//	public List<Article> getArticleList() {
+//		List<Article> articleList = articleDao.findAll();
+//		for (Article article : articleList) {
+//			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+//			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+//		}
+//		return articleList;
+//	}
 
 	@Override
 	public Article getOne(Long id) {
