@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/designers")
+@RequestMapping("/salon/designers")
 public class ReservationRestController {
 
 	@Autowired

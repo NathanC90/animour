@@ -53,11 +53,16 @@ public class ReservationService extends GenericService<Reservation>{
 		
 	}
 	
+	//設計師頁面幾筆
 	public Page<Designer> getDesignerPage(Integer pageNumber, Integer pageSize) {
 		PageRequest request = new PageRequest(pageNumber-1, pageSize, Sort.Direction.DESC, "upload");
 		
-		return designerDao.findAll(request);
-		
+		return designerDao.findAll(request);		
+	}
+	
+	public Page<ServiceContent> getServiceContentPage(Integer pageNumber, Integer pageSize){
+		PageRequest request= new PageRequest(pageNumber, pageSize, Sort.Direction.DESC,"upload");
+		return serviceContentDao.findAll(request);		
 	}
 
 }

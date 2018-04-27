@@ -8,10 +8,13 @@ import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReservationController {
@@ -58,10 +61,22 @@ public class ReservationController {
 	
 	//選取服務種類
 	@RequestMapping(path = { "/appointment/firstPage" }, method = { RequestMethod.GET })
-	public String showServiceType(Model model) {
+	public String showServiceType(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model) {
+//		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
+//		model.addAttribute("serviceContentPage", page);
 		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
 		model.addAttribute("allType",allType);
 		return "/salon/reservation";		
+	}
+	@RequestMapping(path = { "/appointment/test2Page" }, method = { RequestMethod.GET })
+	public String showServiceTypeTest(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model) {
+		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
+		model.addAttribute("serviceContentPage", page);
+		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+		model.addAttribute("allType",allType);
+		return "/salon/test2";		
 	}
 
 	
