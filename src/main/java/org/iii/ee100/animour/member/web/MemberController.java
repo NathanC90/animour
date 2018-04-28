@@ -34,7 +34,7 @@ public class MemberController {
 	// 修改個人頁面
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(Model model) {
-		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Member userDetails = (Member) memberService.getCurrentMember();
 		model.addAttribute("member", userDetails);
 		return "/member/update";
 	}
@@ -51,10 +51,14 @@ public class MemberController {
 
 	// 修改個人頁面(註冊資料)
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updatemember(@RequestParam("name") String name, @RequestParam("nickname") String nickname,
-			@RequestParam("password") String password, @RequestParam("cell") String cell,
-			@RequestParam("email") String email, @RequestParam("address") String address,
-			@RequestParam("account") String account, Model model) {
+	public String updatemember(@RequestParam("name") String name
+			, @RequestParam("nickname") String nickname
+			, @RequestParam("password") String password
+			, @RequestParam("cell") String cell
+			, @RequestParam("email") String email
+			, @RequestParam("address") String address
+			, @RequestParam("account") String account
+			, Model model) {
 
 		memberService.update(password, name, nickname, cell, email, account);
 		;
