@@ -72,10 +72,10 @@ public class ReservationController {
 	@RequestMapping(path = { "/appointment/test2Page" }, method = { RequestMethod.GET })
 	public String showServiceTypeTest(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model) {
-		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
-		model.addAttribute("serviceContentPage", page);
-		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
-		model.addAttribute("allType",allType);
+//		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
+//		model.addAttribute("serviceContentPage", page);
+//		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+//		model.addAttribute("allType",allType);
 		return "/salon/test2";		
 	}
 
