@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,9 +30,6 @@ import lombok.Data;
 @Entity
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
-
-//	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
-//	private List<Role> role;
 
 	@Column(name = "ACCOUNT")
 	private String account;// 帳號
@@ -61,7 +59,7 @@ public class Member extends GenericEntity implements UserDetails {
 	
 
 //	@JsonIgnore
-//	@OneToMany(mappedBy = "member", cascade = { CascadeType.ALL })
+//	@OneToMany(fetch=FetchType.EAGER,mappedBy = "member", cascade = { CascadeType.ALL })
 //	private List<Animal> animals;
 //
 //	@JsonIgnore
@@ -72,7 +70,7 @@ public class Member extends GenericEntity implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();
 		GrantedAuthority auth = new SimpleGrantedAuthority("ROLE_Member");
-		if(account.equals("Admin")) {
+		if(account.equals("admin")) {
 			auth = new SimpleGrantedAuthority("ROLE_Admin");
 		}		
 		authorities.add(auth);
