@@ -10,6 +10,8 @@ import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,25 +40,27 @@ public class AnimalRestController {
 	// 新增
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST, consumes = {  
 			"application/json", "application/xml" })
-	public String insertAnimal(@RequestBody Animal an, @RequestPart("file") MultipartFile image,
+	public ResponseEntity<?> insertAnimal(@RequestBody Animal animal,
 			HttpServletRequest request, Model model) {
-		System.out.println("=========================================有被呼叫喔！！！！！！！！！！");
 		Member current = animalservice.getCurrentMember();
-		an.setMember(current);
+		animal.setMember(current);
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		an.setUpload(ts);
+		animal.setUpload(ts);
 		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
-		animalservice.insert(an);
-		String fileName = animalservice.readImage(image, request, an);
-
-		an.setFileName(fileName);
+		animalservice.insert(animal);
+		
+//		if (image == null || image.isEmpty()) {
+//			
+//			return new ResponseEntity<String>("", HttpStatus.OK);
+//		}
+		//String fileName = animalservice.readImage(image, request, animal);
+		//animal.setFileName(fileName);
 		// 儲存圖片之後，更新檔名
-		animalservice.update(an);
-		model.addAttribute("inanimal", an);
+		//animalservice.update(animal);
 
-		return "ok";
-		//return ResponseEntity.ok();
+		//return "success";
+		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
 	}
 
 }
