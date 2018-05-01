@@ -28,7 +28,7 @@ public class ReservationController {
 	public String reservationTime(Model model) {
 		List<ReservationDate> reservationDate = reservationService.getAllReservationDate();
 		model.addAttribute("reservationDate", reservationDate);
-		return "/salon/salonIndex";
+		return "/salon/test";
 	}
 
 	// @RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
