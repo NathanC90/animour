@@ -4,8 +4,9 @@ import java.util.List;
 
 import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.shopping.entity.Product;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ProductDao extends GenericDao<Product> {
+public interface ProductDao extends GenericDao<Product>, JpaSpecificationExecutor<Product> {
 	//FROM product ORDER BY shelvesDate DESC FETCH FIRST 6 ROWS ONLY
 	List<Product> findTop4ByOrderByShelvesDateDesc();
 	

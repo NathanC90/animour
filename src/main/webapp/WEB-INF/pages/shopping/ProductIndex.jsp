@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="en">
 
@@ -110,7 +111,7 @@
 <!-- 						Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
-								<input name="name" value="${param.name}" type="text" placeholder="Search" class="form-control">
+								<input name="name" type="text" placeholder="Search" class="form-control">
 								<button type="submit"><i class="fa fa-search"></i></button>
 							</form>
 						</aside>
@@ -120,18 +121,15 @@
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">商品分類</h2>
-							<form:form action="/products/${category}" method="POST" modelAttribute="product">
+<%-- 							<form:form action="/products/${classify}" method="POST" modelAttribute="product"> --%>
 								<ul class="category-menu">
 									<c:forEach var="classify" items="${classifies}">
 										<li><div class="form-check">
-											<input class="form-check-input" type="radio"
-												value="${classify.id}" id="classify" name="classify">
-											<label class="form-check-label" for="defaultCheck1">${classify.name}</label>
+											<a href='<spring:url value="/products/${classify.id}"></spring:url>'>${classify.name}</a>
 										</div></li>
 									</c:forEach>
 								</ul>
-								<input type="submit" class="btn btn-common" value="搜尋">
-							</form:form>
+<%-- 							</form:form> --%>
 						</aside>
 						<!--End of Classify -->
 						
@@ -140,7 +138,7 @@
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">價格篩選</h2>
 							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="range" name="price" min="0" max="1000" value="${param.price}"><br><br>
+								<input type="range" name="price" min="0" max="2000"><br><br>
 								<input type="submit" class="btn btn-common" value="查尋">
 							</form>
 						</aside>
@@ -171,9 +169,11 @@
 									</div>
 									<div class="d-flex justify-content-between align-items-center"
 										style="max-height: 100px">
-										<div class="btn-group" style="margin: 0px">
-											<button type="button" onclick="location.href='/shopping/ProductIndex';" class="btn btn-common btn-sm mt-10">詳情</button>
-										</div>
+									<div>
+										<a href="<spring:url value='/selectOneProduct?id=${product.id}' />"
+											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon"></span>商品詳情
+										</a>
+									</div>
 									</div>
 								</div>
 							</div>
@@ -185,12 +185,12 @@
 								<ul class="pagination">
 								<c:choose>
 									<c:when test="${page.number + 1 - 1 le 0}">
-										<li class="page-item disabled"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
+										<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
 											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
 										<span class="sr-only">Previous</span></a></li>
 									</c:when>
 									<c:otherwise>
-										<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 - 1}" 
+										<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
 											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
 										<span class="sr-only">Previous</span></a></li>
 									</c:otherwise>
@@ -199,12 +199,12 @@
 											<span class="sr-only">(current)</span></a></li>
 									<c:choose>
 										<c:when test="${page.number+1 ge page.totalPages}">
-											<li class="page-item disabled"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
+											<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
 												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
 											<span class="sr-only">Next</span></a></li>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item"><a class="page-link" href="?pageNo=${page.number + 1 + 1}"
+											<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
 												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
 											<span class="sr-only">Next</span></a></li>
 										</c:otherwise>

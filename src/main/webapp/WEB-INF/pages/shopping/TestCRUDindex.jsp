@@ -6,12 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 </head>
 <title>ProductIndex</title>
 </head>
 <body>
 	<center>
+	<ul class='pagination'></ul>
+	
 	<h3>測試取出JSON資料</h3>
 	<div id="show" class="row"></div>
 	<hr>
@@ -111,7 +116,7 @@
 	
 	</center>
 	
-	
+	<script type="text/javascript" src="/js/jquery.twbsPagination.min.js"></script>
 	<script>
 		$(document).ready(function() {
 			var docFragment = $(document.createDocumentFragment());
@@ -124,13 +129,27 @@
 						var cell3 = $('<td></td>').text("價格:" + product.price);
 						var cell4 = $('<td></td>').text("數量:" + product.quantity);
 						var cell5 = $('<td></td>').text("日期:" + product.makeDate);
-						var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5]);
+						var cell6 = $('<td></td>').text("類別:" + product.classify.name);
+						var row = $('<tr></tr>').append([cell1,cell2,cell3,cell4,cell5,cell6]);
 						docFragment.append(row);
 					});
 					$('#show').append(docFragment);
 				})
 			
+			$(function () {
+			　　ChangePage(10); //傳遞分頁數
+			});
+			//動態載入分頁
+			function ChangePage(Total) {
+			　　$('.pagination').twbsPagination({
+			　　　　totalPages: Total, //分頁數
+			　　　　onPageClick: function (evt, page) { //分頁切換事件
+			　　　　　　alert(page); //分頁切換提示當前頁數
+			　　　　}
+			　　});
+			}
 		});
+		
 		
 	</script>
 	

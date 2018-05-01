@@ -3,14 +3,19 @@ package org.iii.ee100.animour.shopping.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.service.GenericService;
-import org.iii.ee100.animour.shopping.dao.ClassifyDao;
 import org.iii.ee100.animour.shopping.dao.ProductDao;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,13 +26,53 @@ public class ProductService extends GenericService<Product> {
 	@Autowired
 	private ProductDao productDao;
 	
-	@Autowired
-	private ClassifyDao classifydao;
-	
 	public Page<Product> getPage(int pageNo, int pageSize) {
 		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
 		return productDao.findAll(pageable);
 	}
+	
+	//find product by classify
+	public Page<Product> getProductByCategory(Long id, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Specification<Product> specification = new Specification<Product>() {
+			@Override
+			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate pedicate = cb.equal(root.get("classify"), id);
+				return pedicate;
+			}
+		};
+		Page<Product> page = productDao.findAll(specification, pageable);
+		return page;
+	}
+	
+	//KeyWord Select By Product
+	public Page<Product> getByNameKeyWord(String name, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Specification<Product> specification = new Specification<Product>() {
+			@Override
+			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate pedicate = cb.like(root.get("name"), "%" + name + "%");
+				return pedicate;
+			}
+		};
+		Page<Product> page = productDao.findAll(specification, pageable);
+		return page;
+	}
+	
+	//find Product by PriceLessThanEqual
+	public Page<Product> getByPriceLessThanEqual(Integer price, int pageNo, int pageSize) {
+		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+		Specification<Product> specification = new Specification<Product>() {
+			@Override
+			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				Predicate pedicate = cb.le(root.get("price"), price);
+				return pedicate;
+			}
+		};
+		Page<Product> page = productDao.findAll(specification, pageable);
+		return page;
+	}
+	
 	
 	@Override
 	public void insert(Product product) throws Exception {
@@ -58,18 +103,9 @@ public class ProductService extends GenericService<Product> {
 		return productDao.findTop4ByOrderByShelvesDateDesc();
 	}
 	
-	//KeyWord Select By Product
-	public List<Product> getByNameKeyWord(String name) {
-		return productDao.findByNameContaining("%" + name + "%");
-	}
-	
 	//find Product by Classify
 	public List<Product> getByClassify(Long id) {
 		return productDao.findByClassify_id(id);
 	}
 	
-	//find Product by PriceLessThanEqual
-	public List<Product> getByPriceLessThanEqual(Integer price) {
-		return productDao.findByPriceLessThanEqual(price);
-	}
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="en">
 
@@ -100,46 +101,47 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-<!-- 				<div class="col-md-6 about2-intro-image"> -->
-<!-- 					<img class="card-img-top" -->
-<%-- 						src="/showAnimalImage?fileName=${animal.fileName}" width="100px" --%>
-<%-- 						alt="${animal.id}"> --%>
-<!-- 				</div> -->
+				<div class="col-md-6 about2-intro-image">
+					<img class="card-img-top"
+						src="/images/shopping/product/pd1.jpg" width="100px" alt="${product.name}">
+				</div>
 				<div class="col-md-6">
-					<h3 class="small-title">會員"${animal.member.name}"的送養動物</h3>
-					<p>We are unique and had working! We work for better product.</p>
+					<h3 class="small-title">品名:&nbsp&nbsp&nbsp${product.name}</h3>
 					<div id="default-tab" class="mt-10">
-						<!-- Nav tabs -->
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="nav-item"><a class="nav-link active" href="#productDetail"
-								aria-controls="productDetail" role="tab" data-toggle="tab">本商品詳細介紹</a></li>
+								aria-controls="productDetail" role="tab" data-toggle="tab">商品詳細介紹</a></li>
 							<li class="nav-item"><a class="nav-link" href="#productSepc"
-								aria-controls="productSepc" role="tab" data-toggle="tab">本商品規格</a></li>
-							<li class="nav-item"><a class="nav-link" href="#precautions"
-								aria-controls="precautions" role="tab" data-toggle="tab">注意事項</a></li>
+								aria-controls="productSepc" role="tab" data-toggle="tab">商品規格</a></li>
+							<li class="nav-item"><a class="nav-link" href="#precattention"
+								aria-controls="precattention" role="tab" data-toggle="tab">注意事項</a></li>
 						</ul>
 
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="productDetail">
-								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-								<p class="card-text" style="padding: 0px">編號：${animal.id}
-									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p>
+								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
+								<p class="card-text" style="padding: 0px">編號：${product.id}
+									商品名稱：${product.name} 種類：${product.classify.name} 價格：${product.price}
+<%-- 									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p> --%>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="productSepc">
-								<p>${animal.remark}</p>
+								<p>${product.description}</p>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="precautions">
-								<form name="requestComment"
-									action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
-									<textarea class="form-control" id="requestComment"
-										name="requestComment" rows="3"></textarea>
-									<input type="submit" class="btn btn-common" value="確定認養">
-									<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
-								</form>
+							<div role="tabpanel" class="tab-pane" id="precattention">
+								<div role="tabpanel" class="tab-pane" id="precattention">
+									<p>${product.name}</p>
+								</div>
 							</div>
 						</div>
+					</div>
+					<div>
+						<a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
+							class='glyphicon-info-sigh glyphicon'></span> 返回
+						</a>
+						<a href='#' class='btn btn-warning btn-large'> <span
+									class='glyphicon-shopping-cart glyphicon'></span> 加入購物車
+						</a>
 					</div>
 				</div>
 			</div>
