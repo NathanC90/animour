@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.halfway.entity.Animal;
@@ -30,7 +29,7 @@ public class AnimalController {
 
 	@Autowired
 	AnimalService animalservice;
-
+	
 	// 首頁
 	// @RequestMapping(value = "/halfway", method = RequestMethod.GET)
 	public String index(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
@@ -201,13 +200,18 @@ public class AnimalController {
 	public String specificationQuery(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
 		
-		Map<String, Object> attributemap = new IdentityHashMap<>();
-		attributemap.put(new String("name"), "Cat");
-		attributemap.put(new String("name"), "Rabbit");
-		Specification<Animal> spec = Specifications.where(SpecificationHalfway.containsLikeOr(attributemap));
+		Map<String, Object> attributemap1 = new IdentityHashMap<>();
+		attributemap1.put(new String("name"), "Dog");
+		//attributemap1.put(new String("name"), "Rabbit");
+		
+		Map<String, Object> attributemap2 = new IdentityHashMap<>();
+		attributemap2.put(new String("city"), animalservice.getCityById(1L));
+		//attributemap2.put(new String("city"), animalservice.getCityById(3L));
+		
+		Specification<Animal> spec = Specifications.where(SpecificationHalfway.containsLikeOr(attributemap1)).and(SpecificationHalfway.containsEqualsOr(attributemap2));
 		Page<Animal> page = animalservice.getSpecPage(pageNumber, pageSize, spec); 
 		model.addAttribute("animalpage", page);
-		model.addAttribute("mapsize", attributemap.size());
+		model.addAttribute("mapsize", attributemap2.size());
 		
 
 		// 設定當前會員

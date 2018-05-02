@@ -34,4 +34,21 @@ public class SpecificationHalfway {
 			}
 		};
 	}
+	
+	public static Specification<Animal> containsEqualsOr(Map<String, Object> attributemap) {
+
+		return new Specification<Animal>() {
+			
+			@Override
+			public Predicate toPredicate(Root<Animal> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				List<Predicate> predicates = new ArrayList<>();
+				for (Map.Entry<String, Object> entry : attributemap.entrySet()) {
+					String attribute = entry.getKey();
+					Object value = entry.getValue();
+					predicates.add(cb.equal(root.get(attribute), value));
+				}
+				return cb.or(predicates.toArray(new Predicate[predicates.size()]));
+			}
+		};
+	}
 }
