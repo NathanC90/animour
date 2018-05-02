@@ -52,37 +52,37 @@ public class productTest {
 	 * Specification: 封裝了Criteria查詢的查詢條件
 	 * Pageable: 封裝了請求分頁的訊息 pageNo, pageSize, Sort
 	 */
-	@Test
-	public void testJpaSpecificationExecutor() {
-		int pageNo = 0;
-		int pageSize = 5; //一頁幾筆
-		PageRequest pageable = new PageRequest(pageNo, pageSize);
-		//使用Specification的匿名內部類別
-		Specification<Product> specification = new Specification<Product>() {
-			/**
-			 * *root: 代表查詢的Entity類別
-			 * query:代表可以從中得到root物件，即告知JPA Criteria查詢要查詢哪一個Entity，還可以來加入查詢條件，還可以結合EntityManager物件得到最終查詢的TypedQuery物件
-			 * *cb:CriteriaBuilder物件，用來建立Criteria相關物件的工廠，並且可以從中取得Predicate物件
-			 * *return: Predicate類型代表一個查詢條件
-			 */
-			@Override
-			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-//				Predicate pedicate = cb.equal(root.get("classify"), 1);
-				Predicate pedicate = cb.like(root.get("name"), "%磅%");
-				
-				return pedicate;
-			}
-		};
-		Page<Product> page = productDao.findAll(specification, pageable);
-		
-		
-		System.err.println("getTotalPages=" + page.getTotalPages());
-		System.err.println("getTotalElements=" + page.getTotalElements());
-		List<Product> content = page.getContent();
-		for(Product product:content) {
-			System.err.println(product.getName());
-		}
-	}
+//	@Test
+//	public void testJpaSpecificationExecutor() {
+//		int pageNo = 0;
+//		int pageSize = 5; //一頁幾筆
+//		PageRequest pageable = new PageRequest(pageNo, pageSize);
+//		//使用Specification的匿名內部類別
+//		Specification<Product> specification = new Specification<Product>() {
+//			/**
+//			 * *root: 代表查詢的Entity類別
+//			 * query:代表可以從中得到root物件，即告知JPA Criteria查詢要查詢哪一個Entity，還可以來加入查詢條件，還可以結合EntityManager物件得到最終查詢的TypedQuery物件
+//			 * *cb:CriteriaBuilder物件，用來建立Criteria相關物件的工廠，並且可以從中取得Predicate物件
+//			 * *return: Predicate類型代表一個查詢條件
+//			 */
+//			@Override
+//			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+////				Predicate pedicate = cb.equal(root.get("classify"), 1);
+//				Predicate pedicate = cb.like(root.get("name"), "%磅%");
+//				
+//				return pedicate;
+//			}
+//		};
+//		Page<Product> page = productDao.findAll(specification, pageable);
+//		
+//		
+//		System.err.println("getTotalPages=" + page.getTotalPages());
+//		System.err.println("getTotalElements=" + page.getTotalElements());
+//		List<Product> content = page.getContent();
+//		for(Product product:content) {
+//			System.err.println(product.getName());
+//		}
+//	}
 	
 //	@Test
 //	public void testListProduct() {
@@ -103,8 +103,8 @@ public class productTest {
 	
 	@Test
 	public void testInsertProduct() {
-//		Classify classify1 = new Classify();
-//		classify1.setName("寵物伺料");
+		Classify classify1 = new Classify();
+		classify1.setName("寵物伺料");
 //		classifyDao.save(classify1);
 //		
 //		List<Classify> classifies = classifyDao.findAll();
@@ -131,15 +131,16 @@ public class productTest {
 //		classifyDao.save(classify3);
 //		classifyDao.save(classify4);
 		
-//		Product product1 = new Product();
-//		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
-//		product1.setPrice(391);
-//		product1.setQuantity(100L);
-//		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:00"));
-//		product1.setExpire(365);
-//		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
-//		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
-//		productDao.save(product1);
+		Product product1 = new Product();
+		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
+		product1.setPrice(391);
+		product1.setQuantity(100L);
+		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:01"));
+		product1.setExpire(365);
+		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
+		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
+		product1.setClassify(classify1);
+		productDao.save(product1);
 	}
 	
 	@Test

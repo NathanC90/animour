@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
-<html lang="en">
+<html lang="zh-tw">
 
 <head>
 <!--Icon Tags start -->
@@ -75,6 +75,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 
 <body>
@@ -91,7 +92,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>寵物市集</h2>
+						<h2>商品列表</h2>
 					</div>
 				</div>
  			</div>
@@ -105,81 +106,50 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-<!-- 				Blog Sidebar Section -->
-				<div class="col-md-3">
-					<div class="sidebar-area">
-<!-- 						Search Bar -->
-						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
-								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control">
-								<button type="submit"><i class="fa fa-search"></i></button>
-							</form>
-						</aside>
-
-						<!--Start of Classify -->
-						
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">商品分類</h2>
-<%-- 							<form:form action="/products/${classify}" method="POST" modelAttribute="product"> --%>
-								<ul class="category-menu">
-									<c:forEach var="classify" items="${classifies}">
-										<li class="page-item">
-											<a href='<spring:url value="/products/${classify.id}"></spring:url>'>${classify.name}</a>
-										</li>
-									</c:forEach>
-								</ul>
-<%-- 							</form:form> --%>
-						</aside>
-						<!--End of Classify -->
-						
-						<!--Start of Price -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">價格篩選</h2>
-							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="range" name="price" min="0" max="2000"><br><br>
-								<input type="submit" class="btn btn-common" value="查尋">
-							</form>
-						</aside>
-						<!--End of Price -->
-						
-						
-					</div>
-				</div>
-<!-- 				End -->
 				
 				<c:if test="${page == null || page.numberOfElements == 0}">
 					沒有任何商品資料
 				</c:if>
 				<c:if test="${page != null || page.numberOfElements > 0}">
-				<div class="col-md-9">
+				<div class="col-md-12">
 				<ul class="pagination"><li class="page-item active"><p class="page-link">商品資料共有 ${page.totalElements} 筆</p></li></ul>
 					<div class="row">
-						<c:forEach var="product" items="${page.content}">
-							<div class="col-md-4">
-								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/shopping/product/pd1.jpg"
-										width="100px" alt="商品列表">
-									<div class="card-body" style="margin-bottom: 5px">
-											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
-											<p>價格：${product.price}<br>數量：${product.quantity}</p>
-											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
-											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
-									</div>
-									<div class="d-flex justify-content-between align-items-center"
-										style="max-height: 100px">
-									<div>
-										<a href="<spring:url value='/selectOneProduct?id=${product.id}' />"
-											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon"></span>商品詳情
-										</a>
-									</div>
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-						
+					<form:form action="${pageContent.request.contextPath}/product/insert" method="POST" modelAttribute="product">
+						<table class="table">
+							  <thead class="thead-dark">
+							   <tr>
+								<th>編號</th>
+								<th>圖片</th>
+								<th>產品名稱</th>
+								<th>價格</th>
+								<th>數量</th>
+								<th>製造日期</th>
+								<th>保存期限</th>
+								<th>產品類別</th>
+								<th>編輯</th>
+								<th>刪除</th>
+								</tr>
+							  </thead>
+				
+							<c:forEach var="product" items="${page.content}">
+								<tr>
+									<td >${product.id}</td>
+									<td><img src="/images/shopping/product/pd1.jpg" width="150px" alt="商品列表"></td>
+									<td align="left">${product.name}</td>
+									<td>${product.price}</td>
+									<td>${product.quantity}</td>
+									<td>${product.makeDate}</td>
+									<td>${product.expire}</td>
+									<td>${product.classify.name}</td>
+									
+									<td><a href="<spring:url value='/selectOneProduct?id=${product.id}' />" id="buttonUpdate" type="button" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
+									<td><a id="buttonDelete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+								</tr>
+							</c:forEach>
+						</table>
+					</form:form>
 					</div>
+					
 						<div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
 							<nav aria-label="..." class="">
 								<ul class="pagination">
