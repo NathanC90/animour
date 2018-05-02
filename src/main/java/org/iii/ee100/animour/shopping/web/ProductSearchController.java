@@ -3,6 +3,7 @@ package org.iii.ee100.animour.shopping.web;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ClassifyService;
 import org.iii.ee100.animour.shopping.service.ProductService;
+import org.iii.ee100.animour.shopping.web.utility.pageUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,7 @@ public class ProductSearchController {
 		@RequestMapping("/products/{id}")
 		public String getProductByCategory(@PathVariable("id") Long id, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {
-			int pageNo = this.pageNumber(pageNoStr);
+			int pageNo = pageUtility.getPageNumber(pageNoStr);
 			model.addAttribute("page", productService.getProductByCategory(id, pageNo, 6));
 			model.addAttribute("classifies", classifyService.getAll());
 			return "/shopping/ProductIndex";
@@ -34,7 +35,7 @@ public class ProductSearchController {
 		@RequestMapping(path= {"/selectByNameKeyWord"}, method={RequestMethod.GET})
 		public String selectByNameKeyWord(Product product, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {
-			int pageNo = this.pageNumber(pageNoStr);
+			int pageNo = pageUtility.getPageNumber(pageNoStr);
 			model.addAttribute("page", productService.getByNameKeyWord(product.getName(), pageNo, 6));
 			model.addAttribute("classifies", classifyService.getAll());
 			return "/shopping/ProductIndex";
@@ -44,23 +45,10 @@ public class ProductSearchController {
 		@RequestMapping(path= {"/selectPrice"}, method={RequestMethod.GET})
 		public String selectPrice(Product product, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {
-			int pageNo = this.pageNumber(pageNoStr);
+			int pageNo = pageUtility.getPageNumber(pageNoStr);
 			model.addAttribute("page", productService.getByPriceLessThanEqual(product.getPrice(), pageNo, 6));
 			model.addAttribute("classifies", classifyService.getAll());
 			return "/shopping/ProductIndex";
 		}
 		
-		//pageNumber Utility
-		public int pageNumber(String pageNoStr) {
-			int pageNo = 1;
-			try {
-				pageNo = Integer.parseInt(pageNoStr);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-			}
-			if(pageNo < 1 ) {
-				pageNo = 1;
-			}
-			return pageNo;
-		}
 }
