@@ -12,7 +12,6 @@ public class AnimourUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {		
-		System.out.println("===========有被呼叫=============");
 		return memberDao.findByAccount(account);
 	}
 
