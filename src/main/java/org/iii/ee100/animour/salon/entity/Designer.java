@@ -18,19 +18,13 @@ import lombok.Data;
 @Data
 public class Designer extends GenericEntity{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID")
-	private Long id;
+	
 	
 	@Column(name="DESIGNER")
 	private String designer;
 	
-	@Column(name="FREETIME")
-	private Timestamp freeTime;
 	
-	@Column(name="ONEFREE")
-	private Integer oneFree;
+
 	
 	
 		

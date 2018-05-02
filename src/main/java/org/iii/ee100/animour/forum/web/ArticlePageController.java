@@ -64,11 +64,13 @@ public class ArticlePageController {
 				forumService.insert(article);
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.println(article);
 				return "/rollback";
 			}
 		} else {
 			return "redirect:/postArticle";
 		}
+		sidebar(model);
 		return "/forum/singleArticle";
 	}
 	

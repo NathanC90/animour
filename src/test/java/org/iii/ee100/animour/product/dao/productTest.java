@@ -1,6 +1,13 @@
 package org.iii.ee100.animour.product.dao;
 
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.iii.ee100.animour.shopping.dao.ClassifyDao;
 import org.iii.ee100.animour.shopping.dao.OrdersDao;
@@ -15,6 +22,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -36,18 +46,59 @@ public class productTest {
 	@Autowired
 	private ClassifyService classifyService;
 	
+	/**  id > 5
+	 * 測試帶查詢條件的分頁
+	 * 使用JpaSpecificationExecutor的 Page<T> findAll(Specification<T> spec, Pageable pageable)方法
+	 * Specification: 封裝了Criteria查詢的查詢條件
+	 * Pageable: 封裝了請求分頁的訊息 pageNo, pageSize, Sort
+	 */
 	@Test
-	public void testListProduct() {
-		Page<Product> page = productService.getPage(1, 6);
-		List<Product> products = page.getContent();
-		for(Product product:products) {
-			System.out.println(product.getName());
+	public void testJpaSpecificationExecutor() {
+		int pageNo = 0;
+		int pageSize = 5; //一頁幾筆
+		PageRequest pageable = new PageRequest(pageNo, pageSize);
+		//使用Specification的匿名內部類別
+		Specification<Product> specification = new Specification<Product>() {
+			/**
+			 * *root: 代表查詢的Entity類別
+			 * query:代表可以從中得到root物件，即告知JPA Criteria查詢要查詢哪一個Entity，還可以來加入查詢條件，還可以結合EntityManager物件得到最終查詢的TypedQuery物件
+			 * *cb:CriteriaBuilder物件，用來建立Criteria相關物件的工廠，並且可以從中取得Predicate物件
+			 * *return: Predicate類型代表一個查詢條件
+			 */
+			@Override
+			public Predicate toPredicate(Root<Product> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+//				Predicate pedicate = cb.equal(root.get("classify"), 1);
+				Predicate pedicate = cb.like(root.get("name"), "%磅%");
+				
+				return pedicate;
+			}
+		};
+		Page<Product> page = productDao.findAll(specification, pageable);
+		
+		
+		System.err.println("getTotalPages=" + page.getTotalPages());
+		System.err.println("getTotalElements=" + page.getTotalElements());
+		List<Product> content = page.getContent();
+		for(Product product:content) {
+			System.err.println(product.getName());
 		}
 	}
 	
 //	@Test
+//	public void testListProduct() {
+//		Page<Product> page = productService.getPage(1, 6);
+//		List<Product> products = page.getContent();
+//		for(Product product:products) {
+//			System.out.println(product.getName());
+//		}
+//	}
+	
+//	@Test
 //	public void testFindAllClassify() {
-//		System.out.println(productDao.findByClassify_id(1L));
+//		List<Product> products = productDao.findByClassify_id(1L);
+//		for(Product product:products) {
+//			System.out.println(product.getName());
+//		}
 //	}
 	
 	@Test
@@ -169,7 +220,7 @@ public class productTest {
 		//依價格<=查詢
 //		List<Product> products = productDao.findByPriceLessThanEqual(600);
 //		for(Product product:products) {
-//			System.out.println(product);
+//			System.out.println("產品名稱:" + product.getName() + "\t\t" + "價格:" + product.getPrice() + "\t" + "類別:" + product.getClassify().getName());
 //		}
 		
 //		List<Product> products = productDao.findByPriceBetween(600, 1000);
@@ -177,9 +228,9 @@ public class productTest {
 //			System.out.println(product);
 //		}
 		
-//		List<Product> products = productDao.findByNameContaining("皇家");
+//		List<Product> products = productDao.findByNameContaining("磅");
 //		for(Product product:products) {
-//			System.out.println(product);
+//			System.out.println(product.getName());
 //		}
 		
 //		List<Product> products = productDao.findByNameStartingWithAndPriceLessThan("法國皇家", 600);
@@ -197,6 +248,16 @@ public class productTest {
 //		System.out.println(products);
 		
 //		System.out.println(productDao.findByNameContaining("法國皇家"));
+		
+//		System.out.println(productDao.findOne(2L).getName());
+		
+//		List<Classify> findAll = classifyDao.findByName("寵物伺料");
+//		for(Classify classify:findAll) {
+//			Set<Product> products = classify.getProduct();
+//			for(Product product:products) {
+//				System.out.println(product.getName());
+//			}
+//		}
 	}
 	
 	

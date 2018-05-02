@@ -15,6 +15,9 @@
 </div>
 <p>${message}</p>
 
+<c:forEach var="product" items="${productAll}">
+	<p>${product.name}</p>
+</c:forEach>
 
 	<c:if test="${page == null || page.numberOfElements == 0}">
 		沒有任何商品資料
@@ -32,15 +35,15 @@
 				<th>編輯</th>
 				<th>刪除</th>
 			</tr>
-				<c:forEach var="products" items="${page.content}">
+				<c:forEach var="product" items="${page.content}">
 					<tr>
-						<td>${products.id}</td>
-						<td>${products.name}</td>
-						<td>${products.price}</td>
-						<td>${products.quantity}</td>
-						<td>${products.makeDate}</td>
-						<td>${products.expire}</td>
-						<td>${products.classify.name}</td>
+						<td>${product.id}</td>
+						<td>${product.name}</td>
+						<td>${product.price}</td>
+						<td>${product.quantity}</td>
+						<td>${product.makeDate}</td>
+						<td>${product.expire}</td>
+						<td>${product.classify.name}</td>
 						<td><a href="">編輯</a></td>
 						<td><a href="">刪除</a></td>
 					</tr>

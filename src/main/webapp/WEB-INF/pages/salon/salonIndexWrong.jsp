@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="en">
 
@@ -91,132 +89,142 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>寵物市集</h2>
+						<h2>房型價格</h2>
 					</div>
 				</div>
- 			</div>
+			</div>
 		</div>
 	</div>
 	<!-- Page Header End -->
 
-	<!-- End of call to action section -->
+	<!-- 輪播牆放這邊 section begin -->
+	<section class="cta-section section">
+		<div id="carousel-area">
+			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-slider" data-slide-to="1"></li>
+					<li data-target="#carousel-slider" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="carousel-item active">
+						<img class="d-block w-100" src="/images/room/cage1.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">熱門籠子</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">給動物一個舒適的環境</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i
+								class="fa fa-download"> </i> 點擊預約
+							</a>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="/images/room/cage2.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">可愛寵物赤裸裸
+							</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
+								各種寵物應有盡有</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-coffee">
+							</i> 點擊直播
+							</a>
+						</div>
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" src="/images/room/cage3.jpg" alt="">
+						<div class="carousel-caption">
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">最新房型</h2>
+							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新房型上架</h3>
+							<a class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i
+								class="fa fa-download"> </i> 點擊看房型
+							</a>
+						</div>
+					</div>
 
+				</div>
+				<a class="carousel-control-prev" href="#carousel-slider"
+					role="button" data-slide="prev"> <span
+					class="carousel-control carousel-control-prev-icon"
+					aria-hidden="true"></span> <span class="sr-only">Previous</span>
+				</a> <a class="carousel-control-next" href="#carousel-slider"
+					role="button" data-slide="next"> <span
+					class="carousel-control carousel-control-next-icon"
+					aria-hidden="true"></span> <span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+	</section>
+	<!-- 輪播牆end </section> -->
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-<!-- 				Blog Sidebar Section -->
-				<div class="col-md-3">
-					<div class="sidebar-area">
-<!-- 						Search Bar -->
-						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
-								<input name="name" type="text" placeholder="Search" class="form-control">
-								<button type="submit"><i class="fa fa-search"></i></button>
-							</form>
-						</aside>
-
-						<!--Start of Classify -->
-						
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">商品分類</h2>
-<%-- 							<form:form action="/products/${classify}" method="POST" modelAttribute="product"> --%>
-								<ul class="category-menu">
-									<c:forEach var="classify" items="${classifies}">
-										<li><div class="form-check">
-											<a href='<spring:url value="/products/${classify.id}"></spring:url>'>${classify.name}</a>
-										</div></li>
-									</c:forEach>
-								</ul>
-<%-- 							</form:form> --%>
-						</aside>
-						<!--End of Classify -->
-						
-						<!--Start of Price -->
-						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
-							<h2 class="widget-title">價格篩選</h2>
-							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="range" name="price" min="0" max="2000"><br><br>
-								<input type="submit" class="btn btn-common" value="查尋">
-							</form>
-						</aside>
-						<!--End of Price -->
-						
-						
-					</div>
-				</div>
-<!-- 				End -->
-				
-				<c:if test="${page == null || page.numberOfElements == 0}">
-					沒有任何商品資料
-				</c:if>
-				<c:if test="${page != null || page.numberOfElements > 0}">
+	<div>
+	<div>
+	<h3>查詢房型資料</h3>
+	<form name="/hotel/selectType" action="/hotel/selectType" method="post">
+		<input id='num' name="id" value="${selectType.id}" type="text"
+			size="14" style="text-align: left"> <input type="submit"
+			value="送出">
+	</form>
+	
+				<!-- BLog Article Section -->
 				<div class="col-md-9">
-				<ul class="pagination"><li class="page-item active"><p class="page-link">商品資料共有 ${page.totalElements} 筆</p></li></ul>
+					<!-- Single Blog Post -->
 					<div class="row">
-						<c:forEach var="product" items="${page.content}">
-							<div class="col-md-4">
+						<c:forEach var="animal" items="${beansfindall}">
+
+							<div class="col-md-3">
 								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/shopping/product/pd1.jpg"
-										width="100px" alt="商品列表">
+									<img class="card-img-top" src="/images/room/cage3.jpg"
+										width="100px" alt="待領養小貓">
 									<div class="card-body" style="margin-bottom: 5px">
-											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
-											<p>價格：${product.price}<br>數量：${product.quantity}</p>
-											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
-											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
-									</div>
-									<div class="d-flex justify-content-between align-items-center"
-										style="max-height: 100px">
-									<div>
-										<a href="<spring:url value='/selectOneProduct?id=${product.id}' />"
-											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon"></span>商品詳情
-										</a>
-									</div>
+										<p class="card-text" style="padding: 0px">房號：${animal.id}
+											主人：${animal.owner} 房型：${animal.type} 種類：${animal.specie}
+											入住日期：${animal.checkIn}</p>
+										<div class="d-flex justify-content-between align-items-center"
+											style="max-height: 100px">
+											<div class="btn-group" style="margin: 0px">
+												<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
+												<button type="button" class="btn btn-common btn-sm mt-10">預訂</button>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-						
 					</div>
-						<div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
-							<nav aria-label="..." class="">
-								<ul class="pagination">
-								<c:choose>
-									<c:when test="${page.number + 1 - 1 le 0}">
-										<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
-											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-										<span class="sr-only">Previous</span></a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
-											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-										<span class="sr-only">Previous</span></a></li>
-									</c:otherwise>
-									</c:choose>
-									<li class="page-item active"><a class="page-link" href="#">第 ${page.number + 1}/${page.totalPages} 頁
-											<span class="sr-only">(current)</span></a></li>
-									<c:choose>
-										<c:when test="${page.number+1 ge page.totalPages}">
-											<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
-												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-											<span class="sr-only">Next</span></a></li>
-										</c:when>
-										<c:otherwise>
-											<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
-												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-											<span class="sr-only">Next</span></a></li>
-										</c:otherwise>
-									</c:choose>
-								</ul>
-							</nav>
-						</div>
+					<!-- Slider Post -->
+
+					<!-- Blog Pagination -->
+					<div class="blog-pagination clearfix wow fadeIn"
+						data-wow-delay="0.3s">
+						<nav aria-label="..." class="">
+							<ul class="pagination">
+								<li class="page-item disabled"><a class="page-link"
+									href="#" tabindex="-1" aria-label="Previous"> <i
+										class="fa fa-angle-left"></i> Prev <span class="sr-only">Previous</span>
+								</a></li>
+								<li class="page-item active"><a class="page-link" href="#">1
+										<span class="sr-only">(current)</span>
+								</a></li>
+								<li class="page-item"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item"><a class="page-link" href="#">4</a></li>
+								<li class="page-item"><a class="page-link" href="#"
+									aria-label="Next"> Next <i class="fa fa-angle-right"></i> <span
+										class="sr-only">Next</span>
+								</a></li>
+							</ul>
+						</nav>
 					</div>
-				</c:if>
+				</div>
+				<!-- End -->
 			</div>
 		</div>
 	</section>
+	<!-- Classic Blog Section End -->
 
 	<!-- Footer Section -->
 	<footer>
@@ -301,7 +309,7 @@
 						</a> <a href="#" title="Sports Template for Joomla"> <img
 							src="/images/flicker/img2.jpg" alt="">
 						</a> <a href="" title="Apple Keyboard"> <img
-							src="/images/halfway/halfwayindex.jpg" alt="">
+							src="/images/flicker/img3.jpg" alt="">
 						</a>
 					</div>
 				</div>
@@ -356,7 +364,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	
+
 </body>
 
 </html>

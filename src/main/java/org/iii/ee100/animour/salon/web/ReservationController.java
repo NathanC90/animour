@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
+import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,12 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 
-//	@RequestMapping(path = { "/appointment" }, method = { RequestMethod.GET })
-//	public String reservationTime(Model model) {
-//		List<Reservation> reservation = reservationService.getAll();
-//		model.addAttribute("reservation", reservation);
-//		return "/salon/reservation";
-//	}
+	@RequestMapping(path = { "/reservationDate" }, method = { RequestMethod.GET })
+	public String reservationTime(Model model) {
+		List<ReservationDate> reservationDate = reservationService.getAllReservationDate();
+		model.addAttribute("reservationDate", reservationDate);
+		return "/salon/test";
+	}
 
 	// @RequestMapping(path= {"/appointment/detail"},method = { RequestMethod.GET })
 	// public String reservationDetail(Model model) {
@@ -62,20 +63,23 @@ public class ReservationController {
 	//選取服務種類
 	@RequestMapping(path = { "/appointment/firstPage" }, method = { RequestMethod.GET })
 	public String showServiceType(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model) {
+			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model,Long id) {
 //		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
 //		model.addAttribute("serviceContentPage", page);
+		
 		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+		reservationService.getServiceContentId(id);
+		reservationService.addServiceTime();
 		model.addAttribute("allType",allType);
 		return "/salon/reservation";		
 	}
 	@RequestMapping(path = { "/appointment/test2Page" }, method = { RequestMethod.GET })
 	public String showServiceTypeTest(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize,Model model) {
-		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
-		model.addAttribute("serviceContentPage", page);
-		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
-		model.addAttribute("allType",allType);
+//		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
+//		model.addAttribute("serviceContentPage", page);
+//		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+//		model.addAttribute("allType",allType);
 		return "/salon/test2";		
 	}
 
@@ -86,10 +90,10 @@ public class ReservationController {
 	public String showSuccess(Model model, Designer designer, Long id) {
 		List<Designer> showSuccess = reservationService.getAllFreeTime();
 		
-		Designer UpdateDesigner =reservationService.getOne(id);
+	//	Designer UpdateDesigner =reservationService.getOne(id);
 	//	model.addAttribute("chooseId", getId);
 
-		reservationService.updateToZero(UpdateDesigner);
+	//	reservationService.updateToZero(UpdateDesigner);
 		model.addAttribute("showSuccess", showSuccess);
 		return "/salon/successReservation";
 	}
@@ -112,16 +116,7 @@ public class ReservationController {
 
 	}
 
-	@RequestMapping(path = { "/appointment/testUpdateForm" }, method = { RequestMethod.POST })
-	public String updateOne(Model model, Long id, Designer designer) {
-		Designer getId = reservationService.getOne(id);
-		reservationService.updateToZero(getId);
-		model.addAttribute("updateOne", getId);
-		model.addAttribute("newInformation", designer);
 
-		return "/salon/test";
-
-	}
 
 	// @RequestMapping(path= {"/appointment/testForm"},method = { RequestMethod.GET
 	// })

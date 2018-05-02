@@ -1,4 +1,4 @@
-insert into designer (id, designer,freetime,onefree)values
+insert into designer (designer,freetime,onefree)values
 ('小美','2000-10-11 09:00:00',1),
 ('阿明','2010-10-12 10:00:00',1),
 ('阿中','2020-10-13 11:00:00',1),

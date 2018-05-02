@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,6 +20,7 @@ import lombok.Setter;
 public class Category extends GenericEntity {
 
 	@Column(name = "NAME", unique = true)
+	@NotBlank(message = "name cannot be blank or null")
 	private String name;
 
 	@JsonIgnore

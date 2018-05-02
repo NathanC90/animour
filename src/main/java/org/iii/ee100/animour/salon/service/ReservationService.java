@@ -7,9 +7,11 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
+import org.iii.ee100.animour.salon.dao.ReservationDateDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
+import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +31,9 @@ public class ReservationService extends GenericService<Reservation>{
 	@Autowired
 	ServiceContentDao serviceContentDao;
 	
+	@Autowired
+	ReservationDateDao reservationDateDao;
+	
 	public ArrayList<Reservation> getAll() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
@@ -38,20 +43,27 @@ public class ReservationService extends GenericService<Reservation>{
 		
 	}
 	
-	public void updateToZero(Designer designer) {
-
-		designer.setOneFree(0);
-		designerDao.save(designer);
+	public ArrayList<ReservationDate> getAllReservationDate(){
+		return Lists.newArrayList(reservationDateDao.findAll());
 	}
 	
 	public Designer getOne(Long id) {
 		return designerDao.findOne(id);
+	}
+	public ServiceContent getServiceContentId(Long id) {
+		return serviceContentDao.findOne(id);
 	}
 	
 	public ArrayList<ServiceContent> getAllServiceContent(){
 		return Lists.newArrayList(serviceContentDao.findAll());
 		
 	}
+	//計算總時數
+	public Integer addServiceTime(){
+		ServiceContent serviceContent=new ServiceContent();
+		return serviceContent.getTime();		
+	}
+	
 	
 	//設計師頁面幾筆
 	public Page<Designer> getDesignerPage(Integer pageNumber, Integer pageSize) {
@@ -64,5 +76,6 @@ public class ReservationService extends GenericService<Reservation>{
 		PageRequest request= new PageRequest(pageNumber, pageSize, Sort.Direction.DESC,"upload");
 		return serviceContentDao.findAll(request);		
 	}
+	
 
 }

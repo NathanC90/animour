@@ -56,7 +56,7 @@
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="/salon/getAll" aria-haspopup="true" aria-expanded="false">寵物salon</a>
+                                    <a class="nav-link dropdown-toggle" href="/reservationDate" aria-haspopup="true" aria-expanded="false">寵物salon</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="">salon簡介</a>
                                         <a class="dropdown-item" href="">salon價格</a>
