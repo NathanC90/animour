@@ -29,9 +29,9 @@
 				<ul class="menu">
 					<li><a href="/">首頁</a></li>
 					<li><a href="/halfway">中途專區</a></li>
-					<li><a href="/NewsIndex">最新活動專區</a></li>
+					<li><a href="/news/index?pageNo=1">最新活動</a></li>
 					<li><a href="/product/index">寵物市集</a></li>
-					<li><a href="/hotel/selectType">最新空房</a></li>
+					<li><a href="/reservationDate">寵物Salon</a></li>
 					<li><a href="/hospital">醫院資訊專區</a></li>
 					<li><a href="/forum/findAll">THE BLOG</a></li>
 					<li><a href="/donate">贊助我們</a></li>
