@@ -1,4 +1,4 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -121,7 +121,7 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form:form id="insertform" action="/postArticle" method="Post" modelAttribute="article"
+				<form:form  action="/postArticle" method="Post" modelAttribute="article"
 					enctype="multipart/form-data">
 					<div class="form-row">
 					</div>
@@ -146,7 +146,7 @@
 <!-- 						請上傳照片 <input type="file" class="form-control-file" id="image" -->
 <!-- 							name="file"> -->
 <!-- 					</div> -->
-					<button id="btn1" type="button" class="btn btn-common" value="送出">送出</button> 
+					<input type="submit" class="btn btn-common" value="送出"> 
 					<input type="reset" class="btn btn-common" value="清除">
 				</form:form>
 			</div>
@@ -156,60 +156,5 @@
 	 </div>
       </div>
     </section>
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-    <script src="http://malsup.github.com/jquery.form.js"></script>
-    <script>
-    
-    function toJson(formData) {
-		var object = {};
-		formData.forEach(function (value, key) {
-			if (key == 'category'){
-				var object1 = {};
-				object1['id'] = value;
-				object[key] = object1;
-			}else{
-				object[key] = value;
-			}
-		});
-		var json = JSON.stringify(object, null);
-		console.log(json);
-		return json;
-	};
-    
-	$(document).ready(function(){
-    	$('#btn1').click(function(){
-    		console.log("haha");
-//     		$('#insertform').ajaxForm({
-//                 url: '/articles',
-//                 data: {},
-//                 method: 'post',
-//                 dataType: 'JSON'
-//             });
-//     		var article = [{ "subject": $("subject").val(), "category": $("category").val(), "context":$("context").val() },
-//                 ];
-    		var formData = new FormData(document.getElementById("insertform"));
-//     		var jsons = transformToJson(formData);
-    		console.log(formData);
-    		//var Json = JSON.stringify(formData);
-//     		console.log(Json);
-    		
-    		
-			
-    		$.ajax({
-    		    type: "POST",
-    		    url: "/articles",
-    		    // The key needs to match your method's input parameter (case-sensitive).
-    		    data: toJson(formData),
-    		    contentType: "application/json; charset=utf-8",
-    		    dataType: "json",
-    		    success: function(data){alert(data);},
-    		    failure: function(errMsg) {
-    		        alert(errMsg);
-    		    }
-    		});
-    	});
-    	
-    });
-    </script>
 </body>
 </html>
