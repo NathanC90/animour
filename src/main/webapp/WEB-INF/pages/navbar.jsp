@@ -84,8 +84,8 @@
 
                                 <sec:authorize access="hasRole('Admin')"><!-- 管理員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/homepage" aria-haspopup="true" aria-expanded="false">
-                                            <sec:authentication property="principal.username" /> 您好</a>
+                                        <a class="nav-link dropdown-toggle" href="/user/"  aria-haspopup="true" aria-expanded="false">
+                                            <sec:authentication property="principal.username"/> 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/users">會員資料</a>
                                             <a class="dropdown-item" href="/logout">登出</a>
@@ -98,10 +98,10 @@
 								
                                 <sec:authorize access="hasRole('Member')"><!-- 會員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/homepage" aria-haspopup="true" aria-expanded="false">
-                                            <sec:authentication property="principal.username" /> 您好</a>
+                                        <a class="nav-link dropdown-toggle" href='/${username}' aria-haspopup="true" aria-expanded="false">
+                                            <sec:authentication property="principal.username" var="username" />${username} 您好</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/homepage">個人首頁</a>
+                                            <a class="dropdown-item" href="/${username}">個人首頁</a>
                                             <a class="dropdown-item" href="/update">修改個人資料</a>
 
                                             <a class="dropdown-item" href="/logout">登出</a>
