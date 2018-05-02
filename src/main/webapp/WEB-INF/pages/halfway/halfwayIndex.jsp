@@ -89,7 +89,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>中途專區</h2>
+						<h2>中途專區 ${mapsize}</h2>
 					</div>
 				</div>
 			</div>

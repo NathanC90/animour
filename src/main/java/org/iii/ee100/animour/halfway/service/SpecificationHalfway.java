@@ -1,5 +1,10 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -12,12 +17,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpecificationHalfway {
 
-	public static Specification<Animal> containsLike(String attribute, String value) {
+	public static Specification<Animal> containsLikeOr(Map<String, Object> attributemap) {
 
 		return new Specification<Animal>() {
+			
 			@Override
 			public Predicate toPredicate(Root<Animal> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-				return cb.like(root.get(attribute), "%" + value + "%");
+				List<Predicate> predicates = new ArrayList<>();
+				for (Map.Entry<String, Object> entry : attributemap.entrySet()) {
+					String attribute = entry.getKey();
+					Object value = entry.getValue();
+					predicates.add(cb.like(root.get(attribute), "%" + value + "%"));
+					
+				}
+				return cb.or(predicates.toArray(new Predicate[predicates.size()]));
 			}
 		};
 	}

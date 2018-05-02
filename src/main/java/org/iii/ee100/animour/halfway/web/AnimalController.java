@@ -2,6 +2,7 @@ package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,9 +15,6 @@ import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Controller;
@@ -202,11 +200,15 @@ public class AnimalController {
 	@RequestMapping(value = "/queryTest", method = { RequestMethod.GET })
 	public String specificationQuery(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
 			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-		Specification<Animal> spec = Specifications.where(SpecificationHalfway.containsLike("name", "Cat"))
-				.or(SpecificationHalfway.containsLike("name", "Bird"));
 		
+		Map<String, Object> attributemap = new IdentityHashMap<>();
+		attributemap.put(new String("name"), "Cat");
+		attributemap.put(new String("name"), "Rabbit");
+		Specification<Animal> spec = Specifications.where(SpecificationHalfway.containsLikeOr(attributemap));
 		Page<Animal> page = animalservice.getSpecPage(pageNumber, pageSize, spec); 
 		model.addAttribute("animalpage", page);
+		model.addAttribute("mapsize", attributemap.size());
+		
 
 		// 設定當前會員
 				Member current = animalservice.getCurrentMember();
