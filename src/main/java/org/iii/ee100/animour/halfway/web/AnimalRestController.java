@@ -38,9 +38,9 @@ public class AnimalRestController {
 	}
 
 	// 新增
-	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST, consumes = {  
+	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST, consumes = {  "multipart/form-data",
 			"application/json", "application/xml" })
-	public ResponseEntity<?> insertAnimal(@RequestBody Animal animal,
+	public ResponseEntity<?> insertAnimal(@RequestBody Animal animal, @RequestParam(value = "file", required = false) MultipartFile image,
 			HttpServletRequest request, Model model) {
 		Member current = animalservice.getCurrentMember();
 		animal.setMember(current);
