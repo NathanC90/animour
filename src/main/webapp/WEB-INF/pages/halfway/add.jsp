@@ -180,7 +180,7 @@
 					function add() {
 						alert("有被呼叫")
 						var data = new FormData(document.getElementById("addAnimal"));
-						data.append("sss", "qqq");
+						// data.append("sss", "qqq");
 						console.log(data);
 
 						//https://stackoverflow.com/questions/17066875/how-to-inspect-formdata
@@ -193,13 +193,15 @@
 						$.ajax({
 							url: '/halfway/animal',
 							type: 'POST',
+							//data: data,
 							data: json,
 							dataType: 'json',
 							//processData: false,
-							//contentType: "application/json",
-							enctype: 'multipart/form-data',
+							contentType: "application/json",
+							// contentType: "multipart/form-data",
+							// enctype: 'multipart/form-data',
 							//contentType: false,
-							processData: false,
+							//processData: false,
 							success: function (data) {
 								alert(data);
 							}
