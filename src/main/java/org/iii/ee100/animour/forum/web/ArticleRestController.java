@@ -6,8 +6,12 @@ import java.util.List;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,9 @@ public class ArticleRestController {
 
 	@Autowired
 	ForumService forumService;
+
+	@Autowired
+	MemberService memberService;
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
@@ -88,16 +95,20 @@ public class ArticleRestController {
 	// 新增文章
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.POST, consumes = { "application/json" })
-	public Article newArticle(@RequestBody Article article) {
+	public ResponseEntity<?> newArticle(@RequestBody Article article) {
 		
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		article.setPostTime(new Timestamp(System.currentTimeMillis()));
+		if (memberService.getCurrentMember() != null) {
+			article.setMember((Member) memberService.getCurrentMember());
+		}
+		article.setClick(0L);
 		try {
 			forumService.insert(article);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return article;
+		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}
 
 	//讓COMMENT的AJAX呼叫用的

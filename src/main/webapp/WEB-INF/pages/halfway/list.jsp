@@ -129,26 +129,38 @@
 									<ul class="category-menu">
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												<label class="form-check-label" for="defaultCheck1"> Dog (31) </label>
+												<input class="form-check-input" type="checkbox" value="狗" id="defaultCheck1" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 狗 (31) </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												<label class="form-check-label" for="defaultCheck1"> Cat (16) </label>
+												<input class="form-check-input" type="checkbox" value="貓" id="defaultCheck2" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 貓 (16) </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												<label class="form-check-label" for="defaultCheck1"> Bird (2) </label>
+												<input class="form-check-input" type="checkbox" value="兔" id="defaultCheck3" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 兔 (2) </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-												<label class="form-check-label" for="defaultCheck1"> Rabbit (7) </label>
+												<input class="form-check-input" type="checkbox" value="鼠" id="defaultCheck4" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 鼠 (7) </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="鳥" id="defaultCheck5" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 鳥 (7) </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="其他" id="defaultCheck6" name="speciecheck">
+												<label class="form-check-label" for="defaultCheck1"> 其他 (7) </label>
 											</div>
 										</li>
 									</ul>
@@ -158,19 +170,17 @@
 								<!--Start of Region -->
 								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
 									<h2 class="widget-title">縣市</h2>
-									<form name="/queryByCity" action="/queryByCity" method="GET">
-										<ul class="category-menu">
-											<c:forEach var="citys" items="${citys}">
-												<li>
-													<div class="form-check">
-														<input class="form-check-input" type="checkbox" value="${citys.id}" id="defaultCheck1" name="city">
-														<label class="form-check-label" for="defaultCheck1">${citys.name} (${citys.animalCount}) </label>
-													</div>
-												</li>
-											</c:forEach>
-										</ul>
-										<input type="submit" class="btn btn-common" value="搜尋">
-									</form>
+									<ul class="category-menu">
+										<c:forEach var="citys" items="${citys}">
+											<li>
+												<div class="form-check">
+													<input class="form-check-input" type="checkbox" value="${citys.id}" id="defaultCheck1" name="citycheck">
+													<label class="form-check-label" for="defaultCheck1">${citys.name} (${citys.animalCount}) </label>
+												</div>
+											</li>
+										</c:forEach>
+									</ul>
+									<input type="button" class="btn btn-common" value="搜尋" id="buttonGet">
 								</aside>
 								<!--End of Region -->
 							</div>
@@ -373,51 +383,52 @@
 				var initSubmitForm = function () {
 					// 使用 ajax() 來呼叫 REST API
 					var docFragment = $(document.createDocumentFragment());
-					$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
-						$.each(datas, function (idx, animal) {
+					$.getJSON('/halfway/animal', { "pageNumber": pageNumber },
+						function (datas) {
+							$.each(datas, function (idx, animal) {
 
-							// string = `
-							// <p>${animal.name}</p>
-							// <li>綽號:${animal.name}</li>
-							// `
+								// string = `
+								// <p>${animal.name}</p>
+								// <li>綽號:${animal.name}</li>
+								// `
 
-							var fileName = animal.fileName;
-							var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
+								var fileName = animal.fileName;
+								var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
 
-							var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
-							var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
-							var li2 = $("<li></li>").append(['綽號:' + animal.name]);
-							var li3 = $("<li></li>").append(['種類:' + animal.specie]);
-							var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
-							var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
-							var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
-							var uploadObj = new Date(animal.upload);
-							var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
+								var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
+								var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
+								var li2 = $("<li></li>").append(['綽號:' + animal.name]);
+								var li3 = $("<li></li>").append(['種類:' + animal.specie]);
+								var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
+								var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
+								var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
+								var uploadObj = new Date(animal.upload);
+								var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
 
-							var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
-							var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
-							var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
-							var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
-							var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
+								var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
+								var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
+								var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
+								var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
+								var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
 
-							var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
-							docFragment.append(eachdiv1);
-							console.log(animal.name);
-						});
-						$('#each').append(docFragment);
-					}).done(function () {
-						//alert("有呼叫成功");
-						pageNumber++;
-						//判斷下一次取回的json是否為空(是否為最後一頁)
-						$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
-							console.log(datas);
-							if (datas.length != 0) {
-								var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
-								$('#each').append(buttonImport);
-								document.getElementById("importbutt").addEventListener("click", importAgain);
-							}
+								var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
+								docFragment.append(eachdiv1);
+								console.log(animal.name);
+							});
+							$('#each').append(docFragment);
+						}).done(function () {
+							//alert("有呼叫成功");
+							pageNumber++;
+							//判斷下一次取回的json是否為空(是否為最後一頁)
+							$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
+								console.log(datas);
+								if (datas.length != 0) {
+									var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
+									$('#each').append(buttonImport);
+									document.getElementById("importbutt").addEventListener("click", importAgain);
+								}
+							})
 						})
-					})
 				};
 
 				function importAgain() {
@@ -425,6 +436,68 @@
 					$('#importbutt').remove();
 					initSubmitForm();
 				}
+			</script>
+			<script>
+				$(document).ready(function () {
+					$('.form-check-input').change(function () {
+						//讀出所有被勾選checkbox的值
+						var cityitems = [];
+						var specieitems = [];
+						$(':checked[name="citycheck"]').each(function () {
+							cityitems.push($(this).val());
+						});
+						$(':checked[name="speciecheck"]').each(function () {
+							specieitems.push($(this).val());
+						});
+						//alert(items);
+
+						//var docFragment = $(document.createDocumentFragment());
+						$.ajax({
+							url: '/queryTest',
+							type: 'GET',
+							//data: data,
+							data: { "specieitems": specieitems, "cityitems": cityitems },
+							//dataType: 'json',
+							success:
+								//window.location.href = "http://localhost:8080/halfway";
+								function (datas) {
+									var docFragment = $(document.createDocumentFragment());
+									$.each(datas, function (idx, animal) {
+
+										// string = `
+										// <p>${animal.name}</p>
+										// <li>綽號:${animal.name}</li>
+										// `
+
+										var fileName = animal.fileName;
+										var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
+
+										var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
+										var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
+										var li2 = $("<li></li>").append(['綽號:' + animal.name]);
+										var li3 = $("<li></li>").append(['種類:' + animal.specie]);
+										var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
+										var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
+										var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
+										var uploadObj = new Date(animal.upload);
+										var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
+
+										var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
+										var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
+										var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
+										var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
+										var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
+
+										var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
+										docFragment.append(eachdiv1);
+										console.log(animal.name);
+									});
+									$('#each').empty();
+									$('#each').append(docFragment);
+								}
+						});
+					});
+				});
 			</script>
 			<!-- JavaScript & jQuery Plugins -->
 			<script src="/js/jquery-min.js"></script>
