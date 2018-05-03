@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -82,6 +83,11 @@ public class AnimalService extends GenericService<Animal>{
 	public Page<Animal> getAnimalConatainingPage(String name, Integer pageNumber, Integer pageSize) {
 		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
 		return animalDao.findByNameContaining(name, request);
+	}
+	
+	public Page<Animal> getSpecPage(Integer pageNumber, Integer pageSize, Specification<Animal> spec) {
+		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+		return animalDao.findAll(spec, request);
 	}
 
 	public List<City> getAllCity() {

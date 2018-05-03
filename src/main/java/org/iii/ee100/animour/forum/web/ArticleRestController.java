@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -82,6 +83,21 @@ public class ArticleRestController {
 	public void newComment(@RequestBody Comment comment) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		forumService.insertComment(comment);
+	}
+
+	// 新增文章
+	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST, consumes = { "application/json" })
+	public Article newArticle(@RequestBody Article article) {
+		
+		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		article.setPostTime(new Timestamp(System.currentTimeMillis()));
+		try {
+			forumService.insert(article);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return article;
 	}
 
 	//讓COMMENT的AJAX呼叫用的

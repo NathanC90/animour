@@ -72,7 +72,7 @@
     <div class="container">
       <div class="row">
         <!-- Blog Sidebar Section -->
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="sidebar-area">
             <!-- Search Bar -->
             <aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
@@ -100,7 +100,7 @@
                   <a href="#">管理訊息</a>
                 </li>
                 <li>
-                  <a href="#">登出</a>
+                  <a href="/login?logout">登出</a>
                 </li>
               </ul>
             </aside>
@@ -112,7 +112,7 @@
         <!-- End -->
 
         <!-- BLog Article Section -->
-        <div class="col-md-9">
+        <div class="col-md-10">
           <!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
 
@@ -131,29 +131,17 @@
 			<tr>
 				<th></th>
 				<th>帳號</th>
+				<th>密碼</th>
+				<th>姓名</th>
 				<th>暱稱</th>
 				<th>手機</th>
 				<th>信箱</th>
+				<th>地址</th>
+				<th>地址</th>
 				<th>管理</th>
 			</tr>
 		</thead>
 		<tbody>
-<%-- 		<c:forEach var="member" items="${memberlist}"> --%>
-<!-- 			<tr> -->
-<!-- 				<td></td> -->
-<%-- 				<td>${member.account}</td> --%>
-<%-- 				<td>${member.nickname}</td> --%>
-<%-- 				<td>${member.cell}</td> --%>
-<%-- 				<td>${member.email}</td> --%>
-<!-- 				<td> -->
-<!-- 				<form action="/deletemember" method="POST"> -->
-<%-- 				<input type="hidden" name="account" value="${member.account}"/> --%>
-<%-- 				<input type="submit" value="刪除"  onclick="${member.account}"/> --%>
-<!-- 				</form> -->
-<!-- 				</td> -->
-
-<!-- 			</tr> -->
-<%-- 		</c:forEach> --%>
 	</tbody>
 	</table>
 	</sec:authorize>
@@ -245,18 +233,28 @@
 	
 <script>
 $(document).ready(function() {
-$.getJSON('/rest_users', {  }, function (data) {
+$.getJSON('/user', {  }, function (data) {
         console.log(data);
         $('#table1>tbody').empty();
         $.each(data, function (i, member) {
             var cell1 = $("<td></td>").text(member.id);
-            var cell2 = $("<td></td>").text(member.name);
-            var cell3 = $("<td></td>").text(member.nickname);
-            var cell4 = $("<td></td>").text(member.cell);
-            var cell5 = $("<td></td>").text(member.email);
-            var cell6 = $("<td></td>").html('<button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>   <button class="btn btn-info"><i class="fas fa-edit"></i></button>');
+            var cell2 = $("<td></td>").text(member.account);
+            var cell3 = $("<td></td>").text(member.password);
+            var cell4 = $("<td></td>").text(member.name);
+            var cell5 = $("<td></td>").text(member.nickname);
+            var cell6 = $("<td></td>").text(member.cell);
+            var cell7 = $("<td></td>").text(member.email);
+            var cell8 = $("<td></td>").text(member.address);
+            
+            if (member.status=0 ){
+            var cell9 = $("<td></td>").text('封鎖');}
+            else{
+           	var cell9 = $("<td></td>").text('正常');}
 
-            var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6]);
+          
+            var cell10 = $("<td></td>").html('<button class="btn btn-danger" style="background-color: #dc3545; border-color: #dc3545";><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"><i class="fas fa-edit"></i></button>');
+
+            var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
 
             $('#table1>tbody').append(row);
         });

@@ -6,7 +6,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
@@ -28,9 +30,11 @@ public class Comment extends GenericEntity {
 	private Member member;
 
 	@Column(name = "CONTENT", columnDefinition = "TEXT")
+	@NotBlank
 	private String content;
 
 	@Column(name = "UPDATE_TIME")
+	@Past
 	private java.sql.Timestamp updateTime;
 
 }

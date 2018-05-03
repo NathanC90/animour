@@ -376,6 +376,11 @@
 					$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
 						$.each(datas, function (idx, animal) {
 
+							// string = `
+							// <p>${animal.name}</p>
+							// <li>綽號:${animal.name}</li>
+							// `
+
 							var fileName = animal.fileName;
 							var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
 

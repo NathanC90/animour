@@ -27,7 +27,7 @@ public class ProductRestController {
 		if(pageNo < 1 ) {
 			pageNo = 1;
 		}
-		Page<Product> page = productService.getPage(pageNo, 6);
+		Page<Product> page = productService.getPage(pageNo, 20);
 		List<Product> products = page.getContent();
 		return products;
 	}

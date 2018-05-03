@@ -43,6 +43,11 @@ public class ArticlePageController {
 		model.addAttribute("article", article);
 		return "/forum/insertArticleForm";
 	}
+
+//	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.GET })
+//	public String articleForm(Model model) {
+//		return "/forum/insertArticleForm";
+//	}
 	
 	//將使用者輸入自動接收轉型填入前一個方法傳入的Article物件
 	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.POST })
@@ -64,11 +69,13 @@ public class ArticlePageController {
 				forumService.insert(article);
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.println(article);
 				return "/rollback";
 			}
 		} else {
 			return "redirect:/postArticle";
 		}
+		sidebar(model);
 		return "/forum/singleArticle";
 	}
 	
@@ -102,7 +109,7 @@ public class ArticlePageController {
 			return "/rollback";
 		}
 		// click 計算
-		if (atc != null) {
+		if (atc != null && atc.getClick()!= null) {
 			Long click = atc.getClick();
 			atc.setClick(click + 1);
 			try {
