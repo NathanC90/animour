@@ -43,10 +43,10 @@ public class Product extends GenericEntity {
 	@JoinColumn(name="CLASSIFY_ID", nullable = false)
 	private Classify classify;
 
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinTable(name = "PRODUCT_ORDERS",
-			joinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")},
-			inverseJoinColumns = {@JoinColumn(name = "ORDERS_ID", referencedColumnName = "ID")})
-	private Set<Orders> orders = new HashSet<Orders>();
+//	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//	@JoinTable(name = "PRODUCT_ORDERS",
+//			joinColumns = {@JoinColumn(name = "PRODUCT_ID", referencedColumnName = "ID")},
+//			inverseJoinColumns = {@JoinColumn(name = "ORDERS_ID", referencedColumnName = "ID")})
+//	private Set<Orders> orders = new HashSet<Orders>();
 
 }

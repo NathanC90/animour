@@ -23,4 +23,6 @@ public interface AnimalDao extends GenericDao<Animal>,JpaSpecificationExecutor<A
 	
 //	@Query(value="SELECT count(*) FROM ANIMAL where CITY = ?1", nativeQuery = true)
 //	Long findCityCount(Long cityId);
+	
+	List<Animal> findByMemberIdOrderByUploadDesc(Long memberId);
 }

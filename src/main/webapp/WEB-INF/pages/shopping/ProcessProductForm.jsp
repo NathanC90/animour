@@ -44,7 +44,7 @@
 						<td>${product.makeDate}</td>
 						<td>${product.expire}</td>
 						<td>${product.classify.name}</td>
-						<td><a href="">½s¿è</a></td>
+						<td><a href="/product/${product.id}">½s¿è</a></td>
 						<td><a href="">§R°£</a></td>
 					</tr>
 				</c:forEach>

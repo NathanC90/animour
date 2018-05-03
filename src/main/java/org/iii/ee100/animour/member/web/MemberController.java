@@ -1,16 +1,15 @@
 package org.iii.ee100.animour.member.web;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.iii.ee100.animour.common.security.AnimourUserDetailsService;
+import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,6 +24,9 @@ public class MemberController {
 	@Autowired
 	MemberService memberService;
 
+	@Autowired
+	AnimalService animalService;
+	
 	// 註冊頁面
 	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
 	public String sign(Model model) {
@@ -101,6 +103,10 @@ public class MemberController {
 	public String profile(Model model,@PathVariable String account) {		
 		 Member userDetails=memberService.getOneByAccount(account);
 		 model.addAttribute("member", userDetails);
+		 
+		 List<Animal> animalls=animalService.getHomepageAnimalList(userDetails.getId());
+		 model.addAttribute("animalls", animalls);
+		 
 		return "/member/homepage";
 
 	}

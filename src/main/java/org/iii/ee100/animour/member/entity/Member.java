@@ -24,11 +24,13 @@ import lombok.Data;
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
 	
-	@NotBlank(message="enter a username")
+	//@NotBlank(message="enter a username")
+	@Pattern(regexp = "^[A-Za-z0-9]+", message = "請輸入字母或數字")
 	@Column(name = "ACCOUNT")
 	private String account;// 帳號
 	@NotBlank
-	@Size(min = 5, max = 10, message = "Please enter between {min} and {max} characters.")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{3,10}$", message = "請輸入大小寫字母和數字,且長度在3-10之間")
+	//@Size(min = 5, max = 10, message = "Please enter between {min} and {max} characters.")
 	@Column(name = "PASSWORD")
 	private String password;// 密碼
 
@@ -41,7 +43,7 @@ public class Member extends GenericEntity implements UserDetails {
 	private String nickname;// 暱稱
 
 	
-	@Pattern(regexp ="^[09]{2}[0-9]{2}-[0-9]{6}$",message="Invalid cell 09xx-xxxxxx")
+	@Pattern(regexp ="^09[0-9]{2}-[0-9]{6}$",message="Invalid cell 09xx-xxxxxx")
 	@Column(name = "CELL")
 	private String cell;// 手機
 	
@@ -50,17 +52,23 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "EMAIL")
 	private String email;// 信箱
 	
-	
 	@Column(name = "ADDRESS")
 	private String address;// 地址
 	
+	@Column(name = "SIGNATURE", columnDefinition = "TEXT")//簽名檔
+	private String signature;
+
+	
+	//後台管理
 	@Column(name = "REGISTRATIONTIME")
-	private java.sql.Timestamp registrationTime;
+	private java.sql.Timestamp registrationTime;//註冊時間		
 	
 	@Column(name = "LOGINTIME")
-	private java.sql.Timestamp loginTime;
+	private java.sql.Timestamp loginTime;//登入時間
+	
 	@Column(name = "FREQ")
-	private Integer freq;
+	private Integer freq; 	//登入次數
+	
 	@Column(name = "STATUS")//(0:封鎖,1:使用)
 	private Integer status;
 	@Column(name = "ROLE")//("member","admin")

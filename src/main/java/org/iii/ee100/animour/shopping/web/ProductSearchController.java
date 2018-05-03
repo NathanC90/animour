@@ -21,7 +21,7 @@ public class ProductSearchController {
 	@Autowired
 	private ClassifyService classifyService;
 	
-		//find product by classify
+		//Find Product by Classify
 		@RequestMapping("/products/{id}")
 		public String getProductByCategory(@PathVariable("id") Long id, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {
@@ -31,7 +31,7 @@ public class ProductSearchController {
 			return "/shopping/ProductIndex";
 		}
 		
-		//KeyWord Select By Product
+		//KeyWord Query By Product
 		@RequestMapping(path= {"/selectByNameKeyWord"}, method={RequestMethod.GET})
 		public String selectByNameKeyWord(Product product, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {
@@ -41,7 +41,7 @@ public class ProductSearchController {
 			return "/shopping/ProductIndex";
 		}
 		
-		//find Product by PriceLessThanEqual
+		//Find Product by PriceLessThanEqual
 		@RequestMapping(path= {"/selectPrice"}, method={RequestMethod.GET})
 		public String selectPrice(Product product, Model model,
 				@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr) {

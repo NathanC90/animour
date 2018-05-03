@@ -142,7 +142,7 @@
 									<td>${product.expire}</td>
 									<td>${product.classify.name}</td>
 									
-									<td><a href="<spring:url value='/selectOneProduct?id=${product.id}' />" id="buttonUpdate" type="button" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
+									<td><a href="<spring:url value='/product/${product.id}' />" id="buttonUpdate" type="button" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
 									<td><a id="buttonDelete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
 								</tr>
 							</c:forEach>
