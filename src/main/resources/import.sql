@@ -85,16 +85,23 @@ insert into donate (id, name, price, email)
 values (10, 'Georgina Sparks', 5000, 'georgina1027@gmail.com');
 
 
-/*6 designer*/
-insert into designer (designer,freetime,onefree)values
-('小美','2000-10-11 09:00:00',1),
-('阿明','2010-10-12 10:00:00',1),
-('阿中','2020-10-13 11:00:00',1),
-('阿利','2021-10-14 12:00:00',1),
-('小小','2023-10-15 14:00:00',1),
-('大大','2024-10-15 15:00:00',1),
-('安安','2025-10-15 16:00:00',1),
-('學泰','2026-10-15 17:00:00',1);
+/*6 reservation*/
+insert into reservation (reservation_Date,content,designer,total_Time,price)values
+('2000-10-12','洗澡','阿明',1,200),
+('2000-10-13','造型','阿中',1,100),
+('2000-10-14','造型','阿利',1,200),
+('2000-10-15','剪指甲','小小',1,300),
+('2000-10-16','剪指甲','大大',1,200),
+('2000-10-17','造型','安安',1,200),
+('2000-10-18','剪指甲','學泰',1,300);
+
+
+
+
+
+
+
+
 
 
 /*UPDATE hotel SET  owner='lunlun', type='small', checkIn='1991-10-03', total=4,species='poodel2',dog_Name='hichu' WHERE Id = 1*/
@@ -165,6 +172,35 @@ insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DES
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 1);
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
+<<<<<<< HEAD
+/*9 serviceContent*/
+insert into serviceContent (CONTENT,time,price)values
+('洗澡',1,100),
+('剪毛',1,200),
+('造型',1,400),
+('剪指甲',1,300);
+
+/*10 reservationTime*/
+insert into reservation_Time (front_Time,back_Time)values
+('09:00:00','10:00:00'),
+('10:00:00','11:00:00'),
+('11:00:00','12:00:00'),
+('13:30:00','14:30:00'),
+('14:30:00','15:30:00'),
+('15:30:00','16:30:00');
+
+/*11 designer*/
+insert into designer (designer)values
+('阿武'),
+('幽助'),
+('小傑'),
+('悟飯'),
+('飛影'),
+('琦玉'),
+('陳浩南');
+
+
+=======
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 2);
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
@@ -185,4 +221,5 @@ insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DES
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 4);
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4);
+>>>>>>> b7da75c57ef26d216c390ccdaf7405e7e43f6f60
 

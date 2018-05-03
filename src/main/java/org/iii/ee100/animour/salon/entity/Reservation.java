@@ -1,33 +1,39 @@
 package org.iii.ee100.animour.salon.entity;
 
-import java.sql.Timestamp;
+
+import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="Reservation")
-@Data
 public class Reservation extends GenericEntity{
 	
-	@Id
-	@Column(name="ID")
-	private Long id;
 	
-	@Column(name="TIME")
-	private java.sql.Timestamp time;
+	@Column(name="RESERVATION_DATE")
+	private java.sql.Date reservationDate;
 	
-	@Column(name="SERVICE")
-	private String service;
+	@Column(name="CONTENT")
+	private String content;
+	
+	@Column(name="DESIGNER")
+	private String designer;
+	@Column(name="TOTAL_TIME")
+	private Integer totalTime;
 	
 	@Column(name="PRICE")
-	private Integer price;
+	private Integer price;	
+	
+	
 	
 	
 }

@@ -11,7 +11,7 @@ import org.iii.ee100.animour.salon.dao.ReservationDateDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
-import org.iii.ee100.animour.salon.entity.ReservationDate;
+import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,7 +34,7 @@ public class ReservationService extends GenericService<Reservation>{
 	@Autowired
 	ReservationDateDao reservationDateDao;
 	
-	public ArrayList<Reservation> getAll() {
+	public ArrayList<Reservation> getAllContent() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
 	
@@ -43,7 +43,7 @@ public class ReservationService extends GenericService<Reservation>{
 		
 	}
 	
-	public ArrayList<ReservationDate> getAllReservationDate(){
+	public ArrayList<ReservationTime> getAllReservationDate(){
 		return Lists.newArrayList(reservationDateDao.findAll());
 	}
 	

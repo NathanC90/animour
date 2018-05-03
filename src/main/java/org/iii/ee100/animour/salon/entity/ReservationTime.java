@@ -1,7 +1,6 @@
 package org.iii.ee100.animour.salon.entity;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,7 +11,6 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.Getter;
@@ -21,14 +19,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="reservationDate")
-public class ReservationDate extends GenericEntity{
+@Table(name="RESERVATIONTIME")
+public class ReservationTime extends GenericEntity{
 	
-	@OneToMany(mappedBy = "reservationDate", cascade = { CascadeType.ALL })
+	
+	
+	
+
+	@OneToMany(mappedBy = "reservationTime", cascade = { CascadeType.ALL })
 	private List<ServiceContent> serviceContent;
 	
-	@Column(name="RESERVATIONDATE")
-	private Timestamp reservationDate;
+	@Column(name="FRONT_TIME")
+	private java.sql.Time frontTime;
+	
+	@Column(name="BACK_TIME")
+	private java.sql.Time backTime;
 	
 
 }

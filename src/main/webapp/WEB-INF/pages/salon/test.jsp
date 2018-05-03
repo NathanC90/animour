@@ -10,18 +10,18 @@
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 				<title>test</title>
 			</head>
-			<div>${reservationDate.reservationDate}</div>>
+			<div>${reservationDate[0].date.content}</div> 
 
 			<body>
 				<div>
-					<c:forEach var="var" items="${reservationDate}">
+					<c:forEach var="avar" items="${reservationDate}">
 
 						<h3>查詢一筆空閒時間</h3>
 						<table>
 
 							<tbody>
 								<tr>
-									<td>${var.date}</td>
+									<td>${avar.date}</td>
 									<!-- <td>${var.date.price}</td> -->
 
 								</tr>
