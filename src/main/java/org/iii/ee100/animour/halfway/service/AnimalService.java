@@ -163,6 +163,12 @@ public class AnimalService extends GenericService<Animal>{
 			System.out.println(account);
 			return null;
 		}
+		
+	}	
+	public List<Animal> getHomepageAnimalList(Long memberId){
+		return animalDao.findByMemberIdOrderByUploadDesc(memberId);
+		
 	}
+	
 
 }

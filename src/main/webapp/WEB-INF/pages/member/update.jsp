@@ -146,6 +146,13 @@
 												class='form-control' />
 										</div>
 									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											簽名檔:
+											<form:textarea id="signature" path="signature" 
+												class='form-control' />
+										</div>
+									</div>
 									<input type="submit" class="btn btn-common" value="送出">
 									<input type="reset" class="btn btn-common" value="清除">
 <!-- 									<a href="/" class="btn btn-common"> 回首頁</a> -->
