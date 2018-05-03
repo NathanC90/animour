@@ -23,9 +23,10 @@ import lombok.Setter;
 public class ServiceContent extends GenericEntity{
 
 	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "RESERVATIONDATE_ID",referencedColumnName="ID")
-	private ReservationDate reservationDate;
+	@JoinColumn(name = "RESERVATIONDATE_ID")
+	private ReservationTime reservationTime;
 	
+	@Column(name="CONTENT")
 	String content;
 	@Column(name ="TIME")
 	Integer time;

@@ -121,7 +121,7 @@
 				<!-- 輪播牆結束-->
 			</header>
 			<!-- Header-wrap Section End -->
-
+				<p>預約成功</p>>
 			<!-- 寵物沙龍開始 -->
 			<section id="service-block-main" class="section">
 				<!-- 重複的內容開始 -->

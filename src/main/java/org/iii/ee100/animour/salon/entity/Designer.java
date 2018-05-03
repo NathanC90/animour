@@ -12,10 +12,13 @@ import javax.persistence.Table;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name="DESIGNER")
-@Data
 public class Designer extends GenericEntity{
 	
 	

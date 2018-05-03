@@ -19,14 +19,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="reservationDate")
-public class ReservationDate extends GenericEntity{
+@Table(name="RESERVATIONTIME")
+public class ReservationTime extends GenericEntity{
 	
-	@OneToMany(mappedBy = "reservationDate", cascade = { CascadeType.ALL })
+	
+	
+	
+
+	@OneToMany(mappedBy = "reservationTime", cascade = { CascadeType.ALL })
 	private List<ServiceContent> serviceContent;
 	
-	@Column(name="DATE")
-	private java.sql.Timestamp date;
+	@Column(name="FRONT_TIME")
+	private java.sql.Time frontTime;
+	
+	@Column(name="BACK_TIME")
+	private java.sql.Time backTime;
 	
 
 }
