@@ -38,6 +38,8 @@ public class News {
 	private String updateUser;
 	@Column(name="UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
+	@Column(name="PAGE_VIEW")
+	private int pageView;
 	@Column(name="IS_DEL")
 	private String isDel;
 	@Column(name="IS_ON")
@@ -115,6 +117,13 @@ public class News {
 	}
 	public void setIsOn(String isOn) {
 		this.isOn = isOn;
+	}
+	
+	public int getPageView() {
+		return pageView;
+	}
+	public void PageView(int pageView) {
+		this.pageView = pageView;
 	}
 
 }
