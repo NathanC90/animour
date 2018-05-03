@@ -202,10 +202,12 @@
     		    data: toJson(formData),
     		    contentType: "application/json; charset=utf-8",
     		    dataType: "json",
-    		    success: function(data){alert(data);},
-    		    failure: function(errMsg) {
-    		        alert(errMsg);
-    		    }
+    		    success: function(){
+    		    	window.location.href = 'http://localhost:8080/forum/findAll';
+    		    	}
+//     		    failure: function(errMsg) {
+//     		        alert(errMsg);
+//     		    }
     		});
     	});
     	
