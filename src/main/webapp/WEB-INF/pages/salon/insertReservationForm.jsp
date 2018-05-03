@@ -102,13 +102,15 @@
 											<div class="form-row">
 											</div>
 											<div class="form-row">
-												<div class="form-group col-md-6">
-													時間:
+
+												<!--		<div class="form-group col-md-6">
+													日期:
 													<form:select id="reservationDate" class="form-control" path="reservationDate">
-														<form:option value="reservationDate" label="請選擇日期" />
+														<form:option value="reservationDate" label="請選擇類別" />
 														<form:options items="${allDate}" />
 													</form:select>
 												</div>
+-->
 												<div class="form-group col-md-6">
 													類別:
 													<form:select id="content" class="form-control" path="content">
@@ -116,6 +118,15 @@
 														<form:options items="${allContent}" />
 													</form:select>
 												</div>
+												<div class="form-group col-md-6">
+													美容師:
+													<form:select id="Designer" class="form-control" path="Designer">
+														<form:option value="Designer" label="請選擇美容師" />
+														<form:options items="${allDesigner}" />
+													</form:select>
+												</div>
+
+
 
 
 											</div>

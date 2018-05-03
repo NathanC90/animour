@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.iii.ee100.animour.forum.entity.Category;
+import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
@@ -22,6 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 @Controller
 public class ReservationController {
 
@@ -36,31 +39,45 @@ public class ReservationController {
 		model.addAttribute("reservation", reservation);		
 		return "/salon/insertReservationForm";
 	}
+	@RequestMapping(path = { "/editReservation" }, method = { RequestMethod.GET })
+	public String editReservation(Model model) {
+		ArrayList<Reservation> allReservationList= reservationService.getAllContent();
+		model.addAttribute("allReservationList", allReservationList);		
+		return "/salon/editReservation";
+	}
 	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })
-	public String reservationTimeInsert(@ModelAttribute("reservation")Model model) throws Exception {
-		Reservation reservation = new Reservation();
-		ArrayList<Reservation> allReservationList= reservationService.getAll();
-		model.addAttribute("reservation", reservation);
-		model.addAttribute("allReservationList",allReservationList);
+	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
+		model.addAttribute("reservation", reservationService.insertReservation(reservation));
 		return "/salon/checkReservationOrder";
 	}
 	
 	@ModelAttribute("allContent")
-	public Map<Long,String> getAllContent() {
-		Map<Long,String> contentMaps = new HashMap<>();
+	public Map<String,String> getAllContent() {
+		Map<String,String> contentMaps = new HashMap<>();
 		List<ServiceContent>serviceContents=reservationService.getAllServiceContent();
 		for(ServiceContent serviceContent:serviceContents) {
-			contentMaps.put(serviceContent.getId(), serviceContent.getContent());
+			contentMaps.put(serviceContent.getContent(), serviceContent.getContent());
 		}
 		return contentMaps;
 	
 	}
+
 	@ModelAttribute("allDate")
 	public Map<Long,Date> getAllDate() throws Exception {
 		Map<Long,Date> DateMaps = new HashMap<>();
 		List<Reservation>reservationDateList=reservationService.getAll();
 		for(Reservation reservation:reservationDateList) {
 			DateMaps.put(reservation.getId(), reservation.getReservationDate());
+		}
+		return DateMaps;
+		
+	}
+	@ModelAttribute("allDesigner")
+	public Map<String,String> getAllDesigner() throws Exception {
+		Map<String,String> DateMaps = new HashMap<>();
+		List<Designer>DesignerList=reservationService.getAllDesigner();
+		for(Designer designer:DesignerList) {
+			DateMaps.put(designer.getDesigner(),designer.getDesigner());
 		}
 		return DateMaps;
 		

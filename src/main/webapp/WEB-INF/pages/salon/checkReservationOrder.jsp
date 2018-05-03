@@ -97,31 +97,24 @@
 
 									<div style="padding-top: 30px" class="panel-body">
 										<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+										<div>
 
-										<form:form action="/reservation" method="Post" modelAttribute="reservation" enctype="multipart/form-data">
-											<div class="form-row">
-											</div>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													時間:
-													<form:select id="reservationDate" class="form-control" path="reservationDate">
-														<form:option value="reservationDate" label="請選擇日期" />
-														<form:options items="${allDate}" />
-													</form:select>
-												</div>
-												<div class="form-group col-md-6">
-													類別:
-													<form:select id="content" class="form-control" path="content">
-														<form:option value="content" label="請選擇類別" />
-														<form:options items="${allContent}" />
-													</form:select>
-												</div>
+											<tr>
+												<td>${reservation.reservationDate}</td>
+												<br>
+												<td>${reservation.content}</td>
+												<br>
+												<td>${reservation.designer}</td>
+												<br>
+												<td>${reservation.totalTime}</td>
+												<br>
+												<td>${reservation.price}</td>
+												<br>
+											</tr>
 
 
-											</div>
-											<input type="submit" class="btn btn-common" value="預約">
-											<input type="reset" class="btn btn-common" value="清除">
-										</form:form>
+										</div>
+
 									</div>
 								</div>
 
