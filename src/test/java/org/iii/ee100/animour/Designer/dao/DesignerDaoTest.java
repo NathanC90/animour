@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.junit.Test;
@@ -67,13 +68,12 @@ public class DesignerDaoTest {
 //
 //	}
 	
-//	@Test
-//	public void TestUpdate() {
-//		
-//		Designer designer = designerDao.findOne(5L);
-//		designer.setOneFree(0);
-//		designerDao.save(designer);
-//	}
+	@Test
+	public void TestUpdate() {
+		Reservation reservation = new Reservation();
+		reservation.setContent("美髮");
+		reservationService.insertReservation(reservation);
+	}
 	
 	
 //	@Test

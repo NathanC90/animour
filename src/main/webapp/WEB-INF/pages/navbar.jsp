@@ -60,7 +60,7 @@
                                     <a class="nav-link dropdown-toggle" href="/reservationDate" aria-haspopup="true" aria-expanded="false">寵物salon</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="">salon簡介</a>
-                                        <a class="dropdown-item" href="">salon價格</a>
+                                        <a class="dropdown-item" href="/editReservation">訂單編輯</a>
                                         <a class="dropdown-item" href="/appointment/testForm">test</a>
                                         <a class="dropdown-item" href="/appointment/firstPage">reservation</a>
                                     </div>
