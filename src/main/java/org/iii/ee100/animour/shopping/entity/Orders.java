@@ -26,10 +26,10 @@ public class Orders extends GenericEntity {
 	@Column(name="NAME")
 	private String name;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	@JoinTable(name="PRODUCT_ORDERS",	
-			joinColumns={@JoinColumn(name="ORDERS_ID", referencedColumnName="ID")},
-			inverseJoinColumns= {@JoinColumn(name="PRODUCT_ID", referencedColumnName="ID")})
-	Set<Product> products = new HashSet<Product>();
+//	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//	@JoinTable(name="PRODUCT_ORDERS",	
+//			joinColumns={@JoinColumn(name="ORDERS_ID", referencedColumnName="ID")},
+//			inverseJoinColumns= {@JoinColumn(name="PRODUCT_ID", referencedColumnName="ID")})
+//	Set<Product> products = new HashSet<Product>();
 
 }
