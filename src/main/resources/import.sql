@@ -172,7 +172,6 @@ insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DES
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 1);
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
-<<<<<<< HEAD
 /*9 serviceContent*/
 insert into serviceContent (CONTENT,time,price)values
 ('洗澡',1,100),
@@ -198,4 +197,6 @@ insert into designer (designer)values
 ('飛影'),
 ('琦玉'),
 ('陳浩南');
+
+
 

@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.salon.service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +35,20 @@ public class ReservationService extends GenericService<Reservation>{
 	@Autowired
 	ReservationDateDao reservationDateDao;
 	
+	
+	
+	
 	public ArrayList<Reservation> getAllContent() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
 	
-	public List<Designer> getAllFreeTime(){
+	public Reservation insertReservation(Reservation reservation) {
+		return reservationDao.save(reservation);		
+	}
+	
+
+	
+	public List<Designer> getAllDesigner(){
 		return Lists.newArrayList(designerDao.findAll());
 		
 	}
