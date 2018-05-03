@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/salon/designers")
+@RequestMapping("/reservations")
 public class ReservationRestController {
 
 	@Autowired
