@@ -203,7 +203,7 @@
 							//contentType: false,
 							//processData: false,
 							success: function (data) {
-								alert(data);
+								window.location.href = "http://localhost:8080/halfway";
 							}
 						});
 
