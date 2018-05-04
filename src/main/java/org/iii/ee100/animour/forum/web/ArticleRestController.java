@@ -3,6 +3,7 @@ package org.iii.ee100.animour.forum.web;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
@@ -10,6 +11,7 @@ import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,14 +33,15 @@ public class ArticleRestController {
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findAll(int pageNo) {	
-		Page<Article> articlePage = forumService.getPage(pageNo, 3);
+	public List<Article> findAll(PageForAnimour pageForAnimour) {
+		PageRequest pageable = pageForAnimour.getPageRequest();
+		Page<Article> articlePage = forumService.getPage(pageable);
 		int totalPage = articlePage.getTotalPages();
 		for(Article article:articlePage) {
 			article.setTotalPage(totalPage);
 		}
-		System.out.println(totalPage+"=========="+pageNo);
-		if(pageNo > totalPage && totalPage != 0) {
+		System.out.println(totalPage+"=========="+pageable.getPageNumber());
+		if(pageForAnimour.getPageNo() > totalPage && totalPage != 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();

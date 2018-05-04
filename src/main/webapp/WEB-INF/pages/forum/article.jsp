@@ -254,7 +254,8 @@ function setScroll(){
 	
 function getArticle(){
 	$.getJSON("/articles",{"pageNo":pageNo},function(datas){
-   	 if(pageNo<=datas[0].totalPage && datas!=null){
+   	 if(datas!=null){
+   	 	if(pageNo<=datas[0].totalPage){
 			$.each(datas,function(idx,article){
          	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
        		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ new Date(article.postTime)
@@ -271,6 +272,7 @@ function getArticle(){
 			$("#show").html(articlesString);
     		}
 			console.log(datas);
+   			}
 		});
 	}
 	
