@@ -132,14 +132,14 @@ p {
 				<div class="form-header-group ">
 					<div class="header-text httal htvam">
 						<h1 id="header_7" class="form-header" data-component="header">
-							${oneNews.subject}</h1>
+							${page.subject}</h1>
 					</div>
 				</div>
 
 
 				<div id="cid_3" class="form-input-wide">
 					<div id="text_3" class="form-html" data-component="text">
-						<c:forEach var="news" items="${oneNews}">
+						<c:forEach var="news" items="${page.oneNews}">
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
 									<img class="card-img-top" src="/images/news/dogtable.jpg"
@@ -151,23 +151,21 @@ p {
 						<p>
 							<span style="color: #575757;"><h4>
 									<strong>活動名稱：</strong>
-								</h4>${oneNews.subject}</span>
+								</h4>${page.subject}</span>
 						</p>
-
 						<p>
 							<span style="color: #575757;"><h4>
 									<strong>活動日期：</strong>
-								</h4>${oneNews.event_Date}</span>
+								</h4>${page.event_Date}</span>
 						</p>
-
 						<p>
 							<span style="color: #575757;"><h4>
 									<strong>活動地點：</strong>
-								</h4>${oneNews.address}</span>
+								</h4>${page.address}</span>
 						</p>
 						<div style="width: 600px; height: 400px; border: 2px gray solid;">
 							<h4>
-								<strong>活動簡介：${oneNews.content}</strong>
+								<strong>活動簡介：${page.content}</strong>
 							</h4>
 							<h6>寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</h6>
 						</div>

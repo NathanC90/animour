@@ -92,15 +92,11 @@
 							<div class="carousel-item">
 								<img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
 								<div class="carousel-caption">
-							
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
-								<div class="carousel-caption">
-									
-									
-									
+								<div class="carousel-caption">									
 								</div>
 							</div>
 							
@@ -134,7 +130,6 @@
 							</div>
 						</c:forEach>
 					</div>					
-
 					<!-- Service-Block-000 Item Ends -->
 				</div>
 				<!-- Container Ends -->

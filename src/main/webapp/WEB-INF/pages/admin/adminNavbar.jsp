@@ -91,7 +91,7 @@
               <span class="sr-only">Toggle nav</span>
             </button>
              <a class="navbar-brand" href="/">
-                                <img style="position: left" src="/images/logo.png" alt="">
+                                <img style="position: left" src="/images/logo.png" width="165px" alt="Animour">
                             </a>
           </div>
 
@@ -117,45 +117,45 @@
 							class="nav-link dropdown-toggle" href="#"
 							aria-haspopup="true" aria-expanded="false">活動管理</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">活動總覽</a> <a
-									class="dropdown-item" href="#">活動紀錄</a> <a
-									class="dropdown-item" href="#">活動統計</a>
+								<a class="dropdown-item" href="#">活動總覽</a>
+								<a class="dropdown-item" href="#">活動紀錄</a> 
+								<a class="dropdown-item" href="#">活動統計</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							aria-haspopup="true" aria-expanded="false">認養管理</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">認養管理1</a> <a
-									class="dropdown-item" href="#">認養管理2</a> <a
-									class="dropdown-item" href="#">認養管理3</a>
+								<a class="dropdown-item" href="#">認養管理1</a>
+								<a class="dropdown-item" href="#">認養管理2</a>
+								<a class="dropdown-item" href="#">認養管理3</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							aria-haspopup="true" aria-expanded="false">市集管理</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">市集管理1</a> <a
-									class="dropdown-item" href="#">市集管理2</a> <a
-									class="dropdown-item" href="#">市集管理3</a>
+								<a class="dropdown-item" href="#">市集管理1</a>
+								<a class="dropdown-item" href="#">市集管理2</a>
+								<a class="dropdown-item" href="#">市集管理3</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							aria-haspopup="true" aria-expanded="false">沙龍管理</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">沙龍管理1</a> <a
-									class="dropdown-item" href="#">沙龍管理2</a> <a
-									class="dropdown-item" href="#">沙龍管理3</a>
+								<a class="dropdown-item" href="#">沙龍管理1</a>
+								<a class="dropdown-item" href="#">沙龍管理2</a>
+								<a class="dropdown-item" href="#">沙龍管理3</a>
 							</div>
 						</li>
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" href="#"
 							aria-haspopup="true" aria-expanded="false">部落格管理</a>
 							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">部落格管理1</a> <a
-									class="dropdown-item" href="#">部落格管理2</a> <a
-									class="dropdown-item" href="#">部落格管理3</a>
+								<a class="dropdown-item" href="#">部落格管理1</a>
+								<a class="dropdown-item" href="#">部落格管理2</a>
+								<a class="dropdown-item" href="#">部落格管理3</a>
 							</div>
 						</li>
 <!-- 每頁不同的內容從此開始 -->
