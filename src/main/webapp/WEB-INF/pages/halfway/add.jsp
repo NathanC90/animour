@@ -188,20 +188,20 @@
 							console.log(pair[0] + ', ' + pair[1]);
 						}
 
-						var json = toJson(data);
+						//var json = toJson(data);
 
 						$.ajax({
 							url: '/halfway/animal',
 							type: 'POST',
-							//data: data,
-							data: json,
-							dataType: 'json',
+							data: data,
+							//data: json,
+							//dataType: 'json',
 							//processData: false,
-							contentType: "application/json",
-							// contentType: "multipart/form-data",
-							// enctype: 'multipart/form-data',
-							//contentType: false,
-							//processData: false,
+							//contentType: "application/json",
+							//contentType: "multipart/form-data",
+							//enctype: 'multipart/form-data',
+							contentType: false,
+							processData: false,
 							success: function (data) {
 								window.location.href = "http://localhost:8080/halfway";
 							}

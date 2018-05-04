@@ -43,9 +43,8 @@ public class AnimalRestController {
 	}
 
 	// 新增
-	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST, consumes = {  "multipart/form-data",
-			"application/json", "application/xml" })
-	public ResponseEntity<?> insertAnimal(@RequestBody Animal animal, @RequestParam(value = "file", required = false) MultipartFile image,
+	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST)
+	public ResponseEntity<?> insertAnimal(Animal animal, @RequestParam(value = "file", required = false) MultipartFile image,
 			HttpServletRequest request, Model model) {
 		Member current = animalservice.getCurrentMember();
 		animal.setMember(current);
@@ -55,14 +54,14 @@ public class AnimalRestController {
 		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
 		animalservice.insert(animal);
 		
-//		if (image == null || image.isEmpty()) {
-//			
-//			return new ResponseEntity<String>("", HttpStatus.OK);
-//		}
-		//String fileName = animalservice.readImage(image, request, animal);
-		//animal.setFileName(fileName);
+		if (image == null || image.isEmpty()) {
+			
+			return new ResponseEntity<String>("", HttpStatus.OK);
+		}
+		String fileName = animalservice.readImage(image, request, animal);
+		animal.setFileName(fileName);
 		// 儲存圖片之後，更新檔名
-		//animalservice.update(animal);
+		animalservice.update(animal);
 
 		//return "success";
 		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
