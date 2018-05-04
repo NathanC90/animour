@@ -7,8 +7,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.halfway.entity.Animal;
-import org.iii.ee100.animour.halfway.entity.City;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
@@ -19,7 +19,6 @@ import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,15 +31,29 @@ public class AnimalRestController {
 	@Autowired
 	AnimalService animalservice;
 
+	PageInfo defaultPageInfo = new PageInfo(1, 8);
+
 	// 查詢全部 
-	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
-			"application/xml" })
-	public List<Animal> listAnimal(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
-			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
-		List<Animal> animals = page.getContent();
-		return animals;
-	}
+//	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
+//			"application/xml" })
+//	public List<Animal> listAnimal(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
+//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+//		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
+//		List<Animal> animals = page.getContent();
+//		return animals;
+//	}
+	
+	// 查詢全部 ， 改用 Page 物件接值
+		@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
+				"application/xml" })
+		public List<Animal> listAnimal(PageInfo pageinfo, Model model) {
+			if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
+				pageinfo = defaultPageInfo;
+			}
+			Page<Animal> page = animalservice.getAnimalPage(pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
+			List<Animal> animals = page.getContent();
+			return animals;
+		}
 
 	// 新增
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST)

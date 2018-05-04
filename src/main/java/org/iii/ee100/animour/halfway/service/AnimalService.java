@@ -10,6 +10,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.assertj.core.util.Lists;
+import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.dao.CityDao;
@@ -69,14 +70,14 @@ public class AnimalService extends GenericService<Animal>{
 		return animalDao.findBySpecieOrderByUploadDesc(specie);
 	}
 
-	public Page<Animal> getByCity(City city, Integer pageNumber, Integer pageSize) {
-		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+	public Page<Animal> getByCity(City city, PageInfo pageinfo) {
+		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findByCity(city, request);
 	}
 
 	// pageSize=一頁幾筆資料
-	public Page<Animal> getAnimalPage(Integer pageNumber, Integer pageSize) {
-		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+	public Page<Animal> getAnimalPage(PageInfo pageinfo) {
+		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findAll(request);
 	}
 

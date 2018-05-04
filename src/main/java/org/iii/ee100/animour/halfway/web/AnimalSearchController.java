@@ -28,24 +28,24 @@ public class AnimalSearchController {
 	@Autowired
 	AnimalDao animalDao;
 
-	@RequestMapping(value="/queryByCity",method = { RequestMethod.GET })
-	public String queryAnimalByCity(@RequestParam("city") City city, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-		
-		Page<Animal> page = animalservice.getByCity(city, pageNumber, pageSize);
-		model.addAttribute("animalpage", page);
-		
-		animalservice.updateAnimalCount();
-		List<City> citys = new ArrayList<>();
-		
-		for (City cityforeach :  animalservice.getAllCity()) {
-			if (cityforeach.getAnimalCount() >0) {
-				citys.add(cityforeach);
-			}
-		}
-		model.addAttribute("citys", citys);
-		return "/halfway/halfwayIndex";
-	}
+//	@RequestMapping(value="/queryByCity",method = { RequestMethod.GET })
+//	public String queryAnimalByCity(@RequestParam("city") City city, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
+//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+//		
+//		Page<Animal> page = animalservice.getByCity(city, pageNumber, pageSize);
+//		model.addAttribute("animalpage", page);
+//		
+//		animalservice.updateAnimalCount();
+//		List<City> citys = new ArrayList<>();
+//		
+//		for (City cityforeach :  animalservice.getAllCity()) {
+//			if (cityforeach.getAnimalCount() >0) {
+//				citys.add(cityforeach);
+//			}
+//		}
+//		model.addAttribute("citys", citys);
+//		return "/halfway/halfwayIndex";
+//	}
 	
 	@RequestMapping(value="/queryContaining",method = { RequestMethod.GET })
 	public String queryAnimalByName(@RequestParam("name") String name, @RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
