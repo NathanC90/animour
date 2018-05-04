@@ -4,8 +4,9 @@
 <html>
 <head>
 <!-- adminNavbar Starts -->
-	<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
+	<jsp:include page="../adminNavbar.jsp"></jsp:include>
 <!-- adminNavbar ends -->
+
 <!-- 每頁不同的內容從此開始 -->
 
 						<!--               <li class="nav-item"> -->
