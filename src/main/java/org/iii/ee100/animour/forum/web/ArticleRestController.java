@@ -36,12 +36,15 @@ public class ArticleRestController {
 	public List<Article> findAll(PageForAnimour pageForAnimour) {
 		PageRequest pageable = pageForAnimour.getPageRequest();
 		Page<Article> articlePage = forumService.getPage(pageable);
+		//為了讓前端抓得到totalPage
 		int totalPage = articlePage.getTotalPages();
 		for(Article article:articlePage) {
 			article.setTotalPage(totalPage);
 		}
+		
 		System.out.println(totalPage+"=========="+pageable.getPageNumber());
-		if(pageForAnimour.getPageNo() > totalPage && totalPage != 0) {
+		//確保前端傳來的PageNo不會超過totalPage
+		if(pageForAnimour.getPageNo() > totalPage || totalPage == 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();
@@ -96,9 +99,8 @@ public class ArticleRestController {
 	}
 
 	// 新增文章
-	@ResponseBody
-	@RequestMapping(method = RequestMethod.POST, consumes = { "application/json" })
-	public ResponseEntity<?> newArticle(@RequestBody Article article) {
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<?> newArticle(Article article) {
 		
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		article.setPostTime(new Timestamp(System.currentTimeMillis()));

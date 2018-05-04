@@ -179,14 +179,6 @@
 	$(document).ready(function(){
     	$('#btn1').click(function(){
     		console.log("haha");
-//     		$('#insertform').ajaxForm({
-//                 url: '/articles',
-//                 data: {},
-//                 method: 'post',
-//                 dataType: 'JSON'
-//             });
-//     		var article = [{ "subject": $("subject").val(), "category": $("category").val(), "context":$("context").val() },
-//                 ];
     		var formData = new FormData(document.getElementById("insertform"));
 //     		var jsons = transformToJson(formData);
     		console.log(formData);
@@ -198,10 +190,10 @@
     		$.ajax({
     		    type: "POST",
     		    url: "/articles",
-    		    // The key needs to match your method's input parameter (case-sensitive).
-    		    data: toJson(formData),
-    		    contentType: "application/json; charset=utf-8",
-    		    dataType: "json",
+    		    data: formData,
+    		    contentType: false,
+				processData: false,
+//     		    dataType: "json",
     		    success: function(){
     		    	window.location.href = 'http://localhost:8080/forum/findAll';
     		    	}

@@ -1,7 +1,6 @@
 package org.iii.ee100.animour.common.model;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 
 import lombok.Getter;
 import lombok.Setter;
