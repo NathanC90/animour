@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
+import org.iii.ee100.animour.common.entity.PageInfo;
+import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.common.service.GenericService;
+import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ReservationDateDao;
@@ -34,6 +38,7 @@ public class ReservationService extends GenericService<Reservation>{
 	
 	@Autowired
 	ReservationDateDao reservationDateDao;
+	
 	
 	
 	
@@ -75,17 +80,21 @@ public class ReservationService extends GenericService<Reservation>{
 	}
 	
 	
-	//設計師頁面幾筆
-	public Page<Designer> getDesignerPage(Integer pageNumber, Integer pageSize) {
-		PageRequest request = new PageRequest(pageNumber-1, pageSize, Sort.Direction.DESC, "upload");
+	
+	
+	//預約幾筆的頁面方法
+	public Page<Reservation> getReservationPage(PageInfo pageInfo) {
+		PageRequest request = new PageRequest(pageInfo.getNumber() - 1, pageInfo.getSize(), Sort.Direction.DESC, "upload");
 		
-		return designerDao.findAll(request);		
+		return reservationDao.findAll(request);		
 	}
 	
 	public Page<ServiceContent> getServiceContentPage(Integer pageNumber, Integer pageSize){
 		PageRequest request= new PageRequest(pageNumber, pageSize, Sort.Direction.DESC,"upload");
 		return serviceContentDao.findAll(request);		
 	}
+	
+	
 	
 
 }
