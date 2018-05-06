@@ -41,8 +41,8 @@ public class ReservationController {
 //	}
 	@RequestMapping(path = { "/editReservation" }, method = { RequestMethod.GET })
 	public String editReservation(Model model) {
-		ArrayList<Reservation> allReservationList= reservationService.getAllContent();
-		model.addAttribute("allReservationList", allReservationList);		
+//		ArrayList<Reservation> allReservationList= reservationService.getAllContent();
+//		model.addAttribute("allReservationList", allReservationList);		
 		return "/salon/editReservation";
 	}
 //	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })

@@ -125,7 +125,12 @@
 														<form:options items="${allDesigner}" />
 													</form:select>
 												</div>
-
+												<form action="/" id="searchForm">
+													<input type="text" name="s" placeholder="Search...">
+													<input type="submit" value="Search">
+												</form>
+												<!-- the result of the search will be rendered inside this div -->
+												<div id="result"></div>
 
 
 
@@ -303,6 +308,25 @@
 				<script src="/js/form-validator.min.js"></script>
 				<script src="/js/contact-form-script.min.js"></script>
 				<script src="/js/main.js"></script>
+				<!-- Placed at the end of the document so the pages load faster -->
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+				 crossorigin="anonymous"></script>
+				<script>
+					window.jQuery
+						|| document
+							.write('<script src="/js/jquery-slim.min.js"><\/script>')
+				</script>
+				<script src="/js/popper.min.js"></script>
+				<script src="/js/bootstrap.min.js"></script>
+				<!-- 	<script src="/js/vendor/holder.min.js"></script> -->
+
+				<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+				<script src="/js/jquery-3.3.1.min.js"></script>
+				<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+				<!-- 	<different content from here> -->
+
+
+
 			</body>
 
 			</html>
