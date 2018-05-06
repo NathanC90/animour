@@ -86,8 +86,8 @@ public class AnimalService extends GenericService<Animal>{
 		return animalDao.findByNameContaining(name, request);
 	}
 	
-	public Page<Animal> getSpecPage(Integer pageNumber, Integer pageSize, Specification<Animal> spec) {
-		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
+	public Page<Animal> getSpecPage(PageInfo pageinfo, Specification<Animal> spec) {
+		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findAll(spec, request);
 	}
 

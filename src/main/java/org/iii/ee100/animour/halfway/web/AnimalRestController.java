@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
@@ -19,6 +20,7 @@ import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,21 +82,19 @@ public class AnimalRestController {
 		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/queryTest", method = { RequestMethod.GET })
-	public List<Animal> specificationQuery(@RequestParam(value = "specieitems[]", required = false) String[] specieitems,
-			@RequestParam(value = "cityitems[]", required = false) Long[] cityitems,
-			@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
+	@RequestMapping(value = "/queryTest", method = { RequestMethod.POST })
+	public List<Animal> specificationQuery(@RequestBody QueryFormHalfway queryform,
+			PageInfo pageinfo, Model model) {
 
 		Map<String, Object> speciemap = new IdentityHashMap<>();
-		if (specieitems != null && specieitems.length != 0) {
-			for (String sp : specieitems) {
+		if (queryform.getSpecieitems() != null && queryform.getSpecieitems().size() != 0) {
+			for (String sp : queryform.getSpecieitems()) {
 				speciemap.put(new String("specie"), sp);
 			}
 		}
 		Map<String, Object> citymap = new IdentityHashMap<>();
-		if (cityitems != null && cityitems.length != 0) {
-			for (Long ct : cityitems) {
+		if (queryform.getCityitems() != null && queryform.getCityitems().size() != 0) {
+			for (Long ct : queryform.getCityitems()) {
 				citymap.put(new String("city"),animalservice.getCityById(ct));
 			}
 		}
@@ -106,7 +106,11 @@ public class AnimalRestController {
 			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
 					.or(SpecificationHalfway.containsEqualsOr(citymap));
 		}
-		Page<Animal> page = animalservice.getSpecPage(pageNumber, pageSize, spec);
+		// 設定 pageinfo
+		if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
+			pageinfo = defaultPageInfo;
+		}
+		Page<Animal> page = animalservice.getSpecPage(pageinfo, spec);
 		List<Animal> animals = page.getContent();
 
 		return animals;
