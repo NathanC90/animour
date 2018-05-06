@@ -248,6 +248,28 @@
             }
             )
           });
+          //           $.each( [ "put", "delete" ], function( i, method ) {
+          //             $[ method ] = function( url, data, callback, type ) {
+          //     if ( $.isFunction( data ) ) {
+          //       type = type || callback;
+          //       callback = data;
+          //       data = undefined;
+          //     }
+
+          //     return $.ajax({
+          //       url: url,
+          //       type: method,
+          //       dataType: type,
+          //       data: data,
+          //       success: callback
+          //     });
+          //   };
+          // });
+
+          $.put('http://stackoverflow.com/posts/22786755/edit', { text: 'new text' }, function (result) {
+            console.log(result);
+          })
+
         </script>
       </body>
 
