@@ -4,6 +4,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRichTextString;
+
 import java.io.FileOutputStream;
 public class CreateXL {
 
@@ -35,7 +37,7 @@ public class CreateXL {
 			HSSFCell cell4 = row.createCell((short) 3);
 			HSSFCell cell5 = row.createCell((short) 4);
 			HSSFCell cell6 = row.createCell((short) 5);
-			HSSFCell cell7 = row.createCell((short) 6);
+			HSSFCell cell7 = row.createCell((short) 6); 
 			// 定義儲存格為字串類型
 			cell1.setCellType(HSSFCell.CELL_TYPE_STRING);
 			cell2.setCellType(HSSFCell.CELL_TYPE_STRING);
@@ -45,13 +47,13 @@ public class CreateXL {
 			cell6.setCellType(HSSFCell.CELL_TYPE_STRING);
 			cell7.setCellType(HSSFCell.CELL_TYPE_STRING);
 			// 在儲存格中輸入一些內容
-			cell1.setCellValue("活動名稱");
-			cell2.setCellValue("活動日期");
-			cell3.setCellValue("活動時間");
-			cell4.setCellValue("活動地點");
-			cell5.setCellValue("活動介紹");
-			cell6.setCellValue("費用");
-			cell7.setCellValue("人數");
+			cell1.setCellValue(new HSSFRichTextString("活動名稱")); 
+			cell2.setCellValue(new HSSFRichTextString("活動日期")); 
+			cell3.setCellValue(new HSSFRichTextString("活動時間")); 
+			cell4.setCellValue(new HSSFRichTextString("活動地點")); 
+			cell5.setCellValue(new HSSFRichTextString("活動介紹")); 
+			cell6.setCellValue(new HSSFRichTextString("費用")); 
+			cell7.setCellValue(new HSSFRichTextString("人數")); 
 			// 新建一輸出檔案流
 			FileOutputStream fOut = new FileOutputStream(outputFile);
 			// 把相應的Excel 活頁簿存檔
