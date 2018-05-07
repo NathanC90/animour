@@ -214,6 +214,7 @@
                   </div> 
                   <button class="btn btn-common" type="submit"><i class="fa fa-comment"></i> Post Comment</button>      
               </form>
+              <div id = "show"></div>
               </div>
             </div>
           </div>
@@ -238,6 +239,7 @@
     </a>
     
     <!-- JavaScript & jQuery Plugins -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
     <script src="/js/jquery-min.js"></script>
     <script src="/js/popper.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -253,5 +255,32 @@
     <script src="/js/contact-form-script.min.js"></script>
     <script src="/js/main.js"></script> 
  
+ 	<script>
+	var commentString = "";
+	
+	$(document).ready(function(){
+		getArticle();
+		
+	});
+	
+function getArticle(){
+	$.getJSON("/articles/comment",{},function(datas){
+   	 if(datas!=null){
+			$.each(datas,function(idx,comment){
+         	var commentStr = 
+         		'<li class="media"><div class="media-left"><a href="#"><img class="img-responsive img-circle" src="/images/blog/comment_avatar/avatar1.jpg" alt=""></a></div><div class="media-body"><div class="commentor-info"><div class="comment-author"><a href="#">'
+         		+ comment.member.account 
+                + '</a><span class="published-time"><i class="fa fa-calendar"></i>'
+                +comment.updateTime
+                + '</span></div><p>' + comment.content + '</p></div></div></li>'
+               
+         		commentString += commentStr;
+			});
+			$("#show").html(articlesString);
+			console.log(datas);
+   			}
+		});
+	}
+ 	</script>
   </body>
 </html>

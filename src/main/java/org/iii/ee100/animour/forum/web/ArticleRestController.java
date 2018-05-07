@@ -92,7 +92,7 @@ public class ArticleRestController {
 	
 
 	// 新增留言
-	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST, consumes = { "application/json" })
+	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST)
 	public void newComment(@RequestBody Comment comment) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		forumService.insertComment(comment);
