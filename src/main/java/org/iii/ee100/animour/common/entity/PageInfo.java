@@ -8,14 +8,14 @@ import lombok.Setter;
 @Getter
 public class PageInfo {
 
-	private Integer number;
+	private Integer pageNumber;
 	
 	private Integer size;
 	
 	public PageInfo() {}
 	
 	public PageInfo(Integer number, Integer size) {
-		this.number = number;
+		this.pageNumber = number;
 		this.size = size;	
 	}
 }

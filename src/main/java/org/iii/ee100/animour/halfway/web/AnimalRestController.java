@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
+import org.iii.ee100.animour.common.model.ResponseForAnimour;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.iii.ee100.animour.halfway.service.AnimalService;
@@ -33,9 +34,12 @@ public class AnimalRestController {
 
 	@Autowired
 	AnimalService animalservice;
+	
+	@Autowired
+	ResponseForAnimour response;
 
 	PageInfo defaultPageInfo = new PageInfo(1, 8);
-
+	
 	// 查詢全部
 	// @RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET,
 	// produces = { "application/json",
@@ -53,13 +57,18 @@ public class AnimalRestController {
 	// 查詢全部 ， 改用 Page 物件接值
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public List<Animal> listAnimal(PageInfo pageinfo) {
-		if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
-			pageinfo = defaultPageInfo;
+	public ResponseForAnimour listAnimal(PageInfo pageinfo) {
+		if (pageinfo.getPageNumber() == null) {
+			pageinfo.setPageNumber(defaultPageInfo.getPageNumber());
+		}
+		if (pageinfo.getSize() == null) {
+			pageinfo.setSize(defaultPageInfo.getSize());
 		}
 		Page<Animal> page = animalservice.getAnimalPage(pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
 		List<Animal> animals = page.getContent();
-		return animals;
+		response.setData(animals);
+		
+		return response;
 	}
 
 	// 新增&修改
@@ -128,8 +137,11 @@ public class AnimalRestController {
 					.or(SpecificationHalfway.containsEqualsOr(citymap));
 		}
 		// 設定 pageinfo
-		if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
-			pageinfo = defaultPageInfo;
+		if (pageinfo.getPageNumber() == null) {
+			pageinfo.setPageNumber(defaultPageInfo.getPageNumber());
+		}
+		if (pageinfo.getSize() == null) {
+			pageinfo.setSize(defaultPageInfo.getSize());
 		}
 		Page<Animal> page = animalservice.getSpecPage(pageinfo, spec);
 		List<Animal> animals = page.getContent();
