@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.forum.web;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +8,7 @@ import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
-import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -50,34 +47,34 @@ public class ArticlePageController {
 //	}
 	
 	//將使用者輸入自動接收轉型填入前一個方法傳入的Article物件
-	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.POST })
-	public String articlePost(@ModelAttribute("article") Article article, Model model) {
-		if (article.getCategory() != null) {
-			Timestamp now = new Timestamp(System.currentTimeMillis());
-			article.setPostTime(now);
-			article.setUpdateTime(now);
-			article.setClick(0L);
-			// 取得登入中會員的身分
-			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			if (principal instanceof Member) {
-				article.setMember((Member) principal);
-			} else {
-				String account = principal.toString();
-				System.out.println(account);
-			}
-			try {
-				forumService.insert(article);
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println(article);
-				return "/rollback";
-			}
-		} else {
-			return "redirect:/postArticle";
-		}
-		sidebar(model);
-		return "/forum/singleArticle";
-	}
+//	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.POST })
+//	public String articlePost(@ModelAttribute("article") Article article, Model model) {
+//		if (article.getCategory() != null) {
+//			Timestamp now = new Timestamp(System.currentTimeMillis());
+//			article.setPostTime(now);
+//			article.setUpdateTime(now);
+//			article.setClick(0L);
+//			// 取得登入中會員的身分
+//			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//			if (principal instanceof Member) {
+//				article.setMember((Member) principal);
+//			} else {
+//				String account = principal.toString();
+//				System.out.println(account);
+//			}
+//			try {
+//				forumService.insert(article);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				System.out.println(article);
+//				return "/rollback";
+//			}
+//		} else {
+//			return "redirect:/postArticle";
+//		}
+//		sidebar(model);
+//		return "/forum/singleArticle";
+//	}
 	
 	//給下拉式category選單使用的方法
 	@ModelAttribute("categoryList")

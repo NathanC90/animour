@@ -446,18 +446,28 @@
 						$(':checked[name="citycheck"]').each(function () {
 							cityitems.push($(this).val());
 						});
+
 						$(':checked[name="speciecheck"]').each(function () {
 							specieitems.push($(this).val());
 						});
+
+						var object = {};
+						object['specieitems'] = specieitems;
+						object['cityitems'] = cityitems;
+
+						var json = JSON.stringify(object, null)
+						console.log(json);
+						
 						//alert(items);
 
 						//var docFragment = $(document.createDocumentFragment());
 						$.ajax({
 							url: '/queryTest',
-							type: 'GET',
+							type: 'POST',
 							//data: data,
-							data: { "specieitems": specieitems, "cityitems": cityitems },
-							//dataType: 'json',
+							data: json,
+							dataType: 'json',
+							contentType: "application/json",
 							success:
 								//window.location.href = "http://localhost:8080/halfway";
 								function (datas) {
