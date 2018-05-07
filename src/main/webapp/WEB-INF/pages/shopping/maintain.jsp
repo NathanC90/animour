@@ -76,6 +76,23 @@
     </script>
     <![endif]-->
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script src="/js/jquery-min.js"></script>
+<!-- 	<script type="text/javascript"> -->
+<!-- 		$(function(){ -->
+<!-- 			$("#delete").click(function(){ -->
+<!-- 				var label = $(this).next(":hidden").val(); -->
+<!-- 				var flag = confirm("確定要刪除 " + label + "此筆資料?"); -->
+<!-- 				if(flag){ -->
+<!-- 					var url = $(this).attr("href"); -->
+					
+<!-- 					$("#_form").attr("action", url); -->
+<!-- 					$("#_method").val("DELETE"); -->
+<!-- 					$("#_form").submit(); -->
+<!-- 				} -->
+<!-- 				return false; -->
+<!-- 			}); -->
+<!-- 		}) -->
+<!-- 	</script> -->
 </head>
 
 <body>
@@ -106,6 +123,9 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
+<%-- 				<form action="" method="post" id="_form"> --%>
+<!-- 					<input type="hidden" id="_method" name="_method"> -->
+<%-- 				</form> --%>
 				
 				<c:if test="${page == null || page.numberOfElements == 0}">
 					沒有任何商品資料
@@ -143,7 +163,12 @@
 									<td>${product.classify.name}</td>
 									
 									<td><a href="<spring:url value='/product/${product.id}' />" id="buttonUpdate" type="button" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
-									<td><a id="buttonDelete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+									<td><a href="<spring:url value='/delete/${product.id}' />" id="delete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
+										
+									</a>
+<%-- 									<input type="hidden" value="${product.name}"> --%>
+									
+									</td>
 								</tr>
 							</c:forEach>
 						</table>
@@ -312,7 +337,6 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-	<script src="/js/jquery-min.js"></script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.mixitup.js"></script>
@@ -326,6 +350,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
+	
 	
 </body>
 

@@ -16,20 +16,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private ClassifyService classifyService;
-	
-	//product contain page
-	@RequestMapping(value="/product/index")
-	public String productIndex(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, Model model) throws Exception {
+
+	// product contain page
+	@RequestMapping(value = "/product/index")
+	public String productIndex(@RequestParam(value = "pageNo", required = false, defaultValue = "1") String pageNoStr,
+			Model model) throws Exception {
 		int pageNo = pageUtility.getPageNumber(pageNoStr);
 		Page<Product> page = productService.getPage(pageNo, 6);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage && totalPage != 0) {
+		if (pageNo > totalPage && totalPage != 0) {
 			pageNo = totalPage;
 		}
 		page = productService.getPage(pageNo, 6);
@@ -37,33 +38,34 @@ public class ProductController {
 		model.addAttribute("classifies", classifyService.getAll());
 		return "/shopping/ProductIndex";
 	}
-	
-	//product maintain
-	@RequestMapping(value="/product/maintain")
-	public String maintain(@RequestParam(value="pageNo", required=false, defaultValue="1") String pageNoStr, Model model) throws Exception {
+
+	// product maintain
+	@RequestMapping(value = "/product/maintain")
+	public String maintain(@RequestParam(value = "pageNo", required = false, defaultValue = "1") String pageNoStr,
+			Model model) throws Exception {
 		int pageNo = pageUtility.getPageNumber(pageNoStr);
 		Page<Product> page = productService.getPage(pageNo, 6);
 		int totalPage = page.getTotalPages();
-		if(pageNo > totalPage && totalPage != 0) {
+		if (pageNo > totalPage && totalPage != 0) {
 			pageNo = totalPage;
 		}
 		page = productService.getPage(pageNo, 6);
 		model.addAttribute("page", page);
 		return "/shopping/maintain";
-//		return "/shopping/ProcessProductForm";
+		// return "/shopping/ProcessProductForm";
 	}
-	
-	//Insert Product
-	@RequestMapping(value="/product/insert", method=RequestMethod.GET)
+
+	// Insert Product
+	@RequestMapping(value = "/product/insert", method = RequestMethod.GET)
 	public String input(Model model) {
 		model.addAttribute("Classifies", classifyService.getAll());
 		model.addAttribute("product", new Product());
 		return "/shopping/Management";
 	}
-	
-	//Insert Product
-	@RequestMapping(value="/product/insert", method={RequestMethod.POST})
-	public String insertProduct(@ModelAttribute(name="product") Product product, Model model) {
+
+	// Insert Product
+	@RequestMapping(value = "/product/insert", method = { RequestMethod.POST })
+	public String insertProduct(@ModelAttribute(name = "product") Product product, Model model) {
 		try {
 			productService.insert(product);
 		} catch (Exception e) {
@@ -72,18 +74,18 @@ public class ProductController {
 		}
 		return "redirect:/product/maintain";
 	}
-	
-	//Form Data Return Show
-	@RequestMapping(value="/product/{id}", method={RequestMethod.GET})
+
+	// Form Data Return Show
+	@RequestMapping(value = "/product/{id}", method = { RequestMethod.GET })
 	public String input(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("Classifies", classifyService.getAll());
 		Product product = productService.getOne(id);
 		model.addAttribute("product", product);
 		return "/shopping/Management";
 	}
-	
-	//Update Product
-	@RequestMapping(value={"/product/{id}"}, method={RequestMethod.POST})
+
+	// Update Product
+	@RequestMapping(value = { "/product/{id}" }, method = { RequestMethod.POST })
 	public String updateProduct(Product product, Model model) {
 		try {
 			productService.update(product);
@@ -93,43 +95,33 @@ public class ProductController {
 		}
 		return "redirect:/product/maintain";
 	}
-		
-		
-		
-		
-		
-	
-	@RequestMapping(path= {"/selectAllProduct"}, method={RequestMethod.GET})
-	public String selectAllProduct(Model model) {
-			model.addAttribute("productAll", productService.getAll());
-		return "/shopping/ProcessProductForm";
-	}
-	
-	@RequestMapping(path= {"/deleteOneProduct"}, method={RequestMethod.GET})
-	public String deleteOneProduct(Product product, Model model) {
+
+	// Delete Product
+	@RequestMapping(value = { "/delete/{id}" }, method = { RequestMethod.GET })
+	public String delete(@PathVariable(name = "id") Long id) {
 		try {
-			productService.delete(product.getId());
-			model.addAttribute("deleteId", Long.valueOf(product.getId()));
+			System.err.println(id);
+			productService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "/rollback";
 		}
-		return "/shopping/ProcessProductForm";
+		return "redirect:/product/maintain";
 	}
-	
-	//SelectOne
-	@RequestMapping(value="/selectOneProduct", method={RequestMethod.GET})
-	public String selectOneProduct(@RequestParam(name="id") Long id, Product product, Model model) {
+
+	// SelectOne
+	@RequestMapping(value = "/selectOneProduct", method = { RequestMethod.GET })
+	public String selectOneProduct(@RequestParam(name = "id") Long id, Product product, Model model) {
 		model.addAttribute("product", productService.getOne(id));
 		return "/shopping/Product";
 	}
-	
-	//find Product by Classify
-//	@RequestMapping(path= {"/selectClassify"}, method={RequestMethod.GET})
-//	public String selectClassify(Product product, Model model) {
-//		ArrayList<Product> products = productService.getAll();
-//			model.addAttribute("productList", products);
-//		return "/shopping/ProcessProductForm";
-//	}
-	
+
+	// find Product by Classify
+	// @RequestMapping(path= {"/selectClassify"}, method={RequestMethod.GET})
+	// public String selectClassify(Product product, Model model) {
+	// ArrayList<Product> products = productService.getAll();
+	// model.addAttribute("productList", products);
+	// return "/shopping/ProcessProductForm";
+	// }
+
 }

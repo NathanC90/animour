@@ -139,7 +139,7 @@
 						<a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'></span> 返回
 						</a>
-						<a href='#' class='btn btn-warning btn-large'> <span
+						<a href="/cart/buy/${product.id}" class='btn btn-warning btn-large'> <span
 									class='glyphicon-shopping-cart glyphicon'></span> 加入購物車
 						</a>
 					</div>
