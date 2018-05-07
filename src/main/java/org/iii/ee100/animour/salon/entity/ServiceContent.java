@@ -22,9 +22,9 @@ import lombok.Setter;
 @Table(name="SERVICECONTENT")
 public class ServiceContent extends GenericEntity{
 
-	@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-	@JoinColumn(name = "RESERVATIONDATE_ID")
-	private ReservationTime reservationTime;
+	@ManyToOne
+	@JoinColumn(name = "DESIGNER_ID", referencedColumnName = "ID")
+	private Designer designer;
 	
 	@Column(name="CONTENT")
 	String content;
