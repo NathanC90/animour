@@ -174,11 +174,25 @@ insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DES
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
 
 insert into SERVICECONTENT (CONTENT,time,price,designer_id)
-values ('剪毛',1,200,1);
-insert into serviceContent (CONTENT,time,price,designer_id)
-values ('洗澡',1,300,2);
-insert into serviceContent (CONTENT,time,price)
-values ('造型',1,400);
+values ('剪毛',1,200,2);
+--insert into serviceContent (CONTENT,time,price)
+--values ('洗澡',1,300);
+--insert into serviceContent (CONTENT,time,price)
+--values ('造型',1,400);
+--insert into SERVICECONTENT (CONTENT,time,price)
+--values ('剪毛',1,200);
+--insert into serviceContent (CONTENT,time,price)
+--values ('洗澡',1,300);
+--insert into serviceContent (CONTENT,time,price)
+--values ('造型',1,400);
+--insert into SERVICECONTENT (CONTENT,time,price)
+--values ('剪毛',1,200);
+--insert into serviceContent (CONTENT,time,price)
+--values ('洗澡',1,300);
+--insert into serviceContent (CONTENT,time,price)
+--values ('造型',1,400);
+
+
 
 insert into RESERVATIONTIME (front_Time,back_Time)values
 ('09:00:00','10:00:00'),
@@ -187,6 +201,7 @@ insert into RESERVATIONTIME (front_Time,back_Time)values
 ('13:30:00','14:30:00'),
 ('14:30:00','15:30:00'),
 ('15:30:00','16:30:00');
+
 
 /*11 designer*/
 insert into designer (designer)values
