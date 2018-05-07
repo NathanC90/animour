@@ -116,7 +116,7 @@ public class AnimalController {
 		model.addAttribute("animal", an);
 		List<City> citys = animalservice.getAllCity();
 		model.addAttribute("citys", citys);
-		return "/halfway/updateAnimalForm";
+		return "/halfway/add";
 	}
 
 	// 送出update 表單
@@ -131,21 +131,6 @@ public class AnimalController {
 		model.addAttribute("inanimal", an);
 
 		return "/halfway/insertSuccess";
-	}
-
-	@RequestMapping(value = "/deleteAnimal", method = { RequestMethod.GET })
-	public String deleteAnimal(Animal an, Model model) {
-		an = animalservice.getOne(an.getId());
-		if (an != null) {
-			animalservice.delete(an.getId());
-			model.addAttribute("dlanimalId", an.getId());
-		}
-		return "/halfway/FindAnimal";
-	}
-
-	@RequestMapping("/selectAllAnimal")
-	public String findAllAnimal(Model model) {
-		return "/halfway/FindAnimal";
 	}
 
 	@RequestMapping("/selectOneAnimal")

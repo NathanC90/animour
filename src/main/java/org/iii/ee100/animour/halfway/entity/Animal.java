@@ -9,9 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -76,4 +78,7 @@ public class Animal extends GenericEntity{
 
 	@Column(name = "FILE_NAME")
 	private String fileName;
+	
+	@Transient
+	private MultipartFile avatar;
 }
