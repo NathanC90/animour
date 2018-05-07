@@ -20,6 +20,7 @@ import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,56 +36,76 @@ public class AnimalRestController {
 
 	PageInfo defaultPageInfo = new PageInfo(1, 8);
 
-	// 查詢全部 
-//	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
-//			"application/xml" })
-//	public List<Animal> listAnimal(@RequestParam(value = "pageNumber", defaultValue = "1") Integer pageNumber,
-//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-//		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
-//		List<Animal> animals = page.getContent();
-//		return animals;
-//	}
-	
-	// 查詢全部 ， 改用 Page 物件接值
-		@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
-				"application/xml" })
-		public List<Animal> listAnimal(PageInfo pageinfo, Model model) {
-			if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
-				pageinfo = defaultPageInfo;
-			}
-			Page<Animal> page = animalservice.getAnimalPage(pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
-			List<Animal> animals = page.getContent();
-			return animals;
-		}
+	// 查詢全部
+	// @RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET,
+	// produces = { "application/json",
+	// "application/xml" })
+	// public List<Animal> listAnimal(@RequestParam(value = "pageNumber",
+	// defaultValue = "1") Integer pageNumber,
+	// @RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model
+	// model) {
+	// Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); //
+	// pageNumber=頁數 pageSize=一頁幾筆資料
+	// List<Animal> animals = page.getContent();
+	// return animals;
+	// }
 
-	// 新增
+	// 查詢全部 ， 改用 Page 物件接值
+	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
+			"application/xml" })
+	public List<Animal> listAnimal(PageInfo pageinfo) {
+		if (pageinfo.getNumber() == null || pageinfo.getSize() == null) {
+			pageinfo = defaultPageInfo;
+		}
+		Page<Animal> page = animalservice.getAnimalPage(pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
+		List<Animal> animals = page.getContent();
+		return animals;
+	}
+
+	// 新增&修改
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST)
-	public ResponseEntity<?> insertAnimal(Animal animal, @RequestParam(value = "file", required = false) MultipartFile image,
-			HttpServletRequest request, Model model) {
+	public ResponseEntity<?> insertAnimal(Animal animal,
+			@RequestParam(value = "file", required = false) MultipartFile avatar, HttpServletRequest request) {
 		Member current = animalservice.getCurrentMember();
 		animal.setMember(current);
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		animal.setUpload(ts);
 		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
-		animalservice.insert(animal);
-		
-		if (image == null || image.isEmpty()) {
-			
-			return new ResponseEntity<String>("", HttpStatus.OK);
+		if (animal.getId() == null) {
+			animalservice.insert(animal);
 		}
-		String fileName = animalservice.readImage(image, request, animal);
-		animal.setFileName(fileName);
-		// 儲存圖片之後，更新檔名
+		if (avatar != null && !avatar.isEmpty()) {
+			String fileName = animalservice.readImage(avatar, request, animal);
+			animal.setFileName(fileName);
+		}
+		// 儲存圖片之後，更新
 		animalservice.update(animal);
 
-		//return "success";
 		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
 	}
-	
+
+	// 刪除
+	@RequestMapping(value = { "/halfway/animal/{id}" }, method = RequestMethod.DELETE)
+	public ResponseEntity<?> deleteAnimal(@PathVariable Long id) {
+		Animal an = animalservice.getOne(id);
+		if (an != null) {
+			animalservice.delete(id);
+		}
+		return new ResponseEntity<Animal>(HttpStatus.OK);
+	}
+
+	// 查詢一筆
+	@RequestMapping(value = { "/halfway/animal/{id}" }, method = RequestMethod.GET, produces = { "application/json",
+			"application/xml" })
+	public Animal oneAnimal(@PathVariable Long id) {
+		Animal an = animalservice.getOne(id);
+		return an;
+	}
+
+	// 複合查詢
 	@RequestMapping(value = "/queryTest", method = { RequestMethod.POST })
-	public List<Animal> specificationQuery(@RequestBody QueryFormHalfway queryform,
-			PageInfo pageinfo, Model model) {
+	public List<Animal> specificationQuery(@RequestBody QueryFormHalfway queryform, PageInfo pageinfo, Model model) {
 
 		Map<String, Object> speciemap = new IdentityHashMap<>();
 		if (queryform.getSpecieitems() != null && queryform.getSpecieitems().size() != 0) {
@@ -95,14 +116,14 @@ public class AnimalRestController {
 		Map<String, Object> citymap = new IdentityHashMap<>();
 		if (queryform.getCityitems() != null && queryform.getCityitems().size() != 0) {
 			for (Long ct : queryform.getCityitems()) {
-				citymap.put(new String("city"),animalservice.getCityById(ct));
+				citymap.put(new String("city"), animalservice.getCityById(ct));
 			}
 		}
 		Specification<Animal> spec;
-		if (speciemap.size() != 0 && citymap.size() != 0 ) {
+		if (speciemap.size() != 0 && citymap.size() != 0) {
 			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
 					.and(SpecificationHalfway.containsEqualsOr(citymap));
-		}else {
+		} else {
 			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
 					.or(SpecificationHalfway.containsEqualsOr(citymap));
 		}
@@ -115,8 +136,5 @@ public class AnimalRestController {
 
 		return animals;
 	}
-
-	
-	
 
 }

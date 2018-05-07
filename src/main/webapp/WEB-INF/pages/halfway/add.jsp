@@ -164,6 +164,8 @@
 								<input type="button" class="btn btn-common" value="送出" id="submit">
 								<input type="reset" class="btn btn-common" value="清除">
 								<a href="/halfway" class="btn btn-common"> 回上頁</a>
+								<form:hidden  id="id" path="id"/>
+								<form:hidden  id="member" path="member"/>
 							</form:form>
 						</div>
 					</div>
