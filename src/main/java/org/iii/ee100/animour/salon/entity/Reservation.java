@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="Reservation")
+@Table(name="RESERVATION")
 public class Reservation extends GenericEntity{
 	
 	

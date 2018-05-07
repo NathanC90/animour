@@ -40,7 +40,9 @@ public class ReservationService extends GenericService<Reservation>{
 	ReservationDateDao reservationDateDao;
 	
 	
-	
+	public void deleteReservation(Reservation id) {
+		 reservationDao.delete(id);
+	}
 	
 	
 	public ArrayList<Reservation> getAllContent() {
@@ -62,8 +64,8 @@ public class ReservationService extends GenericService<Reservation>{
 		return Lists.newArrayList(reservationDateDao.findAll());
 	}
 	
-	public Designer getOne(Long id) {
-		return designerDao.findOne(id);
+	public Reservation getOne(Long id) {
+		return reservationDao.findOne(id);
 	}
 	public ServiceContent getServiceContentId(Long id) {
 		return serviceContentDao.findOne(id);

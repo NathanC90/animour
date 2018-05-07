@@ -33,23 +33,21 @@ public class ReservationController {
 	
 
 
-	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.GET })
-	public String reservationTime(Model model) {
-		Reservation reservation = new Reservation();
-		model.addAttribute("reservation", reservation);		
-		return "/salon/insertReservationForm";
-	}
+//	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.GET })
+//	public String reservationTime(Model model) {
+//		Reservation reservation = new Reservation();
+//		model.addAttribute("reservation", reservation);		
+//		return "/salon/insertReservationForm";
+//	}
 	@RequestMapping(path = { "/editReservation" }, method = { RequestMethod.GET })
 	public String editReservation(Model model) {
-		ArrayList<Reservation> allReservationList= reservationService.getAllContent();
-		model.addAttribute("allReservationList", allReservationList);		
 		return "/salon/editReservation";
 	}
-	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })
-	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
-		model.addAttribute("reservation", reservationService.insertReservation(reservation));
-		return "/salon/checkReservationOrder";
-	}
+//	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })
+//	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
+//		model.addAttribute("reservation", reservationService.insertReservation(reservation));
+//		return "/salon/checkReservationOrder";
+//	}
 	
 	@ModelAttribute("allContent")
 	public Map<String,String> getAllContent() {
