@@ -194,46 +194,4 @@ public class AnimalController {
 		model.addAttribute("citys", citys);
 		return "/halfway/add";
 	}
-
-	// 多重查詢測試
-//	@RequestMapping(value = "/queryTestController", method = { RequestMethod.GET })
-//	public String specificationQuery(@RequestParam(value = "specieitems[]", required = false) String[] specieitems,
-//			@RequestParam(value = "cityitems[]", required = false) Long[] cityitems,
-//			@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-//
-//		Map<String, Object> speciemap = new IdentityHashMap<>();
-//		if (specieitems != null && specieitems.length != 0) {
-//			for (String sp : specieitems) {
-//				speciemap.put(new String("specie"), sp);
-//			}
-//		}
-//		Map<String, Object> citymap = new IdentityHashMap<>();
-//		if (cityitems != null && cityitems.length != 0) {
-//			for (Long ct : cityitems) {
-//				citymap.put(new String("city"), animalservice.getCityById(ct));
-//			}
-//		}
-//		Specification<Animal> spec;
-//		if (speciemap.size() != 0 && citymap.size() != 0 ) {
-//			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
-//					.and(SpecificationHalfway.containsEqualsOr(citymap));
-//		}else {
-//			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
-//					.or(SpecificationHalfway.containsEqualsOr(citymap));
-//		}
-//		Page<Animal> page = animalservice.getSpecPage(pageNumber, pageSize, spec);
-//		model.addAttribute("animalpage", page);
-//		model.addAttribute("mapsize", citymap.size());
-//
-//		// 設定當前會員
-//		Member current = animalservice.getCurrentMember();
-//		model.addAttribute("currentMember", current);
-//
-//		animalservice.updateAnimalCount();
-//		List<City> citys = animalservice.getQueryCity();
-//		model.addAttribute("citys", citys);
-//		return "/halfway/halfwayIndex";
-//	}
-
 }
