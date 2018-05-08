@@ -21,6 +21,11 @@ public class MemberService extends GenericService<Member> {
 		memberDao.save(member);
 	}
 
+	public void update(Member member,String password) {
+		member.setPassword(password);
+		memberDao.save(member);
+	}
+	
 	public void update(Member member)  {
 		Member memberToUpdate=memberDao.findByAccount(member.getAccount());
 		memberToUpdate.setPassword(member.getPassword());
@@ -30,12 +35,6 @@ public class MemberService extends GenericService<Member> {
 		memberToUpdate.setEmail(member.getEmail());
 		memberToUpdate.setAddress(member.getAddress());
 		memberToUpdate.setSignature(member.getSignature());
-//				memberToUpdate.setPassword(password);
-//				memberToUpdate.setName(name);
-//				memberToUpdate.setNickname(nickname);
-//				memberToUpdate.setCell(cell);
-//				memberToUpdate.setEmail(email);
-		
 		
 		memberDao.save(memberToUpdate);
 	}

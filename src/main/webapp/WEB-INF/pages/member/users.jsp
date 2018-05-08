@@ -137,7 +137,7 @@
 				<th>手機</th>
 				<th>信箱</th>
 				<th>地址</th>
-				<th>地址</th>
+				<th>狀態</th>
 				<th>管理</th>
 			</tr>
 		</thead>
@@ -233,7 +233,7 @@
 	
 <script>
 $(document).ready(function() {
-$.getJSON('/user', {  }, function (data) {
+$.getJSON('/api/member/all', {  }, function (data) {
         console.log(data);
         $('#table1>tbody').empty();
         $.each(data, function (i, member) {

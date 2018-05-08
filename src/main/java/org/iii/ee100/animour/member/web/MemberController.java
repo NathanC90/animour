@@ -26,90 +26,105 @@ public class MemberController {
 
 	@Autowired
 	AnimalService animalService;
-	
-	// 註冊頁面
+
+	// 導向註冊頁面
 	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
 	public String sign(Model model) {
 		Member member = new Member();
 		model.addAttribute("member", member);
-		return "/member/register";
+		return "/member/register_original";
 
 	}
 
-	// 修改個人頁面
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(Model model) {
-		 String account= memberService.getCurrentMember().getUsername();
-		 Member userDetails=memberService.getOneByAccount(account);
-		 model.addAttribute("member", userDetails);
-		return "/member/update";
-	}
-	
 	// 送出註冊資料(新增會員)
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("member") Member member,BindingResult bindingResult) {
+	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			return "/member/register";
-		}
-		else {
- 
-		member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
-		member.setStatus(1);
-		memberService.insert(member);
-		return "redirect:/";// 註冊成功跳轉 login
+			return "forward:/sign_up";
+		} else {
+
+			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
+			member.setStatus(1);
+			memberService.insert(member);
+			return "redirect:/";// 註冊成功跳轉 login
 		}
 	}
 
-	// 修改個人頁面(註冊資料)
+	// (會員)前往修改資料頁面
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update(Model model) {
+		String account = memberService.getCurrentMember().getUsername();
+		Member userDetails = memberService.getOneByAccount(account);
+		model.addAttribute("member", userDetails);
+		return "/member/update";
+	}
+
+	// (會員)修改個人頁面(註冊資料)
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String updatemember(@Valid @ModelAttribute("member") Member member
-			, 
-			BindingResult bindingResult
-			, @RequestParam("name") String name
-			, @RequestParam("nickname") String nickname
-			, @RequestParam("password") String password
-			, @RequestParam("cell") String cell
-			, @RequestParam("email") String email
-			, @RequestParam("address") String address
-			, @RequestParam("account") String account) 
-			{
+	public String updatemember(@Valid Member member, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
+			bindingResult.getAllErrors();
 			return "/member/update";
-		}
-		else {
-		
-		memberService.update(password, name, nickname, cell, email, account);
-		;
-		return "redirect:/";
+		} else {
+
+			memberService.update(member);
+			return "redirect:/";
 		}
 	}
+
+	//(會員)修改密碼頁面
+	@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
+	public String changePassword() {
+		return "/member/updatepassword";
+
+	}
 	
-	//刪除會員(管理員才有資格)
+	
+	
+	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
+	public String updatePassword(String newPassword) {
+		memberService.update(memberService.getCurrentMember(), newPassword);
+		return "/";
+		
+	}
+	
+	
+	// 刪除會員(管理員才有資格)
 	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
-	public String delete(@RequestParam("account") String account,Model model) {
+	public String delete(String account, Model model) {
 		memberService.delete(account);
-		return "redirect:/";//回到主頁
-	}	
-	
+		return "redirect:/admin/user";// 回到主頁
+	}
 
 	// 列出(全部)會員
 	@RequestMapping("/users")
 	public String findAll() {
-		return "/member/users";//先傳送頁面
+		return "/member/users";// 先傳送頁面
 	}
 
 	// 顯示個人首頁
 	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
-	public String profile(Model model,@PathVariable String account) {		
-		 Member userDetails=memberService.getOneByAccount(account);
-		 model.addAttribute("member", userDetails);
-		 
-		 List<Animal> animalls=animalService.getHomepageAnimalList(userDetails.getId());
-		 model.addAttribute("animalls", animalls);
-		 
+	public String profile(Model model, @PathVariable String account) {
+		Member userDetails = memberService.getOneByAccount(account);
+		model.addAttribute("member", userDetails);
+
+		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
+		model.addAttribute("animalls", animalls);
+
 		return "/member/homepage";
 
 	}
 
-	
+	// 前往後台頁
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public String admin() {
+		return "/member/back";
+
+	}
+
+	@RequestMapping(value = "/admin/user", method = RequestMethod.GET)
+	public String usermange() {
+		return "/member/back_user";
+
+	}
 }
