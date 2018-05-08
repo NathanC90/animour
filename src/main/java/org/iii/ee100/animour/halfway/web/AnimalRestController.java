@@ -38,7 +38,7 @@ public class AnimalRestController {
 	@Autowired
 	ResponseForAnimour response;
 
-	PageInfo defaultPageInfo = new PageInfo(1, 8);
+	private PageInfo defaultPageInfo = new PageInfo(1, 8);
 	
 	// 查詢全部
 	// @RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET,
@@ -57,7 +57,7 @@ public class AnimalRestController {
 	// 查詢全部 ， 改用 Page 物件接值
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public ResponseForAnimour listAnimal(PageInfo pageinfo) {
+	public ResponseEntity<?> listAnimal(PageInfo pageinfo) throws Exception {
 		if (pageinfo.getPageNumber() == null) {
 			pageinfo.setPageNumber(defaultPageInfo.getPageNumber());
 		}
@@ -68,7 +68,7 @@ public class AnimalRestController {
 		List<Animal> animals = page.getContent();
 		response.setData(animals);
 		
-		return response;
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
 	// 新增&修改

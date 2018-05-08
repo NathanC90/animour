@@ -380,6 +380,7 @@
 					initSubmitForm();
 				});
 
+				var datas;
 				var initSubmitForm = function () {
 					// 使用 ajax() 來呼叫 REST API
 					var docFragment = $(document.createDocumentFragment());
@@ -428,7 +429,14 @@
 									document.getElementById("importbutt").addEventListener("click", importAgain);
 								}
 							})
-						})
+						}).fail(function(){
+							$.each(datas.data, function (idx, animal) {
+								alert(animal.name)
+								window.location.href = 'http://google.com'
+							})
+
+							//window.location.href = 'http://google.com'
+						});
 				};
 
 				function importAgain() {
