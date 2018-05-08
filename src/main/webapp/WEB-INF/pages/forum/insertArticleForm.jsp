@@ -160,21 +160,21 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
     
-    function toJson(formData) {
-		var object = {};
-		formData.forEach(function (value, key) {
-			if (key == 'category'){
-				var object1 = {};
-				object1['id'] = value;
-				object[key] = object1;
-			}else{
-				object[key] = value;
-			}
-		});
-		var json = JSON.stringify(object, null);
-		console.log(json);
-		return json;
-	};
+//     function toJson(formData) {
+// 		var object = {};
+// 		formData.forEach(function (value, key) {
+// 			if (key == 'category'){
+// 				var object1 = {};
+// 				object1['id'] = value;
+// 				object[key] = object1;
+// 			}else{
+// 				object[key] = value;
+// 			}
+// 		});
+// 		var json = JSON.stringify(object, null);
+// 		console.log(json);
+// 		return json;
+// 	};
     
 	$(document).ready(function(){
     	$('#btn1').click(function(){

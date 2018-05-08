@@ -80,9 +80,10 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public void insertComment(Comment comment) {
-		commentDao.save(comment);
 		Article article = comment.getArticle();
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		System.out.println("service呼叫新增留言");
+		commentDao.save(comment);
 	}
 
 	public Member getOneMember(Long id) {

@@ -15,10 +15,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,22 +34,22 @@ public class ArticleRestController {
 	public List<Article> findAll(PageForAnimour pageForAnimour) {
 		PageRequest pageable = pageForAnimour.getPageRequest();
 		Page<Article> articlePage = forumService.getPage(pageable);
-		//為了讓前端抓得到totalPage
+		// 為了讓前端抓得到totalPage
 		int totalPage = articlePage.getTotalPages();
-		for(Article article:articlePage) {
+		for (Article article : articlePage) {
 			article.setTotalPage(totalPage);
 		}
-		
-		System.out.println(totalPage+"=========="+pageable.getPageNumber());
-		//確保前端傳來的PageNo不會超過totalPage
-		if(pageForAnimour.getPageNo() > totalPage || totalPage == 0) {
+
+		System.out.println(totalPage + "==========" + pageable.getPageNumber());
+		// 確保前端傳來的PageNo不會超過totalPage
+		if (pageForAnimour.getPageNo() > totalPage || totalPage == 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
 
-	// 查詢一筆文章AJAX用的     現在會壞
+	// 查詢一筆文章AJAX用的 現在會壞
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = { "application/json" })
 	public Article findOne(@PathVariable(value = "id") Long id) {
 		Article article = forumService.getOne(id);
@@ -60,14 +58,14 @@ public class ArticleRestController {
 
 	// 搜尋文章標題AJAX用的
 	@RequestMapping(value = "/search/{search}", method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> search(@PathVariable(value = "search") String search, int pageNo) {	
+	public List<Article> search(@PathVariable(value = "search") String search, int pageNo) {
 		Page<Article> articlePage = forumService.getPageSearchBySubject(search, pageNo, 3);
 		int totalPage = articlePage.getTotalPages();
-		for(Article article:articlePage) {
+		for (Article article : articlePage) {
 			article.setTotalPage(totalPage);
 		}
-		System.out.println(totalPage+"=========="+pageNo);
-		if(pageNo > totalPage && totalPage != 0) {
+		System.out.println(totalPage + "==========" + pageNo);
+		if (pageNo > totalPage && totalPage != 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();
@@ -76,32 +74,46 @@ public class ArticleRestController {
 
 	// 按照文章類別查詢
 	@RequestMapping(path = { "/category/{categoryId}" }, method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId,int pageNo) {
+	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId, int pageNo) {
 		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageNo, 3);
 		int totalPage = articlePage.getTotalPages();
-		for(Article article:articlePage) {
+		for (Article article : articlePage) {
 			article.setTotalPage(totalPage);
 		}
-		System.out.println(totalPage+"=========="+pageNo);
-		if(pageNo > totalPage && totalPage != 0) {
+		System.out.println(totalPage + "==========" + pageNo);
+		if (pageNo > totalPage && totalPage != 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();
 		return articleList;
 	}
-	
+
+	// 留言列表AJAX用的
+	// @RequestMapping(value = { "/comment/{articleId}" }, method =
+	// RequestMethod.GET, produces = { "application/json" })
+	// public List<Comment> findCommentByArticleId(@PathVariable(value =
+	// "articleId") Long articleId) {
+	// List<Comment> commentList = forumService.getCommentByArticleId(articleId);
+	// return commentList;
+	// }
 
 	// 新增留言
 	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST)
-	public void newComment(@RequestBody Comment comment) {
+	public ResponseEntity<?> newComment(Comment comment) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+		 if (memberService.getCurrentMember() != null) {
+			 comment.setMember((Member) memberService.getCurrentMember());
+		 }
+//		comment.setMember(memberService.getOne(2L));
 		forumService.insertComment(comment);
+		System.out.println("控制器呼叫新增留言");
+		return new ResponseEntity<Comment>(comment, HttpStatus.OK);
 	}
 
 	// 新增文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
-		
+
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		article.setPostTime(new Timestamp(System.currentTimeMillis()));
 		if (memberService.getCurrentMember() != null) {
@@ -116,7 +128,7 @@ public class ArticleRestController {
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}
 
-	//讓COMMENT的AJAX呼叫用的
+	// 讓COMMENT的AJAX呼叫用的
 	@RequestMapping(value = { "/comment/{articleId}" }, method = RequestMethod.GET, produces = { "application/json" })
 	public List<Comment> getComment(@PathVariable(value = "articleId") Long articleId) {
 		List<Comment> commentList = forumService.getCommentByArticleId(articleId);

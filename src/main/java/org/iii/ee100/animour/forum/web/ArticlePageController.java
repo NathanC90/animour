@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
-import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -115,9 +114,7 @@ public class ArticlePageController {
 				e.printStackTrace();
 				return "/rollback";
 			}
-			List<Comment> comments = forumService.getCommentByArticleId(article.getId());
 			model.addAttribute("article", atc);
-			model.addAttribute("comments", comments);
 		}
 		return "/forum/singleArticle";
 	}

@@ -122,6 +122,7 @@
                 <div class="blog-post clearfix">
                   <p>${article.content}</p>
                 </div>
+                <div id="articleId" style = "display:none" >${article.id}</div>
               </section>
             </article>
             <!-- About Author -->
@@ -169,6 +170,7 @@
             <div class="comments-area clearfix mt-5 wow fadeIn" data-wow-delay="0.3s">
               <h3 class="small-title"><i class="fa fa-comment"></i> Comments</h3>
               <ul class="media-left comment-list mt-30">
+                <div id = "show"></div>
                 <c:forEach var="comment" items="${comments}">
                 <li class="media">
                   <div class="media-left">
@@ -202,7 +204,8 @@
               </ul>
               <div class="new-comment mt-5">
                 <h3 class="small-title">Post new Comment</h3>
-                <form class="mt-30" name="commentForm" action="/forum/comment?articleId=${article.id}" method="POST">
+                <form id="comment" class="mt-30" name="commentForm" action="/articles/comment/" method="POST">
+                  <input name="article" type="hidden" value="${article.id}"/>
                   <div class="row">
                         <sec:authorize access="hasRole('Member')">
                         <sec:authentication property="principal.username" />:
@@ -212,9 +215,8 @@
                     <label class="sr-only" for="usermessage">Message</label>
                     <textarea name="content" placeholder="Type here message" id="usermessage" rows="4" required="" class="form-control"></textarea>
                   </div> 
-                  <button class="btn btn-common" type="submit"><i class="fa fa-comment"></i> Post Comment</button>      
+                  <button id="btn1" class="btn btn-common"><i class="fa fa-comment"></i> Post Comment</button>      
               </form>
-              <div id = "show"></div>
               </div>
             </div>
           </div>
@@ -259,25 +261,49 @@
 	var commentString = "";
 	
 	$(document).ready(function(){
-		getArticle();
+		getComment();
+		$('#btn1').click(function(){
+		console.log("haha");
+		var formData = new FormData(document.getElementById("comment"));
+
+		console.log(formData);
+
 		
+		$.ajax({
+		    type: "POST",
+		    url: "/articles/comment",
+		    data: formData,
+		    contentType: false,
+			processData: false,
+
+		    success: function(){
+// 		    	window.location.href = 'http://localhost:8080/forum/findAll';
+				alert("ajax post");
+		    	}
+// 		    failure: function(errMsg) {
+// 		        alert(errMsg);
+// 		    }
+		});
 	});
 	
-function getArticle(){
-	$.getJSON("/articles/comment",{},function(datas){
+	});
+	
+function getComment(){
+	var url = "/articles/comment/" + $('#articleId').text();
+	$.getJSON(url,{},function(datas){
    	 if(datas!=null){
 			$.each(datas,function(idx,comment){
          	var commentStr = 
          		'<li class="media"><div class="media-left"><a href="#"><img class="img-responsive img-circle" src="/images/blog/comment_avatar/avatar1.jpg" alt=""></a></div><div class="media-body"><div class="commentor-info"><div class="comment-author"><a href="#">'
          		+ comment.member.account 
                 + '</a><span class="published-time"><i class="fa fa-calendar"></i>'
-                +comment.updateTime
+                + new Date(comment.updateTime)
                 + '</span></div><p>' + comment.content + '</p></div></div></li>'
                
          		commentString += commentStr;
 			});
-			$("#show").html(articlesString);
-			console.log(datas);
+			$("#show").html(commentString);
+			
    			}
 		});
 	}
