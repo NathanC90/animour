@@ -36,11 +36,11 @@ public class MemberController {
 
 	}
 
-	// 送出註冊資料(新增會員)
+	// 送出註冊資料=新增會員
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult) {
+	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult,Error error) {
 		if (bindingResult.hasErrors()) {
-			return "forward:/sign_up";
+			return "/member/register_original";
 		} else {
 
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
@@ -50,16 +50,15 @@ public class MemberController {
 		}
 	}
 
-	// (會員)前往修改資料頁面
+	// <會員>(get)修改個人資料頁面
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(Model model) {
-		String account = memberService.getCurrentMember().getUsername();
-		Member userDetails = memberService.getOneByAccount(account);
+		Member userDetails = memberService.getNewCurrentMembr();
 		model.addAttribute("member", userDetails);
 		return "/member/update";
 	}
 
-	// (會員)修改個人頁面(註冊資料)
+	// <會員>(post)修改個人資料頁面
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updatemember(@Valid Member member, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
@@ -72,23 +71,25 @@ public class MemberController {
 		}
 	}
 
-	//(會員)修改密碼頁面
+	// <會員>(get)修改密碼頁面
 	@RequestMapping(value = "/changepassword", method = RequestMethod.GET)
 	public String changePassword() {
 		return "/member/updatepassword";
+	}
+
+	// <會員>(post)修改密碼頁面
+	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
+	public String updatePassword(String oldPassword,String newPassword) {
+		if(memberService.getNewCurrentMembr().getPassword()==oldPassword) {
+		memberService.update(memberService.getNewCurrentMembr(), newPassword);
+		return "/";
+		}
+		else {
+			return "/member/updatepassword";
+		}
 
 	}
-	
-	
-	
-	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
-	public String updatePassword(String newPassword) {
-		memberService.update(memberService.getCurrentMember(), newPassword);
-		return "/";
-		
-	}
-	
-	
+
 	// 刪除會員(管理員才有資格)
 	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
 	public String delete(String account, Model model) {

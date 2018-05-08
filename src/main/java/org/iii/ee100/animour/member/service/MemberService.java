@@ -17,12 +17,13 @@ public class MemberService extends GenericService<Member> {
 	@Autowired
 	MemberDao memberDao;
 	
+	
 	public void insert(Member member)  {
 		memberDao.save(member);
 	}
 
-	public void update(Member member,String password) {
-		member.setPassword(password);
+	public void update(Member member,String newPassword) {
+		member.setPassword(newPassword);
 		memberDao.save(member);
 	}
 	
@@ -71,8 +72,14 @@ public class MemberService extends GenericService<Member> {
 			return (Member) principal;
 		} else {
 			return null;
-		}
-		
+		}		
 	}
+	
+	public Member getNewCurrentMembr() {
+		Member principal = memberDao.findByAccount(getCurrentMember().getName());
+		return principal;
+	}
+	
+	
 }
 
