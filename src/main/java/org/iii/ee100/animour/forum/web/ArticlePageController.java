@@ -31,12 +31,26 @@ public class ArticlePageController {
 	}
 
 	@RequestMapping(path = { "/postArticle" }, method = { RequestMethod.GET })
-	public String articleForm(Model model) {
+	public String insertArticleForm(Model model) {
 		List<Category> categoryList = forumService.getAllCategory();
 		model.addAttribute("categorys", categoryList);
 		return "/forum/insertArticleForm";
 	}
 
+	@RequestMapping(path = { "/updateArticle" }, method = { RequestMethod.GET })
+	public String updateArticleForm(Model model,Article article) {
+		Article atc;
+		try {
+			atc = (Article) forumService.getOne(Long.valueOf(article.getId()));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "/rollback";
+		}
+		model.addAttribute("article", atc);
+		List<Category> categoryList = forumService.getAllCategory();
+		model.addAttribute("categorys", categoryList);
+		return "/forum/insertArticleForm";
+	}
 
 	// 綜覽文章頁面
 	@RequestMapping(path = { "/forum/findAll" }, method = { RequestMethod.GET })

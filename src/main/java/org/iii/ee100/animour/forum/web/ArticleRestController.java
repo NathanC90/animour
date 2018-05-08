@@ -97,17 +97,25 @@ public class ArticleRestController {
 		return new ResponseEntity<Comment>(comment, HttpStatus.OK);
 	}
 
-	// 新增文章
+	// 新增&修改文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
 		article.setMember(memberService.getNewCurrentMember());
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
 		article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
 		article.setClick(0L);
-		try {
-			forumService.insert(article);
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (article.getId()!=null) {
+			try {
+				forumService.update(article);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+		}else {
+			try {
+				forumService.insert(article);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
 		}
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}

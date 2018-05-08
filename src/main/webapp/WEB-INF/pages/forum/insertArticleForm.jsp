@@ -126,8 +126,9 @@
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
+						<input name="id" type="hidden" value="${article.id}"/>
 						標題: <input type="text" class="form-control" id="anname"
-                                placeholder="" name="subject" value="">
+                                placeholder="" name="subject" value="${article.subject}">
 
 						</div>
 						<div class="form-group col-md-6">
@@ -144,7 +145,7 @@
 					<div class="form-group">
 						內容:
 						<textarea class="form-control" id="content" name="content"
-                            rows="4" style="height:400px;"></textarea>
+                            rows="4" style="height:400px;">${article.content}</textarea>
 
 					</div>
 <!-- 					<div class="form-group"> -->

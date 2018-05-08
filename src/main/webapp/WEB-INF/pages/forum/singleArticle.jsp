@@ -122,7 +122,7 @@
                 <div class="blog-post clearfix">
                   <p>${article.content}</p>
                 </div>
-				<button id="btn2" class="btn btn-common" style="float:right">Update</button>
+				<a href="http://localhost:8080/updateArticle?id=${article.id}"><button id="btn2" class="btn btn-common" style="float:right">Update</button></a>
                 <div id="articleId" style = "display:none" >${article.id}</div>
               </section>
             </article>
