@@ -75,13 +75,13 @@ public class MemberService extends GenericService<Member> {
 		}		
 	}
 	
-	public Member getNewCurrentMembr() {
+	public Member getNewCurrentMember() {
 		Member principal = memberDao.findByAccount(getCurrentMember().getAccount());
 		return principal;
 	}
 	
 	
-	
+
 	
 }
 

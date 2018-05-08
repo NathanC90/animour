@@ -40,9 +40,9 @@ public class MemberController {
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult,Error error) {
 		if (bindingResult.hasErrors()) {
-			return "/member/register_original";
-		} else {
-
+				return "/member/register_original";
+			}
+		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(1);
 			memberService.insert(member);
@@ -53,7 +53,7 @@ public class MemberController {
 	// <會員>(get)修改個人資料頁面
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String update(Model model) {
-		Member userDetails = memberService.getNewCurrentMembr();
+		Member userDetails = memberService.getNewCurrentMember();
 		model.addAttribute("member", userDetails);
 		return "/member/update";
 	}
@@ -80,8 +80,8 @@ public class MemberController {
 	// <會員>(post)修改密碼頁面
 	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
 	public String updatePassword(String oldPassword,String newPassword) {
-		if(memberService.getNewCurrentMembr().getPassword()==oldPassword) {
-		memberService.update(memberService.getNewCurrentMembr(), newPassword);
+		if(memberService.getNewCurrentMember().getPassword()==oldPassword) {
+		memberService.update(memberService.getNewCurrentMember(), newPassword);
 		return "/";
 		}
 		else {
