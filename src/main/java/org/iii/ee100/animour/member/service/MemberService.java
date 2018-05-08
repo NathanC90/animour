@@ -81,7 +81,22 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	
-
+	public boolean validPassword(String password) {
+		if(getNewCurrentMember().getPassword().equals(password)) {
+			return true;
+		}
+		else {
+			return false;
+		}		
+	}
+	
+	public boolean emailExist(String email) {
+        Member member = memberDao.findByEmail(email);
+        if (member != null) {
+            return true;
+        }
+        return false;
+	}
 	
 }
 

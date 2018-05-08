@@ -105,7 +105,7 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/${username}">個人首頁</a>
                                             <a class="dropdown-item" href="/update">修改個人資料</a>
-
+                                            <a class="dropdown-item" href="/changepassword">修改密碼</a>
                                             <a class="dropdown-item" href="/logout">登出</a>
 
                                         </div>

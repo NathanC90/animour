@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.BindingResultUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,9 +40,15 @@ public class MemberController {
 	// 送出註冊資料=新增會員
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult,Error error) {
-		if (bindingResult.hasErrors()) {
-				return "/member/register_original";
-			}
+		if (bindingResult.hasErrors() || 
+				memberService.emailExist(member.getEmail()) ||
+				memberService.getOneByAccount(member.getUsername())!=null) {
+			
+			if (memberService.emailExist(member.getEmail())) {bindingResult.rejectValue("email","email message", "email exist");}
+			if (memberService.getOneByAccount(member.getUsername())!=null) {bindingResult.rejectValue("account","account message", "帳號重複");}
+
+			return "/member/register_original";
+		}		
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(1);
