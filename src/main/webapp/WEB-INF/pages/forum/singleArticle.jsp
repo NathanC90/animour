@@ -122,6 +122,7 @@
                 <div class="blog-post clearfix">
                   <p>${article.content}</p>
                 </div>
+				<button id="btn2" class="btn btn-common" style="float:right">Update</button>
                 <div id="articleId" style = "display:none" >${article.id}</div>
               </section>
             </article>
@@ -287,6 +288,7 @@ function getComment(){
 	var url = "/articles/comment/" + $('#articleId').text();
 	$.getJSON(url,{},function(datas){
    	 if(datas!=null){
+   		 console.log(datas);
 			$.each(datas,function(idx,comment){
          	var commentStr = 
          		'<li class="media"><div class="media-left"><a href="#"><img class="img-responsive img-circle" src="/images/blog/comment_avatar/avatar1.jpg" alt=""></a></div><div class="media-body"><div class="commentor-info"><div class="comment-author"><a href="#">'

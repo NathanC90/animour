@@ -11,11 +11,11 @@ public class GenericService<T extends GenericEntity> {
 	@Autowired
 	private GenericDao<T> dao;
 
-	public void insert(T genericEntity){
+	public void insert(T genericEntity) throws Exception{
 		dao.save(genericEntity);
 	}
 
-	public void update(T genericEntity){
+	public void update(T genericEntity) throws Exception{
 		dao.save(genericEntity);
 
 	}

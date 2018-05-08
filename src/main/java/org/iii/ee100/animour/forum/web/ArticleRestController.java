@@ -7,7 +7,6 @@ import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.service.ForumService;
-import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,9 +27,6 @@ public class ArticleRestController {
 
 	@Autowired
 	MemberService memberService;
-
-	@Autowired
-	AnimalService animalService;
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
@@ -95,7 +91,7 @@ public class ArticleRestController {
 	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST)
 	public ResponseEntity<?> newComment(Comment comment) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-		comment.setMember(animalService.getCurrentMember());
+		comment.setMember(memberService.getNewCurrentMember());
 		forumService.insertComment(comment);
 		System.out.println("控制器呼叫新增留言");
 		return new ResponseEntity<Comment>(comment, HttpStatus.OK);
@@ -104,11 +100,15 @@ public class ArticleRestController {
 	// 新增文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
-		article.setMember(animalService.getCurrentMember());
+		article.setMember(memberService.getNewCurrentMember());
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
 		article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
 		article.setClick(0L);
-		forumService.insert(article);
+		try {
+			forumService.insert(article);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return new ResponseEntity<Article>(article, HttpStatus.OK);
 	}
 
