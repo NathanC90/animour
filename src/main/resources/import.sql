@@ -5,7 +5,7 @@ VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台�
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address)
 VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
-VALUES ('Sony','123','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區');
+VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區');
 
  
  

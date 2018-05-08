@@ -29,7 +29,6 @@ public class MemberService extends GenericService<Member> {
 	
 	public void update(Member member)  {
 		Member memberToUpdate=memberDao.findByAccount(member.getAccount());
-		memberToUpdate.setPassword(member.getPassword());
 		memberToUpdate.setName(member.getName());
 		memberToUpdate.setNickname(member.getNickname());
 		memberToUpdate.setCell(member.getCell());

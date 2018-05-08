@@ -101,26 +101,26 @@
 											<form:input id="account" path="account"	type="hidden" />${member.account}
 										</div>
 									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											密碼:
-											<form:input id="password" path="password" type='password' class='form-control' />
-											<form:errors path="password" cssClass="alert alert-danger" element="div" />
-										</div>
-									</div>
+<!-- 									<div class="form-row"> -->
+<!-- 										<div class="form-group col-md-6"> -->
+<!-- 											密碼: -->
+<%-- 											<form:input id="password" path="password" type='password' class='form-control' /> --%>
+<%-- 											<form:errors path="password" cssClass="help-block" element="div" /> --%>
+<!-- 										</div> -->
+<!-- 									</div> -->
 
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											主人姓名:
 											<form:input id="name" path="name" type='text' class='form-control' autocomplete=""/>
-											<form:errors path="name" cssClass="alert alert-danger" element="div" />
+											<form:errors path="name" cssClass="help-block" element="div" />
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											暱稱:
 											<form:input id="nickname" path="nickname" type='text' class='form-control' />
-											<form:errors path="nickname" cssClass="alert alert-danger" element="div" />
+											<form:errors path="nickname" cssClass="help-block" element="div" />
 										</div>
 									</div>
 
@@ -129,13 +129,13 @@
 										<div class="form-group col-md-6">
 											手機:
 											<form:input id="cell" path="cell" type='text' class='form-control' />
-											<form:errors path="cell" cssClass="alert alert-danger" element="div" />
+											<form:errors path="cell" cssClass="help-block" element="div" />
 											
 										</div>
 										<div class="form-group col-md-6">
 											信箱:
 											<form:input id="email" path="email" type='text' class='form-control' />
-											<form:errors path="email" cssClass="alert alert-danger" element="div" />
+											<form:errors path="email" cssClass="help-blocks" element="div" />
 											
 										</div>
 									</div>
