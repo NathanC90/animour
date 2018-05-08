@@ -43,8 +43,7 @@ public class ForumService extends GenericService<Article> {
 		return articleList;
 	}
 
-	public Page<Article> getPageSearchByCategoryId(Long categoryId, int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+	public Page<Article> getPageSearchByCategoryId(Long categoryId, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());

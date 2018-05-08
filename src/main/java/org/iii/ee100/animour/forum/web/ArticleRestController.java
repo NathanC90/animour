@@ -73,14 +73,17 @@ public class ArticleRestController {
 
 	// 按照文章類別查詢
 	@RequestMapping(path = { "/category/{categoryId}" }, method = RequestMethod.GET, produces = { "application/json" })
-	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId, int pageNo) {
-		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageNo, 3);
+	public List<Article> findByCategory(@PathVariable(value = "categoryId") Long categoryId, PageForAnimour pageForAnimour) {
+		PageRequest pageable = pageForAnimour.getPageRequest();
+		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageable);
 		int totalPage = articlePage.getTotalPages();
 		for (Article article : articlePage) {
 			article.setTotalPage(totalPage);
 		}
-		System.out.println(totalPage + "==========" + pageNo);
-		if (pageNo > totalPage && totalPage != 0) {
+		
+		System.out.println(totalPage + "==========" + pageable.getPageNumber());
+		// 確保前端傳來的PageNo不會超過totalPage
+		if (pageForAnimour.getPageNo() > totalPage || totalPage == 0) {
 			return null;
 		}
 		List<Article> articleList = articlePage.getContent();
