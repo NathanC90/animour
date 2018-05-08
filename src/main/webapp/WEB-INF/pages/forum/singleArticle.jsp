@@ -204,7 +204,7 @@
               </ul>
               <div class="new-comment mt-5">
                 <h3 class="small-title">Post new Comment</h3>
-                <form id="comment" class="mt-30" name="commentForm" action="/articles/comment/" method="POST">
+                <form id="comment" class="mt-30" name="commentForm">
                   <input name="article" type="hidden" value="${article.id}"/>
                   <div class="row">
                         <sec:authorize access="hasRole('Member')">
@@ -274,16 +274,11 @@
 		    url: "/articles/comment",
 		    data: formData,
 		    contentType: false,
-			processData: false,
-
-		    success: function(){
-// 		    	window.location.href = 'http://localhost:8080/forum/findAll';
-				alert("ajax post");
-		    	}
-// 		    failure: function(errMsg) {
-// 		        alert(errMsg);
-// 		    }
-		});
+			processData: false
+		}).done(function(){
+		    window.location.href = 'http://localhost:8080/forum/findAll';
+			alert("ajax post");
+	    	});
 	});
 	
 	});
