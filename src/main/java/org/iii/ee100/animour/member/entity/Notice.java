@@ -29,6 +29,6 @@ public class Notice extends GenericEntity{
 	private boolean status;
 	
 	@Column(name = "DETAIL")
-	private boolean detail;
+	private String detail;
 
 }
