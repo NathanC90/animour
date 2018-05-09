@@ -117,29 +117,31 @@
                 </sec:authorize>
 
                 <sec:authorize access="hasRole('Admin')">
-                  <table id="table1" class="table table-bordered table-striped table-hover">
+                  <div id="each">
+                    <table id="table1" class="table table-bordered table-striped table-hover">
 
-                    <thead>
-                      <tr>
-                        <th>編號</th>
-                        <th>日期</th>
-                        <th>項目</th>
-                        <th>美容師</th>
-                        <th>耗時</th>
-                        <th>價錢</th>
-                        <th>編輯</th>
+                      <thead>
+                        <tr>
+                          <th>編號</th>
+                          <th>日期</th>
+                          <th>預約時段</th>
+                          <th>項目</th>
+                          <th>美容師</th>
+                          <th>耗時</th>
+                          <th>價錢</th>
+                          <th>編輯</th>
 
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
+                        </tr>
+                      </thead>
+
+                    </table>
+                  </div>
                 </sec:authorize>
                 <!-- 每頁不同的內容到這裡結束 -->
 
-              </div>
-              <!-- Blog Pagination -->
-              <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
+
+                <!-- Blog Pagination -->
+                <!-- <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
                 <nav aria-label="..." class="">
                   <ul class="pagination">
                     <li class="page-item disabled">
@@ -173,10 +175,10 @@
                   </ul>
                 </nav>
               </div>
+            </div> -->
+                <!-- End -->
+              </div>
             </div>
-            <!-- End -->
-          </div>
-          </div>
         </section>
         <!-- Classic Blog Section End -->
 
@@ -191,21 +193,7 @@
           <i class="fa fa-angle-up"> </i>
         </a>
 
-        <!-- JavaScript & jQuery Plugins -->
-        <script src="/js/jquery-min.js"></script>
-        <script src="/js/popper.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/jquery.mixitup.js"></script>
-        <script src="/js/smoothscroll.js"></script>
-        <script src="/js/wow.js"></script>
-        <script src="/js/owl.carousel.js"></script>
-        <script src="/js/waypoints.min.js"></script>
-        <script src="/js/jquery.counterup.min.js"></script>
-        <script src="/js/jquery.slicknav.js"></script>
-        <script src="/js/jquery.appear.js"></script>
-        <script src="/js/form-validator.min.js"></script>
-        <script src="/js/contact-form-script.min.js"></script>
-        <script src="/js/main.js"></script>
+
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
           crossorigin="anonymous"></script>
@@ -223,31 +211,88 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
         <script>
+          var pageNumber = 1;
           $(document).ready(function () {
-            $.getJSON('/reservations', {}, function (data) {
-              console.log(data);
-              $('#table1>tbody').empty();
-              $.each(data, function (i, reservation) {
-                var cell1 = $("<td></td>").text(reservation.id);
-                var cell2 = $("<td></td>").text(reservation.reservationDate);
-                var cell3 = $("<td></td>").text(reservation.content);
-                var cell4 = $("<td></td>").text(reservation.designer);
-                var cell5 = $("<td></td>").text(reservation.totalTime);
-                var cell6 = $("<td></td>").text(reservation.price);
+            initSubmitForm();
 
-
-
-                var cell10 = $("<td></td>").html('<button class="btn btn-danger" style="background-color: #dc3545; border-color: #dc3545";><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"><i class="fas fa-edit"></i></button>');
-
-                var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell10]);
-
-                $('#table1>tbody').append(row);
-              });
-
-
-            }
-            )
           });
+          var pageNumber = 1;
+          var initSubmitForm = function () {
+            $(document).ready(function () {
+              $.getJSON('/reservations', { "pageNumber": pageNumber }, function (data) {
+                console.log(data);
+                $.each(data, function (i, reservation) {
+                  var cell1 = $("<td></td>").text(reservation.id);
+                  var cell2 = $("<td></td>").text(reservation.reservationDate);
+                  var cell3 = $("<td></td>").text(reservation.reservationTime.frontTime);
+                  var cell4 = $("<td></td>").text(reservation.content);
+                  var cell5 = $("<td></td>").text(reservation.designer);
+                  var cell6 = $("<td></td>").text(reservation.totalTime);
+                  var cell7 = $("<td></td>").text(reservation.price);
+                  var button1 = $('<button><i class="fas fa-trash-alt"/></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger");
+                  var button2 = $('<p> </p><button><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info');
+                  var cell8 = $("<td></td>").append(button1, button2);
+
+
+                  // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
+
+                  var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
+
+                  $('#table1').append(row);
+
+                  $(document).on("click", '.btn-danger', function () {
+                    $(this).parent().parent().remove();
+                    $.ajax({
+                      url: '/reservations/reservation/' + reservation.id,
+                      type: 'delete',
+                      success: function (result) {
+                        console.log("It's work")
+                      }
+
+                    })
+                  })
+
+
+                })
+
+
+
+              }).done(function () {
+
+                pageNumber++;
+                //判斷下一次取回的json是否為空(是否為最後一頁)
+                $.getJSON('/reservations', { "pageNumber": pageNumber }, function (datas) {
+                  console.log(datas);
+                  if (datas.length != 0) {
+                    var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
+                    $('#each').append(buttonImport);
+                    document.getElementById("importbutt").addEventListener("click", importAgain);
+                  }
+                })
+
+
+              })
+
+              // $(".btn btn-danger").click(function () {
+              //   $.ajax({
+              //     url: '/reservations/reservation/{id}',
+              //     type: 'delete',
+              //     success: function (result) {
+              //       console.log("It's work")
+              //     }
+
+              //   })
+              // })
+            })
+          };
+          function importAgain() {
+            var buttonImport = $('#importbutt');
+            $('#importbutt').remove();
+            initSubmitForm();
+          }
+
+
+
           //           $.each( [ "put", "delete" ], function( i, method ) {
           //             $[ method ] = function( url, data, callback, type ) {
           //     if ( $.isFunction( data ) ) {
@@ -266,11 +311,24 @@
           //   };
           // });
 
-          $.put('http://stackoverflow.com/posts/22786755/edit', { text: 'new text' }, function (result) {
-            console.log(result);
-          })
+
 
         </script>
+        <!-- JavaScript & jQuery Plugins -->
+        <script src="/js/jquery-min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.mixitup.js"></script>
+        <script src="/js/smoothscroll.js"></script>
+        <script src="/js/wow.js"></script>
+        <script src="/js/owl.carousel.js"></script>
+        <script src="/js/waypoints.min.js"></script>
+        <script src="/js/jquery.counterup.min.js"></script>
+        <script src="/js/jquery.slicknav.js"></script>
+        <script src="/js/jquery.appear.js"></script>
+        <script src="/js/form-validator.min.js"></script>
+        <script src="/js/contact-form-script.min.js"></script>
+        <script src="/js/main.js"></script>
       </body>
 
       </html>

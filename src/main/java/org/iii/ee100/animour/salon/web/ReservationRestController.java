@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
+import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
@@ -14,6 +15,7 @@ import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -32,12 +34,12 @@ public class ReservationRestController {
 
 	@Autowired
 	ReservationService reservationService;
-	PageInfo defaultPageInfo = new PageInfo(3, 4);
+	
 	//findAll
 	@RequestMapping(method = RequestMethod.GET,produces = { "application/json"})
-	public List<Reservation> reservationForm(PageInfo pageInfo) {
-		// Page<Reservation> page = reservationService.getReservationPage(pageInfo);
-		List<Reservation> ReservationList = reservationService.getAllContent();
+	public List<Reservation> reservationForm(PageForAnimour pageForAnimour) {
+		 Page<Reservation> page = reservationService.getReservationPage(pageForAnimour);
+		List<Reservation> ReservationList = page.getContent();
 		return ReservationList;
 
 	}

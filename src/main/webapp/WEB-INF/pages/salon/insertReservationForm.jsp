@@ -22,11 +22,13 @@
 				<link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
 				<link rel="manifest" href="/manifest.json">
 
+
 				<!--Icon Tags end -->
 				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 				<!-- Viewport Meta Tag -->
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<title>RESERVATION</title>
+				<!-- calendar css -->
 				<!-- Bootstrap -->
 				<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 				<!-- Main Style -->
@@ -56,7 +58,54 @@
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
-    <![endif]-->
+	<![endif]-->
+				<style>
+					.calendar {
+						width: 450px;
+						height: 350px;
+						background: #fff;
+						box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+					}
+
+					.body-list ul {
+						width: 100%;
+						font-family: arial;
+						font-weight: bold;
+						font-size: 14px;
+					}
+
+					.body-list ul li {
+						width: 14.28%;
+						height: 36px;
+						line-height: 36px;
+						list-style-type: none;
+						display: block;
+						box-sizing: border-box;
+						float: left;
+						text-align: center;
+					}
+
+					.lightgrey {
+						color: #a8a8a8;
+						/*浅灰色*/
+					}
+
+					.darkgrey {
+						color: #565656;
+						/*深灰色*/
+					}
+
+					.green {
+						color: #6ac13c;
+						/*绿色*/
+					}
+
+					.greenbox {
+						border: 1px solid #6ac13c;
+						background: #e9f8df;
+						/*浅绿色背景*/
+					}
+				</style>
 			</head>
 
 			<body>
@@ -97,53 +146,78 @@
 
 									<div style="padding-top: 30px" class="panel-body">
 										<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
-										<form:form action="/reservation" method="Post" modelAttribute="reservation" enctype="multipart/form-data">
-											<div class="form-row">
+										<div class="calendar">
+											<div class="title">
+												<h1 class="green" id="calendar-title">Month</h1>
+												<h2 class="green small" id="calendar-year">Year</h2>
+												<a href="" id="prev">Prev Month</a>
+												<a href="" id="next">Next Month</a>
 											</div>
-											<div class="form-row">
+											<div class="body">
+												<div class="lightgrey body-list">
+													<ul>
+														<li>MON</li>
+														<li>TUE</li>
+														<li>WED</li>
+														<li>THU</li>
+														<li>FRI</li>
+														<li>SAT</li>
+														<li>SUN</li>
+													</ul>
+												</div>
+												<div class="darkgrey body-list">
+													<ul id="days">
+													</ul>
+												</div>
+											</div>
+										</div>
+										<br>
 
-												<!--		<div class="form-group col-md-6">
-													日期:
-													<form:select id="reservationDate" class="form-control" path="reservationDate">
-														<form:option value="reservationDate" label="請選擇類別" />
-														<form:options items="${allDate}" />
-													</form:select>
-												</div>
--->
-												<div class="form-group col-md-6">
-													類別:
-													<form:select id="content" class="form-control" path="content">
-														<form:option value="content" label="請選擇類別" />
-														<form:options items="${allContent}" />
-													</form:select>
-												</div>
-												<div class="form-group col-md-6">
-													美容師:
-													<form:select id="Designer" class="form-control" path="Designer">
-														<form:option value="Designer" label="請選擇美容師" />
-														<form:options items="${allDesigner}" />
-													</form:select>
-												</div>
-												<form action="/" id="searchForm">
+
+										<form id="myform">
+
+											<div class="form-group col-md-8">
+												美容師:
+												<select id="designer" class="form-control" name="designer">
+													<option value="designer" label="請選擇美容師" />
+												</select>
+											</div>
+											<div class="form-group col-md-8">
+												服務類別:
+												<select id="content" class="form-control" name="content">
+													<option value="content" label="請選擇類別" />
+
+												</select>
+												耗時：
+												<select id="content" class="form-control" name="content">
+													<option value="content" label="請選擇類別" />
+
+												</select>
+												價位：
+												<select id="price" class="form-control" name="price">
+													<option value="price" label="請選擇價位" />
+
+												</select>
+											</div>
+
+
+											<br>
+											<!-- <form action="/" id="searchForm">
 													<input type="text" name="s" placeholder="Search...">
 													<input type="submit" value="Search">
 												</form>
 												<!-- the result of the search will be rendered inside this div -->
-												<div id="result"></div>
+											<!-- <div id="result"></div> -->
 
 
 
-											</div>
-											<input type="submit" class="btn btn-common" value="預約">
-											<input type="reset" class="btn btn-common" value="清除">
-										</form:form>
+										</form>
+
+										<input id="response" type="submit" class="btn btn-common" value="預約">
+										<input id="" type="reset" class="btn btn-common" value="清除">
 									</div>
 								</div>
-
 							</div>
-						</div>
-					</div>
 				</section>
 				<!-- Footer Section -->
 				<footer>
@@ -180,7 +254,7 @@
 										<a href="#">寵物市集</a>
 									</li>
 									<li>
-										<a href="#">最新空房</a>
+										<a href="#">Salon</a>
 									</li>
 									<li>
 										<a href="#">醫院資訊專區</a>
@@ -324,7 +398,156 @@
 				<script src="/js/jquery-3.3.1.min.js"></script>
 				<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 				<!-- 	<different content from here> -->
+				<script>
+					$(document).ready(function () {
+						$.getJSON('/reservationForms/getServiceCotent', {}, function (data) {
+							console.log(data);
+							$.each(data, function (i, a) {
+								var cell1 = $("<option></option>").text(a.content);
+								var cell2 = $("<option></option>").text(a.price);
+								var cell3 = $("<option></option>").text(a.time);
+								$('#content').append(cell1);
 
+								$('#price').append(cell2);
+								$('#time').append(cell3);
+
+							});
+
+
+						}
+						)
+					});
+					$(document).ready(function () {
+						$.getJSON('/reservationForms/getTimeSection', {}, function (data) {
+							console.log(data);
+							$.each(data, function (i, a) {
+								var cell1 = $("<option></option>").text(a.frontTime);
+								$('#frontTime').append(cell1);
+							});
+
+						}
+						)
+					});
+					$(document).ready(function () {
+						$.getJSON('/reservationForms/getDesigner', {}, function (data) {
+							console.log(data);
+							$.each(data, function (i, a) {
+								var cell1 = $("<option></option>").text(a.designer);
+
+								$('#designer').append(cell1);
+							});
+
+						}
+						)
+					});
+					$("#response").click(function () {
+
+						var data1 = new FormData(document.getElementById("myform"));
+						console.log(toJson(data1));
+						$.ajax({
+							url: '/reservationForms',
+							type: 'POST',
+							data: toJson(data1),
+							contentType: "application/json",
+							dataType: "json",
+
+
+						}).done(function (data) {
+							window.location.href = "http://localhost:8080/appointment/firstPage";
+						});
+
+						function toJson(formData) {
+							var object = {};
+							formData.forEach(function (value, key) {
+								// if (key == 'city') {
+								// 	var object1 = {};
+								// 	object1['id'] = value;
+								// 	object[key] = object1;
+								// } else {
+								object[key] = value;
+								// }
+							});
+							var json = JSON.stringify(object, null);
+							console.log(json);
+							return json;
+						};
+
+
+					});
+
+				</script>
+				<script>
+					var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+					var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+					var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+
+					var holder = document.getElementById("days");
+					var prev = document.getElementById("prev");
+					var next = document.getElementById("next");
+					var ctitle = document.getElementById("calendar-title");
+					var cyear = document.getElementById("calendar-year");
+
+					var my_date = new Date();
+					var my_year = my_date.getFullYear();
+					var my_month = my_date.getMonth();
+					var my_day = my_date.getDate();
+
+					function dayStart(month, year) {
+						var tmpDate = new Date(year, month, 1);
+						return (tmpDate.getDay());
+					}
+
+					function daysMonth(month, year) {
+						var tmp = year % 4;
+						if (tmp == 0) {
+							return (month_olympic[month]);
+						} else {
+							return (month_normal[month]);
+						}
+					}
+					function refreshDate() {
+						var str = "";
+						var totalDay = daysMonth(my_month, my_year); //获取该月总天数
+						var firstDay = dayStart(my_month, my_year); //获取该月第一天是星期几
+						var myclass;
+						for (var i = 1; i < firstDay; i++) {
+							str += "<li></li>"; //为起始日之前的日期创建空白节点
+						}
+						for (var i = 1; i <= totalDay; i++) {
+							if ((i < my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) || my_year < my_date.getFullYear() || (my_year == my_date.getFullYear() && my_month < my_date.getMonth())) {
+								myclass = " class='lightgrey'"; //当该日期在今天之前时，以浅灰色字体显示
+							} else if (i == my_day && my_year == my_date.getFullYear() && my_month == my_date.getMonth()) {
+								myclass = " class='green greenbox'"; //当天日期以绿色背景突出显示
+							} else {
+								myclass = " class='darkgrey'"; //当该日期在今天之后时，以深灰字体显示
+							}
+							str += "<li" + myclass + ">" + i + "</li>"; //创建日期节点
+						}
+						holder.innerHTML = str; //设置日期显示
+						ctitle.innerHTML = month_name[my_month]; //设置英文月份显示
+						cyear.innerHTML = my_year; //设置年份显示
+					}
+					refreshDate();
+					prev.onclick = function (e) {
+						e.preventDefault();
+						my_month--;
+						if (my_month < 0) {
+							my_year--;
+							my_month = 11;
+						}
+						refreshDate();
+					}
+					next.onclick = function (e) {
+						e.preventDefault();
+						my_month++;
+						if (my_month > 11) {
+							my_year++;
+							my_month = 0;
+						}
+						refreshDate();
+					}
+
+				</script>
 
 
 			</body>

@@ -2,8 +2,9 @@ package org.iii.ee100.animour.Designer.dao;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
-
+import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
@@ -14,6 +15,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -68,12 +72,22 @@ public class DesignerDaoTest {
 //
 //	}
 	
-	@Test
-	public void TestUpdate() {
-		Reservation reservation = new Reservation();
-		reservation.setContent("美髮");
-		reservationService.insertReservation(reservation);
-	}
+//	@Test
+//	public void reservationForm() {
+//		PageForAnimour pageForAnimour =new PageForAnimour();
+//	 Page<Reservation> page = reservationService.getReservationPage(pageForAnimour);
+//	List<Reservation> ReservationList = page.getContent();
+//	System.out.println(ReservationList);
+//
+//}
+//	@Test
+//	public void getReservationPage() {
+//		PageForAnimour pageForAnimour =new PageForAnimour();
+//		pageForAnimour.getPageRequest();
+//		PageRequest request = new PageRequest(pageForAnimour.getPageNo(), pageForAnimour.getSize(), Sort.Direction.DESC,"reservationDate");
+//		System.out.println(request);
+//	}
+
 	
 	
 //	@Test
@@ -81,9 +95,9 @@ public class DesignerDaoTest {
 //		System.out.println(designerDao.findAll());
 //	}
 	
-	@Test
-	public void TestfindContentall() {
-		System.out.println(reservationService.getAllServiceContent());
-	}
+//	@Test
+//	public void TestfindContentall() {
+//		System.out.println(reservationService.getAllServiceContent());
+//	}
 
 }
