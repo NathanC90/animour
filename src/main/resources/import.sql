@@ -85,15 +85,29 @@ insert into donate (id, name, price, email)
 values (10, 'Georgina Sparks', 5000, 'georgina1027@gmail.com');
 
 
+
+insert into RESERVATIONTIME (front_Time,back_Time)values
+('09:00:00','10:00:00'),
+('10:00:00','11:00:00'),
+('11:00:00','12:00:00'),
+('13:30:00','14:30:00'),
+('14:30:00','15:30:00'),
+('15:30:00','16:30:00');
+
 /*6 reservation*/
-insert into reservation (reservation_Date,content,designer,total_Time,price)values
-('2000-10-12','洗澡','阿明',1,200),
-('2000-10-13','造型','阿中',1,100),
-('2000-10-14','造型','阿利',1,200),
-('2000-10-15','剪指甲','小小',1,300),
-('2000-10-16','剪指甲','大大',1,200),
-('2000-10-17','造型','安安',1,200),
-('2000-10-18','剪指甲','學泰',1,300);
+insert into reservation (reservation_Date,content,designer,total_Time,price,reservationTime_id)values
+('2000-10-12','洗澡','阿明',1,200,1),
+('2000-10-12','洗澡','阿明',1,200,2),
+('2000-10-12','洗澡','阿明',1,200,3),
+('2000-10-12','洗澡','阿明',1,200,4),
+('2000-10-12','洗澡','阿明',1,200,5),
+('2000-10-12','洗澡','阿明',1,200,6),
+('2000-10-13','造型','阿中',1,100,1),
+('2000-10-13','造型','阿中',1,100,2),
+('2000-10-13','造型','阿中',1,100,3),
+('2000-10-13','造型','阿中',1,100,4),
+('2000-10-13','造型','阿中',1,100,5),
+('2000-10-13','造型','阿中',1,100,6);
 
 
 
@@ -173,41 +187,39 @@ values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
 
-insert into SERVICECONTENT (CONTENT,time,price,designer_id)
-values ('剪毛',1,200,2);
---insert into serviceContent (CONTENT,time,price)
---values ('洗澡',1,300);
---insert into serviceContent (CONTENT,time,price)
---values ('造型',1,400);
---insert into SERVICECONTENT (CONTENT,time,price)
---values ('剪毛',1,200);
---insert into serviceContent (CONTENT,time,price)
---values ('洗澡',1,300);
---insert into serviceContent (CONTENT,time,price)
---values ('造型',1,400);
---insert into SERVICECONTENT (CONTENT,time,price)
---values ('剪毛',1,200);
---insert into serviceContent (CONTENT,time,price)
---values ('洗澡',1,300);
---insert into serviceContent (CONTENT,time,price)
---values ('造型',1,400);
-
-
-
-insert into RESERVATIONTIME (front_Time,back_Time)values
-('09:00:00','10:00:00'),
-('10:00:00','11:00:00'),
-('11:00:00','12:00:00'),
-('13:30:00','14:30:00'),
-('14:30:00','15:30:00'),
-('15:30:00','16:30:00');
-
-
 /*11 designer*/
 insert into designer (designer)values
 ('飛影'),
 ('琦玉'),
 ('陳浩南');
+
+
+
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('造型',1,200,1);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('洗澡',1,300,1);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('剪毛',1,400,1);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('造型',1,200,2);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('洗澡',1,300,2);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('剪毛',1,400,2);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('造型',1,200,3);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('洗澡',1,300,3);
+insert into SERVICECONTENT (CONTENT,time,price,designer_id)
+values ('剪毛',1,400,3);
+
+
+
+
+
+
+
 
 
 

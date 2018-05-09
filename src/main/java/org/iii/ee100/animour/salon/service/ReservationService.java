@@ -14,6 +14,7 @@ import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ReservationDateDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
+import org.iii.ee100.animour.salon.dao.reservationTimeDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
@@ -37,7 +38,7 @@ public class ReservationService extends GenericService<Reservation>{
 	ServiceContentDao serviceContentDao;
 	
 	@Autowired
-	ReservationDateDao reservationDateDao;
+	org.iii.ee100.animour.salon.dao.reservationTimeDao reservationTimeDao;
 	
 	
 	public void deleteReservation(Reservation id) {
@@ -60,8 +61,8 @@ public class ReservationService extends GenericService<Reservation>{
 		
 	}
 	
-	public ArrayList<ReservationTime> getAllReservationDate(){
-		return Lists.newArrayList(reservationDateDao.findAll());
+	public ArrayList<ReservationTime> getAllReservationTime(){
+		return Lists.newArrayList(reservationTimeDao.findAll());
 	}
 	
 	public Reservation getOne(Long id) {
@@ -85,16 +86,14 @@ public class ReservationService extends GenericService<Reservation>{
 	
 	
 	//預約幾筆的頁面方法
-	public Page<Reservation> getReservationPage(PageInfo pageInfo) {
-		PageRequest request = new PageRequest(pageInfo.getNumber() - 1, pageInfo.getSize(), Sort.Direction.DESC, "upload");
+	public Page<Reservation> getReservationPage(PageForAnimour pageForAnimour) {
+		pageForAnimour.getPageRequest();
+		PageRequest request = new PageRequest(pageForAnimour.getPageNo(), pageForAnimour.getSize(), Sort.Direction.DESC,"reservationDate");
 		
 		return reservationDao.findAll(request);		
 	}
 	
-	public Page<ServiceContent> getServiceContentPage(Integer pageNumber, Integer pageSize){
-		PageRequest request= new PageRequest(pageNumber, pageSize, Sort.Direction.DESC,"upload");
-		return serviceContentDao.findAll(request);		
-	}
+	
 	
 	
 	
