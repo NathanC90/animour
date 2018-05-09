@@ -65,7 +65,7 @@
               <h2 class="widget-title">Category</h2>
               <ul class="category-menu">
                 <c:forEach var="category" items="${categorys}">
-                <li id="category${category.id}">
+                <li name="category" value="${category.id}" style='cursor:pointer;'>
                   ${category.name}(${category.articleQuantity})
                 </li>
                 </c:forEach>

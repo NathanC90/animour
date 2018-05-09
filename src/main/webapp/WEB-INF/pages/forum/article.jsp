@@ -76,7 +76,7 @@
       <div class="row">
         <div class="page-header-area">
           <div class="page-header-content">
-            <h2>Blog Sidebar Left</h2>
+            <h2>部落格</h2>
           </div>
         </div>
       </div>
@@ -95,75 +95,7 @@
         <!-- BLog Article Section -->
         <div id="bloglist"class="col-md-9">
           <!-- Single Blog Post -->
-          <c:forEach var="article" items="${page}">
-          <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
-            <!-- Author Info -->
-            <header class="author-info">
-              <h2 class="blog-post-title">
-                <a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
-              </h2>
-              <div class="tag-posted-in">
-                <ul class="list-unstyled">
-                  <li>
-                    <i class="fa fa fa-calendar"></i>
-                    <a href="#">${article.postTime}</a>
-                  </li>
-                  <li>
-                    <i class="fa fa-user"></i>
-                    <a href="#">${article.member.account}</a>
-                  </li>
-                  <li>
-                    <i class="fa fa-pencil-square-o"></i>
-                    <a href="#">${article.category.name}</a>
-                  </li>
-                  <li>
-                    <i class="fa fa-comments"></i>
-                    <a href="#">${article.commentLength} comment</a>
-                  </li>
-                </ul>
-              </div>
-            </header>
-            <!-- Featured Content -->
-            <section class="featured-wrapper">
-              <a href="#">
-                <img src="/images/adopt/cats/ad-cat1.jpg" alt="">
-<!--                 /img/blog/blog-post-1.jpg   -->
-              </a>
-            </section>
-            <!-- Post Content -->
-           
-            <section class="blog-post-content" >
-              <div class="blog-post">
-<!--               處理文章內容過多問題的CSS -->
-                <p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;"><c:out value="${article.content}"/></p>
-              </div>
-            </section>
-            <div class="blog-post-footer clearfix">
-              <!-- Post Meta -->
-              <ul class="post-meta pull-right">
-                <li>
-                  <span>
-                    <a href="/forum/findOne?id=${article.id}#comment">
-                      <i class="fa fa-comments"></i> ${article.commentLength}</a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a href="#">
-                      <i class="fa fa-thumbs-up"></i> 250</a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a href="#">
-                      <i class="fa fa-share"></i> Share</a>
-                  </span>
-                </li>
-              </ul>
-              <a href="/forum/findOne?id=${article.id}" class="pull-left btn btn-common btn-xs">Read more</a>
-            </div>
-          </article>
-          </c:forEach>
+
           <div id = "show"></div>
           <!-- Slider Post -->
 
@@ -223,35 +155,45 @@
 	var pageNo = 1;
 	var articlesString = "";
 	var scroll = true;
+  var flag = 0;
+	var categoryId = 0;
 	
-	$(document).ready(function(){
-		getArticle();
+  $(document).ready(function(){
+    refresh();
+    $("li[name='category']").click(function(){
+      pageNo = 1;
+      flag = 1;
+      categoryId = $(this).val();
+      articlesString = "";
+      // $("#show").empty();
+      console.log(flag);
+      console.log(categoryId);
+      refresh();
+    });
+
 		$(window).scroll(function(){
-			  // Returns height of browser viewport
 			  var window_height = $( window ).height();
-			  
 			  var window_scrollTop = $(window).scrollTop();
-			 
-			  // Returns height of HTML document
 // 			  var div_height = $(document).height();
 			  var div_height = $("#bloglist").height();
-			  
-// 			  console.log(window_height);
-// 			  console.log(window_scrollTop);
-// 			  console.log(div_height);
-			  
 			   if(window_height + window_scrollTop >= div_height && scroll == true){
-// 			     alert('到底部觸發ajax');
 				 scroll = false;
-				 getArticle();
-			     setTimeout(setScroll,1000);
+				 refresh();
+			   setTimeout(setScroll,1000);
 			   }
 			});
 	});
+
 function setScroll(){
 	scroll = true;
 	}
-	
+function refresh(){
+  if(flag === 0){
+    getArticle();
+  }else if(flag === 1){
+    getArticleByCategoryId(categoryId);
+  }
+}	
 function getArticle(){
 	$.getJSON("/articles",{"pageNo":pageNo},function(datas){
    	 if(datas!=null){
@@ -265,7 +207,7 @@ function getArticle(){
        		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
        		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
        		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
-                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
+                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="/forum/findOne?id='+ article.id +'" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
          	articlesString = articlesString + articleString;
 			});
          	pageNo += 1;
@@ -290,7 +232,7 @@ function getArticleByCategoryId(categoryId){
        		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
        		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
        		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
-                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
+                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="/forum/findOne?id='+ article.id +'" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
          	articlesString = articlesString + articleString;
 			});
          	pageNo += 1;
