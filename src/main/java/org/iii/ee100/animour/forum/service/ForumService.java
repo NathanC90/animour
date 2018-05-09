@@ -52,8 +52,7 @@ public class ForumService extends GenericService<Article> {
 		return articleList;
 	}
 
-	public Page<Article> getPageSearchBySubject(String subject, int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findBySubjectContaining(subject, pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
