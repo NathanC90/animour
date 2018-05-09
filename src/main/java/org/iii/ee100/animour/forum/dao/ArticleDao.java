@@ -17,9 +17,9 @@ public interface ArticleDao extends GenericDao<Article> {
 	// FROM Article ORDER BY UpdateTime DESC FETCH FIRST 4 ROWS ONLY
 	List<Article> findTop4ByOrderByClickDesc();
 
-	List<Article> findBySubjectContaining(String subject);
+	List<Article> findBySubjectContainingIgnoreCase(String subject);
 
-	Page<Article> findBySubjectContaining(String subject, Pageable pageable);
+	Page<Article> findBySubjectContainingIgnoreCase(String subject, Pageable pageable);
 
 	List<Article> findByCategoryId(Long categoryId);
 

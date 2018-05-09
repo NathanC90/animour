@@ -12,10 +12,9 @@
           <div class="sidebar-area">
             <!-- Search Bar -->
             <aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-              <form name="searchForm" action="/forum/search" method="GET">
-                <input type="text" name="search" placeholder="SearchBySubject" class="form-control" value="">
-                <input type="hidden" name="pageNo" value="1">
-                <button type="submit">
+              <form name="searchForm"></form>
+                <input id="search" type="text" name="search" placeholder="SearchBySubject" class="form-control" value="">
+                <button id="searchbtn" type="button">
                   <i class="fa fa-search"></i>
                 </button>
               </form>

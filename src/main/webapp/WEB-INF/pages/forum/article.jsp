@@ -157,7 +157,8 @@
 	var scroll = true;
   var flag = 0;
 	var categoryId = 0;
-	
+	var search = "";
+
   $(document).ready(function(){
     refresh();
     $("li[name='category']").click(function(){
@@ -168,6 +169,23 @@
       // $("#show").empty();
       console.log(flag);
       console.log(categoryId);
+      refresh();
+    });
+
+    $('#search').keydown(function(event){
+            if (event.keyCode == 13){
+              $("#searchbtn").click();
+            }
+        });
+
+    $("#searchbtn").click(function(){
+      pageNo = 1;
+      flag = 2;
+      articlesString = "";
+      search = $('#search').val();
+      // $("#show").empty();
+      console.log(flag);
+      console.log(search);
       refresh();
     });
 
@@ -192,34 +210,25 @@ function refresh(){
     getArticle();
   }else if(flag === 1){
     getArticleByCategoryId(categoryId);
+  }else if(flag === 2){
+    getArticleBySubject(search);
   }
 }	
-function getArticle(){
-	$.getJSON("/articles",{"pageNo":pageNo},function(datas){
-   	 if(datas!=null){
-   	 	if(pageNo<=datas[0].totalPage){
-			$.each(datas,function(idx,article){
-         	var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id='+ article.id +'">' + article.subject 
-       		 +'</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">'+ new Date(article.postTime)
-       		 +'</a></li><li><i class="fa fa-user"></i><a href="#">'+ article.member.account
-       		 +'</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">'+ article.category.name
-       		 +'</a></li><li><i class="fa fa-comments"></i><a href="#">'+ article.commentLength
-       		 +'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">'+ article.content 
-       		 +'</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right"><li><span><a href="' + article.id
-       		 +'"><i class="fa fa-comments"></i>'+ article.commentLength
-                +'</a></span></li><li><span><a href="#"><i class="fa fa-thumbs-up"></i> 250</a></span></li><li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li></ul><a href="/forum/findOne?id='+ article.id +'" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
-         	articlesString = articlesString + articleString;
-			});
-         	pageNo += 1;
-			$("#show").html(articlesString);
-    		}
-			console.log(datas);
-   			}
-		});
+  function getArticle(){
+	var url = "/articles";
+  getJson(url)
 	}
 	
-function getArticleByCategoryId(categoryId){
+  function getArticleByCategoryId(categoryId){
 	var url = "/articles/category/" + categoryId;
+	getJson(url)
+}
+  function getArticleBySubject(search){
+	var url = "/articles/search/" + search;
+	getJson(url)
+	}
+	
+  function getJson(url){
 	$.getJSON(url,{"pageNo":pageNo},function(datas){
    	 if(datas!=null){
    	 	if(pageNo<=datas[0].totalPage){

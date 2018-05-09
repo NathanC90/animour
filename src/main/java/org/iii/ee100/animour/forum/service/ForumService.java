@@ -53,7 +53,7 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
-		Page<Article> articleList = articleDao.findBySubjectContaining(subject, pageable);
+		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCase(subject, pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
@@ -113,7 +113,7 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public List<Article> getArticlesSearchBySubject(String subject) {
-		return articleDao.findBySubjectContaining(subject);
+		return articleDao.findBySubjectContainingIgnoreCase(subject);
 	}
 
 	public List<Article> getArticlesByCategoryId(Long categoryId) {
