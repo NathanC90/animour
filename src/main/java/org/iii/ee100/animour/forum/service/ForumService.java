@@ -33,7 +33,7 @@ public class ForumService extends GenericService<Article> {
 
 	@Autowired
 	private CategoryDao categoryDao;
-	
+
 	public Page<Article> getPage(PageRequest pageable) {
 		Page<Article> articleList = articleDao.findAll(pageable);
 		for (Article article : articleList) {
@@ -42,8 +42,8 @@ public class ForumService extends GenericService<Article> {
 		}
 		return articleList;
 	}
-	public Page<Article> getPageSearchByCategoryId(Long categoryId, int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+
+	public Page<Article> getPageSearchByCategoryId(Long categoryId, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
@@ -51,8 +51,8 @@ public class ForumService extends GenericService<Article> {
 		}
 		return articleList;
 	}
-	public Page<Article> getPageSearchBySubject(String subject,int pageNo, int pageSize) {
-		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
+
+	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findBySubjectContaining(subject, pageable);
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
@@ -61,28 +61,29 @@ public class ForumService extends GenericService<Article> {
 		return articleList;
 	}
 
-//	public List<Article> getArticleList() {
-//		List<Article> articleList = articleDao.findAll();
-//		for (Article article : articleList) {
-//			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-//			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
-//		}
-//		return articleList;
-//	}
+	// public List<Article> getArticleList() {
+	// List<Article> articleList = articleDao.findAll();
+	// for (Article article : articleList) {
+	// article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+	// article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+	// }
+	// return articleList;
+	// }
 
 	@Override
 	public Article getOne(Long id) {
 		System.out.println("呼叫getOne方法");
 		Article article = articleDao.getOne(id);
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-		System.out.println(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size()+"============");
+		System.out.println(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size() + "============");
 		return article;
 	}
 
 	public void insertComment(Comment comment) {
-		commentDao.save(comment);
 		Article article = comment.getArticle();
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		System.out.println("service呼叫新增留言");
+		commentDao.save(comment);
 	}
 
 	public Member getOneMember(Long id) {
@@ -121,11 +122,11 @@ public class ForumService extends GenericService<Article> {
 
 	public List<Category> getAllCategory() {
 		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
-		for(Category category:categoryList) {
+		for (Category category : categoryList) {
 			category.setArticleQuantity(articleDao.findByCategoryId(category.getId()).size());
-			System.out.println("呼叫getAllCategory方法"+getArticlesByCategoryId(category.getId()).size());
+			System.out.println("呼叫getAllCategory方法" + getArticlesByCategoryId(category.getId()).size());
 		}
 		return categoryList;
 	}
-	
+
 }

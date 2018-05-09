@@ -71,13 +71,13 @@ public class AnimalService extends GenericService<Animal>{
 	}
 
 	public Page<Animal> getByCity(City city, PageInfo pageinfo) {
-		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findByCity(city, request);
 	}
 
 	// pageSize=一頁幾筆資料
 	public Page<Animal> getAnimalPage(PageInfo pageinfo) {
-		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findAll(request);
 	}
 
@@ -87,7 +87,7 @@ public class AnimalService extends GenericService<Animal>{
 	}
 	
 	public Page<Animal> getSpecPage(PageInfo pageinfo, Specification<Animal> spec) {
-		PageRequest request = new PageRequest(pageinfo.getNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
 		return animalDao.findAll(spec, request);
 	}
 

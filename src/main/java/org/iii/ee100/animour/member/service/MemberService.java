@@ -17,25 +17,36 @@ public class MemberService extends GenericService<Member> {
 	@Autowired
 	MemberDao memberDao;
 	
+	
 	public void insert(Member member)  {
 		memberDao.save(member);
 	}
 
-	public void update(String password,String name,String nickname,String cell,String email,String account)  {
-		Member memberToUpdate = memberDao.findByAccount(account);
-				memberToUpdate.setPassword(password);
-				memberToUpdate.setName(name);
-				memberToUpdate.setNickname(nickname);
-				memberToUpdate.setCell(cell);
-				memberToUpdate.setEmail(email);
-				
+	public void update(Member member,String newPassword) {
+		member.setPassword(newPassword);
+		memberDao.save(member);
+	}
+	
+	public void update(Member member)  {
+		Member memberToUpdate=memberDao.findByAccount(member.getAccount());
+		memberToUpdate.setName(member.getName());
+		memberToUpdate.setNickname(member.getNickname());
+		memberToUpdate.setCell(member.getCell());
+		memberToUpdate.setEmail(member.getEmail());
+		memberToUpdate.setAddress(member.getAddress());
+		memberToUpdate.setSignature(member.getSignature());
+		
 		memberDao.save(memberToUpdate);
 	}
 	
 	
 	public void delete(String account) {
 		Member deletemember = memberDao.findByAccount(account);
-		deletemember.setStatus(0);
+		if(deletemember.getStatus()==1) {
+				deletemember.setStatus(0);}
+		else{
+			deletemember.setStatus(1);
+		}
 		memberDao.save(deletemember);
 
 	}
@@ -54,14 +65,37 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	
-	public UserDetails getCurrentMember() {
+	public Member getCurrentMember() {
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if(principal instanceof UserDetails) {
-			return (UserDetails) principal;
-		}else {
+		if (principal instanceof UserDetails ) {
+			return (Member) principal;
+		} else {
 			return null;
-		}
-		
+		}		
 	}
+	
+	public Member getNewCurrentMember() {
+		Member principal = memberDao.findByAccount(getCurrentMember().getAccount());
+		return principal;
+	}
+	
+	
+	public boolean validPassword(String password) {
+		if(getNewCurrentMember().getPassword().equals(password)) {
+			return true;
+		}
+		else {
+			return false;
+		}		
+	}
+	
+	public boolean emailExist(String email) {
+        Member member = memberDao.findByEmail(email);
+        if (member != null) {
+            return true;
+        }
+        return false;
+	}
+	
 }
 

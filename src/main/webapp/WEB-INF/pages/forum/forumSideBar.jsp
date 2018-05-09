@@ -65,8 +65,8 @@
               <h2 class="widget-title">Category</h2>
               <ul class="category-menu">
                 <c:forEach var="category" items="${categorys}">
-                <li>
-                  <a href="/forum/category?categoryId=${category.id}&pageNo=1">${category.name}(${category.articleQuantity})</a>
+                <li name="category" value="${category.id}" style='cursor:pointer;'>
+                  ${category.name}(${category.articleQuantity})
                 </li>
                 </c:forEach>
               </ul>

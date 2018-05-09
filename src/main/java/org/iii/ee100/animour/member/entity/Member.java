@@ -24,13 +24,11 @@ import lombok.Data;
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
 	
-	//@NotBlank(message="enter a username")
 	@Pattern(regexp = "^[A-Za-z0-9]+", message = "請輸入字母或數字")
 	@Column(name = "ACCOUNT")
 	private String account;// 帳號
-	@NotBlank
+	
 	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{3,10}$", message = "請輸入大小寫字母和數字,且長度在3-10之間")
-	//@Size(min = 5, max = 10, message = "Please enter between {min} and {max} characters.")
 	@Column(name = "PASSWORD")
 	private String password;// 密碼
 
@@ -47,7 +45,6 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "CELL")
 	private String cell;// 手機
 	
-	@NotBlank(message="enter your email")
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", message = "Invalid email")
 	@Column(name = "EMAIL")
 	private String email;// 信箱
@@ -71,6 +68,7 @@ public class Member extends GenericEntity implements UserDetails {
 	
 	@Column(name = "STATUS")//(0:封鎖,1:使用)
 	private Integer status;
+	
 	@Column(name = "ROLE")//("member","admin")
 	private String role;
 	

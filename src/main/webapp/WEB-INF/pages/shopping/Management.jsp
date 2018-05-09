@@ -142,7 +142,6 @@
 					</div>
 					
 					<div class="form-row">
-
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">保存期限</h2>
 							<form:input path="expire" type="text" class="form-control"
@@ -155,9 +154,7 @@
 								placeholder="上架日期" />
 						</div>
 					</div>
-
-					<input type="submit" class="btn btn-primary" value="確定">
-					<input type="reset" class="btn btn-primary" value="清除">
+					 <input type="submit" class="btn btn-primary" value="確定" >
 				</form:form>
 			</div>
 		</div>

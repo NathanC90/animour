@@ -103,8 +103,8 @@ public class productTest {
 	
 	@Test
 	public void testInsertProduct() {
-		Classify classify1 = new Classify();
-		classify1.setName("寵物伺料");
+//		Classify classify1 = new Classify();
+//		classify1.setName("寵物伺料");
 //		classifyDao.save(classify1);
 //		
 //		List<Classify> classifies = classifyDao.findAll();
@@ -131,16 +131,16 @@ public class productTest {
 //		classifyDao.save(classify3);
 //		classifyDao.save(classify4);
 		
-		Product product1 = new Product();
-		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
-		product1.setPrice(391);
-		product1.setQuantity(100L);
-		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:01"));
-		product1.setExpire(365);
-		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
-		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
-		product1.setClassify(classify1);
-		productDao.save(product1);
+//		Product product1 = new Product();
+//		product1.setName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅");
+//		product1.setPrice(391);
+//		product1.setQuantity(100L);
+//		product1.setMakeDate(java.sql.Timestamp.valueOf("2018-3-15 12:00:01"));
+//		product1.setExpire(365);
+//		product1.setShelvesDate(java.sql.Date.valueOf("2018-4-8"));
+//		product1.setDescription("bbbbbbbbbbbbbbbbbbbbbbbbb");
+//		product1.setClassify(classify1);
+//		productDao.save(product1);
 	}
 	
 	@Test
@@ -200,10 +200,10 @@ public class productTest {
 	}
 */
 	
-//	@Test
-//	public void testDelete() {
-//		productDao.delete(7L);
-//	}
+	@Test
+	public void testDelete() {
+		productDao.delete(2L);
+	}
 	
 //	@Test
 //	public void testGetNewSex() {

@@ -1,7 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!doctype html>
 <html lang="en">
 
@@ -121,26 +120,33 @@
 				<div style="display: none" id="login-alert"
 					class="alert alert-danger col-sm-12"></div>
 
-				<form:form id="insertform" action="/postArticle" method="Post" modelAttribute="article"
+				<form id="insertform"
 					enctype="multipart/form-data">
 					<div class="form-row">
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
-							標題: <form:input type="text" class="form-control" id="subject"
-								placeholder="" path="subject" value="" />
+						<input name="id" type="hidden" value="${article.id}"/>
+						標題: <input type="text" class="form-control" id="anname"
+                                placeholder="" name="subject" value="${article.subject}">
+
 						</div>
 						<div class="form-group col-md-6">
-							類別: <form:select id="category" class="form-control" path="category">
-								<form:option  value="-1" label="請選擇類別" />					
-								<form:options items="${categoryList}" />
-							</form:select>
+						類別: <select id="specie" class="form-control" name="category">
+                                <option selected>請選擇類別</option>
+                                <c:forEach var="category" items="${categorys}">
+                                <option value="${category.id}">${category.name}</option>
+                                </c:forEach>
+                                
+                             </select>
+
 						</div>
 					</div>
 					<div class="form-group">
 						內容:
-						<form:textarea class="form-control" id="content" path="content"
-							rows="4" style="height:400px;" />
+						<textarea class="form-control" id="content" name="content"
+                            rows="4" style="height:400px;">${article.content}</textarea>
+
 					</div>
 <!-- 					<div class="form-group"> -->
 <!-- 						請上傳照片 <input type="file" class="form-control-file" id="image" -->
@@ -148,7 +154,7 @@
 <!-- 					</div> -->
 					<button id="btn1" type="button" class="btn btn-common" value="送出">送出</button> 
 					<input type="reset" class="btn btn-common" value="清除">
-				</form:form>
+				</form>
 			</div>
 		</div>
 
@@ -160,21 +166,21 @@
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script>
     
-    function toJson(formData) {
-		var object = {};
-		formData.forEach(function (value, key) {
-			if (key == 'category'){
-				var object1 = {};
-				object1['id'] = value;
-				object[key] = object1;
-			}else{
-				object[key] = value;
-			}
-		});
-		var json = JSON.stringify(object, null);
-		console.log(json);
-		return json;
-	};
+//     function toJson(formData) {
+// 		var object = {};
+// 		formData.forEach(function (value, key) {
+// 			if (key == 'category'){
+// 				var object1 = {};
+// 				object1['id'] = value;
+// 				object[key] = object1;
+// 			}else{
+// 				object[key] = value;
+// 			}
+// 		});
+// 		var json = JSON.stringify(object, null);
+// 		console.log(json);
+// 		return json;
+// 	};
     
 	$(document).ready(function(){
     	$('#btn1').click(function(){

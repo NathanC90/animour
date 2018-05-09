@@ -13,9 +13,12 @@ public interface MemberDao extends GenericDao<Member>{
 
 	Member findByAccount(String account);
 
+	Member findByEmail(String email);
+	
 	//From member where role=? order by id;
 	List<Member> findByRoleOrderById(String role);
 	
 	//From member where role=? and status=? order by id;
 	List<Member> findByRoleAndStatusOrderById(String role,Integer status);
+
 }

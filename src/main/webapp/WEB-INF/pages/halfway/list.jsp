@@ -385,7 +385,7 @@
 					var docFragment = $(document.createDocumentFragment());
 					$.getJSON('/halfway/animal', { "pageNumber": pageNumber },
 						function (datas) {
-							$.each(datas, function (idx, animal) {
+							$.each(datas.data, function (idx, animal) {
 
 								// string = `
 								// <p>${animal.name}</p>
@@ -422,7 +422,7 @@
 							//判斷下一次取回的json是否為空(是否為最後一頁)
 							$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
 								console.log(datas);
-								if (datas.length != 0) {
+								if (datas.data.length != 0) {
 									var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
 									$('#each').append(buttonImport);
 									document.getElementById("importbutt").addEventListener("click", importAgain);

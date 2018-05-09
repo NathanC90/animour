@@ -18,7 +18,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Register</title>
+<title>Update password</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -93,70 +93,26 @@
 								<div style="display: none" id="login-alert"
 									class="alert alert-danger col-sm-12"></div>
 
-								<form:form method='POST' modelAttribute="member"
-									class='form-horizontal'>
+								<form method='POST' class='form-horizontal'>
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											帳號:
-											<form:input id="account" path="account"	type="hidden" />${member.account}
-										</div>
-									</div>
-<!-- 									<div class="form-row"> -->
-<!-- 										<div class="form-group col-md-6"> -->
-<!-- 											密碼: -->
-<%-- 											<form:input id="password" path="password" type='password' class='form-control' /> --%>
-<%-- 											<form:errors path="password" cssClass="help-block" element="div" /> --%>
-<!-- 										</div> -->
-<!-- 									</div> -->
-
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											主人姓名:
-											<form:input id="name" path="name" type='text' class='form-control' autocomplete=""/>
-											<form:errors path="name" cssClass="help-block" element="div" />
+											密碼:
+											<input id="oldpassword" type='password' class='form-control' />
+<%-- 											<form:errors path="password" cssClass="alert alert-danger" element="div" /> --%>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											暱稱:
-											<form:input id="nickname" path="nickname" type='text' class='form-control' />
-											<form:errors path="nickname" cssClass="help-block" element="div" />
+											密碼:
+											<input id="newpassword"  type='password' class='form-control' />
+<%-- 											<form:errors path="password" cssClass="alert alert-danger" element="div" /> --%>
 										</div>
 									</div>
 
-
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											手機:
-											<form:input id="cell" path="cell" type='text' class='form-control' />
-											<form:errors path="cell" cssClass="help-block" element="div" />
-											
-										</div>
-										<div class="form-group col-md-6">
-											信箱:
-											<form:input id="email" path="email" type='text' class='form-control' />
-											<form:errors path="email" cssClass="help-blocks" element="div" />
-											
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											地址:
-											<form:input id="address" path="address" type='text'
-												class='form-control' />
-										</div>
-									</div>
-									<div class="form-row">
-										<div class="form-group col-md-6">
-											簽名檔:
-											<form:textarea id="signature" path="signature" 
-												class='form-control' />
-										</div>
-									</div>
 									<input type="submit" class="btn btn-common" value="送出">
 									<input type="reset" class="btn btn-common" value="清除">
 <!-- 									<a href="/" class="btn btn-common"> 回首頁</a> -->
-								</form:form>
+								</form>
 
 							</div>
 						</div>
