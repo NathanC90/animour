@@ -122,10 +122,10 @@
 		
 		<div class="flextable-item">
 			<div class="btn-group">
-				<button type="button" class="btn btn-outline-primary">
+				<button type="button" class="btn btn-outline-primary" title="修改">
 					<span class="icon icon-pencil"></span>
 				</button>
-				<button type="button" class="btn btn-outline-primary">
+				<button type="button" class="btn btn-outline-primary" title="刪除">
 					<span class="icon icon-erase"></span>
 				</button>
 			</div>

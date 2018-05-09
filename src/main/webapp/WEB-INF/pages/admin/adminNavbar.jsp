@@ -124,9 +124,12 @@
             <small class="iconav-nav-label hidden-md-up">部落格管理</small>
           </a>
         </li>
-        
-        
-        
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="以管理員身分登入" data-toggle="tooltip" data-placement="right" data-container="body">
+            <img src="../admin/assets/img/avatar-mdo.png" alt="" class="rounded-circle">
+            <small class="iconav-nav-label hidden-md-up">admin</small>
+          </a>
+        </li>        
       </ul>
     </div>
   </nav>
