@@ -20,7 +20,6 @@
 			<link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
 			<link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
 			<link rel="manifest" href="/manifest.json">
-			<link rel="stylesheet" type="text/css" href="/css/popup-style.css">
 			<!--FancyBox css -->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
 
@@ -100,6 +99,10 @@
 				.fancybox-slide--current .animated-modal p {
 					transition-delay: .3s;
 				}
+
+				.li .span {
+					font-size: 72px
+				}
 			</style>
 		</head>
 
@@ -129,8 +132,29 @@
 			<section class="section">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6 about2-intro-image">
-							<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="100px" alt="${animal.id}">
+						<div class="col-md-6">
+
+							<p class="imglist" style="max-width: 500px;">
+								<a data-trigger="preview" href="javascript:;">
+									<img src="https://source.unsplash.com/LuK-MuZ-yf0/510x340" />
+								</a>
+
+								<a href="https://source.unsplash.com/LuK-MuZ-yf0/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+									<img src="https://source.unsplash.com/LuK-MuZ-yf0/120x80" />
+								</a>
+
+								<a href="https://source.unsplash.com/Oaqk7qqNh_c/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+									<img src="https://source.unsplash.com/Oaqk7qqNh_c/120x80" />
+								</a>
+
+								<a href="https://source.unsplash.com/X9GHkHbJIaU/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+									<img src="https://source.unsplash.com/X9GHkHbJIaU/120x80" />
+								</a>
+
+								<a href="https://source.unsplash.com/9c_djeQTDyY/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
+									<img src="https://source.unsplash.com/9c_djeQTDyY/120x80" />
+								</a>
+							</p>
 						</div>
 						<div class="col-md-6">
 							<h3 class="small-title">會員"${animal.member.account}"的送養動物</h3>
@@ -154,20 +178,40 @@
 								<!-- Tab panes -->
 								<div class="tab-content">
 									<div role="tabpanel" class="tab-pane active" id="home">
-										<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-										<p class="card-text" style="padding: 0px">編號：${animal.id} 綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color} 發現日期：${animal.found} 縣市：${animal.city.name}
-											鄉鎮市區：${animal.district}
-										</p>
+										<!-- Portfolio Details -->
+										<div class="col-md-12 wow fadeIn" data-wow-delay="0.5s">
+											<div class="portfolio-meta">
+												<ul>
+													<li>
+														<span>狀態：</span>${animal.status}</li>
+													<li>
+														<span>編號：</span>${animal.id}</li>
+													<li>
+														<span>綽號：</span>${animal.name}</li>
+													<li>
+														<span>種類：</span>${animal.specie}</li>
+													<li>
+														<span>顏色：</span>${animal.color}</li>
+													<li>
+														<span>張貼日期：</span>${animal.found}</li>
+													<li>
+														<span>縣市：</span>${animal.city.name}</li>
+													<li>
+														<span>鄉鎮市區：</span>${animal.district}</li>
+												</ul>
+											</div>
+										</div>
+
 									</div>
 									<div role="tabpanel" class="tab-pane" id="messages">
 										<p>${animal.remark}</p>
 									</div>
 									<c:if test="${animal.member.id ne currentMember.id}">
 										<div role="tabpanel" class="tab-pane" id="settings">
-											<form name="requestComment" <%-- action="/halfway/adoptionRequest?id=${animal.id}" --%>
-												method="POST">
+											<form name="requestComment" action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
 												<textarea class="form-control" id="requestComment" name="requestComment" rows="3"></textarea>
-												<input type="button" id="tonextblock" class="btn btn-common" value="確定認養">
+
+												<input type="submit" id="tonextblock" class="btn btn-common" value="確定認養">
 												<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
 											</form>
 										</div>
@@ -175,80 +219,26 @@
 								</div>
 							</div>
 						</div>
+						<a style="max-width: 45%; margin:auto; margin-top:5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox data-src="#trueModal" data-modal="true"
+						 href="javascript:;">
+							<i class="fa fa-link"></i>我要認養</a>
 					</div>
 				</div>
 
-				<p class="mb-0">
+				<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
-				</p>
+				</p>-->
 				<div style="display: none;max-width:600px;" id="trueModal">
-					<h2>I'm a modal!</h2>
-					<p>You can close me only by pressing custom button below.</p>
-					<p>It would also be possible to prevent closing using `beforeClose` callback.</p>
+					<h2>提醒! 請再次確認是否送出認養請請求!</h2>
+					<p>(1) 認養請求送出後不可收回。</p>
+					<p>(2) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
+					<p>(3) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
+					<p>(4) 成功完成認養手續後，若已達認養上限 (過去一年內成功認養數量不得多於2隻)，將暫時無法再提出認養請求。</p>
 					<p>
-						<button data-fancybox-close class="btn btn-common">Close me</button>
+						<button class="btn btn-common">Close me</button>
+						<button data-fancybox-close class="btn btn-common">取消</button>
 					</p>
 				</div>
-
-				</div>
-				</div>
-
-				<!-- 測試 fancybox 圖片 -->
-				<h2>fancyBox v3.3 - Retina</h2>
-
-				<p>
-					Resize images to look sharper on retina displays
-				</p>
-
-				<hr class="my-5" />
-
-				<p class="imglist">
-					<a href="https://source.unsplash.com/uPc2yuiu8cY/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/uPc2yuiu8cY/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/mmYyzczxvdo/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/mmYyzczxvdo/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/H0_ZaFn2JjU/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/H0_ZaFn2JjU/240x160" />
-					</a>
-				</p>
-
-				<h3 class="mt-5">Image gallery</h3>
-
-				<p>
-					Groups are created by adding the same
-					<code>data-fancybox</code> attribute value
-				</p>
-
-				<p class="imglist" style="max-width: 1000px;">
-					<a href="https://source.unsplash.com/juHayWuaaoQ/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/juHayWuaaoQ/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/eWFdaPRFjwE/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/eWFdaPRFjwE/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/i2KibvLYjqk/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/i2KibvLYjqk/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/RFgO9B_OR4g/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/RFgO9B_OR4g/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/7bwQXzbF6KE/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/7bwQXzbF6KE/240x160" />
-					</a>
-
-					<a href="https://source.unsplash.com/NhU0nUR7920/1500x1000" data-fancybox="images">
-						<img src="https://source.unsplash.com/NhU0nUR7920/240x160" />
-					</a>
-				</p>
-
 			</section>
 
 			<!-- 重複的內容結束 -->
