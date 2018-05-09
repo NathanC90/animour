@@ -17,6 +17,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.
 		authorizeRequests()
+		//.antMatchers("/admin/*").hasRole("Admin")
 		.antMatchers("/**","/showAnimalImage").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 	 "/css/**",
@@ -30,7 +31,6 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.formLogin()
 		.loginPage("/login")
-//		.loginProcessingUrl("/perform_login").permitAll()
 		.and().csrf().disable()
 		;
 }
