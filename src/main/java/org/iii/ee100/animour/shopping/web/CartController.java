@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.iii.ee100.animour.shopping.entity.CartItem;
+import org.iii.ee100.animour.shopping.entity.OrdersItem;
+import org.iii.ee100.animour.shopping.service.OrdersItemService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CartController {
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private OrdersItemService ordersItemService;
 	
 	@RequestMapping(value="/cart/index")
 	public String index() {
@@ -68,5 +73,44 @@ public class CartController {
 			}
 		}
 		return -1;
+	}
+	
+	//清空購物車
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/cart/removeShoppingCart", method=RequestMethod.GET)
+	public String removeShoppingCart(HttpSession session) {
+		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
+		cartItem.removeAll(cartItem);
+		return "redirect:/cart/index";
+	}
+	
+	//確定購買
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
+	public String confirmBuy(HttpSession session) {
+		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
+		List<OrdersItem> ordersList = new ArrayList<OrdersItem>();
+		OrdersItem ordersItem = null;
+		
+		for(CartItem cart:cartItem) {
+			ordersItem = new OrdersItem();
+			ordersItem.setName(cart.getProduct().getName());
+			ordersItem.setPrice(cart.getProduct().getPrice());
+			ordersItem.setQuantity(cart.getProduct().getQuantity());
+			ordersItem.setSubTotal(cart.getProduct().getPrice() * cart.getQuantity());
+			ordersList.add(ordersItem);
+		}
+		for(OrdersItem orders :ordersList) {
+			System.out.println(ordersList.get(0));
+			System.out.println(orders.getName());
+			System.out.println(orders.getPrice());
+		}
+//		ordersItemService.insert(ordersList);
+		
+//		ordersItem.setSubTotal(total);
+//		ordersItem.setCount(quantity);
+//		ordersItemService.insert(ordersItem);
+//		cartItem.removeAll(cartItem);
+		return "";
 	}
 }
