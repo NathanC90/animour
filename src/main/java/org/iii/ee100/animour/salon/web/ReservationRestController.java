@@ -74,6 +74,7 @@ public class ReservationRestController {
 	public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long reservationId) {
 		Reservation reservation = reservationService.getOne(reservationId);
 		reservationService.deleteReservation(reservation);
+		System.out.println();
 		return ResponseEntity.ok().build();
 	}
 }
