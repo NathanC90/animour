@@ -69,7 +69,6 @@ public class AnimalController {
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
 	public String animalDetail(Long id, Model model) {
 		Animal animal = animalservice.getOne(id);
-		// animal.setMember(member);
 		model.addAttribute("animal", animal);
 
 		Member current = animalservice.getCurrentMember();

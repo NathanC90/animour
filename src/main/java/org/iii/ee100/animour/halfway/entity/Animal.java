@@ -49,9 +49,11 @@ public class Animal extends GenericEntity{
 	@Column(name = "GENDER")
 	private String gender;
 
+	// 張貼時間
 	@Column(name = "FOUND")
 	private java.sql.Date found;
 
+	// 更新時間(系統時間)
 	@Column(name = "UPLOAD") // for system
 	private Timestamp upload;
 
@@ -64,8 +66,11 @@ public class Animal extends GenericEntity{
 	@Column(name = "HOSPITALIZED", columnDefinition = "BOOLEAN default 'FALSE'")
 	private Boolean hospitalized;
 
-	@Column(name = "HOSPITAL_NAME")
-	private String hospitalName;
+	@Column(name = "SIZE")
+	private String size;
+	
+	@Column(name = "AGE")
+	private String age;
 
 	@Column(name = "CARD_NUM")
 	private String cardNum;
@@ -73,6 +78,7 @@ public class Animal extends GenericEntity{
 	@Column(name = "NEUTER", columnDefinition = "BOOLEAN default 'FALSE'")
 	private Boolean neuter;
 
+	//飼主所開認養條件，包含於此
 	@Column(name = "REMARK", columnDefinition = "TEXT")
 	private String remark;
 
