@@ -21,12 +21,17 @@ import lombok.Setter;
 public class Reservation extends GenericEntity{
 	
 	
-	@ManyToOne
-	@JoinColumn(name = "RESERVATIONTIME_ID", referencedColumnName = "ID")
-	private ReservationTime reservationTime;
-	
+	@Override
+	public String toString() {
+		return "Reservation [reservationDate=" + reservationDate + ", frontTime=" + frontTime + ", content="
+				+ content + ", designer=" + designer + ", totalTime=" + totalTime + ", price=" + price + "]";
+	}
+
 	@Column(name="RESERVATION_DATE")
 	private java.sql.Date reservationDate;
+	
+	@Column(name="FRONT_TIME")
+	private java.sql.Time frontTime;
 	
 	@Column(name="CONTENT")
 	private String content;

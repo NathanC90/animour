@@ -224,7 +224,7 @@
                 $.each(data, function (i, reservation) {
                   var cell1 = $("<td></td>").text(reservation.id);
                   var cell2 = $("<td></td>").text(reservation.reservationDate);
-                  var cell3 = $("<td></td>").text(reservation.reservationTime.frontTime);
+                  var cell3 = $("<td></td>").text(reservation.appointTime);
                   var cell4 = $("<td></td>").text(reservation.content);
                   var cell5 = $("<td></td>").text(reservation.designer);
                   var cell6 = $("<td></td>").text(reservation.totalTime);

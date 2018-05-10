@@ -13,8 +13,6 @@ public class FormsController {
 	
 	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.GET })
 	public String reservationTime(Model model) {
-		Reservation reservation = new Reservation();
-		model.addAttribute("reservation", reservation);		
 		return "/salon/insertReservationForm";
 	}
 }
