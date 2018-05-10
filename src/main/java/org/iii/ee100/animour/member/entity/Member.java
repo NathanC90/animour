@@ -76,16 +76,6 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "ROLE")//("member","admin")
 	private String role;
 	
-	
-
-//	@JsonIgnore
-//	@OneToMany(fetch=FetchType.EAGER,mappedBy = "member", cascade = { CascadeType.ALL })
-//	private List<Animal> animals;
-//
-//	@JsonIgnore
-//	@OneToOne(mappedBy = "member", cascade = { CascadeType.ALL })
-//	private Adoption adoption;
-
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		ArrayList<GrantedAuthority> authorities = new ArrayList<>();

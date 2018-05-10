@@ -184,7 +184,7 @@
 	</script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/vendor/holder.min.js"></script>
+
 
 	<script src="/js/pace.min.js"></script>
 	<script type="text/javascript">

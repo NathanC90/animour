@@ -18,16 +18,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.BindingResultUtils;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 
 @Controller
 public class MemberController {
@@ -101,7 +96,7 @@ public class MemberController {
 	public String updatePassword(@Valid Password password,BindingResult result,Map<String,Object> map) {
 		if(memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
 			if(result.hasErrors()) {
-				map.put("newpassword", "請輸入3-10");
+				map.put("newpassword", "請輸入3-10大小英文及數字");
 				return "/member/updatepassword";
 			}
 			else {
@@ -153,10 +148,9 @@ public class MemberController {
 
 	}
 
-	@RequestMapping(value = "/admin/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {
 		return "/403";
-
 	}
 	
 	
