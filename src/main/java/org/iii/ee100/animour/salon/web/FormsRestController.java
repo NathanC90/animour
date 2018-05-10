@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.salon.web;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -43,9 +44,9 @@ public class FormsRestController {
 	
 	
 	@RequestMapping(method = RequestMethod.POST,produces = { "application/json"})
-	public ResponseEntity<?> insertReservation(@Valid @RequestBody Reservation reservation) {
+	public ResponseEntity<?> insertReservation(@Valid @RequestBody Reservation reservation) throws ParseException {
 	    
-		 reservationService.insertReservation(reservation);
+		 reservationService.repeateOrNot(reservation);
 
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 	}

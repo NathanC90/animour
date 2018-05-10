@@ -1,6 +1,11 @@
 package org.iii.ee100.animour.salon.service;
 
-import java.sql.Date;
+import java.util.Date;
+
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,76 +31,98 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ReservationService extends GenericService<Reservation>{
-	
+public class ReservationService extends GenericService<Reservation> {
+
 	@Autowired
 	ReservationDao reservationDao;
-	
+
 	@Autowired
 	DesignerDao designerDao;
-    
+
 	@Autowired
 	ServiceContentDao serviceContentDao;
-	
+
 	@Autowired
 	org.iii.ee100.animour.salon.dao.reservationTimeDao reservationTimeDao;
-	
-	
+
 	public void deleteReservation(Reservation id) {
-		 reservationDao.delete(id);
+		reservationDao.delete(id);
 	}
-	
-	
+
 	public ArrayList<Reservation> getAllContent() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
-	
-	public Reservation insertReservation(Reservation reservation) {
-		return reservationDao.save(reservation);		
-	}
-	
 
-	
-	public List<Designer> getAllDesigner(){
-		return Lists.newArrayList(designerDao.findAll());
-		
+	public Reservation insertReservation(Reservation reservation) {
+		return reservationDao.save(reservation);
 	}
-	
-	public ArrayList<ReservationTime> getAllReservationTime(){
+
+	public List<Designer> getAllDesigner() {
+		return Lists.newArrayList(designerDao.findAll());
+
+	}
+
+	public ArrayList<ReservationTime> getAllReservationTime() {
 		return Lists.newArrayList(reservationTimeDao.findAll());
 	}
-	
+
 	public Reservation getOne(Long id) {
 		return reservationDao.findOne(id);
 	}
+
 	public ServiceContent getServiceContentId(Long id) {
 		return serviceContentDao.findOne(id);
 	}
-	
-	public ArrayList<ServiceContent> getAllServiceContent(){
+
+	public ArrayList<ServiceContent> getAllServiceContent() {
 		return Lists.newArrayList(serviceContentDao.findAll());
-		
+
 	}
-	//計算總時數
-	public Integer addServiceTime(){
-		ServiceContent serviceContent=new ServiceContent();
-		return serviceContent.getTime();		
+
+	// 計算總時數
+	public Integer addServiceTime() {
+		ServiceContent serviceContent = new ServiceContent();
+		return serviceContent.getTime();
 	}
-	
-	
-	
-	
-	//預約幾筆的頁面方法
+
+	public Reservation repeateOrNot(Reservation reservation) throws ParseException {
+		List<Reservation> reservationList = new ArrayList<>();
+		reservationList = reservationDao.findAll();
+		Date compareDate =reservation.getReservationDate();
+		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String dateText = simpleDateFormat.format(compareDate);
+		Date compareDate2 = simpleDateFormat.parse(dateText);
+
+		//System.out.println("catch textDate :"+dateText);
+		int flag2 = 0;
+		int flag3=0;
+		for (Reservation reservations : reservationList) {
+			Date mainDate=reservations.getReservationDate();
+			System.out.println("catch後端 Date :"+mainDate);
+			System.out.println("catch前端 Date :"+compareDate2);
+			if (mainDate.equals(compareDate2)) {
+				System.out.println("給我一個True"+mainDate.equals(compareDate2));
+				flag3++;
+				System.out.println("how count :"+flag3);
+				
+			}else {
+				flag2++;
+				System.out.println("how many flag2:"+flag2);
+				if (flag2 == reservationList.size()) {
+					reservationDao.save(reservation);
+				}
+			}
+		}
+		return reservation;
+	}
+
+	// 預約幾筆的頁面方法
 	public Page<Reservation> getReservationPage(PageForAnimour pageForAnimour) {
-		pageForAnimour.getPageRequest();
-		PageRequest request = new PageRequest(pageForAnimour.getPageNo(), pageForAnimour.getSize(), Sort.Direction.DESC,"reservationDate");
-		
-		return reservationDao.findAll(request);		
+		pageForAnimour.setSize(6);
+		PageRequest request = new PageRequest(pageForAnimour.getPageNo(), pageForAnimour.getSize(), Sort.Direction.ASC,
+				"id");
+
+		return reservationDao.findAll(request);
 	}
-	
-	
-	
-	
-	
 
 }

@@ -132,10 +132,10 @@
 
 						<div class="col-md-4">
 							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="100px" alt="待預約小貓">
+								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="20px" alt="待預約小貓">
 								<div class="card-body" style="margin-bottom: 5px">
 									<p class="card-text" style="padding: 0px">服務：${avar.content} 耗時：${avar.time}時 價錢:${avar.price}元</p>
-									<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
+									<div class="d-flex justify-content-between align-items-center" style="max-height: 20px">
 										<div class="btn-group" style="margin: 0px">
 											<input type="button" value="add" id="addNumber" class="btn btn-common btn-sm mt-10">
 										</div>

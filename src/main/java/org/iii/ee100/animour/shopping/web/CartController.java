@@ -1,13 +1,15 @@
 package org.iii.ee100.animour.shopping.web;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.iii.ee100.animour.shopping.entity.CartItem;
+import org.iii.ee100.animour.shopping.entity.Orders;
 import org.iii.ee100.animour.shopping.entity.OrdersItem;
-import org.iii.ee100.animour.shopping.service.OrdersItemService;
+import org.iii.ee100.animour.shopping.service.OrdersService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ public class CartController {
 	private ProductService productService;
 	
 	@Autowired
-	private OrdersItemService ordersItemService;
+	private OrdersService ordersService;
 	
 	@RequestMapping(value="/cart/index")
 	public String index() {
@@ -89,28 +91,31 @@ public class CartController {
 	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
 	public String confirmBuy(HttpSession session) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
-		List<OrdersItem> ordersList = new ArrayList<OrdersItem>();
-		OrdersItem ordersItem = null;
+		Integer totalAmount = 0;
+		Date orderDate = null;
+		for(CartItem cart:cartItem) {
+			totalAmount = totalAmount + cart.getProduct().getPrice() * cart.getQuantity();
+			orderDate = new Date(System.currentTimeMillis());
+		}
+		Orders orders = new Orders();
+		orders.setTotalAmount(totalAmount);
+		orders.setOrderDate(orderDate);
 		
+		List<OrdersItem> ordersList = new ArrayList<OrdersItem>();
+		
+		OrdersItem ordersItem = null;
 		for(CartItem cart:cartItem) {
 			ordersItem = new OrdersItem();
 			ordersItem.setName(cart.getProduct().getName());
 			ordersItem.setPrice(cart.getProduct().getPrice());
-			ordersItem.setQuantity(cart.getProduct().getQuantity());
-			ordersItem.setSubTotal(cart.getProduct().getPrice() * cart.getQuantity());
+			ordersItem.setQuantity(cart.getQuantity());
+			ordersItem.setOrders(orders);
 			ordersList.add(ordersItem);
 		}
-		for(OrdersItem orders :ordersList) {
-			System.out.println(ordersList.get(0));
-			System.out.println(orders.getName());
-			System.out.println(orders.getPrice());
-		}
-//		ordersItemService.insert(ordersList);
+		orders.setOrdersItem(ordersList);
+		ordersService.insert(orders);
+		cartItem.removeAll(cartItem);
 		
-//		ordersItem.setSubTotal(total);
-//		ordersItem.setCount(quantity);
-//		ordersItemService.insert(ordersItem);
-//		cartItem.removeAll(cartItem);
-		return "";
+		return "/shopping/ThanksForOrdering";
 	}
 }

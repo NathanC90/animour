@@ -135,7 +135,7 @@
 						<div class="row">
 							<!-- End -->
 
-							<div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+							<!-- <div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 								<div class="panel panel-info" style="border: 1px">
 									<div class="panel-heading" style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
 										<div class="panel-title">新增預約</div>
@@ -171,53 +171,64 @@
 												</div>
 											</div>
 										</div>
-										<br>
+										<br> -->
 
 
-										<form id="myform">
-
-											<div class="form-group col-md-8">
-												美容師:
-												<select id="designer" class="form-control" name="designer">
-													<option value="designer" label="請選擇美容師" />
-												</select>
-											</div>
-											<div class="form-group col-md-8">
-												服務類別:
-												<select id="content" class="form-control" name="content">
-													<option value="content" label="請選擇類別" />
-
-												</select>
-												耗時：
-												<select id="content" class="form-control" name="content">
-													<option value="content" label="請選擇類別" />
-
-												</select>
-												價位：
-												<select id="price" class="form-control" name="price">
-													<option value="price" label="請選擇價位" />
-
-												</select>
-											</div>
+							<form id="myform" style="margin-top: 50px; margin: auto">
+								<!-- <ul>
+												<li>
+													<span></span>
+													<select></select>
+												</li>
+											</ul> -->
+								預約日期
+								<input class="form-group col-md-8" id="meeting" type="date" name="reservationDate" />
 
 
-											<br>
-											<!-- <form action="/" id="searchForm">
+								<div class="form-group col-md-8">
+									美容師:
+									<select id="designer" class="form-control" name="designer">
+										<option value="designer" label="請選擇美容師" />
+									</select>
+								</div>
+								<div class="form-group col-md-8">
+									服務類別:
+									<select id="content" class="form-control" name="content">
+										<option value="content" label="請選擇類別" />
+
+									</select>
+									時段:
+									<select id="frontTime" class="form-control" name="frontTime">
+										<option value="frontTime" label="請選擇時段" />
+
+									</select>
+
+
+									價位：
+									<select id="price" class="form-control" name="price">
+										<option value="price" label="請選擇價位" />
+
+									</select>
+								</div>
+
+
+								<br>
+								<!-- <form action="/" id="searchForm">
 													<input type="text" name="s" placeholder="Search...">
 													<input type="submit" value="Search">
 												</form>
 												<!-- the result of the search will be rendered inside this div -->
-											<!-- <div id="result"></div> -->
-
-
-
-										</form>
-
-										<input id="response" type="submit" class="btn btn-common" value="預約">
-										<input id="" type="reset" class="btn btn-common" value="清除">
-									</div>
+								<!-- <div id="result"></div> -->
+								<div>
+									<input id="response" type="submit" class="btn btn-common" value="預約">
+									<input id="" type="reset" class="btn btn-common" value="清除">
 								</div>
-							</div>
+							</form>
+
+
+						</div>
+					</div>
+					</div>
 				</section>
 				<!-- Footer Section -->
 				<footer>
@@ -398,6 +409,7 @@
 				<script src="/js/jquery-3.3.1.min.js"></script>
 				<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 				<!-- 	<different content from here> -->
+
 				<script>
 					$(document).ready(function () {
 						$.getJSON('/reservationForms/getServiceCotent', {}, function (data) {
@@ -405,11 +417,9 @@
 							$.each(data, function (i, a) {
 								var cell1 = $("<option></option>").text(a.content);
 								var cell2 = $("<option></option>").text(a.price);
-								var cell3 = $("<option></option>").text(a.time);
 								$('#content').append(cell1);
 
 								$('#price').append(cell2);
-								$('#time').append(cell3);
 
 							});
 
@@ -453,7 +463,8 @@
 
 
 						}).done(function (data) {
-							window.location.href = "http://localhost:8080/appointment/firstPage";
+							alert("插入成功")
+							window.location.href = "http://localhost:8080/reservation";
 						});
 
 						function toJson(formData) {
@@ -476,7 +487,7 @@
 					});
 
 				</script>
-				<script>
+				<!-- <script>
 					var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 					var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 					var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
@@ -547,7 +558,7 @@
 						refreshDate();
 					}
 
-				</script>
+				</script> -->
 
 
 			</body>

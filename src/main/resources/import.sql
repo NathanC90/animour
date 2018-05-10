@@ -95,19 +95,15 @@ insert into RESERVATIONTIME (front_Time,back_Time)values
 ('15:30:00','16:30:00');
 
 /*6 reservation*/
-insert into reservation (reservation_Date,content,designer,total_Time,price,reservationTime_id)values
-('2000-10-12','洗澡','阿明',1,200,1),
-('2000-10-12','洗澡','阿明',1,200,2),
-('2000-10-12','洗澡','阿明',1,200,3),
-('2000-10-12','洗澡','阿明',1,200,4),
-('2000-10-12','洗澡','阿明',1,200,5),
-('2000-10-12','洗澡','阿明',1,200,6),
-('2000-10-13','造型','阿中',1,100,1),
-('2000-10-13','造型','阿中',1,100,2),
-('2000-10-13','造型','阿中',1,100,3),
-('2000-10-13','造型','阿中',1,100,4),
-('2000-10-13','造型','阿中',1,100,5),
-('2000-10-13','造型','阿中',1,100,6);
+insert into reservation (reservation_Date,FRONT_TIME,content,designer,total_Time,price)values
+('2000-10-12','10:00:00','洗澡','阿明',1,300),
+('2000-10-12','11:00:00','洗澡','阿喵',1,200),
+('2000-10-13','12:00:00','洗澡','阿明',1,250),
+('2000-10-14','13:00:00','剪髮','彌明',1,200),
+('2000-10-15','14:00:00','剪髮','阿中',1,300),
+('2000-10-16','15:00:00','造型','小明',1,100),
+('2000-10-17','16:00:00','造型','阿中',1,150),
+('2000-10-18','17:00:00','造型','阿中',1,100);
 
 
 
@@ -198,6 +194,22 @@ insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DES
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 4);
 insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4);
+
+/*9 orders*/
+insert into orders (orderdate, totalamount) values(now(), 1280);
+insert into orders (orderdate, totalamount) values(now(), 3650);
+
+/*10 ordersItem*/
+insert into ordersitem (name, price, quantity, orders_id) 
+values('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 600, 1, 1);
+insert into ordersitem (name, price, quantity, orders_id) 
+values('法國皇家XJ31 超小型幼犬 1.5 公斤', 680, 1, 1);
+insert into ordersitem (name, price, quantity, orders_id)
+values('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 580, 2, 2);
+insert into ordersitem (name, price, quantity, orders_id) 
+values('法國皇家PRIA21 小型室內成犬 1.5 公斤', 400, 1, 2);
+insert into ordersitem (name, price, quantity, orders_id) 
+values('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 1045, 2, 2);
 
 /*11 designer*/
 insert into designer (designer)values

@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.product.dao;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,6 +20,7 @@ import org.iii.ee100.animour.shopping.service.ClassifyService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.iii.ee100.animour.shopping.entity.Classify;
 import org.iii.ee100.animour.shopping.entity.Orders;
+import org.iii.ee100.animour.shopping.entity.OrdersItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +49,9 @@ public class productTest {
 	
 	@Autowired
 	private ClassifyService classifyService;
+	
+	@Autowired
+	private OrdersDao orderDao;
 	
 	/**  id > 5
 	 * 測試帶查詢條件的分頁
@@ -143,6 +150,53 @@ public class productTest {
 //		productDao.save(product1);
 	}
 	
+	//測試寫入訂單
+//	@Test
+//	public void testOneToMany() {
+//		Orders orders = new Orders();
+//		orders.setTotalAmount(110);
+//		orders.setOrderDate(new Date(System.currentTimeMillis()));
+//		
+//		OrdersItem ordersItem = new OrdersItem();
+//		ordersItem.setName("法國皇家PRP30 貴賓成貓 3 公斤");
+//		ordersItem.setPrice(50);
+//		ordersItem.setQuantity(2);
+//		ordersItem.setOrders(orders);
+//		
+//		OrdersItem ordersItem2 = new OrdersItem();
+//		ordersItem2.setName("法國皇家PRP30 貴賓成貓 2.5 公斤");
+//		ordersItem2.setPrice(60);
+//		ordersItem2.setQuantity(3);
+//		ordersItem2.setOrders(orders);
+//		
+//		List<OrdersItem> ordersList = new ArrayList<OrdersItem>();
+//		ordersList.add(ordersItem);
+//		ordersList.add(ordersItem2);
+//		
+//		orders.setOrdersItem(ordersList);
+//		
+//		ordersDao.save(orders);
+//	}
+	
+	//測試查詢訂單
+	@Test
+	public void testQueryOrders() {
+		List<Orders> OrdersList = ordersDao.findAll();
+		for(Orders orders:OrdersList) {
+			System.out.println("訂單編號=" + orders.getId());
+			System.out.println(orders.getTotalAmount());
+			System.out.println(orders.getOrderDate());
+			
+			List<OrdersItem> ordersItem = orders.getOrdersItem();
+			for(OrdersItem order:ordersItem) {
+				System.out.println("商品名稱=" + order.getName());
+				System.out.println("商品價格=" + order.getPrice());
+				System.out.println("購買數量=" + order.getQuantity());
+			}
+			System.out.println();
+		}
+	}
+	
 	@Test
 	public void testManyToOne() {
 		//keyword test
@@ -200,10 +254,10 @@ public class productTest {
 	}
 */
 	
-	@Test
-	public void testDelete() {
-		productDao.delete(2L);
-	}
+//	@Test
+//	public void testDelete() {
+//		productDao.delete(2L);
+//	}
 	
 //	@Test
 //	public void testGetNewSex() {

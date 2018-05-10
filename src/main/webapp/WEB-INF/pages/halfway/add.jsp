@@ -157,15 +157,15 @@
 									備註:
 									<form:textarea class="form-control" id="remark" path="remark" rows="2" name="remark" />
 								</div>
-													<div class="form-group">
-														請上傳動物照片 <input type="file" class="form-control-file" id="image"
-															name="file">
-													</div>
+								<div class="form-group">
+									請上傳動物照片
+									<input type="file" class="form-control-file" id="image" name="file">
+								</div>
 								<input type="button" class="btn btn-common" value="送出" id="submit">
 								<input type="reset" class="btn btn-common" value="清除">
 								<a href="/halfway" class="btn btn-common"> 回上頁</a>
-								<form:hidden  id="id" path="id"/>
-								<form:hidden  id="member" path="member"/>
+								<form:hidden id="id" path="id" />
+								<form:hidden id="member" path="member" />
 							</form:form>
 						</div>
 					</div>
@@ -214,11 +214,11 @@
 					function toJson(formData) {
 						var object = {};
 						formData.forEach(function (value, key) {
-							if (key == 'city'){
+							if (key == 'city') {
 								var object1 = {};
 								object1['id'] = value;
 								object[key] = object1;
-							}else{
+							} else {
 								object[key] = value;
 							}
 						});
@@ -226,77 +226,6 @@
 						console.log(json);
 						return json;
 					};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	 /* document.addEventListener("DOMContentLoaded", function () {
-	document.getElementById("submit").addEventListener("click", add);
-	
-	 }); */
-
-
-
-
-	//  $(document).ready(function(){
-
-
-	// 	 $("#addAnimal").submit(function(e){
-	// 		 e.preventDefault();
-
-	// 	 })
-
-
-// 	 })
-
-// 	 var objArr = [];
-
-// objArr.push({"id": id, "name": userName});
-
-
-	// function add() {
-	// 	alert("呼叫！");
-	// 	//var myForm = document.getElementById('addAnimal');
-	// 	var animal = $('#addAnimal').serialize();
-	// 	console.log(JSON.stringify(animal));
-	// 	//animal.append('file', document.forms['addAnimal'].file.files[0]);
-
-
 				</script>
 			</body>
 
