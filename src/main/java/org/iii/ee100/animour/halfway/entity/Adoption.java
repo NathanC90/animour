@@ -34,8 +34,8 @@ public class Adoption extends GenericEntity{
 	private Boolean acceptRequest;
 
 	// 訂單成立時間
-	@Column(name = "ORDER_DATE")
-	private Timestamp orderDate;
+	@Column(name = "ACCEPT_DATE")
+	private Timestamp acceptDate;
 
 	// 訂單處理狀態
 	@Column(name = "STATUS")

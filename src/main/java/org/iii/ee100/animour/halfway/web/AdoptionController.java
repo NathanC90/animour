@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.iii.ee100.animour.halfway.entity.Adoption;
@@ -9,6 +11,7 @@ import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -17,43 +20,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import allPay.payment.integration.AllInOne;
+import allPay.payment.integration.allPayOperator.AllPayFunction;
+
 @Controller
 public class AdoptionController {
 
 	@Autowired
-	AdoptionService adoptionService;
+	AdoptionService adoptionservice;
 
 	@Autowired
-	AnimalService animalService;
+	AnimalService animalservice;
 
+	//送出認養申請
 	@RequestMapping(value = "/halfway/adoptionRequest", method = { RequestMethod.POST })
 	public String adoptionRequest(@RequestParam(value = "id") Long id, String requestComment, Adoption adoption,
 			Model model) {
 		// 設定對應動物
-		adoption.setAnimal(animalService.getOne(id));
+		adoption.setAnimal(animalservice.getOne(id));
 		// 設定動物主人 ID
-		adoption.setOwnerId(animalService.getOne(id).getMember().getId());
+		adoption.setOwnerId(animalservice.getOne(id).getMember().getId());
 		// 設定送出時間
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		adoption.setRequestDate(ts);
 
 		// 設定登入的會員
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails && principal instanceof Member) {
-			adoption.setMember((Member) principal); // 在這邊setMember，資料庫會存的事 member_id
-			// String account = ((UserDetails)principal).getUsername();
-		} else {
-			String account = principal.toString();
-			System.out.println(account);
-		}
+		Member current = animalservice.getCurrentMember();
+		model.addAttribute("currentMember", current);
 		try {
-			adoptionService.insert(adoption);
+			adoptionservice.insert(adoption);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		model.addAttribute("inadoption", adoption);
 
-		System.out.println("controller 有被呼叫");
 		return "redirect:/halfway";
 	}
 
@@ -63,7 +63,7 @@ public class AdoptionController {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails && principal instanceof Member) {
-			List<Adoption> adoptions = adoptionService.getCheckAdoption(((Member) principal).getId());
+			List<Adoption> adoptions = adoptionservice.getCheckAdoption(((Member) principal).getId());
 			model.addAttribute("adoption", adoptions);
 		} else {
 			String account = principal.toString();
@@ -78,28 +78,33 @@ public class AdoptionController {
 			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an, Model model) {
 		if (acceptRequest) {
 			try {
-				adoption = (Adoption) adoptionService.getOne(id);
+				adoption = (Adoption) adoptionservice.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
-				adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
+				adoption.setAcceptDate(new Timestamp(System.currentTimeMillis()));
 				adoption.setStatus("認養洽談中");
-				adoptionService.update(adoption);
-				an = ((Adoption) adoptionService.getOne(id)).getAnimal(); // 這裡的id adoption的id
+				adoptionservice.update(adoption);
+				an = ((Adoption) adoptionservice.getOne(id)).getAnimal(); // 這裡的id adoption的id
 				an.setStatus("認養洽談中");
-				animalService.update(an);
+				animalservice.update(an);
 			} catch (Exception e) {
 			}
 			return "redirect:/halfway/showAdoption";
 		} else {
 			try {
-				adoption = (Adoption) adoptionService.getOne(id);
+				adoption = (Adoption) adoptionservice.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
-				adoption.setOrderDate(new Timestamp(System.currentTimeMillis()));
+				adoption.setAcceptDate((new Timestamp(System.currentTimeMillis())));
 				adoption.setStatus("認養被拒");
-				adoptionService.update(adoption);
+				adoptionservice.update(adoption);
 			} catch (Exception e) {
 			}
 			return "redirect:/halfway/showAdoption";
 		}
+	}
+	
+	@RequestMapping(value = "/opay", method = { RequestMethod.GET })
+	public void oPayTest() {
+		
 	}
 
 }
