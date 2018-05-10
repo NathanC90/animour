@@ -1,7 +1,8 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
@@ -9,6 +10,7 @@ import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.halfway.dao.AdoptionDao;
 import org.iii.ee100.animour.halfway.entity.Adoption;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -59,9 +61,15 @@ public class AdoptionService extends GenericService<Adoption> {
 	}
 
 	// 檢核認養數量是否已達上限
-	public Boolean checkAdoptionLimit(Date acceptDate) {
-		Integer count = adoptionDao.findByAcceptDateAfter(acceptDate).size();
-		if (count < 2) {
+	public Boolean checkAdoptionLimit(Member member) {
+		List<Adoption> count = adoptionDao.findTop2ByMemberOrderByAcceptDateDesc(member);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, -1);
+		Long lastyear = cal.getTimeInMillis();
+		Timestamp ts = new Timestamp(lastyear);
+		
+		if (count.get(1).getAcceptDate().after(ts)) {
 			return false;
 		} else {
 			return true;

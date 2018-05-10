@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.iii.ee100.animour.halfway.entity.Adoption;
@@ -9,6 +11,7 @@ import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import allPay.payment.integration.AllInOne;
+import allPay.payment.integration.allPayOperator.AllPayFunction;
 
 @Controller
 public class AdoptionController {
@@ -94,6 +100,11 @@ public class AdoptionController {
 			}
 			return "redirect:/halfway/showAdoption";
 		}
+	}
+	
+	@RequestMapping(value = "/opay", method = { RequestMethod.GET })
+	public void oPayTest() {
+		
 	}
 
 }

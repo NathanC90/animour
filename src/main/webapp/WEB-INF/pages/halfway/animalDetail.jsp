@@ -103,6 +103,10 @@
 				.li .span {
 					font-size: 72px
 				}
+
+				.p a img {
+					padding: 12px
+				}
 			</style>
 		</head>
 
@@ -134,7 +138,7 @@
 					<div class="row">
 						<div class="col-md-6">
 
-							<p class="imglist" style="max-width: 500px;">
+							<p class="imglist" style="max-width: 500px; width:100%">
 								<a data-trigger="preview" href="javascript:;">
 									<img src="https://source.unsplash.com/LuK-MuZ-yf0/510x340" />
 								</a>
@@ -208,20 +212,22 @@
 									</div>
 									<c:if test="${animal.member.id ne currentMember.id}">
 										<div role="tabpanel" class="tab-pane" id="settings">
-											<form name="requestComment" action="/halfway/adoptionRequest?id=${animal.id}" method="POST">
+											<form name="requestComment" id="requestComment">
+												<input type="hidden" id="animal" name="animal" value="${animal.id}" />
+												<input type="hidden" id="ownerId" name="ownerId" value="${animal.member.id}" />
 												<textarea class="form-control" id="requestComment" name="requestComment" rows="3"></textarea>
-
-												<input type="submit" id="tonextblock" class="btn btn-common" value="確定認養">
-												<small>點選按鈕即代表送出認養申請，本系統將進行紀錄</small>
+												<small>請告知飼主認養原因，並說明簡介可提供動物生活之環境</small>
 											</form>
 										</div>
 									</c:if>
 								</div>
 							</div>
 						</div>
-						<a style="max-width: 45%; margin:auto; margin-top:5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox data-src="#trueModal" data-modal="true"
-						 href="javascript:;">
-							<i class="fa fa-link"></i>我要認養</a>
+						<c:if test="${animal.member.id ne currentMember.id}">
+							<a style="max-width: 45%; margin:auto; margin-top:5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox data-src="#trueModal"
+							 data-modal="true" href="javascript:;" onclick="showAlert(message);">
+								<i class="fa fa-link"></i>我要認養</a>
+						</c:if>
 					</div>
 				</div>
 
@@ -229,13 +235,12 @@
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
 				</p>-->
 				<div style="display: none;max-width:600px;" id="trueModal">
-					<h2>提醒! 請再次確認是否送出認養請請求!</h2>
-					<p>(1) 認養請求送出後不可收回。</p>
-					<p>(2) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
-					<p>(3) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
-					<p>(4) 成功完成認養手續後，若已達認養上限 (過去一年內成功認養數量不得多於2隻)，將暫時無法再提出認養請求。</p>
+					<h2>提醒您! 請求送出後無法取消</h2>
+					<p>(1) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
+					<p>(2) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
+					<p>(3) 成功完成認養手續後，若已達認養上限 (過去一年內成功認養數量不得多於2隻)，將暫時無法再提出認養請求。</p>
 					<p>
-						<button class="btn btn-common">Close me</button>
+						<button id="sendrequest" class="btn btn-common">確定送出，前往認養觀念檢測</button>
 						<button data-fancybox-close class="btn btn-common">取消</button>
 					</p>
 				</div>
@@ -274,16 +279,56 @@
 
 		</body>
 		<script>
-			// $(document).ready(function () {
-			// 	$("#tonextblock").click(function(){
-			// 		$.ajax
+		<%
+		out.print("var message = 123");
+		%>
+			$(document).ready(function () {
+				$("#sendrequest").click(function () {
+					var data = new FormData(document.getElementById("requestComment"));
+					// data.append("sss", "qqq");
+					console.log(data);
 
-			// 	});
+					for (var pair of data.entries()) {
+						console.log(pair[0] + ', ' + pair[1]);
+					}
 
-			// });
+					$.ajax({
+						url: '/halfway/adoption',
+						type: 'POST',
+						data: toJson(data),
+						//data: json,
+						dataType: 'json',
+						//processData: false,
+						contentType: "application/json",
+						//contentType: "multipart/form-data",
+						//enctype: 'multipart/form-data',
+						//contentType: false,
+						//processData: false,
+					}).done(function () {
+						window.location.href = "http://localhost:8080/halfway";
+					});
+				});
+			});
 
+			function toJson(formData) {
+				var object = {};
+				formData.forEach(function (value, key) {
+					if (key == 'animal') {
+						var object1 = {};
+						object1['id'] = value;
+						object[key] = object1;
+					} else {
+						object[key] = value;
+					}
+				});
+				var json = JSON.stringify(object, null);
+				console.log(json);
+				return json;
+			};
 
-
+			function showAlert(message) {
+				alert(message);
+			}
 		</script>
 
 		</html>
