@@ -58,6 +58,9 @@ public class Article extends GenericEntity {
 	@Transient
 	private int commentLength;
 
+	@Transient
+	private int thumbsQuantity;
+	
 	@Column(name = "CLICK")
 	private Long click;
 
