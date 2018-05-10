@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.shopping.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -21,14 +20,13 @@ public class OrdersItem extends GenericEntity {
 	@Column(name="NAME")
 	private String name; //商品名稱
 	@Column(name="PRICE")
-	private Integer price; //商品價格
-	@Column(name="SUBTOTAL")
-	private Long quantity; //購買商品數量
-	@Column(name="COUNT")
-	private Integer subTotal; //小計
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="ORDERS_ID")
+	private Integer price; //商品單價
+	@Column(name="QUANTITY")
+	private Integer quantity; //購買商品數量
+	@ManyToOne
+	@JoinColumn(name="ORDERS_ID", nullable=false)
 	private Orders orders;
+	
 //	@ManyToOne(cascade = CascadeType.PERSIST)
 //	@JoinColumn(name="ORDER_ID", nullable = false)
 //	private Orders orders;
