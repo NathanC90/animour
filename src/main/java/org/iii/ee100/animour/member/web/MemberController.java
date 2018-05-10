@@ -11,7 +11,7 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Password;
 import org.iii.ee100.animour.member.entity.Member;
-import org.iii.ee100.animour.member.service.EmailService;
+//import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -162,14 +162,14 @@ public class MemberController {
 
 		}
 		
-		@Autowired
-		EmailService mailService;
-		
-		@RequestMapping(value = "/mailto", method = RequestMethod.POST)
-		public String mailSussese(@RequestParam(value="email") String email,
-				@RequestParam(value="subject") String subject,
-				@RequestParam(value="text") String text) {
-			mailService.sendEmail(email,subject, text);
-			return "/member/mail";
-		}
+//		@Autowired
+//		EmailService mailService;
+//		
+//		@RequestMapping(value = "/mailto", method = RequestMethod.POST)
+//		public String mailSussese(@RequestParam(value="email") String email,
+//				@RequestParam(value="subject") String subject,
+//				@RequestParam(value="text") String text) {
+//			mailService.sendEmail(email,subject, text);
+//			return "/member/mail";
+//		}
 }
