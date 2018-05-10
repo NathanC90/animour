@@ -155,7 +155,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/admin/user", method = RequestMethod.GET)
 	public String usermange() {
-		return "/member/back_user";
+		return "/403";
 
 	}
 	
