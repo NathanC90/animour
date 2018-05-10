@@ -7,9 +7,11 @@ import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.dao.CategoryDao;
 import org.iii.ee100.animour.forum.dao.CommentDao;
+import org.iii.ee100.animour.forum.dao.ThumbsUpDao;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
+import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class ForumService extends GenericService<Article> {
 
 	@Autowired
 	private CommentDao commentDao;
+
+	@Autowired
+	private ThumbsUpDao thumbsUpDao;
 
 	@Autowired
 	private CategoryDao categoryDao;
@@ -61,14 +66,13 @@ public class ForumService extends GenericService<Article> {
 		return articleList;
 	}
 
-	// public List<Article> getArticleList() {
-	// List<Article> articleList = articleDao.findAll();
-	// for (Article article : articleList) {
-	// article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-	// article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
-	// }
-	// return articleList;
-	// }
+	public void insertThumbsUp(ThumbsUp thumbsUp) {
+		thumbsUpDao.save(thumbsUp);
+	}
+	
+	public List<ThumbsUp> findByMemberIdAndArticleId(Long memberId, Long articleId) {
+		return thumbsUpDao.findByMemberIdAndArticleId(memberId, articleId);
+	}
 
 	@Override
 	public Article getOne(Long id) {

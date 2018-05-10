@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
 
 import lombok.Getter;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Table(name = "THUMBSUP")
 @Setter
 @Getter
-public class ThumbsUp {
+public class ThumbsUp extends GenericEntity{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

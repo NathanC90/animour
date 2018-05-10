@@ -6,6 +6,7 @@ import java.util.List;
 import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
+import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,6 @@ public class ArticleRestController {
 		PageRequest pageable = pageForAnimour.getPageRequest();
 		Page<Article> articlePage = forumService.getPage(pageable);
 		return pageHandler(pageForAnimour, articlePage, pageable);
-
 	}
 
 	// // 查詢一筆文章AJAX用的 現在會壞
@@ -71,7 +71,30 @@ public class ArticleRestController {
 		System.out.println("控制器呼叫新增留言");
 		return new ResponseEntity<Comment>(comment, HttpStatus.OK);
 	}
-
+	
+	@RequestMapping(value = { "/thumbsUp" }, method = RequestMethod.POST)
+	public ResponseEntity<?> thumbsUp(ThumbsUp thumbsUp) {
+		System.out.println("控制器呼叫thumbsUp");
+		thumbsUp.setMember(memberService.getNewCurrentMember());
+		List<ThumbsUp> thumbsList = forumService.findByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
+		if(thumbsList != null) {
+			for(ThumbsUp thumb:thumbsList) {
+				if(thumb.getThumb() == true) {
+					thumb.setThumb(false);
+				}else {
+					thumb.setThumb(true);
+				}
+				forumService.insertThumbsUp(thumb);
+			}
+			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
+		}else {
+			thumbsUp.setThumb(true);
+			forumService.insertThumbsUp(thumbsUp);
+			return new ResponseEntity<ThumbsUp>(thumbsUp, HttpStatus.OK);
+		}
+	}
+	
+	
 	// 新增&修改文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
