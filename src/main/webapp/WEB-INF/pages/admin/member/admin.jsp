@@ -93,7 +93,7 @@
 <div class="col-md-12 content">
 	<div class="dashhead">
 		<div class="dashhead-titles">
-			<h2 class="dashhead-title">活動紀錄</h2>
+			<h2 class="dashhead-title">會員管理</h2>
 		</div>
 
 		<div class="btn-toolbar dashhead-toolbar">
@@ -108,14 +108,14 @@
 		<div class="flextable-item flextable-primary">
 			<div class="btn-toolbar-item input-with-icon">
 				<input type="text" class="form-control input-block"
-					placeholder="搜尋活動"> <span
+					placeholder="搜尋會員"> <span
 					class="icon icon-magnifying-glass"></span>
 			</div>
 		</div>
 		<div class="flextable-item">
 			<div class="btn-group">
-				<button type="button" class="btn btn-outline-primary" title="匯出成Excel檔">
-					<span class="icon icon-upload"></span>
+				<button type="button" class="btn btn-outline-primary" title="寄送電子郵件">
+					<span class="icon icon-mail"></span>
 				</button>
 			</div>
 		</div>
@@ -133,10 +133,9 @@
 	</div>
 	<!-- Table Starts  -->
 	<div class="table-responsive">
-		<table class="table" data-sort="table">
+		<table class="table" data-sort="table" id="table1">
 			<thead>
 				<tr>
-					<th><input type="checkbox" class="select-all" id="selectAll"></th>
 					<th>會員編號</th>
 					<th>會員帳號</th>
 					<th>會員姓名</th>
@@ -145,9 +144,29 @@
 					<th>會員信箱</th>
 					<th>會員地址</th>
 					<th>會員狀態</th>
+<!-- 					<th> -->
+<!-- 						<div class="btn-group"> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="修改"> -->
+<!-- 								<span class="icon icon-pencil"></span> -->
+<!-- 							</button> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="刪除"> -->
+<!-- 								<span class="icon icon-erase"></span> -->
+<!-- 							</button> -->
+<!-- 						</div> -->
+<!-- 					</th> -->
 				</tr>
 			</thead>
 			<tbody>
+			<tr>
+					<td><p type="text" class="select-row">#10001</p></td>
+					<td>ViewSonic</td>
+					<td>Alex Wu</td>
+					<td>Alex</td>
+					<td>09123456789</td>
+					<td>alex@gmail.com</td>
+					<td>台北市大安區信義路三段100號</td>
+					<td>on</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -212,31 +231,27 @@
 <script src="../admin/assets/js/toolkit.js"></script>
 <script src="../admin/assets/js/application.js"></script>
 <script>
-      // execute/clear BS loaders for docs
-      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
-      
       $(document).ready(function() {
     	  $.getJSON('/user', {  }, function (data) {
     	          console.log(data);
     	          $('#table1>tbody').empty();
     	          $.each(data, function (i, member) {
-    	        	  var cell1 = $("<td></td>").html('<input type="checkbox" class="select" id="select">');
-    	              var cell2 = $("<td></td>").text(member.id);
-    	              var cell3 = $("<td></td>").text(member.account);
+    	        	  var cell1 = $("<td></td>").html('<p type="text" class="select-row">#0001</p>');
+    	              var cell2 = $("<td></td>").text(member.account);
 
-    	              var cell4 = $("<td></td>").text(member.name);
-    	              var cell5 = $("<td></td>").text(member.nickname);
-    	              var cell6 = $("<td></td>").text(member.cell);
-    	              var cell7 = $("<td></td>").text(member.email);
-    	              var cell8 = $("<td></td>").text(member.address);
+    	              var cell3 = $("<td></td>").text(member.name);
+    	              var cell4 = $("<td></td>").text(member.nickname);
+    	              var cell5 = $("<td></td>").text(member.cell);
+    	              var cell6 = $("<td></td>").text(member.email);
+    	              var cell7 = $("<td></td>").text(member.address);
     	              
     	              if (member.status=0 ){
-    	              var cell9 = $("<td></td>").text('封鎖');}
+    	              var cell8 = $("<td></td>").text('封鎖');}
     	              else{
-    	             	var cell9 = $("<td></td>").text('正常');}
+    	             	var cell8 = $("<td></td>").text('正常');}
 
 
-    	              var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]);
+    	              var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
 
     	              $('#table1>tbody').append(row);
     	          });
@@ -245,6 +260,9 @@
     	      }	 
     	  	 )
     	  });
+      // execute/clear BS loaders for docs
+//      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+      
     </script>
 </body>
 </html>
