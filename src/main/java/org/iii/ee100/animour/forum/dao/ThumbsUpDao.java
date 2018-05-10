@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ThumbsUpDao extends GenericDao<ThumbsUp> {
 	List<ThumbsUp> findByMemberIdAndArticleId(Long memberId, Long articleId);
+	
+	List<ThumbsUp> findByArticleIdAndThumb(Long articleId, boolean thumb);
 }
 

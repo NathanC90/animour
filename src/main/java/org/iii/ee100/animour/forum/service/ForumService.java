@@ -12,8 +12,6 @@ import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.entity.ThumbsUp;
-import org.iii.ee100.animour.member.dao.MemberDao;
-import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,9 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class ForumService extends GenericService<Article> {
-
-	@Autowired
-	private MemberDao memberDao;
 
 	@Autowired
 	private ArticleDao articleDao;
@@ -39,47 +34,49 @@ public class ForumService extends GenericService<Article> {
 	@Autowired
 	private CategoryDao categoryDao;
 
-	public Page<Article> getPage(PageRequest pageable) {
-		Page<Article> articleList = articleDao.findAll(pageable);
+	public void setTransientForPage(Page<Article> articleList) {
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+			article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		}
+	}
+
+	public Page<Article> getPage(PageRequest pageable) {
+		Page<Article> articleList = articleDao.findAll(pageable);
+		setTransientForPage(articleList);
 		return articleList;
 	}
 
 	public Page<Article> getPageSearchByCategoryId(Long categoryId, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
-		for (Article article : articleList) {
-			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
-		}
+		setTransientForPage(articleList);
 		return articleList;
 	}
 
 	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCase(subject, pageable);
-		for (Article article : articleList) {
-			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
-		}
+		setTransientForPage(articleList);
 		return articleList;
 	}
 
+	// thumbs區
 	public void insertThumbsUp(ThumbsUp thumbsUp) {
 		thumbsUpDao.save(thumbsUp);
 	}
-	
-	public List<ThumbsUp> findByMemberIdAndArticleId(Long memberId, Long articleId) {
+
+	public List<ThumbsUp> findThumbsUpByMemberIdAndArticleId(Long memberId, Long articleId) {
 		return thumbsUpDao.findByMemberIdAndArticleId(memberId, articleId);
+	}
+
+	public List<ThumbsUp> findThumbsUpByArticleId(Long articleId) {
+		return thumbsUpDao.findByArticleIdAndThumb(articleId, true);
 	}
 
 	@Override
 	public Article getOne(Long id) {
-		System.out.println("呼叫getOne方法");
 		Article article = articleDao.getOne(id);
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-		System.out.println(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size() + "============");
 		return article;
 	}
 
@@ -88,10 +85,6 @@ public class ForumService extends GenericService<Article> {
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 		System.out.println("service呼叫新增留言");
 		commentDao.save(comment);
-	}
-
-	public Member getOneMember(Long id) {
-		return memberDao.findOne(id);
 	}
 
 	public Category getOneCateGory(Long id) {
@@ -128,7 +121,6 @@ public class ForumService extends GenericService<Article> {
 		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
 		for (Category category : categoryList) {
 			category.setArticleQuantity(articleDao.findByCategoryId(category.getId()).size());
-			System.out.println("呼叫getAllCategory方法" + getArticlesByCategoryId(category.getId()).size());
 		}
 		return categoryList;
 	}

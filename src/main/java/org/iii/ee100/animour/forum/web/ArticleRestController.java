@@ -1,6 +1,7 @@
 package org.iii.ee100.animour.forum.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.common.model.PageForAnimour;
@@ -76,7 +77,7 @@ public class ArticleRestController {
 	public ResponseEntity<?> thumbsUp(ThumbsUp thumbsUp) {
 		System.out.println("控制器呼叫thumbsUp");
 		thumbsUp.setMember(memberService.getNewCurrentMember());
-		List<ThumbsUp> thumbsList = forumService.findByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
+		List<ThumbsUp> thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
 		if(thumbsList != null) {
 			for(ThumbsUp thumb:thumbsList) {
 				if(thumb.getThumb() == true) {
@@ -90,7 +91,9 @@ public class ArticleRestController {
 		}else {
 			thumbsUp.setThumb(true);
 			forumService.insertThumbsUp(thumbsUp);
-			return new ResponseEntity<ThumbsUp>(thumbsUp, HttpStatus.OK);
+			thumbsList = new ArrayList<ThumbsUp>();
+			thumbsList.add(0, thumbsUp);
+			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
 		}
 	}
 	
