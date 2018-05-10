@@ -5,6 +5,8 @@ import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
@@ -18,6 +20,10 @@ import lombok.Setter;
 @Table(name="RESERVATION")
 public class Reservation extends GenericEntity{
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "RESERVATIONTIME_ID", referencedColumnName = "ID")
+	private ReservationTime reservationTime;
 	
 	@Column(name="RESERVATION_DATE")
 	private java.sql.Date reservationDate;

@@ -96,7 +96,8 @@
           <!-- End -->
           
           <!-- BLog Article Section -->
-          <div class="col-md-9 wow fadeIn" data-wow-delay="0.3s">
+          <div id="bloglist" class="col-md-9">
+          <div id="show" class="col-md-9 wow fadeIn" data-wow-delay="0.3s">
             <!-- Single Blog Post -->
             <article class="blog-post-wrapper">
               <!-- Author Info -->
@@ -171,7 +172,7 @@
             <div class="comments-area clearfix mt-5 wow fadeIn" data-wow-delay="0.3s">
               <h3 class="small-title"><i class="fa fa-comment"></i> Comments</h3>
               <ul class="media-left comment-list mt-30">
-                <div id = "show"></div>
+                <div id = "showcomment"></div>
                 <c:forEach var="comment" items="${comments}">
                 <li class="media">
                   <div class="media-left">
@@ -221,6 +222,7 @@
               </div>
             </div>
           </div>
+        </div>
           <!-- End -->
 
           
@@ -260,7 +262,7 @@
  
  	<script>
 	var commentString = "";
-	
+	var scroll = false;
 	$(document).ready(function(){
 		getComment();
 		$('#btn1').click(function(){
@@ -277,7 +279,7 @@
 		    contentType: false,
 			processData: false
 		}).done(function(){
-		    window.location.href = 'http://localhost:8080/forum/findAll';
+			window.location.reload();
 			alert("ajax post");
 	    	});
 	});
@@ -299,7 +301,7 @@ function getComment(){
                
          		commentString += commentStr;
 			});
-			$("#show").html(commentString);
+			$("#showcomment").html(commentString);
 			
    			}
 		});

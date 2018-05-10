@@ -2149,8 +2149,9 @@ span.published-time i.fa {
 }
 
 .featured-wrapper img {
+/*   有改過這裡 */
   width: 100%;
-  height: 350px;
+/*   height: 350px; */
 }
 
 .blog-post-content h2.blog-post-title {

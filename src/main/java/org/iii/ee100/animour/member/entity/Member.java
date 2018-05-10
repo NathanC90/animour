@@ -13,13 +13,17 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.iii.ee100.animour.common.entity.GenericEntity;
+import org.iii.ee100.animour.forum.entity.Category;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
@@ -119,4 +123,5 @@ public class Member extends GenericEntity implements UserDetails {
 		return true;
 	}
 
+	
 }

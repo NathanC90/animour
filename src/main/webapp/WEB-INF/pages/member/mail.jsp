@@ -18,7 +18,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Update password</title>
+<title>Register</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -82,7 +82,7 @@
 						<div class="panel panel-info" style="border: 1px">
 							<div class="panel-heading"
 								style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-								<div class="panel-title">填寫個人資料</div>
+								<div class="panel-title">mail</div>
 								<div
 									style="float: right; font-size: 80%; position: relative; top: -10px">
 									<a href="#"></a>
@@ -96,22 +96,31 @@
 								<form method='POST' class='form-horizontal'>
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											舊密碼:
-											<input name="oldpassword" path="oldpassword" type='password' class='form-control' />
-											<c:if test="${not empty oldpassword}"><div class="help-block">${oldpassword}</div></c:if>
-										
-<%--  											<form:errors path="oldpassword" cssClass="alert alert-danger" element="div" /> --%> 
+											帳號:
+											<input id="account" name="account" path="account" type='text'/>
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
-											新密碼:
-											<input name="newpassword"  path="newpassword"  type='password' class='form-control' />
-											<c:if test="${not empty newpassword}"><div class="help-block">${newpassword}</div></c:if>
-<%--   											<form:errors path="newpassword" cssClass="help-block" element="div" /> --%> 
+											主旨:
+											<input id="subject" name="subject"  path="name" type='text' class='form-control' autocomplete=""/>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											信箱:
+											<input id="email" name="email"  path="name" type='text' class='form-control' autocomplete=""/>
 										</div>
 									</div>
 
+
+									<div class="form-row">
+										<div class="form-group col-md-6">
+											內容:
+											<textarea id="text" name="text" path="signature" 
+												class='form-control' ></textarea>
+										</div>
+									</div>
 									<input type="submit" class="btn btn-common" value="送出">
 									<input type="reset" class="btn btn-common" value="清除">
 <!-- 									<a href="/" class="btn btn-common"> 回首頁</a> -->

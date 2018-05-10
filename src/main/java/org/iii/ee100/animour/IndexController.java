@@ -13,8 +13,6 @@ import org.iii.ee100.animour.hospital.entity.Hospital;
 import org.iii.ee100.animour.hospital.service.HospitalService;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
-import org.iii.ee100.animour.salon.entity.Salon;
-import org.iii.ee100.animour.salon.service.SalonService;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +33,7 @@ public class IndexController {
 	ProductService productService;
 	@Autowired
 	NewsService newsService;
-	@Autowired
-	SalonService salonService;
+	
 	@Autowired
 	DonateService donateService;
 
@@ -67,8 +64,7 @@ public class IndexController {
 		List<News> bean = newsService.getSixNews();
 		model.addAttribute("sixNews", bean);
 
-		List<Salon>salon=salonService.getAll();
-		model.addAttribute("salon",salon);
+		
 
 		List<Donate> donates = donateService.getAll();
 		model.addAttribute("donates", donates);

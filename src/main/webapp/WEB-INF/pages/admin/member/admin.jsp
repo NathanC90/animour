@@ -83,7 +83,7 @@
 
 <body>
 <!-- adminNavbar Starts -->
-		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
+		<jsp:include page="../../admin/adminNavbar.jsp"></jsp:include>
 <!-- adminNavbar ends -->
  
 <!-- 每頁不同的內容從此開始 -->
@@ -93,7 +93,7 @@
 <div class="col-md-12 content">
 	<div class="dashhead">
 		<div class="dashhead-titles">
-			<h2 class="dashhead-title">活動紀錄</h2>
+			<h2 class="dashhead-title">會員管理</h2>
 		</div>
 
 		<div class="btn-toolbar dashhead-toolbar">
@@ -108,14 +108,14 @@
 		<div class="flextable-item flextable-primary">
 			<div class="btn-toolbar-item input-with-icon">
 				<input type="text" class="form-control input-block"
-					placeholder="搜尋活動"> <span
+					placeholder="搜尋會員"> <span
 					class="icon icon-magnifying-glass"></span>
 			</div>
 		</div>
 		<div class="flextable-item">
 			<div class="btn-group">
-				<button type="button" class="btn btn-outline-primary" title="匯出成Excel檔">
-					<span class="icon icon-upload"></span>
+				<button type="button" class="btn btn-outline-primary" title="寄送電子郵件">
+					<span class="icon icon-mail"></span>
 				</button>
 			</div>
 		</div>
@@ -133,198 +133,40 @@
 	</div>
 	<!-- Table Starts  -->
 	<div class="table-responsive">
-		<table class="table" data-sort="table">
+		<table class="table" data-sort="table" id="table1">
 			<thead>
 				<tr>
-					<th><input type="checkbox" class="select-all" id="selectAll"></th>
-					<th>活動編號</th>
-					<th>活動名稱</th>
-					<th>活動介紹</th>
-					<th>活動日期</th>
-					<th>費用</th>
-					<th>人數</th>
+					<th>會員編號</th>
+					<th>會員帳號</th>
+					<th>會員姓名</th>
+					<th>會員暱稱</th>
+					<th>會員手機</th>			
+					<th>會員信箱</th>
+					<th>會員地址</th>
+					<th>會員狀態</th>
+<!-- 					<th> -->
+<!-- 						<div class="btn-group"> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="修改"> -->
+<!-- 								<span class="icon icon-pencil"></span> -->
+<!-- 							</button> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="刪除"> -->
+<!-- 								<span class="icon icon-erase"></span> -->
+<!-- 							</button> -->
+<!-- 						</div> -->
+<!-- 					</th> -->
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10001</a></td>
-					<td>First Last</td>
-					<td>Admin theme, marketing theme</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>70</td>
+			<tr>
+					<td><p type="text" class="select-row">#10001</p></td>
+					<td>ViewSonic</td>
+					<td>Alex Wu</td>
+					<td>Alex</td>
+					<td>09123456789</td>
+					<td>alex@gmail.com</td>
+					<td>台北市大安區信義路三段100號</td>
+					<td>on</td>
 				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10002</a></td>
-					<td>Firstname Last</td>
-					<td>Admin theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>20</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10003</a></td>
-					<td>Name Another</td>
-					<td>Personal blog theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>55</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10004</a></td>
-					<td>One More</td>
-					<td>Marketing theme, personal blog theme, admin theme</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>30</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10005</a></td>
-					<td>Name Right Here</td>
-					<td>Personal blog theme, admin theme</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>30</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10006</a></td>
-					<td>First Last</td>
-					<td>Admin theme, marketing theme</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>25</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10007</a></td>
-					<td>Firstname Last</td>
-					<td>Admin theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>200</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10008</a></td>
-					<td>Name Another</td>
-					<td>Personal blog theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>250</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10009</a></td>
-					<td>One More</td>
-					<td>Marketing theme, personal blog theme, admin theme</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>300</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10010</a></td>
-					<td>Name Right Here</td>
-					<td>Personal blog theme, admin theme</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>90</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10011</a></td>
-					<td>First Last</td>
-					<td>Admin theme, marketing theme</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>60</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10012</a></td>
-					<td>Firstname Last</td>
-					<td>Admin theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>80</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10013</a></td>
-					<td>Name Another</td>
-					<td>Personal blog theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>120</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10014</a></td>
-					<td>One More</td>
-					<td>Marketing theme, personal blog theme, admin theme</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>60</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10015</a></td>
-					<td>Name Right Here</td>
-					<td>Personal blog theme, admin theme</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>45</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10016</a></td>
-					<td>First Last</td>
-					<td>Admin theme, marketing theme</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>60</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10017</a></td>
-					<td>Firstname Last</td>
-					<td>Admin theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>20</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10018</a></td>
-					<td>Name Another</td>
-					<td>Personal blog theme</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>35</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10019</a></td>
-					<td>One More</td>
-					<td>Marketing theme, personal blog theme, admin theme</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>60</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10020</a></td>
-					<td>Name Right Here</td>
-					<td>Personal blog theme, admin theme</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>40</td>
 			</tbody>
 		</table>
 	</div>
@@ -389,8 +231,38 @@
 <script src="../admin/assets/js/toolkit.js"></script>
 <script src="../admin/assets/js/application.js"></script>
 <script>
+      $(document).ready(function() {
+    	  $.getJSON('/user', {  }, function (data) {
+    	          console.log(data);
+    	          $('#table1>tbody').empty();
+    	          $.each(data, function (i, member) {
+    	        	  var cell1 = $("<td></td>").html('<p type="text" class="select-row">#0001</p>');
+    	              var cell2 = $("<td></td>").text(member.account);
+
+    	              var cell3 = $("<td></td>").text(member.name);
+    	              var cell4 = $("<td></td>").text(member.nickname);
+    	              var cell5 = $("<td></td>").text(member.cell);
+    	              var cell6 = $("<td></td>").text(member.email);
+    	              var cell7 = $("<td></td>").text(member.address);
+    	              
+    	              if (member.status=0 ){
+    	              var cell8 = $("<td></td>").text('封鎖');}
+    	              else{
+    	             	var cell8 = $("<td></td>").text('正常');}
+
+
+    	              var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
+
+    	              $('#table1>tbody').append(row);
+    	          });
+
+    	      
+    	      }	 
+    	  	 )
+    	  });
       // execute/clear BS loaders for docs
-      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+//      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+      
     </script>
 </body>
 </html>

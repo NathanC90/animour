@@ -64,7 +64,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     
-      <link href="../admin/assets/css/toolkit-light.css" rel="stylesheet">
+      <link href="../admin/assets/css/toolkit-inverse.css" rel="stylesheet">
     
     
     <link href="../admin/assets/css/application.css" rel="stylesheet">
@@ -82,82 +82,58 @@
 
 
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 sidebar">
-        <nav class="sidebar-nav">
-          <div class="sidebar-header">
-            <button class="nav-toggler nav-toggler-md sidebar-toggler" type="button" data-toggle="collapse" data-target="#nav-toggleable-md">
-              <span class="sr-only">Toggle nav</span>
-            </button>
-             <a class="navbar-brand" href="/">
-                                <img style="position: left" src="/images/logo.png" width="165px" alt="Animour">
-                            </a>
-          </div>
-
-          <div class="collapse nav-toggleable-md" id="nav-toggleable-md">
-            <form class="sidebar-form">
-              <input class="form-control" type="text" placeholder="站內搜尋...">
-              <button type="submit" class="btn-link">
-                <span class="icon icon-magnifying-glass"></span>
-              </button>
-            </form>
-            <ul class="nav nav-pills nav-stacked flex-column">
-<!--               <li class="nav-header">活動管理</li> -->
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">會員管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">會員管理1</a> <a
-									class="dropdown-item" href="#">會員管理2</a> <a
-									class="dropdown-item" href="#">會員管理3</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">活動管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">活動總覽</a>
-								<a class="dropdown-item" href="#">活動紀錄</a> 
-								<a class="dropdown-item" href="#">活動統計</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">認養管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">認養管理1</a>
-								<a class="dropdown-item" href="#">認養管理2</a>
-								<a class="dropdown-item" href="#">認養管理3</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">市集管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">市集管理1</a>
-								<a class="dropdown-item" href="#">市集管理2</a>
-								<a class="dropdown-item" href="#">市集管理3</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">沙龍管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">沙龍管理1</a>
-								<a class="dropdown-item" href="#">沙龍管理2</a>
-								<a class="dropdown-item" href="#">沙龍管理3</a>
-							</div>
-						</li>
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#"
-							aria-haspopup="true" aria-expanded="false">部落格管理</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">部落格管理1</a>
-								<a class="dropdown-item" href="#">部落格管理2</a>
-								<a class="dropdown-item" href="#">部落格管理3</a>
-							</div>
-						</li>
+  <nav class="iconav">
+    <a class="iconav-brand" href="/" title="回首頁">
+      <span class="icon icon-leaf iconav-brand-icon" alt="Animour"></span>
+    </a>
+    <div class="iconav-slider">
+      <ul class="nav nav-pills iconav-nav flex-md-column">
+<!--         <li class="nav-item"> -->
+<!--           <a class="nav-link" href="#" title="後臺首頁" data-toggle="tooltip" data-placement="right" data-container="body"> -->
+<!--             <span class="icon icon-home"></span> -->
+<!--             <small class="iconav-nav-label hidden-md-up">後台管理</small> -->
+<!--           </a> -->
+<!--         </li> -->
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="會員管理" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="icon icon-users"></span>
+            <small class="iconav-nav-label hidden-md-up">會員管理</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="活動管理" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="icon icon-globe"></span>
+            <small class="iconav-nav-label hidden-md-up">活動管理</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="寵物管理" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="icon icon-baidu"></span>
+            <small class="iconav-nav-label hidden-md-up">寵物管理</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="市集管理" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="icon icon-shopping-cart"></span>
+            <small class="iconav-nav-label hidden-md-up">市集管理</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="部落格管理" data-toggle="tooltip" data-placement="right" data-container="body">
+            <span class="icon icon-text-document"></span>
+            <small class="iconav-nav-label hidden-md-up">部落格管理</small>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" title="以管理員身分登入" data-toggle="tooltip" data-placement="right" data-container="body">
+            <img src="../admin/assets/img/avatar-mdo.png" alt="" class="rounded-circle">
+            <small class="iconav-nav-label hidden-md-up">admin</small>
+          </a>
+        </li>        
+      </ul>
+    </div>
+  </nav>
+ 
 <!-- 每頁不同的內容從此開始 -->
 
 

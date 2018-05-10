@@ -122,7 +122,12 @@
 					</tr>
 				</table>
 			</div>
-			<h4><a href="/product/index">繼續購物</a>&nbsp;&nbsp;&nbsp;<a href="">結帳</a></h4>
+			<a href="/product/index" class='btn btn-primary'> <span
+							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
+			<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
+							class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;
+			<a href="/cart/confirmBuy" class='btn btn-warning btn-large'> <span
+							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
 		</div>
 	</section>
 </body>
