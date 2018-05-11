@@ -229,7 +229,7 @@
                 $.each(data, function (i, reservation) {
                   var cell1 = $('<td id="NewEdit" class="fuck"></td>').text(reservation.id);
                   var cell2 = $('<td id="NewEdit"></td>').text(reservation.reservationDate);
-                  var cell3 = $('<td id="NewEdit"></td>').text(reservation.appointTime);
+                  var cell3 = $('<td id="NewEdit"></td>').text(reservation.frontTime);
                   var cell4 = $('<td id="NewEdit"></td>').text(reservation.content);
                   var cell5 = $('<td id="NewEdit"></td>').text(reservation.designer);
                   var cell6 = $('<td id="NewEdit"></td>').text(reservation.totalTime);
@@ -237,7 +237,7 @@
                   var button1 = $('<button><i class="fas fa-trash-alt"/></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger");
                   var button2 = $('<p> </p><button><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info');
 
-                  var cell8 = $("<td></td>").append(button1, button2);
+                  var cell8 = $('<td id="addNewButton"></td>').append(button1, button2);
 
 
                   // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
@@ -245,9 +245,6 @@
                   var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
 
                   $('#table1').append(row);
-
-
-
 
 
                 })
@@ -272,27 +269,42 @@
 
             })
           };
-          $(document).ready(function () {
-            $('.NewEdit').click(function () {
-              var currentTD = $(this).parents('tr').find('td');
-              if ($(this).html() == 'Edit') {
-                $.each(currentTD, function () {
-                  $(this).prop('contenteditable', true)
-                });
-              } else {
-                $.each(currentTD, function () {
-                  $(this).prop('contenteditable', false)
-                });
-              }
 
-              $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
 
-            });
 
-          });
+
+          // $(document).ready(function () {
+          //   $('.NewEdit').click(function () {
+          //     var currentTD = $(this).parents('tr').find('td');
+          //     if ($(this).html() == 'Edit') {
+          //       $.each(currentTD, function () {
+          //         $(this).prop('contenteditable', true)
+          //       });
+          //     } else {
+          //       $.each(currentTD, function () {
+          //         $(this).prop('contenteditable', false)
+          //       });
+          //     }
+
+          //     $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+          //   });
+
+          // });
           $(document).ready(function () {
 
           })
+
+          //表單更改按鈕
+          $(document).on("click", '.btn-info', function () {
+            $(this).attr({ 'hidden': 'hidden' });
+            var button = $('<button id ="changing"><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info').append('done');
+            $('#addNewButton').append(button);
+
+            console.log("It changed")
+
+          })
+
 
           function importAgain() {
             var buttonImport = $('#importbutt');
@@ -315,12 +327,10 @@
 
             })
           })
-          $(docoment).on("click", '.btn-info', function () {
 
-          })
           //表單送出確認
           $(document).on("click", 'not ya', function () {
-            var data1 = new FormData(document.getElementById("myform"));
+            var data1 = new FormData(document.getElementById("table1"));
             console.log(toJson(data1));
 
             var catchIdValue = $(this).parents('tr').find('.fuck').text();
