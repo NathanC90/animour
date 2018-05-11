@@ -69,7 +69,7 @@ public class ForumService extends GenericService<Article> {
 		return thumbsUpDao.findByMemberIdAndArticleId(memberId, articleId);
 	}
 
-	public List<ThumbsUp> findThumbsUpByArticleId(Long articleId) {
+	public List<ThumbsUp> findThumbsUpByArticleIdAndThumb(Long articleId, boolean b) {
 		return thumbsUpDao.findByArticleIdAndThumb(articleId, true);
 	}
 
@@ -77,6 +77,7 @@ public class ForumService extends GenericService<Article> {
 	public Article getOne(Long id) {
 		Article article = articleDao.getOne(id);
 		article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
+		article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		return article;
 	}
 

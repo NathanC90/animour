@@ -77,8 +77,18 @@ public class ArticleRestController {
 	public ResponseEntity<?> thumbsUp(ThumbsUp thumbsUp) {
 		System.out.println("控制器呼叫thumbsUp");
 		thumbsUp.setMember(memberService.getNewCurrentMember());
+		System.out.println(thumbsUp.getMember().getId());
+		System.out.println(thumbsUp.getArticle().getId());
 		List<ThumbsUp> thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
-		if(thumbsList != null) {
+		
+//		thumbsUp.getArticle().setThumbsQuantity(thumbsList.size());
+//		try {
+//			forumService.update(thumbsUp.getArticle());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+		System.out.println(thumbsList);
+		if(!thumbsList.isEmpty()) {
 			for(ThumbsUp thumb:thumbsList) {
 				if(thumb.getThumb() == true) {
 					thumb.setThumb(false);
@@ -86,11 +96,27 @@ public class ArticleRestController {
 					thumb.setThumb(true);
 				}
 				forumService.insertThumbsUp(thumb);
+				List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumb.getArticle().getId(), true);
+				thumb.getArticle().setThumbsQuantity(trueThumbs.size());
+				try {
+					forumService.update(thumb.getArticle());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
+			thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
 			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
 		}else {
 			thumbsUp.setThumb(true);
 			forumService.insertThumbsUp(thumbsUp);
+			List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumbsUp.getArticle().getId(), true);
+			thumbsUp.getArticle().setThumbsQuantity(trueThumbs.size());
+			try {
+				forumService.update(thumbsUp.getArticle());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			thumbsList = new ArrayList<ThumbsUp>();
 			thumbsList.add(0, thumbsUp);
 			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);

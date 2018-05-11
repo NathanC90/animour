@@ -132,7 +132,7 @@
 
 						</div>
 						<div class="form-group col-md-6">
-						類別: <select id="specie" class="form-control" name="category">
+						類別: <select id="category" class="form-control" name="category">
                                 <option selected>請選擇類別</option>
                                 <c:forEach var="category" items="${categorys}">
                                 <option value="${category.id}">${category.name}</option>
