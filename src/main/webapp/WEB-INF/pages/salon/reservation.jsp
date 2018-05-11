@@ -146,6 +146,7 @@
 					</c:forEach>
 				</div>
 				<div class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total hours:
+					<span id="answer"></span>
 					<div id="number1"></div>
 				</div>
 				<div class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total pay:
@@ -281,11 +282,17 @@
 
 
 			<script>
+
+				var addNumber = function () {
+					var a = a++;
+				}
+
+
 				$(document).ready(function () {
 
 					$('div > input').on("click", function () {
 						//console.log("aaa")
-						$('#number1').append("one")
+						$('#number1').append()
 					})
 				});
 

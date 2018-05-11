@@ -117,25 +117,23 @@
                 </sec:authorize>
 
                 <sec:authorize access="hasRole('Admin')">
-                  <div id="each">
-                    <table id="table1" class="table table-bordered table-striped table-hover">
+                  <table id="table1" class="table table-bordered table-striped table-hover">
 
-                      <thead>
-                        <tr>
-                          <th>編號</th>
-                          <th>日期</th>
-                          <th>預約時段</th>
-                          <th>項目</th>
-                          <th>美容師</th>
-                          <th>耗時</th>
-                          <th>價錢</th>
-                          <th>編輯</th>
+                    <thead>
+                      <tr>
+                        <th>編號</th>
+                        <th>日期</th>
+                        <th>預約時段</th>
+                        <th>項目</th>
+                        <th>美容師</th>
+                        <th>耗時</th>
+                        <th>價錢</th>
+                        <th>編輯</th>
 
-                        </tr>
-                      </thead>
+                      </tr>
+                    </thead>
 
-                    </table>
-                  </div>
+                  </table>
                 </sec:authorize>
                 <!-- 每頁不同的內容到這裡結束 -->
 
@@ -216,21 +214,29 @@
             initSubmitForm();
 
           });
+
+          // function GetTdValue() {
+          //   //Javascript 取得table 中TD的值 
+          //   var VAL = document.getElementById("tb").rows[1].cells[1];
+          //   alert(VAL.innerHTML)
+          // }
+
           var pageNumber = 1;
           var initSubmitForm = function () {
             $(document).ready(function () {
               $.getJSON('/reservations', { "pageNumber": pageNumber }, function (data) {
                 console.log(data);
                 $.each(data, function (i, reservation) {
-                  var cell1 = $("<td></td>").text(reservation.id);
-                  var cell2 = $("<td></td>").text(reservation.reservationDate);
-                  var cell3 = $("<td></td>").text(reservation.appointTime);
-                  var cell4 = $("<td></td>").text(reservation.content);
-                  var cell5 = $("<td></td>").text(reservation.designer);
-                  var cell6 = $("<td></td>").text(reservation.totalTime);
-                  var cell7 = $("<td></td>").text(reservation.price);
+                  var cell1 = $('<td id="NewEdit" class="fuck"></td>').text(reservation.id);
+                  var cell2 = $('<td id="NewEdit"></td>').text(reservation.reservationDate);
+                  var cell3 = $('<td id="NewEdit"></td>').text(reservation.appointTime);
+                  var cell4 = $('<td id="NewEdit"></td>').text(reservation.content);
+                  var cell5 = $('<td id="NewEdit"></td>').text(reservation.designer);
+                  var cell6 = $('<td id="NewEdit"></td>').text(reservation.totalTime);
+                  var cell7 = $('<td id="NewEdit"></td>').text(reservation.price);
                   var button1 = $('<button><i class="fas fa-trash-alt"/></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger");
                   var button2 = $('<p> </p><button><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info');
+
                   var cell8 = $("<td></td>").append(button1, button2);
 
 
@@ -240,17 +246,8 @@
 
                   $('#table1').append(row);
 
-                  $(document).on("click", '.btn-danger', function () {
-                    $(this).parent().parent().remove();
-                    $.ajax({
-                      url: '/reservations/reservation/' + reservation.id,
-                      type: 'delete',
-                      success: function (result) {
-                        console.log("It's work")
-                      }
 
-                    })
-                  })
+
 
 
                 })
@@ -265,7 +262,7 @@
                   console.log(datas);
                   if (datas.length != 0) {
                     var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
-                    $('#each').append(buttonImport);
+                    $('#table1').append(buttonImport);
                     document.getElementById("importbutt").addEventListener("click", importAgain);
                   }
                 })
@@ -273,43 +270,98 @@
 
               })
 
-              // $(".btn btn-danger").click(function () {
-              //   $.ajax({
-              //     url: '/reservations/reservation/{id}',
-              //     type: 'delete',
-              //     success: function (result) {
-              //       console.log("It's work")
-              //     }
-
-              //   })
-              // })
             })
           };
+          $(document).ready(function () {
+            $('.NewEdit').click(function () {
+              var currentTD = $(this).parents('tr').find('td');
+              if ($(this).html() == 'Edit') {
+                $.each(currentTD, function () {
+                  $(this).prop('contenteditable', true)
+                });
+              } else {
+                $.each(currentTD, function () {
+                  $(this).prop('contenteditable', false)
+                });
+              }
+
+              $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
+
+            });
+
+          });
+          $(document).ready(function () {
+
+          })
+
           function importAgain() {
             var buttonImport = $('#importbutt');
             $('#importbutt').remove();
             initSubmitForm();
           }
+          $(document).on("click", '.btn-danger', function () {
+
+            var catchIdValue = $(this).parents('tr').find('.fuck').text();
+            $(this).parents('tr').remove();
+            // var catchId = $(this).parent().first().val;
+            // console.log(catchId);
+
+            $.ajax({
+              url: '/reservations/reservation/' + catchIdValue,
+              type: 'delete',
+              success: function (result) {
+                console.log("It's work")
+              }
+
+            })
+          })
+          $(docoment).on("click", '.btn-info', function () {
+
+          })
+          //表單送出確認
+          $(document).on("click", 'not ya', function () {
+            var data1 = new FormData(document.getElementById("myform"));
+            console.log(toJson(data1));
+
+            var catchIdValue = $(this).parents('tr').find('.fuck').text();
+
+            console.log('catchIdValue');
+            $.ajax({
+              url: '/reservations/reservation/' + catchIdValue,
+              type: 'put',
+              contentType: "application/json",
+              data: toJson(data1),
+              dataType: "json",
+              success: function (result) {
+                console.log("It changed")
+              }
+
+            }).done(function (data) {
+              alert("更改成功")
+              // window.location.href = "http://localhost:8080/reservation";
+            });
+            //formDate.forEach 把資料改成[array]:values格式再轉成jason
+            function toJson(formData) {
+              var object = {};
+              formData.forEach(function (value, key) {
+                // if (key == 'city') {
+                // 	var object1 = {};
+                // 	object1['id'] = value;
+                // 	object[key] = object1;
+                // } else {
+                // }
+                object[key] = value;
+              });
+              var json = JSON.stringify(object, null);
+              console.log(json);
+              return json;
+            };
+
+
+          })
 
 
 
-          //           $.each( [ "put", "delete" ], function( i, method ) {
-          //             $[ method ] = function( url, data, callback, type ) {
-          //     if ( $.isFunction( data ) ) {
-          //       type = type || callback;
-          //       callback = data;
-          //       data = undefined;
-          //     }
-
-          //     return $.ajax({
-          //       url: url,
-          //       type: method,
-          //       dataType: type,
-          //       data: data,
-          //       success: callback
-          //     });
-          //   };
-          // });
 
 
 

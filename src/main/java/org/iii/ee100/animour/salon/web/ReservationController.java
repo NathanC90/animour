@@ -6,24 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.iii.ee100.animour.forum.entity.Category;
-import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
-import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 @Controller
 public class ReservationController {

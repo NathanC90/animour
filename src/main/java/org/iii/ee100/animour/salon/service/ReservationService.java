@@ -1,25 +1,18 @@
 package org.iii.ee100.animour.salon.service;
 
-import java.util.Date;
-
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.assertj.core.util.Lists;
-import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.common.service.GenericService;
-import org.iii.ee100.animour.forum.entity.Article;
-import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
-import org.iii.ee100.animour.salon.dao.ReservationDateDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
-import org.iii.ee100.animour.salon.dao.reservationTimeDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
@@ -88,26 +81,21 @@ public class ReservationService extends GenericService<Reservation> {
 	public Reservation repeateOrNot(Reservation reservation) throws ParseException {
 		List<Reservation> reservationList = new ArrayList<>();
 		reservationList = reservationDao.findAll();
-		Date compareDate =reservation.getReservationDate();
+		Date compareDate = reservation.getReservationDate();
 		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String dateText = simpleDateFormat.format(compareDate);
 		Date compareDate2 = simpleDateFormat.parse(dateText);
 
-		//System.out.println("catch textDate :"+dateText);
+		// System.out.println("catch textDate :"+dateText);
 		int flag2 = 0;
-		int flag3=0;
+		int flag3 = 0;
 		for (Reservation reservations : reservationList) {
-			Date mainDate=reservations.getReservationDate();
-			System.out.println("catch後端 Date :"+mainDate);
-			System.out.println("catch前端 Date :"+compareDate2);
+			Date mainDate = reservations.getReservationDate();
 			if (mainDate.equals(compareDate2)) {
-				System.out.println("給我一個True"+mainDate.equals(compareDate2));
 				flag3++;
-				System.out.println("how count :"+flag3);
-				
-			}else {
+
+			} else {
 				flag2++;
-				System.out.println("how many flag2:"+flag2);
 				if (flag2 == reservationList.size()) {
 					reservationDao.save(reservation);
 				}
