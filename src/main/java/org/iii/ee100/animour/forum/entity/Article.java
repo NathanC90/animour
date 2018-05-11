@@ -55,15 +55,19 @@ public class Article extends GenericEntity {
 	private Member member;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
+
+	@Column(name = "CLICK")
+	private Long click;
+	
+	@Column(name = "IMAGES")
+	private String images;
+	
 	@Transient
 	private int commentLength;
 
 	@Transient
 	private int thumbsQuantity;
 	
-	@Column(name = "CLICK")
-	private Long click;
-
 	@Transient
 	private int totalPage;
 }

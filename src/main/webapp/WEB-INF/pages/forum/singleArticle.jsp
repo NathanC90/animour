@@ -109,6 +109,7 @@
                     <li><i class="fa fa-user"></i> <a href="#">${article.member.account}</a></li>
                     <li><i class="fa fa-pencil-square-o"></i> <a href="#">${article.category.name}</a></li>
                     <li><i class="fa fa-comments"></i> <a href="#">${article.commentLength} comment</a></li>
+                    <li><i class="fa fa-thumbs-up"></i> <a href="#">${article.thumbsQuantity} Like!</a></li>
                   </ul>
                 </div>
               </header>

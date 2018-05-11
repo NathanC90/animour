@@ -81,12 +81,6 @@ public class ArticleRestController {
 		System.out.println(thumbsUp.getArticle().getId());
 		List<ThumbsUp> thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
 		
-//		thumbsUp.getArticle().setThumbsQuantity(thumbsList.size());
-//		try {
-//			forumService.update(thumbsUp.getArticle());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
 		System.out.println(thumbsList);
 		if(!thumbsList.isEmpty()) {
 			for(ThumbsUp thumb:thumbsList) {
