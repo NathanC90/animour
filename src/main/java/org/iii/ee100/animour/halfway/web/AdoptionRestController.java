@@ -1,7 +1,9 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.model.ResponseForAnimour;
@@ -72,7 +74,7 @@ public class AdoptionRestController {
 		if (ad != null) {
 			adoptionService.delete(id);
 		}
-		return new ResponseEntity<Adoption>(HttpStatus.OK);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
 	// 查詢一筆
@@ -84,10 +86,13 @@ public class AdoptionRestController {
 	}
 
 	// 取得一年內認養次數 (尚未完成)
-	@RequestMapping(value = { "/halfway/adoption/check/{member}" }, method = RequestMethod.GET, produces = { "application/json",
+	@RequestMapping(value = { "/halfway/aaaaaaaa" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public Boolean checkLimit(@PathVariable Long id) {
-		Adoption ad = adoptionService.getOne(id);
-		return null;
+	public  ResponseEntity<?> checkLimit() {
+		//Member current = animalService.getCurrentMember();
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("check", adoptionService.checkAdoptionLimit(2L));
+		response.setParameters(parameter);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 }
