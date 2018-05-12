@@ -463,8 +463,9 @@
 
 
 						}).done(function (data) {
-							alert("插入成功")
-							window.location.href = "http://localhost:8080/reservation";
+							alert(toJson(data1))
+
+
 						});
 
 						function toJson(formData) {

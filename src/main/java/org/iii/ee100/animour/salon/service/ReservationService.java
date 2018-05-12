@@ -97,6 +97,7 @@ public class ReservationService extends GenericService<Reservation> {
 			} else {
 				flag2++;
 				if (flag2 == reservationList.size()) {
+					System.out.println("flag2number"+flag2);
 					reservationDao.save(reservation);
 				}
 			}

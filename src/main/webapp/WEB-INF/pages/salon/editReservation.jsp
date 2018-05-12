@@ -131,6 +131,7 @@
                         <th>編輯</th>
 
                       </tr>
+
                     </thead>
 
                   </table>
@@ -215,11 +216,7 @@
 
           });
 
-          // function GetTdValue() {
-          //   //Javascript 取得table 中TD的值 
-          //   var VAL = document.getElementById("tb").rows[1].cells[1];
-          //   alert(VAL.innerHTML)
-          // }
+
 
           var pageNumber = 1;
           var initSubmitForm = function () {
@@ -227,17 +224,17 @@
               $.getJSON('/reservations', { "pageNumber": pageNumber }, function (data) {
                 console.log(data);
                 $.each(data, function (i, reservation) {
-                  var cell1 = $('<td id="NewEdit" class="fuck"></td>').text(reservation.id);
-                  var cell2 = $('<td id="NewEdit"></td>').text(reservation.reservationDate);
-                  var cell3 = $('<td id="NewEdit"></td>').text(reservation.frontTime);
-                  var cell4 = $('<td id="NewEdit"></td>').text(reservation.content);
-                  var cell5 = $('<td id="NewEdit"></td>').text(reservation.designer);
-                  var cell6 = $('<td id="NewEdit"></td>').text(reservation.totalTime);
-                  var cell7 = $('<td id="NewEdit"></td>').text(reservation.price);
-                  var button1 = $('<button><i class="fas fa-trash-alt"/></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger");
-                  var button2 = $('<p> </p><button><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info');
-
-                  var cell8 = $('<td id="addNewButton"></td>').append(button1, button2);
+                  var cell1 = $('<td id="NewEdit" class="inputContent"></td>').append(reservation.id);
+                  var cell2 = $('<td id="" class="inputContent"></td>').append(reservation.reservationDate);
+                  var cell3 = $('<td id="" class="inputContent"></td>').text(reservation.frontTime);
+                  var cell4 = $('<td id="" class="inputContent"></td>').text(reservation.content);
+                  var cell5 = $('<td id="" class="inputContent"></td>').text(reservation.designer);
+                  var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
+                  var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
+                  var button1 = $('<button></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger").append('<i class="fas fa-trash-alt"/>');
+                  var button2 = $('<button><i class="fas fa-edit"></i></button>').addClass('btn btn-info');
+                  var p = $('<p></p>')
+                  var cell8 = $('<td id="addNewButton"></td>').append(button1, p, button2);
 
 
                   // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
@@ -273,35 +270,38 @@
 
 
 
-          // $(document).ready(function () {
-          //   $('.NewEdit').click(function () {
-          //     var currentTD = $(this).parents('tr').find('td');
-          //     if ($(this).html() == 'Edit') {
-          //       $.each(currentTD, function () {
-          //         $(this).prop('contenteditable', true)
-          //       });
-          //     } else {
-          //       $.each(currentTD, function () {
-          //         $(this).prop('contenteditable', false)
-          //       });
-          //     }
 
-          //     $(this).html($(this).html() == 'Edit' ? 'Save' : 'Edit')
-
-          //   });
-
-          // });
           $(document).ready(function () {
 
           })
-
           //表單更改按鈕
           $(document).on("click", '.btn-info', function () {
             $(this).attr({ 'hidden': 'hidden' });
             var button = $('<button id ="changing"><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info').append('done');
-            $('#addNewButton').append(button);
+            $(this).parent().append(button);
+            $(this).parents('tr').find('.inputContent').on("dblclick", function () {
+              if (window.$currEditing)
+                finishEditing($currEditing);
+              var $cell = $(this);
+              var $inp = $('<input type="text" style="width:100px;height:30px;"/>');
+              $inp.val($cell.text());
+              $cell.html('').append($inp);
+              $inp[0].select();
+              window.$currEditing = $inp;
+              console.log("test...")
+            }).on('click', function () {
+              if (window.$currEditing && $currEditing.parent()[0] != this)
+                finishEditing($currEditing);
+            });
+            $('#NewEdit input').on('keydown', function (e) {
+              if (e.which == 13 || e.which == 9)
+                finishEditing($(this));
 
-            console.log("It changed")
+            })
+            function finishEditing($inp) {
+              $inp.parent().removeAttr('#NewEdit').text($inp.val());
+              window.$currEditing = null;
+            }
 
           })
 
@@ -311,9 +311,10 @@
             $('#importbutt').remove();
             initSubmitForm();
           }
+          //刪除表格和資料
           $(document).on("click", '.btn-danger', function () {
 
-            var catchIdValue = $(this).parents('tr').find('.fuck').text();
+            var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
             $(this).parents('tr').remove();
             // var catchId = $(this).parent().first().val;
             // console.log(catchId);
@@ -329,18 +330,48 @@
           })
 
           //表單送出確認
-          $(document).on("click", 'not ya', function () {
-            var data1 = new FormData(document.getElementById("table1"));
-            console.log(toJson(data1));
+          $(document).on("click", '#changing', function () {
+            var myRows = [];
+            var headersText = [];
+            var $headers = $("th");
 
-            var catchIdValue = $(this).parents('tr').find('.fuck').text();
+            // Loop through grabbing everything
+            var $rows = $("tbody tr").each(function (index) {
 
-            console.log('catchIdValue');
+              $cells = $(this).find("td");
+              myRows[index] = {};
+
+              $cells.each(function (cellIndex) {
+                // Set the header text
+                if (headersText[cellIndex] === undefined) {
+                  headersText[cellIndex] = $($headers[cellIndex]).text();
+                }
+                // Update the row object with the header/cell combo
+                myRows[index][headersText[cellIndex]] = $(this).text();
+              });
+            });
+
+            // Let's put this in the object like you want and convert to JSON (Note: jQuery will also do this for you on the Ajax request)
+            var myObj = {
+              "myrows": myRows
+            };
+            alert(JSON.stringify(myObj));
+            // var jsonTable = $('#table1').tableToJSON();
+            // var frag = document.createRange().createContextualFragment(data);
+            // var tbl = frag.querySelector('table');
+            // document.body.appendChild(tbl);
+            // var myjson = $(tbl).tableToJSON();
+            // tbl.parentNode.removeChild(tbl);
+            // var data1 = new FormData(document.getElementById("form1"));
+            var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
+
+
+            console.log(catchIdValue);
             $.ajax({
               url: '/reservations/reservation/' + catchIdValue,
               type: 'put',
               contentType: "application/json",
-              data: toJson(data1),
+              data: ,
               dataType: "json",
               success: function (result) {
                 console.log("It changed")
@@ -351,24 +382,25 @@
               // window.location.href = "http://localhost:8080/reservation";
             });
             //formDate.forEach 把資料改成[array]:values格式再轉成jason
-            function toJson(formData) {
-              var object = {};
-              formData.forEach(function (value, key) {
-                // if (key == 'city') {
-                // 	var object1 = {};
-                // 	object1['id'] = value;
-                // 	object[key] = object1;
-                // } else {
-                // }
-                object[key] = value;
-              });
-              var json = JSON.stringify(object, null);
-              console.log(json);
-              return json;
-            };
+            // function toJson(formData) {
+            //   var object = {};
+            //   formData.forEach(function (value, key) {
+            //     // if (key == 'city') {
+            //     // 	var object1 = {};
+            //     // 	object1['id'] = value;
+            //     // 	object[key] = object1;
+            //     // } else {
+            //     // }
+            //     object[key] = value;
+            //   });
+            //   var json = JSON.stringify(object, null);
+            //   console.log(json);
+            //   return json;
+            // };
 
 
           })
+
 
 
 

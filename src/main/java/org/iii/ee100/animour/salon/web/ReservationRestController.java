@@ -11,6 +11,7 @@ import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,7 +35,7 @@ public class ReservationRestController {
 		return ReservationList;
 
 	}
-	//insertId
+	//post
 	@RequestMapping(method = RequestMethod.POST,consumes = { "application/json"})
 	public Reservation insertReservation(@Valid @RequestBody Reservation reservation) {
 	    return reservationService.insertReservation(reservation);
@@ -45,27 +46,21 @@ public class ReservationRestController {
 	    return reservationService.getOne(reservationId);
 	}
 	
-	// Update a Reservation
+	// Update a Reservation by id
 	@RequestMapping(value="/reservation/{id}",method = RequestMethod.PUT,consumes = { "application/json"})
-	public Reservation updateReservation(@PathVariable(value = "id") Long reservationId,
-	                                        @Valid @RequestBody Reservation reservationDetails,Designer designer,ServiceContent serviceContent) {
+	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long reservationId,
+	                                        @Valid @RequestBody Reservation reservation,Designer designer,ServiceContent serviceContent) {
 
-		Reservation reservation = reservationService.getOne(reservationId);
-		reservation.setPrice(reservationDetails.getPrice());
-		reservation.setDesigner(reservationDetails.getDesigner());
-		reservation.setContent(reservationDetails.getContent());
-		reservation.setReservationDate(reservationDetails.getReservationDate());
-		reservation.setTotalTime(reservationDetails.getTotalTime());
 		
-		Reservation updateReservation = reservationService.insertReservation(reservation);
-	    return updateReservation;
+		reservationService.insertReservation(reservation);
+	    return  new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
+
 	}
 
 	@RequestMapping(value = { "/reservation/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long reservationId) {
 		Reservation reservation = reservationService.getOne(reservationId);
 		reservationService.deleteReservation(reservation);
-		System.out.println();
 		return ResponseEntity.ok().build();
 	}
 }
