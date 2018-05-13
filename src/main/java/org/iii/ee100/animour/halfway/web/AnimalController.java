@@ -30,7 +30,8 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
-	@RequestMapping(value = "/halfway") // findAll
+	// 首頁，list
+	@RequestMapping(value = "/halfway") 
 	public String listPage(Model model) {
 		// 設定當前會員
 		Member current = animalservice.getCurrentMember();
@@ -42,7 +43,7 @@ public class AnimalController {
 		return "/halfway/list";
 	}
 
-	// 轉跳至詳情頁面
+	// 轉跳至動物詳情，提出認養請求頁面
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
 	public String animalDetail(Long id, Model model) {
 		Animal animal = animalservice.getOne(id);
@@ -53,14 +54,14 @@ public class AnimalController {
 		return "/halfway/animalDetail";
 	}
 
-	// 轉跳至insert表單
-	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.GET })
-	public String animalForm(Model model) {
+	// 轉跳至新增動物表單
+	@RequestMapping(value = "/add", method = { RequestMethod.GET })
+	public String addPage(Model model) {
 		Animal an = new Animal();
 		model.addAttribute("animal", an);
 		List<City> citys = animalservice.getAllCity();
 		model.addAttribute("citys", citys);
-		return "/halfway/insertAnimalForm";
+		return "/halfway/add";
 	}
 
 	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
@@ -135,12 +136,4 @@ public class AnimalController {
 		return animalservice.setSpecie();
 	}
 
-	@RequestMapping(value = "/add", method = { RequestMethod.GET })
-	public String addPage(Model model) {
-		Animal an = new Animal();
-		model.addAttribute("animal", an);
-		List<City> citys = animalservice.getAllCity();
-		model.addAttribute("citys", citys);
-		return "/halfway/add";
-	}
 }
