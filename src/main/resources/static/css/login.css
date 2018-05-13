@@ -92,7 +92,8 @@
 }
 
 .login-content .login-box.flipped {
-  min-height: 300px;
+  min-height: 366px;
+/*   change from 300px- */
 }
 
 .login-content .login-box.flipped .login-form {

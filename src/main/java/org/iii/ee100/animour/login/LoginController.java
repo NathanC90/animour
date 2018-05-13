@@ -43,15 +43,15 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) throws Exception {
-	    SecurityContextHolder.clearContext();
-
-		// session失效
-		session.invalidate();
-		// 重導向index
-		return "/index";
-
-	}
+//	@RequestMapping("/logout")
+//	public String logout(HttpSession session) throws Exception {
+//	    SecurityContextHolder.clearContext();
+//
+//		// session失效
+//		session.invalidate();
+//		// 重導向index
+//		return "/index";
+//
+//	}
 
 }

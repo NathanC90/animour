@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page session="true" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -116,14 +117,23 @@
 								</div>
 							</form>
 
-							<form class="forget-form" action="/">
+							<form class="forget-form" action="/forgetpassword" method="post">
 								<h3 class="login-head">
 									<i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?
 								</h3>
 								<div class="form-group">
-									<label class="control-label">EMAIL</label> <input
-										class="form-control" type="text" placeholder="Email">
+									<label class="control-label">Account</label> 
+									<input
+										class="form-control" type="text" placeholder="Account" id="account" name="account">
 								</div>
+								<div class="form-group">
+									<label class="control-label">EMAIL</label> <input
+										class="form-control" type="text" placeholder="Email" id="email" name="email">
+								</div>
+<%-- 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}"> --%>
+<%-- 			<div class='error'><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.</div> --%>
+<%-- 		</c:if> --%>
+
 								<div class="form-group btn-container">
 									<button class="btn btn-primary btn-block">
 										<i class="fa fa-unlock fa-lg fa-fw"></i>RESET

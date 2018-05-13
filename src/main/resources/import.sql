@@ -1,11 +1,29 @@
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE) 
-VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
-VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address)
-VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
-VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS) 
+VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', 1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS)
+VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區', 1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Candy','Aa1','Candy Su','C','0900-000000','candy@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Dog','Aa1','Candy Co','D','0900-000000','dog@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Egg','Aa1','Egg u','E','0900-000000','egg@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Fish','Aa1','Fish Su','F','0900-000000','fish@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Google','Aa1','Goo Su','G','0900-000000','google@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Hello','Aa1','Hello Word','Hi','0900-000000','hello@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('IU','Aa1','I u','IEE','0900-000000','i@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Jessi','Aa1','J J','JJ','0900-000000','jj@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gmail.com','台北市萬華區',0);
 
  
  

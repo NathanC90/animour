@@ -88,7 +88,7 @@
                             <a class="nav-link dropdown-toggle" href="/user/" aria-haspopup="true" aria-expanded="false">
                                 <sec:authentication property="principal.username" /> 您好</a>
                              <div class="dropdown-menu">
-                                 <a class="dropdown-item" href="/users">會員資料</a>
+                                 <a class="dropdown-item" href="/admin/member">會員資料</a>
 								 <a class="dropdown-item" href="/mailto">寄信</a>
                                  <a class="dropdown-item" href="/logout">登出</a>
 

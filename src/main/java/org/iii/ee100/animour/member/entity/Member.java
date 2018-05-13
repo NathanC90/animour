@@ -70,7 +70,7 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "FREQ")
 	private Integer freq; 	//登入次數
 	
-	@Column(name = "STATUS")//(0:封鎖,1:使用)
+	@Column(name = "STATUS")//(0:封鎖不予登入,1:使用)
 	private Integer status;
 	
 	@Column(name = "ROLE")//("member","admin")
