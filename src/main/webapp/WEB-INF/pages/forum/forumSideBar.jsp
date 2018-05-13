@@ -53,7 +53,7 @@
                   <div class="media">
                     <div class="media-left">
                       <a href="#">
-                        <img class="img-responsive" src="/images/blog/avatar/avatar1.jpg" alt="">
+                        <img class="img-responsive" style="width:80px;" src="${pop.images}" alt="">
                       </a>
                     </div>
                     <div class="media-body">
@@ -231,7 +231,8 @@
                     + '</a></li><li><i class="fa fa-user"></i><a href="#">' + article.member.account
                     + '</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">' + article.category.name
                     + '</a></li><li><i class="fa fa-comments"></i><a href="#">' + article.commentLength
-                    + 'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="/images/adopt/cats/ad-cat1.jpg" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
+                    + 'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images 
+                    + '" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
                     + '</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right">'
                     + '<li><span><a href="findOne?id=' + article.id + '"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
                     + '<li id="thumb' + article.id + '"><form id="thumbsform' + article.id + '" enctype="multipart/form-data"><input name="article" type="hidden" value="' + article.id + '"/></form><span id="span' + article.id + '"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</span></li>'

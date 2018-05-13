@@ -122,10 +122,14 @@
 										</div>
 										<div class="form-group">
 											內容:
-											<textarea class="form-control" id="content" name="content" rows="4" style="height:400px;">${article.content}</textarea>
-
+											<!-- <textarea class="form-control" id="content" name="content" rows="4" style="height:400px;">${article.content}</textarea> -->
+											<textarea name="content" id="content">${article.content}</textarea>
 										</div>
 										<input id="images" name="images" type="hidden" value="" />
+										<form id="imgur">
+											<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+										</form>
+										<br></br>
 										<!-- <div class="form-group">
 											請上傳照片
 											<input type="file" class="form-control-file" id="image" name="file">
@@ -133,11 +137,6 @@
 										<button id="btn1" type="button" class="btn btn-common" value="送出">送出</button>
 										<input type="reset" class="btn btn-common" value="清除">
 									</form>
-
-									<form id="imgur">
-										<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
-									</form>
-
 								</div>
 							</div>
 
@@ -147,6 +146,7 @@
 			</section>
 			<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 			<script src="http://malsup.github.com/jquery.form.js"></script>
+			<script src="https://cdn.ckeditor.com/ckeditor5/10.0.0/classic/ckeditor.js"></script>
 			<script>
 
 				//     function toJson(formData) {
@@ -164,10 +164,31 @@
 				// 		console.log(json);
 				// 		return json;
 				// 	};
-
+				var myEditor;
 				$(document).ready(function () {
+
+				
+					ClassicEditor
+						.create(document.querySelector('#content'), {
+							cloudServices: {
+								tokenUrl: 'https://16608.cke-cs.com/token/dev/djm4EZOtRAKn7AdDRQejz2aSUQSZPmO7cwIJsfoBCaE2IFI0foEYPwbvS4Oh',
+								uploadUrl: 'https://16608.cke-cs.com/easyimage/upload/'
+							}
+						}).then(editor => {
+							console.log('Editor was initialized', editor.getData());
+							myEditor = editor;
+							// window.content = content;
+						})
+						.catch(error => {
+							console.error(error);
+						});
+
+						
+
+
 					$('#btn1').click(function () {
-						console.log("haha");
+						$('#content').html(myEditor.getData());
+					
 						var formData = new FormData(document.getElementById("insertform"));
 						//     		var jsons = transformToJson(formData);
 						console.log(formData);
@@ -192,7 +213,7 @@
 
 
 					$('input[type=file]').on("change", function () {
-
+						$('#btn1').prop("disabled", "disabled");
 						var $files = $(this).get(0).files;
 
 						if ($files.length) {
@@ -211,7 +232,7 @@
 							var apiKey = '9ef7e0868394de9';
 
 							var settings = {
-								async: false,
+								// async: false,
 								crossDomain: true,
 								processData: false,
 								contentType: false,
@@ -243,6 +264,7 @@
 								var jsonObj = JSON.parse(response)
 								console.log(jsonObj.data.link);
 								$("#images").val(jsonObj.data.link);
+								$('#btn1').removeAttr("disabled");
 							});
 
 						}

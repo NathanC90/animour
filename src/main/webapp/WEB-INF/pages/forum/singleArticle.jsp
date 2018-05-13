@@ -116,7 +116,7 @@
               <!-- Featured Content -->
               <section class="featured-wrapper">
                 <a href="#">
-                  <img src="/images/blog/blog-post-1.jpg" alt="">
+                  <img src="${article.images}" alt="">
                 </a>
               </section>
               <!-- Post Content -->
@@ -281,7 +281,7 @@
 			processData: false
 		}).done(function(){
 			window.location.reload();
-			alert("ajax post");
+			// alert("ajax post");
 	    	});
 	});
 	
