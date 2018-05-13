@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!doctype html>
 <html lang="en">
 
@@ -38,7 +39,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>查看認養通知</title>
+<title>新增送養動物</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -73,93 +74,71 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
-
-	<!-- Header area wrapper starts -->
-	<header id="header-wrap">
-		<jsp:include page="../navbar.jsp"></jsp:include>
-	</header>
-	<!-- Header-wrap Section End -->
-
-	<!-- Page Header -->
-	<div class="page-header-section">
-		<div class="container">
-			<div class="row">
-				<div class="page-header-area">
-					<div class="page-header-content">
-						<h2>認養通知</h2>
-					</div>
-				</div>
-			</div>
-		</div>
+	<h1>自我檢測問卷</h1>
+	<div>
+	<input type="button" id="submitquiz" class="btn btn-common" value="作答完畢，送出問卷">
 	</div>
-	<!-- Page Header End -->
+	<script>
+					document.addEventListener("DOMContentLoaded", function () {
+						document.getElementById("submit").addEventListener("click", add);
 
-	<!-- 表格內容開始 -->
-	<section class="section">
-		<div class="container">
-			<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">認養請求確認</h1>
-			<div class="row">
-				<table class="table">
-					<thead class="thead-light">
-						<tr>
-							<th scope="col">會員</th>
-							<th scope="col">動物名稱</th>
-							<th scope="col">時間</th>
-							<th scope="col">認養備註</th>
-							<th scope="col">確認</th>
-						</tr>
-					</thead>
-					<tbody>
-					<c:forEach var="adoption" items="${adoption}">
-						<tr>
-							<th scope="row">${adoption.member.account}</th>
-							<td>${adoption.animal.name}</td>
-							<td>${adoption.requestDate}</td>
-							<td>${adoption.requestComment}</td>
-							<td><button type="button"
-									onclick="location.href='/halfway/adoptionHandle?acceptRequest=true&id=${adoption.id}';"
-									class="btn btn-common btn-sm mt-10">接受</button>
-								<button type="button"
-									onclick="location.href='/halfway/adoptionHandle?acceptRequest=false&id=${adoption.id}';"
-									class="btn btn-common btn-sm mt-10">拒絕</button></td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
+						$(document).ready(function () {
 
-		</div>
-	</section>
+						});
+					});
 
-	<!-- 重複的內容結束 -->
+					function add() {
+						alert("有被呼叫")
+						var data = new FormData(document.getElementById("addAnimal"));
+						// data.append("sss", "qqq");
+						console.log(data);
 
-	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
-	<jsp:include page="../footer.jsp"></jsp:include>
-	<!-- Footer Section End-->
+						//https://stackoverflow.com/questions/17066875/how-to-inspect-formdata
+						for (var pair of data.entries()) {
+							console.log(pair[0] + ', ' + pair[1]);
+						}
 
-	<!-- Go To Top Link -->
-	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
-	</a>
+						//var json = toJson(data);
 
-	<!-- JavaScript & jQuery Plugins -->
-	<script src="/js/jquery-min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.mixitup.js"></script>
-	<script src="/js/smoothscroll.js"></script>
-	<script src="/js/wow.js"></script>
-	<script src="/js/owl.carousel.js"></script>
-	<script src="/js/waypoints.min.js"></script>
-	<script src="/js/jquery.counterup.min.js"></script>
-	<script src="/js/jquery.slicknav.js"></script>
-	<script src="/js/jquery.appear.js"></script>
-	<script src="/js/form-validator.min.js"></script>
-	<script src="/js/contact-form-script.min.js"></script>
-	<script src="/js/main.js"></script>
+						$.ajax({
+							url: '/halfway/animal',
+							type: 'POST',
+							data: data,
+							//data: json,
+							//dataType: 'json',
+							//processData: false,
+							//contentType: "application/json",
+							//contentType: "multipart/form-data",
+							//enctype: 'multipart/form-data',
+							contentType: false,
+							processData: false,
+							success: function (data) {
+								window.location.href = "http://localhost:8080/halfway";
+							}
+						});
 
+					}
+
+					function toJson(formData) {
+						var object = {};
+						formData.forEach(function (value, key) {
+							if (key == 'city') {
+								var object1 = {};
+								object1['id'] = value;
+								object[key] = object1;
+							} else {
+								object[key] = value;
+							}
+						});
+						var json = JSON.stringify(object, null);
+						console.log(json);
+						return json;
+					};
+				</script>
 </body>
 
 </html>

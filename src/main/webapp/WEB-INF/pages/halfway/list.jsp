@@ -85,7 +85,9 @@
 			<div id="paymentdiv">
 				<button id="payment" name="payment" class="btn btn-common">確定認養，前往支付押金</button>
 				<br>
-				<a  href="/backstage/aioChargeback"> <button id="changeback" name="payment" class="btn btn-common">認養程序已完成，退回押金</button></a>
+				<a href="/backstage/aioChargeback">
+					<button id="changeback" name="payment" class="btn btn-common">認養程序已完成，退回押金</button>
+				</a>
 			</div>
 			<!-- Call to action section -->
 			<section class="cta-section section" style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height: 100%; position: relative;">
@@ -96,7 +98,7 @@
 								<div class="cta-content text-center">
 									<h2>幫助浪浪找到他們的家</h2>
 									<p>也別讓他們成為浪浪TT</p>
-									<a href="/insertAnimal" class="btn btn-common">
+									<a href="/halfway/addAnimal" class="btn btn-common">
 										<i class="fa fa-envelope"></i> 我要送養</a>
 								</div>
 							</div>
@@ -197,34 +199,6 @@
 						<div class="col-md-9" id="out">
 							<!-- Single Blog Post -->
 							<div class="row" id="each">
-								<c:forEach var="animal" items="${animalpage.content}">
-
-									<div class="col-md-3">
-										<div class="card mb-3 box-shadow">
-											<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="100px" alt="${animal.id}">
-											<div class="card-body" style="margin-bottom: 5px">
-												<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-												<p class="card-text" style="padding: 0px">編號：${animal.id} 綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color} 發現日期：${animal.found} 縣市：${animal.city.name}
-													鄉鎮市區：${animal.district}
-												</p>
-												<small class="text-muted">${animal.upload}</small>
-												<ul>
-													<li>
-														縣市：${animal.city.name}
-													</li>
-												</ul>
-												<div class="d-flex justify-content-between align-items-center" style="max-height: 100px">
-													<div class="btn-group" style="margin: 0px">
-														<button type="button" onclick="location.href='/halfway/detail?id=${animal.id}';" class="btn btn-common btn-sm mt-10">詳情</button>
-														<c:if test="${animal.member.id eq currentMember.id}">
-															<button type="button" onclick="location.href='/halfway/updateAnimal?id=${animal.id}';" class="btn btn-common btn-sm mt-10">更新</button>
-														</c:if>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</c:forEach>
 							</div>
 							<!-- Slider Post -->
 							<!-- End -->

@@ -34,12 +34,12 @@ public class AnimalRestController {
 
 	@Autowired
 	AnimalService animalservice;
-	
+
 	@Autowired
 	ResponseForAnimour response;
 
 	private PageInfo defaultPageInfo = new PageInfo(1, 8);
-	
+
 	// 查詢全部 ， 改用 Page 物件接值
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
@@ -53,7 +53,7 @@ public class AnimalRestController {
 		Page<Animal> page = animalservice.getAnimalPage(pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
 		List<Animal> animals = page.getContent();
 		response.setData(animals);
-		
+
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 

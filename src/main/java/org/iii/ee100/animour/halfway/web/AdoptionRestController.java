@@ -90,7 +90,7 @@ public class AdoptionRestController {
 	}
 
 	// 取得一年內認養次數 (尚未完成)
-	@RequestMapping(value = { "/halfway/aaaaaaaa" }, method = RequestMethod.GET, produces = { "application/json",
+	@RequestMapping(value = { "/halfway/adoption/check" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
 	public  ResponseEntity<?> checkLimit() {
 		Member current = memberService.getNewCurrentMember();

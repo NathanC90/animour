@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "ADOPTION_ACCEPT_RECORD")
+@Table(name = "ACCEPT_RECORD")
 public class AcceptRecord extends GenericEntity {
 
 	// 認養程序開始時間(接受認養時間)

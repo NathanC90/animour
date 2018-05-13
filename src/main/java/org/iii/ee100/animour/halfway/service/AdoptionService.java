@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -10,7 +13,7 @@ import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.halfway.dao.AdoptionDao;
 import org.iii.ee100.animour.halfway.entity.Adoption;
-import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.halfway.model.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -62,21 +65,36 @@ public class AdoptionService extends GenericService<Adoption> {
 
 	// 檢核認養數量是否已達上限
 	public Boolean checkAdoptionLimit(Long id) {
-		//List<Adoption> count = adoptionDao.findByMemberIdOrderByAcceptDateDesc(id);
-		//List<Adoption> count = adoptionDao.findByMemberId(id);
+		// List<Adoption> count = adoptionDao.findByMemberIdOrderByAcceptDateDesc(id);
+		// List<Adoption> count = adoptionDao.findByMemberId(id);
 		List<Adoption> count = adoptionDao.findTop2ByMemberIdOrderByAcceptDateDesc(id);
-		System.out.println("++++++++++++++++++"+count.size()+"++++++++++++++++++");
-		
+		System.out.println("++++++++++++++++++" + count.size() + "++++++++++++++++++");
+
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, -1);
 		Long lastyear = cal.getTimeInMillis();
 		Timestamp ts = new Timestamp(lastyear);
-		
+
 		if (count.size() == 2 && count.get(1).getAcceptDate().after(ts)) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-	
+
+	// 讀取文字檔的測驗題目，new成物件後，存入collection裡面
+	public List<Quiz> genQuiz(Quiz quiz) {
+		List<Quiz> quizs = new ArrayList<>();
+		try (BufferedReader bufferReader = new BufferedReader(new FileReader("/Users/kevinhsu/Desktop/quiz.txt"));) {
+			String data;
+			while ((data = bufferReader.readLine()) != null) {
+				quiz.setQuestion(data);
+				quizs.add(quiz);
+				System.out.println(data);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return quizs;
+	}
 }
