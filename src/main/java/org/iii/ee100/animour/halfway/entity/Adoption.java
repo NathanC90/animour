@@ -20,7 +20,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "ADOPTION")
 public class Adoption extends GenericEntity{
+	// 提出認養的人
+	@OneToOne
+	// @JoinColumn(name = "user_id", nullable = false)
+	private Member member;
 
+	// 想要認養的動物
+	@ManyToOne
+	private Animal animal;
+	
+	// 動物的主人的 ID
+	@Column(name="OWNER_ID")
+	private Long ownerId;
+	
 	// 提出認養的時間
 	@Column(name = "REQUEST_DATE")
 	private Timestamp requestDate;
@@ -33,28 +45,7 @@ public class Adoption extends GenericEntity{
 	@Column(name = "ACCEPT_REQUEST")
 	private Boolean acceptRequest;
 
-	// 訂單成立時間
-	@Column(name = "ACCEPT_DATE")
-	private Timestamp acceptDate;
-
-	// 訂單處理狀態
-	@Column(name = "STATUS")
-	private String status;
-
-	@Column(name = "FEEDBACK")
-	private String feedback;
-
-	// 提出認養的人
+	// 儲存對應的認養紀錄
 	@OneToOne
-	// @JoinColumn(name = "user_id", nullable = false)
-	private Member member;
-
-	// 想要認養的動物
-	@ManyToOne
-	private Animal animal;
-
-	// 動物的主人的 ID
-	@Column(name="OWNER_ID")
-	private Long ownerId;
-
+	private AdoptionAcceptRecord adoptionAcceptRecord;
 }

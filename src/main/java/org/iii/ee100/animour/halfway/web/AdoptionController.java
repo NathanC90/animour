@@ -102,9 +102,11 @@ public class AdoptionController {
 		}
 	}
 	
-	@RequestMapping(value = "/opay", method = { RequestMethod.GET })
-	public void oPayTest() {
+	@RequestMapping(value = "/halfway/adoptionDetail", method = { RequestMethod.GET })
+	public String toAdoptionDetail(Model model) {
 		
+		
+		return "/halfway/adoptionDetail";
 	}
 
 }

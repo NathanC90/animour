@@ -63,28 +63,43 @@ public class Animal extends GenericEntity{
 	@Column(name = "DISTRICT")
 	private String district;
 
-	@Column(name = "HOSPITALIZED", columnDefinition = "BOOLEAN default 'FALSE'")
-	private Boolean hospitalized;
+	//有無就醫紀錄
+	@Column(name = "HOSPITALIZED")
+	private Boolean hospitalized = false;
 
+	//大型、中型、小型
 	@Column(name = "SIZE")
 	private String size;
 	
+	//幼年、成年、老年
 	@Column(name = "AGE")
 	private String age;
+	
+	//數量(只限於幼年)
+	@Column(name = "COUNT")
+	private Integer count;
 
+	//晶片號碼
 	@Column(name = "CARD_NUM")
 	private String cardNum;
 
-	@Column(name = "NEUTER", columnDefinition = "BOOLEAN default 'FALSE'")
-	private Boolean neuter;
+	@Column(name = "NEUTER")
+	private Boolean neuter = false;
 
 	//飼主所開認養條件，包含於此
 	@Column(name = "REMARK", columnDefinition = "TEXT")
 	private String remark;
 
+	//存在CDN的圖片URL
 	@Column(name = "FILE_NAME")
 	private String fileName;
 	
+	//是否下架，不刪除
+	@Column(name = "DISABLED")
+	private Boolean disabled = false;
+	
+	//接收byte陣列傳來的大頭貼，但只存檔名
 	@Transient
 	private MultipartFile avatar;
+	
 }
