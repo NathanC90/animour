@@ -16,11 +16,15 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "ADOPTION_ACCEPT_RECORD")
-public class AdoptionAcceptRecord extends GenericEntity {
+public class AcceptRecord extends GenericEntity {
 
-	// 訂單成立時間(接受認養時間)
-	@Column(name = "ACCEPT_DATE")
-	private Timestamp acceptDate;
+	// 認養程序開始時間(接受認養時間)
+	@Column(name = "START_DATE")
+	private Timestamp startDate;
+
+	// 認養程序截止時間
+	@Column(name = "END_DATE")
+	private Timestamp endDate = startDate;
 
 	// 訂單處理狀態
 	@Column(name = "STATUS")

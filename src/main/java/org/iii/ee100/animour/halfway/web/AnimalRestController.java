@@ -40,20 +40,6 @@ public class AnimalRestController {
 
 	private PageInfo defaultPageInfo = new PageInfo(1, 8);
 	
-	// 查詢全部
-	// @RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET,
-	// produces = { "application/json",
-	// "application/xml" })
-	// public List<Animal> listAnimal(@RequestParam(value = "pageNumber",
-	// defaultValue = "1") Integer pageNumber,
-	// @RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model
-	// model) {
-	// Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); //
-	// pageNumber=頁數 pageSize=一頁幾筆資料
-	// List<Animal> animals = page.getContent();
-	// return animals;
-	// }
-
 	// 查詢全部 ， 改用 Page 物件接值
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
@@ -107,7 +93,7 @@ public class AnimalRestController {
 	// 查詢一筆
 	@RequestMapping(value = { "/halfway/animal/{id}" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public Animal oneAnimal(@PathVariable Long id) {
+	public Animal oneAdoption(@PathVariable Long id) {
 		Animal an = animalservice.getOne(id);
 		return an;
 	}

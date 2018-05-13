@@ -30,40 +30,17 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
-	// 首頁
-	// @RequestMapping(value = "/halfway", method = RequestMethod.GET)
-//	public String index(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-//		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
-//		model.addAttribute("animalpage", page);
-//
-//		// 設定當前會員
-//		Member current = animalservice.getCurrentMember();
-//		model.addAttribute("currentMember", current);
-//
-//		animalservice.updateAnimalCount();
-//		List<City> citys = animalservice.getQueryCity();
-//		model.addAttribute("citys", citys);
-//		return "/halfway/halfwayIndex";
-//	}
-
-	// 首頁分頁處理
-	// @RequestMapping(value = { "/halfway/pageQueryAll" }, method =
-	// RequestMethod.GET)
-//	public String getAnimalPage(@RequestParam(value = "page", defaultValue = "1") Integer pageNumber,
-//			@RequestParam(value = "size", defaultValue = "8") Integer pageSize, Model model) {
-//		Page<Animal> page = animalservice.getAnimalPage(pageNumber, pageSize); // pageNumber=頁數 pageSize=一頁幾筆資料
-//		model.addAttribute("animalpage", page);
-//
-//		// 設定當前會員
-//		Member current = animalservice.getCurrentMember();
-//		model.addAttribute("currentMember", current);
-//
-//		animalservice.updateAnimalCount();
-//		List<City> citys = animalservice.getQueryCity();
-//		model.addAttribute("citys", citys);
-//		return "/halfway/halfwayIndex";
-//	}
+	@RequestMapping(value = "/halfway") // findAll
+	public String listPage(Model model) {
+		// 設定當前會員
+		Member current = animalservice.getCurrentMember();
+		model.addAttribute("currentMember", current);
+		// 依縣市別更新動物數量
+		animalservice.updateAnimalCount();
+		List<City> citys = animalservice.getQueryCity();
+		model.addAttribute("citys", citys);
+		return "/halfway/list";
+	}
 
 	// 轉跳至詳情頁面
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
@@ -156,18 +133,6 @@ public class AnimalController {
 	@ModelAttribute("allSpecie")
 	public List<String> getAllSpecie() {
 		return animalservice.setSpecie();
-	}
-
-	@RequestMapping(value = "/halfway") // findAll
-	public String listPage(Model model) {
-		// 設定當前會員
-		Member current = animalservice.getCurrentMember();
-		model.addAttribute("currentMember", current);
-		// 依縣市別更新動物數量
-		animalservice.updateAnimalCount();
-		List<City> citys = animalservice.getQueryCity();
-		model.addAttribute("citys", citys);
-		return "/halfway/list";
 	}
 
 	@RequestMapping(value = "/add", method = { RequestMethod.GET })
