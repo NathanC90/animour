@@ -81,7 +81,7 @@ public class ProductService extends GenericService<Product> {
 	
 	@Override
 	public void update(Product product) throws Exception {
-		System.out.println("result= " + productDao.save(product));
+		productDao.save(product);
 	}
 	
 	@Override

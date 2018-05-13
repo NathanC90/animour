@@ -22,8 +22,8 @@ public class Product extends GenericEntity {
 	private String name;
 	@Column(name = "PRICE", nullable = false)
 	private Integer price;
-	@Column(name = "QUANTITY", nullable = false)
-	private Long quantity;
+	@Column(name = "STOCK", nullable = false)
+	private Integer stock;
 	@Column(name = "MAKE_DATE", nullable = false)
 	private java.sql.Timestamp makeDate;
 	@Column(name = "EXPIRE", nullable = false)

@@ -92,35 +92,41 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-
-				<table class="table" border="1">
-					<thead class="thead-dark">
+				<form action="/cart/update" method="POST">
+					<table class="table" border="1">
+						<thead class="thead-dark">
+							<tr>
+								<td>品名</td>
+								<td>價格</td>
+								<td>數量
+									<input value="update" type="submit">
+								</td>
+								<td>小計</td>
+								<td>Option</td>
+							</tr>
+						</thead>
+						<c:set var="total" value="0"></c:set>
+						<c:forEach var="cartItem" items="${sessionScope.cart}"
+							varStatus="i">
+							<c:set var="total"
+								value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
+							<tr>
+								<td>${cartItem.product.name}</td>
+								<td>${cartItem.product.price}</td>
+								<td>
+									<input type="number" value="${cartItem.quantity}" min="0" 
+										max="${cartItem.product.stock}" name="quantity">
+								</td>
+								<td>${cartItem.product.price * cartItem.quantity}</td>
+								<td><a href="/cart/delete/${i.index}">刪除</a></td>
+							</tr>
+						</c:forEach>
 						<tr>
-							<td>品名</td>
-							<td>價格</td>
-							<td>數量</td>
-							<td>小計</td>
-							<td>Option</td>
+							<td colspan="4"><span>總價</span></td>
+							<td>${total}元</td>
 						</tr>
-					</thead>
-					<c:set var="total" value="0"></c:set>
-					<c:forEach var="cartItem" items="${sessionScope.cart}"
-						varStatus="i">
-						<c:set var="total"
-							value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-						<tr>
-							<td>${cartItem.product.name}</td>
-							<td>${cartItem.product.price}</td>
-							<td>${cartItem.quantity}</td>
-							<td>${cartItem.product.price * cartItem.quantity}</td>
-							<td><a href="/cart/delete/${i.index}">刪除</a></td>
-						</tr>
-					</c:forEach>
-					<tr>
-						<td colspan="4"><span>總價</span></td>
-						<td>${total}元</td>
-					</tr>
-				</table>
+					</table>
+				</form>
 			</div>
 			<a href="/product/index" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;

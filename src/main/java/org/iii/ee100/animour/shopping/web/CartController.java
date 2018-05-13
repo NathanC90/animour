@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.iii.ee100.animour.shopping.entity.CartItem;
 import org.iii.ee100.animour.shopping.entity.Orders;
 import org.iii.ee100.animour.shopping.entity.OrdersItem;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.OrdersService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,13 +61,12 @@ public class CartController {
 	@RequestMapping(value="/cart/delete/{index}", method=RequestMethod.GET)
 	public String delete(@PathVariable("index") int index, HttpSession session) {
 		List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
-		System.err.println(cart.size());
 		cart.remove(index);
-		System.err.println(cart.size());
 		session.setAttribute("cart", cart);
 		return "redirect:/cart/index";
 	}
 	
+	//判斷購物車內是否有東西
 	@SuppressWarnings("unchecked")
 	public int isExist(Long id, HttpSession session) {
 		List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
@@ -91,8 +92,20 @@ public class CartController {
 	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
 	public String confirmBuy(HttpSession session) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
-		Integer totalAmount = 0;
-		Date orderDate = null;
+		
+		//扣掉庫存
+		for(CartItem cart:cartItem) {
+			Product product = productService.getOne(cart.getProduct().getId());
+			product.setStock(cart.getProduct().getStock() - cart.getQuantity());
+			try {
+				productService.update(product);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		Integer totalAmount = 0; //購買金額
+		Date orderDate = null; //訂單日期
 		for(CartItem cart:cartItem) {
 			totalAmount = totalAmount + cart.getProduct().getPrice() * cart.getQuantity();
 			orderDate = new Date(System.currentTimeMillis());
@@ -114,8 +127,23 @@ public class CartController {
 		}
 		orders.setOrdersItem(ordersList);
 		ordersService.insert(orders);
+		
 		cartItem.removeAll(cartItem);
 		
 		return "/shopping/ThanksForOrdering";
 	}
+	
+	//修改購物車購買數量
+	@SuppressWarnings({ "unchecked" })
+	@RequestMapping(value="/cart/update", method=RequestMethod.POST)
+	public String delete(HttpServletRequest request, HttpSession session) {
+		String[] parameter = request.getParameterValues("quantity");
+		List<CartItem> cart = (List<CartItem>) session.getAttribute("cart");
+		for(int i = 0; i < cart.size(); i++) {
+			cart.get(i).setQuantity(Integer.parseInt(parameter[i]));
+		}
+		session.setAttribute("cart", cart);
+		return "redirect:/cart/index";
+	}
+	
 }

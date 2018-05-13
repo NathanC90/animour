@@ -124,7 +124,7 @@
 
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">庫存</h2>
-							<form:input path="quantity" type="text" class="form-control"
+							<form:input path="stock" type="text" class="form-control"
 								placeholder="庫存" />
 						</div>
 

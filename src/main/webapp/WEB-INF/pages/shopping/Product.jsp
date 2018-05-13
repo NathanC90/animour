@@ -106,7 +106,7 @@
 						src="/images/shopping/product/pd1.jpg" width="100px" alt="${product.name}">
 				</div>
 				<div class="col-md-6">
-					<h3 class="small-title">品名:&nbsp&nbsp&nbsp${product.name}</h3>
+					<h3 class="small-title">品名:&nbsp;&nbsp;&nbsp;${product.name}</h3>
 					<div id="default-tab" class="mt-10">
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="nav-item"><a class="nav-link active" href="#productDetail"
@@ -121,9 +121,10 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="productDetail">
 								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
-								<p class="card-text" style="padding: 0px">編號：${product.id}
-									商品名稱：${product.name} 種類：${product.classify.name} 價格：${product.price}
-<%-- 									發現日期：${animal.found} 縣市：${animal.city} 鄉鎮市區：${animal.district}</p> --%>
+								<p class="card-text" style="padding: 0px">編號：${product.id}</p>
+								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
+								<p class="card-text" style="padding: 0px">種類：${product.classify.name}</p>
+								<p class="card-text" style="padding: 0px">價格：${product.price}</p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="productSepc">
 								<p>${product.description}</p>
