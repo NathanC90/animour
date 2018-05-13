@@ -121,14 +121,14 @@
 
                     <thead>
                       <tr>
-                        <th>編號</th>
-                        <th>日期</th>
-                        <th>預約時段</th>
-                        <th>項目</th>
-                        <th>美容師</th>
-                        <th>耗時</th>
-                        <th>價錢</th>
-                        <th>編輯</th>
+                        <th>id</th>
+                        <th>reservationDate</th>
+                        <th>frontTime</th>
+                        <th>content</th>
+                        <th>designer</th>
+                        <th>totalTime</th>
+                        <th>price</th>
+                        <th id="notNeed">編輯</th>
 
                       </tr>
 
@@ -331,15 +331,15 @@
 
           //表單送出確認
           $(document).on("click", '#changing', function () {
-            var myRows = [];
+            myRows = {};
             var headersText = [];
-            var $headers = $("th");
+            var $headers = $("th").not('#notNeed');
 
             // Loop through grabbing everything
-            var $rows = $("tbody tr").each(function (index) {
+            var $rows = $("tbody tr:first-child").each(function () {
 
-              $cells = $(this).find("td");
-              myRows[index] = {};
+              $cells = $(this).find("td").not('#addNewButton');
+              myRows = {};
 
               $cells.each(function (cellIndex) {
                 // Set the header text
@@ -347,22 +347,26 @@
                   headersText[cellIndex] = $($headers[cellIndex]).text();
                 }
                 // Update the row object with the header/cell combo
-                myRows[index][headersText[cellIndex]] = $(this).text();
+                myRows[headersText[cellIndex]] = $(this).text();
+
               });
             });
-
+            console.log(myRows)
             // Let's put this in the object like you want and convert to JSON (Note: jQuery will also do this for you on the Ajax request)
-            var myObj = {
-              "myrows": myRows
-            };
-            alert(JSON.stringify(myObj));
-            // var jsonTable = $('#table1').tableToJSON();
-            // var frag = document.createRange().createContextualFragment(data);
-            // var tbl = frag.querySelector('table');
-            // document.body.appendChild(tbl);
-            // var myjson = $(tbl).tableToJSON();
-            // tbl.parentNode.removeChild(tbl);
-            // var data1 = new FormData(document.getElementById("form1"));
+            // var reservation = { myRows };
+            // function toJson(myRows) {
+            //   var reservation = {};
+
+            //   myRows.forEach(function (value, key) {
+
+            //     reservation[key] = value;
+            //   });
+            //   console.log(json);
+            //   return json;
+            // };
+            var json = JSON.stringify(myRows);
+            console.log(json);
+
             var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
 
 
@@ -371,7 +375,7 @@
               url: '/reservations/reservation/' + catchIdValue,
               type: 'put',
               contentType: "application/json",
-              data: ,
+              data: json,
               dataType: "json",
               success: function (result) {
                 console.log("It changed")

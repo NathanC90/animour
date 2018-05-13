@@ -463,7 +463,7 @@
 
 
 						}).done(function (data) {
-							alert(toJson(data1))
+							console.log(toJson(data1));
 
 
 						});
