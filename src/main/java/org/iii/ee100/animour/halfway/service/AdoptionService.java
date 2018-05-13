@@ -61,19 +61,22 @@ public class AdoptionService extends GenericService<Adoption> {
 	}
 
 	// 檢核認養數量是否已達上限
-	public Boolean checkAdoptionLimit(Member member) {
-		List<Adoption> count = adoptionDao.findTop2ByMemberOrderByAcceptDateDesc(member);
+	public Boolean checkAdoptionLimit(Long id) {
+		//List<Adoption> count = adoptionDao.findByMemberIdOrderByAcceptDateDesc(id);
+		//List<Adoption> count = adoptionDao.findByMemberId(id);
+		List<Adoption> count = adoptionDao.findTop2ByMemberIdOrderByAcceptDateDesc(id);
+		System.out.println("++++++++++++++++++"+count.size()+"++++++++++++++++++");
 		
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, -1);
 		Long lastyear = cal.getTimeInMillis();
 		Timestamp ts = new Timestamp(lastyear);
 		
-		if (count.get(1).getAcceptDate().after(ts)) {
+		if (count.size() == 2 && count.get(1).getAcceptDate().after(ts)) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-
+	
 }

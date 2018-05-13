@@ -81,7 +81,6 @@ public class AdoptionController {
 				adoption = (Adoption) adoptionservice.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
 				adoption.setAcceptDate(new Timestamp(System.currentTimeMillis()));
-				adoption.setStatus("認養洽談中");
 				adoptionservice.update(adoption);
 				an = ((Adoption) adoptionservice.getOne(id)).getAnimal(); // 這裡的id adoption的id
 				an.setStatus("認養洽談中");
@@ -94,7 +93,6 @@ public class AdoptionController {
 				adoption = (Adoption) adoptionservice.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
 				adoption.setAcceptDate((new Timestamp(System.currentTimeMillis())));
-				adoption.setStatus("認養被拒");
 				adoptionservice.update(adoption);
 			} catch (Exception e) {
 			}
@@ -102,9 +100,11 @@ public class AdoptionController {
 		}
 	}
 	
-	@RequestMapping(value = "/opay", method = { RequestMethod.GET })
-	public void oPayTest() {
+	@RequestMapping(value = "/halfway/adoptionDetail", method = { RequestMethod.GET })
+	public String toAdoptionDetail(Model model) {
 		
+		
+		return "/halfway/adoptionDetail";
 	}
 
 }

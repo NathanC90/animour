@@ -24,6 +24,6 @@ public class Quiz extends GenericEntity{
 	private Boolean youranswer;
 	
 	@Column(name="CORRECT")
-	private Boolean correct;
+	private Boolean correct = true;
 	
 }

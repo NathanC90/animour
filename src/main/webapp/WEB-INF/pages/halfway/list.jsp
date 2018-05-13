@@ -81,6 +81,12 @@
 			</div>
 			<!-- Page Header End -->
 
+			<!-- 測試付款按鈕 -->
+			<div id="paymentdiv">
+				<button id="payment" name="payment" class="btn btn-common">確定認養，前往支付押金</button>
+				<br>
+				<a  href="/backstage/aioChargeback"> <button id="changeback" name="payment" class="btn btn-common">認養程序已完成，退回押金</button></a>
+			</div>
 			<!-- Call to action section -->
 			<section class="cta-section section" style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height: 100%; position: relative;">
 				<div class="container">
@@ -193,7 +199,7 @@
 							<div class="row" id="each">
 								<c:forEach var="animal" items="${animalpage.content}">
 
-									<div class="col-md-3" id=>
+									<div class="col-md-3">
 										<div class="card mb-3 box-shadow">
 											<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="100px" alt="${animal.id}">
 											<div class="card-body" style="margin-bottom: 5px">
@@ -429,7 +435,7 @@
 									document.getElementById("importbutt").addEventListener("click", importAgain);
 								}
 							})
-						}).fail(function(){
+						}).fail(function () {
 							$.each(datas.data, function (idx, animal) {
 								alert(animal.name)
 								window.location.href = 'http://google.com'
@@ -465,7 +471,7 @@
 
 						var json = JSON.stringify(object, null)
 						console.log(json);
-						
+
 						//alert(items);
 
 						//var docFragment = $(document.createDocumentFragment());
@@ -516,6 +522,24 @@
 						});
 					});
 				});
+			</script>
+			<script>
+				$(document).ready(function () {
+					$("#payment").click(function () {
+						$.ajax({
+							url: '/frontEnd/aioCheckOut/aioCheckOutALL',
+							type: 'POST',
+							//data: data,
+							//data: json,
+							//dataType: 'json',
+							//contentType: "application/json",
+						}).done(function (datas) {
+							$('#paymentdiv').html(datas);
+						});
+					});
+
+				});
+
 			</script>
 			<!-- JavaScript & jQuery Plugins -->
 			<script src="/js/jquery-min.js"></script>

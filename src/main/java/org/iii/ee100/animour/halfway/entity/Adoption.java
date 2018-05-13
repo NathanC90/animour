@@ -19,31 +19,7 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "ADOPTION")
-public class Adoption extends GenericEntity{
-
-	// 提出認養的時間
-	@Column(name = "REQUEST_DATE")
-	private Timestamp requestDate;
-
-	// 提出認養時的意見
-	@Column(name = "REQUEST_COMMENT", columnDefinition = "TEXT")
-	private String requestComment;
-
-	// 紀錄主人是否接受認養要求
-	@Column(name = "ACCEPT_REQUEST")
-	private Boolean acceptRequest;
-
-	// 訂單成立時間
-	@Column(name = "ACCEPT_DATE")
-	private Timestamp acceptDate;
-
-	// 訂單處理狀態
-	@Column(name = "STATUS")
-	private String status;
-
-	@Column(name = "FEEDBACK")
-	private String feedback;
-
+public class Adoption extends GenericEntity {
 	// 提出認養的人
 	@OneToOne
 	// @JoinColumn(name = "user_id", nullable = false)
@@ -54,7 +30,30 @@ public class Adoption extends GenericEntity{
 	private Animal animal;
 
 	// 動物的主人的 ID
-	@Column(name="OWNER_ID")
+	@Column(name = "OWNER_ID")
 	private Long ownerId;
 
+	// 提出認養的時間
+	@Column(name = "REQUEST_DATE")
+	private Timestamp requestDate;
+
+	// 提出認養時的意見
+	@Column(name = "REQUEST_COMMENT", columnDefinition = "TEXT")
+	private String requestComment;
+
+	// 會員認養觀念檢測分數
+	@Column(name = "SCORE")
+	private Integer score;
+
+	// 紀錄主人是否接受認養要求
+	@Column(name = "ACCEPT_REQUEST")
+	private Boolean acceptRequest;
+
+	// 訂單成立時間(接受認養時間)
+	@Column(name = "ACCEPT_DATE")
+	private Timestamp acceptDate;
+
+	// 儲存對應的認養紀錄
+	@OneToOne
+	private AcceptRecord acceptRecord;
 }

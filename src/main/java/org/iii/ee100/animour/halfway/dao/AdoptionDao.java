@@ -12,6 +12,7 @@ public interface AdoptionDao extends GenericDao<Adoption>{
 	
 	//List<Adoption> findByAcceptDateAfter (Date acceptDate);
 	
-	List<Adoption> findTop2ByMemberOrderByAcceptDateDesc(Member member);
+	List<Adoption> findTop2ByMemberIdOrderByAcceptDateDesc(Long memberId);
+	//List<Adoption> findByMemberIdOrderByAcceptDateDesc(Long memberId);
 
 }

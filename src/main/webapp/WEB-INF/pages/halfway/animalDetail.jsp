@@ -67,7 +67,6 @@
 					max-width: 550px;
 					border-radius: 4px;
 					overflow: hidden;
-
 					transform: translateY(-50px);
 					transition: all .7s;
 				}
@@ -76,7 +75,6 @@
 				.animated-modal p {
 					transform: translateY(-50px);
 					opacity: 0;
-
 					transition-property: transform, opacity;
 					transition-duration: .4s;
 				}
@@ -138,23 +136,19 @@
 					<div class="row">
 						<div class="col-md-6">
 
-							<p class="imglist" style="max-width: 500px; width:100%">
+							<p class="imglist" style="max-width: 500px; width: 100%">
 								<a data-trigger="preview" href="javascript:;">
 									<img src="https://source.unsplash.com/LuK-MuZ-yf0/510x340" />
 								</a>
-
 								<a href="https://source.unsplash.com/LuK-MuZ-yf0/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
 									<img src="https://source.unsplash.com/LuK-MuZ-yf0/120x80" />
 								</a>
-
 								<a href="https://source.unsplash.com/Oaqk7qqNh_c/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
 									<img src="https://source.unsplash.com/Oaqk7qqNh_c/120x80" />
 								</a>
-
 								<a href="https://source.unsplash.com/X9GHkHbJIaU/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
 									<img src="https://source.unsplash.com/X9GHkHbJIaU/120x80" />
 								</a>
-
 								<a href="https://source.unsplash.com/9c_djeQTDyY/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
 									<img src="https://source.unsplash.com/9c_djeQTDyY/120x80" />
 								</a>
@@ -224,17 +218,17 @@
 							</div>
 						</div>
 						<c:if test="${animal.member.id ne currentMember.id}">
-							<a style="max-width: 45%; margin:auto; margin-top:5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox data-src="#trueModal"
-							 data-modal="true" href="javascript:;" onclick="showAlert(message);">
-								<i class="fa fa-link"></i>我要認養</a>
+							<a id="check" style="max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox
+							 data-src="#trueModal" data-modal="true" href="javascript:;">
+								<i class="fa fa-link"></i>我要認養
+							</a>
 						</c:if>
 					</div>
 				</div>
-
 				<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
 				</p>-->
-				<div style="display: none;max-width:600px;" id="trueModal">
+				<div style="display: none; max-width: 600px;" id="trueModal">
 					<h2>提醒您! 請求送出後無法取消</h2>
 					<p>(1) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
 					<p>(2) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
@@ -249,8 +243,9 @@
 			<!-- 重複的內容結束 -->
 
 			<!-- Footer Section -->
-			<!-- (footer.jsp) -->
-			<jsp:include page="../footer.jsp"></jsp:include>
+			<footer>
+				<jsp:include page="../footer.jsp"></jsp:include>
+			</footer>
 			<!-- Footer Section End-->
 
 			<!-- Go To Top Link -->
@@ -279,9 +274,20 @@
 
 		</body>
 		<script>
-		<%
-		out.print("var message = 123");
-		%>
+			$(document).ready(function () {
+				$("#check").click(function () {
+					$.getJSON('/halfway/adoption/check',
+						function (datas) {
+							if (!datas.parameters.check) {
+								alert("您的認養次數已達上限")
+								window.location.href = "http://localhost:8080/halfway";
+							}
+						});
+				});
+			});
+
+		</script>
+		<script>
 			$(document).ready(function () {
 				$("#sendrequest").click(function () {
 					var data = new FormData(document.getElementById("requestComment"));
