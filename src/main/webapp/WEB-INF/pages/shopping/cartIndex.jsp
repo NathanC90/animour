@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html lang="zh-tw">
 <!--Icon Tags start -->
@@ -131,9 +132,17 @@
 			<a href="/product/index" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
 			<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;
+							class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;			
+			
+			<sec:authorize access="isAnonymous()">
+			<a href="/cart/confirmBuy2" class='btn btn-warning btn-large'> <span
+							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
+			</sec:authorize>
+			
+			<sec:authorize access="hasRole('Member')">
 			<a href="/cart/confirmBuy" class='btn btn-warning btn-large'> <span
 							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
+			</sec:authorize>				
 		</div>
 	</section>
 </body>

@@ -214,11 +214,11 @@ insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRI
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4);
 
 /*9 orders*/
-insert into orders (orderdate, totalamount) values(now(), 1280);
-insert into orders (orderdate, totalamount) values(now(), 3650);
+insert into orders (orderdate, totalamount, member_id) values(now(), 1280, 2);
+insert into orders (orderdate, totalamount, member_id) values(now(), 3650, 3);
 
 /*10 ordersItem*/
-insert into ordersitem (name, price, quantity, orders_id) 
+insert into ordersitem (name, price, quantity, orders_id)
 values('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 600, 1, 1);
 insert into ordersitem (name, price, quantity, orders_id) 
 values('法國皇家XJ31 超小型幼犬 1.5 公斤', 680, 1, 1);

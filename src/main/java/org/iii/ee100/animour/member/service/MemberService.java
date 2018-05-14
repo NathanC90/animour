@@ -79,6 +79,9 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	public Member getNewCurrentMember() {
+		if(getCurrentMember()==null) {
+			return null;
+		}
 		Member principal = memberDao.findByAccount(getCurrentMember().getAccount());
 		return principal;
 	}

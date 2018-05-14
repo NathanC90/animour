@@ -163,11 +163,7 @@
 									<td>${product.classify.name}</td>
 									
 									<td><a href="<spring:url value='/product/${product.id}' />" id="buttonUpdate" type="button" class="btn btn-info"><i class="fas fa-edit"></i></a></td>
-									<td><a href="<spring:url value='/delete/${product.id}' />" id="delete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
-										
-									</a>
-<%-- 									<input type="hidden" value="${product.name}"> --%>
-									
+									<td><a href="<spring:url value='/delete/${product.id}' />" id="delete" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
 									</td>
 								</tr>
 							</c:forEach>

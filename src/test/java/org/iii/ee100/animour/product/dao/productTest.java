@@ -179,23 +179,23 @@ public class productTest {
 //	}
 	
 	//測試查詢訂單
-	@Test
-	public void testQueryOrders() {
-		List<Orders> OrdersList = ordersDao.findAll();
-		for(Orders orders:OrdersList) {
-			System.out.println("訂單編號=" + orders.getId());
-			System.out.println(orders.getTotalAmount());
-			System.out.println(orders.getOrderDate());
-			
-			List<OrdersItem> ordersItem = orders.getOrdersItem();
-			for(OrdersItem order:ordersItem) {
-				System.out.println("商品名稱=" + order.getName());
-				System.out.println("商品價格=" + order.getPrice());
-				System.out.println("購買數量=" + order.getQuantity());
-			}
-			System.out.println();
-		}
-	}
+//	@Test
+//	public void testQueryOrders() {
+//		List<Orders> OrdersList = ordersDao.findAll();
+//		for(Orders orders:OrdersList) {
+//			System.out.println("訂單編號=" + orders.getId());
+//			System.out.println(orders.getTotalAmount());
+//			System.out.println(orders.getOrderDate());
+//			
+//			List<OrdersItem> ordersItem = orders.getOrdersItem();
+//			for(OrdersItem order:ordersItem) {
+//				System.out.println("商品名稱=" + order.getName());
+//				System.out.println("商品價格=" + order.getPrice());
+//				System.out.println("購買數量=" + order.getQuantity());
+//			}
+//			System.out.println();
+//		}
+//	}
 	
 	@Test
 	public void testManyToOne() {
@@ -254,10 +254,10 @@ public class productTest {
 	}
 */
 	
-//	@Test
-//	public void testDelete() {
-//		productDao.delete(2L);
-//	}
+	@Test
+	public void testDelete() {
+		productDao.delete(2L);
+	}
 	
 //	@Test
 //	public void testGetNewSex() {

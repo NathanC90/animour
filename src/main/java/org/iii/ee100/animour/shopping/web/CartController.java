@@ -7,6 +7,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.shopping.entity.CartItem;
 import org.iii.ee100.animour.shopping.entity.Orders;
 import org.iii.ee100.animour.shopping.entity.OrdersItem;
@@ -14,6 +16,7 @@ import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.OrdersService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +30,9 @@ public class CartController {
 	
 	@Autowired
 	private OrdersService ordersService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping(value="/cart/index")
 	public String index() {
@@ -78,6 +84,7 @@ public class CartController {
 		return -1;
 	}
 	
+	
 	//清空購物車
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart/removeShoppingCart", method=RequestMethod.GET)
@@ -87,11 +94,24 @@ public class CartController {
 		return "redirect:/cart/index";
 	}
 	
+	
+	//確定購買
+	@RequestMapping(value="/cart/confirmBuy2", method=RequestMethod.GET)
+	public String confirmBuy2() {
+		return "redirect:/cart/index";
+	}
+	
 	//確定購買
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
 	public String confirmBuy(HttpSession session) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
+		
+		Member currentMember = memberService.getNewCurrentMember();
+		
+		if(currentMember == null) {
+			return "/shopping/shoppingCartLogin";
+		}
 		
 		//扣掉庫存
 		for(CartItem cart:cartItem) {
@@ -110,9 +130,11 @@ public class CartController {
 			totalAmount = totalAmount + cart.getProduct().getPrice() * cart.getQuantity();
 			orderDate = new Date(System.currentTimeMillis());
 		}
+		
 		Orders orders = new Orders();
 		orders.setTotalAmount(totalAmount);
 		orders.setOrderDate(orderDate);
+		orders.setMember(currentMember);
 		
 		List<OrdersItem> ordersList = new ArrayList<OrdersItem>();
 		
