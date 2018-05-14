@@ -142,7 +142,7 @@
 								<th>圖片</th>
 								<th>產品名稱</th>
 								<th>價格</th>
-								<th>數量</th>
+								<th>庫存</th>
 								<th>製造日期</th>
 								<th>保存期限</th>
 								<th>產品類別</th>
@@ -157,7 +157,7 @@
 									<td><img src="/images/shopping/product/pd1.jpg" width="150px" alt="商品列表"></td>
 									<td align="left">${product.name}</td>
 									<td>${product.price}</td>
-									<td>${product.quantity}</td>
+									<td>${product.stock}</td>
 									<td>${product.makeDate}</td>
 									<td>${product.expire}</td>
 									<td>${product.classify.name}</td>

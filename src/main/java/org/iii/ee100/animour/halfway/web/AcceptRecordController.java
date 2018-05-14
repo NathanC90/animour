@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AcceptRecordController {
 
 	@Autowired
-	AdoptionService adoptionservice;
+	AdoptionService adoptionService;
 
 	@Autowired
-	AnimalService animalservice;
+	AnimalService animalService;
 	
 	@Autowired
 	AcceptRecordService acceptRecordService;
@@ -24,7 +24,7 @@ public class AcceptRecordController {
 	@RequestMapping(value = "/halfway/toacceptrecord") // findAll
 	public String listAcceptRecord(Model model) {
 		// 設定當前會員
-		Member current = animalservice.getCurrentMember();
+		Member current = animalService.getCurrentMember();
 		model.addAttribute("currentMember", current);
 		return "/halfway/acceptrecordlist";
 	}

@@ -30,7 +30,7 @@ public class AdoptionRestController {
 
 	@Autowired
 	AnimalService animalService;
-	
+
 	@Autowired
 	MemberService memberService;
 
@@ -56,18 +56,29 @@ public class AdoptionRestController {
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
-	// 新增
+	// 新增，回傳id
 	@RequestMapping(value = { "/halfway/adoption" }, method = RequestMethod.POST)
 	public ResponseEntity<?> addAdoption(@RequestBody Adoption adoption) {
-
 		// 設定送出時間
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		adoption.setRequestDate(ts);
 		// 設定登入的會員
 		Member current = animalService.getCurrentMember();
 		adoption.setMember(current);
-
 		adoptionService.insert(adoption);
+		// 設定 id
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("id", adoption.getId());
+		response.setParameters(parameter);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+	
+	 // 更新自我檢測分數
+	@RequestMapping(value = { "/halfway/adoption/{id}" }, method = RequestMethod.PUT)
+	public ResponseEntity<?> updateAdoption(@PathVariable Long id, @RequestBody Map<String, Integer> map) {
+		Adoption adoption = adoptionService.getOne(id);
+		adoption.setScore(map.get("score"));
+		adoptionService.update(adoption);
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
@@ -90,13 +101,22 @@ public class AdoptionRestController {
 	}
 
 	// 取得一年內認養次數 (尚未完成)
-	@RequestMapping(value = { "/halfway/aaaaaaaa" }, method = RequestMethod.GET, produces = { "application/json",
+	@RequestMapping(value = { "/halfway/adoption/check" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public  ResponseEntity<?> checkLimit() {
+	public ResponseEntity<?> checkLimit() {
 		Member current = memberService.getNewCurrentMember();
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("check", adoptionService.checkAdoptionLimit(current.getId()));
 		response.setParameters(parameter);
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
+
+	// 取得quiz題目的json格式資料
+	@RequestMapping(value = { "/halfway/quiz" }, method = RequestMethod.GET, produces = { "application/json",
+			"application/xml" })
+	public ResponseEntity<?> listQuiz() {
+		response.setData(adoptionService.genQuiz());
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
 }

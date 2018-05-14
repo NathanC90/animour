@@ -38,8 +38,8 @@ public class Article extends GenericEntity {
 	private String subject;
 
 	@Column(name = "CONTENT", columnDefinition = "TEXT")
-	@NotBlank(message = "content cannot be blank or null")
-	@Size(min = 30, message = "content should not be less than 30 characters")
+//	@NotBlank(message = "content cannot be blank or null")
+//	@Size(min = 30, message = "content should not be less than 30 characters")
 	private String content;
 
 	@Column(name = "POST_TIME")

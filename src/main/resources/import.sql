@@ -1,11 +1,29 @@
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE) 
-VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
-VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address)
-VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address) 
-VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS) 
+VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', 1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS)
+VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區', 1);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Candy','Aa1','Candy Su','C','0900-000000','candy@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Dog','Aa1','Candy Co','D','0900-000000','dog@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Egg','Aa1','Egg u','E','0900-000000','egg@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Fish','Aa1','Fish Su','F','0900-000000','fish@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Google','Aa1','Goo Su','G','0900-000000','google@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Hello','Aa1','Hello Word','Hi','0900-000000','hello@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('IU','Aa1','I u','IEE','0900-000000','i@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Jessi','Aa1','J J','JJ','0900-000000','jj@gmail.com','台北市萬華區',0);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
+VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gmail.com','台北市萬華區',0);
 
  
  
@@ -46,10 +64,10 @@ VALUES ('PET');
 INSERT INTO CATEGORY(NAME) 
 VALUES ('SHARE');
  
-insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID) values ('Tips for Living with a Cat in a Apartment','Cats Can be Good Roommates
-Having a cat living inside the home is known to produce a number of positive health benefits for people. Pets – especially cats - are increasingly being allowed in many rental units. Even dogs - especially small ones – are finding their way into apartments in both urban and suburban settings. Indoor living also has quite a few advantages for the cats: they are at much less risk of being hit by cars, getting into fights, getting lost, becoming pregnant or impregnating other cats, catching contagious diseases and becoming infested with external and internal parasites. Cats are among the best-suited of all companion animals to living their lives entirely inside of an apartment or other small dwelling. However, before bringing a cat into a home, rented or otherwise, prospective owners should consider whether or not this arrangement is going to be right for them, and for their cats, over the long haul.','1999-01-08 04:05:06','1999-01-08 04:05:06',1,0,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID,images) values ('Tips for Living with a Cat in a Apartment','Cats Can be Good Roommates
+Having a cat living inside the home is known to produce a number of positive health benefits for people. Pets – especially cats - are increasingly being allowed in many rental units. Even dogs - especially small ones – are finding their way into apartments in both urban and suburban settings. Indoor living also has quite a few advantages for the cats: they are at much less risk of being hit by cars, getting into fights, getting lost, becoming pregnant or impregnating other cats, catching contagious diseases and becoming infested with external and internal parasites. Cats are among the best-suited of all companion animals to living their lives entirely inside of an apartment or other small dwelling. However, before bringing a cat into a home, rented or otherwise, prospective owners should consider whether or not this arrangement is going to be right for them, and for their cats, over the long haul.','1999-01-08 04:05:06','1999-01-08 04:05:06',1,0,1,'https://i.imgur.com/gYOdLju.jpg');
 
-insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID) values ('Living with Cats in Apartments: How to Make It Work in a Tiny Space','I’m almost living the dream. Well, my dream. My tiny dream. While some people dream about mansions or penthouses, I dream of wee little homes on wheels with snug lofts and crannies. I don’t quite have my wheeled house of dreams yet, but in moving to Japan I got pretty darn close. My apartment is the smallest I’ve ever inhabited, and I LOVE IT. But living with cats in apartments does have its challenges:','2015-01-07 00:00:00','2015-01-07 00:00:00',1,0,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,CATEGORY_ID,images) values ('Living with Cats in Apartments: How to Make It Work in a Tiny Space','I’m almost living the dream. Well, my dream. My tiny dream. While some people dream about mansions or penthouses, I dream of wee little homes on wheels with snug lofts and crannies. I don’t quite have my wheeled house of dreams yet, but in moving to Japan I got pretty darn close. My apartment is the smallest I’ve ever inhabited, and I LOVE IT. But living with cats in apartments does have its challenges:','2015-01-07 00:00:00','2015-01-07 00:00:00',2,0,2,'https://i.imgur.com/gYOdLju.jpg');
 
 
 insert into comment (content,update_Time,Article_Id,Member_Id) values ('nice!','2018-04-01 00:00:00',1,1);
@@ -154,45 +172,45 @@ insert into classify (name) values('寵物用品');
 insert into classify (name) values('寵物玩具');
 insert into classify (name) values('其它');
 
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365, '2018-3-3', 'dddddddddddddddddddd', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150, '2018-3-9', 'eeeeeeeeeeeeeeeee', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365, '2018-2-10', 'fffffffffffffffff', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100, '2018-2-15', 'gggggggggggggggg', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90, '2018-3-22', 'hhhhhhhhhhhhhh', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180, '2018-4-2', 'iiiiiiiiiiiiii', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 2);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 2);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365, '2018-3-3', 'dddddddddddddddddddd', 2);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150, '2018-3-9', 'eeeeeeeeeeeeeeeee', 2);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365, '2018-2-10', 'fffffffffffffffff', 3);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100, '2018-2-15', 'gggggggggggggggg', 3);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90, '2018-3-22', 'hhhhhhhhhhhhhh', 3);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180, '2018-4-2', 'iiiiiiiiiiiiii', 3);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 4);
-insert into product (NAME, PRICE, QUANTITY, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id)
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4);
 
 /*9 orders*/

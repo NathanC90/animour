@@ -163,7 +163,7 @@
 										width="100px" alt="商品列表">
 									<div class="card-body" style="margin-bottom: 5px">
 											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
-											<p>價格：${product.price}<br>數量：${product.quantity}</p>
+											<p>價格：${product.price}<br>庫存：${product.stock}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>

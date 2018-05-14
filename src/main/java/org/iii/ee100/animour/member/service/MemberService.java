@@ -17,16 +17,18 @@ public class MemberService extends GenericService<Member> {
 	@Autowired
 	MemberDao memberDao;
 	
-	
+	//新增會員
 	public void insert(Member member)  {
 		memberDao.save(member);
 	}
 
+	//會員修改密碼
 	public void update(Member member,String newPassword) {
 		member.setPassword(newPassword);
 		memberDao.save(member);
 	}
 	
+	//會員修改個人資料
 	public void update(Member member)  {
 		Member memberToUpdate=memberDao.findByAccount(member.getAccount());
 		memberToUpdate.setName(member.getName());
@@ -40,7 +42,8 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	
-	public void delete(String account) {
+	//更改會員當前狀態(status:0 close/1 on)
+	public void changeMemberStatus(String account) {
 		Member deletemember = memberDao.findByAccount(account);
 		if(deletemember.getStatus()==1) {
 				deletemember.setStatus(0);}
@@ -48,9 +51,10 @@ public class MemberService extends GenericService<Member> {
 			deletemember.setStatus(1);
 		}
 		memberDao.save(deletemember);
-
 	}
 
+	
+	//查詢會員
 	public Member getOne(Long id) {
 		return memberDao.findOne(id);
 	}
@@ -80,6 +84,7 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	
+	//驗證密碼(會員修改密碼需驗證舊密碼)
 	public boolean validPassword(String password) {
 		if(getNewCurrentMember().getPassword().equals(password)) {
 			return true;
@@ -89,6 +94,7 @@ public class MemberService extends GenericService<Member> {
 		}		
 	}
 	
+	//判斷信箱是否重複
 	public boolean emailExist(String email) {
         Member member = memberDao.findByEmail(email);
         if (member != null) {
@@ -96,6 +102,8 @@ public class MemberService extends GenericService<Member> {
         }
         return false;
 	}
-	
+
+
+ 	
 }
 

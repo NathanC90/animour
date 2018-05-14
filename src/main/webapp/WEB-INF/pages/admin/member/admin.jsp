@@ -144,7 +144,7 @@
 					<th>會員信箱</th>
 					<th>會員地址</th>
 					<th>會員狀態</th>
-<!-- 					<th> -->
+					<th>管理
 <!-- 						<div class="btn-group"> -->
 <!-- 							<button type="button" class="btn btn-outline-primary" title="修改"> -->
 <!-- 								<span class="icon icon-pencil"></span> -->
@@ -153,20 +153,20 @@
 <!-- 								<span class="icon icon-erase"></span> -->
 <!-- 							</button> -->
 <!-- 						</div> -->
-<!-- 					</th> -->
+					</th>
 				</tr>
 			</thead>
 			<tbody>
-			<tr>
-					<td><p type="text" class="select-row">#10001</p></td>
-					<td>ViewSonic</td>
-					<td>Alex Wu</td>
-					<td>Alex</td>
-					<td>09123456789</td>
-					<td>alex@gmail.com</td>
-					<td>台北市大安區信義路三段100號</td>
-					<td>on</td>
-				</tr>
+<!-- 			<tr> -->
+<!-- 					<td><p type="text" class="select-row">#10001</p></td> -->
+<!-- 					<td>ViewSonic</td> -->
+<!-- 					<td>Alex Wu</td> -->
+<!-- 					<td>Alex</td> -->
+<!-- 					<td>09123456789</td> -->
+<!-- 					<td>alex@gmail.com</td> -->
+<!-- 					<td>台北市大安區信義路三段100號</td> -->
+<!-- 					<td>on</td> -->
+<!-- 				</tr> -->
 			</tbody>
 		</table>
 	</div>
@@ -232,11 +232,11 @@
 <script src="../admin/assets/js/application.js"></script>
 <script>
       $(document).ready(function() {
-    	  $.getJSON('/user', {  }, function (data) {
+    	  $.getJSON('/api/member/all', {  }, function (data) {
     	          console.log(data);
     	          $('#table1>tbody').empty();
     	          $.each(data, function (i, member) {
-    	        	  var cell1 = $("<td></td>").html('<p type="text" class="select-row">#0001</p>');
+    	        	  var cell1 = $("<td></td>").text(member.id);
     	              var cell2 = $("<td></td>").text(member.account);
 
     	              var cell3 = $("<td></td>").text(member.name);
@@ -245,13 +245,30 @@
     	              var cell6 = $("<td></td>").text(member.email);
     	              var cell7 = $("<td></td>").text(member.address);
     	              
-    	              if (member.status=0 ){
-    	              var cell8 = $("<td></td>").text('封鎖');}
+    	              if (member.status==0 ){
+    	              var cell8 = $("<td></td>").text('close');}
     	              else{
-    	             	var cell8 = $("<td></td>").text('正常');}
+    	             	var cell8 = $("<td></td>").text('on');}
+   	
+    	              	var span01=$('<span></span>').addClass('icon icon-pencil');
+						var button01=$('<button></button>').attr({'type':'button','title':'修改'}).addClass('btn btn-outline-primary').append(span01);
+    	              	var span02=$('<span></span>').addClass('icon icon-erase');
+						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
+    	              	var span03=$('<span></span>').addClass('icon icon-mail');
+						var button03=$('<button></button>').attr({'type':'button','title':'寄送電子郵件'}).addClass('btn btn-outline-primary').append(span03);
 
+	  					var divb1=$('<div></div>').addClass('btn-group').append([button01]);
+						var divf1=$('<div></div>').addClass('flextable-item').append(divb1);
+	  					var divb2=$('<div></div>').addClass('btn-group').append([button02]);
+						var divf2=$('<div></div>').addClass('flextable-item').append(divb2);
+	  					var divb3=$('<div></div>').addClass('btn-group').append([button03]);
+						var divf3=$('<div></div>').addClass('flextable-item').append(divb3);
 
-    	              var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
+						
+						
+						var cell09=$('<td></td>').append([divf1, divf2, divf3]);
+    	              
+ 	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell09]);
 
     	              $('#table1>tbody').append(row);
     	          });

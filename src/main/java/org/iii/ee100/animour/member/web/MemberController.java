@@ -1,12 +1,13 @@
 ﻿package org.iii.ee100.animour.member.web;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
+import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Password;
@@ -32,6 +33,9 @@ public class MemberController {
 
 	@Autowired
 	AnimalService animalService;
+	
+	@Autowired
+	ForumService forumService;
 
 	// 導向註冊頁面
 	@RequestMapping(value = "/sign_up", method = RequestMethod.GET)
@@ -118,7 +122,7 @@ public class MemberController {
 	// 刪除會員(管理員才有資格)
 	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
 	public String delete(String account, Model model) {
-		memberService.delete(account);
+		memberService.changeMemberStatus(account);
 		return "redirect:/admin/user";// 回到主頁
 	}
 
@@ -131,15 +135,34 @@ public class MemberController {
 	// 顯示個人首頁
 	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
 	public String profile(Model model, @PathVariable String account) {
-		Member userDetails = memberService.getOneByAccount(account);
+//		Member userDetails = memberService.getOneByAccount(account);
+		Member userDetails=memberService.getNewCurrentMember();
 		model.addAttribute("member", userDetails);
-
+		System.out.println("userdetails"+userDetails.getAccount());
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
-
+		List<Article> artls=forumService.getArticlesByMemberId(userDetails.getId());
+		System.out.println("userdetails::"+userDetails.getAccount());
+		model.addAttribute("articles", artls);
 		return "/member/homepage";
-
 	}
+	
+	// post
+	@RequestMapping(value="/forgetpassword",method=RequestMethod.POST)
+	public String forgetPassword(@RequestParam(value="account") String account,@RequestParam(value="email") String email) {
+		if(memberService.emailExist(email) && memberService.getOneByAccount(account)!=null &&
+		   memberService.getOneByAccount(account).getEmail().equals(email)){
+			//寄信
+			String text="012A4a";
+			
+			mailService.sendEmail(email, "Animour密碼", text);
+			return "redirect:/";
+
+		}else {
+		return "/login";
+		}
+	}	
+	
 
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
@@ -156,20 +179,22 @@ public class MemberController {
 	
 	
 	// 前往mail寄信頁面
-		@RequestMapping(value = "/mailto", method = RequestMethod.GET)
-		public String mailPage() {
-			return "/member/mail";
-
+	@RequestMapping(value = "/mailto", method = RequestMethod.GET)
+	public String mailPage() {
+		return "/member/mail";
 		}
 		
-		@Autowired
-		EmailService mailService;
+	@Autowired
+	EmailService mailService;
 		
-		@RequestMapping(value = "/mailto", method = RequestMethod.POST)
-		public String mailSussese(@RequestParam(value="email") String email,
-				@RequestParam(value="subject") String subject,
-				@RequestParam(value="text") String text) {
+	@RequestMapping(value = "/mailto", method = RequestMethod.POST)
+	public String mailSussese(@RequestParam(value="email") String email,
+			@RequestParam(value="subject") String subject,
+			@RequestParam(value="text") String text) {
 			mailService.sendEmail(email,subject, text);
 			return "/member/mail";
 		}
+		
+		
+		
 }

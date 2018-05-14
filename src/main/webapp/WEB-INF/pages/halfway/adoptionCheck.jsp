@@ -119,10 +119,10 @@
 							<td>${adoption.requestDate}</td>
 							<td>${adoption.requestComment}</td>
 							<td><button type="button"
-									onclick="location.href='/halfway/adoptionCheck?acceptRequest=true&id=${adoption.id}';"
+									onclick="location.href='/halfway/adoptionHandle?acceptRequest=true&id=${adoption.id}';"
 									class="btn btn-common btn-sm mt-10">接受</button>
 								<button type="button"
-									onclick="location.href='/halfway/adoptionCheck?acceptRequest=false&id=${adoption.id}';"
+									onclick="location.href='/halfway/adoptionHandle?acceptRequest=false&id=${adoption.id}';"
 									class="btn btn-common btn-sm mt-10">拒絕</button></td>
 						</tr>
 						</c:forEach>

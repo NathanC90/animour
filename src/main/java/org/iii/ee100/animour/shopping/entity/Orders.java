@@ -22,8 +22,6 @@ import lombok.Setter;
 @Table(name="ORDERS")
 public class Orders extends GenericEntity {
 	
-//	@Column(name="NAME")
-//	private String name;
 	@Column(name="TOTALAMOUNT")
 	private Integer totalAmount;
 	@Column(name="ORDERDATE")

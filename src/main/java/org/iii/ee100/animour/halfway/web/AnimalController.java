@@ -1,28 +1,20 @@
 package org.iii.ee100.animour.halfway.web;
 
-import java.sql.Timestamp;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.http.HttpServletRequest;
 
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
 import org.iii.ee100.animour.halfway.service.AnimalService;
-import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class AnimalController {
@@ -30,7 +22,8 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
-	@RequestMapping(value = "/halfway") // findAll
+	// 首頁，list
+	@RequestMapping(value = "/halfway") 
 	public String listPage(Model model) {
 		// 設定當前會員
 		Member current = animalservice.getCurrentMember();
@@ -42,7 +35,7 @@ public class AnimalController {
 		return "/halfway/list";
 	}
 
-	// 轉跳至詳情頁面
+	// 轉跳至動物詳情，提出認養請求頁面
 	@RequestMapping(value = "/halfway/detail", method = { RequestMethod.GET })
 	public String animalDetail(Long id, Model model) {
 		Animal animal = animalservice.getOne(id);
@@ -53,36 +46,14 @@ public class AnimalController {
 		return "/halfway/animalDetail";
 	}
 
-	// 轉跳至insert表單
-	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.GET })
-	public String animalForm(Model model) {
+	// 轉跳至新增動物表單
+	@RequestMapping(value = "/halfway/addAnimal", method = { RequestMethod.GET })
+	public String addPage(Model model) {
 		Animal an = new Animal();
 		model.addAttribute("animal", an);
 		List<City> citys = animalservice.getAllCity();
 		model.addAttribute("citys", citys);
-		return "/halfway/insertAnimalForm";
-	}
-
-	// 接收使用者提送表單， Spring mvc架構中，用Multipart 讀取表單中上傳的檔案
-	// @RequestParam = request.getParameter("file")
-	@RequestMapping(value = "/insertAnimal", method = { RequestMethod.POST })
-	public String insertAnimal(@RequestParam(value = "file", required = false) MultipartFile image,
-			@ModelAttribute("animal") Animal an, HttpServletRequest request, Model model) {
-		// 設定當前會員
-		Member current = animalservice.getCurrentMember();
-		an.setMember(current);
-		// 普通表單
-		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		an.setUpload(ts);
-		// 先insert，才能取得自動生成的id，做為儲存圖片的檔名
-		animalservice.insert(an);
-		String fileName = animalservice.readImage(image, request, an);
-
-		an.setFileName(fileName);
-		// 儲存圖片之後，更新檔名
-		animalservice.update(an);
-		model.addAttribute("inanimal", an);
-		return "/halfway/insertSuccess";
+		return "/halfway/add";
 	}
 
 	// 轉跳至update表單
@@ -93,29 +64,6 @@ public class AnimalController {
 		List<City> citys = animalservice.getAllCity();
 		model.addAttribute("citys", citys);
 		return "/halfway/add";
-	}
-
-	// 送出update 表單
-	@RequestMapping(value = "/halfway/updateAnimal", method = { RequestMethod.POST })
-	public String updateAnimal(@RequestParam(value = "file", required = false) MultipartFile image, Animal an,
-			HttpServletRequest request, Model model) {
-		// 普通表單
-		Timestamp ts = new Timestamp(System.currentTimeMillis());
-		an.setUpload(ts);
-		animalservice.readImage(image, request, an);
-		animalservice.update(an);
-		model.addAttribute("inanimal", an);
-
-		return "/halfway/insertSuccess";
-	}
-
-	@RequestMapping("/selectOneAnimal")
-	public String findOneAnimal(Animal an, Model model) {
-		an = animalservice.getOne(an.getId());
-		if (an != null) {
-			model.addAttribute("animal", an);
-		}
-		return "/halfway/FindAnimal";
 	}
 
 	// 生成表單下拉式選單欄位
@@ -135,12 +83,4 @@ public class AnimalController {
 		return animalservice.setSpecie();
 	}
 
-	@RequestMapping(value = "/add", method = { RequestMethod.GET })
-	public String addPage(Model model) {
-		Animal an = new Animal();
-		model.addAttribute("animal", an);
-		List<City> citys = animalservice.getAllCity();
-		model.addAttribute("citys", citys);
-		return "/halfway/add";
-	}
 }

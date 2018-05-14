@@ -82,8 +82,7 @@
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">${member.account}</p>
-										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}
-										</p>
+										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}</p>
 										<small class="text-muted"></small>
 
 										<div class="d-flex justify-content-between align-items-center"
@@ -103,12 +102,14 @@
 						<!-- Category -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
-							<h2 class="widget-title">Category</h2>
+							<h2 class="widget-title">${member.account}</h2>
+							<ul></ul>
 							<ul class="category-menu">
 								<li><a href="#">xxxx</a></li>
-								<li><a href="#">個人收藏</a></li>
+								<li><a href="#">我的最愛</a></li>
 								<li><a href="/update">修改個人資料</a></li>
-								<li><a href="/logout">登出</a></li>
+								<li><a href="/">通知</a></li>								
+<!-- 								<li><a href="/logout">登出</a></li> -->
 							</ul>
 						</aside>
 						<!-- Subscribe Widget -->
@@ -123,31 +124,31 @@
 					<!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
 
-					<h3>個人首頁</h3>
+					<h3>${member.account}的個人首頁</h3>
 
-					<table id="table1"
-						class="table table-bordered table-striped table-hover">
+<!-- 					<table id="table1" -->
+<!-- 						class="table table-bordered table-striped table-hover"> -->
 
-						<tbody>
-							<tr>
-								<td>帳號</td>
-								<td id="acco">${member.account}</td>
-								<td></td>
-							</tr>
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<!-- 								<td>帳號</td> -->
+<%-- 								<td id="acco">${member.account}</td> --%>
+<!-- 								<td></td> -->
+<!-- 							</tr> -->
 
-							<tr>
-								<td></td>
-								<td>${profile.nickname}</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>登入次數</td>
-								<td></td>
-								<td></td>
-							</tr>
+<!-- 							<tr> -->
+<!-- 								<td></td> -->
+<%-- 								<td>${profile.nickname}</td> --%>
+<!-- 								<td></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td>登入次數</td> -->
+<!-- 								<td></td> -->
+<!-- 								<td></td> -->
+<!-- 							</tr> -->
 
-						</tbody>
-					</table>
+<!-- 						</tbody> -->
+<!-- 					</table> -->
 					<h3>已發過的動物資料</h3>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
@@ -177,6 +178,49 @@
 				</c:forEach>
 				</div>				
 					<!-- 每頁不同的內容到這裡結束 -->
+				<h3>發文過的資料</h3>
+				<!-- Row Starts -->
+			<div class="row">
+				<c:forEach var="article" items="${articles}">
+				<div class="col-md-5 card mb-5 box-shadow">
+<!-- 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
+						<!-- Blog Item Starts -->
+						<div class="blog-item-wrapper" style="height: 405px;">
+							<div class="blog-item-img">
+								<a href="/forum/findOne?id=${article.id}"> <img width="300px" src="/images/adopt/cats/ad-cat1.jpg"
+									alt="">
+								</a>
+							</div>
+							<div class="blog-item-text">
+
+								<h3 class="small-title" style="height: 60px;">
+
+									<a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
+
+								</h3>
+
+								<p
+									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+									<c:out value="${article.content}"/></p>
+								<div class="blog-one-footer">
+									<a href="/forum/findOne?id=${article.id}">Read More</a> <a
+										href="#"> <i class="icon-heart"></i> 0 Likes
+									</a> <a href="/forum/findOne?id=${article.id}#comment"> <i
+										class="icon-bubbles"></i> ${article.commentLength} Comments
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+
+
+				<!-- Blog Item Wrapper Ends-->
+
+
+			
+				
+				
 				
 				</div>
 				<!-- Blog Pagination -->

@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!doctype html>
-<html lang="zh-tw">
+<html lang="en">
+
+<head>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -38,7 +39,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animal Shelter</title>
+<title>新增送養動物</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -61,80 +62,83 @@
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
 
+
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-<script src="/js/jquery-min.js"></script>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
+    </script>
+    <![endif]-->
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 </head>
+
 <body>
-	<!-- Header area wrapper starts -->
-	<header id="header-wrap">
-		<jsp:include page="../navbar.jsp"></jsp:include>
-	</header>
-	<!-- Header-wrap Section End -->
-
-	<!-- Page Header -->
-	<div class="page-header-section">
-		<div class="container">
-			<div class="row">
-				<div class="page-header-area">
-					<div class="page-header-content">
-						<h2>購物清單</h2>
-					</div>
-				</div>
-			</div>
-		</div>
+	<h1>自我檢測問卷</h1>
+	<div>
+	<input type="button" id="submitquiz" class="btn btn-common" value="作答完畢，送出問卷">
 	</div>
-	<!-- Page Header End -->
+	<script>
+					document.addEventListener("DOMContentLoaded", function () {
+						document.getElementById("submit").addEventListener("click", add);
 
-	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-				<form action="/cart/update" method="POST">
-					<table class="table" border="1">
-						<thead class="thead-dark">
-							<tr>
-								<td>品名</td>
-								<td>價格</td>
-								<td>數量
-									<input value="update" type="submit">
-								</td>
-								<td>小計</td>
-								<td>Option</td>
-							</tr>
-						</thead>
-						<c:set var="total" value="0"></c:set>
-						<c:forEach var="cartItem" items="${sessionScope.cart}"
-							varStatus="i">
-							<c:set var="total"
-								value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-							<tr>
-								<td>${cartItem.product.name}</td>
-								<td>${cartItem.product.price}</td>
-								<td>
-									<input type="number" value="${cartItem.quantity}" min="0" 
-										max="${cartItem.product.stock}" name="quantity">
-								</td>
-								<td>${cartItem.product.price * cartItem.quantity}</td>
-								<td><a href="/cart/delete/${i.index}">刪除</a></td>
-							</tr>
-						</c:forEach>
-						<tr>
-							<td colspan="4"><span>總價</span></td>
-							<td>${total}元</td>
-						</tr>
-					</table>
-				</form>
-			</div>
-			<a href="/product/index" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
-			<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;
-			<a href="/cart/confirmBuy" class='btn btn-warning btn-large'> <span
-							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
-		</div>
-	</section>
+						$(document).ready(function () {
+
+						});
+					});
+
+					function add() {
+						alert("有被呼叫")
+						var data = new FormData(document.getElementById("addAnimal"));
+						// data.append("sss", "qqq");
+						console.log(data);
+
+						//https://stackoverflow.com/questions/17066875/how-to-inspect-formdata
+						for (var pair of data.entries()) {
+							console.log(pair[0] + ', ' + pair[1]);
+						}
+
+						//var json = toJson(data);
+
+						$.ajax({
+							url: '/halfway/animal',
+							type: 'POST',
+							data: data,
+							//data: json,
+							//dataType: 'json',
+							//processData: false,
+							//contentType: "application/json",
+							//contentType: "multipart/form-data",
+							//enctype: 'multipart/form-data',
+							contentType: false,
+							processData: false,
+							success: function (data) {
+								window.location.href = "http://localhost:8080/halfway";
+							}
+						});
+
+					}
+
+					function toJson(formData) {
+						var object = {};
+						formData.forEach(function (value, key) {
+							if (key == 'city') {
+								var object1 = {};
+								object1['id'] = value;
+								object[key] = object1;
+							} else {
+								object[key] = value;
+							}
+						});
+						var json = JSON.stringify(object, null);
+						console.log(json);
+						return json;
+					};
+				</script>
 </body>
+
 </html>
