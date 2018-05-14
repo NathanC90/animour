@@ -22,6 +22,8 @@ public interface ArticleDao extends GenericDao<Article> {
 	Page<Article> findBySubjectContainingIgnoreCase(String subject, Pageable pageable);
 
 	List<Article> findByCategoryId(Long categoryId);
+	
+	List<Article> findByMemberId(Long memberId);
 
 	Page<Article> findByCategoryId(Long categoryId, Pageable pageable);
 }

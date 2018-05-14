@@ -125,5 +125,10 @@ public class ForumService extends GenericService<Article> {
 		}
 		return categoryList;
 	}
+	
+	//getArticlesByMemberId
+	public List<Article> getArticlesByMemberId(Long Id) {
+		return articleDao.findByCategoryId(Id);
+	}
 
 }
