@@ -188,7 +188,7 @@
 									<option value="designer" label="請選擇美容師" />
 								</select>
 								服務類別:
-								<select id="content" class="form-control" name="content">
+								<select id="servicer" class="form-control" name="content">
 									<option value="content" label="請選擇類別" />
 
 								</select>
@@ -410,7 +410,7 @@
 							$.each(data, function (i, a) {
 								var cell1 = $("<option></option>").text(a.content);
 								var cell2 = $("<option></option>").text(a.price);
-								$('#content').append(cell1);
+								$('#servicer').append(cell1);
 
 								$('#price').append(cell2);
 
