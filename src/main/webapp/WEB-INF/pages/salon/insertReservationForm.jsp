@@ -183,36 +183,29 @@
 											</ul> -->
 								預約日期
 								<input class="form-group col-md-8" id="meeting" type="date" name="reservationDate" />
+								<br> 美容師:
+								<select id="designer" class="form-control" name="designer">
+									<option value="designer" label="請選擇美容師" />
+								</select>
+								服務類別:
+								<select id="content" class="form-control" name="content">
+									<option value="content" label="請選擇類別" />
+
+								</select>
+								時段:
+								<select id="frontTime" class="form-control" name="frontTime">
+									<option value="frontTime" label="請選擇時段" />
+
+								</select>
 
 
-								<div class="form-group col-md-8">
-									美容師:
-									<select id="designer" class="form-control" name="designer">
-										<option value="designer" label="請選擇美容師" />
-									</select>
-								</div>
-								<div class="form-group col-md-8">
-									服務類別:
-									<select id="content" class="form-control" name="content">
-										<option value="content" label="請選擇類別" />
+								價位：
+								<select id="price" class="form-control" name="price">
+									<option value="price" label="請選擇價位" />
 
-									</select>
-									時段:
-									<select id="frontTime" class="form-control" name="frontTime">
-										<option value="frontTime" label="請選擇時段" />
-
-									</select>
+								</select>
 
 
-									價位：
-									<select id="price" class="form-control" name="price">
-										<option value="price" label="請選擇價位" />
-
-									</select>
-								</div>
-
-
-								<br>
 								<!-- <form action="/" id="searchForm">
 													<input type="text" name="s" placeholder="Search...">
 													<input type="submit" value="Search">
