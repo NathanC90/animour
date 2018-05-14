@@ -82,164 +82,215 @@
             <!-- Page Header End -->
 
             <section class="contact2-section section">
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#imgOpts" aria-expanded="true" aria-controls="imgOpts">
-                            Customize
-                        </button>
-                        <div id="imgOpts" class="collapse" style="">
-                                <form autocomplete="off" class="mb-4 p-3">
-                            
-                                    <div class="form-group row">
-                                        <div class="col-sm-6">
-                                            <label for="animationEffect">
-                                                Open/close animation type
-                                            </label>
-                                            <select id="animationEffect" class="form-control">
-                                                <option value="zoom">zoom</option>
-                                                <option value="fade">fade</option>
-                                                <option value="slide">slide</option>
-                                                <option value="rotate">rotate</option>
-                                                <option value="circular">circular</option>
-                                                <option value="tube">tube</option>
-                                                <option value="zoom-in-out">zoom-in-out</option>
-                                                <option value="" style="font-style:italic;color:#888;">none</option>
-                                            </select>
-                                        </div>
-                            
-                                        <div class="col-sm-6">
-                                            <label for="transitionEffect">
-                                                Transition effect between slides
-                                            </label>
-                                            <select id="transitionEffect" class="form-control">
-                                                <option value="fade">fade</option>
-                                                <option value="slide">slide</option>
-                                                <option value="rotate">rotate</option>
-                                                <option value="circular">circular</option>
-                                                <option value="tube">tube</option>
-                                                <option value="zoom-in-out">zoom-in-out</option>
-                                                <option value="" style="font-style:italic;color:#888;">none</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                            
-                                    <div class="form-group row">
-                                        <label class="col-md-2">
-                                            Buttons
-                                        </label>
-                            
-                                        <div class="col-md-10">
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="slideShow"> Slideshow
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="fullScreen"> Fullscreen
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="zoom" checked="checked"> Zoom
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="thumbs" checked="checked"> Thumbnails
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="share"> Share
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="download"> Download
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="arrowLeft"> Left arrow
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input buttons" type="checkbox" value="arrowRight"> Right arrow
-                                                </label>
-                                            </div>
-                            
-                                        </div>
-                                    </div>
-                            
-                                    <div class="form-group row">
-                                        <label class="col-md-2">
-                                            Elements
-                                        </label>
-                            
-                                        <div class="col-md-10">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input toggle" id="arrows" value="1" checked="checked"> Navigation arrows
-                                                </label>
-                                            </div>
-                            
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input toggle" id="infobar" value="1" checked="checked"> Counter
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input type="checkbox" class="form-check-input toggle" id="thumbs" value="1"> Thumbnails
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                            
-                                    <div class="form-group row mb-0">
-                                        <label class="col-md-2">
-                                            Translation
-                                        </label>
-                            
-                                        <div class="col-md-4">
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="lang" value="en" checked="checked"> English
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="lang" value="de"> German
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 text-right">
-                                            <small>
-                                                <a href="https://fancyapps.com/fancybox/3/docs/#options" target="_blank">
-                                                    Full list of options
-                                                </a>
-                                            </small>
-                                        </div>
-                                    </div>
-                                </form>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#imgOpts" aria-expanded="true" aria-controls="imgOpts">
+                    Customize
+                </button>
+                <!--Collapse Start -->
+                <div id="imgOpts" class="collapse" style="">
+                    <form autocomplete="off" class="mb-4 p-3">
+
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <label for="animationEffect">
+                                    Open/close animation type
+                                </label>
+                                <select id="animationEffect" class="form-control">
+                                    <option value="zoom">zoom</option>
+                                    <option value="fade">fade</option>
+                                    <option value="slide">slide</option>
+                                    <option value="rotate">rotate</option>
+                                    <option value="circular">circular</option>
+                                    <option value="tube">tube</option>
+                                    <option value="zoom-in-out">zoom-in-out</option>
+                                    <option value="" style="font-style:italic;color:#888;">none</option>
+                                </select>
                             </div>
+
+                            <div class="col-sm-6">
+                                <label for="transitionEffect">
+                                    Transition effect between slides
+                                </label>
+                                <select id="transitionEffect" class="form-control">
+                                    <option value="fade">fade</option>
+                                    <option value="slide">slide</option>
+                                    <option value="rotate">rotate</option>
+                                    <option value="circular">circular</option>
+                                    <option value="tube">tube</option>
+                                    <option value="zoom-in-out">zoom-in-out</option>
+                                    <option value="" style="font-style:italic;color:#888;">none</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2">
+                                Buttons
+                            </label>
+
+                            <div class="col-md-10">
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="slideShow"> Slideshow
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="fullScreen"> Fullscreen
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="zoom" checked="checked"> Zoom
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="thumbs" checked="checked"> Thumbnails
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="share"> Share
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="download"> Download
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="arrowLeft"> Left arrow
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input buttons" type="checkbox" value="arrowRight"> Right arrow
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2">
+                                Elements
+                            </label>
+
+                            <div class="col-md-10">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input toggle" id="arrows" value="1" checked="checked"> Navigation arrows
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input toggle" id="infobar" value="1" checked="checked"> Counter
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input toggle" id="thumbs" value="1"> Thumbnails
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <label class="col-md-2">
+                                Translation
+                            </label>
+
+                            <div class="col-md-4">
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="lang" value="en" checked="checked"> English
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio" name="lang" value="de"> German
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <small>
+                                    <a href="https://fancyapps.com/fancybox/3/docs/#options" target="_blank">
+                                        Full list of options
+                                    </a>
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--Collapse End -->
+
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-4 contact-info-section">
+                            <div class="contact-widget office-location">
+                                <h2>Office Location</h2>
+                                <ul class="contact-info2">
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-map-marker"></i> Address:</strong> 2367 Nash Street , Dearborn, Michigan</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-envelope"></i> Mail Us:</strong>
+                                            <a href="#">yourmail@gmail.com</a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-phone"></i> Phone:</strong> +313-240-4015</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-print"></i> Fax:</strong> +313-555-4015</p>
+                                    </li>
+                                </ul>
+                                <address>
+                                    <i class="fa fa-map-marker icon-box icon-xs"></i>4211, 2367 Nash Street , Dearborn, Michigan
+                                    <br>
+                                    <i class="fa fa-phone icon-box icon-xs"></i> 313-240-4015
+                                    <br>
+                                    <a href="mailto:#">
+                                        <i class="fa fa-envelope icon-box icon-xs"></i> yourmail@gmail.com</a>
+                                </address>
+                            </div>
+                            <div class="contact-widget office-location">
+                                <h2>Contact Hours</h2>
+                                <address>
+                                    <p>
+                                        <i class="fa fa-clock-o icon-box icon-xs"></i>
+                                        <span>Mon - Fri:</span> 9.00 AM - 6.00 PM</p>
+                                </address>
+                            </div>
+                            <div class="contact-widget social-contact" id="socialicon">
+                                <h2>Social Quick Links</h2>
+                            </div>
+                        </div>
                         <div class="col-md-8">
                             <h1 class="section-title text-left">CONTACT WITH US</h1>
                             <p class="section-subcontent mb-30 text-left">At vero eos et accusamus et iusto odio dignissimos ducimus qui
                                 <br> blanditiis praesentium</p>
                             <form method="post" role="form" class="mt-30 shake" id="contactForm" name="contact-form" data-toggle="validator">
                                 <div class="row" id="test">
-                                    
+
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="message" class="sr-only">Message</label>
@@ -331,12 +382,13 @@
             <script src="/js/main.js"></script>
 
             <script>
-                $(document).ready(function(){
+                $(document).ready(function () {
+                    $('#socialicon').append(icon);
                     $('#test').append(test);
 
 
                 });
-            let test=` <div class="col-md-6">
+                let test = ` <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name" class="sr-only">Name</label>
                                             <input type="text" placeholder="Your Name" id="name" class="form-control contact-control" name="name" required data-error="Please enter your name">
@@ -355,11 +407,27 @@
                                                 data-error="Please enter your message subject">
                                             <div class="help-block with-errors"></div>
                                         </div>
-                                    </div>`
-            
-            
+                                    </div>`;
+                let icon = ` <a href="#">
+                                    <i class="fa fa-facebook icon-round icon-xs"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-twitter icon-round icon-xs"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-linkedin icon-round icon-xs"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-google-plus icon-round icon-xs"></i>
+                                </a>
+                                <a href="#">
+                                    <i class="fa fa-github icon-round icon-xs"></i>
+                                </a>`
+
+
+
+
             </script>
         </body>
 
         </html>
-       
