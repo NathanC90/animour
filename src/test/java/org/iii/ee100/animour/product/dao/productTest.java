@@ -12,6 +12,9 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.iii.ee100.animour.member.dao.MemberDao;
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.shopping.dao.ClassifyDao;
 import org.iii.ee100.animour.shopping.dao.OrdersDao;
 import org.iii.ee100.animour.shopping.dao.ProductDao;
@@ -52,6 +55,12 @@ public class productTest {
 	
 	@Autowired
 	private OrdersDao orderDao;
+	
+	@Autowired
+	private MemberDao memberDao;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	/**  id > 5
 	 * 測試帶查詢條件的分頁
@@ -254,10 +263,73 @@ public class productTest {
 	}
 */
 	
+	//查訂單
 	@Test
-	public void testDelete() {
-		productDao.delete(2L);
+	public void testMemberOrders() {
+//		Member member = memberDao.findOne(2L);
+//		System.out.println(member.getName());
+//		System.out.println(member.getEmail());
+//		System.out.println(member.getAddress());
+//		System.out.println(member.getCell());
+		
+//		List<Orders> ordersList = member.getOrders();
+//		System.err.println(ordersList.size());
+//		for(Orders orders:ordersList) {
+//			System.out.println("訂單編號=" + orders.getId());
+//			System.out.println("訂單日期=" + orders.getOrderDate());
+//			System.out.println("訂單總金額" + orders.getTotalAmount());
+//			
+//			for(OrdersItem ordersItem:orders.getOrdersItem()) {
+//				System.out.println(ordersItem.getName());
+//			}
+//			System.out.println();
+////			System.out.println(orders.getOrdersItem().size());
+//		}
+		
+		
+		
+//		System.out.println(ordersList.size());
+//		for(int i = 0; i < ordersList.size(); i++) {
+//			System.err.println("訂單編號=" + ordersList.get(i).getId());
+//			System.err.println("訂單日期=" + ordersList.get(i).getOrderDate());
+//			System.err.println("訂單總金額" + ordersList.get(i).getTotalAmount());
+//			
+//			System.out.println("商品編號=" + ordersList.get(i).getOrdersItem().get(i).getId());
+//			System.out.println("商品名稱=" + ordersList.get(i).getOrdersItem().get(i).getName());
+//			System.out.println("商品價格=" + ordersList.get(i).getOrdersItem().get(i).getPrice());
+//			System.out.println("購買數量=" + ordersList.get(i).getOrdersItem().get(i).getQuantity());
+//		}
+		
+//		Orders orders = ordersDao.findOne(2L);
+//		List<OrdersItem> ordersItem = orders.getOrdersItem();
+//		System.out.println(orders.getMember().getName());
+//		System.out.println(orders.getMember().getEmail());
+//		System.out.println(orders.getMember().getAddress());
+//		System.out.println(orders.getMember().getCell());
+//		
+//		for(OrdersItem order:ordersItem) {
+//			System.out.println("商品名稱=" + order.getName());
+//			System.out.println("商品價格=" + order.getPrice());
+//			System.out.println("購買數量=" + order.getQuantity());
+//		}
+//		
+		List<Orders> ordersList = ordersDao.findByMember_id(2L);
+		for(Orders orders:ordersList) {
+			System.out.println(orders.getMember().getName());
+			System.out.println(orders.getOrderDate());
+			System.out.println(orders.getTotalAmount());
+			List<OrdersItem> ordersItem = orders.getOrdersItem();
+			for(OrdersItem order:ordersItem) {
+				System.out.println(order.getName());
+			}
+		}
 	}
+	
+	//刪除一筆商品
+//	@Test
+//	public void testDelete() {
+//		productDao.delete(2L);
+//	}
 	
 //	@Test
 //	public void testGetNewSex() {

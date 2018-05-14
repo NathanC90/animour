@@ -33,7 +33,8 @@ public class Product extends GenericEntity {
 	@Column(name = "DESCRIPTION", length = 2000)
 	private String description;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+//	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="CLASSIFY_ID", nullable = false)
 	private Classify classify;
 

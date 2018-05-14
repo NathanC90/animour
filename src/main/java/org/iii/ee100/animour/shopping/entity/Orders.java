@@ -32,7 +32,7 @@ public class Orders extends GenericEntity {
 	@OneToMany(mappedBy="orders", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<OrdersItem> ordersItem = new ArrayList<OrdersItem>();
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID")
+	@JoinColumn(name="MEMBER_ID", nullable=false)
 	private Member member;
 	
 //	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
