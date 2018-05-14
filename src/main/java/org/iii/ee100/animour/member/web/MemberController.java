@@ -171,8 +171,14 @@ public class MemberController {
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public String admin() {
 		return "/admin/member/admin";
-
 	}
+	// 前往後台頁
+    @PreAuthorize("hasRole('Admin')")
+	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
+	public String adminforum() {
+		return "/admin/forum/admin";
+	}
+    
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {

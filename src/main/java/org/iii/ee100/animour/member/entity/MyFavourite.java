@@ -11,6 +11,11 @@ import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 @Entity
 @Table(name="MYFAVOURITE")
 public class MyFavourite extends GenericEntity{
