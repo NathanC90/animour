@@ -6,6 +6,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.service.AnimalService;
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
@@ -25,6 +28,9 @@ public class FormsRestController {
 	
 	@Autowired
 	ReservationService reservationService;
+	@Autowired
+	MemberService memberService;
+	
 	
 	@RequestMapping(value="/getServiceCotent",method = RequestMethod.GET,produces = { "application/json"})
 	public List<ServiceContent> getServiceCotent(){
@@ -45,7 +51,8 @@ public class FormsRestController {
 	
 	@RequestMapping(method = RequestMethod.POST,produces = { "application/json"})
 	public ResponseEntity<?> insertReservation(@Valid @RequestBody Reservation reservation) throws ParseException {
-	    
+		Member currentMember = memberService.getNewCurrentMember();
+		reservation.setMember(currentMember);
 		 reservationService.repeateOrNot(reservation);
 
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);

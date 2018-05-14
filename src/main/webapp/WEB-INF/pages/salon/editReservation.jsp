@@ -128,6 +128,8 @@
                         <th>designer</th>
                         <th>totalTime</th>
                         <th>price</th>
+                        <th>payment</th>
+                        <th>member_id</th>
                         <th id="notNeed">編輯</th>
 
                       </tr>
@@ -210,59 +212,61 @@
         <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 
         <script>
-          var pageNumber = 1;
+          var datas;
+          var pageNo = 0;
           $(document).ready(function () {
             initSubmitForm();
 
           });
 
 
-
-          var pageNumber = 1;
           var initSubmitForm = function () {
             $(document).ready(function () {
-              $.getJSON('/reservations', { "pageNumber": pageNumber }, function (data) {
-                console.log(data);
-                $.each(data, function (i, reservation) {
-                  var cell1 = $('<td id="NewEdit" class="inputContent"></td>').append(reservation.id);
-                  var cell2 = $('<td id="" class="inputContent"></td>').append(reservation.reservationDate);
-                  var cell3 = $('<td id="" class="inputContent"></td>').text(reservation.frontTime);
-                  var cell4 = $('<td id="" class="inputContent"></td>').text(reservation.content);
-                  var cell5 = $('<td id="" class="inputContent"></td>').text(reservation.designer);
-                  var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
-                  var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
-                  var button1 = $('<button></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger").append('<i class="fas fa-trash-alt"/>');
-                  var button2 = $('<button><i class="fas fa-edit"></i></button>').addClass('btn btn-info');
-                  var p = $('<p></p>')
-                  var cell8 = $('<td id="addNewButton"></td>').append(button1, p, button2);
-
-
-                  // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
-
-                  var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8]);
-
-                  $('#table1').append(row);
-
-
-                })
-
-
-
-              }).done(function () {
-
-                pageNumber++;
-                //判斷下一次取回的json是否為空(是否為最後一頁)
-                $.getJSON('/reservations', { "pageNumber": pageNumber }, function (datas) {
+              $.getJSON('/reservations', { "pageNo": pageNo },
+                function (datas) {
                   console.log(datas);
-                  if (datas.length != 0) {
-                    var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
-                    $('#table1').append(buttonImport);
-                    document.getElementById("importbutt").addEventListener("click", importAgain);
-                  }
+                  $.each(datas, function (i, reservation) {
+                    var cell1 = $('<td id="NewEdit" class="inputContent"></td>').append(reservation.id);
+                    var cell2 = $('<td id="" class="inputContent"></td>').append(reservation.reservationDate);
+                    var cell3 = $('<td id="" class="inputContent"></td>').text(reservation.frontTime);
+                    var cell4 = $('<td id="" class="inputContent"></td>').text(reservation.content);
+                    var cell5 = $('<td id="" class="inputContent"></td>').text(reservation.designer);
+                    var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
+                    var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
+                    var cell8 = $('<td id="" class="inputContent"></td>').text(reservation.payment)
+                    var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
+                    var button1 = $('<button></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger").append('<i class="fas fa-trash-alt"/>');
+                    var button2 = $('<button><i class="fas fa-edit"></i></button>').addClass('btn btn-info');
+                    var p = $('<p></p>')
+                    var cell10 = $('<td id="addNewButton"></td>').append(button1, p, button2);
+
+
+                    // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
+
+                    var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
+
+                    $('#table1').append(row);
+
+
+                  })
+
+
+
+                }).done(function () {
+
+                  pageNo++;
+                  //判斷下一次取回的json是否為空(是否為最後一頁)
+                  $.getJSON('/reservations', { "pageNo": pageNo }, function (datas) {
+                    console.log(datas);
+                    if (datas.length != 0) {
+                      var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
+                      $('#table1').append(buttonImport);
+                      document.getElementById("importbutt").addEventListener("click", importAgain);
+                    }
+                  })
+
+
                 })
-
-
-              })
 
             })
           };

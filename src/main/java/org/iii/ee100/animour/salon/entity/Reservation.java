@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
+import org.iii.ee100.animour.member.entity.Member;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -21,11 +23,17 @@ import lombok.Setter;
 public class Reservation extends GenericEntity{
 	
 	
+	
 	@Override
 	public String toString() {
 		return "Reservation [reservationDate=" + reservationDate + ", frontTime=" + frontTime + ", content="
 				+ content + ", designer=" + designer + ", totalTime=" + totalTime + ", price=" + price + "]";
 	}
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
+	private Member member; 
+
+	
 
 	@Column(name="RESERVATION_DATE")
 	private java.sql.Date reservationDate;
@@ -42,7 +50,10 @@ public class Reservation extends GenericEntity{
 	private Integer totalTime;
 	
 	@Column(name="PRICE")
-	private Integer price;	
+	private Integer price;
+	
+	@Column(name="PAYMENT")
+	private String payment;
 	
 	
 	
