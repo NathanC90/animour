@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdoptionController {
 
 	@Autowired
-	AdoptionService adoptionservice;
+	AdoptionService adoptionService;
 
 	@Autowired
-	AnimalService animalservice;
+	AnimalService animalService;
 
 	// 轉跳至查看認養請求的頁面
 	@RequestMapping(value = "/halfway/showAdoption", method = { RequestMethod.GET })
@@ -33,7 +33,7 @@ public class AdoptionController {
 
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails && principal instanceof Member) {
-			List<Adoption> adoptions = adoptionservice.getCheckAdoption(((Member) principal).getId());
+			List<Adoption> adoptions = adoptionService.getCheckAdoption(((Member) principal).getId());
 			model.addAttribute("adoption", adoptions);
 		} else {
 			String account = principal.toString();
@@ -48,40 +48,39 @@ public class AdoptionController {
 			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an, Model model) {
 		if (acceptRequest) {
 			try {
-				adoption = (Adoption) adoptionservice.getOne(id);
+				adoption = (Adoption) adoptionService.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
 				adoption.setAcceptDate(new Timestamp(System.currentTimeMillis()));
-				adoptionservice.update(adoption);
-				an = ((Adoption) adoptionservice.getOne(id)).getAnimal(); // 這裡的id adoption的id
+				adoptionService.update(adoption);
+				an = ((Adoption) adoptionService.getOne(id)).getAnimal(); // 這裡的id adoption的id
 				an.setStatus("認養洽談中");
-				animalservice.update(an);
+				animalService.update(an);
 			} catch (Exception e) {
 			}
 			return "redirect:/halfway/showAdoption";
 		} else {
 			try {
-				adoption = (Adoption) adoptionservice.getOne(id);
+				adoption = (Adoption) adoptionService.getOne(id);
 				adoption.setAcceptRequest(acceptRequest);
 				adoption.setAcceptDate((new Timestamp(System.currentTimeMillis())));
-				adoptionservice.update(adoption);
+				adoptionService.update(adoption);
 			} catch (Exception e) {
 			}
 			return "redirect:/halfway/showAdoption";
 		}
 	}
 
-	// 轉跳至測驗頁面
-	@RequestMapping(value = "/halfway/quiz", method = { RequestMethod.GET })
-	public String toQuiz(Model model) {
-		System.out.println("+++++++++++++有被呼叫++++++++++++++");
+	// 轉跳至測驗頁面，layout出來，打ajax去呼叫題目
+	@RequestMapping(value = "/halfway/toquiz", method = { RequestMethod.GET })
+	public String toQuiz(Quiz quiz, Model model) {
 		return "/halfway/quiz";
 	}
 
 	// 測驗分數處理
-	@RequestMapping(value = "/halfway/updatescore", method = { RequestMethod.GET })
-	public String updateScore(Quiz quiz, Model model) {
-		int size = adoptionservice.genQuiz(quiz).size();
-		System.out.println("+++++++++++++++"+size+"++++++++++++++++++");
+	@RequestMapping(value = "/halfway/updatescore", method = { RequestMethod.POST })
+	public String updateScore(Model model) {
+		
+		
 		return "/halfway/quiz";
 	}
 
@@ -91,5 +90,5 @@ public class AdoptionController {
 
 		return "/halfway/adoptionDetail";
 	}
-
+	
 }

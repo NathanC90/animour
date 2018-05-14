@@ -83,14 +83,18 @@ public class AdoptionService extends GenericService<Adoption> {
 	}
 
 	// 讀取文字檔的測驗題目，new成物件後，存入collection裡面
-	public List<Quiz> genQuiz(Quiz quiz) {
+	public List<Quiz> genQuiz() {
 		List<Quiz> quizs = new ArrayList<>();
 		try (BufferedReader bufferReader = new BufferedReader(new FileReader("/Users/kevinhsu/Desktop/quiz.txt"));) {
 			String data;
+			Long id = 1L;
 			while ((data = bufferReader.readLine()) != null) {
+				Quiz quiz = new Quiz();
 				quiz.setQuestion(data);
+				quiz.setId(id);
 				quizs.add(quiz);
 				System.out.println(data);
+				id++;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
