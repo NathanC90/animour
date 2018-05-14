@@ -148,6 +148,23 @@
         var categoryId = 0;
         var search = "";
 
+        function formatDate(date) {
+          var monthNames = [
+            "January", "February", "March",
+            "April", "May", "June", "July",
+            "August", "September", "October",
+            "November", "December"
+          ];
+
+          var day = date.getDate();
+          var monthIndex = date.getMonth();
+          var year = date.getFullYear();
+          var HH = ("00" + date.getHours()).slice(-2);
+          var mm =  ("00" + date.getMinutes()).slice(-2);
+
+          return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + HH + ':' + mm;
+        }
+
         $(document).ready(function () {
           $("li[name='category']").click(function () {
             pageNo = 1;
@@ -227,11 +244,11 @@
               if (pageNo <= datas[0].totalPage) {
                 $.each(datas, function (idx, article) {
                   var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id=' + article.id + '">' + article.subject
-                    + '</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">' + new Date(article.postTime)
+                    + '</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="#">' + formatDate(new Date(article.postTime))
                     + '</a></li><li><i class="fa fa-user"></i><a href="#">' + article.member.account
                     + '</a></li><li><i class="fa fa-pencil-square-o"></i><a href="#">' + article.category.name
                     + '</a></li><li><i class="fa fa-comments"></i><a href="#">' + article.commentLength
-                    + 'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images 
+                    + 'comment</a></li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images
                     + '" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
                     + '</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right">'
                     + '<li><span><a href="findOne?id=' + article.id + '"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
