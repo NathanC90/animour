@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page session="true" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -98,13 +97,27 @@
 										class="form-control" type="password" placeholder="Password"
 										name="password">
 								</div>
+							<div class="form-group">
+								<c:if test="${param.error != null}">
+									<c:choose>
+									<c:when test='${SPRING_SECURITY_LAST_EXCEPTION.message eq "Bad credentials"}'>
+									<div class='help-block'>請確認帳號密碼</div>
+									</c:when>
+									 <c:otherwise>
+									<div class='help-block'>
+									<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
+									</div>
+									 </c:otherwise>
+									</c:choose>
+								</c:if>
+							</div>
 								<div class="form-group">
 									<div class="utility">
-										<div class="animated-checkbox">
-											<label> <input type="checkbox"><span
-												class="label-text">Remember Me</span>
-											</label>
-										</div>
+<!-- 										<div class="animated-checkbox"> -->
+<!-- 											<label> <input type="checkbox"><span -->
+<!-- 												class="label-text">Remember Me</span> -->
+<!-- 											</label> -->
+<!-- 										</div> -->
 										<p class="semibold-text mb-2">
 											<a href="#" data-toggle="flip">Forgot Password ?</a>
 										</p>
@@ -130,9 +143,6 @@
 									<label class="control-label">EMAIL</label> <input
 										class="form-control" type="text" placeholder="Email" id="email" name="email">
 								</div>
-<%-- 		<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}"> --%>
-<%-- 			<div class='error'><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.</div> --%>
-<%-- 		</c:if> --%>
 
 								<div class="form-group btn-container">
 									<button class="btn btn-primary btn-block">
@@ -149,7 +159,7 @@
 						</div>
 				</section>
 				<!-- Blog Pagination -->
-				<!-- 燈入頁面不需要頁碼 -->
+				<!-- 登入頁面不需要頁碼 -->
 			</div>
 			<!-- End -->
 		</div>
@@ -203,6 +213,9 @@
 			$('.login-box').toggleClass('flipped');
 			return false;
 		});
+		
+		
+		
 	</script>
 </body>
 </html>
