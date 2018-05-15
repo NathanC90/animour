@@ -129,7 +129,7 @@
                         <th>totalTime</th>
                         <th>price</th>
                         <th>payment</th>
-                        <th>member_id</th>
+                        <th style="display: noen">member_id</th>
                         <th id="notNeed">編輯</th>
 
                       </tr>
@@ -234,7 +234,7 @@
                     var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
                     var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
                     var cell8 = $('<td id="" class="inputContent"></td>').text(reservation.payment)
-                    var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
+                    // var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
                     var button1 = $('<button></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger").append('<i class="fas fa-trash-alt"/>');
                     var button2 = $('<button><i class="fas fa-edit"></i></button>').addClass('btn btn-info');
                     var p = $('<p></p>')
@@ -243,7 +243,7 @@
 
                     // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
 
-                    var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
+                    var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell10]);
 
                     $('#table1').append(row);
 
@@ -283,16 +283,17 @@
             $(this).attr({ 'hidden': 'hidden' });
             var button = $('<button id ="changing"><i class="fas fa-edit"></i></button>').addClass('class="btn btn-info').append('done');
             $(this).parent().append(button);
+
+            //雙擊更改內容
             $(this).parents('tr').find('.inputContent').on("dblclick", function () {
               if (window.$currEditing)
                 finishEditing($currEditing);
               var $cell = $(this);
               var $inp = $('<input type="text" style="width:100px;height:30px;"/>');
               $inp.val($cell.text());
-              $cell.html('').append($inp);
+              // $cell.attr('name', 'cellEditor').html('').append($inp);
               $inp[0].select();
               window.$currEditing = $inp;
-              console.log("test...")
             }).on('click', function () {
               if (window.$currEditing && $currEditing.parent()[0] != this)
                 finishEditing($currEditing);
@@ -303,7 +304,7 @@
 
             })
             function finishEditing($inp) {
-              $inp.parent().removeAttr('#NewEdit').text($inp.val());
+              $inp.parent().removeAttr('cellEditor').text($inp.val());
               window.$currEditing = null;
             }
 

@@ -59,8 +59,8 @@ public class ReservationRestController {
 	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
 	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long memberId,
 			@Valid @RequestBody Reservation reservation) {
-		System.out.println("memberIdaaa"+memberId);
-		reservation.setMember(memberService.getOne(memberId));
+//		System.out.println("memberIdaaa"+memberId);
+//		reservation.setMember(memberService.getOne(memberId));
 
 		reservationService.insertReservation(reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
