@@ -78,7 +78,7 @@
 							<div>
 								<div class="card mb-3 box-shadow" id="eachdiv2">
 									<span> <img class="card-img-top"
-										src="/memberImage?fileName=" width="100px" alt="${member.id}">
+										src="${member.images}" width="100px" alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">${member.account}</p>

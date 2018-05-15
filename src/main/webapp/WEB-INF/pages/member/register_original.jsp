@@ -77,7 +77,13 @@
 
                                             <div style="padding-top: 30px" class="panel-body">
                                                 <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-
+                                                <div calss="form-row">
+                                                        <div class="form-group col-md-a6">                                               
+                                               			<form id="imgur">頭像:
+														<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+														</form>
+												</div>
+												</div>
                                                 <form:form method='POST' modelAttribute="member" class='form-horizontal'>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-a6">
@@ -130,11 +136,19 @@
                                                             <form:input id="address" path="address" type='text' class='form-control' />
                                                         </div>
                                                     </div>
-                                                    <input type="submit" class="btn btn-common" value="送出">
+                                                    
+                                                    <div class="form-row">
+<!--                                                     	<div class="form-group col-md-a6"> -->
+                                                   	
+                                                   		
+													<form:input id="images" path="images" type="hidden"/>
+<!--                                                     	</div>                                                     -->
+                                                    </div>
+                                                    
+                                                    <input id="btn1" type="submit" class="btn btn-common" value="送出">
                                                     <input type="reset" class="btn btn-common" value="清除">
                                                     <a href="/" class="btn btn-common"> 回首頁</a>
                                                 </form:form>
-
                                             </div>
                                         </div>
                                     </div>
@@ -179,6 +193,8 @@
                     <!-- Placed at the end of the document so the pages load faster -->
                     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
                         crossorigin="anonymous"></script>
+                        <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+			<script src="http://malsup.github.com/jquery.form.js"></script>
                     <script>
                         window.jQuery
                             || document
@@ -186,8 +202,60 @@
                     </script>
                     <script src="/js/popper.min.js"></script>
                     <script src="/js/bootstrap.min.js"></script>
-                    <script src="/js/vendor/holder.min.js"></script>
+					<script>
+					$(document).ready(function (){
+						
+					$('input[type=file]').on("change", function () {
+						$('#btn1').prop("disabled", "disabled");
+						var $files = $(this).get(0).files;
+
+						if ($files.length) {
+
+							// Reject big files
+							if ($files[0].size > $(this).data("max-size") * 1024) {
+								console.log("Please select a smaller file");
+								return false;
+							}
+
+							// Begin file upload
+							console.log("Uploading file to Imgur..");
+
+							// Replace ctrlq with your own API key
+							var apiUrl = 'https://api.imgur.com/3/image';
+							var apiKey = '9ef7e0868394de9';
+
+							var settings = {
+								// async: false,
+								crossDomain: true,
+								processData: false,
+								contentType: false,
+								type: 'POST',
+								url: apiUrl,
+								headers: {
+									Authorization: 'Client-ID ' + apiKey,
+									Accept: 'application/json'
+								},
+								mimeType: 'multipart/form-data'
+							};
+
+							var formData = new FormData();
+							formData.append("image", $files[0]);
+
+							settings.data = formData;
+							
+							$.ajax(settings).done(function (response) {
+								var jsonObj = JSON.parse(response)
+								console.log(jsonObj.data.link);
+								$("#images").val(jsonObj.data.link);
+								$('#btn1').removeAttr("disabled");
+							});
+						}
+					});
+					});
+					</script>
 
                 </body>
+                
+                
 
                 </html>
