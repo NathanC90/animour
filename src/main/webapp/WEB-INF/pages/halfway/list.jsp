@@ -125,12 +125,7 @@
 									</form>
 								</aside>
 								<!-- Text Widgets -->
-								<aside class="widget text-widgets wow fadeIn" data-wow-delay="0.3s">
-									<h2 class="widget-title">Text Widget</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur dolorem fuga ad corrupti, ullam, eos natus, repellat
-										officiis sit labore a aspernatur quisquam. In, unde.</p>
-								</aside>
-
+								
 								<!--Start of Category -->
 								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
 									<h2 class="widget-title">Category</h2>

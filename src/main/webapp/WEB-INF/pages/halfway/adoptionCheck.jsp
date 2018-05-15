@@ -99,7 +99,9 @@
 	<!-- 表格內容開始 -->
 	<section class="section">
 		<div class="container">
-			<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">認養請求確認</h1>
+				<div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+						<h2>認養請求確認</h2>
+					</div>
 			<div class="row">
 				<table class="table">
 					<thead class="thead-light">

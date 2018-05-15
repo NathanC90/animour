@@ -50,6 +50,8 @@
             <link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
 
             <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+            <style>
+            </style>
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
@@ -82,216 +84,187 @@
             <!-- Page Header End -->
 
             <section class="contact2-section section">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#imgOpts" aria-expanded="true" aria-controls="imgOpts">
-                    Customize
-                </button>
-                <!--Collapse Start -->
-                <div id="imgOpts" class="collapse" style="">
-                    <form autocomplete="off" class="mb-4 p-3">
 
-                        <div class="form-group row">
-                            <div class="col-sm-6">
-                                <label for="animationEffect">
-                                    Open/close animation type
-                                </label>
-                                <select id="animationEffect" class="form-control">
-                                    <option value="zoom">zoom</option>
-                                    <option value="fade">fade</option>
-                                    <option value="slide">slide</option>
-                                    <option value="rotate">rotate</option>
-                                    <option value="circular">circular</option>
-                                    <option value="tube">tube</option>
-                                    <option value="zoom-in-out">zoom-in-out</option>
-                                    <option value="" style="font-style:italic;color:#888;">none</option>
-                                </select>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="transitionEffect">
-                                    Transition effect between slides
-                                </label>
-                                <select id="transitionEffect" class="form-control">
-                                    <option value="fade">fade</option>
-                                    <option value="slide">slide</option>
-                                    <option value="rotate">rotate</option>
-                                    <option value="circular">circular</option>
-                                    <option value="tube">tube</option>
-                                    <option value="zoom-in-out">zoom-in-out</option>
-                                    <option value="" style="font-style:italic;color:#888;">none</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2">
-                                Buttons
-                            </label>
-
-                            <div class="col-md-10">
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="slideShow"> Slideshow
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="fullScreen"> Fullscreen
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="zoom" checked="checked"> Zoom
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="thumbs" checked="checked"> Thumbnails
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="share"> Share
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="download"> Download
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="arrowLeft"> Left arrow
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input buttons" type="checkbox" value="arrowRight"> Right arrow
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-2">
-                                Elements
-                            </label>
-
-                            <div class="col-md-10">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input toggle" id="arrows" value="1" checked="checked"> Navigation arrows
-                                    </label>
-                                </div>
-
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input toggle" id="infobar" value="1" checked="checked"> Counter
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input toggle" id="thumbs" value="1"> Thumbnails
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <label class="col-md-2">
-                                Translation
-                            </label>
-
-                            <div class="col-md-4">
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="lang" value="en" checked="checked"> English
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <label class="form-check-label">
-                                        <input class="form-check-input" type="radio" name="lang" value="de"> German
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-right">
-                                <small>
-                                    <a href="https://fancyapps.com/fancybox/3/docs/#options" target="_blank">
-                                        Full list of options
-                                    </a>
-                                </small>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <!--Collapse End -->
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4 contact-info-section">
-                            <div class="contact-widget office-location">
-                                <h2>Office Location</h2>
-                                <ul class="contact-info2">
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-map-marker"></i> Address:</strong> 2367 Nash Street , Dearborn, Michigan</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-envelope"></i> Mail Us:</strong>
-                                            <a href="#">yourmail@gmail.com</a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-phone"></i> Phone:</strong> +313-240-4015</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-print"></i> Fax:</strong> +313-555-4015</p>
-                                    </li>
-                                </ul>
-                                <address>
-                                    <i class="fa fa-map-marker icon-box icon-xs"></i>4211, 2367 Nash Street , Dearborn, Michigan
-                                    <br>
-                                    <i class="fa fa-phone icon-box icon-xs"></i> 313-240-4015
-                                    <br>
-                                    <a href="mailto:#">
-                                        <i class="fa fa-envelope icon-box icon-xs"></i> yourmail@gmail.com</a>
-                                </address>
-                            </div>
-                            <div class="contact-widget office-location">
-                                <h2>Contact Hours</h2>
-                                <address>
-                                    <p>
-                                        <i class="fa fa-clock-o icon-box icon-xs"></i>
-                                        <span>Mon - Fri:</span> 9.00 AM - 6.00 PM</p>
-                                </address>
-                            </div>
-                            <div class="contact-widget social-contact" id="socialicon">
-                                <h2>Social Quick Links</h2>
-                            </div>
-                        </div>
                         <div class="col-md-8">
-                            <h1 class="section-title text-left">CONTACT WITH US</h1>
-                            <p class="section-subcontent mb-30 text-left">At vero eos et accusamus et iusto odio dignissimos ducimus qui
-                                <br> blanditiis praesentium</p>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#imgOpts" aria-expanded="true" aria-controls="imgOpts">
+                                Customize
+                            </button>
+                            <!--Collapse Start -->
+                            <div id="imgOpts" class="collapse" style="background-color:rgb(248, 244, 192)">
+                                <form autocomplete="off" class="mb-4 p-3">
+
+                                    <div class="form-group row">
+                                        <div class="col-sm-6">
+                                            <label for="animationEffect">
+                                                Open/close animation type
+                                            </label>
+                                            <select id="animationEffect" class="form-control">
+                                                <option value="zoom">zoom</option>
+                                                <option value="fade">fade</option>
+                                                <option value="slide">slide</option>
+                                                <option value="rotate">rotate</option>
+                                                <option value="circular">circular</option>
+                                                <option value="tube">tube</option>
+                                                <option value="zoom-in-out">zoom-in-out</option>
+                                                <option value="" style="font-style:italic;color:#888;">none</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <label for="transitionEffect">
+                                                Transition effect between slides
+                                            </label>
+                                            <select id="transitionEffect" class="form-control">
+                                                <option value="fade">fade</option>
+                                                <option value="slide">slide</option>
+                                                <option value="rotate">rotate</option>
+                                                <option value="circular">circular</option>
+                                                <option value="tube">tube</option>
+                                                <option value="zoom-in-out">zoom-in-out</option>
+                                                <option value="" style="font-style:italic;color:#888;">none</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2">
+                                            Buttons
+                                        </label>
+
+                                        <div class="col-md-10">
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="slideShow"> Slideshow
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="fullScreen"> Fullscreen
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="zoom" checked="checked"> Zoom
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="thumbs" checked="checked"> Thumbnails
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="share"> Share
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="download"> Download
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="arrowLeft"> Left arrow
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input buttons" type="checkbox" value="arrowRight"> Right arrow
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="col-md-2">
+                                            Elements
+                                        </label>
+
+                                        <div class="col-md-10">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input toggle" id="arrows" value="1" checked="checked"> Navigation arrows
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input toggle" id="infobar" value="1" checked="checked"> Counter
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input type="checkbox" class="form-check-input toggle" id="thumbs" value="1"> Thumbnails
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row mb-0">
+                                        <label class="col-md-2">
+                                            Translation
+                                        </label>
+
+                                        <div class="col-md-4">
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="lang" value="en" checked="checked"> English
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label">
+                                                    <input class="form-check-input" type="radio" name="lang" value="de"> German
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <small>
+                                                <a href="https://fancyapps.com/fancybox/3/docs/#options" target="_blank">
+                                                    Full list of options
+                                                </a>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--Collapse End -->
+
+
                             <form method="post" role="form" class="mt-30 shake" id="contactForm" name="contact-form" data-toggle="validator">
                                 <div class="row" id="test">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="name" class="sr-only">Name</label>
+                                            <input type="text" placeholder="Your Name" id="name" class="form-control contact-control" name="name" required data-error="Please enter your name">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
 
-                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="email" class="sr-only">Email</label>
+                                            <input type="email" placeholder="Your Email" id="email" class="form-control contact-control" name="email" required data-error="Please enter your Email">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="subject" class="sr-only">Subject</label>
+                                            <input type="text" placeholder="Your Subject" id="msg_subject" class="form-control contact-control" name="subject" required
+                                                data-error="Please enter your message subject">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
                                         <div class="form-group">
                                             <label for="message" class="sr-only">Message</label>
                                             <textarea placeholder="Your Message" rows="10" id="message" class="form-control" name="message" required data-error="Write your message"></textarea>
@@ -305,11 +278,9 @@
                                 </div>
                             </form>
                         </div>
-
-                        <div class="col-md-4 clearfix">
-                            <div id="google-map-contact2"></div>
-                            <div class="contact-info2 mt-30">
-                                <h2 class="small-title">Contact Info</h2>
+                        <div class="col-md-4 contact-info-section">
+                            <div class="contact-widget office-location">
+                                <h2>聯絡資訊</h2>
                                 <ul class="contact-info2">
                                     <li>
                                         <p>
@@ -335,7 +306,29 @@
                                     </li>
                                 </ul>
                             </div>
+                            <div class="contact-widget office-location">
+                                <h2>剩餘時間</h2>
+                                <div class="btn btn-secondary mt-20 btn-lg" style="border-radius:8px; max-width:100%; margin:auto;">
+                                    <h3 id="getting-started"></h3>
+                                </div>
+                                <p>
+                                    <strong>
+                                        <i class="fa fa-check"></i> 認養程序是否已經完成？</strong>
+                                    <a href="#" data-toggle="collapse" data-target="#adoptionend" aria-expanded="true" aria-controls="imgOpts">按此處理</a>
+                                </p>
+                                <div class="contact-widget office-location" style="text-align:justify">
+
+                                    <!--Collapse Start -->
+                                    <div id="adoptionend" class="collapse">
+                                        <button class="btn btn-common btn-lg" type="submit" id="form-submit">
+                                            <i class="fa fa-check"></i> 認養程序完成</button>
+                                        <button class="btn btn-secondary btn-lg" type="submit" id="form-submit">
+                                            <i class="fa fa-envelope"></i> 檢舉</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -380,6 +373,7 @@
             <script src="/js/form-validator.min.js"></script>
             <script src="/js/contact-form-script.min.js"></script>
             <script src="/js/main.js"></script>
+            <script src="/js/jquery.countdown.js"></script>
 
             <script>
                 $(document).ready(function () {
@@ -388,26 +382,26 @@
 
 
                 });
-                let test = ` <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="name" class="sr-only">Name</label>
-                                            <input type="text" placeholder="Your Name" id="name" class="form-control contact-control" name="name" required data-error="Please enter your name">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                // let test = ` <div class="col-md-6">
+                //                         <div class="form-group">
+                //                             <label for="name" class="sr-only">Name</label>
+                //                             <input type="text" placeholder="Your Name" id="name" class="form-control contact-control" name="name" required data-error="Please enter your name">
+                //                             <div class="help-block with-errors"></div>
+                //                         </div>
 
-                                        <div class="form-group">
-                                            <label for="email" class="sr-only">Email</label>
-                                            <input type="email" placeholder="Your Email" id="email" class="form-control contact-control" name="email" required data-error="Please enter your Email">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                //                         <div class="form-group">
+                //                             <label for="email" class="sr-only">Email</label>
+                //                             <input type="email" placeholder="Your Email" id="email" class="form-control contact-control" name="email" required data-error="Please enter your Email">
+                //                             <div class="help-block with-errors"></div>
+                //                         </div>
 
-                                        <div class="form-group">
-                                            <label for="subject" class="sr-only">Subject</label>
-                                            <input type="text" placeholder="Your Subject" id="msg_subject" class="form-control contact-control" name="subject" required
-                                                data-error="Please enter your message subject">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>`;
+                //                         <div class="form-group">
+                //                             <label for="subject" class="sr-only">Subject</label>
+                //                             <input type="text" placeholder="Your Subject" id="msg_subject" class="form-control contact-control" name="subject" required
+                //                                 data-error="Please enter your message subject">
+                //                             <div class="help-block with-errors"></div>
+                //                         </div>
+                //                     </div>`;
                 let icon = ` <a href="#">
                                     <i class="fa fa-facebook icon-round icon-xs"></i>
                                 </a>
@@ -427,6 +421,14 @@
 
 
 
+            </script>
+            <script type="text/javascript">
+                $("#getting-started")
+                    .countdown("2018/06/01", function (event) {
+                        $(this).text(
+                            event.strftime('%D天 %H時 %M分 %S秒')
+                        );
+                    });
             </script>
         </body>
 
