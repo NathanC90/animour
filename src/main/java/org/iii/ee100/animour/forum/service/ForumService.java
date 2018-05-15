@@ -128,7 +128,7 @@ public class ForumService extends GenericService<Article> {
 	
 	//getArticlesByMemberId
 	public List<Article> getArticlesByMemberId(Long Id) {
-		return articleDao.findByCategoryId(Id);
+		return articleDao.findByMemberId(Id);
 	}
 
 }

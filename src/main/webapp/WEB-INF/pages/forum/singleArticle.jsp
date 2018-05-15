@@ -97,7 +97,7 @@
           
           <!-- BLog Article Section -->
           <div id="bloglist" class="col-md-9">
-          <div id="show" class="col-md-9 wow fadeIn" data-wow-delay="0.3s">
+          <div id="show" class="col-md-12 wow fadeIn" data-wow-delay="0.3s">
             <!-- Single Blog Post -->
             <article class="blog-post-wrapper">
               <!-- Author Info -->

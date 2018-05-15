@@ -101,8 +101,8 @@ public class MemberController {
 	public String updatePassword(@Valid Password password,BindingResult result,Map<String,Object> map) {
 		if(memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
 			if(result.hasErrors()) {
-				map.put("newpassword", "請輸入3-10大小英文及數字");
-				return "/member/updatepassword";
+				map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
+				return "/member/update_password";
 			}
 			else {
 				memberService.update(memberService.getNewCurrentMember(), password.getNewpassword());
@@ -112,9 +112,9 @@ public class MemberController {
 		else {
 			result.rejectValue("oldpassword", "oldpassword", "請確定密碼");
 			map.put("oldpassword", result.getFieldError("oldpassword").getDefaultMessage());
-			map.put("newpassword", "請輸入3-10");
+			map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
 			return "/member/updatepassword";	
-			
+		
 		}
 
 	}
@@ -153,13 +153,15 @@ public class MemberController {
 		if(memberService.emailExist(email) && memberService.getOneByAccount(account)!=null &&
 		   memberService.getOneByAccount(account).getEmail().equals(email)){
 			//寄信
-			String text="012A4a";
-			
-			mailService.sendEmail(email, "Animour密碼", text);
+			String text =memberService.newPassword();
+			System.out.println("newPassword():"+text);
+
+			memberService.update(memberService.getOneByAccount(account), text);
+			mailService.sendEmail(email, "Animour密碼", account+"您好:\n"+"您的新密碼"+text);
 			return "redirect:/";
 
 		}else {
-		return "/login";
+		return "/login/login";
 		}
 	}	
 	
@@ -169,8 +171,14 @@ public class MemberController {
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public String admin() {
 		return "/admin/member/admin";
-
 	}
+	// 前往後台頁
+    @PreAuthorize("hasRole('Admin')")
+	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
+	public String adminforum() {
+		return "/admin/forum/admin";
+	}
+    
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {

@@ -100,7 +100,6 @@ public class ProductController {
 	@RequestMapping(value = { "/delete/{id}" }, method = { RequestMethod.GET })
 	public String delete(@PathVariable(name = "id") Long id) {
 		try {
-			System.err.println(id);
 			productService.delete(id);
 		} catch (Exception e) {
 			e.printStackTrace();

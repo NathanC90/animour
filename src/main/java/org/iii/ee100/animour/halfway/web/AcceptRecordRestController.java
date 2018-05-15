@@ -1,25 +1,19 @@
 package org.iii.ee100.animour.halfway.web;
 
-import java.sql.Timestamp;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.model.ResponseForAnimour;
 import org.iii.ee100.animour.halfway.entity.AcceptRecord;
-import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.iii.ee100.animour.halfway.service.AcceptRecordService;
 import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
-import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

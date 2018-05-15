@@ -23,7 +23,8 @@ public class Classify extends GenericEntity {
 	@Column(name="NAME", length = 50, nullable = false)
 	private String name;
 	
-	@OneToMany(mappedBy="classify", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+//	@OneToMany(mappedBy="classify", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany
 	private Set<Product> product;
 	
 }

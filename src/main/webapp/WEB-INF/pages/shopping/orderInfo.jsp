@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
-<html lang="en">
+<html lang="zh-tw">
 
 <head>
 <!--Icon Tags start -->
@@ -40,7 +40,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product Detail</title>
+<title>Animal Shelter</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -67,11 +67,11 @@
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
-
+<title>訂單查詢</title>
 </head>
 <body>
 
-	<!-- Header area wrapper starts -->
+<!-- Header area wrapper starts -->
 	<header id="header-wrap">
 		<jsp:include page="../navbar.jsp"></jsp:include>
 	</header>
@@ -83,79 +83,85 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>商品資料管理</h2>
+						<h2>訂單查詢</h2>
 					</div>
 				</div>
-			</div>
+ 			</div>
 		</div>
 	</div>
 	<!-- Page Header End -->
+	
+	<!-- 表格內容開始 -->
+<!-- 	<section class="section"> -->
+<!-- 		<div class="container"> -->
+<!-- 			<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單明細表</h1> -->
+<!-- 			<div class="row"> -->
+<!-- 				<table class="table"> -->
+<!-- 					<thead class="thead-light"> -->
+<!-- 						<tr> -->
+<!-- 							<th scope="col">訂單編號</th> -->
+<!-- 							<th scope="col">訂單日期</th> -->
+<!-- 							<th scope="col">商品名稱</th> -->
+<!-- 							<th scope="col">商品數量</th> -->
+<!-- 							<th scope="col">商品單價</th> -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+<!-- 					<tbody> -->
+<%-- 					<c:forEach var="orders" items="${memberOrders}"> --%>
+<!-- 						<tr> -->
+<%-- 							<th scope="row">${orders.id}</th> --%>
+<%-- 							<td>${orders.orderDate}</td> --%>
+<%-- 								<c:forEach var="ordersItem" items="${orders.ordersItem}"> --%>
+<!-- 								<tr> -->
+<%-- 									<td>${ordersItem.name}</td> --%>
+<%-- 									<td>購買數量：${ordersItem.quantity}</td> --%>
+<%-- 									<td>商品價格：${ordersItem.price}</td> --%>
+<!-- 								</tr> -->
+<%-- 								</c:forEach> --%>
+<!-- 						</tr> -->
+<%-- 						</c:forEach> --%>
+<!-- 					</tbody> -->
+<!-- 				</table> -->
+<!-- 			</div> -->
 
-	<!-- Page Content Start 重複的內容開始 -->
-	<section class="section">
+<!-- 		</div> -->
+<!-- 	</section> -->
+	
+	<!-- Classic Blog Section -->
+	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-5 about2-intro-image">
-					<img class="card-img-top"
-						src="/images/shopping/product/pd1.jpg" width="100px" alt="${product.name}">
-				</div>
+					每頁不同的內容從這裡開始
+					<div style="margin-top: 50px; margin: auto"
+						class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
+						<div class="panel panel-info" style="border: 1px">
 
-				<form:form method="POST" modelAttribute="product"
-					enctype="multipart/form-data">
-					<div class="form-group">
-						<h2 class="widget-title">商品名稱</h2>
-						<form:input path="name" type="text" class="form-control"
-							placeholder="商品名稱" />
-					</div>
-
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">商品價格</h2>
-							<form:input path="price" type="text" class="form-control"
-								placeholder="商品價格" />
-						</div>
-
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">庫存</h2>
-							<form:input path="stock" type="text" class="form-control"
-								placeholder="庫存" />
-						</div>
-
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">類別</h2>
-							<form:select path="classify" items="${Classifies}"
-								itemLabel="name" itemValue="id" class="form-control" />
+							<div style="padding-top: 30px" class="panel-body">
+								<div style="display: none" id="login-alert"
+									class="alert alert-danger col-sm-12"></div>
+									<table class="table">
+										<c:forEach var="orders" items="${memberOrders}">
+												<tr><td>訂單編號：${orders.id}</td></tr>
+												<tr><td>訂單日期：${orders.orderDate}</td></tr>
+											<c:forEach var="ordersItem" items="${orders.ordersItem}">
+												<tr>
+													<td>商品名稱：${ordersItem.name}</td>
+													<td>購買數量：${ordersItem.quantity}</td>
+													<td>商品價格：${ordersItem.price}</td>
+												</tr>
+											</c:forEach>
+										</c:forEach>
+									</table>
+							</div>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<h2 class="widget-title">製造日期</h2>
-						<form:input path="makeDate" type="text" class="form-control"
-							placeholder="製造日期" />
-					</div>
-					
-					<div class="form-row">
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">保存期限</h2>
-							<form:input path="expire" type="text" class="form-control"
-								placeholder="保存期限" />
-						</div>
-
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">上架日期</h2>
-							<form:input path="shelvesDate" type="text" class="form-control"
-								placeholder="上架日期" />
-						</div>
-					</div>
-					 <input type="submit" class="btn btn-primary" value="確定" >
-				</form:form>
+					每頁不同的內容到這裡結束
 			</div>
 		</div>
 	</section>
-
-	<!-- 重複的內容結束 -->
-
-	<!-- Footer Section -->
+	<!-- Classic Blog Section End -->
+	
+<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
 	</footer>
@@ -180,7 +186,5 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-
 </body>
-
 </html>

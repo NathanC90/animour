@@ -99,6 +99,9 @@
 										<div class="form-group col-md-6">
 											帳號:
 											<form:input id="account" path="account"	type="hidden" />${member.account}
+<%-- 											<form:input id="account" path="account" disabled='true'  class='form-control' value='${member.account}'  /> --%>
+<%-- 											<form:input id="account" path="account" disabled='true'  class='form-control' value='${member.account}'  /> --%>
+
 										</div>
 									</div>
 <!-- 									<div class="form-row"> -->

@@ -152,8 +152,9 @@
 	<!-- 重複的內容結束 -->
 
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->

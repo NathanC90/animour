@@ -79,6 +79,9 @@ public class MemberService extends GenericService<Member> {
 	}
 	
 	public Member getNewCurrentMember() {
+		if(getCurrentMember()==null) {
+			return null;
+		}
 		Member principal = memberDao.findByAccount(getCurrentMember().getAccount());
 		return principal;
 	}
@@ -102,6 +105,39 @@ public class MemberService extends GenericService<Member> {
         }
         return false;
 	}
+
+	//隨機碼
+		public String newPassword() {
+			//密碼字串
+			String str="";
+			//密碼長度6
+	        int i=0,x=0,y=0,z=0;
+	        
+	        while(x<1 || y<1 || z<1 || i<=8) {
+//	        while(!(x>1 && y>1 && z>1 && i<=8)) {
+	        //for(int i=0;i<6;i++){
+	           int n=(int) (Math.random()*3);
+	           char c=' ';
+
+	           if(n==0){
+	        	   x++;
+	               c=(char)(Math.random()*10+48);//隨機0-9碼
+	                              }
+	           else if(n==1){
+	               c=(char)(Math.random()*26+97);//隨機小寫字母
+	               y++;
+	               }
+	           else{
+	               c=(char)(Math.random()*26+65);//隨機大寫字母
+	               z++;}
+    
+	           str=c+str; 
+	           i++;
+	         //}
+	        }
+			return str;
+		}
+		
 
 
  	

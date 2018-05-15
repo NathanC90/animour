@@ -127,6 +127,7 @@
 										</div>
 										<input id="images" name="images" type="hidden" value="" />
 										<form id="imgur">
+											文章預覽圖:
 											<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
 										</form>
 										<br></br>
@@ -165,10 +166,8 @@
 				// 		return json;
 				// 	};
 				var myEditor;
-				$(document).ready(function () {
 
-				
-					ClassicEditor
+				ClassicEditor
 						.create(document.querySelector('#content'), {
 							cloudServices: {
 								tokenUrl: 'https://16608.cke-cs.com/token/dev/djm4EZOtRAKn7AdDRQejz2aSUQSZPmO7cwIJsfoBCaE2IFI0foEYPwbvS4Oh',
@@ -182,11 +181,11 @@
 						.catch(error => {
 							console.error(error);
 						});
-
 						
-
+				$(document).ready(function () {
 
 					$('#btn1').click(function () {
+						console.log(myEditor.getData());
 						$('#content').html(myEditor.getData());
 					
 						var formData = new FormData(document.getElementById("insertform"));

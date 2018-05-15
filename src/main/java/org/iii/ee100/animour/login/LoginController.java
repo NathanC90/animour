@@ -20,7 +20,7 @@ public class LoginController {
 
 	@RequestMapping(value="/login",method=RequestMethod.GET)//導向登入頁面
 	public String login() {
-
+		
 		return "/login/login";
 	}
 
