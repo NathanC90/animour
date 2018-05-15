@@ -130,7 +130,6 @@
                         <th>price</th>
                         <th>payment</th>
                         <th>member_id</th>
-                        <th style="display: none">id</th>
                         <th id="notNeed">編輯</th>
 
                       </tr>
@@ -235,20 +234,16 @@
                     var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
                     var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
                     var cell8 = $('<td id="" class="inputContent"></td>').text(reservation.payment)
-                    var cell9 = $('<td id="notAccount"></td>').text(reservation.member.account)
-                    var cell10 = $('<td id="memberId" style="display: none" class=""></td>').text(reservation.member.id)
-
-
-
+                    var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
                     var button1 = $('<button></button>').attr({ 'style': "background-color: #dc3545", 'border-color': '#dc3545' }).addClass("btn btn-danger").append('<i class="fas fa-trash-alt"/>');
                     var button2 = $('<button><i class="fas fa-edit"></i></button>').addClass('btn btn-info');
                     var p = $('<p></p>')
-                    var cell11 = $('<td id="addNewButton"></td>').append(button1, p, button2);
+                    var cell10 = $('<td id="addNewButton"></td>').append(button1, p, button2);
 
 
                     // var cell10 = $("<td></td>").html('<button  class="btn btn-danger" ; border-color: #dc3545"><i class="fas fa-trash-alt"/></button> <p> </p>  <button class="btn btn-info"></button>');
 
-                    var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10, cell11]);
+                    var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
 
                     $('#table1').append(row);
 
@@ -342,7 +337,7 @@
           $(document).on("click", '#changing', function () {
             myRows = {};
             var headersText = [];
-            var $headers = $("th").not('#notNeed').not('#notAccount');
+            var $headers = $("th").not('#notNeed');
 
             // Loop through grabbing everything
             var $rows = $("tbody tr:first-child").each(function () {
