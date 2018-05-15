@@ -171,6 +171,9 @@
 
 	<!-- Table Ends -->
 
+
+
+
 	<div class="text-center">
 		<nav>
 		<ul class="pagination">
@@ -230,6 +233,25 @@
 <script src="../admin/assets/js/application.js"></script>
 <script>
       $(document).ready(function() {
+    	  
+    	  function formatDate(date) {
+              var monthNames = [
+                "January", "February", "March",
+                "April", "May", "June", "July",
+                "August", "September", "October",
+                "November", "December"
+              ];
+
+              var day = date.getDate();
+              var monthIndex = date.getMonth();
+              var year = date.getFullYear();
+              var HH = ("00" + date.getHours()).slice(-2);
+              var mm =  ("00" + date.getMinutes()).slice(-2);
+
+              return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + HH + ':' + mm;
+            }
+    	  
+    	  
     	  $.getJSON('/articles', {  }, function (data) {
     	          console.log(data);
     	          $('#table1>tbody').empty();
@@ -237,27 +259,19 @@
     	        	  var cell1 = $("<td></td>").text(article.id);
     	              var cell2 = $("<td></td>").text(article.subject);
 
-    	              var cell3 = $("<td></td>").text(article.postTime);
+    	              var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
 //     	              var cell4 = $("<td></td>").text(article.CLICK);
     	              var cell5 = $("<td></td>").text(article.member.account);
   	
-    	              	var span01=$('<span></span>').addClass('icon icon-pencil');
-						var button01=$('<button></button>').attr({'type':'button','title':'修改'}).addClass('btn btn-outline-primary').append(span01);
     	              	var span02=$('<span></span>').addClass('icon icon-erase');
 						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
-    	              	var span03=$('<span></span>').addClass('icon icon-mail');
-						var button03=$('<button></button>').attr({'type':'button','title':'寄送電子郵件'}).addClass('btn btn-outline-primary').append(span03);
 
-	  					var divb1=$('<div></div>').addClass('btn-group').append([button01]);
-						var divf1=$('<div></div>').addClass('flextable-item').append(divb1);
 	  					var divb2=$('<div></div>').addClass('btn-group').append([button02]);
 						var divf2=$('<div></div>').addClass('flextable-item').append(divb2);
-	  					var divb3=$('<div></div>').addClass('btn-group').append([button03]);
-						var divf3=$('<div></div>').addClass('flextable-item').append(divb3);
 
 						
 						
-						var cell09=$('<td></td>').append([divf1, divf2, divf3]);
+						var cell09=$('<td></td>').append([divf2]);
     	              
  	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3,  cell5, cell09]);
 

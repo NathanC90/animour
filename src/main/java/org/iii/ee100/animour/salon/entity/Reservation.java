@@ -29,9 +29,9 @@ public class Reservation extends GenericEntity{
 		return "Reservation [reservationDate=" + reservationDate + ", frontTime=" + frontTime + ", content="
 				+ content + ", designer=" + designer + ", totalTime=" + totalTime + ", price=" + price + "]";
 	}
-	@ManyToOne
-	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
-	private Member member; 
+//	@ManyToOne
+//	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
+//	private Member member; 
 
 	
 

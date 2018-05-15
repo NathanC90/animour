@@ -93,7 +93,7 @@
 <div class="col-md-12 content">
 	<div class="dashhead">
 		<div class="dashhead-titles">
-			<h2 class="dashhead-title">會員管理</h2>
+			<a href="/admin/member" ><h2 class="dashhead-title">會員管理</h2></a>
 		</div>
 
 		<div class="btn-toolbar dashhead-toolbar">
@@ -219,19 +219,93 @@
 	</div>
 </div>
 
-<!-- Modal Ends -->
 
+
+
+<!-- Modal Ends -->
+<!-- Modal open -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="insertform" >
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">recipient:</label>
+            <input type="text" class="form-control recipient-name" id="account" name="account" readonly="readonly">
+          </div>
+        
+          <div class="form-group">
+            <label for="subject" class="col-form-label">Subject:</label>
+            <input type="text" class="form-control" id="subject" name="subject">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="context" name="context"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="btn1">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
 <!-- 每頁不同內容從此結束 -->
 
+			<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 
-<script src="../admin/assets/js/jquery.min.js"></script>
+<!-- <script src="../admin/assets/js/jquery.min.js"></script> -->
 <script src="../admin/assets/js/tether.min.js"></script>
 <script src="../admin/assets/js/chart.js"></script>
 <script src="../admin/assets/js/tablesorter.min.js"></script>
 <script src="../admin/assets/js/toolkit.js"></script>
 <script src="../admin/assets/js/application.js"></script>
+			<script src="http://malsup.github.com/jquery.form.js"></script>
+
 <script>
       $(document).ready(function() {
+    	  
+    	  $('#btn1').click(function () {
+		
+				var formData = new FormData(document.getElementById("insertform"));
+				console.log(formData);
+
+				$.ajax({
+					type: "POST",
+					url: "/api/member/all/adminsendmail",
+					data: formData,
+					contentType: false,
+					processData: false,
+					//     		    dataType: "json",
+					success: function () {
+						alert("成功");
+					//	$('#exampleModal').modal('hide')
+					}
+				});
+			});
+    	  
+    	  
+    	  
+    	  
+    	  $('#exampleModal').on('show.bs.modal', function (event) {
+    		  var button = $(event.relatedTarget) // Button that triggered the modal
+    		  var recipient = button.data('whatever') // Extract info from data-* attributes
+    		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    		  var modal = $(this)
+    		  modal.find('.modal-title').text('New message to ' + recipient)
+    		  modal.find('#account').val(recipient)
+    		})
+    		
+    		
     	  $.getJSON('/api/member/all', {  }, function (data) {
     	          console.log(data);
     	          $('#table1>tbody').empty();
@@ -255,7 +329,7 @@
     	              	var span02=$('<span></span>').addClass('icon icon-erase');
 						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
     	              	var span03=$('<span></span>').addClass('icon icon-mail');
-						var button03=$('<button></button>').attr({'type':'button','title':'寄送電子郵件'}).addClass('btn btn-outline-primary').append(span03);
+						var button03=$('<button></button>').attr({'type':'button','title':'寄送電子郵件','data-toggle':'modal','data-target':'#exampleModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span03);
 
 	  					var divb1=$('<div></div>').addClass('btn-group').append([button01]);
 						var divf1=$('<div></div>').addClass('flextable-item').append(divb1);
@@ -274,7 +348,7 @@
     	          });
 
     	      
-    	      }	 
+    	      }	 //end getJSON
     	  	 )
     	  });
       // execute/clear BS loaders for docs

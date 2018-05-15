@@ -68,13 +68,6 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
-    </script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
-    </script>
-    <![endif]-->
 </head>
 <body>
 
@@ -163,8 +156,9 @@
 	<!-- 重複的內容結束 -->
 
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->

@@ -36,6 +36,10 @@ public class ReservationController {
 	public String editReservation(Model model) {
 		return "/salon/editReservation";
 	}
+	@RequestMapping(path = { "/salonAdminReservation" }, method = { RequestMethod.GET })
+	public String salonAdminReservation(Model model) {
+		return "/salon/salonAdminReservation";
+	}
 //	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })
 //	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
 //		model.addAttribute("reservation", reservationService.insertReservation(reservation));

@@ -1,9 +1,7 @@
 package org.iii.ee100.animour.forum.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -30,9 +28,9 @@ public class Comment extends GenericEntity {
 	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
 	private Member member;
 
-	@Column(name = "CONTENT", columnDefinition = "TEXT")
+	@Column(name = "DETAIL", columnDefinition = "TEXT")
 	@NotBlank
-	private String content;
+	private String detail;
 
 	@Column(name = "UPDATE_TIME")
 	@Past

@@ -14,9 +14,9 @@ public class EventController {
 	@Autowired
 	EventService eventService;	
 	
-	@RequestMapping("/news/admin")
+	@RequestMapping("/news/statistics")
 	public String newsIndex(Model model) {
-		return "/news/admin";
+		return "/news/statistics";
 	}
 	
 	@RequestMapping("/news/enroll")
