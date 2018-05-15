@@ -53,7 +53,7 @@
                   <div class="media">
                     <div class="media-left">
                       <a href="#">
-                        <img class="img-responsive" style="width:80px;" src="${pop.images}" alt="">
+                        <img class="img-responsive" style="width:70px;height:60px;" src="${pop.images}" alt="">
                       </a>
                     </div>
                     <div class="media-body">

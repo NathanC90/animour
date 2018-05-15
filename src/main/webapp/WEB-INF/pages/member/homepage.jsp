@@ -187,7 +187,7 @@
 						<!-- Blog Item Starts -->
 						<div class="blog-item-wrapper" style="height: 405px;">
 							<div class="blog-item-img">
-								<a href="/forum/findOne?id=${article.id}"> <img width="300px" src="/images/adopt/cats/ad-cat1.jpg"
+								<a href="/forum/findOne?id=${article.id}"> <img style="width:320px;height:220px;padding:10px;" src="${article.images}"
 									alt="">
 								</a>
 							</div>
@@ -199,9 +199,7 @@
 
 								</h3>
 
-								<p
-									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-									<c:out value="${article.content}"/></p>
+								
 								<div class="blog-one-footer">
 									<a href="/forum/findOne?id=${article.id}">Read More</a> <a
 										href="#"> <i class="icon-heart"></i> 0 Likes
