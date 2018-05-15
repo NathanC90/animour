@@ -312,9 +312,9 @@ insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRI
 values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4);
 
 /*9 orders*/
-insert into orders (orderdate, totalamount, member_id) values(now(), 1280, 2);
-insert into orders (orderdate, totalamount, member_id) values(now(), 2280, 2);
-insert into orders (orderdate, totalamount, member_id) values(now(), 3650, 3);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-10 12:38:10', 1280, 2);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-15 16:25:35', 2280, 2);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-13 03:31:09', 3650, 3);
 
 /*10 ordersItem*/
 insert into ordersitem (name, price, quantity, orders_id)

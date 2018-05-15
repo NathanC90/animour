@@ -128,37 +128,36 @@
 <!-- 	</section> -->
 	
 	<!-- Classic Blog Section -->
-	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-					每頁不同的內容從這裡開始
-					<div style="margin-top: 50px; margin: auto"
-						class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
-						<div class="panel panel-info" style="border: 1px">
-
-							<div style="padding-top: 30px" class="panel-body">
-								<div style="display: none" id="login-alert"
-									class="alert alert-danger col-sm-12"></div>
-									<table class="table">
+	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
+		<section class="classic-blog-section section">
+			<div class="container">
+				<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單明細表</h1>
+				<div class="row">
+						<div style="margin-top: 50px; margin: auto"
+							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
+							<div class="panel panel-info" style="border: 1px">
+	
+								<div style="padding-top: 30px" class="panel-body">
+									<div style="display: none" id="login-alert"
+										class="alert alert-danger col-sm-12"></div>
 										<c:forEach var="orders" items="${memberOrders}">
-												<tr><td>訂單編號：${orders.id}</td></tr>
-												<tr><td>訂單日期：${orders.orderDate}</td></tr>
+												<tr><td><h4>訂單編號：${orders.id}</h4></td></tr>
+												<tr><td><h4>訂單日期：${orders.orderDate}</h4></td></tr>
 											<c:forEach var="ordersItem" items="${orders.ordersItem}">
 												<tr>
-													<td>商品名稱：${ordersItem.name}</td>
-													<td>購買數量：${ordersItem.quantity}</td>
-													<td>商品價格：${ordersItem.price}</td>
+													<td><h2 class="widget-title">商品名稱：${ordersItem.name}</h2></td>
+													<td><h2 class="widget-title">購買數量：${ordersItem.quantity}</h2></td>
+													<td><h2 class="widget-title">商品價格：${ordersItem.price}</h2></td>
 												</tr>
 											</c:forEach>
 										</c:forEach>
-									</table>
+								</div>
 							</div>
 						</div>
-					</div>
-					每頁不同的內容到這裡結束
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	</aside>
 	<!-- Classic Blog Section End -->
 	
 <!-- Footer Section -->
