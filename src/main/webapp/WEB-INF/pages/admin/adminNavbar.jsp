@@ -95,7 +95,7 @@
 <!--           </a> -->
 <!--         </li> -->
         <li class="nav-item">
-          <a class="nav-link" href="#" title="會員管理" data-toggle="tooltip" data-placement="right" data-container="body">
+          <a class="nav-link" href="/admin/member" title="會員管理" data-toggle="tooltip" data-placement="right" data-container="body">
             <span class="icon icon-users"></span>
             <small class="iconav-nav-label hidden-md-up">會員管理</small>
           </a>
