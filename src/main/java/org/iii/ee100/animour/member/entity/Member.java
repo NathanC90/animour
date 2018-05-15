@@ -28,6 +28,16 @@ import lombok.Setter;
 @Table(name = "MEMBER")
 public class Member extends GenericEntity implements UserDetails {
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Member [account=" + account + ", password=" + password + ", name=" + name + ", nickname=" + nickname
+				+ ", cell=" + cell + ", email=" + email + ", address=" + address + ", signature=" + signature
+				+ ", registrationTime=" + registrationTime + ", loginTime=" + loginTime + ", freq=" + freq + ", status="
+				+ status + ", role=" + role + "]";
+	}
+
 	@Pattern(regexp = "^[A-Za-z0-9]+", message = "請輸入字母或數字")
 	@Column(name = "ACCOUNT")
 	private String account;// 帳號
