@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @EnableWebSecurity
@@ -43,5 +45,16 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     	return new AnimourUserDetailsService();
     }
 
+    //加密
+//    @Bean
+//	public PasswordEncoder passwordEncoder(){
+//		PasswordEncoder encoder = new BCryptPasswordEncoder();
+//		return encoder;
+//	}
+//
+//	@Autowired
+//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//		auth.userDetailsService(animourUserDetailsService()).passwordEncoder(passwordEncoder());
+//	}
 }
 

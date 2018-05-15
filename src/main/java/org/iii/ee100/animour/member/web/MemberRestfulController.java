@@ -2,18 +2,14 @@ package org.iii.ee100.animour.member.web;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
+import org.iii.ee100.animour.member.Mail;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
-import org.iii.ee100.animour.salon.entity.Designer;
-import org.iii.ee100.animour.salon.entity.Reservation;
-import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,4 +44,13 @@ public class MemberRestfulController {
 //
 //	}
 
+	@Autowired	
+	EmailService emailService;
+	
+	@RequestMapping(value="/adminsendmail",method = RequestMethod.POST)
+	public ResponseEntity<?> newMail(Mail mail) {
+		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
+		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
+		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
+	}
 }
