@@ -34,7 +34,7 @@ public class Article extends GenericEntity {
 
 	@Column(name = "SUBJECT")
 	@NotBlank(message = "subject cannot be blank or null")
-	@Size(min = 10, max = 255, message = "subject must be between 10 and 255 characters")
+	@Size(min = 3, max = 255, message = "subject must be between 10 and 255 characters")
 	private String subject;
 
 	@Column(name = "CONTENT", columnDefinition = "TEXT")
@@ -55,7 +55,6 @@ public class Article extends GenericEntity {
 	private Member member;
 
 	@JsonInclude(JsonInclude.Include.NON_NULL)
-
 	@Column(name = "CLICK")
 	private Long click;
 	
