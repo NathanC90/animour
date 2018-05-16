@@ -145,5 +145,32 @@
 			</sec:authorize>				
 		</div>
 	</section>
-</body>
+
+	
+		<!-- Footer Section -->
+		<footer>
+		<jsp:include page="../footer.jsp"></jsp:include>
+		</footer>
+		<!-- Footer Section End-->
+	
+		<!-- Go To Top Link -->
+		<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
+		</a>
+	
+		<!-- JavaScript & jQuery Plugins -->
+		<script src="/js/jquery-min.js"></script>
+		<script src="/js/popper.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/jquery.mixitup.js"></script>
+		<script src="/js/smoothscroll.js"></script>
+		<script src="/js/wow.js"></script>
+		<script src="/js/owl.carousel.js"></script>
+		<script src="/js/waypoints.min.js"></script>
+		<script src="/js/jquery.counterup.min.js"></script>
+		<script src="/js/jquery.slicknav.js"></script>
+		<script src="/js/jquery.appear.js"></script>
+		<script src="/js/form-validator.min.js"></script>
+		<script src="/js/contact-form-script.min.js"></script>
+		<script src="/js/main.js"></script>
+	</body>
 </html>
