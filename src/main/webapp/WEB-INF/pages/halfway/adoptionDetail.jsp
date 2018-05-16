@@ -340,6 +340,7 @@
             <!-- Header-wrap Section End -->
 
             <!-- Page Header -->
+
             <div class="page-header-section">
                 <div class="container">
                     <div class="row">
@@ -354,7 +355,8 @@
             <!-- Page Header End -->
 
             <section class="contact2-section section">
-
+                <!-- 隱藏傳值按鈕 -->
+                <input type="hidden" id="aaa" value="${id}" class="storevalue" />
 
                 <div class="container">
                     <div class="row">
@@ -363,24 +365,9 @@
                             <div id="paymentdiv">
                                 <button id="payment" name="payment" class="btn btn-common">前往支付押金</button>
                                 <br>
-                                <!-- 隱藏傳值按鈕 -->
-                                <input type="hidden" id="${id}" class="storevalue" />
                             </div>
                             <form id="forappend" method="post" role="form" class="mt-30 shake" id="contactForm" name="contact-form" data-toggle="validator">
-                                <div class="row" id="test">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="50px" alt="${animal.id}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="message" class="sr-only">Message</label>
-                                            <textarea placeholder="Your Message" rows="10" id="message" class="form-control" name="message" required data-error="Write your message"></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                               
                                 <div class="form-group col-xs-12">
                                     <button class="btn btn-common btn-lg btn-block" name="submit" id="form-submit" type="submit">
                                         <i class="fa fa-envelope"></i> Submit</button>
@@ -487,10 +474,12 @@
             <script src="/js/jquery.countdown.js"></script>
 
             <script>
-                var recordid = "" + $('input').attr('id')
+
                 $(document).ready(function () {
+                    //var recordid = "" + $('input').attr('id')
+                    //console.log( $('#aaa').val())
                     $.ajax({
-                        url: '/halfway/acceptrecord/' + recordid,
+                        url: '/halfway/acceptrecord/'+$('#aaa').val(),
                         type: 'GET',
                         //data: data,
                         //data: json,
@@ -502,12 +491,12 @@
                         //contentType: false,
                         //processData: false,
                     }).done(function (datas) {
-                       // $.each(datas.data, function (idx, quiz) {
-                            console.log(datas.adoption.animal.fileName);
-                            var quizblock = `< <div class="row" id="test">
+                        // $.each(datas.data, function (idx, quiz) {
+                        console.log(datas.adoption.animal.fileName);
+                        var quizblock = `< <div class="row" id="test">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+datas.adoption.animal.fileName+`" width="50px" alt="${animal.id}">
+                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="${animal.id}">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
@@ -518,10 +507,10 @@
                                         </div>
                                     </div>
                                 </div>>`
-                            $('#foreach').append(quizblock);
-                        });
-
+                        $('#forappend').prepend(quizblock);
                     });
+
+                });
                // });
             </script>
             <script type="text/javascript">
