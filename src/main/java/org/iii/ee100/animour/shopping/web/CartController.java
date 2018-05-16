@@ -104,7 +104,7 @@ public class CartController {
 	//確定購買
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
-	public String confirmBuy(HttpSession session) {
+	public String confirmBuy(HttpSession session, Model model) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
 		
 		Member currentMember = memberService.getNewCurrentMember();
@@ -150,6 +150,7 @@ public class CartController {
 		orders.setOrdersItem(ordersList);
 		ordersService.insert(orders);
 		
+		model.addAttribute("memberOrders", ordersList);
 		cartItem.removeAll(cartItem);
 		
 		return "/shopping/ThanksForOrdering";
