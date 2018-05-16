@@ -132,7 +132,7 @@
             <section class="about-author-section mt-5">
                 <div class="media wow fadeIn" data-wow-delay="0.3s">
                   <div class="media-left">
-                    <a href="#"><img class="img-circle img-responsive" src="" alt="${article.member.images}"></a>
+                    <a href="#"><img class="img-circle img-responsive" style="width:100px;" src="${article.member.images}" alt=""></a>
                   </div>
                   <div class="media-body">
                     <h4>關於作者</h4>
