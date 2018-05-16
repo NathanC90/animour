@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -50,7 +51,7 @@ public class AdoptionPaymentController {
 		aio.setTradeDesc("認養編號:");
 		aio.setHoldTradeAMT("0");
 		// 顯示付款成功的頁面（預設
-		aio.setReturnURL("http://211.23.128.214:5000");
+		aio.setReturnURL("http://localhost:8080/backstage/checkoutStatus");
 		// 付款成功後轉跳的頁面 
 		aio.setClientBackURL("http://localhost:8080/halfway/");
 		try {
@@ -61,6 +62,14 @@ public class AdoptionPaymentController {
 			throw new Error(e.getNewExceptionMessage());
 		}
 	}
+	// 回傳付款結果
+	@RequestMapping(value = "/backstage/checkoutStatus", method = RequestMethod.POST)
+	public void queryCreditTrade(@RequestParam(value="RtnCode") Integer code){
+		System.out.println("++++++++++++++++"+code+"+++++++++++++++++");
+		
+		//return new ModelAndView("/halfway/aioChargeback", "command", new AioChargebackObj());
+	}
+	
 	
 	// 退款
 	@RequestMapping(value = "/backstage/aioChargeback", method = RequestMethod.GET)

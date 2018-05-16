@@ -32,7 +32,7 @@ public class AcceptRecord extends GenericEntity {
 	@Column(name = "STATUS")
 	private String status;
 
-	// 飼主是否繳納押金
+	// 飼主是否繳納押金，當付款成功，資料回來的時候
 	@Column(name = "DEPOSIT_OWNER")
 	private Boolean depositOwner;
 
@@ -83,6 +83,14 @@ public class AcceptRecord extends GenericEntity {
 	// 退還押金是否成功
 	@Column(name = "CHANGEBACK")
 	private Boolean changeback;
+
+	// 飼主ID
+	@Column(name = "OWNER_ID")
+	private Long ownerId;
+
+	// 認養人ID
+	@Column(name = "MEMBER_ID")
+	private Long memberId;
 
 	@OneToOne
 	private Adoption adoption;
