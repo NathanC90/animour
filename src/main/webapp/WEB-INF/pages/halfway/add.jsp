@@ -61,7 +61,7 @@
 			</head>
 
 			<body>
-				<h1>RESTful 測試</h1>
+		
 				<div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-info" style="border: 1px">
 						<div class="panel-heading" style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
