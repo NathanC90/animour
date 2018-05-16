@@ -84,6 +84,14 @@ public class AcceptRecord extends GenericEntity {
 	@Column(name = "CHANGEBACK")
 	private Boolean changeback;
 
+	// 飼主ID
+	@Column(name = "OWNER_ID")
+	private Long ownerId;
+
+	// 認養人ID
+	@Column(name = "MEMBER_ID")
+	private Long memberId;
+
 	@OneToOne
 	private Adoption adoption;
 }

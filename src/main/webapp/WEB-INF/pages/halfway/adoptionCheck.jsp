@@ -109,37 +109,94 @@
 												<td>${adoption.requestDate}</td>
 												<td>${adoption.requestComment}</td>
 												<td>
+													<!-- 表格內容開始 
 													<button type="button" id="showdetail_${adoption.id}" class="aaa" data-toggle="collapse" data-target="#detail" aria-expanded="true"
 													 aria-controls="detail">
 														<i class="fa fa-plus"></i>
-														</a> 詳情</button>
-
+														</a> 詳情
+													</button>
+												-->
 													<button type="button" onclick="location.href='/halfway/adoptionHandle?acceptRequest=true&id=${adoption.id}';" class="btn btn-common btn-sm mt-10">接受</button>
 													<button type="button" onclick="location.href='/halfway/adoptionHandle?acceptRequest=false&id=${adoption.id}';" class="btn btn-common btn-sm mt-10">拒絕</button>
 												</td>
-											</tr>
-
-											<tr id="detail" class="collapse">
-												<td>
-													<!--詳情的內容開始-->
-
-
-													<button class="btn btn-common btn-lg" type="submit" id="form-submit">
-														<i class="fa fa-check"></i> 認養程序完成</button>
-													<button class="btn btn-secondary btn-lg" type="submit" id="form-submit">
-														<i class="fa fa-envelope"></i> 檢舉</button>
-
-												</td>
-												<!--詳情的內容結束-->
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
-
 						</div>
+					</div>
 				</section>
-
+				<section class="section">
+					<div id="accordion">
+						<div class="container">
+							<div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+								<h2>送養程序處理</h2>
+							</div>
+							<div class="row">
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">認養紀錄編號</th>
+											<th scope="col">動物名稱</th>
+											<th scope="col">截止時間</th>
+											<th scope="col">會員名稱</th>
+											<th scope="col">查看</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="giverecord" items="${giverecord}">
+											<tr>
+												<th scope="row">${giverecord.id}</th>
+												<td>${giverecord.adoption.animal.name}</td>
+												<td>${giverecord.endDate}</td>
+												<td>${giverecord.adoption.member.account}</td>
+												<td>
+													<button id="${giverecord.id}" class="btn btn-common btn-sm mt-10 todetail">查看詳情</button>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="section">
+					<div id="accordion">
+						<div class="container">
+							<div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+								<h2>認養程序處理</h2>
+							</div>
+							<div class="row">
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">會員</th>
+											<th scope="col">動物名稱</th>
+											<th scope="col">時間</th>
+											<th scope="col">認養備註</th>
+											<th scope="col">確認</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="getrecord" items="${getrecord}">
+											<tr>
+												<th scope="row">${getrecord.id}</th>
+												<td>${getrecord.adoption.animal.name}</td>
+												<td>${getrecord.endDate}</td>
+												<td>${getrecord.adoption.member.name}</td>
+												<td>
+													<button id="${getrecord.id}" class="btn btn-common btn-sm mt-10 todetail">查看詳情</button>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</section>
 				<!-- 重複的內容結束 -->
 
 				<!-- Footer Section -->
@@ -170,49 +227,74 @@
 
 				<script>
 					$(document).ready(function () {
-						var adoptionId;
-
-
-						$('.aaa').click(function () {
-							//alert(this.id);
-							//alert(this.id);
-							var aaa = new String(this.id);
-							adoptionId = aaa.substring(aaa.indexOf('_') + 1);
-							//alert(adoptionId);
-							$.ajax({
-								url: '/halfway/adoption/' + adoptionId,
-								type: 'GET',
-								//data: data,
-								//data: json,
-								//dataType: 'json',
-								//processData: false,
-								//contentType: "application/json",
-								//contentType: "multipart/form-data",
-								//enctype: 'multipart/form-data',
-								//contentType: false,
-								//processData: false,
-							}).done(function (datas) {
-								console.log(datas.member.account);
-								console.log(datas.animal.id);
-								console.log(datas.animal.name);
-								var a = datas.animal.name;
-
-								let test123 = `<h1>aaaaa</h1><h1>` + datas.animal.id + `</h1><h1>` + a + `</h1>`;
-								//let test123 = `<h1>aaaaa</h1><h1>` + datas.animal.id + `</h1><h1>` + a + `</h1>`;
-								console.log(test123)
-								//$('#accordion').append(test123);
-
-							});
-
-							var a = `<div class="col-md-3" id="eachdiv1"><div id="eachdiv2" class="card mb-3 box-shadow"><img src="/showAnimalImage?fileName=null" width="100px" alt="10" class="card-img-top"><div id="eachdiv3" class="card-body"><p style="padding: 0px" class="card-text">開放認養</p><ul style="margin:0; padding:0; list-style:none;"><li style="margin: 0px">編號:10</li><li>綽號:YellowBird</li><li>種類:鳥</li><li>發現日期:2017-10-01</li><li>縣市:台北市</li></ul><small class="text-muted">2018/3/10 下午9:00:00</small><div id="eachdiv4" style="max-height: 100px" class="d-flex justify-content-between align-items-center"><div id="eachdiv5" class="btn-group"><button type="button" onclick="location.href='/halfway/detail?id=10'" class="btn btn-common btn-sm mt-10">詳情</button></div></div></div></div></div>`
-
-
-						});
-						//$('#detail').toggle('drop', {direction: 'down'}, 150);
-
-
+						$(".btn.btn-common.btn-sm.mt-10.todetail").click(function(){
+							alert($(this).attr("id"))
+							window.location.href = "http://localhost:8080/halfway/toacceptrecord/"+$(this).attr("id")
+							//window.location.href = "http://localhost:8080/halfway";
+						})
 					});
 
+
+				</script>
+				<script>
+					$(document)
+						.ready(
+							function () {
+								var adoptionId;
+
+								$('.aaa')
+									.click(
+										function () {
+											//alert(this.id);
+											//alert(this.id);
+											var aaa = new String(this.id);
+											adoptionId = aaa.substring(aaa
+												.indexOf('_') + 1);
+											//alert(adoptionId);
+											$
+												.ajax(
+													{
+														url: '/halfway/adoption/'
+															+ adoptionId,
+														type: 'GET',
+														//data: data,
+														//data: json,
+														//dataType: 'json',
+														//processData: false,
+														//contentType: "application/json",
+														//contentType: "multipart/form-data",
+														//enctype: 'multipart/form-data',
+														//contentType: false,
+														//processData: false,
+													})
+												.done(
+													function (datas) {
+														console
+															.log(datas.member.account);
+														console
+															.log(datas.animal.id);
+														console
+															.log(datas.animal.name);
+														var a = datas.animal.name;
+
+														let test123 = `<h1>aaaaa</h1><h1>`
+															+ datas.animal.id
+															+ `</h1><h1>`
+															+ a
+															+ `</h1>`;
+														//let test123 = `<h1>aaaaa</h1><h1>` + datas.animal.id + `</h1><h1>` + a + `</h1>`;
+														console
+															.log(test123)
+														//$('#accordion').append(test123);
+
+													});
+
+											var a = `<div class="col-md-3" id="eachdiv1"><div id="eachdiv2" class="card mb-3 box-shadow"><img src="/showAnimalImage?fileName=null" width="100px" alt="10" class="card-img-top"><div id="eachdiv3" class="card-body"><p style="padding: 0px" class="card-text">開放認養</p><ul style="margin:0; padding:0; list-style:none;"><li style="margin: 0px">編號:10</li><li>綽號:YellowBird</li><li>種類:鳥</li><li>發現日期:2017-10-01</li><li>縣市:台北市</li></ul><small class="text-muted">2018/3/10 下午9:00:00</small><div id="eachdiv4" style="max-height: 100px" class="d-flex justify-content-between align-items-center"><div id="eachdiv5" class="btn-group"><button type="button" onclick="location.href='/halfway/detail?id=10'" class="btn btn-common btn-sm mt-10">詳情</button></div></div></div></div></div>`
+
+										});
+								//$('#detail').toggle('drop', {direction: 'down'}, 150);
+
+							});
 				</script>
 
 			</body>

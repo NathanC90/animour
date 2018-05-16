@@ -10,6 +10,7 @@ import org.iii.ee100.animour.halfway.service.AcceptRecordService;
 import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +29,10 @@ public class AdoptionController {
 
 	@Autowired
 	AnimalService animalService;
-	
+
+	@Autowired
+	MemberService memberService;
+
 	@Autowired
 	AcceptRecordService acceptRecordService;
 
@@ -36,37 +40,44 @@ public class AdoptionController {
 	@RequestMapping(value = "/halfway/showAdoption", method = { RequestMethod.GET })
 	public String showAdoptionCheck(Model model) {
 
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails && principal instanceof Member) {
-			List<Adoption> adoptions = adoptionService.getCheckAdoption(((Member) principal).getId());
+		Member current = memberService.getNewCurrentMember();
+		if (current != null) {
+			List<Adoption> adoptions = adoptionService.getCheckAdoption(current.getId());
 			model.addAttribute("adoption", adoptions);
-		} else {
-			String account = principal.toString();
-			System.out.println(account);
+
+			List<AcceptRecord> giverecord = acceptRecordService.getCheckGive(current.getId());
+			model.addAttribute("giverecord", giverecord);
+
+			List<AcceptRecord> getrecord = acceptRecordService.getCheckGet(current.getId());
+			model.addAttribute("getrecord", getrecord);
 		}
+
 		return "/halfway/adoptionCheck";
 	}
 
 	// 處理認養請求的拒絕或接受
 	@RequestMapping(value = "/halfway/adoptionHandle", method = { RequestMethod.GET })
 	public String adoptionHandle(@RequestParam(value = "id") Long id,
-			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an, AcceptRecord acceptRecord) {
+			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an,
+			AcceptRecord acceptRecord) {
 		if (acceptRequest) {
 			// 認養請求狀態更新
 			adoption = adoptionService.getOne(id);
 			adoption.setAcceptRequest(acceptRequest);
 			adoption.setAcceptDate(new Timestamp(System.currentTimeMillis()));
 			adoptionService.update(adoption);
-			
+
 			// 動物狀態更新
 			an = adoption.getAnimal(); // 這裡的id adoption的id
 			an.setStatus("認養洽談中");
 			animalService.update(an);
-			
+
 			// 同時新增成交紀錄物件
 			acceptRecord.setStartDate(adoption.getAcceptDate());
 			acceptRecord.setEndDate(acceptRecordService.calEndDate(acceptRecord.getStartDate()));
 			acceptRecord.setAdoption(adoption);
+			acceptRecord.setOwnerId(adoption.getOwnerId());
+			acceptRecord.setMemberId(adoption.getMember().getId());
 			acceptRecordService.insert(acceptRecord);
 			return "redirect:/halfway/showAdoption";
 		} else {

@@ -82,13 +82,13 @@
 			<!-- Page Header End -->
 
 			<!-- 測試付款按鈕 -->
-			<div id="paymentdiv">
+			<!--<div id="paymentdiv">
 				<button id="payment" name="payment" class="btn btn-common">確定認養，前往支付押金</button>
 				<br>
 				<a href="/backstage/aioChargeback">
 					<button id="changeback" name="payment" class="btn btn-common">認養程序已完成，退回押金</button>
 				</a>
-			</div>
+			</div> -->
 			<!-- Call to action section -->
 			<section class="cta-section section" style="background: url(/images/halfway/halfwayindex.jpg) scroll center center; width: 100%; height: 100%; position: relative;">
 				<div class="container">
@@ -133,13 +133,13 @@
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="狗" id="defaultCheck1" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 狗 (31) </label>
+												<label class="form-check-label" for="defaultCheck1"> 狗 (4) </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="貓" id="defaultCheck2" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 貓 (16) </label>
+												<label class="form-check-label" for="defaultCheck1"> 貓 (3) </label>
 											</div>
 										</li>
 										<li>
@@ -151,7 +151,7 @@
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="鼠" id="defaultCheck4" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 鼠 (7) </label>
+												<label class="form-check-label" for="defaultCheck1"> 鼠 (1) </label>
 											</div>
 										</li>
 										<li>
