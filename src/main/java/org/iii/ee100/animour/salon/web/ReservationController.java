@@ -26,12 +26,7 @@ public class ReservationController {
 	
 
 
-//	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.GET })
-//	public String reservationTime(Model model) {
-//		Reservation reservation = new Reservation();
-//		model.addAttribute("reservation", reservation);		
-//		return "/salon/insertReservationForm";
-//	}
+
 	@RequestMapping(path = { "/editReservation" }, method = { RequestMethod.GET })
 	public String editReservation(Model model) {
 		return "/salon/editReservation";
@@ -40,16 +35,15 @@ public class ReservationController {
 	public String salonAdminReservation(Model model) {
 		return "/salon/salonAdminReservation";
 	}
-//	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.POST })
-//	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
-//		model.addAttribute("reservation", reservationService.insertReservation(reservation));
-//		return "/salon/checkReservationOrder";
-//	}
+	@RequestMapping(path = { "/reservation/introduce" }, method = { RequestMethod.GET })
+	public String reservationTimeInsert(@ModelAttribute("reservation")Reservation reservation,Model model) throws Exception {
+		return "/salon/introduce";
+	}
 	
 	@ModelAttribute("allContent")
 	public Map<String,String> getAllContent() {
 		Map<String,String> contentMaps = new HashMap<>();
-		List<ServiceContent>serviceContents=reservationService.getAllServiceContent();
+		List<ServiceContent>serviceContents=reservationService.getThreeServiceConten();
 		for(ServiceContent serviceContent:serviceContents) {
 			contentMaps.put(serviceContent.getContent(), serviceContent.getContent());
 		}

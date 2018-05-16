@@ -1,144 +1,164 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-			<!doctype html>
-			<html lang="en">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!doctype html>
+<html lang="en">
 
-			<head>
-				<!--Icon Tags start -->
-				<link rel="apple-touch-icon" sizes="57x57" href="/images/icon/apple-icon-57x57.png">
-				<link rel="apple-touch-icon" sizes="60x60" href="/images/icon/apple-icon-60x60.png">
-				<link rel="apple-touch-icon" sizes="72x72" href="/images/icon/apple-icon-72x72.png">
-				<link rel="apple-touch-icon" sizes="76x76" href="/images/icon/apple-icon-76x76.png">
-				<link rel="apple-touch-icon" sizes="114x114" href="/images/icon/apple-icon-114x114.png">
-				<link rel="apple-touch-icon" sizes="120x120" href="/images/icon/apple-icon-120x120.png">
-				<link rel="apple-touch-icon" sizes="144x144" href="/images/icon/apple-icon-144x144.png">
-				<link rel="apple-touch-icon" sizes="152x152" href="/images/icon/apple-icon-152x152.png">
-				<link rel="apple-touch-icon" sizes="180x180" href="/images/icon/apple-icon-180x180.png">
-				<link rel="icon" type="image/png" sizes="192x192" href="/images/icon/android-icon-192x192.png">
-				<link rel="icon" type="image/png" sizes="32x32" href="/images/icon/favicon-32x32.png">
-				<link rel="icon" type="image/png" sizes="96x96" href="/images/icon/favicon-96x96.png">
-				<link rel="icon" type="image/png" sizes="16x16" href="/images/icon/favicon-16x16.png">
-				<link rel="manifest" href="/manifest.json">
-
-
-				<!--Icon Tags end -->
-				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-				<!-- Viewport Meta Tag -->
-				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<title>RESERVATION</title>
-				<!-- calendar css -->
-				<!-- Bootstrap -->
-				<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-				<!-- Main Style -->
-				<link rel="stylesheet" type="text/css" href="/css/main.css">
-				<!-- Slicknav Css -->
-				<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
-
-				<!-- Responsive Style -->
-				<link rel="stylesheet" type="text/css" href="/css/responsive.css">
-				<!--Fonts-->
-				<link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
-				<link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
-
-				<!-- Extras -->
-				<link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
-				<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
-				<link rel="stylesheet" type="text/css" href="/extras/animate.css">
-				<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+<head>
+<!--Icon Tags start -->
+<link rel="apple-touch-icon" sizes="57x57"
+	href="/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+	href="/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+	href="/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+	href="/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/images/icon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
 
 
-				<!-- Color CSS Styles  -->
-				<link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+<!--Icon Tags end -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RESERVATION</title>
+<!-- calendar css -->
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!-- Main Style -->
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!-- Slicknav Css -->
+<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
 
-				<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-				<!--[if lt IE 9]>
+<!-- Responsive Style -->
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+<!--Fonts-->
+<link rel="stylesheet" media="screen"
+	href="/fonts/font-awesome/font-awesome.min.css">
+<link rel="stylesheet" media="screen"
+	href="/fonts/simple-line-icons.css">
+
+<!-- Extras -->
+<link rel="stylesheet" type="text/css"
+	href="/extras/owl/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="/extras/animate.css">
+<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+
+
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
+	media="screen" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
 	<![endif]-->
-				<style>
-					.calendar {
-						width: 450px;
-						height: 350px;
-						background: #fff;
-						box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-					}
+<style>
+.calendar {
+	width: 450px;
+	height: 350px;
+	background: #fff;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+}
 
-					.body-list ul {
-						width: 100%;
-						font-family: arial;
-						font-weight: bold;
-						font-size: 14px;
-					}
+.body-list ul {
+	width: 100%;
+	font-family: arial;
+	font-weight: bold;
+	font-size: 14px;
+}
 
-					.body-list ul li {
-						width: 14.28%;
-						height: 36px;
-						line-height: 36px;
-						list-style-type: none;
-						display: block;
-						box-sizing: border-box;
-						float: left;
-						text-align: center;
-					}
+.body-list ul li {
+	width: 14.28%;
+	height: 36px;
+	line-height: 36px;
+	list-style-type: none;
+	display: block;
+	box-sizing: border-box;
+	float: left;
+	text-align: center;
+}
 
-					.lightgrey {
-						color: #a8a8a8;
-						/*浅灰色*/
-					}
+.lightgrey {
+	color: #a8a8a8;
+	/*浅灰色*/
+}
 
-					.darkgrey {
-						color: #565656;
-						/*深灰色*/
-					}
+.darkgrey {
+	color: #565656;
+	/*深灰色*/
+}
 
-					.green {
-						color: #6ac13c;
-						/*绿色*/
-					}
+.green {
+	color: #6ac13c;
+	/*绿色*/
+}
 
-					.greenbox {
-						border: 1px solid #6ac13c;
-						background: #e9f8df;
-						/*浅绿色背景*/
-					}
-				</style>
-			</head>
+.greenbox {
+	border: 1px solid #6ac13c;
+	background: #e9f8df;
+	/*浅绿色背景*/
+}
+</style>
+</head>
 
-			<body>
-				<!-- Header area wrapper starts -->
-				<header id="header-wrap">
-					<!-- Navbar Starts -->
-					<jsp:include page="../navbar.jsp"></jsp:include>
-					<!-- Navbar ends -->
-				</header>
-				<!-- Header-wrap Section End -->
-				<!-- Page Header -->
-				<div class="page-header-section">
-					<div class="container">
-						<div class="row">
-							<div class="page-header-area">
-								<div class="page-header-content">
-									<h2>RESERVATION</h2>
-								</div>
-							</div>
-						</div>
+<body>
+	<!-- Header area wrapper starts -->
+	<header id="header-wrap">
+		<!-- Navbar Starts -->
+		<jsp:include page="../navbar.jsp"></jsp:include>
+		<!-- Navbar ends -->
+	</header>
+	<!-- Header-wrap Section End -->
+	<!-- Page Header -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>RESERVATION</h2>
 					</div>
 				</div>
-				<!-- Page Header End -->
-				<!-- Classic Blog Section -->
-				<section class="classic-blog-section section">
-					<div class="container">
-						<div class="row">
-							<!-- End -->
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+	<!-- Classic Blog Section -->
+	<section class="classic-blog-section section">
+		<div class="container">
+			<div class="row">
+				<!-- End -->
 
-							<!-- <div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-								<div class="panel panel-info" style="border: 1px">
-									<div class="panel-heading" style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-										<div class="panel-title">新增預約</div>
+				<div id="loginbox" style="margin-top: 50px; margin: auto"
+					class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-info" style="border: 1px">
+						<div class="panel-heading"
+							style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
+							<div class="panel-title">新增預約</div>
+							<!--
 										<div style="float: right; font-size: 80%; position: relative; top: -10px">
 											<a href="#"></a>
 										</div>
@@ -181,27 +201,20 @@
 													<select></select>
 												</li>
 											</ul> -->
-								預約日期
-								<input class="form-group col-md-8" id="meeting" type="date" name="reservationDate" />
-								<br> 美容師:
-								<select id="designer" class="form-control" name="designer">
+								預約日期 <input class="form-group col-md-8" id="meeting" type="date"
+									name="reservationDate" /> <br> 美容師: <select id="designer"
+									class="form-control" name="designer">
 									<option value="designer" label="請選擇美容師" />
-								</select>
-								服務類別:
-								<select id="servicer" class="form-control" name="content">
+								</select> 服務類別: <select id="servicer" class="form-control" name="content">
 									<option value="content" label="請選擇類別" />
 
-								</select>
-								時段:
-								<select id="frontTime" class="form-control" name="frontTime">
-									<option value="frontTime" label="請選擇時段" />
 
-								</select>
-
-
-								價位：
-								<select id="price" class="form-control" name="price">
+								</select> 價位： <select id="price" class="form-control" name="price">
 									<option value="price" label="請選擇價位" />
+									
+								</select> 時段: <select id="frontTime" class="form-control"
+									name="frontTime">
+									<option value="frontTime" label="請選擇時段" />
 
 								</select>
 
@@ -212,276 +225,278 @@
 												</form>
 												<!-- the result of the search will be rendered inside this div -->
 								<!-- <div id="result"></div> -->
-								<div>
-									<input id="response" type="submit" class="btn btn-common" value="預約">
-									<input id="" type="reset" class="btn btn-common" value="清除">
-								</div>
+
 							</form>
 
 
 						</div>
+
+
 					</div>
+					<br>
+					<div id="paymentdiv" style="text-align: center; border: 3px white double;">
+						<input id="response" type="submit" onclick="show_confirm()"class="btn btn-common"
+							value="預約">
 					</div>
-				</section>
-				<!-- Footer Section -->
-				<footer>
-					<!-- Container Starts -->
-					<div class="container">
-						<!-- Row Starts -->
-						<div class="row section">
-							<!-- Footer Widget Starts -->
-							<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-								<h3 class="small-title">About Us</h3>
-								<p></p>
-								<ul class="mb-3">
-									<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
-									<!-- 						<li><i class="fa fa-phone"></i></li> -->
-									<!-- 						<li><i class="fa fa-phone"></i></li> -->
-								</ul>
-							</div>
-							<!-- Footer Widget Ends -->
 
-							<!-- Footer Widget Starts -->
-							<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-								<h3 class="small-title">Quick Links</h3>
-								<ul class="menu">
-									<li>
-										<a href="#">首頁</a>
-									</li>
-									<li>
-										<a href="#">中途專區</a>
-									</li>
-									<li>
-										<a href="#">最新活動專區</a>
-									</li>
-									<li>
-										<a href="#">寵物市集</a>
-									</li>
-									<li>
-										<a href="#">Salon</a>
-									</li>
-									<li>
-										<a href="#">醫院資訊專區</a>
-									</li>
-									<li>
-										<a href="#">THE BLOG</a>
-									</li>
-								</ul>
-							</div>
-							<!-- Footer Widget Ends -->
+				</div>
+	</section>
+	<!-- Footer Section -->
+	<footer>
+		<!-- Container Starts -->
+		<div class="container">
+			<!-- Row Starts -->
+			<div class="row section">
+				<!-- Footer Widget Starts -->
+				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+					<h3 class="small-title">About Us</h3>
+					<p></p>
+					<ul class="mb-3">
+						<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
+						<!-- 						<li><i class="fa fa-phone"></i></li> -->
+						<!-- 						<li><i class="fa fa-phone"></i></li> -->
+					</ul>
+				</div>
+				<!-- Footer Widget Ends -->
 
-							<!-- Footer Widget Starts -->
-							<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-								<h3 class="small-title">Popular Posts</h3>
-								<ul class="image-list">
-									<li>
-										<figure class="overlay">
-											<img class="img-fluid" src="" alt="">
-										</figure>
-										<div class="post-content">
-											<h6 class="post-title">
-												<a href="blog-single.html"></a>
-											</h6>
-											<div class="meta">
-												<span class="date"></span>
-											</div>
-										</div>
-									</li>
-									<li>
-										<figure class="overlay">
-											<img class="img-fluid" src="" alt="">
-										</figure>
-										<div class="post-content">
-											<h6 class="post-title">
-												<a href="blog-single.html"></a>
-											</h6>
-											<div class="meta">
-												<span class="date"></span>
-											</div>
-										</div>
-									</li>
-								</ul>
-							</div>
-							<!-- Footer Widget Ends -->
+				<!-- Footer Widget Starts -->
+				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+					<h3 class="small-title">Quick Links</h3>
+					<ul class="menu">
+						<li><a href="#">首頁</a></li>
+						<li><a href="#">中途專區</a></li>
+						<li><a href="#">最新活動專區</a></li>
+						<li><a href="#">寵物市集</a></li>
+						<li><a href="#">Salon</a></li>
+						<li><a href="#">醫院資訊專區</a></li>
+						<li><a href="#">THE BLOG</a></li>
+					</ul>
+				</div>
+				<!-- Footer Widget Ends -->
 
-							<!-- Footer Widget Starts -->
-							<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-								<h3 class="small-title">EMail Us</h3>
-								<form>
-									<input type="text" placeholder="Email here">
-									<button type="submit">
-										<i class="fa fa-paper-plane-o"></i>
-									</button>
-								</form>
-								<div class="flicker-gallery">
-									<h3 class="small-title">Social Media Link</h3>
-									<a href="#" title="Pan Masala">
-										<img src="/images/flicker/img1.jpg" alt="">
-									</a>
-									<a href="#" title="Sports Template for Joomla">
-										<img src="/images/flicker/img2.jpg" alt="">
-									</a>
-									<a href="" title="Apple Keyboard">
-										<img src="/images/halfway/halfwayindex.jpg" alt="">
-									</a>
+				<!-- Footer Widget Starts -->
+				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+					<h3 class="small-title">Popular Posts</h3>
+					<ul class="image-list">
+						<li>
+							<figure class="overlay">
+								<img class="img-fluid" src="" alt="">
+							</figure>
+							<div class="post-content">
+								<h6 class="post-title">
+									<a href="blog-single.html"></a>
+								</h6>
+								<div class="meta">
+									<span class="date"></span>
 								</div>
 							</div>
-							<!-- Footer Widget Ends -->
-						</div>
-						<!-- Row Ends -->
-					</div>
-					<!-- Container Ends -->
-
-					<!-- Copyright -->
-					<div id="copyright">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-6 col-sm-6">
-									<p class="copyright-text">
-										© 2018 Animour All right reserved, Designed by
-										<a href="#">iii-ee100</a>
-									</p>
-								</div>
-								<div class="col-md-6 col-sm-6">
-									<div class="social-footer text-right">
-										<a href="#">
-											<i class="fa fa-facebook icon-round"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-twitter icon-round"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-linkedin icon-round"></i>
-										</a>
-										<a href="#">
-											<i class="fa fa-google-plus icon-round"></i>
-										</a>
-									</div>
+						</li>
+						<li>
+							<figure class="overlay">
+								<img class="img-fluid" src="" alt="">
+							</figure>
+							<div class="post-content">
+								<h6 class="post-title">
+									<a href="blog-single.html"></a>
+								</h6>
+								<div class="meta">
+									<span class="date"></span>
 								</div>
 							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- Footer Widget Ends -->
+
+				<!-- Footer Widget Starts -->
+				<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
+					<h3 class="small-title">EMail Us</h3>
+					<form>
+						<input type="text" placeholder="Email here">
+						<button type="submit">
+							<i class="fa fa-paper-plane-o"></i>
+						</button>
+					</form>
+					<div class="flicker-gallery">
+						<h3 class="small-title">Social Media Link</h3>
+						<a href="#" title="Pan Masala"> <img
+							src="/images/flicker/img1.jpg" alt="">
+						</a> <a href="#" title="Sports Template for Joomla"> <img
+							src="/images/flicker/img2.jpg" alt="">
+						</a> <a href="" title="Apple Keyboard"> <img
+							src="/images/halfway/halfwayindex.jpg" alt="">
+						</a>
+					</div>
+				</div>
+				<!-- Footer Widget Ends -->
+			</div>
+			<!-- Row Ends -->
+		</div>
+		<!-- Container Ends -->
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-6">
+						<p class="copyright-text">
+							© 2018 Animour All right reserved, Designed by <a href="#">iii-ee100</a>
+						</p>
+					</div>
+					<div class="col-md-6 col-sm-6">
+						<div class="social-footer text-right">
+							<a href="#"> <i class="fa fa-facebook icon-round"></i>
+							</a> <a href="#"> <i class="fa fa-twitter icon-round"></i>
+							</a> <a href="#"> <i class="fa fa-linkedin icon-round"></i>
+							</a> <a href="#"> <i class="fa fa-google-plus icon-round"></i>
+							</a>
 						</div>
 					</div>
-					<!-- Copyright  End-->
+				</div>
+			</div>
+		</div>
+		<!-- Copyright  End-->
 
-				</footer>
-				<!-- Footer Section End-->
+	</footer>
+	<!-- Footer Section End-->
 
-				<!-- Go To Top Link -->
-				<a href="#" class="back-to-top">
-					<i class="fa fa-angle-up"> </i>
-				</a>
+	<!-- Go To Top Link -->
+	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
+	</a>
 
-				<!-- JavaScript & jQuery Plugins -->
-				<script src="/js/jquery-min.js"></script>
-				<script src="/js/popper.min.js"></script>
-				<script src="/js/bootstrap.min.js"></script>
-				<script src="/js/jquery.mixitup.js"></script>
-				<script src="/js/smoothscroll.js"></script>
-				<script src="/js/wow.js"></script>
-				<script src="/js/owl.carousel.js"></script>
-				<script src="/js/waypoints.min.js"></script>
-				<script src="/js/jquery.counterup.min.js"></script>
-				<script src="/js/jquery.slicknav.js"></script>
-				<script src="/js/jquery.appear.js"></script>
-				<script src="/js/form-validator.min.js"></script>
-				<script src="/js/contact-form-script.min.js"></script>
-				<script src="/js/main.js"></script>
-				<!-- Placed at the end of the document so the pages load faster -->
-				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-				 crossorigin="anonymous"></script>
-				<script>
-					window.jQuery
-						|| document
-							.write('<script src="/js/jquery-slim.min.js"><\/script>')
-				</script>
-				<script src="/js/popper.min.js"></script>
-				<script src="/js/bootstrap.min.js"></script>
-				<!-- 	<script src="/js/vendor/holder.min.js"></script> -->
+	<!-- JavaScript & jQuery Plugins -->
+	<script src="/js/jquery-min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.mixitup.js"></script>
+	<script src="/js/smoothscroll.js"></script>
+	<script src="/js/wow.js"></script>
+	<script src="/js/owl.carousel.js"></script>
+	<script src="/js/waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/jquery.appear.js"></script>
+	<script src="/js/form-validator.min.js"></script>
+	<script src="/js/contact-form-script.min.js"></script>
+	<script src="/js/main.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="/js/jquery-slim.min.js"><\/script>')
+	</script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<!-- 	<script src="/js/vendor/holder.min.js"></script> -->
 
-				<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-				<script src="/js/jquery-3.3.1.min.js"></script>
-				<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-				<!-- 	<different content from here> -->
+	<script
+		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+	<script src="/js/jquery-3.3.1.min.js"></script>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+	<!-- 	<different content from here> -->
 
-				<script>
-					$(document).ready(function () {
-						$.getJSON('/reservationForms/getServiceCotent', {}, function (data) {
-							console.log(data);
-							$.each(data, function (i, a) {
-								var cell1 = $("<option></option>").text(a.content);
-								var cell2 = $("<option></option>").text(a.price);
-								$('#servicer').append(cell1);
+	<script>
+		$(document).ready(function() {
 
-								$('#price').append(cell2);
+			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
+				console.log(data);
+				$.each(data, function(i, a) {
+					// var cell1 = $("<option></option>").text(a.content+a.price);
+					// $('#servicer').append(cell1);
+					var cell1 = $("<option></option>").text(a.content);
+					var cell2 = $("<option></option>").text(a.price);
+					$('#servicer').append(cell1);
 
-							});
+					$('#price').append(cell2);
 
+				});
 
-						}
-						)
-					});
-					$(document).ready(function () {
-						$.getJSON('/reservationForms/getTimeSection', {}, function (data) {
-							console.log(data);
-							$.each(data, function (i, a) {
-								var cell1 = $("<option></option>").text(a.frontTime);
-								$('#frontTime').append(cell1);
-							});
+			})
+		});
+		$(document).ready(function() {
+			$.getJSON('/reservationForms/getTimeSection', {}, function(data) {
+				console.log(data);
+				$.each(data, function(i, a) {
+					var cell1 = $("<option></option>").text(a.frontTime);
+					$('#frontTime').append(cell1);
+				});
 
-						}
-						)
-					});
-					$(document).ready(function () {
-						$.getJSON('/reservationForms/getDesigner', {}, function (data) {
-							console.log(data);
-							$.each(data, function (i, a) {
-								var cell1 = $("<option></option>").text(a.designer);
+			})
+		});
+		$(document).ready(function() {
+			$.getJSON('/reservationForms/getDesigner', {}, function(data) {
+				console.log(data);
+				$.each(data, function(i, a) {
+					var cell1 = $("<option></option>").text(a.designer);
 
-								$('#designer').append(cell1);
-							});
+					$('#designer').append(cell1);
+				});
 
-						}
-						)
-					});
-					$("#response").click(function () {
+			})
+		});
+		$("#response").click(function() {
 
-						var data1 = new FormData(document.getElementById("myform"));
-						console.log(toJson(data1));
-						$.ajax({
-							url: '/reservationForms',
-							type: 'POST',
-							data: toJson(data1),
-							contentType: "application/json",
-							dataType: "json",
+			var data1 = new FormData(document.getElementById("myform"));
+			console.log(toJson(data1));
+			$.ajax({
+				url : '/reservationForms',
+				type : 'POST',
+				data : toJson(data1),
+				contentType : "application/json",
+				dataType : "json",
 
-
-						}).done(function (data) {
-							console.log(toJson(data1));
-
-
-						});
-
-						function toJson(formData) {
-							var object = {};
-							formData.forEach(function (value, key) {
-								// if (key == 'city') {
-								// 	var object1 = {};
-								// 	object1['id'] = value;
-								// 	object[key] = object1;
-								// } else {
-								object[key] = value;
-								// }
-							});
-							var json = JSON.stringify(object, null);
-							console.log(json);
-							return json;
-						};
-
+			}).done(function(data) {
+/* 				console.log(toJson(data1));
+ */				
+				var r=confirm("馬上結帳");
+				if (r==true)
+				  {
+ 				  alert("為您轉跳中");
+ 			
+					$.ajax({
+						url: '/SalonfrontEnd/CheckOut/CheckOutALL',
+						type: 'POST',
+						//data: data,
+						//data: json,
+						//dataType: 'json',
+						//contentType: "application/json",
+					}).done(function (datas) {
+						$('#paymentdiv').html(datas);
 
 					});
+				  }
+				else
+				  {
+				  alert("You pressed Cancel!");
+				  }
 
-				</script>
-				<!-- <script>
+			});
+
+			function toJson(formData) {
+				var object = {};
+				formData.forEach(function(value, key) {
+					// if (key == 'city') {
+					// 	var object1 = {};
+					// 	object1['id'] = value;
+					// 	object[key] = object1;
+					// } else {
+					object[key] = value;
+					// }
+				});
+				var json = JSON.stringify(object, null);
+				console.log(json);
+				return json;
+			}
+			;
+
+		});
+	</script>
+	
+	<!-- <script>
 					var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 					var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 					var month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
@@ -555,6 +570,6 @@
 				</script> -->
 
 
-			</body>
+</body>
 
-			</html>
+</html>

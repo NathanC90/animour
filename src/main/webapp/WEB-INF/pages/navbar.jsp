@@ -57,12 +57,12 @@
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="/reservationDate" aria-haspopup="true" aria-expanded="false">寵物salon</a>
+                                    <a class="nav-link dropdown-toggle" href="/reservation/introduce" aria-haspopup="true" aria-expanded="false">寵物salon</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="">salon簡介</a>
+                                        <a class="dropdown-item" href="/reservation/introduce">沙龍簡介</a>
                                         <a class="dropdown-item" href="/salonAdminReservation">訂單編輯</a>
-                                        <a class="dropdown-item" href="/appointment/testForm">test</a>
-                                        <a class="dropdown-item" href="/appointment/firstPage">reservation</a>
+                                        <a class="dropdown-item" href="/appointment/firstPage">預約</a>
+                                        <a class="dropdown-item" href="/appointment/testForm">結帳</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">
@@ -101,7 +101,7 @@
                                 <sec:authorize access="hasRole('Member')">
                                     <!-- 會員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/<sec:authentication property=" principal.username "/>" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" var="username" />${username} 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/${username}">個人首頁</a>

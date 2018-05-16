@@ -59,124 +59,12 @@
 		<!-- Navbar ends -->
 
 
-		<!-- 輪播牆開始 -->
-		<div id="carousel-area">
-			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-slider" data-slide-to="1"></li>
-					<li data-target="#carousel-slider" data-slide-to="2"></li>
-					<li data-target="#carousel-slider" data-slide-to="3"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"></h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點擊預約
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"></h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-coffee">
-							</i>
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New
-								Arrival</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新商品上架</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 看這裡
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							src="/images/slider/bg-rabbit1-gray.jpg" alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-								已掛號會員請更改看診時間</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點此更改
-							</a>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carousel-slider"
-					role="button" data-slide="prev"> <span
-					class="carousel-control carousel-control-prev-icon"
-					aria-hidden="true"></span> <span class="sr-only">Previous</span>
-				</a> <a class="carousel-control-next" href="#carousel-slider"
-					role="button" data-slide="next"> <span
-					class="carousel-control carousel-control-next-icon"
-					aria-hidden="true"></span> <span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-		<!-- 輪播牆結束-->
 	</header>
 	<!-- Header-wrap Section End -->
 
 	<!-- 寵物沙龍開始 -->
 	<section id="service-block-main" class="section">
-		<!-- 重複的內容開始 -->
-		<div class="container">
-			<h3 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-				預約</h3>
-
-
-			<div class="row">
-				<form action="/appointment/showSuccess" method="GET">
-					<select name=id>
-						<c:forEach var="avar1" items="${showReservationTime}">
-							<option value="${avar1.id}">${avar1.freeTime}</option>
-
-						</c:forEach>
-					</select> <input type="submit" value="預約確認">
-				</form>
-				<c:forEach var="avar" items="${showReservationTime}">
-
-					<div class="col-md-4">
-						<div class="card mb-4 box-shadow">
-							<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg"
-								width="100px" alt="待預約設計師">
-							<div class="card-body" style="margin-bottom: 5px">
-								<p class="card-text" style="padding: 0px">
-									設計師名稱：${avar.designer} 空閒時間：${avar.freeTime} 數字0為已預約:${avar.oneFree}</p>
-								<div class="d-flex justify-content-between align-items-center"
-									style="max-height: 100px">
-									<div class="btn-group" style="margin: 0px">
-										<button type="button" class="btn btn-common btn-sm mt-10">預覽</button>
-										<button type="button" class="btn btn-common btn-sm mt-10">認養</button>
-									</div>
-									<%-- 											<small class="text-muted">${avar.checkIn}</small> --%>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-		<!-- 重複的內容結束 -->
+	
 	</section>
 
 	<!-- 寵物旅館結束 -->

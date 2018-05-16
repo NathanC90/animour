@@ -51,8 +51,9 @@ public class FormsRestController {
 	
 	@RequestMapping(method = RequestMethod.POST,produces = { "application/json"})
 	public ResponseEntity<?> insertReservation(@Valid @RequestBody Reservation reservation) throws ParseException {
-		Member currentMember = memberService.getNewCurrentMember();
-		reservation.setMember(currentMember);
+//		Member currentMember = memberService.getNewCurrentMember();
+//		reservation.setMember(currentMember);
+		
 		 reservationService.repeateOrNot(reservation);
 
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);

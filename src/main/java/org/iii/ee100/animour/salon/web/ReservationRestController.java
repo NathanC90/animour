@@ -56,12 +56,10 @@ public class ReservationRestController {
 	}
 
 	// Update a Reservation by id
-	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
-	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long memberId,
-			@Valid @RequestBody Reservation reservation) {
+	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.POST)
+	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long memberId, Reservation reservation) {
 //		System.out.println("memberIdaaa"+memberId);
 //		reservation.setMember(memberService.getOne(memberId));
-
 		reservationService.insertReservation(reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 
