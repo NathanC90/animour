@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -90,9 +91,10 @@ public class AdoptionService extends GenericService<Adoption> {
 	}
 
 	// 讀取文字檔的測驗題目，new成物件後，存入collection裡面
-	public List<Quiz> genQuiz() {
+	public List<Quiz> genQuiz(HttpServletRequest request) {
+		String uploadRootPath = request.getServletContext().getRealPath("images/halfway/animal/quiz.txt");
 		List<Quiz> quizs = new ArrayList<>();
-		try (BufferedReader bufferReader = new BufferedReader(new FileReader("/Users/kevinhsu/Desktop/quiz.txt"));) {
+		try (BufferedReader bufferReader = new BufferedReader(new FileReader(uploadRootPath));) {
 			String data;
 			Long id = 1L;
 			while ((data = bufferReader.readLine()) != null) {

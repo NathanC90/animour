@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.iii.ee100.animour.common.entity.PageInfo;
 import org.iii.ee100.animour.common.model.ResponseForAnimour;
 import org.iii.ee100.animour.halfway.entity.Adoption;
@@ -114,8 +116,8 @@ public class AdoptionRestController {
 	// 取得quiz題目的json格式資料
 	@RequestMapping(value = { "/halfway/quiz" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
-	public ResponseEntity<?> listQuiz() {
-		response.setData(adoptionService.genQuiz());
+	public ResponseEntity<?> listQuiz(HttpServletRequest request) {
+		response.setData(adoptionService.genQuiz(request));
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
