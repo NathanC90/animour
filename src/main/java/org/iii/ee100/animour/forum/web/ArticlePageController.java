@@ -80,8 +80,12 @@ public class ArticlePageController {
 				e.printStackTrace();
 				return "/rollback";
 			}
-			model.addAttribute("article", atc);
 		}
+		
+		//最多讚文章
+		List<Article> thumbsArticle = forumService.getThumbsFour();
+		model.addAttribute("thumbsArticle", thumbsArticle);
+		model.addAttribute("article", atc);
 		return "/forum/singleArticle";
 	}
 

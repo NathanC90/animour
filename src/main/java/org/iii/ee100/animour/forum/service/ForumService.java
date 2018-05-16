@@ -47,6 +47,12 @@ public class ForumService extends GenericService<Article> {
 		setTransientForPage(articleList);
 		return articleList;
 	}
+	
+	public Page<Article> getPageByPostTime(PageRequest pageable) {
+		Page<Article> articleList = articleDao.findByOrderByPostTimeDesc(pageable);
+		setTransientForPage(articleList);
+		return articleList;
+	}
 
 	public Page<Article> getPageSearchByCategoryId(Long categoryId, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
@@ -105,6 +111,10 @@ public class ForumService extends GenericService<Article> {
 
 	public List<Article> getPopularFour() {
 		return articleDao.findTop4ByOrderByClickDesc();
+	}
+	
+	public List<Article> getThumbsFour() {
+		return articleDao.findTop4ByOrderByThumbsQuantityDesc();
 	}
 
 	public List<Comment> getCommentByArticleId(Long id) {
