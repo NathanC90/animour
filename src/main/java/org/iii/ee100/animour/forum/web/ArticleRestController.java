@@ -68,6 +68,7 @@ public class ArticleRestController {
 	public ResponseEntity<?> newComment(Comment comment) {
 		comment.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
 		comment.setMember(memberService.getNewCurrentMember());
+		comment.setArticle(comment.getArticle());
 		forumService.insertComment(comment);
 		System.out.println("控制器呼叫新增留言");
 		return new ResponseEntity<Comment>(comment, HttpStatus.OK);

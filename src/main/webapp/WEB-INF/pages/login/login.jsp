@@ -66,22 +66,22 @@
 	<br>
 	<!-- Classic Blog Section -->
 	<section class="login-content">
-		<div class="container">
+<!-- 		<div class="container"> -->
 			<div class="row">
 				<!-- Blog Sidebar Section -->
 				<!-- 左邊列 -->
-				<section></section>
 				<!-- End -->
 
 				<!-- BLog Article Section -->
 				<section>
+<!-- 					<div class="row"> -->
+				
 					<div class="col-md-9">
 						<!-- Single Blog Post -->
 						<!-- 每頁不同的內容從這裡開始 -->
 
 						<div></div>
 						<!-- 每頁不同的內容到這裡結束 -->
-
 						<div class="login-box">
 							<form class="login-form" action="/login" method="POST">
 								<h3 class="login-head">
@@ -156,14 +156,18 @@
 									</p>
 								</div>
 							</form>
+							
 						</div>
+										<!-- end class=row -->
+					
+					</div>
 				</section>
 				<!-- Blog Pagination -->
 				<!-- 登入頁面不需要頁碼 -->
 			</div>
 			<!-- End -->
-		</div>
-		</div>
+<!-- 		</div> -->
+		
 	</section>
 	<!-- Classic Blog Section End -->
 

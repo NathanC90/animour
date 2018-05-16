@@ -185,7 +185,7 @@
                         <a href="#">${comment.member.account}</a>
                         <span class="published-time"><i class="fa fa-calendar"></i>${comment.updateTime}</span>
                       </div>
-                      <p><c:out value="${comment.content}"/></p>
+                      <p><c:out value="${comment.detail}"/></p>
                     </div>
 <!--                     <div class="media reply"> -->
 <!--                       <div class="media-body"> -->
@@ -216,7 +216,7 @@
                   </div>
                   <div class="form-group">
                     <label class="sr-only" for="usermessage">Message</label>
-                    <textarea name="content" placeholder="Type here message" id="usermessage" rows="4" required="" class="form-control"></textarea>
+                    <textarea name="detail" placeholder="Type here message" id="usermessage" rows="4" required="" class="form-control"></textarea>
                   </div> 
                   <button id="btn1" class="btn btn-common"><i class="fa fa-comment"></i> Post Comment</button>      
               </form>
@@ -298,7 +298,7 @@ function getComment(){
          		+ comment.member.account 
                 + '</a><span class="published-time"><i class="fa fa-calendar"></i>'
                 + new Date(comment.updateTime)
-                + '</span></div><p>' + comment.content + '</p></div></div></li>'
+                + '</span></div><p>' + comment.detail + '</p></div></div></li>'
                
          		commentString += commentStr;
 			});

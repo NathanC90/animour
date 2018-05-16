@@ -70,6 +70,8 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "SIGNATURE", columnDefinition = "TEXT")//簽名檔
 	private String signature;
 
+	@Column(name="IMAGES")
+	private String images;
 	
 	//後台管理
 	@Column(name = "REGISTRATIONTIME")

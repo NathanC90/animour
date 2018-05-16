@@ -119,7 +119,7 @@
 						<!--Start of Classify -->
 						
 						<aside class="widget flickr-widget wow fadeIn"
-							data-wow-delay="0.3s">
+							data-wow-delay="0.1s">
 							<h2 class="widget-title">商品分類</h2>
 <%-- 							<form:form action="/products/${classify}" method="POST" modelAttribute="product"> --%>
 								<ul class="category-menu">
@@ -166,6 +166,7 @@
 											<p>價格：${product.price}<br>庫存：${product.stock}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
+<!-- 											<div id="div1"></div> -->
 									</div>
 									<div class="d-flex justify-content-between align-items-center"
 										style="max-height: 100px">
@@ -243,6 +244,17 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
+	<script>
+		
+		$.getJSON('/shopping/product', {},
+				function (datas) {
+				console.log(datas)
+				for(var i = 0; i < datas.length; i++){
+					$('#div1').append(datas[i].name)
+				}
+						
+		});
+	</script>
 	
 </body>
 

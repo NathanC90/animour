@@ -66,6 +66,7 @@ public class MemberController {
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(1);
+			member.setSignature(member.getAccount() +"have a nice day");
 			memberService.insert(member);
 			return "redirect:/";// 註冊成功跳轉 login
 		}
@@ -135,15 +136,21 @@ public class MemberController {
 	// 顯示個人首頁
 	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
 	public String profile(Model model, @PathVariable String account) {
-//		Member userDetails = memberService.getOneByAccount(account);
-		Member userDetails=memberService.getNewCurrentMember();
+		Member userDetails = memberService.getOneByAccount(account);
+		Member currentUserDetails=memberService.getNewCurrentMember();
+		//who's hompage (member)
 		model.addAttribute("member", userDetails);
-		System.out.println("userdetails"+userDetails.getAccount());
+		//current Member
+		model.addAttribute("currentMember", currentUserDetails);
+		
+		//System.out.println("userdetails"+userDetails.getAccount());
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
+		
 		List<Article> artls=forumService.getArticlesByMemberId(userDetails.getId());
-		System.out.println("userdetails::"+userDetails.getAccount());
+		//System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
+		
 		return "/member/homepage";
 	}
 	
@@ -204,5 +211,14 @@ public class MemberController {
 		}
 		
 		
-		
+	
+//	@RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)
+//	public void adminSendMails(
+//			@RequestParam(value="account") String account,
+//			@RequestParam(value="subject") String subject,
+//			@RequestParam(value="content") String text) {
+//			String email=memberService.getOneByAccount(account).getEmail();
+//			mailService.sendEmail(email,subject, text);
+//		}
+			
 }

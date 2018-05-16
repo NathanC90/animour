@@ -9,6 +9,7 @@ import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,12 +19,19 @@ public class MemberService extends GenericService<Member> {
 	MemberDao memberDao;
 	
 	//新增會員
-	public void insert(Member member)  {
-		memberDao.save(member);
+	public void insert(Member newMember)  {
+//		System.out.println("member name:"+newMember.getAccount()+", member password:"+newMember.getPassword());
+//		String passwordEncode=new BCryptPasswordEncoder().encode(newMember.getPassword());
+//		 newMember.setPassword(passwordEncode);
+		memberDao.save(newMember);
 	}
 
 	//會員修改密碼
 	public void update(Member member,String newPassword) {
+//		String newPasswordEncode=new BCryptPasswordEncoder().encode(newPassword);
+//		member.setPassword(newPasswordEncode);
+//		memberDao.save(member);
+		
 		member.setPassword(newPassword);
 		memberDao.save(member);
 	}
