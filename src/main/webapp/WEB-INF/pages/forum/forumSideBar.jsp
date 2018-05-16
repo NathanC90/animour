@@ -53,7 +53,7 @@
                   <div class="media">
                     <div class="media-left">
                       <a href="#">
-                        <img class="img-responsive" style="width:70px;height:60px;" src="${pop.images}" alt="">
+                        <img class="img-responsive" style="width:90px;height:80px;" src="${pop.images}" alt="">
                       </a>
                     </div>
                     <div class="media-body">
@@ -64,6 +64,8 @@
                       </h4>
                       <span class="published-time">
                         <i class="fa fa-calendar"></i>${pop.updateTime}</span>
+                        <br />
+                        <span>觀看次數:${pop.click}</span>
                     </div>
                   </div>
                 </li>
@@ -266,7 +268,7 @@
                   var formSelector = "thumbsform" + article.id;
                   var spanSelector = "#span" + article.id;
 
-                  $(btnSelector).click(function () {
+                  $(spanSelector).on('click' ,function () {
                     var formData = new FormData(document.getElementById(formSelector));
                     console.log(formData);
                     $.ajax({

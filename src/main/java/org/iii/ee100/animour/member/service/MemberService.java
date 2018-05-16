@@ -45,7 +45,7 @@ public class MemberService extends GenericService<Member> {
 		memberToUpdate.setEmail(member.getEmail());
 		memberToUpdate.setAddress(member.getAddress());
 		memberToUpdate.setSignature(member.getSignature());
-		
+		memberToUpdate.setImages(member.getImages());
 		memberDao.save(memberToUpdate);
 	}
 	

@@ -71,6 +71,12 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(serviceContentDao.findAll());
 
 	}
+	
+	public ArrayList<ServiceContent> getThreeServiceConten() {
+		return Lists.newArrayList(serviceContentDao.findTop3ByOrderByIdDesc());
+
+	}
+
 
 	// 計算總時數
 	public Integer addServiceTime() {

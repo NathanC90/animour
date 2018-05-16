@@ -26,4 +26,8 @@ public interface ArticleDao extends GenericDao<Article> {
 	List<Article> findByMemberId(Long memberId);
 
 	Page<Article> findByCategoryId(Long categoryId, Pageable pageable);
+	
+	List<Article> findTop4ByOrderByThumbsQuantityDesc();
+	
+	Page<Article> findByOrderByPostTimeDesc(Pageable pageable);
 }

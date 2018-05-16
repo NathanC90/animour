@@ -86,6 +86,7 @@
 						<div class="btn-toolbar dashhead-toolbar">
 							<div class="btn-toolbar-item input-with-icon">
 								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+
 								<span class="icon icon-calendar"></span>
 							</div>
 						</div>
@@ -96,7 +97,10 @@
 							<div class="btn-toolbar-item input-with-icon">
 								<input type="text" class="form-control input-block" placeholder="搜尋紀錄">
 								<span class="icon icon-magnifying-glass"></span>
+
 							</div>
+							<button id="confirmEdit" name="id" class="btn btn-outline-primary" style="text-align: right">確認更改</button>
+
 						</div>
 
 
@@ -134,11 +138,17 @@
 							</tbody>
 						</table>
 					</div>
-					<form id="form1"></form>
+					<form style="display: none" id="form1">
+
+
+
+
+
+					</form>
 
 					<!-- Table Ends -->
 
-					<div class="text-center">
+					<div class="text-center" style="display: none;">
 						<nav>
 							<ul class="pagination">
 								<li class="page-item">
@@ -226,6 +236,7 @@
 			}
 
 			var initSubmitForm = function () {
+				var reservationId;
 				$(document).ready(function () {
 					//抓資料
 					$.getJSON('/reservations', { "pageNo": pageNo },
@@ -233,21 +244,20 @@
 							console.log(datas);
 							$.each(datas, function (i, reservation) {
 								var cell1 = $('<td id="NewEdit" class="inputContent"></td>').append(reservation.id);
-								var cell2 = $('<td id="" class="inputContent"></td>').append(reservation.reservationDate);
-								var cell3 = $('<td id="" class="inputContent"></td>').text(reservation.frontTime);
-								var cell4 = $('<td id="" class="inputContent"></td>').text(reservation.content);
-								var cell5 = $('<td id="" class="inputContent"></td>').text(reservation.designer);
-								var cell6 = $('<td id="" class="inputContent"></td>').text(reservation.totalTime);
-								var cell7 = $('<td id="" class="inputContent"></td>').text(reservation.price);
-								var cell8 = $('<td id="" class="inputContent"></td>').text(reservation.payment)
+								var cell2 = $('<td id="cellEdit2" class="inputContent"></td>').append(reservation.reservationDate);
+								var cell3 = $('<td id="cellEdit3" class="inputContent"></td>').text(reservation.frontTime);
+								var cell4 = $('<td id="cellEdit4" class="inputContent"></td>').text(reservation.content);
+								var cell5 = $('<td id="cellEdit5" class="inputContent"></td>').text(reservation.designer);
+								var cell6 = $('<td id="cellEdit6" class="inputContent"></td>').text(reservation.totalTime);
+								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
+								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
 								// var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
 								// var p = $('<p></p>')
 								var cell10 = $('<td id="addNewButton"><button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span class="icon icon-pencil"></span></button><button type="button" id="deleteButton" class="btn btn-outline-primary" title="刪除"><span class="icon icon-erase"></span></button></td>')
 
 
-								var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4,
+								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell1, cell2, cell3, cell4,
 									cell5, cell6, cell7, cell8, cell10]);
-
 								$('#table1').append(row);
 							})
 
@@ -258,9 +268,8 @@
 							pageNo++;
 							//判斷下一次取回的json是否為空(是否為最後一頁)
 							$.getJSON('/reservations', { "pageNo": pageNo }, function (datas) {
-								console.log(datas);
 								if (datas.length != 0) {
-									var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
+									var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass("btn btn-outline-primary").append("載入更多資料");
 									$('#table1').append(buttonImport);
 									document.getElementById("importbutt").addEventListener("click", importAgain);
 								}
@@ -284,9 +293,11 @@
 					})
 					//編輯按鈕
 					$(document).on("click", '#editButton', function () {
-						var data1 = new FormData(document.getElementById("myform1"));
-						$(this).attr({ 'hidden': 'hidden' });
-						var button = $('<button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
+						var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
+
+						// var data1 = new FormData(document.getElementById("myform1"));
+						$(this).attr({ 'style': 'display: none' });
+						var button = $('<button type="button" id="editFinish" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
 						$(this).parent().append(button);
 						$(this).parents('tr').find('.inputContent').on("dblclick", function () {
 
@@ -313,23 +324,70 @@
 							$inp.parent().removeAttr("cellEditor").text($inp.val());
 							window.$currEditing = null;
 						}
+						var formData;
+						$(document).on("click", '#editFinish', function () {
+
+							valueId = $(this).parents("tr").find('#NewEdit').text();
+							valueReservationDate = $(this).parents("tr").find('#cellEdit2').text();
+							valueFrontTime = $(this).parents("tr").find('#cellEdit3').text();
+							valueContent = $(this).parents("tr").find('#cellEdit4').text();
+							valueDesigner = $(this).parents("tr").find('#cellEdit5').text();
+							valueTotalTime = $(this).parents("tr").find('#cellEdit6').text();
+							valuePrice = $(this).parents("tr").find('#cellEdit7').text();
+							valuePayment = $(this).parents("tr").find('#cellEdit8').text();
+
+							// $.getJSON('/reservations/reservation/' + catchIdValue, { "pageNo": pageNo }, function (reservation) {
+							var cell = $('<input id="inputId" name="id" value="' + valueId + '"></input>')
+							var cell1 = $('<input id="inputId" name="reservationDate" value="' + valueReservationDate + '"></input>')
+							var cell2 = $('<input id="inputId" name="frontTime" value="' + valueFrontTime + '"></input>')
+							var cell3 = $('<input id="inputId" name="content" value="' + valueContent + '"></input>')
+							var cell4 = $('<input id="inputId" name="designer" value="' + valueDesigner + '"></input>')
+							var cell5 = $('<input id="inputId" name="totalTime" value="' + valueTotalTime + '"></input>')
+							var cell6 = $('<input id="inputId" name="price" value="' + valuePrice + '"></input>')
+							var cell7 = $('<input id="inputId" name="payment" value="' + valuePayment + '"></input>')
 
 
-						$.getJSON('/reservations', { "pageNo": pageNo }, function () {
+							$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7])
+							// cell1, cell2, cell3, cell4, cell5, cell6, cell7
+
+							var json;
+							var object = {};
+							formData = new FormData(document.getElementById("form1"));
+							// formDate.forEach 把資料改成[array]:values格式再轉成jason
+							// function toJson(formData) {
+							// 	var object = {};
+							// 	formData.forEach(function (key, value) {
+
+							// 		object[key] = value;
+							// 	});
+							// 	json = JSON.stringify(object, null);
+							// 	return json;
+							// };
+							// console.log(toJson(formData))
+							$(document).on("click", '#confirmEdit', function () {
+								$.ajax({
+									url: '/reservations/reservation/' + catchIdValue,
+									contentType: false,
+									processData: false,
+									type: 'post',
+									data: formData,
+									// dataType: "json",
+									success: function (result) {
+									}
+
+								}).done(function (datas) {
+									$('#inputId').remove();
+
+									console.log('變更成功');
+								});
+							})
+
+
+
+
 
 						})
 
-
-						//抓取按鈕數字
-						var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
-						$.ajax({
-							url: '/reservations/reservation/' + catchIdValue,
-							type: 'put',
-							data: catchIdValue,
-							success: function (result) {
-							}
-
-						})
 					})
 
 				})

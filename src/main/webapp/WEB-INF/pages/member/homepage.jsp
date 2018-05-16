@@ -76,9 +76,9 @@
 						<!-- Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<div>
-								<div class="card mb-3 box-shadow" id="eachdiv2">
-									<span> <img class="card-img-top"
-										src="${member.images}" width="100px" alt="${member.id}">
+								<div class="card mb-3 box-shadow" id="eachdiv2" >
+									<span width="100px" height="100px"> <img class="card-img-top"
+										src="${member.images}"  alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">${member.account}</p>
@@ -103,12 +103,19 @@
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">${member.account}</h2>
-							<ul></ul>
+							<c:if test="${member.id eq currentMember.id}">
 							<ul class="category-menu">
-								<li><a href="#">xxxx</a></li>
-								<li><a href="#">我的最愛</a></li>
+								<li><a href="#">訂單查詢</a></li>
+								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<li><a href="/">通知</a></li>								
+<!-- 								<li><a href="/logout">登出</a></li> -->
+							</ul>
+							</c:if>
+							<ul></ul>
+							<ul class="category-menu">
+								<li><a href="#">加好友</a></li>
+							
 <!-- 								<li><a href="/logout">登出</a></li> -->
 							</ul>
 						</aside>

@@ -496,7 +496,7 @@
 				$(document).ready(function () {
 					$("#payment").click(function () {
 						$.ajax({
-							url: '/frontEnd/aioCheckOut/aioCheckOutALL',
+							url: '/SalonfrontEnd/CheckOut/CheckOutALL',
 							type: 'POST',
 							//data: data,
 							//data: json,

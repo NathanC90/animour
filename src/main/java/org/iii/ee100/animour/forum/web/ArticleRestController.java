@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.common.model.PageForAnimour;
+import org.iii.ee100.animour.forum.dao.ThumbsUpDao;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.entity.ThumbsUp;
@@ -29,12 +30,15 @@ public class ArticleRestController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	ThumbsUpDao thumbsUpDao;
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<Article> findAll(PageForAnimour pageForAnimour) {
 		PageRequest pageable = pageForAnimour.getPageRequest();
-		Page<Article> articlePage = forumService.getPage(pageable);
+		Page<Article> articlePage = forumService.getPageByPostTime(pageable);
 		return pageHandler(pageForAnimour, articlePage, pageable);
 	}
 
@@ -125,6 +129,7 @@ public class ArticleRestController {
 		article.setMember(memberService.getNewCurrentMember());
 		article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
 		article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
+		article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		article.setClick(0L);
 		if (article.getId() != null) {
 			try {
