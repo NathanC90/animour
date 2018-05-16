@@ -228,7 +228,7 @@
 				<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
 				</p>-->
-				<div style="display: none; max-width: 600px;" id="trueModal">
+				<div style="display: none; max-width: 600px; border-radius:5px" id="trueModal">
 					<h2>提醒您! 請求送出後無法取消</h2>
 					<p>(1) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
 					<p>(2) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
@@ -279,8 +279,15 @@
 					$.getJSON('/halfway/adoption/check',
 						function (datas) {
 							if (!datas.parameters.check) {
-								alert("您的認養次數已達上限")
-								window.location.href = "http://localhost:8080/halfway";
+								$("#trueModal").empty();
+								let refuse = `<h2>您的認養次數已達上限</h2>
+					<p> 請於${datas.parameters.limitPast}後再次提出請求!</p>`;
+					$("#trueModal").append(refuse);
+								// alert("您的認養次數已達上限")
+								setTimeout(function(){
+									window.location.href = "http://localhost:8080/halfway";
+								}, 3000);
+								//window.location.href = "http://localhost:8080/halfway";
 							}
 						});
 				});
@@ -310,8 +317,9 @@
 						//enctype: 'multipart/form-data',
 						//contentType: false,
 						//processData: false,
-					}).done(function () {
-						window.location.href = "http://localhost:8080/halfway";
+					}).done(function (datas) {
+						var adoptionid = datas.parameters.id;
+						window.location.href = "http://localhost:8080/halfway/toquiz/"+adoptionid;
 					});
 				});
 			});

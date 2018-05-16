@@ -105,9 +105,9 @@ public class AdoptionRestController {
 			"application/xml" })
 	public ResponseEntity<?> checkLimit() {
 		Member current = memberService.getNewCurrentMember();
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("check", adoptionService.checkAdoptionLimit(current.getId()));
-		response.setParameters(parameter);
+//		Map<String, Object> parameter = new HashMap<>();
+//		parameter.put("check", adoptionService.checkAdoptionLimit(current.getId()));
+		response.setParameters(adoptionService.checkAdoptionLimit(current.getId()));
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 

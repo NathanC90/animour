@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -44,6 +46,15 @@ public class AcceptRecordService extends GenericService<AcceptRecord>{
 		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC,
 				"startDate");
 		return acceptRecordDao.findAll(request);
+	}
+	
+	public Timestamp calEndDate(Timestamp t) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(t);
+		cal.add(Calendar.MONTH, 1);
+		Long lastyear = cal.getTimeInMillis();
+		Timestamp ts = new Timestamp(lastyear);
+		return ts;
 	}
 	
 }

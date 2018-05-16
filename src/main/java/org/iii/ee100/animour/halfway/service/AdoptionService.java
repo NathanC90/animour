@@ -4,9 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -64,11 +67,11 @@ public class AdoptionService extends GenericService<Adoption> {
 	}
 
 	// 檢核認養數量是否已達上限
-	public Boolean checkAdoptionLimit(Long id) {
+	public Map<String, Object> checkAdoptionLimit(Long id) {
 		// List<Adoption> count = adoptionDao.findByMemberIdOrderByAcceptDateDesc(id);
 		// List<Adoption> count = adoptionDao.findByMemberId(id);
+		Map<String, Object> parameters = new HashMap<>();
 		List<Adoption> count = adoptionDao.findTop2ByMemberIdOrderByAcceptDateDesc(id);
-		System.out.println("++++++++++++++++++" + count.size() + "++++++++++++++++++");
 
 		Calendar cal = Calendar.getInstance();
 		cal.add(Calendar.YEAR, -1);
@@ -76,9 +79,13 @@ public class AdoptionService extends GenericService<Adoption> {
 		Timestamp ts = new Timestamp(lastyear);
 
 		if (count.size() == 2 && count.get(1).getAcceptDate().after(ts)) {
-			return false;
+			parameters.put("check", false);
+			// 第二筆資料的日期
+			parameters.put("limitPast", count.get(1).getAcceptDate());
+			return parameters;
 		} else {
-			return true;
+			parameters.put("check", true);
+			return parameters;
 		}
 	}
 

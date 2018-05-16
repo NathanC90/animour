@@ -32,7 +32,7 @@ public class AcceptRecord extends GenericEntity {
 	@Column(name = "STATUS")
 	private String status;
 
-	// 飼主是否繳納押金
+	// 飼主是否繳納押金，當付款成功，資料回來的時候
 	@Column(name = "DEPOSIT_OWNER")
 	private Boolean depositOwner;
 
