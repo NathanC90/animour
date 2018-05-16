@@ -173,25 +173,25 @@
 
 	<!-- Table Ends -->
 
-	<div class="text-center">
-		<nav>
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span
-					class="sr-only">上一頁</span>
-			</a></li>
-			<li class="page-item active"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">4</a></li>
-			<li class="page-item"><a class="page-link" href="#">5</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-					class="sr-only">下一頁</span>
-			</a></li>
-		</ul>
-		</nav>
-	</div>
+<!-- 	<div class="text-center"> -->
+<!-- 		<nav> -->
+<!-- 		<ul class="pagination"> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#" -->
+<!-- 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span -->
+<!-- 					class="sr-only">上一頁</span> -->
+<!-- 			</a></li> -->
+<!-- 			<li class="page-item active"><a class="page-link" href="#">1</a></li> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#">2</a></li> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#">4</a></li> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#">5</a></li> -->
+<!-- 			<li class="page-item"><a class="page-link" href="#" -->
+<!-- 				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span -->
+<!-- 					class="sr-only">下一頁</span> -->
+<!-- 			</a></li> -->
+<!-- 		</ul> -->
+<!-- 		</nav> -->
+<!-- 	</div> -->
 
 </div>
 </div>
@@ -224,6 +224,15 @@
 
 <!-- Modal Ends -->
 <!-- Modal open -->
+<div class="modal fade" id="trueModal" tabindex="-1" role="dialog" aria-labelledby="trueModalLabel" aria-hidden="true">
+			<h5 class="modal-title" id="trueModalLabel">修改權限</h5>
+				<button id="off" class="btn01 btn-common">確定封鎖</button>
+				<button id="on" class="btn02 btn-common">取消封鎖</button>
+				<button data-dismiss="modal" aria-label="Close" class="btn btn-common">取消</button>
+			
+		</div>
+
+
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -292,6 +301,15 @@
 				});
 			});
     	  
+    	  $('#trueModal').on('show.bs.modal', function (event) {
+    		  var button = $(event.relatedTarget) // Button that triggered the modal
+    		  var account = button.data('whatever') // Extract info from data-* attributes
+    		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    		  var modal = $(this)
+    		  modal.find('.modal-title').text('change status: ' + account)
+    		  modal.find('#account').val(account)
+    		})
     	  
     	  
     	  
@@ -324,23 +342,23 @@
     	              else{
     	             	var cell8 = $("<td></td>").text('on');}
    	
-    	              	var span01=$('<span></span>').addClass('icon icon-pencil');
-						var button01=$('<button></button>').attr({'type':'button','title':'修改'}).addClass('btn btn-outline-primary').append(span01);
-    	              	var span02=$('<span></span>').addClass('icon icon-erase');
-						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
+    	              	var span01=$('<span></span>').addClass('icon icon-pencil');  
+						var button01=$('<button></button>').attr({'type':'button','title':'封鎖','data-modal':'true','data-target':'#exampleModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span01);
+//     	              	var span02=$('<span></span>').addClass('icon icon-erase');
+// 						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
     	              	var span03=$('<span></span>').addClass('icon icon-mail');
 						var button03=$('<button></button>').attr({'type':'button','title':'寄送電子郵件','data-toggle':'modal','data-target':'#exampleModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span03);
 
 	  					var divb1=$('<div></div>').addClass('btn-group').append([button01]);
 						var divf1=$('<div></div>').addClass('flextable-item').append(divb1);
-	  					var divb2=$('<div></div>').addClass('btn-group').append([button02]);
-						var divf2=$('<div></div>').addClass('flextable-item').append(divb2);
+// 	  					var divb2=$('<div></div>').addClass('btn-group').append([button02]);
+// 						var divf2=$('<div></div>').addClass('flextable-item').append(divb2);
 	  					var divb3=$('<div></div>').addClass('btn-group').append([button03]);
 						var divf3=$('<div></div>').addClass('flextable-item').append(divb3);
 
 						
 						
-						var cell09=$('<td></td>').append([divf1, divf2, divf3]);
+						var cell09=$('<td></td>').append([divf1, divf3]);
     	              
  	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell09]);
 

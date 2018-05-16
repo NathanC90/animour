@@ -77,7 +77,7 @@
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<div>
 								<div class="card mb-3 box-shadow" id="eachdiv2" >
-									<span width="100px" height="100px"> <img class="card-img-top"
+									<span> <img class="card-img-top img-circle" width="75px"
 										src="${member.images}"  alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
