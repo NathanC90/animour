@@ -91,42 +91,6 @@
 	</div>
 	<!-- Page Header End -->
 	
-	<!-- 表格內容開始 -->
-<!-- 	<section class="section"> -->
-<!-- 		<div class="container"> -->
-<!-- 			<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單明細表</h1> -->
-<!-- 			<div class="row"> -->
-<!-- 				<table class="table"> -->
-<!-- 					<thead class="thead-light"> -->
-<!-- 						<tr> -->
-<!-- 							<th scope="col">訂單編號</th> -->
-<!-- 							<th scope="col">訂單日期</th> -->
-<!-- 							<th scope="col">商品名稱</th> -->
-<!-- 							<th scope="col">商品數量</th> -->
-<!-- 							<th scope="col">商品單價</th> -->
-<!-- 						</tr> -->
-<!-- 					</thead> -->
-<!-- 					<tbody> -->
-<%-- 					<c:forEach var="orders" items="${memberOrders}"> --%>
-<!-- 						<tr> -->
-<%-- 							<th scope="row">${orders.id}</th> --%>
-<%-- 							<td>${orders.orderDate}</td> --%>
-<%-- 								<c:forEach var="ordersItem" items="${orders.ordersItem}"> --%>
-<!-- 								<tr> -->
-<%-- 									<td>${ordersItem.name}</td> --%>
-<%-- 									<td>購買數量：${ordersItem.quantity}</td> --%>
-<%-- 									<td>商品價格：${ordersItem.price}</td> --%>
-<!-- 								</tr> -->
-<%-- 								</c:forEach> --%>
-<!-- 						</tr> -->
-<%-- 						</c:forEach> --%>
-<!-- 					</tbody> -->
-<!-- 				</table> -->
-<!-- 			</div> -->
-
-<!-- 		</div> -->
-<!-- 	</section> -->
-	
 	<!-- Classic Blog Section -->
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">

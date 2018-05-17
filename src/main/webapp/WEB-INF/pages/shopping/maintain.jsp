@@ -131,7 +131,7 @@
 						<table class="table">
 							  <thead class="thead-dark">
 							   <tr>
-								<th>編號</th>
+								<th>#</th>
 								<th>圖片</th>
 								<th>產品名稱</th>
 								<th>價格</th>
@@ -147,7 +147,7 @@
 							<c:forEach var="product" items="${page.content}">
 								<tr>
 									<td >${product.id}</td>
-									<td><img src="${product.images}" width="150px" alt="商品列表"></td>
+									<td><img src="${product.images}" width="100px" alt="商品列表"></td>
 									<td align="left">${product.name}</td>
 									<td>${product.price}</td>
 									<td>${product.stock}</td>
