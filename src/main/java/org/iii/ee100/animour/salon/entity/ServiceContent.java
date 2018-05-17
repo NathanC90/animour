@@ -22,6 +22,9 @@ import lombok.Setter;
 @Table(name="SERVICECONTENT")
 public class ServiceContent extends GenericEntity{
 
+	
+	
+	
 	@ManyToOne
 	@JoinColumn(name = "DESIGNER_ID", referencedColumnName = "ID")
 	private Designer designer;
@@ -32,6 +35,12 @@ public class ServiceContent extends GenericEntity{
 	Integer time;
 	@Column(name ="PRICE")
 	Integer price;
+	
+	@Override
+	public String toString() {
+		return "ServiceContent [designer=" + designer + ", content=" + content + ", time=" + time + ", price=" + price
+				+ "]";
+	}
 	
 	
 	

@@ -1,17 +1,13 @@
 package org.iii.ee100.animour.salon.entity;
 
 
-import java.sql.Time;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
-import org.iii.ee100.animour.member.entity.Member;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -36,7 +32,7 @@ public class Reservation extends GenericEntity{
 	
 
 	@Column(name="RESERVATION_DATE")
-	private java.sql.Date reservationDate;
+	private Date reservationDate;
 	
 	@Column(name="FRONT_TIME")
 	private java.sql.Time frontTime;

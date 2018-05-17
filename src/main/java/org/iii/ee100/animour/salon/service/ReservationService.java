@@ -79,10 +79,44 @@ public class ReservationService extends GenericService<Reservation> {
 	
 	
 	//判斷服務內容是否重複
-	public void decideThreeContentRepeateOrNot() {
-		this.getAllDesigner();
-		this.getAllServiceContent();
-		this.getAllReservationContent();
+	public Reservation decideThreeContentRepeateOrNot(Reservation reservation,ServiceContent serviceContentFinally) {
+		//取出各Table設計師名稱、服務內容種類
+		List<Designer> designerList=this.getAllDesigner();
+		ArrayList<ServiceContent> serviceContentList=this.getAllServiceContent();
+		//前端日期輸入
+		Date compareDate = reservation.getReservationDate();
+		
+		
+		//預約內容明細
+		List<Reservation> reservationListData = new ArrayList<>();
+		reservationListData = reservationDao.findAll();
+		//取出資料庫的日期、內容、設計師名稱
+		for (Reservation reservations : reservationListData) {
+			//設計師Table
+			for(Designer designers:designerList) {
+				//服務內容Table
+				for(ServiceContent serviceContents:serviceContentList) {
+					Date mainDate = reservations.getReservationDate();
+					String mainDesigner=reservations.getDesigner();
+					String mainContent=reservations.getContent();
+					String compareDesigner=designers.getDesigner();
+					String compareConten=serviceContents.getContent();
+
+					if(!mainDate.equals(compareDate)||!mainDesigner.equals(compareDesigner)||!mainContent.equals(compareConten)) {
+						serviceContentDao.save(serviceContentFinally);
+
+					}
+				}
+			}
+				
+			
+			
+			
+			
+		}
+		
+		return null;
+		
 		
 
 	}

@@ -1,7 +1,7 @@
 package org.iii.ee100.animour.salon.web;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

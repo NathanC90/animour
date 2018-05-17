@@ -401,7 +401,9 @@
 
 	<script>
 		$(document).ready(function() {
-			
+			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
+				
+			});
 			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
 				console.log(data);
 				$.each(data, function(i, serviceCotent) {
