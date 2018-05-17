@@ -32,6 +32,8 @@ public class Product extends GenericEntity {
 	private java.sql.Date shelvesDate;
 	@Column(name = "DESCRIPTION", length = 2000)
 	private String description;
+	@Column(name = "IMAGES")
+	private String images;
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
 	@ManyToOne

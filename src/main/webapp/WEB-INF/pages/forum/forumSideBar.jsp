@@ -267,9 +267,10 @@
                   var btnSelector = "#thumb" + article.id;
                   var formSelector = "thumbsform" + article.id;
                   var spanSelector = "#span" + article.id;
-                  
-                  console.log(btnSelector+"看這");
-                  $(btnSelector).on('click' ,function () {
+                  console.log(btnSelector);
+                  console.log(formSelector);
+                  console.log(spanSelector);
+                  $("#thumb" + article.id).on('click' ,function () {
                     
                     console.log($(this));
                     var formData = new FormData(document.getElementById(formSelector));
