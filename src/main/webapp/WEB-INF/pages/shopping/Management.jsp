@@ -97,11 +97,14 @@
 			<div class="row">
 				<div class="col-md-5 about2-intro-image">
 					<img class="card-img-top"
-						src="/images/shopping/product/pd1.jpg" width="100px" alt="${product.name}">
+						src="${product.images}" width="100px" alt="${product.name}">
 				</div>
-
+				<form id="imgur">圖片:
+					<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+				</form>
 				<form:form method="POST" modelAttribute="product"
 					enctype="multipart/form-data">
+					<form:input id="images" path="images" type="hidden"/>
 					<div class="form-group">
 						<h2 class="widget-title">商品名稱</h2>
 						<form:input path="name" type="text" class="form-control"
@@ -147,7 +150,7 @@
 								placeholder="上架日期" />
 						</div>
 					</div>
-					 <input type="submit" class="btn btn-primary" value="確定" >
+					 <input id="btn1" type="submit" class="btn btn-primary" value="確定" >
 				</form:form>
 			</div>
 		</div>
@@ -180,7 +183,59 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script>
+	<script>
+	$(document).ready(function (){
+						
+						$('input[type=file]').on("change", function () {
+							$('#btn1').prop("disabled", "disabled");
+							var $files = $(this).get(0).files;
+	
+							if ($files.length) {
+	
+								// Reject big files
+								if ($files[0].size > $(this).data("max-size") * 1024) {
+									console.log("Please select a smaller file");
+									return false;
+								}
+	
+								// Begin file upload
+								console.log("Uploading file to Imgur..");
+	
+								// Replace ctrlq with your own API key
+								var apiUrl = 'https://api.imgur.com/3/image';
+								var apiKey = '9ef7e0868394de9';
+	
+								var settings = {
+									// async: false,
+									crossDomain: true,
+									processData: false,
+									contentType: false,
+									type: 'POST',
+									url: apiUrl,
+									headers: {
+										Authorization: 'Client-ID ' + apiKey,
+										Accept: 'application/json'
+									},
+									mimeType: 'multipart/form-data'
+								};
+	
+								var formData = new FormData();
+								formData.append("image", $files[0]);
+	
+								settings.data = formData;
+								
+								$.ajax(settings).done(function (response) {
+									var jsonObj = JSON.parse(response)
+									console.log(jsonObj.data.link);
+									$("#images").val(jsonObj.data.link);
+									$('#btn1').removeAttr("disabled");
+								});
+							}
+						});
+						});
+	</script>
 </body>
 
 </html>

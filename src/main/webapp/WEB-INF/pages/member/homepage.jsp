@@ -109,15 +109,23 @@
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<li><a href="/">通知</a></li>								
-<!-- 								<li><a href="/logout">登出</a></li> -->
 							</ul>
 							</c:if>
 							<ul></ul>
+							<sec:authorize access="hasRole('Member')"> 
+							<c:if test="${member.id ne currentMember.id}">
 							<ul class="category-menu">
-								<li><a href="#">加好友</a></li>
-							
-<!-- 								<li><a href="/logout">登出</a></li> -->
+								<li id="add">
+								<form id="insertFriend" enctype="multipart/form-data">
+								<input name="Favourite_Id" type="hidden" value="${member.id}"/>
+								</form><span id="span+'${member.id}'">
+								<i id="i-love" class="icon-heart"></i>add</span>
+								</li>
+
+
 							</ul>
+							</c:if>
+							</sec:authorize>
 						</aside>
 						<!-- Subscribe Widget -->
 						<!-- Tag Cloud -->
@@ -133,29 +141,6 @@
 
 					<h3>${member.account}的個人首頁</h3>
 
-<!-- 					<table id="table1" -->
-<!-- 						class="table table-bordered table-striped table-hover"> -->
-
-<!-- 						<tbody> -->
-<!-- 							<tr> -->
-<!-- 								<td>帳號</td> -->
-<%-- 								<td id="acco">${member.account}</td> --%>
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-
-<!-- 							<tr> -->
-<!-- 								<td></td> -->
-<%-- 								<td>${profile.nickname}</td> --%>
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>登入次數</td> -->
-<!-- 								<td></td> -->
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-
-<!-- 						</tbody> -->
-<!-- 					</table> -->
 					<h3>已發過的動物資料</h3>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
@@ -283,7 +268,23 @@
 	<script src="/js/jquery-3.3.1.min.js"></script>
 
 	<script>
-		
+	
+	 $(document).ready(function () {
+		 $("#add").on('click' ,function (event) {
+			 console.log("#add");
+			 console.log($(this));
+             var formData = new FormData(document.getElementById("insertFriend"));
+             console.log(formData);
+             $.ajax({
+               type: "POST",
+               url: "/api/member/all/addfriend",
+               data: formData,
+               contentType: false,
+               processData: false
+             })
+		 }
+		 
+	 }
 	</script>
 </body>
 

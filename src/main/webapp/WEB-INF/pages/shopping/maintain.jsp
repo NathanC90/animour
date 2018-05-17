@@ -147,7 +147,7 @@
 							<c:forEach var="product" items="${page.content}">
 								<tr>
 									<td >${product.id}</td>
-									<td><img src="/images/shopping/product/pd1.jpg" width="150px" alt="商品列表"></td>
+									<td><img src="${product.images}" width="150px" alt="商品列表"></td>
 									<td align="left">${product.name}</td>
 									<td>${product.price}</td>
 									<td>${product.stock}</td>

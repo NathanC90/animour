@@ -2,8 +2,11 @@ package org.iii.ee100.animour.member.web;
 
 import java.util.List;
 
+import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.Mail;
+import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.MyFriend;
 import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +29,7 @@ public class MemberRestfulController {
 		return members;
 	}
 
-	@RequestMapping(value = "/{account}", method = RequestMethod.GET, produces = { "application/json" })
+	@RequestMapping(value = "/api/member/{account}", method = RequestMethod.GET, produces = { "application/json" })
 	public Member findByAccount(@PathVariable("account") String account) {
 		return memberService.getOneByAccount(account);
 	}
@@ -52,5 +55,21 @@ public class MemberRestfulController {
 		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
 		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
 		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
+	public ResponseEntity<?> addFriend(MyFriend friend) {
+		friend.setMember(memberService.getNewCurrentMember());
+		if(memberService.findByMemberIdAndFriendId(friend) ==null) {
+			friend.setLove(true);
+			memberService.insertFriend(friend);			
+			return new ResponseEntity<MyFriend>(friend, HttpStatus.OK); 
+		}else {
+			memberService.updateFriend(friend);
+			MyFriend newFriend=memberService.findByMemberIdAndFriendId(friend);
+			return new ResponseEntity<MyFriend>(newFriend, HttpStatus.OK); 
+		}
+
 	}
 }
