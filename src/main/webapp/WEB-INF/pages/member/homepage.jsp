@@ -121,9 +121,7 @@
 								</form><span id="span+'${member.id}'">
 								<i id="i-love" class="icon-heart"></i>add</span>
 								</li>
-<!-- 						<li id="thumb' + article.id + '"><form id="thumbsform' + article.id + '" enctype="multipart/form-data"></form>
-<span id="span' + article.id + '"><i class="fa fa-thumbs-up"></i>
-' + article.thumbsQuantity + '</span> -->
+
 
 							</ul>
 							</c:if>
@@ -272,7 +270,8 @@
 	<script>
 	
 	 $(document).ready(function () {
-		 $("#add").on('click' ,function () {
+		 $("#add").on('click' ,function (event) {
+			 console.log("#add");
 			 console.log($(this));
              var formData = new FormData(document.getElementById("insertFriend"));
              console.log(formData);
