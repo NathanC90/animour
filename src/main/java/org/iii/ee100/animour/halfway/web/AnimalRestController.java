@@ -1,6 +1,7 @@
 package org.iii.ee100.animour.halfway.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.domain.Specification;
@@ -34,6 +36,9 @@ public class AnimalRestController {
 
 	@Autowired
 	AnimalService animalservice;
+
+	@Autowired
+	MemberService memberService;
 
 	@Autowired
 	ResponseForAnimour response;
@@ -61,7 +66,7 @@ public class AnimalRestController {
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.POST)
 	public ResponseEntity<?> insertAnimal(Animal animal,
 			@RequestParam(value = "file", required = false) MultipartFile avatar, HttpServletRequest request) {
-		Member current = animalservice.getCurrentMember();
+		Member current = memberService.getNewCurrentMember();
 		animal.setMember(current);
 		// 普通表單
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
@@ -101,27 +106,71 @@ public class AnimalRestController {
 	// 複合查詢
 	@RequestMapping(value = "/queryTest", method = { RequestMethod.POST })
 	public List<Animal> specificationQuery(@RequestBody QueryFormHalfway queryform, PageInfo pageinfo, Model model) {
+		List<Map<String, Object>> lastspec = new ArrayList<>(); 
 
+		// 接收種類的 checkbox
 		Map<String, Object> speciemap = new IdentityHashMap<>();
 		if (queryform.getSpecieitems() != null && queryform.getSpecieitems().size() != 0) {
 			for (String sp : queryform.getSpecieitems()) {
 				speciemap.put(new String("specie"), sp);
 			}
 		}
+		lastspec.add(speciemap);
+		
+		
+		// 接收縣市的 checkbox
 		Map<String, Object> citymap = new IdentityHashMap<>();
 		if (queryform.getCityitems() != null && queryform.getCityitems().size() != 0) {
 			for (Long ct : queryform.getCityitems()) {
 				citymap.put(new String("city"), animalservice.getCityById(ct));
 			}
 		}
-		Specification<Animal> spec;
-		if (speciemap.size() != 0 && citymap.size() != 0) {
-			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
-					.and(SpecificationHalfway.containsEqualsOr(citymap));
-		} else {
-			spec = Specifications.where(SpecificationHalfway.containsLikeOr(speciemap))
-					.or(SpecificationHalfway.containsEqualsOr(citymap));
+		lastspec.add(citymap);
+
+		// 接收性別的 checkbox
+		Map<String, Object> gendermap = new IdentityHashMap<>();
+		if (queryform.getGenderitems() != null && queryform.getGenderitems().size() != 0) {
+			for (String sp : queryform.getGenderitems()) {
+				gendermap.put(new String("gender"), sp);
+			}
 		}
+		lastspec.add(gendermap);
+		
+		// 接收體型的 checkbox
+		Map<String, Object> sizemap = new IdentityHashMap<>();
+		if (queryform.getSizeitems() != null && queryform.getSizeitems().size() != 0) {
+			for (String sp : queryform.getSizeitems()) {
+				sizemap.put(new String("size"), sp);
+			}
+		}
+		lastspec.add(sizemap);
+		
+		// 接收年齡的 checkbox
+		Map<String, Object> agemap = new IdentityHashMap<>();
+		if (queryform.getAgeitems() != null && queryform.getAgeitems().size() != 0) {
+			for (String sp : queryform.getAgeitems()) {
+				agemap.put(new String("age"), sp);
+			}
+		}
+		lastspec.add(agemap);
+		
+		Specification<Animal> spec = null;
+		int count = 1;
+		
+		for (Map<String, Object> m : lastspec) {
+			if (m.size() != 0) {
+				spec = Specifications.where(SpecificationHalfway.containsEqualsOr(m));
+				break;
+			}
+			count++;
+		}
+		
+		for (int i = count; i < lastspec.size(); i++) {
+			if (lastspec.get(i).size() != 0) {
+				spec = Specifications.where(spec).and(SpecificationHalfway.containsEqualsOr(lastspec.get(i)));
+			}
+		}
+
 		// 設定 pageinfo
 		if (pageinfo.getPageNumber() == null) {
 			pageinfo.setPageNumber(defaultPageInfo.getPageNumber());

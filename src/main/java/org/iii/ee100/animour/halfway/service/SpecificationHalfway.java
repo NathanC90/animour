@@ -16,7 +16,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SpecificationHalfway {
-
+	
+	// 沒用到
 	public static Specification<Animal> containsLikeOr(Map<String, Object> attributemap) {
 
 		return new Specification<Animal>() {

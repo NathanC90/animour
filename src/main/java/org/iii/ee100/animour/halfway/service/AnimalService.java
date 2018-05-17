@@ -4,8 +4,11 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,14 +19,12 @@ import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.dao.CityDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
-import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -62,19 +63,6 @@ public class AnimalService extends GenericService<Animal>{
 		return animalDao.findTop6ByOrderByUploadDesc();
 	}
 
-	public List<Animal> getAllDesc() {
-		return animalDao.findByOrderByUploadDesc();
-	}
-
-	public List<Animal> searchBySpecie(String specie) {
-		return animalDao.findBySpecieOrderByUploadDesc(specie);
-	}
-
-	public Page<Animal> getByCity(City city, PageInfo pageinfo) {
-		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
-		return animalDao.findByCity(city, request);
-	}
-
 	// pageSize=一頁幾筆資料
 	public Page<Animal> getAnimalPage(PageInfo pageinfo) {
 		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
@@ -104,7 +92,7 @@ public class AnimalService extends GenericService<Animal>{
 	}
 
 	public void updateAnimalCount() {
-		List<City> citys = getAllCity();
+		List<City> citys = cityDao.findByOrderById();
 		for (City city : citys) {
 			city.setAnimalCount(new Long(city.getAnimals().size()));
 		}
@@ -155,21 +143,14 @@ public class AnimalService extends GenericService<Animal>{
 		return species;
 	}
 	
-	public Member getCurrentMember() {
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails && principal instanceof Member) {
-			return (Member) principal;
-		} else {
-			String account = principal.toString();
-			System.out.println(account);
-			return null;
-		}
-		
-	}	
+	// for MemberPage
 	public List<Animal> getHomepageAnimalList(Long memberId){
 		return animalDao.findByMemberIdOrderByUploadDesc(memberId);
 		
 	}
 	
-
+	public void setResponseParameters(String key, Object value) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put(key, value);
+	}
 }

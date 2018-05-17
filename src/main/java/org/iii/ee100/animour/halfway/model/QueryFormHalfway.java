@@ -15,4 +15,11 @@ public class QueryFormHalfway {
 	private List<String> specieitems;
 
 	private List<Long> cityitems;
+	
+	private List<String> genderitems;
+	
+	private List<String> sizeitems;
+	
+	private List<String> ageitems;
+	
 }
