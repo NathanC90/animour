@@ -136,9 +136,9 @@
 						<!--Start of Price -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
-							<h2 class="widget-title">價格篩選</h2>
+							<h2 class="widget-title">價格低於</h2>
 							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="range" name="price" min="0" max="2000"><br><br>
+								<input type="number" name="price" min="0" max="2000" step="100" class="col-md-6"><br><br>
 								<input type="submit" class="btn btn-common" value="查尋">
 							</form>
 						</aside>

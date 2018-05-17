@@ -218,7 +218,7 @@
                     <span class="navbar-brand">
                         <i class="fas fa-shopping-cart"></i>
                         <!--                         <img src="/images/shopping/product/shoppingCart.ico" alt=""> -->
-                        共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆</span>
+                      	  共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆</span>
                     <a class="navbar-brand" href="/cart/index">
                         <c:set var="total" value="0"></c:set>
                         <c:forEach var="cartItem" items="${sessionScope.cart}">

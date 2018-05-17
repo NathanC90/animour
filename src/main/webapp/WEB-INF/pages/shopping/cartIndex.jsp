@@ -93,6 +93,7 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
+				<div class="form-group col-md-12">
 				<form action="/cart/update" method="POST">
 					<table class="table" border="1">
 						<thead class="thead-dark">
@@ -100,7 +101,7 @@
 								<td>品名</td>
 								<td>價格</td>
 								<td>數量
-									<input value="update" type="submit">
+<!-- 									<input value="update" type="submit"> -->
 								</td>
 								<td>小計</td>
 								<td>Option</td>
@@ -117,6 +118,7 @@
 								<td>
 									<input type="number" value="${cartItem.quantity}" min="0" 
 										max="${cartItem.product.stock}" name="quantity">
+										<input type="submit" value="確定更改">
 								</td>
 								<td>${cartItem.product.price * cartItem.quantity}</td>
 								<td><a href="/cart/delete/${i.index}">刪除</a></td>
@@ -128,6 +130,7 @@
 						</tr>
 					</table>
 				</form>
+				</div>
 			</div>
 			<a href="/product/index" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
