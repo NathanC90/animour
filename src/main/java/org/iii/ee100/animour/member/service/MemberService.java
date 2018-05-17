@@ -154,8 +154,8 @@ public class MemberService extends GenericService<Member> {
 		
 		//收藏好友
 		
-		public MyFriend findByMemberIdAndFriendId(MyFriend friend) {
-			return myFriendDao.findByMemberIdAndFriendId(friend.getMember().getId(), friend.getFriendId());
+		public MyFriend findByMemberIdAndFriendId(Long memberId,Long friendId) {
+			return myFriendDao.findByMemberIdAndFriendId(memberId, friendId);
 		};
 		
 		
