@@ -42,7 +42,7 @@ public class ReservationService extends GenericService<Reservation> {
 		reservationDao.delete(id);
 	}
 
-	public ArrayList<Reservation> getAllContent() {
+	public ArrayList<Reservation> getAllReservationContent() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
 
@@ -76,7 +76,17 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(serviceContentDao.findTop3ByOrderByIdDesc());
 
 	}
+	
+	
+	//判斷服務內容是否重複
+	public void decideThreeContentRepeateOrNot() {
+		this.getAllDesigner();
+		this.getAllServiceContent();
+		this.getAllReservationContent();
+		
 
+	}
+	
 
 	// 計算總時數
 	public Integer addServiceTime() {

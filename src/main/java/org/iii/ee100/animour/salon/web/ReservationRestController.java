@@ -55,18 +55,31 @@ public class ReservationRestController {
 		return reservationService.getOne(reservationId);
 	}
 
-	// Update a Reservation by id
+	// insert a Reservation by id
+	// 付款成功不能改資料
 	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long memberId, Reservation reservation) {
+	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long id, Reservation reservation) {
 //		System.out.println("memberIdaaa"+memberId);
 //		reservation.setMember(memberService.getOne(memberId));
-		reservationService.insertReservation(reservation);
+		 Reservation changeContent =reservationService.getOne(id);
+		 changeContent.setContent(reservation.getContent());
+		 changeContent.setDesigner(reservation.getDesigner());
+		 changeContent.setPayment(reservation.getPayment());
+		 changeContent.setFrontTime(reservation.getFrontTime());
+		 changeContent.setPrice(reservation.getPrice());
+		 changeContent.setTotalTime(reservation.getTotalTime());
+		 changeContent.setReservationDate(reservation.getReservationDate());
+
+		 
+		 		reservationService.insertReservation(changeContent);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 
 	}
+//	@RequesPramm , 不能接
+// @
 //	@RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
 //	public ResponseEntity<?> updateMember(@PathVariable(value = "id") Long id,
-//			@Valid @RequestBody Member member) {
+//			@Valid @RequestBody接Jonson Member member) {
 //		memberService.insert(memberService.getOne(id));
 //		return new ResponseEntity<Member>(member, HttpStatus.OK);
 //

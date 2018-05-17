@@ -401,14 +401,14 @@
 
 	<script>
 		$(document).ready(function() {
-
+			
 			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
 				console.log(data);
-				$.each(data, function(i, a) {
+				$.each(data, function(i, serviceCotent) {
 					// var cell1 = $("<option></option>").text(a.content+a.price);
 					// $('#servicer').append(cell1);
-					var cell1 = $("<option></option>").text(a.content);
-					var cell2 = $("<option></option>").text(a.price);
+					var cell1 = $("<option></option>").text(serviceCotent.content);
+					var cell2 = $("<option></option>").text(serviceCotent.price);
 					$('#servicer').append(cell1);
 
 					$('#price').append(cell2);
@@ -442,17 +442,21 @@
 
 			var data1 = new FormData(document.getElementById("myform"));
 			console.log(toJson(data1));
+			
+// $.getJSON('/reservationForms//getReservationDate',{},function(data2){
+	
+// })
+// if(a==a){
+// }
+
 			$.ajax({
 				url : '/reservationForms',
 				type : 'POST',
 				data : toJson(data1),
 				contentType : "application/json",
 				dataType : "json",
-
-			}).done(function(data) {
-/* 				console.log(toJson(data1));
- */				
-				var r=confirm("馬上結帳");
+				success: function(data1){
+					var r=confirm("馬上結帳");
 				if (r==true)
 				  {
  				  alert("為您轉跳中");
@@ -471,8 +475,14 @@
 				  }
 				else
 				  {
-				  alert("You pressed Cancel!");
+				  alert("請在7天內儘速結帳");
 				  }
+				}
+
+			}).done(function(data) {
+/* 				console.log(toJson(data1));
+ */				
+				
 
 			});
 

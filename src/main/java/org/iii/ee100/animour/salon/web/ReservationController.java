@@ -109,7 +109,7 @@ public class ReservationController {
 ////		Page<ServiceContent>page =reservationService.getServiceContentPage(pageNumber, pageSize);
 ////		model.addAttribute("serviceContentPage", page);
 //		
-		ArrayList<ServiceContent> allType= reservationService.getAllServiceContent();
+		ArrayList<ServiceContent> allType= reservationService.getThreeServiceConten();
 		model.addAttribute("allType",allType);
 		return "/salon/reservation";		
 	}

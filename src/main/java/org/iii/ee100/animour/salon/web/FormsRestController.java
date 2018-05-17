@@ -31,6 +31,11 @@ public class FormsRestController {
 	@Autowired
 	MemberService memberService;
 	
+	@RequestMapping(value="/Reservation",method = RequestMethod.GET,produces = { "application/json"})
+	public List<Reservation> Reservation(){
+		return reservationService.getAllReservationContent();
+		
+	}
 	
 	@RequestMapping(value="/getServiceCotent",method = RequestMethod.GET,produces = { "application/json"})
 	public List<ServiceContent> getServiceCotent(){
