@@ -103,29 +103,27 @@
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">${member.account}</h2>
-							<c:if test="${member.id eq currentMember.id}">
 							<ul class="category-menu">
+							
+							<c:if test="${member.id eq currentMember.id}">
 								<li><a href="#">訂單查詢</a></li>
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<li><a href="/">通知</a></li>								
-							</ul>
 							</c:if>
-							<ul></ul>
 							<sec:authorize access="hasRole('Member')"> 
 							<c:if test="${member.id ne currentMember.id}">
-							<ul class="category-menu">
-								<li id="add">
+								<li id="addFriend" value='${member.id}'>
 								<form id="insertFriend" enctype="multipart/form-data">
-								<input name="Favourite_Id" type="hidden" value="${member.id}"/>
-								</form><span id="span+'${member.id}'">
-								<i id="i-love" class="icon-heart"></i>add</span>
+								<input name="friendId" type="hidden" value="${member.id}"/>
+								</form>
+								<span id="span">
+								<i id="i-love" class="icon-heart"> </i>add 好友
+								</span>
 								</li>
-
-
-							</ul>
 							</c:if>
 							</sec:authorize>
+							</ul>
 						</aside>
 						<!-- Subscribe Widget -->
 						<!-- Tag Cloud -->
@@ -236,42 +234,56 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-	<script src="/js/jquery-min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.mixitup.js"></script>
-	<script src="/js/smoothscroll.js"></script>
-	<script src="/js/wow.js"></script>
-	<script src="/js/owl.carousel.js"></script>
-	<script src="/js/waypoints.min.js"></script>
-	<script src="/js/jquery.counterup.min.js"></script>
-	<script src="/js/jquery.slicknav.js"></script>
-	<script src="/js/jquery.appear.js"></script>
-	<script src="/js/form-validator.min.js"></script>
-	<script src="/js/contact-form-script.min.js"></script>
-	<script src="/js/main.js"></script>
-	<!-- Placed at the end of the document so the pages load faster -->
+<!-- 	<script src="/js/jquery-min.js"></script> -->
+<!-- 	<script src="/js/popper.min.js"></script> -->
+<!-- 	<script src="/js/bootstrap.min.js"></script> -->
+<!-- 	<script src="/js/jquery.mixitup.js"></script> -->
+<!-- 	<script src="/js/smoothscroll.js"></script> -->
+<!-- 	<script src="/js/wow.js"></script> -->
+<!-- 	<script src="/js/owl.carousel.js"></script> -->
+<!-- 	<script src="/js/waypoints.min.js"></script> -->
+<!-- 	<script src="/js/jquery.counterup.min.js"></script> -->
+<!-- 	<script src="/js/jquery.slicknav.js"></script> -->
+<!-- 	<script src="/js/jquery.appear.js"></script> -->
+<!-- 	<script src="/js/form-validator.min.js"></script> -->
+<!-- 	<script src="/js/contact-form-script.min.js"></script> -->
+<!-- 	<script src="/js/main.js"></script> -->
+<!-- 	<!-- Placed at the end of the document so the pages load faster --> -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+ 		window.jQuery
+ 				|| document
+ 						.write('<script src="/js/jquery-slim.min.js"><\/script>')
+ 	</script> 
+<!-- 	<script src="/js/popper.min.js"></script> -->
+<!-- 	<script src="/js/bootstrap.min.js"></script> -->
 
 
-	<script
-		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- 	<script -->
+<!-- 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 
 	<script>
 	
 	 $(document).ready(function () {
-		 $("#add").on('click' ,function (event) {
-			 console.log("#add");
+ 		 var a=$("#addFriend").attr('value');
+ 		 
+ 		$.getJSON('/api/member/all/member/friend/'+a, { }, function (result) { 			
+ 			$.each(result, function (i, friend) {
+ 				console.log("friend:"+friend)
+                if(friend == true){
+               	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+                }else{
+                $("#span").html('<i class="icon-heart"></i> 加好 友 ');
+                }
+ 			});//end .each
+ 		
+ 		})//end .json;
+ 		 
+		 $("#addFriend").on('click' ,function (event) {
+			 console.log("#addFriend:");
 			 console.log($(this));
              var formData = new FormData(document.getElementById("insertFriend"));
              console.log(formData);
@@ -282,9 +294,23 @@
                contentType: false,
                processData: false
              })
-		 }
+			 .done(function (data) {
+             $.each(data, function (i, friend) {
+            	 console.log("friendstatus");
+                 console.log(friend);
+                 console.log("friend.id:: "+friend.id)
+                 console.log("friend:: "+friend)
+                 
+                 if(friend == true){
+                	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+                 }else{
+                 $("#span").html('<i class="icon-heart"></i> 加好友 ');
+                 }
+               });
+             }); //end .done
 		 
-	 }
+		 })
+	 });
 	</script>
 </body>
 
