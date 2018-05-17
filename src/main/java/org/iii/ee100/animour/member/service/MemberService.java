@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.common.service.GenericService;
+import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.dao.MemberDao;
+import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.MyFriend;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +20,9 @@ public class MemberService extends GenericService<Member> {
 
 	@Autowired
 	MemberDao memberDao;
+	
+	@Autowired
+	MyFriendDao myFriendDao;
 	
 	//新增會員
 	public void insert(Member newMember)  {
@@ -146,8 +152,27 @@ public class MemberService extends GenericService<Member> {
 			return str;
 		}
 		
+		//收藏好友
+		
+		public MyFriend findByMemberIdAndFriendId(MyFriend friend) {
+			return myFriendDao.findByMemberIdAndFriendId(friend.getMember().getId(), friend.getFriendId());
+		};
+		
+		
+		public void insertFriend(MyFriend friend) {
+			myFriendDao.save(friend);
+		}
 
-
- 	
+		public void updateFriend(MyFriend friend) {
+			Long memberId=friend.getMember().getId();
+			Long friendId=friend.getFriendId();
+			MyFriend newFriend=myFriendDao.findByMemberIdAndFriendId(memberId, friendId);
+			if(newFriend.getLove()==true) {
+				newFriend.setLove(false);
+			}else {
+				newFriend.setLove(true);
+			}
+			myFriendDao.save(newFriend);
+		}
 }
 

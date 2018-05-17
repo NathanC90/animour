@@ -17,15 +17,16 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="MYFAVOURITE")
-public class MyFavourite extends GenericEntity{
+@Table(name="MYFRIEND")
+public class MyFriend extends GenericEntity{
 	
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
 	private Member member;
 	
-	@Column(name="Favourite_id")
-	String Favourite_Id;//其他會員帳號
+	@Column(name="Friend_id")
+	private Long friendId;//其他會員帳號
 	
-	
+	@Column(name="LOVE")
+	private Boolean love;
 }
