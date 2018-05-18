@@ -2,8 +2,11 @@ package org.iii.ee100.animour.member.web;
 
 import java.util.List;
 
+import javax.persistence.Transient;
+
 import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.Mail;
+import org.iii.ee100.animour.member.ManyMail;
 import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.entity.MyFriend;
@@ -47,15 +50,6 @@ public class MemberRestfulController {
 //
 //	}
 
-	@Autowired	
-	EmailService emailService;
-	
-	@RequestMapping(value="/adminsendmail",method = RequestMethod.POST)
-	public ResponseEntity<?> newMail(Mail mail) {
-		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
-		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
-		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
-	}
 	
 	
 	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
@@ -89,5 +83,25 @@ public class MemberRestfulController {
 			return friend; 
 
 		}
+	}
+
+	@Autowired	
+	EmailService emailService;
+	
+	@RequestMapping(value="/adminsendmail",method = RequestMethod.POST)
+	public ResponseEntity<?> newMail(Mail mail) {
+		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
+		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
+		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
+	}
+	
+	@Transient
+	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST)
+	public ResponseEntity<?> newMail(ManyMail manyMail) {
+		for(String account: manyMail.getAccount()) {
+		String email=memberService.getOneByAccount(account).getEmail();
+		emailService.sendEmail(email, manyMail.getSubject(), manyMail.getContext());
+		}
+		return new ResponseEntity<ManyMail>(manyMail,HttpStatus.OK);
 	}
 }
