@@ -96,8 +96,13 @@ public class MemberRestfulController {
 	}
 	
 	@Transient
-	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST)
+	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST,consumes={ "application/json" })
 	public ResponseEntity<?> newMail(ManyMail manyMail) {
+		System.out.println("manyMail01"+manyMail.getSubject());
+		System.out.println("manyMail02"+manyMail.getContext());
+		System.out.println("manyMail03"+manyMail.getAccount());
+
+		
 		for(String account: manyMail.getAccount()) {
 		String email=memberService.getOneByAccount(account).getEmail();
 		emailService.sendEmail(email, manyMail.getSubject(), manyMail.getContext());

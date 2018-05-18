@@ -235,9 +235,9 @@
 					<div class="modal-body">
 						<form id="insertformForMany">
 							<!-- <div class="form-group">
-				  <label for="recipient-name" class="col-form-label">recipient:</label>
-				  <input type="hidden" class="form-control recipient-name" id="accounts" name="accounts" readonly="readonly">
-				</div> -->
+								<label for="recipient-name" class="col-form-label">recipient:</label>
+								<input type="hidden" class="form-control recipient-name" id="accounts" name="accounts" readonly="readonly">
+							</div> -->
 
 							<div class="form-group">
 								<label for="subject" class="col-form-label">Subject:</label>
@@ -353,7 +353,7 @@
 					console.log(data);
 					$('#table1>tbody').empty();
 					$.each(data, function (i, member) {
-						var cell1 = $('<td></td>').html('<input type="checkbox" id="id_check" class="select-row" value="' + member.account + '">');
+						var cell1 = $('<td></td>').html('<input type="checkbox" id="id_check" name="id_check" class="select-row" value="' + member.account + '">');
 						var cell2 = $("<td></td>").text(member.id);
 						var cell3 = $("<td></td>").text(member.account);
 
@@ -404,46 +404,48 @@
 
 		<script>
 			$(document).ready(function () {
+
+				var getcheckbox = [];
+				console.log("getcheckbox 01= " + getcheckbox)
 				$('#sendMailManyAccount').click(function () {
-					$('.select-row').change(function () {
-						//讀出所有被勾選checkbox的值
-						var getcheckbox = [];
-						$(':checked[name="id_check"]').each(function () {
-							getcheckbox.push($(this).val());
-							cosole.log("getcheckbox = " + getcheckbox);
-						});
+					//讀出所有被勾選checkbox的值
+					$('input:checkbox:checked[name="id_check"]').each(function () {
+						getcheckbox.push($(this).val());
+					});
+					$('#exampleModalMany').on('show.bs.modal', function (event) {
+						var button = $(event.relatedTarget) // Button that triggered the modal
+						var account = { 'accounts': getcheckbox } // Extract info from data-* attributes
+						// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+						// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+						var modal = $(this)
+						//modal.find('.modal-title').text('change status: ' + account)
+						//	modal.find('#accounts').val(account)
 					})
 
+				})
+				$('#btn_many').click(function () {
+					var object = {};
+					object['accounts'] = getcheckbox;
+					object['subject'] = $("#subject").val();
+					object['context'] = $("#context").val();
 
-					var formData = new FormData(document.getElementById("insertformForMany"));
-					console.log(formData);
+					// var formData = new FormData(document.getElementById("insertformForMany"));
+					var json = JSON.stringify(object, null)
+					console.log(json);
+
+
 					$.ajax({
 						type: "POST",
 						url: "/api/member/all/adminsendmanymail",
-						data: formData.append("account", getcheckbox),
-						contentType: false,
-						processData: false,
-						//     		    dataType: "json",
+						data: json,
+						data: json,
+						dataType: 'json',
+						contentType: "application/json",
 						success: function () {
 							alert("成功_寄送");
 							//	$('#exampleModal').modal('hide')
 						}
 					});
-
-
-
-
-					$('#exampleModalMany').on('show.bs.modal', function (event) {
-						var button = $(event.relatedTarget) // Button that triggered the modal
-						var account = getcheckbox // Extract info from data-* attributes
-						console.log("account:getcheckbox " + account)
-						// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-						// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-						var modal = $(this)
-						//modal.find('.modal-title').text('change status: ' + account)
-						modal.find('#accounts').val(account)
-					})
-
 
 				});
 

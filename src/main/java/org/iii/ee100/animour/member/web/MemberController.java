@@ -189,7 +189,7 @@ public class MemberController {
     @PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public String admin() {
-		return "/admin/member/admin_copy";
+		return "/admin/member/admin_copy2a";
 	}
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
