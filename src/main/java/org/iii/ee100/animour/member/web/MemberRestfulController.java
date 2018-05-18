@@ -80,7 +80,8 @@ public class MemberRestfulController {
 		MyFriend friend= memberService.findByMemberIdAndFriendId(memberId, friendId);
 		if(friend==null) {
 			System.out.println("friend.id:"+friend);
-			return friend; 
+			MyFriend friend1 = new MyFriend();
+			return friend1; 
 
 		}else {
 			System.out.println("friend.id:"+friend.getId()+"friend.love:"+friend.getLove());

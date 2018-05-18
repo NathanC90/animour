@@ -118,7 +118,6 @@
 								<input name="friendId" type="hidden" value="${member.id}"/>
 								</form>
 								<span id="span">
-								<i id="i-love" class="icon-heart"> </i>add 好友
 								</span>
 								</li>
 							</c:if>
@@ -185,7 +184,7 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
+									<a href="/forum/findOne?id=${article.id}" style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:24px;height:48px;"><c:out value="${article.subject}"/></a>
 
 								</h3>
 
@@ -271,6 +270,7 @@
  		 var a=$("#addFriend").attr('value');
  		 
  		$.getJSON('/api/member/all/member/friend/'+a, { }, function (result) { 			
+ 			
  			$.each(result, function (i, friend) {
  				console.log("friend:"+friend)
                 if(friend == true){
