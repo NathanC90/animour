@@ -10,19 +10,28 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 public interface AnimalDao extends GenericDao<Animal>,JpaSpecificationExecutor<Animal> {
-	//List<Animal> findTop6ByUpload(Timestamp upload, Pageable pageable);
 	List<Animal> findByOrderByUploadDesc();
+	
 	List<Animal> findTop6ByOrderByUploadDesc();
+	
 	List<Animal> findBySpecieOrderByUploadDesc(String specie);
+	
 	Page<Animal> findByCity(City city, Pageable pageable);
 	
 	Page<Animal> findByNameContaining(String name,Pageable pageable);
 	
-//	@Query(value="SELECT DISTINCT city_id FROM ANIMAL", nativeQuery = true)
-//	List<String> findDistinctCity();
-	
-//	@Query(value="SELECT count(*) FROM ANIMAL where CITY = ?1", nativeQuery = true)
-//	Long findCityCount(Long cityId);
-	
 	List<Animal> findByMemberIdOrderByUploadDesc(Long memberId);
+	
+	Page<Animal> findByMemberIdOrderByUploadDesc(Long memberId, Pageable pageable);
+	
+	
+	// 計算(筆數)
+	Long countBySpecie(String specie);
+	
+	Long countBySize(String size);
+	
+	Long countByAge(String age);
+	
+	Long countByGender(String gender);
+	
 }

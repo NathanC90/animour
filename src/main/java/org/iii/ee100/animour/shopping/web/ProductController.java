@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.shopping.web;
 
+import java.util.List;
+
+import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ClassifyService;
 import org.iii.ee100.animour.shopping.service.ProductService;
@@ -22,6 +25,9 @@ public class ProductController {
 
 	@Autowired
 	private ClassifyService classifyService;
+	
+	@Autowired
+	private MemberService memberService;
 
 	// product contain page
 	@RequestMapping(value = "/product/index")
@@ -40,7 +46,7 @@ public class ProductController {
 	}
 
 	// product maintain
-	@RequestMapping(value = "/product/maintain")
+//	@RequestMapping(value = "/product/maintain")
 	public String maintain(@RequestParam(value = "pageNo", required = false, defaultValue = "1") String pageNoStr,
 			Model model) throws Exception {
 		int pageNo = pageUtility.getPageNumber(pageNoStr);
@@ -53,6 +59,18 @@ public class ProductController {
 		model.addAttribute("page", page);
 		return "/shopping/maintain";
 		// return "/shopping/ProcessProductForm";
+	}
+	
+	@RequestMapping(value = "/product/maintain")
+	public String maintain(Model model) {
+		System.err.println(memberService.getNewCurrentMember().getId());
+		List<Product> memberProducts = productService.getByMemberId(memberService.getCurrentMember().getId());
+		for(Product product:memberProducts) {
+			System.err.println("product" + product.getName());
+		}
+		model.addAttribute("memberProductQuantity", memberProducts.size());
+		model.addAttribute("memberProducts", memberProducts);
+		return "/shopping/maintain";
 	}
 
 	// Insert Product

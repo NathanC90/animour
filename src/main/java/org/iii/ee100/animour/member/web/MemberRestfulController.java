@@ -61,15 +61,33 @@ public class MemberRestfulController {
 	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
 	public ResponseEntity<?> addFriend(MyFriend friend) {
 		friend.setMember(memberService.getNewCurrentMember());
-		if(memberService.findByMemberIdAndFriendId(friend) ==null) {
+		if(memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId()) ==null) {
 			friend.setLove(true);
 			memberService.insertFriend(friend);			
 			return new ResponseEntity<MyFriend>(friend, HttpStatus.OK); 
 		}else {
 			memberService.updateFriend(friend);
-			MyFriend newFriend=memberService.findByMemberIdAndFriendId(friend);
+			MyFriend newFriend=memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId());
 			return new ResponseEntity<MyFriend>(newFriend, HttpStatus.OK); 
 		}
 
+	}
+	
+	@RequestMapping(value="/member/friend/{Id}",method = RequestMethod.GET, produces = { "application/json" })
+	public MyFriend heartStatus(@PathVariable String Id){
+		Long friendId=Long.valueOf(Id);
+		Long memberId =memberService.getNewCurrentMember().getId();
+		MyFriend friend= memberService.findByMemberIdAndFriendId(memberId, friendId);
+		if(friend==null) {
+			System.out.println("friend.id:"+friend);
+			MyFriend friend1 = new MyFriend();
+			return friend1; 
+
+		}else {
+			System.out.println("friend.id:"+friend.getId()+"friend.love:"+friend.getLove());
+
+			return friend; 
+
+		}
 	}
 }

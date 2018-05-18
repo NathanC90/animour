@@ -62,6 +62,15 @@ public class productTest {
 	@Autowired
 	private MemberService memberService;
 	
+//	@Test
+//	public void TestMemeberProduct() {
+//		
+//		List<Product> products = productDao.findByMember_id(2L);
+//		for(Product product:products) {
+//			System.out.println(product.getName());
+//		}
+//	}
+	
 	/**  id > 5
 	 * 測試帶查詢條件的分頁
 	 * 使用JpaSpecificationExecutor的 Page<T> findAll(Specification<T> spec, Pageable pageable)方法
@@ -313,16 +322,16 @@ public class productTest {
 //			System.out.println("購買數量=" + order.getQuantity());
 //		}
 //		
-		List<Orders> ordersList = ordersDao.findByMember_id(2L);
-		for(Orders orders:ordersList) {
-			System.out.println(orders.getMember().getName());
-			System.out.println(orders.getOrderDate());
-			System.out.println(orders.getTotalAmount());
-			List<OrdersItem> ordersItem = orders.getOrdersItem();
-			for(OrdersItem order:ordersItem) {
-				System.out.println(order.getName());
-			}
-		}
+//		List<Orders> ordersList = ordersDao.findByMember_id(2L);
+//		for(Orders orders:ordersList) {
+//			System.out.println(orders.getMember().getName());
+//			System.out.println(orders.getOrderDate());
+//			System.out.println(orders.getTotalAmount());
+//			List<OrdersItem> ordersItem = orders.getOrdersItem();
+//			for(OrdersItem order:ordersItem) {
+//				System.out.println(order.getName());
+//			}
+//		}
 	}
 	
 	//刪除一筆商品

@@ -65,7 +65,7 @@ public class AdoptionRestController {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		adoption.setRequestDate(ts);
 		// 設定登入的會員
-		Member current = animalService.getCurrentMember();
+		Member current = memberService.getNewCurrentMember();
 		adoption.setMember(current);
 		adoptionService.insert(adoption);
 		// 設定 id

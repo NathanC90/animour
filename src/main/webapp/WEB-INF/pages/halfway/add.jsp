@@ -102,7 +102,7 @@
 											<form:radiobutton path="gender" value="female" class="form-check-input" /> 母
 										</div>
 										<div class="form-check form-check-inline">
-											<form:radiobutton path="gender" value="unknown" class="form-check-input" /> 尚未確認
+											<form:radiobutton path="gender" value="unknown" class="form-check-input" /> 待確認
 										</div>
 									</div>
 								</div>

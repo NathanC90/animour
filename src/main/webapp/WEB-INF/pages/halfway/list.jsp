@@ -118,17 +118,17 @@
 								<!-- Search Bar -->
 								<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 									<form action="/queryContaining">
-										<input type="text" placeholder="Search" class="form-control" name="name">
+										<input type="text" placeholder="會員帳號或動物名稱..." class="form-control" name="name">
 										<button type="submit">
 											<i class="fa fa-search"></i>
 										</button>
 									</form>
 								</aside>
 								<!-- Text Widgets -->
-								
+
 								<!--Start of Category -->
 								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
-									<h2 class="widget-title">Category</h2>
+									<h2 class="widget-title">種類</h2>
 									<ul class="category-menu">
 										<li>
 											<div class="form-check">
@@ -170,7 +170,7 @@
 								</aside>
 								<!--End of Category -->
 
-								<!--Start of Region -->
+								<!--Start of city -->
 								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
 									<h2 class="widget-title">縣市</h2>
 									<ul class="category-menu">
@@ -183,9 +183,84 @@
 											</li>
 										</c:forEach>
 									</ul>
-									<input type="button" class="btn btn-common" value="搜尋" id="buttonGet">
 								</aside>
 								<!--End of Region -->
+
+								<!--Start of Category -->
+								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
+									<h2 class="widget-title">性別</h2>
+									<ul class="category-menu">
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="male" id="gendercheck1" name="gendercheck">
+												<label class="form-check-label" for="defaultCheck1"> 公 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="female" id="gendercheck2" name="gendercheck">
+												<label class="form-check-label" for="defaultCheck1"> 母 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="unknown" id="gendercheck3" name="gendercheck">
+												<label class="form-check-label" for="defaultCheck1"> 待確認 </label>
+											</div>
+										</li>
+									</ul>
+								</aside>
+								<!--End of Category -->
+								<!--Start of Category -->
+								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
+									<h2 class="widget-title">體型</h2>
+									<ul class="category-menu">
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="big" id="sizecheck1" name="sizecheck">
+												<label class="form-check-label" for="defaultCheck1"> 大型 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="mid" id="sizecheck2" name="sizecheck">
+												<label class="form-check-label" for="defaultCheck1"> 中型 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="small" id="sizecheck3" name="sizecheck">
+												<label class="form-check-label" for="defaultCheck1"> 小型 </label>
+											</div>
+										</li>
+									</ul>
+								</aside>
+								<!--End of Category -->
+								<!--Start of Category -->
+								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
+									<h2 class="widget-title">年齡</h2>
+									<ul class="category-menu">
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="grownup" id="agecheck1" name="agecheck">
+												<label class="form-check-label" for="defaultCheck1"> 成年 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="young" id="agecheck2" name="agecheck">
+												<label class="form-check-label" for="defaultCheck1"> 幼年 </label>
+											</div>
+										</li>
+										<li>
+											<div class="form-check">
+												<input class="form-check-input" type="checkbox" value="old" id="agecheck3" name="agecheck">
+												<label class="form-check-label" for="defaultCheck1"> 老年 </label>
+											</div>
+										</li>
+									</ul>
+								</aside>
+								<!--End of Category -->
 							</div>
 						</div>
 						<!-- End -->
@@ -389,7 +464,7 @@
 
 								var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
 								docFragment.append(eachdiv1);
-								console.log(animal.name);
+								//console.log(animal.name);
 							});
 							$('#each').append(docFragment);
 						}).done(function () {
@@ -397,7 +472,7 @@
 							pageNumber++;
 							//判斷下一次取回的json是否為空(是否為最後一頁)
 							$.getJSON('/halfway/animal', { "pageNumber": pageNumber }, function (datas) {
-								console.log(datas);
+								//console.log(datas);
 								if (datas.data.length != 0) {
 									var buttonImport = $("<button></button>").attr({ 'type': 'button', 'id': 'importbutt', 'style': 'width: 100%' }).addClass('btn btn-common btn-sm mt-10').append("載入更多資料");
 									$('#each').append(buttonImport);
@@ -426,6 +501,10 @@
 						//讀出所有被勾選checkbox的值
 						var cityitems = [];
 						var specieitems = [];
+						var genderitems = [];
+						var sizeitems = [];
+						var ageitems = [];
+					
 						$(':checked[name="citycheck"]').each(function () {
 							cityitems.push($(this).val());
 						});
@@ -434,9 +513,24 @@
 							specieitems.push($(this).val());
 						});
 
+						$(':checked[name="gendercheck"]').each(function () {
+							genderitems.push($(this).val());
+						});
+
+						$(':checked[name="sizecheck"]').each(function () {
+							sizeitems.push($(this).val());
+						});
+
+						$(':checked[name="agecheck"]').each(function () {
+							ageitems.push($(this).val());
+						});
+
 						var object = {};
 						object['specieitems'] = specieitems;
 						object['cityitems'] = cityitems;
+						object['genderitems'] = genderitems;
+						object['sizeitems'] = sizeitems;
+						object['ageitems'] = ageitems;
 
 						var json = JSON.stringify(object, null)
 						console.log(json);

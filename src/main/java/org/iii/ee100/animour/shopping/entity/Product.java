@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
+import org.iii.ee100.animour.member.entity.Member;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -39,6 +40,9 @@ public class Product extends GenericEntity {
 	@ManyToOne
 	@JoinColumn(name="CLASSIFY_ID", nullable = false)
 	private Classify classify;
+	@ManyToOne
+	@JoinColumn(name="MEMBER_ID")
+	private Member member;
 
 //	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 //	@JoinTable(name = "PRODUCT_ORDERS",
