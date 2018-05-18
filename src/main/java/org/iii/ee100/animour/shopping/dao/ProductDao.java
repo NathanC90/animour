@@ -29,5 +29,7 @@ public interface ProductDao extends GenericDao<Product>, JpaSpecificationExecuto
 	List<Product> findByNameInAndPriceLessThan(List<String> name, Integer price);
 	
 	List<Product> findByClassify_id(Long id);
+	
+	List<Product> findByMember_id(Long id);
 
 }
