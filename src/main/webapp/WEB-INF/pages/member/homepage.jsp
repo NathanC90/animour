@@ -106,7 +106,7 @@
 							<ul class="category-menu">
 							
 							<c:if test="${member.id eq currentMember.id}">
-								<li><a href="#">訂單查詢</a></li>
+								<li><a href="/findOrders/index">訂單查詢</a></li>
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<li><a href="/">通知</a></li>								
