@@ -152,7 +152,7 @@
 					<p class="imglist" style="max-width: 500px; width: 100%">
 						<a data-trigger="preview" href="javascript:;"> <img
 							class="card-img-top"
-							src="/showAnimalImage?fileName=${animal.fileName}" width="50px"
+							src="/showAnimalImage?fileName=${animal.fileName}" data-width="500" data-height="500"
 							alt="${animal.id}">
 						</a> <a href="https://source.unsplash.com/LuK-MuZ-yf0/1500x1000"
 							data-fancybox="preview" data-width="1500" data-height="1000">
@@ -236,14 +236,14 @@
 		<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
 				</p>-->
-		<div style="display: none; max-width: 600px; border-radius: 5px"
+		<div style="display: none; max-width: 600px; border-radius: 20px"
 			id="trueModal">
-			<h2>提醒您! 請求送出後無法取消</h2>
-			<p>(1) 賣家同意認養後，須支付保證金新台幣1000元整。於成功完成認養手續後退還。</p>
-			<p>(2) 認養請求送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
-			<p>(3) 成功完成認養手續後，若已達認養上限 (過去一年內成功認養數量不得多於2隻)，將暫時無法再提出認養請求。</p>
+			<h2>提醒您! 申請送出後無法取消</h2>
+			<p>(1) 賣家同意申請後，須支付保證金新台幣100元整。於成功完成認養手續後退還。</p>
+			<p>(2) 認養申請送出後，需完成認養觀念檢測問卷，分數將作為飼主評估標準。</p>
+			<p>(3) 成功完成認養手續後，若已達認養上限 (過去一年內成功認養數量不得多於2隻)，將暫時無法再提出認養申請。</p>
 			<p>
-				<button id="sendrequest" class="btn btn-common">確定送出，前往認養觀念檢測</button>
+				<button id="sendrequest" class="btn btn-common"> <i class="fa fa-check"></i> 確定送出，前往認養觀念檢測</button>
 				<button data-fancybox-close class="btn btn-common">取消</button>
 			</p>
 		</div>

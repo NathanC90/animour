@@ -22,12 +22,12 @@ public class AnimalController {
 
 	@Autowired
 	AnimalService animalservice;
-	
+
 	@Autowired
 	MemberService memberService;
 
 	// 首頁，list
-	@RequestMapping(value = "/halfway") 
+	@RequestMapping(value = "/halfway")
 	public String listPage(Model model) {
 		// 設定當前會員
 		Member current = memberService.getNewCurrentMember();
@@ -85,6 +85,18 @@ public class AnimalController {
 	@ModelAttribute("allSpecie")
 	public List<String> getAllSpecie() {
 		return animalservice.setSpecie();
+	}
+
+	// 生成表單下拉式選單欄位
+	@ModelAttribute("allAge")
+	public List<String> getAllAge() {
+		return animalservice.setAge();
+	}
+
+	// 生成表單下拉式選單欄位
+	@ModelAttribute("allSize")
+	public List<String> getAllSize() {
+		return animalservice.setSize();
 	}
 
 }

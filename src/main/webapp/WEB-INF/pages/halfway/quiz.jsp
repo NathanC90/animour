@@ -40,6 +40,9 @@
 				<link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
 				<link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
 
+				<!--FancyBox css -->
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+
 				<!-- Extras -->
 				<link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
 				<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
@@ -64,6 +67,8 @@
 				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 				<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 				<style type="text/css">
 					body {
 						color: #566787;
@@ -364,43 +369,53 @@
 			</head>
 
 			<body>
-				<div class="container">
-					<div class="table-wrapper">
-						<div class="table-title">
-							<div class="row">
-								<div class="col-sm-6">
-									<h2>
-										認養觀念檢測問卷
-									</h2>
-								</div>
-								<div class="col-sm-6">
+				<a id="check" style="display:none; max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30"
+				 data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;">
+					<i class="fa fa-link"></i>我要認養
+				</a>
 
-									<input type="hidden" id="${id}" class="storevalue" />
-									<button id="sendQuiz" class="btn btn-success" data-toggle="modal">
-										<i class="material-icons">&#xE147;</i>
-										<span>提交問卷</span>
-									</button>
+				<div style="display: none; width: 70%; border-radius: 20px" id="trueModal">
+					<div class="container">
+						<div class="col-md-12">
+							<div class="table-wrapper" style="width: 70%">
+								<div class="table-title">
+									<div class="row">
+										<div class="col-sm-6">
+											<h2>
+												認養觀念檢測問卷
+											</h2>
+										</div>
+										<div class="col-sm-6">
+
+											<input type="hidden" id="${id}" class="storevalue" />
+											<button id="sendQuiz" class="btn btn-success" data-toggle="modal">
+												<i class="material-icons">&#xE147;</i>
+												<span>提交問卷</span>
+											</button>
+										</div>
+									</div>
 								</div>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>問題</th>
+											<th>您的答案</th>
+										</tr>
+									</thead>
+									<tbody id="foreach">
+
+									</tbody>
+								</table>
+
 							</div>
 						</div>
-						<table class="table table-hover">
-							<thead>
-								<tr>
-									<th>問題</th>
-									<th>您的答案</th>
-								</tr>
-							</thead>
-							<tbody id="foreach">
-
-							</tbody>
-						</table>
-
 					</div>
 				</div>
 
 				<script>
 					var score = 0;
 					$(document).ready(function () {
+						$("#check").click();
 						$.ajax({
 							url: '/halfway/quiz',
 							type: 'GET',
@@ -427,8 +442,7 @@
 							});
 							answer();
 
-
-							var adoptionid = ""+$('input').attr('id')
+							var adoptionid = "" + $('input').attr('id')
 							$('#sendQuiz').click(function () {
 								var object = {};
 								object["score"] = score;
@@ -472,7 +486,6 @@
 							});
 							//if ()
 						}
-
 					});
 
 

@@ -143,6 +143,22 @@ public class AnimalService extends GenericService<Animal>{
 		return species;
 	}
 	
+	public List<String> setSize() {
+		List<String> size = new ArrayList<>();
+		size.add("大型");
+		size.add("中型");
+		size.add("小型");
+		return size;
+	}
+	
+	public List<String> setAge() {
+		List<String> age = new ArrayList<>();
+		age.add("成年");
+		age.add("幼年");
+		age.add("老年");
+		return age;
+	}
+	
 	// for MemberPage
 	public List<Animal> getHomepageAnimalList(Long memberId){
 		return animalDao.findByMemberIdOrderByUploadDesc(memberId);

@@ -42,15 +42,18 @@ public class AdoptionController {
 		if (current != null) {
 			List<Adoption> adoptions = adoptionService.getCheckAdoption(current.getId());
 			model.addAttribute("adoption", adoptions);
+			model.addAttribute("adoptioncount", adoptions.size());
 
 			List<AcceptRecord> giverecord = acceptRecordService.getCheckGive(current.getId());
 			model.addAttribute("giverecord", giverecord);
+			model.addAttribute("givecount", giverecord.size());
 
 			List<AcceptRecord> getrecord = acceptRecordService.getCheckGet(current.getId());
 			model.addAttribute("getrecord", getrecord);
+			model.addAttribute("getcount", getrecord.size());
 		}
 
-		return "/halfway/adoptionCheck";
+		return "/halfway/adoptionCheckTest";
 	}
 
 	// 處理認養請求的拒絕或接受

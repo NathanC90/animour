@@ -39,9 +39,9 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/halfway" aria-haspopup="true" aria-expanded="false">中途專區</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/halfway">認養搜尋</a>
-                                        <a class="dropdown-item" href="/halfway/showAdoption">查詢通知</a>
-                                        <a class="dropdown-item" href="/halfway/updateAnimal">資料維護</a>
+                                        <a class="dropdown-item" href="/halfway/addAnimal">我要送養</a>
+                                        <a class="dropdown-item" href="/halfway">動物搜尋</a>
+                                        <a class="dropdown-item" href="/halfway/showAdoption">認養程序處理</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

@@ -25,7 +25,7 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<!-- Viewport Meta Tag -->
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			<title>Animal Shelter</title>
+			<title>Animour 中途專區</title>
 			<!-- Bootstrap -->
 			<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 			<!-- Main Style -->
@@ -50,6 +50,7 @@
 			<link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
 
 			<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+
 			<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 			<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
@@ -115,13 +116,13 @@
 						<!-- Blog Sidebar Section -->
 						<div class="col-md-3">
 							<div class="sidebar-area">
-								<!-- Search Bar -->
 								<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-									<form action="/queryContaining">
-										<input type="text" placeholder="會員帳號或動物名稱..." class="form-control" name="name">
+									<form>
+										<input type="text" placeholder="Search" class="form-control">
 										<button type="submit">
-											<i class="fa fa-search"></i>
+											<i class="fa fa-plus"></i>
 										</button>
+
 									</form>
 								</aside>
 								<!-- Text Widgets -->
@@ -192,19 +193,19 @@
 									<ul class="category-menu">
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="male" id="gendercheck1" name="gendercheck">
+												<input class="form-check-input" type="checkbox" value="公" id="gendercheck1" name="gendercheck">
 												<label class="form-check-label" for="defaultCheck1"> 公 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="female" id="gendercheck2" name="gendercheck">
+												<input class="form-check-input" type="checkbox" value="母" id="gendercheck2" name="gendercheck">
 												<label class="form-check-label" for="defaultCheck1"> 母 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="unknown" id="gendercheck3" name="gendercheck">
+												<input class="form-check-input" type="checkbox" value="待確認" id="gendercheck3" name="gendercheck">
 												<label class="form-check-label" for="defaultCheck1"> 待確認 </label>
 											</div>
 										</li>
@@ -217,19 +218,19 @@
 									<ul class="category-menu">
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="big" id="sizecheck1" name="sizecheck">
+												<input class="form-check-input" type="checkbox" value="大型" id="sizecheck1" name="sizecheck">
 												<label class="form-check-label" for="defaultCheck1"> 大型 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="mid" id="sizecheck2" name="sizecheck">
+												<input class="form-check-input" type="checkbox" value="中型" id="sizecheck2" name="sizecheck">
 												<label class="form-check-label" for="defaultCheck1"> 中型 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="small" id="sizecheck3" name="sizecheck">
+												<input class="form-check-input" type="checkbox" value="小型" id="sizecheck3" name="sizecheck">
 												<label class="form-check-label" for="defaultCheck1"> 小型 </label>
 											</div>
 										</li>
@@ -242,19 +243,19 @@
 									<ul class="category-menu">
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="grownup" id="agecheck1" name="agecheck">
+												<input class="form-check-input" type="checkbox" value="成年" id="agecheck1" name="agecheck">
 												<label class="form-check-label" for="defaultCheck1"> 成年 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="young" id="agecheck2" name="agecheck">
+												<input class="form-check-input" type="checkbox" value="幼年" id="agecheck2" name="agecheck">
 												<label class="form-check-label" for="defaultCheck1"> 幼年 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" value="old" id="agecheck3" name="agecheck">
+												<input class="form-check-input" type="checkbox" value="老年" id="agecheck3" name="agecheck">
 												<label class="form-check-label" for="defaultCheck1"> 老年 </label>
 											</div>
 										</li>
@@ -267,7 +268,7 @@
 
 						<!-- BLog Article Section -->
 						<div class="col-md-9" id="out">
-							<!-- Single Blog Post -->
+							<!-- 增加每一筆動物的格子 -->
 							<div class="row" id="each">
 							</div>
 							<!-- Slider Post -->
@@ -279,144 +280,7 @@
 
 			<!-- Footer Section -->
 			<footer>
-				<!-- Container Starts -->
-				<div class="container">
-					<!-- Row Starts -->
-					<div class="row section">
-						<!-- Footer Widget Starts -->
-						<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-							<h3 class="small-title">About Us</h3>
-							<p></p>
-							<ul class="mb-3">
-								<!-- 						<li><i class="fa fa-map-marke"></i></li> -->
-								<!-- 						<li><i class="fa fa-phone"></i></li> -->
-								<!-- 						<li><i class="fa fa-phone"></i></li> -->
-							</ul>
-						</div>
-						<!-- Footer Widget Ends -->
-
-						<!-- Footer Widget Starts -->
-						<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-							<h3 class="small-title">Quick Links</h3>
-							<ul class="menu">
-								<li>
-									<a href="#">首頁</a>
-								</li>
-								<li>
-									<a href="#">中途專區</a>
-								</li>
-								<li>
-									<a href="#">最新活動專區</a>
-								</li>
-								<li>
-									<a href="#">寵物市集</a>
-								</li>
-								<li>
-									<a href="#">最新空房</a>
-								</li>
-								<li>
-									<a href="#">醫院資訊專區</a>
-								</li>
-								<li>
-									<a href="#">THE BLOG</a>
-								</li>
-							</ul>
-						</div>
-						<!-- Footer Widget Ends -->
-
-						<!-- Footer Widget Starts -->
-						<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-							<h3 class="small-title">Popular Posts</h3>
-							<ul class="image-list">
-								<li>
-									<figure class="overlay">
-										<img class="img-fluid" src="" alt="">
-									</figure>
-									<div class="post-content">
-										<h6 class="post-title">
-											<a href="blog-single.html"></a>
-										</h6>
-										<div class="meta">
-											<span class="date"></span>
-										</div>
-									</div>
-								</li>
-								<li>
-									<figure class="overlay">
-										<img class="img-fluid" src="" alt="">
-									</figure>
-									<div class="post-content">
-										<h6 class="post-title">
-											<a href="blog-single.html"></a>
-										</h6>
-										<div class="meta">
-											<span class="date"></span>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- Footer Widget Ends -->
-
-						<!-- Footer Widget Starts -->
-						<div class="footer-widget col-md-6 col-lg-3 col-xs-12">
-							<h3 class="small-title">EMail Us</h3>
-							<form>
-								<input type="text" placeholder="Email here">
-								<button type="submit">
-									<i class="fa fa-paper-plane-o"></i>
-								</button>
-							</form>
-							<div class="flicker-gallery">
-								<h3 class="small-title">Social Media Link</h3>
-								<a href="#" title="Pan Masala">
-									<img src="/images/flicker/img1.jpg" alt="">
-								</a>
-								<a href="#" title="Sports Template for Joomla">
-									<img src="/images/flicker/img2.jpg" alt="">
-								</a>
-								<a href="" title="Apple Keyboard">
-									<img src="/images/halfway/halfwayindex.jpg" alt="">
-								</a>
-							</div>
-						</div>
-						<!-- Footer Widget Ends -->
-					</div>
-					<!-- Row Ends -->
-				</div>
-				<!-- Container Ends -->
-
-				<!-- Copyright -->
-				<div id="copyright">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-6 col-sm-6">
-								<p class="copyright-text">
-									© 2018 Animour All right reserved, Designed by
-									<a href="#">iii-ee100</a>
-								</p>
-							</div>
-							<div class="col-md-6 col-sm-6">
-								<div class="social-footer text-right">
-									<a href="#">
-										<i class="fa fa-facebook icon-round"></i>
-									</a>
-									<a href="#">
-										<i class="fa fa-twitter icon-round"></i>
-									</a>
-									<a href="#">
-										<i class="fa fa-linkedin icon-round"></i>
-									</a>
-									<a href="#">
-										<i class="fa fa-google-plus icon-round"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Copyright  End-->
-
+				<jsp:include page="../footer.jsp"></jsp:include>
 			</footer>
 			<!-- Footer Section End-->
 
@@ -426,10 +290,6 @@
 			</a>
 			<script>
 				var pageNumber = 1;
-				$(document).ready(function () {
-					initSubmitForm();
-				});
-
 				var datas;
 				var initSubmitForm = function () {
 					// 使用 ajax() 來呼叫 REST API
@@ -494,9 +354,11 @@
 					$('#importbutt').remove();
 					initSubmitForm();
 				}
-			</script>
-			<script>
+
 				$(document).ready(function () {
+					initSubmitForm();
+
+
 					$('.form-check-input').change(function () {
 						//讀出所有被勾選checkbox的值
 						var cityitems = [];
@@ -504,7 +366,7 @@
 						var genderitems = [];
 						var sizeitems = [];
 						var ageitems = [];
-					
+
 						$(':checked[name="citycheck"]').each(function () {
 							cityitems.push($(this).val());
 						});
@@ -525,85 +387,68 @@
 							ageitems.push($(this).val());
 						});
 
-						var object = {};
-						object['specieitems'] = specieitems;
-						object['cityitems'] = cityitems;
-						object['genderitems'] = genderitems;
-						object['sizeitems'] = sizeitems;
-						object['ageitems'] = ageitems;
+						if (cityitems.length == 0 && specieitems.length == 0 && genderitems.length == 0 && sizeitems.length == 0 && ageitems.length == 0) {
+							pageNumber = 1;
+							$('#each').empty();
+							initSubmitForm();
 
-						var json = JSON.stringify(object, null)
-						console.log(json);
+						} else {
+							var object = {};
+							object['specieitems'] = specieitems;
+							object['cityitems'] = cityitems;
+							object['genderitems'] = genderitems;
+							object['sizeitems'] = sizeitems;
+							object['ageitems'] = ageitems;
 
-						//alert(items);
+							var json = JSON.stringify(object, null)
+							console.log(json);
+							//alert(items);
 
-						//var docFragment = $(document.createDocumentFragment());
-						$.ajax({
-							url: '/queryTest',
-							type: 'POST',
-							//data: data,
-							data: json,
-							dataType: 'json',
-							contentType: "application/json",
-							success:
-								//window.location.href = "http://localhost:8080/halfway";
-								function (datas) {
-									var docFragment = $(document.createDocumentFragment());
-									$.each(datas, function (idx, animal) {
+							//var docFragment = $(document.createDocumentFragment());
+							$.ajax({
+								url: '/queryTest',
+								type: 'POST',
+								//data: data,
+								data: json,
+								dataType: 'json',
+								contentType: "application/json",
+								success:
+									//window.location.href = "http://localhost:8080/halfway";
+									function (datas) {
+										var docFragment = $(document.createDocumentFragment());
+										$.each(datas, function (idx, animal) {
+											var fileName = animal.fileName;
+											var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
 
-										// string = `
-										// <p>${animal.name}</p>
-										// <li>綽號:${animal.name}</li>
-										// `
+											var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
+											var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
+											var li2 = $("<li></li>").append(['綽號:' + animal.name]);
+											var li3 = $("<li></li>").append(['種類:' + animal.specie]);
+											var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
+											var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
+											var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
+											var uploadObj = new Date(animal.upload);
+											var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
 
-										var fileName = animal.fileName;
-										var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
+											var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
+											var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
+											var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
+											var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
+											var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
 
-										var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
-										var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
-										var li2 = $("<li></li>").append(['綽號:' + animal.name]);
-										var li3 = $("<li></li>").append(['種類:' + animal.specie]);
-										var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
-										var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
-										var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
-										var uploadObj = new Date(animal.upload);
-										var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
-
-										var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
-										var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
-										var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
-										var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
-										var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
-
-										var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
-										docFragment.append(eachdiv1);
-										console.log(animal.name);
-									});
-									$('#each').empty();
-									$('#each').append(docFragment);
-								}
-						});
+											var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
+											docFragment.append(eachdiv1);
+											console.log(animal.name);
+										});
+										$('#each').empty();
+										$('#each').append(docFragment);
+									}
+							});
+						}
 					});
 				});
 			</script>
-			<script>
-				$(document).ready(function () {
-					$("#payment").click(function () {
-						$.ajax({
-							url: '/SalonfrontEnd/CheckOut/CheckOutALL',
-							type: 'POST',
-							//data: data,
-							//data: json,
-							//dataType: 'json',
-							//contentType: "application/json",
-						}).done(function (datas) {
-							$('#paymentdiv').html(datas);
-						});
-					});
 
-				});
-
-			</script>
 			<!-- JavaScript & jQuery Plugins -->
 			<script src="/js/jquery-min.js"></script>
 			<script src="/js/popper.min.js"></script>
