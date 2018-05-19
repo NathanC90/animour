@@ -62,7 +62,7 @@ public class Article extends GenericEntity {
 	private String images;
 	
 	@Column(name = "STATUS")
-	private boolean status;
+	private Boolean status;
 	
 	@Transient
 	private int commentLength;

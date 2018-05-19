@@ -128,7 +128,9 @@
 								<!-- Text Widgets -->
 
 								<!--Start of Category -->
-								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
+								<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">	
+										<button id="cancelcheck" class="btn btn-common btn-sm mb-20 cancel">
+												清除篩選條件</button>						
 									<h2 class="widget-title">種類</h2>
 									<ul class="category-menu">
 										<li>
@@ -260,6 +262,8 @@
 											</div>
 										</li>
 									</ul>
+									<button id="cancelcheck1" class="btn btn-common btn-sm mb-20 cancel">
+											清除篩選條件</button>
 								</aside>
 								<!--End of Category -->
 							</div>
@@ -358,6 +362,12 @@
 				$(document).ready(function () {
 					initSubmitForm();
 
+					$(".btn.btn-common.btn-sm.mb-20.cancel").click(function () {
+						$('.form-check-input').prop("checked", false);
+						pageNumber = 1;
+						$('#each').empty();
+							initSubmitForm();
+					});
 
 					$('.form-check-input').change(function () {
 						//讀出所有被勾選checkbox的值
