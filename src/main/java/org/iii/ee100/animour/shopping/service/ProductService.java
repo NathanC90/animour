@@ -108,4 +108,8 @@ public class ProductService extends GenericService<Product> {
 		return productDao.findByClassify_id(id);
 	}
 	
+	public List<Product> getByMemberId(Long id){
+		return productDao.findByMember_id(id);
+	}
+	
 }

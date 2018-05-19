@@ -94,10 +94,15 @@
 
 
 		<!-- Classic Blog Section -->
+		<c:if test="${ordersListSize <= 0}">
+					訂單內沒有任何商品資料
+		</c:if>
+<c:if test="${ordersListSize > 0}">
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">
 			<div class="container">
 				<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單巳成立，感謝您的購買</h1>
+				<hr>
 				<div class="row">
 						<div style="margin-top: 50px; margin: auto"
 							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -130,6 +135,7 @@
 			</div>
 		</section>
 	</aside>
+</c:if>
 	<!-- Classic Blog Section End -->
 	
 <!-- Footer Section -->
@@ -174,25 +180,19 @@ $("#button1").click(function() {
 	}).done(function (datas) {
 		$('#div1').html(datas);
 
+	}).done(function(data) {
+		/* 				console.log(toJson(data1));
+		*/				
+		var r=confirm("馬上結帳");
+		if (r==true)
+		  {
+			  alert("為您轉跳中");
+		  }
+		else
+		  {
+		  alert("You pressed Cancel!");
+		  }
 	})
-	
-	
-// 	.done(function(data) {
-// 		/* 				console.log(toJson(data1));
-// 		*/				
-// 				var r=confirm("馬上結帳");
-// 				if (r==true)
-// 				  {
-// 					  alert("為您轉跳中");
-				
-					
-// 				  }
-// 				else
-// 				  {
-// 				  alert("You pressed Cancel!");
-// 				  }
-
-// 			})
 });
 
 	

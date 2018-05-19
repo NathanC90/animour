@@ -119,7 +119,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" title="部落格管理" data-toggle="tooltip" data-placement="right" data-container="body">
+          <a class="nav-link" href="/admin/forum" title="部落格管理" data-toggle="tooltip" data-placement="right" data-container="body">
             <span class="icon icon-text-document"></span>
             <small class="iconav-nav-label hidden-md-up">部落格管理</small>
           </a>

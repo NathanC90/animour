@@ -14,7 +14,6 @@
             <body>
 
                 <nav class="navbar navbar-expand-md fixed-top scrolling-navbar nav-bg">
-                    <div class="container">
                         <!-- Brand and toggle get grouped for better mobile display -->
                         <div class="navbar-header">
                             <a class="navbar-brand" href="/">
@@ -25,6 +24,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                         </div>
+                    <div class="container">
                         <div class="collapse navbar-collapse" id="main-menu">
                             <ul class="navbar-nav mr-auto w-100 justify-content-end">
 
@@ -48,11 +48,9 @@
                                     <a class="nav-link dropdown-toggle" href="/product/index">寵物市集</a>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/product/index">新品上市</a>
-                                        <a class="dropdown-item" href="/product/maintain">商品管理</a>
-                                        <a class="dropdown-item" href="/findOrders/index">訂單查詢</a>
-                                        <!-- 						<a class="dropdown-item" href="l">好康優惠</a> -->
-                                        <!-- 						<a class="dropdown-item" href="l">寵物飲食</a> -->
-                                        <!-- 						<a class="dropdown-item" href="l">寵物用品</a> -->
+                                        <sec:authorize access="hasRole('Member')">
+                                        	<a class="dropdown-item" href="/product/maintain">商品管理</a>
+                                        </sec:authorize>
                                     </div>
                                 </li>
 
@@ -131,7 +129,17 @@
                                     </span>
                                 </div>
                             </form>
-
+							 <span class="navbar-brand">
+                        <i class="fas fa-shopping-cart"></i>
+                        <!--                         <img src="/images/shopping/product/shoppingCart.ico" alt=""> -->
+                      	  共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆</span>
+                    <a class="navbar-brand" href="/cart/index">
+                        <c:set var="total" value="0"></c:set>
+                        <c:forEach var="cartItem" items="${sessionScope.cart}">
+                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
+                        </c:forEach>
+                        <span>金額 ：${total}</span>
+                    </a>
                         </div>
 
                         <!-- Mobile Menu Start -->
@@ -215,17 +223,7 @@
                         </ul>
                         <!-- Mobile Menu End -->
                     </div>
-                    <span class="navbar-brand">
-                        <i class="fas fa-shopping-cart"></i>
-                        <!--                         <img src="/images/shopping/product/shoppingCart.ico" alt=""> -->
-                      	  共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆</span>
-                    <a class="navbar-brand" href="/cart/index">
-                        <c:set var="total" value="0"></c:set>
-                        <c:forEach var="cartItem" items="${sessionScope.cart}">
-                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-                        </c:forEach>
-                        <span>金額 ：${total}</span>
-                    </a>
+                   
                 </nav>
             </body>
 

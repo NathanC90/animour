@@ -18,6 +18,7 @@ public class OrdersService {
 	public void insert(Orders orders) {
 		ordersDao.save(orders);
 	}
+	
 	public List<Orders> getByMemberOrders(Long id) {
 		return ordersDao.findByMember_id(id);
 	}
