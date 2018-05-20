@@ -4,18 +4,18 @@ import java.util.List;
 
 public class ManyMail {
 
-    List<String> account;
+    List<String> accounts;
 	
 	String subject;
 	
 	String context;
 
-	public List<String> getAccount() {
-		return account;
+	public List<String> getAccounts() {
+		return accounts;
 	}
 
-	public void setAccount(List<String> account) {
-		this.account = account;
+	public void setAccounts(List<String> accounts) {
+		this.accounts = accounts;
 	}
 
 

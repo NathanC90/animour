@@ -87,7 +87,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>商品列表</h2>
+						<h2>商品資料管理</h2>
 					</div>
 				</div>
 			</div>

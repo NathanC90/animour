@@ -101,9 +101,9 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 about2-intro-image">
+				<div class="col-md-5 about2-intro-image">
 					<img class="card-img-top"
-						src="/images/shopping/product/pd1.jpg" width="100px" alt="${product.name}">
+						src="${product.images}" width="100px" alt="${product.name}">
 				</div>
 				<div class="col-md-6">
 					<h3 class="small-title">品名:&nbsp;&nbsp;&nbsp;${product.name}</h3>
@@ -131,7 +131,7 @@
 							</div>
 							<div role="tabpanel" class="tab-pane" id="precattention">
 								<div role="tabpanel" class="tab-pane" id="precattention">
-									<p>${product.name}</p>
+									<p>${product.notice}</p>
 								</div>
 							</div>
 						</div>

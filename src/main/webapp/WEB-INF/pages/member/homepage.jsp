@@ -109,7 +109,7 @@
 								<li><a href="/findOrders/index">訂單查詢</a></li>
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
-								<li><a href="/">通知</a></li>								
+								<button type="button" class="btn btn-outline-primary" data-toggle='modal' data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="myFriendListbtn">好友清單</button>								
 							</c:if>
 							<sec:authorize access="hasRole('Member')"> 
 							<c:if test="${member.id ne currentMember.id}">
@@ -203,7 +203,40 @@
 
 
 				<!-- Blog Item Wrapper Ends-->
-
+		<div class="modal fade" id="exampleModalMyFriend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">My Follow List</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="modal_myFriendList">
+					<c:forEach items='${friendlist}' var='friend'>
+<!-- 					<div class='row'> -->
+					<div class='col-md-6'>
+					<div class="card mb-3 box-shadow">
+					<div style="padding:4px" >
+					<a href='/${friend.account}'>
+					<div style="width:60px; height:60px;margin:4px;float:left">
+					<img src="${friend.images}" alt="${friend.id}" class="card-img-top img-circle">
+					</div>
+					<span>${friend.account}</span>
+					</a>
+					</div>
+					</div>
+					</div>
+<!-- 					</div> -->
+					
+					</c:forEach>
+					
+					</div>
+					<div class="modal-footer">
+					</div>
+				</div>
+			</div>
+		</div>
 
 			
 				
@@ -219,8 +252,13 @@
 			<!-- End -->
 		</div>
 		</div>
-	</section>
+
+			</section>
+		
 	<!-- Classic Blog Section End -->
+
+
+
 
 
 	<!-- Footer Section -->
@@ -257,7 +295,7 @@
  						.write('<script src="/js/jquery-slim.min.js"><\/script>')
  	</script> 
 <!-- 	<script src="/js/popper.min.js"></script> -->
-<!-- 	<script src="/js/bootstrap.min.js"></script> -->
+	<script src="/js/bootstrap.min.js"></script>
 
 
 <!-- 	<script -->
@@ -268,7 +306,7 @@
 	
 	 $(document).ready(function () {
  		 var a=$("#addFriend").attr('value');
- 		 
+ 		 if(a!=null){
  		$.getJSON('/api/member/all/member/friend/'+a, { }, function (result) { 			
  			
  			$.each(result, function (i, friend) {
@@ -310,7 +348,27 @@
              }); //end .done
 		 
 		 })
-	 });
+ 		 }//end if
+ 		 });
+	 
+	</script>
+	<script>
+	$(document).ready(function () {
+
+			$('#exampleModalMyFriend').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget) // Button that triggered the modal
+// 				account = button.data('whatever') // Extract info from data-* attributes
+				// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+				// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+				var modal = $(this)
+//	 			modal.find('.modal-title').text(account+"'s friends ")
+//	 			modal.find('#account').val(account)
+			})
+			
+
+	})
+
+	
 	</script>
 </body>
 

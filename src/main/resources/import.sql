@@ -281,7 +281,7 @@ insert into classify (name) values('寵物玩具');
 insert into classify (name) values('其它');
 
 insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id, images)
-values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 1, 2, 'https://i.imgur.com/ukAobd2.jpg');
+values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-5-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 1, 2, 'https://i.imgur.com/ukAobd2.jpg');
 insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
 values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 1, 3);
 insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
@@ -370,11 +370,9 @@ insert into SERVICECONTENT (CONTENT,time,price,designer_id)
 values ('剪毛',1,400,3);
 
 
-
-
-
-
-
-
-
-
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'1');
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'2');
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'4');

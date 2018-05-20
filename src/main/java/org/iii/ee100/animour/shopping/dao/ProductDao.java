@@ -31,5 +31,5 @@ public interface ProductDao extends GenericDao<Product>, JpaSpecificationExecuto
 	List<Product> findByClassify_id(Long id);
 	
 	List<Product> findByMember_id(Long id);
-
+	
 }

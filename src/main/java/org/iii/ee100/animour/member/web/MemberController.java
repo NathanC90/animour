@@ -1,6 +1,7 @@
 ﻿package org.iii.ee100.animour.member.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Password;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.MyFriend;
 import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,6 +165,15 @@ public class MemberController {
 		//System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 		
+		
+		List<Member> memberList=new ArrayList<>();
+		List<MyFriend> list=memberService.findByMemberIdAndLove(userDetails.getId(), true);		
+		for (MyFriend friend:list) {
+			Member member =memberService.getOne(friend.getFriendId());
+			memberList.add(member);
+		}
+		model.addAttribute("friendlist", memberList);
+
 		return "/member/homepage";
 	}
 	

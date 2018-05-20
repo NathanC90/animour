@@ -11,5 +11,5 @@ public interface MyFriendDao extends GenericDao<MyFriend> {
 	MyFriend findByMemberIdAndFriendId(Long memberId, Long friendId);
 	
 	//計數
-	List<MyFriend> findByFriendIdAndLove(Long friendId, boolean love);
+	List<MyFriend> findByMemberIdAndLove(Long memberId, boolean love);
 }

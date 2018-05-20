@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.shopping.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -33,6 +32,8 @@ public class Product extends GenericEntity {
 	private java.sql.Date shelvesDate;
 	@Column(name = "DESCRIPTION", length = 2000)
 	private String description;
+	@Column(name = "NOTICE", length = 2000)
+	private String notice;
 	@Column(name = "IMAGES")
 	private String images;
 	
@@ -41,7 +42,7 @@ public class Product extends GenericEntity {
 	@JoinColumn(name="CLASSIFY_ID", nullable = false)
 	private Classify classify;
 	@ManyToOne
-	@JoinColumn(name="MEMBER_ID")
+	@JoinColumn(name="MEMBER_ID", nullable = false)
 	private Member member;
 
 //	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
