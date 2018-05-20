@@ -13,6 +13,7 @@ import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
+import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,13 @@ public class FormsRestController {
 		return reservationService.getAllReservationContent();
 		
 	}
+	
+//	@RequestMapping(value="/ReservationDate",method = RequestMethod.GET,produces = { "application/json"})
+//	public List<ReservationDate> ReservationDate(){
+//		return null;
+//		
+//	}
+
 	
 	@RequestMapping(value="/getServiceCotent",method = RequestMethod.GET,produces = { "application/json"})
 	public List<ServiceContent> getServiceCotent(){

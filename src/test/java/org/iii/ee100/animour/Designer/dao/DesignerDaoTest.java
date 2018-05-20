@@ -5,10 +5,13 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
@@ -50,7 +53,7 @@ public class DesignerDaoTest {
 		//使用空set放置不重複物件
 		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
 		Set<Designer> designerSetList = new HashSet<Designer>();
-		Set<ReservationDate> reservationDateSetList = new HashSet<ReservationDate>();
+		List<ReservationDate> reservationDateSetList = new ArrayList<ReservationDate>();
 
 		//
 		List<Designer> designerList = reservationService.getAllDesigner();
@@ -59,8 +62,13 @@ public class DesignerDaoTest {
 		// Date compareDate = reservation.getReservationDate();
 
 		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String dateText = "1991-10-03";
-		Date compareDate2 = simpleDateFormat.parse(dateText);
+		
+		//預設時間
+		int i=0;
+		
+        
+
+         //這個就是時間往後推一天的结果
 		// 預約內容明細
 		List<Reservation> reservationListData = new ArrayList<>();
 		reservationListData = reservationDao.findAll();
@@ -71,28 +79,37 @@ public class DesignerDaoTest {
 				// 服務內容Table
 				for (ReservationTime reservationTimes : reservationTimeList) {
 					Date mainDate = reservations.getReservationDate();
+					Date CurrentDate=new Date();//取時間
+			        Calendar calendar = new GregorianCalendar();
+					calendar.setTime(CurrentDate);
+					calendar.add(calendar.DATE,i);//把日期往後增加一天.整數往後,負數往前
+			        CurrentDate=calendar.getTime();
+			        i++;
+//					String stringDate= simpleDateFormat.format(mainDate);
+//					Date mainDate2=simpleDateFormat.parse(stringDate);
 					String mainDesigner = reservations.getDesigner();
 					Time mainTime = reservations.getFrontTime();
 					String compareDesigner = designers.getDesigner();
 					Time compareTime = reservationTimes.getFrontTime();
-
-					if (!mainDate.equals(compareDate2) || !mainDesigner.equals(compareDesigner)
-							|| !mainTime.equals(compareTime)) {
+//					System.out.println(mainDate2);
+					if (!mainDate.equals(CurrentDate) || !mainDesigner.equals(compareDesigner)||!mainTime.equals(compareTime)) {
 
 						// if(!reservationTime.getFrontTime().equals(compareTime)) {
-						// reservationTime =new ReservationTime();
-						// reservationTime.setFrontTime(compareTime);
-						// reservationTimeFinallyList.add(reservationTime);
-						// }
-						System.out.println("compareDate2: " + compareDate2);
+						 reservationTime =new ReservationTime();
+						 reservationTime.setFrontTime(compareTime);
+						 reservationTimeSetList.add(reservationTime);
+//						 }
+						System.out.println("compareDate2: " + CurrentDate);
 //
-//						designer = new Designer();
-//						designer.setDesigner(compareDesigner);
-//						designerSetList.add(designer);
+						designer = new Designer();
+						designer.setDesigner(compareDesigner);
+						designerSetList.add(designer);
 						// if(!reservationDate.getReservationDate().equals(compareDate2)) {
-						// reservationDate=new ReservationDate();
-						// reservationDate.setReservationDate(compareDate2);
-						// reservationDateFinallyList.add(reservationDate);
+						 reservationDate=new ReservationDate();
+						 reservationDate.setReservationDate(CurrentDate);
+						 reservationDateSetList.add(reservationDate);
+						 System.out.println(reservationDateSetList.size());
+//						 reservationDateFinallyList.add(reservationDate);
 						// }
 					}
 				}
@@ -100,15 +117,16 @@ public class DesignerDaoTest {
 
 		}
 
-		// for(ReservationTime finalAnswer:reservationTimeFinallyList) {
-		// System.out.println("finalAnswer"+finalAnswer.getFrontTime());
-		// }
-		for (Designer finalAnswer2 : designerSetList) {
+		 for(ReservationTime finalAnswer:reservationTimeSetList) {
+		 System.out.println("finalAnswer"+finalAnswer.getFrontTime());
+		 }
+ 		for (Designer finalAnswer2 : designerSetList) {
 			System.out.println("finalAnswer2" + finalAnswer2.getDesigner());
 		}
-		// for(ReservationDate finalAnswer3:reservationDateFinallyList) {
-		// System.out.println("finalAnswer3"+finalAnswer3.getReservationDate());
-		// }
+		 for(ReservationDate finalAnswer3:reservationDateSetList) {
+		 System.out.println("finalAnswer3"+finalAnswer3.getReservationDate());
+		 }
+		 System.out.println(reservationDateSetList.size());
 
 	}
 

@@ -31,6 +31,7 @@ public class ReservationController {
 	public String editReservation(Model model) {
 		return "/salon/editReservation";
 	}
+	//管理員連結
 	@RequestMapping(path = { "/salonAdminReservation" }, method = { RequestMethod.GET })
 	public String salonAdminReservation(Model model) {
 		return "/salon/salonAdminReservation";
