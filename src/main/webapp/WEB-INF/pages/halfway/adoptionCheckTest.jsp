@@ -241,7 +241,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <c:forEach var="getrecord" items="${getrecord}">
-                                                        <input type="hidden" id="passendtime" value="${endDate}">
+                                                        <input type="hidden" class="passenddate" value="${getrecord.endDate}">
                                                         <tr>
                                                             <th scope="row">
                                                                 <a href="">${getrecord.adoption.animal.member.account}</a>
@@ -251,10 +251,24 @@
                                                                 <a href="">${getrecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.city.name}</td>
-                                                            <td id="getting-started"></td>
-                                                            <td id="appendbutton">
-                                                                <input type="hidden" id="depositMember" value="${getrecord.depositMember}">
-                                                                <input type="hidden" id="getrecordid" value="${getrecord.id}">
+                                                            <td class="getting-started"></td>
+                                                            <td>
+                                                                <c:choose>
+                                                                    <c:when test="${!getrecord.depositMember}">
+                                                                        <div id="paymentdiv${getrecord.id}">
+                                                                            <button id="payment${getrecord.id}" class="btn btn-common payment" value="${getrecord.id}" data-toggle="modal">
+                                                                                <i class="fa fa-credit-card"></i>
+                                                                                <span>支付押金</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <button id="todetail" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${getrecord.id}'">
+                                                                            <i class="fa fa-credit-card"></i>
+                                                                            <span>前往完成認養程序</span>
+                                                                        </button>
+                                                                    </c:otherwise>
+                                                                </c:choose>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
@@ -333,25 +347,13 @@
                             $("#cleantable1").append(string1)
                         }
 
-                        alert($("#depositMember").val())
-                        if (!$("#depositMember").val()) {
-                            let button = `<div id="paymentdiv"><button id="payment" name="payment" class="btn btn-common" data-toggle="modal">
-                                    <i class="fa fa-credit-card"></i>
-                                    <span>支付押金</span>
-                                </button></div>`;
-                            $("#appendbutton").append(button);
+                        // 以上沒問題
 
-                        } else {
-                            let button1 = `<button id="payment" name="payment" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/`+$("#getrecordid").val()+`'">
-                                    <i class="fa fa-credit-card"></i>
-                                    <span>前往完成認養程序</span>
-                                </button>`;
-                            $("#appendbutton").append(button1);
-                        }
+                        $('.btn.btn-common.payment').click(function () {
 
-                        $('#payment').click(function () {
+                            var adoptionIdforGet = $(this).val();
                             $.ajax({
-                                url: '/halfway/setdepositMemberTrue/' + $("#getrecordid").val(),
+                                url: '/halfway/setdepositMemberTrue/' + adoptionIdforGet,
                                 type: 'GET',
                                 //data: data,
                                 //data: json,
@@ -364,32 +366,26 @@
                                 //processData: false,
                             }).done(function () {
                                 $.ajax({
-                                    url: '/frontEnd/aioCheckOut/aioCheckOutALL/' + $("#getrecordid").val(),
+                                    url: '/frontEnd/aioCheckOut/aioCheckOutALL/' + adoptionIdforGet,
                                     type: 'POST',
                                     //data: data,
                                     //data: json,
                                     //dataType: 'json',
                                     //contentType: "application/json",
                                 }).done(function (datas) {
-                                    $('#paymentdiv').html(datas);
+                                    $('#paymentdiv' + adoptionIdforGet).html(datas);
                                 });
                             });
 
 
                         });
                     });
-
-
-
-
-
-
-                    $('.btn.btn-common.send').click(function (event) {
-                        // event.preventDefault();
-                    })
                 </script>
+
+
+
                 <script type="text/javascript">
-                    $("#getting-started")
+                    $(".getting-started")
                         .countdown("2018/06/01", function (event) {
                             $(this).text(
                                 event.strftime('%D 天 %H 小時 %M分 %S 秒')

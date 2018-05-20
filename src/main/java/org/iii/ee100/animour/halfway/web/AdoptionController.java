@@ -50,6 +50,7 @@ public class AdoptionController {
 
 			List<AcceptRecord> getrecord = acceptRecordService.getCheckGet(current.getId());
 			model.addAttribute("getrecord", getrecord);
+			System.out.println("+++++++++++++++"+getrecord.size()+"++++++++++++++++");
 			model.addAttribute("getcount", getrecord.size());
 		}
 		return "/halfway/adoptionCheckTest";
@@ -58,8 +59,8 @@ public class AdoptionController {
 	// 處理認養請求的拒絕或接受
 	@RequestMapping(value = "/halfway/adoptionHandle", method = { RequestMethod.GET })
 	public String adoptionHandle(@RequestParam(value = "id") Long id,
-			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an,
-			AcceptRecord acceptRecord) {
+			@RequestParam(value = "acceptRequest") Boolean acceptRequest, Adoption adoption, Animal an
+			) {
 		if (acceptRequest) {
 			// 認養請求狀態更新
 			adoption = adoptionService.getOne(id);
@@ -73,6 +74,7 @@ public class AdoptionController {
 			animalService.update(an);
 
 			// 同時新增成交紀錄物件
+			AcceptRecord acceptRecord = new AcceptRecord();
 			acceptRecord.setStartDate(adoption.getAcceptDate());
 			acceptRecord.setEndDate(acceptRecordService.calEndDate(acceptRecord.getStartDate()));
 			acceptRecord.setAdoption(adoption);
