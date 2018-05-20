@@ -360,6 +360,8 @@
 
                 <div class="container">
                     <div class="row">
+                        <div class="col-md-8" id="forappend">
+                        </div>
                         <div class="col-md-4 contact-info-section">
                             <div class="contact-widget office-location">
                                 <h2>聯絡資訊</h2>
@@ -463,9 +465,9 @@
 
                 $(document).ready(function () {
                     //var recordid = "" + $('input').attr('id')
-                    //console.log( $('#aaa').val())
+                    alert($('#aaa').val())
                     $.ajax({
-                        url: '/halfway/acceptrecord/'+$('#aaa').val(),
+                        url: '/halfway/acceptrecord/' + $('#aaa').val(),
                         type: 'GET',
                         //data: data,
                         //data: json,
@@ -482,18 +484,62 @@
                         var quizblock = `<div class="row" id="test">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="${animal.id}">
+                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="`+datas.adoption.animal.id+`">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="`+datas.adoption.animal.id+`">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="`+datas.adoption.animal.id+`">
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <div class="form-group">
-                                            <label for="message" class="sr-only">Message</label>
-                                            <textarea placeholder="Your Message" rows="10" id="message" class="form-control" name="message" required data-error="Write your message"></textarea>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
+                                            <div class="row">
+													<div class="col-md-6">
+
+														<ul>
+															<li>
+																<span>編號：</span>`+datas.adoption.animal.id+`</li>
+															<li>
+																<span>綽號：</span>`+datas.adoption.animal.name+`</li>
+															<li>
+																<span>種類：</span>`+datas.adoption.animal.specie+`</li>
+															<li>
+																<span>性別：</span>`+datas.adoption.animal.gender+`</li>
+															<li>
+																<span>體型：</span>`+datas.adoption.animal.size+`</li>
+															<li>
+																<span>年齡：</span>`+datas.adoption.animal.age+`</li>
+															<li>
+																<span>顏色：</span>`+datas.adoption.animal.color+`</li>
+
+														</ul>
+													</div>
+													<div class="col-md-6">
+														<ul>
+															<li>
+																<span>張貼日期：</span>`+datas.adoption.animal.found+`</li>
+															<li>
+																<span>縣市：</span>`+datas.adoption.animal.city.name+`</li>
+															<li>
+																<span>鄉鎮市區：</span>`+datas.adoption.animal.district+`</li>
+															<li>
+																<span>就醫紀錄：</span>`+datas.adoption.animal.hospitalized+`</li>
+															<li>
+																<span>晶片號碼：</span>`+datas.adoption.animal.cardNum+`</li>
+															<li>
+																<span>結紮：</span>`+datas.adoption.animal.neuter+`</li>
+															<li  id="upload" value="${datas.adoption.animal.upload}">
+																<span>更新時間：</span></li>
+														</ul>
+													</div>
                                     </div>
                                 </div>`
-                        $('#forappend').prepend(quizblock);
+                        $('#forappend').append(quizblock);
                     });
 
                 });

@@ -263,7 +263,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${getrecord.id}'">
+                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/get/${getrecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成認養程序</span>
                                                                         </button>
@@ -317,7 +317,7 @@
                                                             <td class="getting-started"></td>
                                                             <td>
                                                                 <c:choose>
-                                                                    <c:when test="${!giverecord.depositMember}">
+                                                                    <c:when test="${!giverecord.depositOwner}">
                                                                         <div id="paymentdiv${giverecord.id}">
                                                                             <button id="payment${giverecord.id}" class="btn btn-common givepayment" value="${giverecord.id}" data-toggle="modal">
                                                                                 <i class="fa fa-credit-card"></i>
@@ -326,7 +326,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${giverecord.id}'">
+                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/give/${giverecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成送養程序</span>
                                                                         </button>
