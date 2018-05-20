@@ -228,7 +228,7 @@
                                             <h2 style="margin-top:30px">待完成認養程序</h2>
                                         </div>
                                         <div class="row">
-                                            <table class="table table-hover table-expandable table-striped" style="text-align:center; margin-bottom:60px">
+                                            <table class="table table-expandable table-striped" style="text-align:center; margin-bottom:60px">
                                                 <thead>
                                                     <tr>
                                                         <th>飼主帳號</th>
@@ -242,7 +242,7 @@
                                                 <tbody>
                                                     <c:forEach var="getrecord" items="${getrecord}">
                                                         <input type="hidden" class="passenddate" value="${getrecord.endDate}">
-                                                        <tr>
+                                                        <tr class="displaycancel">
                                                             <th scope="row">
                                                                 <a href="">${getrecord.adoption.animal.member.account}</a>
                                                             </th>
@@ -263,8 +263,8 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${getrecord.id}'">
-                                                                            <i class="fa fa-credit-card"></i>
+                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${getrecord.id}'">
+                                                                            <i class="fa fa-share"></i>
                                                                             <span>前往完成認養程序</span>
                                                                         </button>
                                                                     </c:otherwise>
@@ -283,11 +283,63 @@
 
                             <!-- 送養程序開始 -->
                             <div class="tab-pane" id="messages2" role="tabpanel">
-                                <p>It sportsman earnestly ye preserved an on. Moment led family sooner cannot her window pulled
-                                    any. Or raillery if improved landlord to speaking hastened differed he. Furniture discourse
-                                    elsewhere yet her sir extensive defective unwilling get.</p>
-                                <p>Why resolution one motionless you him thoroughly. Noise is round to in it quick timed doors.
-                                    Written address greatly get attacks inhabit pursuit our but.</p>
+                                <input type="hidden" id="givecount" value="${givecount}">
+
+                                <div id="accordion">
+                                    <div class="container" id="cleantable2">
+                                        <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+                                            <h2 style="margin-top:30px">待完成送養程序</h2>
+                                        </div>
+                                        <div class="row">
+                                            <table class="table table-expandable table-striped" style="text-align:center; margin-bottom:60px">
+                                                <thead>
+                                                    <tr>
+                                                        <th>會員帳號</th>
+                                                        <th>會員姓名</th>
+                                                        <th>動物名稱</th>
+                                                        <th>所在縣市</th>
+                                                        <th>剩餘時間</th>
+                                                        <th>支付押金/完成認養</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="giverecord" items="${giverecord}">
+                                                        <input type="hidden" class="passenddate" value="${giverecord.endDate}">
+                                                        <tr class="displaycancel">
+                                                            <th scope="row">
+                                                                <a href="">${giverecord.adoption.member.account}</a>
+                                                            </th>
+                                                            <td>${giverecord.adoption.member.name}</td>
+                                                            <th scope="row">
+                                                                <a href="">${giverecord.adoption.animal.name}</a>
+                                                            </th>
+                                                            <td>${giverecord.adoption.animal.city.name}</td>
+                                                            <td class="getting-started"></td>
+                                                            <td>
+                                                                <c:choose>
+                                                                    <c:when test="${!giverecord.depositMember}">
+                                                                        <div id="paymentdiv${giverecord.id}">
+                                                                            <button id="payment${giverecord.id}" class="btn btn-common givepayment" value="${giverecord.id}" data-toggle="modal">
+                                                                                <i class="fa fa-credit-card"></i>
+                                                                                <span>支付押金</span>
+                                                                            </button>
+                                                                        </div>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/${giverecord.id}'">
+                                                                            <i class="fa fa-share"></i>
+                                                                            <span>前往完成送養程序</span>
+                                                                        </button>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- 送養程序結束 -->
                         </div>
@@ -327,6 +379,9 @@
                 <script>
 
                     $(document).ready(function () {
+                        $('.displaycancel').css('display', '').css('hover', '');
+                      
+
                         var count = $("#adoptioncount").val()
                         //alert(count);
                         var string = ` <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
@@ -345,6 +400,17 @@
                         if (count1 == 0) {
                             $("#cleantable1").empty()
                             $("#cleantable1").append(string1)
+                        }
+
+
+                        var count2 = $("#givecount").val()
+                        //alert(count);
+                        var string2 = ` <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+                                            <h2 style="margin-top:30px">目前沒有待處理送養程序</h2>
+                                        </div>`;
+                        if (count2 == 0) {
+                            $("#cleantable2").empty()
+                            $("#cleantable2").append(string2)
                         }
 
                         // 以上沒問題
@@ -376,10 +442,41 @@
                                     $('#paymentdiv' + adoptionIdforGet).html(datas);
                                 });
                             });
+                        });
 
 
+
+                        $('.btn.btn-common.givepayment').click(function () {
+
+                            var adoptionIdforGive = $(this).val();
+                            $.ajax({
+                                url: '/halfway/setdepositOwnerTrue/' + adoptionIdforGive,
+                                type: 'GET',
+                                //data: data,
+                                //data: json,
+                                //dataType: 'json',
+                                //processData: false,
+                                //contentType: "application/json",
+                                //contentType: "multipart/form-data",
+                                //enctype: 'multipart/form-data',
+                                //contentType: false,
+                                //processData: false,
+                            }).done(function () {
+                                $.ajax({
+                                    url: '/frontEnd/aioCheckOut/aioCheckOutALL/' + adoptionIdforGive,
+                                    type: 'POST',
+                                    //data: data,
+                                    //data: json,
+                                    //dataType: 'json',
+                                    //contentType: "application/json",
+                                }).done(function (datas) {
+                                    $('#paymentdiv' + adoptionIdforGive).html(datas);
+                                });
+                            });
                         });
                     });
+
+
                 </script>
 
 

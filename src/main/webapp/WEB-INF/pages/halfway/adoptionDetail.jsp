@@ -360,10 +360,6 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-8">
-                           
-                           
-                        </div>
                         <div class="col-md-4 contact-info-section">
                             <div class="contact-widget office-location">
                                 <h2>聯絡資訊</h2>
@@ -483,7 +479,7 @@
                     }).done(function (datas) {
                         // $.each(datas.data, function (idx, quiz) {
                         console.log(datas.adoption.animal.fileName);
-                        var quizblock = `< <div class="row" id="test">
+                        var quizblock = `<div class="row" id="test">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="${animal.id}">
@@ -496,7 +492,7 @@
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                </div>>`
+                                </div>`
                         $('#forappend').prepend(quizblock);
                     });
 
@@ -510,6 +506,24 @@
                             event.strftime('%D天 %H時 %M分 %S秒')
                         );
                     });
+            </script>
+            <script>
+                $(document).ready(function () {
+                    $("#payment").click(function () {
+                        $.ajax({
+                            url: '/frontEnd/aioCheckOut/aioCheckOutALL',
+                            type: 'POST',
+                            //data: data,
+                            //data: json,
+                            //dataType: 'json',
+                            //contentType: "application/json",
+                        }).done(function (datas) {
+                            $('#paymentdiv').html(datas);
+                        });
+                    });
+
+                });
+
             </script>
         </body>
 

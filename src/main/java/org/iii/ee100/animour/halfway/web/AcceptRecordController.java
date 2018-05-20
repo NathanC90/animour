@@ -1,8 +1,5 @@
 package org.iii.ee100.animour.halfway.web;
 
-import java.sql.Timestamp;
-
-import org.iii.ee100.animour.halfway.entity.AcceptRecord;
 import org.iii.ee100.animour.halfway.service.AcceptRecordService;
 import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;

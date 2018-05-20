@@ -50,7 +50,6 @@ public class AdoptionController {
 
 			List<AcceptRecord> getrecord = acceptRecordService.getCheckGet(current.getId());
 			model.addAttribute("getrecord", getrecord);
-			System.out.println("+++++++++++++++"+getrecord.size()+"++++++++++++++++");
 			model.addAttribute("getcount", getrecord.size());
 		}
 		return "/halfway/adoptionCheckTest";

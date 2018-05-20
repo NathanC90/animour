@@ -82,7 +82,19 @@ public class AcceptRecordRestController {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		ad.setDepositMemberDate(ts);
 		acceptRecordService.update(ad);
-		
+
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	// 設定 depositMember 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdepositOwnerTrue/{id}") // findAll
+	public ResponseEntity<?> setdepositOwnerTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDepositOwner(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDepositOwnerDate(ts);
+		acceptRecordService.update(ad);
+
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 }
