@@ -64,8 +64,8 @@
                       </h4>
                       <span class="published-time">
                         <i class="fa fa-calendar"></i>${pop.updateTime}</span>
-                        <br />
-                        <span>觀看次數:${pop.click}</span>
+                      <br />
+                      <span>觀看次數:${pop.click}</span>
                     </div>
                   </div>
                 </li>
@@ -162,7 +162,7 @@
           var monthIndex = date.getMonth();
           var year = date.getFullYear();
           var HH = ("00" + date.getHours()).slice(-2);
-          var mm =  ("00" + date.getMinutes()).slice(-2);
+          var mm = ("00" + date.getMinutes()).slice(-2);
 
           return year + '/' + monthNames[monthIndex] + '/' + day + ' ' + HH + ':' + mm;
         }
@@ -201,7 +201,7 @@
           $(window).scroll(function () {
             var window_height = $(window).height();
             var window_scrollTop = $(window).scrollTop();
-            // 			  var div_height = $(document).height();
+            //var div_height = $(document).height();
             var div_height = $("#bloglist").height();
             // console.log(window_height);
             // console.log(window_scrollTop);
@@ -209,6 +209,7 @@
             if (window_height + window_scrollTop >= div_height && scroll == true) {
               scroll = false;
               refresh();
+
               setTimeout(setScroll, 1000);
             }
           });
@@ -241,7 +242,7 @@
         }
 
         function getJson(url) {
-          $.getJSON(url, { "pageNo": pageNo }, function (datas) {
+          $.getJSON(url, { "pageNo": pageNo,"size": 3,"properties":"postTime","directionString":'Desc' }, function (datas) {
             if (datas != null) {
               if (pageNo <= datas[0].totalPage) {
                 $.each(datas, function (idx, article) {
@@ -254,10 +255,11 @@
                     + '" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
                     + '</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right">'
                     + '<li><span><a href="findOne?id=' + article.id + '"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
-                    + '<li id="thumb' + article.id + '"><form id="thumbsform' + article.id + '" enctype="multipart/form-data"><input name="article" type="hidden" value="' + article.id + '"/></form><span id="span' + article.id + '"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</span></li>'
+                    + '<li id="thumb' + article.id + '"><span id="span' + article.id + '"><a style="color:#9c3;"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</a></span></li>'
                     + '<li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li>'
                     + '</ul><a href="/forum/findOne?id=' + article.id
-                    + '" class="pull-left btn btn-common btn-xs">Read more</a></div></article>';
+                    + '" class="pull-left btn btn-common btn-xs">Read more</a></div></article>'
+                    + '<form id="thumbsform' + article.id + '" enctype="multipart/form-data"><input name="article" type="hidden" value="' + article.id + '"/></form>';
                   articlesString = articlesString + articleString;
                 });
                 pageNo += 1;
@@ -267,12 +269,16 @@
                   var btnSelector = "#thumb" + article.id;
                   var formSelector = "thumbsform" + article.id;
                   var spanSelector = "#span" + article.id;
-                  console.log(btnSelector);
-                  console.log(formSelector);
-                  console.log(spanSelector);
-                  $("#thumb" + article.id).on('click' ,function () {
-                    
-                    console.log($(this));
+
+                  $(document).on('mouseover','a',function () {
+                    $(this).css('color', '#fff');
+                  });
+                  $(document).on('mouseout','a',function () {
+                    $(this).css('color', '#9c3');
+                  });
+
+                  $(document).on('click',btnSelector, function () {
+                    console.log($(btnSelector));
                     var formData = new FormData(document.getElementById(formSelector));
                     console.log(formData);
                     $.ajax({
@@ -285,7 +291,7 @@
                     }).done(function (data) {
                       $.each(data, function (idx, thumbsUp) {
                         console.log(thumbsUp);
-                        $(spanSelector).html('<i class="fa fa-thumbs-up"></i>' + thumbsUp.article.thumbsQuantity);
+                        $(spanSelector).html('<a><i class="fa fa-thumbs-up"></i>' + thumbsUp.article.thumbsQuantity + '</a>');
                       });
                     });
                   });

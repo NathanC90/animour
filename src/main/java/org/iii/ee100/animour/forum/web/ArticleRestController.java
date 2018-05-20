@@ -38,7 +38,7 @@ public class ArticleRestController {
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<Article> findAll(PageForAnimour pageForAnimour) {
 		PageRequest pageable = pageForAnimour.getPageRequest();
-		Page<Article> articlePage = forumService.getPageByPostTime(pageable);
+		Page<Article> articlePage = forumService.getPage(pageable);
 		return pageHandler(pageForAnimour, articlePage, pageable);
 	}
 
