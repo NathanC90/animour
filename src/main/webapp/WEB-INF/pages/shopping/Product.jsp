@@ -101,7 +101,7 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 about2-intro-image">
+				<div class="col-md-5 about2-intro-image">
 					<img class="card-img-top"
 						src="${product.images}" width="100px" alt="${product.name}">
 				</div>
@@ -131,7 +131,7 @@
 							</div>
 							<div role="tabpanel" class="tab-pane" id="precattention">
 								<div role="tabpanel" class="tab-pane" id="precattention">
-									<p>${product.name}</p>
+									<p>${product.notice}</p>
 								</div>
 							</div>
 						</div>
