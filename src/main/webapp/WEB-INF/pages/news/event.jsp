@@ -65,7 +65,14 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>最新消息</title>
+<title>活動詳情</title>
+<style>
+  #map{
+    height:400px;
+    widht:100%;
+  }
+</style>
+</style>
 </head>
 <body>
 <header id="header-wrap">
@@ -73,62 +80,134 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
 		<!-- Page Header -->
-	<div class="page-header-section">
-		<div class="container">
-			<div class="row">
-				<div class="page-header-area">
-					<div class="page-header-content">
-						<h2>活動詳情</h2>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="page-header-section"> -->
+<!-- 		<div class="container"> -->
+<!-- 			<div class="row"> -->
+<!-- 				<div class="page-header-area"> -->
+<!-- 					<div class="page-header-content"> -->
+<!-- 						<h2>活動詳情</h2> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<!-- Page Header End -->
 	</header>
-		<!-- Container Starts -->
-<div class="container">
-	<div>
-	<form>
-		<p>活動名稱：${oneNews.subject}<br>活動日期：${oneNews.event_date}</p>
-		<p>活動地點：${oneNews.address}<br>活動內文：${oneNews.content}</p>
-	</form>
-	</div>
-	<hr>
 
-	<h3>查詢所有活動資料</h3>
-	<table>
-		<c:forEach var="news" items="${allNews}">
-		<p>活動名稱：${news.subject}<br>活動日期：${news.event_date}</p>
-		<p>活動地點：${news.address}<br>
-		<hr>
-		</c:forEach>
-	</table>
-	<hr>
-	
-<!-- 	<h3>刪除一筆活動資料</h3> -->
-<%-- 		<p>刪除編號：${delete} 一筆資料</p> --%>
-<!-- 	<hr> -->
+<!-- Event Section -->
+  <section class="classic-blog-section section">
+    <div class="container">
+      <div class="row">
+    <img class="card-img-top" src="/images/news/PetExpo.jpg" width="100%" alt="" >
+        <!-- BLog Article Section -->
+        <div class="col-md-9">
+          <!-- Single Blog Post -->
+          <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
+            <!-- Author Info -->
+            <header class="author-info" >
+              <h2 class="blog-post-title" style="font-family:微軟正黑體">
+                <a href="#">【2018上聯寵物用品博覽會】</a>
+              </h2>
+              <div class="tag-posted-in">
+               	<div>
+               	<span style="font-family:微軟正黑體">
+                    <i class="icon icon-calendar" ></i>
+                    	活動時間：2018/08/31(五) 至 2018/09/03(一)
+                  </span>
+               	</div>
+               	<div>
+                  <span style="font-family:微軟正黑體">
+                  <i class="fa fa-map-marker"></i>
+<!--                     <i class="icon icon-globe"></i> -->
+                    	活動地點：台北世貿三館(110台北市信義區松壽路6號)
+                  </span>
+                 </div>
+                 <div>
+                  <span style="font-family:微軟正黑體">
+                    <i class="icon icon-link" ></i>
+                    	相關連結：<a href="https://pet-fair.top-link.com.tw/home">活動官網</a>
+                  </span>
+                  </div>
+              </div>
+            </header>
+            <!-- Featured Content -->
+            <section class="featured-wrapper">
+<!--               <a href="#"> -->
+<!--                 <img src="/images/news/PetExpo.jpg" alt=""> -->
+<!--               </a> -->
+            </section>
+            <!-- Post Content -->
+            <section class="blog-post-content">
+              	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2><hr>
+              <div class="blog-post" style="border: 2px solid grey; font-family:微軟正黑體">
+                <p style="padding: 10px; font-family:微軟正黑體">
+                	匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。
+                	本展歡迎所有寵物愛好者攜帶寵物一同入場參觀！除了提供年度最優惠的商品促銷外，
+                	更規畫一系列與愛寵同歡的趣味活動，讓飼主與寵物能玩得開心、滿載而歸。除了讓各類參展商展示產品外，
+                	也是與業界合作交流、開發商機的管道。歡迎寵物相關業者預約洽談、換證入場。
+                </p>
+              </div>
+            </section>
+            <div class="blog-post-footer clearfix">
+              <!-- Post Meta -->
+              
+            </div>
+            <h2 style="padding: 10px; font-family:微軟正黑體">活動地點</h2>
+				<div id="map"></div>            
+          </article>
+          <!--Popular Event Slider-->
+          <h2 style="font-family:微軟正黑體">熱門活動</h2>         
+            <!-- Featured Content -->
+            <section class="featured-wrapper">
+              <div id="carousel-image-slider" class="owl-carousel">
+                <div class="item">
+                  <img src="/images/news/PetFamily.jpg" alt="">
+                </div>
+                <div class="item">
+                  <img src="/images/news/PetFoodSummer.png" alt="">
+                </div>
+                <div class="item">
+                  <img src="/images/news/DogGames.jpg" alt="">
+                </div>
+                <div class="item">
+                  <img src="/images/news/Adopt.jpg" alt="">
+                </div>
+              </div>
+            </section>
+            
+            
+            
+            <!-- Footer -->
+            <div class="blog-post-footer clearfix">
+            </div>
+          </article>
+        </div>
+        <!-- End -->
 
-	<h3>新增一筆活動資料</h3>
-	<div>
-		<p>活動編號：${insertNews.seqno}<br>活動名稱：${insertNews.subject}</p>
-		<p>活動內容：${insertNews.content}<br>發布時間：${insertNews.publishTime}</p>
-		<p>結束時間：${insertNews.publishTimeEnd}<br>發布人：${insertNews.createUser}</p>
-	</div>
-	<hr>
+        <!-- Event Sidebar Section -->
+        <div class="col-md-3">
+          <div class="sidebar-area">           
+            <!-- Subscribe Widget -->
+            <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
+ 
+              <div class="subscribe-area">
 
-	<h3>修改一筆活動資料</h3>
-	<div>
-		<p>活動編號：${updateNews.seqno}<br>活動名稱：${updateNews.subject}</p>
-		<p>活動內容：${updateNews.content}<br>更新使用者：${updateNews.updateUser}</p>
-		<p>更新時間：${updateNews.updateTime}</p>
-		
-	</div>
+                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡主辦單位</a>
+                  <a href='/news/enroll' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
+                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">
+                  	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a>
 
-					<!-- Service-Block-000 Item Ends -->
-				</div>
-				<!-- Container Ends -->
+              </div>
+            </aside>
+           
+        <!-- End -->
+      </div>
+    </div>
+  </section>
+  
+  <!-- Classic Blog Section End -->
+
+		<!-- Container Ends -->
 	<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
@@ -155,6 +234,96 @@
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
 	
+<!-- Google Map Callback starts-->
+	<script>
+      function initMap() {    	  
+    	//Map options
+      	var options ={
+    		  zoom:15,
+    		  center: {lat: 25.0340, lng: 121.5645}
+      }
+    	
+    	// New map
+        var map = new google.maps.Map(document.getElementById('map'), options); 
+       
+    	
+    	// Listen for click on map
+    	google.maps.event.addListener(map, 'click', function(event){
+    		//Add marker
+    		addMarker({coords:event.latLng});
+    	});
+    /*
+       //Add marker
+       var marker = new google.maps.Marker({
+    	   position:{lat: 25.0340, lng: 121.5645},
+    	   map:map
+       });
+       
+       //Add infoWindow
+       var infoWindow = new google.maps.InfoWindow({
+    	  content:'<h1 style="font-family: 微軟正黑體">世貿三館</h1>' 
+       });
+       
+       marker.addListener('click', function(){
+    	   infoWindow.open(map, marker);
+       });
+       */
+       
+       //Array of markers
+       var markers = [
+    	   {
+        	   coords:{lat: 25.0333, lng: 121.5623},
+           	   iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+           	   content:'<h1 style="font-family:微軟正黑體">世貿三館</h1>'
+           },
+//            {
+//         	   coords:{lat: 25.033128, lng: 121.552768},
+//         	   content:'<h1 style="font-family:微軟正黑體">捷運信義安和站</h1>'
+//         	},
+//         	{coords:{lat: 25.0231, lng: 121.511}
+//         	}
+       ];
+       
+       //Loop through markers
+       for(var i = 0; i < markers.length; i++){
+    	   //Add marker
+       addMarker(markers[i]);
+    	   
+       }
+       
+       //Add Marker Function
+       function addMarker(props){
+    	   var marker = new google.maps.Marker({
+        	   position:props.coords,
+        	   map:map,
+        	   //icon:props.iconImage
+           });
+    	   
+    	   //Check for customicon
+    	   if(props.iconImage){
+    		   //Set icon image
+    		   marker.setIcon(props.iconImage);
+    	   }
+    	   
+    	   //Check content
+    	   if(props.content){
+    		   var infoWindow = new google.maps.InfoWindow({
+    		    	  content:props.content 
+    		       });
+    		       
+    		       marker.addListener('click', function(){
+    		    	   infoWindow.open(map, marker);
+    		       });
+    		   
+    	   }
+    	   
+       }
+      }
+    </script>
 
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMrZCxle4RWMLbJ0TXmafreHWxOFhmso&callback=initMap"
+    async defer></script>
+<!-- Google Map Callback ends -->
 </body>
 </html>
