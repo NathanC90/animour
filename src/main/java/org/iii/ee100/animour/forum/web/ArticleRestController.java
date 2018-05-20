@@ -126,22 +126,53 @@ public class ArticleRestController {
 	// 新增&修改文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
-		article.setMember(memberService.getNewCurrentMember());
-		article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-		article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
-		article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
-		article.setClick(0L);
-		if (article.getId() != null) {
-			try {
-				forumService.update(article);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			try {
-				forumService.insert(article);
-			} catch (Exception e) {
-				e.printStackTrace();
+		if (article.getStatus() == null) {
+			System.out.println(article.getStatus());
+			if (article.getId() != null) {
+				Article existArticle = forumService.getOne(article.getId());
+				existArticle.setSubject(article.getSubject());
+				existArticle.setCategory(article.getCategory());
+				existArticle.setContent(article.getContent());
+				existArticle.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+				if(article.getImages().equals(null)) {
+					existArticle.setImages(article.getImages());
+				}
+				try {
+					forumService.update(existArticle);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else {
+				article.setMember(memberService.getNewCurrentMember());
+				article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+				article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
+				article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
+				article.setClick(0L);
+				try {
+					forumService.insert(article);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} 
+		}else {
+			System.out.println(article.getStatus());
+			Article existArticle = forumService.getOne(article.getId());
+			if(existArticle.getStatus() == null || existArticle.getStatus() == true) {
+				existArticle.setStatus(false);
+				try {
+					forumService.update(existArticle);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return new ResponseEntity<Article>(existArticle, HttpStatus.OK);
+			}else {
+				existArticle.setStatus(true);
+				try {
+					forumService.update(existArticle);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return new ResponseEntity<Article>(existArticle, HttpStatus.OK);
 			}
 		}
 		return new ResponseEntity<Article>(article, HttpStatus.OK);

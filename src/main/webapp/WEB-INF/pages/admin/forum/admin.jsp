@@ -80,7 +80,7 @@
 				<div class="col-md-12 content">
 					<div class="dashhead">
 						<div class="dashhead-titles">
-							<h2 class="dashhead-title">會員管理</h2>
+							<h2 class="dashhead-title">部落格管理</h2>
 						</div>
 
 						<div class="btn-toolbar dashhead-toolbar">
@@ -122,7 +122,7 @@
 						<table class="table" data-sort="table" id="table1">
 							<thead>
 								<tr>
-									<th>文章編號</th>
+									<th>編號</th>
 									<th>文章標題</th>
 									<th>發文時間</th>
 
@@ -157,7 +157,10 @@
 
 					<!-- Table Ends -->
 
-
+					<form id="statusForm">
+						<input type="hidden" name="id">
+						<input type="hidden" name="status">
+					</form>
 
 
 					<div class="text-center">
@@ -167,13 +170,19 @@
 									<li>第
 										<input id="pageNo" type="text" style="width:40px;"> 頁
 									</li>
-									
+
 									<li style="margin-left:10px;">一頁
 										<input id="size" type="text" style="width:40px;"> 筆
 									</li>
 									<li style="margin-left:10px;">
-										<input id="btn" type="button" value="刷新">
-
+										<!-- <input id="btn" class="btn-outline-primary" type="button" value="刷新"> -->
+										<!-- <div class="flextable-item"> -->
+										<div class="btn-group">
+											<button id="btn" type="button" class="btn btn-outline-primary" title="刷新">
+												<span class="icon icon-cycle"></span>
+											</button>
+											<!-- </div> -->
+										</div>
 									</li>
 								</ul>
 							</form>
@@ -233,10 +242,33 @@
 		<script>
 			var pageNo = 1;
 			$(document).ready(function () {
-				
+				$(document).on('click', 'button[title="封鎖/解除"]', function () {
+					console.log($(this).val());
+					console.log($(this).attr('status'));
+					if ($(this).attr('status') == null) {
+						$('input[name="status"]').attr('value', false);
+					} else {
+						$('input[name="status"]').attr('value', $(this).attr('status'));
+					}
+					$('input[name="id"]').attr('value', $(this).val());
+					var formData = new FormData(document.getElementById("statusForm"));
+					$.ajax({
+						type: "POST",
+						url: "/articles",
+						data: formData,
+						contentType: false,
+						processData: false,
+						success: function (result) {
+							console.log(result.status);
+							$('#button' + result.id).attr('status', result.status);
+							$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
+							console.log($('#button' + result.id + '>span').attr('class'));
+						}
+					});
+				});
 
 				$(document).on('click', '#btn', function () {
-					$.getJSON('/articles', { "pageNo": $('#pageNo').val(), "size": $('#size').val(), "properties": "postTime", "directionString": 'Desc' }, function (data) {
+					$.getJSON('/articles', { "pageNo": $('#pageNo').val(), "size": $('#size').val() }, function (data) {
 						console.log(data);
 						$('#table1>tbody').empty();
 						$.each(data, function (i, article) {
@@ -245,8 +277,12 @@
 							var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
 							//     	              var cell4 = $("<td></td>").text(article.CLICK);
 							var cell5 = $("<td></td>").text(article.member.account);
-							var span02 = $('<span></span>').addClass('icon icon-erase');
-							var button02 = $('<button></button>').attr({ 'type': 'button', 'title': '刪除' }).addClass('btn btn-outline-primary').append(span02);
+							if (article.status == false) {
+								var span02 = $('<span></span>').addClass('icon icon-eye');
+							} else {
+								var span02 = $('<span></span>').addClass('icon icon-erase');
+							}
+							var button02 = $('<button></button>').attr({ 'type': 'button', 'title': '封鎖/解除', 'value': article.id, 'status': article.status, 'id': 'button' + article.id }).addClass('btn btn-outline-primary').append(span02);
 							var divb2 = $('<div></div>').addClass('btn-group').append([button02]);
 							var divf2 = $('<div></div>').addClass('flextable-item').append(divb2);
 							var cell09 = $('<td></td>').append([divf2]);
@@ -265,7 +301,6 @@
 						"August", "September", "October",
 						"November", "December"
 					];
-
 					var day = date.getDate();
 					var monthIndex = date.getMonth();
 					var year = date.getFullYear();
@@ -276,7 +311,7 @@
 				}
 
 
-				$.getJSON('/articles', { "pageNo": pageNo, "size": 10, "properties": "postTime", "directionString": 'Desc' }, function (data) {
+				$.getJSON('/articles', { "pageNo": pageNo, "size": 10 }, function (data) {
 					console.log(data);
 					$('#table1>tbody').empty();
 					$.each(data, function (i, article) {
@@ -285,8 +320,12 @@
 						var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
 						//     	              var cell4 = $("<td></td>").text(article.CLICK);
 						var cell5 = $("<td></td>").text(article.member.account);
-						var span02 = $('<span></span>').addClass('icon icon-erase');
-						var button02 = $('<button></button>').attr({ 'type': 'button', 'title': '刪除' }).addClass('btn btn-outline-primary').append(span02);
+						if (article.status == false) {
+							var span02 = $('<span></span>').addClass('icon icon-eye');
+						} else {
+							var span02 = $('<span></span>').addClass('icon icon-erase');
+						}
+						var button02 = $('<button></button>').attr({ 'type': 'button', 'title': '封鎖/解除', 'value': article.id, 'status': article.status, 'id': 'button' + article.id }).addClass('btn btn-outline-primary').append(span02);
 						var divb2 = $('<div></div>').addClass('btn-group').append([button02]);
 						var divf2 = $('<div></div>').addClass('flextable-item').append(divb2);
 						var cell09 = $('<td></td>').append([divf2]);
@@ -294,8 +333,6 @@
 						$('#table1>tbody').append(row);
 						$('#table1').trigger("update");
 					});
-
-
 				}
 				)
 			});

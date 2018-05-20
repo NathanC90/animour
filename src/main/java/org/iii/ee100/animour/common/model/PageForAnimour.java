@@ -3,7 +3,6 @@ package org.iii.ee100.animour.common.model;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.domain.Sort.Order;
 
 import lombok.Getter;
 import lombok.Setter;
