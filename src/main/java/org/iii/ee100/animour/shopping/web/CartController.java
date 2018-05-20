@@ -16,7 +16,6 @@ import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.OrdersService;
 import org.iii.ee100.animour.shopping.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -104,7 +103,7 @@ public class CartController {
 	//確定購買
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart/confirmBuy", method=RequestMethod.GET)
-	public String confirmBuy(HttpSession session) {
+	public String confirmBuy(HttpSession session, Model model) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
 		
 		Member currentMember = memberService.getNewCurrentMember();
@@ -150,6 +149,8 @@ public class CartController {
 		orders.setOrdersItem(ordersList);
 		ordersService.insert(orders);
 		
+		model.addAttribute("memberOrders", ordersList);
+		model.addAttribute("ordersListSize", ordersList.size());
 		cartItem.removeAll(cartItem);
 		
 		return "/shopping/ThanksForOrdering";

@@ -114,7 +114,7 @@
 		</div>
 		<div class="flextable-item">
 			<div class="btn-group">
-				<button type="button" class="btn btn-outline-primary" title="寄送電子郵件">
+				<button type="button" class="btn btn-outline-primary" title="寄送電子郵件" id="sendMailManyAccount" data-toggle='modal' data-target="#exampleModalMany">
 					<span class="icon icon-mail"></span>
 				</button>
 			</div>
@@ -136,6 +136,7 @@
 		<table class="table" data-sort="table" id="table1">
 			<thead>
 				<tr>
+					<th><input type="checkbox" class="select-all" id="selectAll"></th>
 					<th>會員編號</th>
 					<th>會員帳號</th>
 					<th>會員姓名</th>
@@ -233,7 +234,43 @@
 		</div>
 
 
+<!--Modal send many Mail-->
+<div class="modal fade" id="exampleModalMany" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">New message For Many Member</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <form id="insertformForMany" >
+				<div class="form-group">
+				  <label for="recipient-name" class="col-form-label">recipient:</label>
+				  <input type="hidden" class="form-control recipient-name" id="accounts" name="accounts" readonly="readonly">
+				</div>
+			  
+				<div class="form-group">
+				  <label for="subject" class="col-form-label">Subject:</label>
+				  <input type="text" class="form-control" id="subject" name="subject">
+				</div>
+				<div class="form-group">
+				  <label for="message-text" class="col-form-label">Message:</label>
+				  <textarea class="form-control" id="context" name="context"></textarea>
+				</div>
+			  </form>
+			</div>
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  <button type="button" class="btn btn-primary" id="btn_many">Send message</button>
+			</div>
+		  </div>
+		</div>
+	  </div>
 
+
+<!--Modal send Mail-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -328,22 +365,23 @@
     	          console.log(data);
     	          $('#table1>tbody').empty();
     	          $.each(data, function (i, member) {
-    	        	  var cell1 = $("<td></td>").text(member.id);
-    	              var cell2 = $("<td></td>").text(member.account);
+					  var cell1 = $('<td></td>').html('<input type="checkbox" id="id_check" name="id_check" class="select-row" value="'+member.account+'">');
+	  	        	  var cell2 = $("<td></td>").text(member.id);
+    	              var cell3 = $("<td></td>").text(member.account);
 
-    	              var cell3 = $("<td></td>").text(member.name);
-    	              var cell4 = $("<td></td>").text(member.nickname);
-    	              var cell5 = $("<td></td>").text(member.cell);
-    	              var cell6 = $("<td></td>").text(member.email);
-    	              var cell7 = $("<td></td>").text(member.address);
+    	              var cell4 = $("<td></td>").text(member.name);
+    	              var cell5 = $("<td></td>").text(member.nickname);
+    	              var cell6 = $("<td></td>").text(member.cell);
+    	              var cell7 = $("<td></td>").text(member.email);
+    	              var cell8 = $("<td></td>").text(member.address);
     	              
     	              if (member.status==0 ){
-    	              var cell8 = $("<td></td>").text('close');}
+    	              var cell9 = $("<td></td>").text('close');}
     	              else{
-    	             	var cell8 = $("<td></td>").text('on');}
+    	             	var cell9 = $("<td></td>").text('on');}
    	
     	              	var span01=$('<span></span>').addClass('icon icon-pencil');  
-						var button01=$('<button></button>').attr({'type':'button','title':'封鎖','data-modal':'true','data-target':'#exampleModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span01);
+						var button01=$('<button></button>').attr({'type':'button','title':'封鎖','data-modal':'true','data-target':'#errModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span01);
 //     	              	var span02=$('<span></span>').addClass('icon icon-erase');
 // 						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
     	              	var span03=$('<span></span>').addClass('icon icon-mail');
@@ -358,9 +396,9 @@
 
 						
 						
-						var cell09=$('<td></td>').append([divf1, divf3]);
+						var cell10=$('<td></td>').append([divf1, divf3]);
     	              
- 	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell09]);
+ 	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
 
     	              $('#table1>tbody').append(row);
     	          });
@@ -372,6 +410,53 @@
       // execute/clear BS loaders for docs
 //      $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
       
-    </script>
+	</script>
+	
+	<script>
+	$(document).ready(function () {
+		
+		var getcheckbox = [];
+		console.log("getcheckbox 01= "+getcheckbox)
+		$('#id_check').change(function () {
+		//讀出所有被勾選checkbox的值
+		$(':checked[name="id_check"]').each(function () {
+			getcheckbox.push($(this).val());
+			cosole.log("getcheckbox02 = "+getcheckbox);
+		});
+		$('#exampleModalMany').on('show.bs.modal', function (event) {
+			var button = $(event.relatedTarget) // Button that triggered the modal
+			var account =	getcheckbox // Extract info from data-* attributes
+			console.log("account:getcheckbox "+account)
+			// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+			// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+			var modal = $(this)
+			//modal.find('.modal-title').text('change status: ' + account)
+			modal.find('#accounts').val(account)
+			})
+		
+		})
+		$('#btn_many').click(function () {
+						var formData = new FormData(document.getElementById("insertformForMany"));
+						console.log(formData);
+						$.ajax({
+						type: "POST",
+						url: "/api/member/all/adminsendmanymail",
+						data: formData,
+						contentType: false,
+						processData: false,
+						//     		    dataType: "json",
+						success: function () {
+							alert("成功_寄送");
+						//	$('#exampleModal').modal('hide')
+						}
+						});
+
+				});
+					
+		
+
+
+	});
+	</script>
 </body>
 </html>

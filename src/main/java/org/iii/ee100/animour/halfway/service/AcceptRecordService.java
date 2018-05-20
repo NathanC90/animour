@@ -1,6 +1,9 @@
 package org.iii.ee100.animour.halfway.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -46,4 +49,24 @@ public class AcceptRecordService extends GenericService<AcceptRecord>{
 		return acceptRecordDao.findAll(request);
 	}
 	
+	public Timestamp calEndDate(Timestamp t) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(t);
+		cal.add(Calendar.MONTH, 1);
+		Long lastyear = cal.getTimeInMillis();
+		Timestamp ts = new Timestamp(lastyear);
+		return ts;
+	}
+	
+	// 取出送養紀錄
+	public List<AcceptRecord> getCheckGive(Long ownerId) {
+		List<AcceptRecord> adoptions = acceptRecordDao.findByOwnerIdOrderByEndDate(ownerId);
+		return adoptions;
+	}
+	
+	// 取出認養紀錄
+		public List<AcceptRecord> getCheckGet(Long memberId) {
+			List<AcceptRecord> adoptions = acceptRecordDao.findByMemberIdOrderByEndDate(memberId);
+			return adoptions;
+		}
 }

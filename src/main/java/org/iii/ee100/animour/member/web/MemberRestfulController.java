@@ -2,8 +2,14 @@ package org.iii.ee100.animour.member.web;
 
 import java.util.List;
 
+import javax.persistence.Transient;
+
+import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.Mail;
+import org.iii.ee100.animour.member.ManyMail;
+import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.MyFriend;
 import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +32,7 @@ public class MemberRestfulController {
 		return members;
 	}
 
-	@RequestMapping(value = "/{account}", method = RequestMethod.GET, produces = { "application/json" })
+	@RequestMapping(value = "/api/member/{account}", method = RequestMethod.GET, produces = { "application/json" })
 	public Member findByAccount(@PathVariable("account") String account) {
 		return memberService.getOneByAccount(account);
 	}
@@ -44,6 +50,41 @@ public class MemberRestfulController {
 //
 //	}
 
+	
+	
+	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
+	public ResponseEntity<?> addFriend(MyFriend friend) {
+		friend.setMember(memberService.getNewCurrentMember());
+		if(memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId()) ==null) {
+			friend.setLove(true);
+			memberService.insertFriend(friend);			
+			return new ResponseEntity<MyFriend>(friend, HttpStatus.OK); 
+		}else {
+			memberService.updateFriend(friend);
+			MyFriend newFriend=memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId());
+			return new ResponseEntity<MyFriend>(newFriend, HttpStatus.OK); 
+		}
+
+	}
+	
+	@RequestMapping(value="/member/friend/{Id}",method = RequestMethod.GET, produces = { "application/json" })
+	public MyFriend heartStatus(@PathVariable String Id){
+		Long friendId=Long.valueOf(Id);
+		Long memberId =memberService.getNewCurrentMember().getId();
+		MyFriend friend= memberService.findByMemberIdAndFriendId(memberId, friendId);
+		if(friend==null) {
+			System.out.println("friend.id:"+friend);
+			MyFriend friend1 = new MyFriend();
+			return friend1; 
+
+		}else {
+			System.out.println("friend.id:"+friend.getId()+"friend.love:"+friend.getLove());
+
+			return friend; 
+
+		}
+	}
+
 	@Autowired	
 	EmailService emailService;
 	
@@ -52,5 +93,20 @@ public class MemberRestfulController {
 		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
 		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
 		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
+	}
+	
+	@Transient
+	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST,consumes={ "application/json" })
+	public ResponseEntity<?> newMail(ManyMail manyMail) {
+		System.out.println("manyMail01"+manyMail.getSubject());
+		System.out.println("manyMail02"+manyMail.getContext());
+		System.out.println("manyMail03"+manyMail.getAccount());
+
+		
+		for(String account: manyMail.getAccount()) {
+		String email=memberService.getOneByAccount(account).getEmail();
+		emailService.sendEmail(email, manyMail.getSubject(), manyMail.getContext());
+		}
+		return new ResponseEntity<ManyMail>(manyMail,HttpStatus.OK);
 	}
 }

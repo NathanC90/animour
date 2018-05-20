@@ -132,11 +132,11 @@
             <section class="about-author-section mt-5">
                 <div class="media wow fadeIn" data-wow-delay="0.3s">
                   <div class="media-left">
-                    <a href="#"><img class="img-circle img-responsive" src="/images/blog/avatar/avatarBig1.jpg" alt=""></a>
+                    <a href="#"><img class="img-circle img-responsive" style="width:100px;" src="${article.member.images}" alt=""></a>
                   </div>
                   <div class="media-body">
-                    <h4>About Writter</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis cumque, quo omnis rem eum ipsam qui. Tempore perspiciatis unde architecto quia, enim consectetur accusamus quasi omnis voluptatibus aliquid rem mollitia incidunt quibusdam eum, sit magnam, repellendus minima nihil iusto vitae ratione dicta, iste. Vitae, architecto.</p>
+                    <h4>關於作者</h4>
+                    <p>${article.member.signature}</p>
                   </div>
                 </div>
                 <div class="author-footer text-sm-center">
@@ -149,24 +149,14 @@
                 </div>
             </section>
             <div class="similar-post mt-3 clearfix">
-              <h3 class="small-title mb-4 wow fadeIn" data-wow-delay="0.3s">Similar Post</h3>
+              <h3 class="small-title mb-4 wow fadeIn" data-wow-delay="0.3s">你可能會喜歡:</h3>
               <div class="row">
+              <c:forEach var="article" items="${thumbsArticle}">
                 <div class="col-md-3 wow fadeIn" data-wow-delay="0.4s">
-                  <a href="#"><img src="/images/blog/home-items/img4.jpg" alt="" class="img-responsive"></a>
-                  <a href="#"><h2>Scetch Fundamental</h2></a>
+                  <a href="#"><img src="${article.images}" alt="" class="img-responsive"></a>
+                  <a href="#"><h2>${article.subject}</h2></a>
                 </div>
-                <div class="col-md-3 wow fadeIn" data-wow-delay="0.5s">
-                  <a href="#"><img src="/images/blog/home-items/img5.jpg" alt="" class="img-responsive"></a>
-                  <a href="#"><h2>Photoshop Basic</h2></a>
-                </div>
-                <div class="col-md-3 wow fadeIn" data-wow-delay="0.6s">
-                  <a href="#"><img src="/images/blog/home-items/img6.jpg" alt="" class="img-responsive"></a>
-                  <a href="#"><h2>Meteor.JS Hands on</h2></a>
-                </div>
-                <div class="col-md-3 wow fadeIn" data-wow-delay="0.7s">
-                  <a href="#"><img src="/images/blog/home-items/img7.jpg" alt="" class="img-responsive"></a>
-                  <a href="#"><h2>Css Advance</h2></a>
-                </div>
+                </c:forEach>
               </div>
             </div>
             <a name="comment"></a>

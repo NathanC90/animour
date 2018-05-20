@@ -266,7 +266,7 @@
 	<!-- 寵物沙龍開始 -->
 	<section id="service-block-main" class="section">
 		<!-- 重複的內容開始 -->
-		<div class="container">
+		<!-- <div class="container">
 			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 				最新空房</h1>
 			<div class="row">
@@ -292,7 +292,7 @@
 					</div>
 				</c:forEach>
 			</div>
-		</div>
+		</div> -->
 		<!-- 重複的內容結束 -->
 	</section>
 

@@ -16,7 +16,7 @@
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
                         crossorigin="anonymous">
 
-                    <title>Register</title>
+                    <title>註冊</title>
                     <!-- Bootstrap -->
                     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
                     <!-- Main Style -->
@@ -76,8 +76,9 @@
                                             </div>
 
                                             <div style="padding-top: 30px" class="panel-body">
+                                            	
                                                 <div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                                                <div calss="form-row">
+                                                <div class="form-row">
                                                         <div class="form-group col-md-a6">                                               
                                                			<form id="imgur">頭像:
 														<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
@@ -136,6 +137,13 @@
                                                             <form:input id="address" path="address" type='text' class='form-control' />
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="form-row">
+														<div class="form-group col-md-6">
+							簽名檔:
+														<form:textarea id="signature" path="signature" class='form-control' />
+														</div>
+													</div>
                                                     
                                                     <div class="form-row">
 <!--                                                     	<div class="form-group col-md-a6"> -->

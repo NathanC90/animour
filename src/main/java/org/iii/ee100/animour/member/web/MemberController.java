@@ -53,10 +53,10 @@ public class MemberController {
 				memberService.emailExist(member.getEmail()) ||
 				memberService.getOneByAccount(member.getUsername())!=null) {
             List<FieldError> errorList = bindingResult.getFieldErrors();
-            for(FieldError error : errorList){
-            	System.out.println("error-param:"+error.getField());
-                System.out.println("error-message:"+error.getDefaultMessage());
-            }
+//            for(FieldError error : errorList){
+//            	System.out.println("error-param:"+error.getField());
+//                System.out.println("error-message:"+error.getDefaultMessage());
+//            }
 			
 			if (memberService.emailExist(member.getEmail())) {bindingResult.rejectValue("email","email message", "email exist");}
 			if (memberService.getOneByAccount(member.getUsername())!=null) {bindingResult.rejectValue("account","account message", "帳號重複");}
@@ -66,7 +66,13 @@ public class MemberController {
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(1);
-			member.setSignature(member.getAccount() +"have a nice day");
+			if(member.getSignature()==null) {
+				member.setSignature(member.getAccount()+" say hi.");
+			}
+			
+			if(member.getImages()==null) {
+				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
+			}		
 			memberService.insert(member);
 			return "redirect:/";// 註冊成功跳轉 login
 		}
@@ -86,7 +92,13 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 			return "/member/update";
 		} else {
-			memberService.update(member);
+			if(member.getImages()==null && memberService.getNewCurrentMember().getImages()!=null) {
+				member.setImages(memberService.getNewCurrentMember().getImages());
+			}
+			if(member.getSignature()==null && memberService.getNewCurrentMember().getSignature()!=null) {
+				member.setSignature(memberService.getNewCurrentMember().getSignature());
+			}
+					memberService.update(member);
 			return "redirect:/";
 		}
 	}
@@ -177,7 +189,7 @@ public class MemberController {
     @PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public String admin() {
-		return "/admin/member/admin";
+		return "/admin/member/admin_copy2a";
 	}
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")

@@ -61,10 +61,13 @@ public class Article extends GenericEntity {
 	@Column(name = "IMAGES")
 	private String images;
 	
+//	@Column(name = "STATUS")
+//	private boolean status;
+	
 	@Transient
 	private int commentLength;
 
-	@Transient
+	@Column(name = "THUMBS_QUANTITY")
 	private int thumbsQuantity;
 	
 	@Transient

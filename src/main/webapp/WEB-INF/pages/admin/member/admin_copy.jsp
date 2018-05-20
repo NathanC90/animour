@@ -136,6 +136,7 @@
 		<table class="table" data-sort="table" id="table1">
 			<thead>
 				<tr>
+					<th><input type="checkbox" class="select-all" id="selectAll"></th>
 					<th>會員編號</th>
 					<th>會員帳號</th>
 					<th>會員姓名</th>
@@ -328,19 +329,20 @@
     	          console.log(data);
     	          $('#table1>tbody').empty();
     	          $.each(data, function (i, member) {
-    	        	  var cell1 = $("<td></td>").text(member.id);
-    	              var cell2 = $("<td></td>").text(member.account);
+					  var cell1 = $('<td></td>').html('<input type="checkbox" class="select-row" value="'+member.id+'">');
+	  	        	  var cell2 = $("<td></td>").text(member.id);
+    	              var cell3 = $("<td></td>").text(member.account);
 
-    	              var cell3 = $("<td></td>").text(member.name);
-    	              var cell4 = $("<td></td>").text(member.nickname);
-    	              var cell5 = $("<td></td>").text(member.cell);
-    	              var cell6 = $("<td></td>").text(member.email);
-    	              var cell7 = $("<td></td>").text(member.address);
+    	              var cell4 = $("<td></td>").text(member.name);
+    	              var cell5 = $("<td></td>").text(member.nickname);
+    	              var cell6 = $("<td></td>").text(member.cell);
+    	              var cell7 = $("<td></td>").text(member.email);
+    	              var cell8 = $("<td></td>").text(member.address);
     	              
     	              if (member.status==0 ){
-    	              var cell8 = $("<td></td>").text('close');}
+    	              var cell9 = $("<td></td>").text('close');}
     	              else{
-    	             	var cell8 = $("<td></td>").text('on');}
+    	             	var cell9 = $("<td></td>").text('on');}
    	
     	              	var span01=$('<span></span>').addClass('icon icon-pencil');  
 						var button01=$('<button></button>').attr({'type':'button','title':'封鎖','data-modal':'true','data-target':'#exampleModal','data-whatever':member.account}).addClass('btn btn-outline-primary').append(span01);
@@ -358,9 +360,9 @@
 
 						
 						
-						var cell09=$('<td></td>').append([divf1, divf3]);
+						var cell10=$('<td></td>').append([divf1, divf3]);
     	              
- 	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell09]);
+ 	 		           var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
 
     	              $('#table1>tbody').append(row);
     	          });

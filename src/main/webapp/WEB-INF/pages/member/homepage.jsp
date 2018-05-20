@@ -76,9 +76,9 @@
 						<!-- Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<div>
-								<div class="card mb-3 box-shadow" id="eachdiv2">
-									<span> <img class="card-img-top"
-										src="${member.images}" width="100px" alt="${member.id}">
+								<div class="card mb-3 box-shadow" id="eachdiv2" >
+									<span> <img class="card-img-top img-circle" width="75px"
+										src="${member.images}"  alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
 										<p class="card-text" style="padding: 0px">${member.account}</p>
@@ -103,13 +103,25 @@
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">${member.account}</h2>
-							<ul></ul>
 							<ul class="category-menu">
-								<li><a href="#">xxxx</a></li>
-								<li><a href="#">我的最愛</a></li>
+							
+							<c:if test="${member.id eq currentMember.id}">
+								<li><a href="/findOrders/index">訂單查詢</a></li>
+								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<li><a href="/">通知</a></li>								
-<!-- 								<li><a href="/logout">登出</a></li> -->
+							</c:if>
+							<sec:authorize access="hasRole('Member')"> 
+							<c:if test="${member.id ne currentMember.id}">
+								<li id="addFriend" value='${member.id}'>
+								<form id="insertFriend" enctype="multipart/form-data">
+								<input name="friendId" type="hidden" value="${member.id}"/>
+								</form>
+								<span id="span">
+								</span>
+								</li>
+							</c:if>
+							</sec:authorize>
 							</ul>
 						</aside>
 						<!-- Subscribe Widget -->
@@ -126,29 +138,6 @@
 
 					<h3>${member.account}的個人首頁</h3>
 
-<!-- 					<table id="table1" -->
-<!-- 						class="table table-bordered table-striped table-hover"> -->
-
-<!-- 						<tbody> -->
-<!-- 							<tr> -->
-<!-- 								<td>帳號</td> -->
-<%-- 								<td id="acco">${member.account}</td> --%>
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-
-<!-- 							<tr> -->
-<!-- 								<td></td> -->
-<%-- 								<td>${profile.nickname}</td> --%>
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-<!-- 							<tr> -->
-<!-- 								<td>登入次數</td> -->
-<!-- 								<td></td> -->
-<!-- 								<td></td> -->
-<!-- 							</tr> -->
-
-<!-- 						</tbody> -->
-<!-- 					</table> -->
 					<h3>已發過的動物資料</h3>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
@@ -195,7 +184,7 @@
 
 								<h3 class="small-title" style="height: 60px;">
 
-									<a href="/forum/findOne?id=${article.id}"><c:out value="${article.subject}"/></a>
+									<a href="/forum/findOne?id=${article.id}" style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:24px;height:48px;"><c:out value="${article.subject}"/></a>
 
 								</h3>
 
@@ -244,39 +233,84 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-	<script src="/js/jquery-min.js"></script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
-	<script src="/js/jquery.mixitup.js"></script>
-	<script src="/js/smoothscroll.js"></script>
-	<script src="/js/wow.js"></script>
-	<script src="/js/owl.carousel.js"></script>
-	<script src="/js/waypoints.min.js"></script>
-	<script src="/js/jquery.counterup.min.js"></script>
-	<script src="/js/jquery.slicknav.js"></script>
-	<script src="/js/jquery.appear.js"></script>
-	<script src="/js/form-validator.min.js"></script>
-	<script src="/js/contact-form-script.min.js"></script>
-	<script src="/js/main.js"></script>
-	<!-- Placed at the end of the document so the pages load faster -->
+<!-- 	<script src="/js/jquery-min.js"></script> -->
+<!-- 	<script src="/js/popper.min.js"></script> -->
+<!-- 	<script src="/js/bootstrap.min.js"></script> -->
+<!-- 	<script src="/js/jquery.mixitup.js"></script> -->
+<!-- 	<script src="/js/smoothscroll.js"></script> -->
+<!-- 	<script src="/js/wow.js"></script> -->
+<!-- 	<script src="/js/owl.carousel.js"></script> -->
+<!-- 	<script src="/js/waypoints.min.js"></script> -->
+<!-- 	<script src="/js/jquery.counterup.min.js"></script> -->
+<!-- 	<script src="/js/jquery.slicknav.js"></script> -->
+<!-- 	<script src="/js/jquery.appear.js"></script> -->
+<!-- 	<script src="/js/form-validator.min.js"></script> -->
+<!-- 	<script src="/js/contact-form-script.min.js"></script> -->
+<!-- 	<script src="/js/main.js"></script> -->
+<!-- 	<!-- Placed at the end of the document so the pages load faster --> -->
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 		crossorigin="anonymous"></script>
 	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
-	<script src="/js/popper.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+ 		window.jQuery
+ 				|| document
+ 						.write('<script src="/js/jquery-slim.min.js"><\/script>')
+ 	</script> 
+<!-- 	<script src="/js/popper.min.js"></script> -->
+<!-- 	<script src="/js/bootstrap.min.js"></script> -->
 
 
-	<script
-		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-	<script src="/js/jquery-3.3.1.min.js"></script>
+<!-- 	<script -->
+<!-- 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
+    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 
 	<script>
-		
+	
+	 $(document).ready(function () {
+ 		 var a=$("#addFriend").attr('value');
+ 		 
+ 		$.getJSON('/api/member/all/member/friend/'+a, { }, function (result) { 			
+ 			
+ 			$.each(result, function (i, friend) {
+ 				console.log("friend:"+friend)
+                if(friend == true){
+               	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+                }else{
+                $("#span").html('<i class="icon-heart"></i> 加好 友 ');
+                }
+ 			});//end .each
+ 		
+ 		})//end .json;
+ 		 
+		 $("#addFriend").on('click' ,function (event) {
+			 console.log("#addFriend:");
+			 console.log($(this));
+             var formData = new FormData(document.getElementById("insertFriend"));
+             console.log(formData);
+             $.ajax({
+               type: "POST",
+               url: "/api/member/all/addfriend",
+               data: formData,
+               contentType: false,
+               processData: false
+             })
+			 .done(function (data) {
+             $.each(data, function (i, friend) {
+            	 console.log("friendstatus");
+                 console.log(friend);
+                 console.log("friend.id:: "+friend.id)
+                 console.log("friend:: "+friend)
+                 
+                 if(friend == true){
+                	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+                 }else{
+                 $("#span").html('<i class="icon-heart"></i> 加好友 ');
+                 }
+               });
+             }); //end .done
+		 
+		 })
+	 });
 	</script>
 </body>
 

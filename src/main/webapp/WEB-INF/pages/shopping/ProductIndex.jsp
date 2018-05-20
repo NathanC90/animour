@@ -121,7 +121,6 @@
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.1s">
 							<h2 class="widget-title">商品分類</h2>
-<%-- 							<form:form action="/products/${classify}" method="POST" modelAttribute="product"> --%>
 								<ul class="category-menu">
 									<c:forEach var="classify" items="${classifies}">
 										<li class="page-item">
@@ -129,16 +128,15 @@
 										</li>
 									</c:forEach>
 								</ul>
-<%-- 							</form:form> --%>
 						</aside>
 						<!--End of Classify -->
 						
 						<!--Start of Price -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
-							<h2 class="widget-title">價格篩選</h2>
+							<h2 class="widget-title">價格低於</h2>
 							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="range" name="price" min="0" max="2000"><br><br>
+								<input type="number" name="price" min="0" max="2000" step="100" value="500" class="col-md-6"><br><br>
 								<input type="submit" class="btn btn-common" value="查尋">
 							</form>
 						</aside>
@@ -159,14 +157,14 @@
 						<c:forEach var="product" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-3 box-shadow">
-									<img class="card-img-top" src="/images/shopping/product/pd1.jpg"
+<!-- 									<img class="card-img-top" src="/images/shopping/product/pd1.jpg" -->
+									<img class="card-img-top" src="${product.images}"
 										width="100px" alt="商品列表">
 									<div class="card-body" style="margin-bottom: 5px">
 											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
 											<p>價格：${product.price}<br>庫存：${product.stock}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
-<!-- 											<div id="div1"></div> -->
 									</div>
 									<div class="d-flex justify-content-between align-items-center"
 										style="max-height: 100px">
@@ -244,18 +242,6 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	<script>
-		
-		$.getJSON('/shopping/product', {},
-				function (datas) {
-				console.log(datas)
-				for(var i = 0; i < datas.length; i++){
-					$('#div1').append(datas[i].name)
-				}
-						
-		});
-	</script>
-	
 </body>
 
 </html>

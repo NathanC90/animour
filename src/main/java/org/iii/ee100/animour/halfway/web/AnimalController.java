@@ -8,6 +8,7 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,11 +23,14 @@ public class AnimalController {
 	@Autowired
 	AnimalService animalservice;
 
+	@Autowired
+	MemberService memberService;
+
 	// 首頁，list
-	@RequestMapping(value = "/halfway") 
+	@RequestMapping(value = "/halfway")
 	public String listPage(Model model) {
 		// 設定當前會員
-		Member current = animalservice.getCurrentMember();
+		Member current = memberService.getNewCurrentMember();
 		model.addAttribute("currentMember", current);
 		// 依縣市別更新動物數量
 		animalservice.updateAnimalCount();
@@ -41,7 +45,7 @@ public class AnimalController {
 		Animal animal = animalservice.getOne(id);
 		model.addAttribute("animal", animal);
 
-		Member current = animalservice.getCurrentMember();
+		Member current = memberService.getNewCurrentMember();
 		model.addAttribute("currentMember", current);
 		return "/halfway/animalDetail";
 	}
@@ -81,6 +85,18 @@ public class AnimalController {
 	@ModelAttribute("allSpecie")
 	public List<String> getAllSpecie() {
 		return animalservice.setSpecie();
+	}
+
+	// 生成表單下拉式選單欄位
+	@ModelAttribute("allAge")
+	public List<String> getAllAge() {
+		return animalservice.setAge();
+	}
+
+	// 生成表單下拉式選單欄位
+	@ModelAttribute("allSize")
+	public List<String> getAllSize() {
+		return animalservice.setSize();
 	}
 
 }
