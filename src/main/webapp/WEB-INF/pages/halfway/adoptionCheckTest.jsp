@@ -342,7 +342,7 @@
                             $("#appendbutton").append(button);
 
                         } else {
-                            let button1 = `<button id="payment" name="payment" class="btn btn-common" data-toggle="modal">
+                            let button1 = `<button id="payment" name="payment" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/`+$("#getrecordid").val()+`'">
                                     <i class="fa fa-credit-card"></i>
                                     <span>前往完成認養程序</span>
                                 </button>`;
