@@ -242,7 +242,7 @@
         }
 
         function getJson(url) {
-          $.getJSON(url, { "pageNo": pageNo }, function (datas) {
+          $.getJSON(url, { "pageNo": pageNo,"size": 3,"properties":"postTime","directionString":'Desc' }, function (datas) {
             if (datas != null) {
               if (pageNo <= datas[0].totalPage) {
                 $.each(datas, function (idx, article) {
