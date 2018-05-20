@@ -72,6 +72,19 @@
 		<!-- Navbar Starts -->
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
+		<!-- Page Header -->
+      <div class="page-header-section">
+        <div class="container">
+          <div class="row">
+            <div class="page-header-area">
+              <div class="page-header-content">
+                <h2>最新消息</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header End -->
 	</header>
 				<div class="container">
 					<!-- 輪播牆開始 -->
@@ -120,10 +133,10 @@
 							<div class="col-md-4">
 								<div class="card mb-4 box-shadow">
 								<a href="/news/index?pageNo=1">
-									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="" >
+									<img class="card-img-top" src="/images/news/PetExpo.jpg" width="80px" alt="" >
 									</a><div class="card-body" style="margin-bottom: 5px">
 									 <p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
-											<a href="/news/admin"><button type="button" class="btn btn-common">詳情</button></a>
+											<a href="/news/event"><button type="button" class="btn btn-common">詳情</button></a>
                  							<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>									
 									</div>
 								</div>

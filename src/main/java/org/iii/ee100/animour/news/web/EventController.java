@@ -14,14 +14,24 @@ public class EventController {
 	@Autowired
 	EventService eventService;	
 	
-	@RequestMapping("/news/admin")
+	@RequestMapping("/news/event")
 	public String newsIndex(Model model) {
-		return "/news/admin";
+		return "/news/event";
 	}
 	
 	@RequestMapping("/news/enroll")
 	public String newsEnroll(Model model) {
 		return "/news/enroll";
+	}
+	
+	@RequestMapping("/news/admin")
+	public String newsAdmin(Model model) {
+		return "/news/admin";
+	}
+	
+	@RequestMapping("/news/ticket")
+	public String newsTicket(Model model) {
+		return "/news/ticket";
 	}
 	
 	@RequestMapping(path= {"/findOneEvent"}, method={RequestMethod.GET})
