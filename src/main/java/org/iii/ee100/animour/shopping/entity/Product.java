@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.shopping.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

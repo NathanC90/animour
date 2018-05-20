@@ -397,12 +397,12 @@ public class productTest {
 	}
 	
 	
-//	@Test
-//	public void testFindAll() {
+	@Test
+	public void testFindAll() {
 //		Iterable<Product> products = productDao.findAll();
 //		for(Product product :products) {
 //			System.out.println(product);
 //		}
-//	}
+	}
 	
 }
