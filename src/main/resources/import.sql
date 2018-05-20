@@ -370,11 +370,9 @@ insert into SERVICECONTENT (CONTENT,time,price,designer_id)
 values ('剪毛',1,400,3);
 
 
-
-
-
-
-
-
-
-
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'1');
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'2');
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values ('3',true,'4');

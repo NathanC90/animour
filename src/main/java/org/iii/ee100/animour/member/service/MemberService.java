@@ -159,6 +159,10 @@ public class MemberService extends GenericService<Member> {
 		};
 		
 		
+		public List<MyFriend> findByMemberIdAndLove(Long memberId, boolean love){
+			return myFriendDao.findByMemberIdAndLove(memberId, love);
+		}
+		
 		public void insertFriend(MyFriend friend) {
 			myFriendDao.save(friend);
 		}
