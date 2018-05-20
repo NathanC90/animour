@@ -17,7 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AcceptRecordService extends GenericService<AcceptRecord>{
+public class AcceptRecordService extends GenericService<AcceptRecord> {
 
 	@Autowired
 	private AcceptRecordDao acceptRecordDao;
@@ -41,14 +41,14 @@ public class AcceptRecordService extends GenericService<AcceptRecord>{
 	public AcceptRecord getOne(Long id) {
 		return acceptRecordDao.findOne(id);
 	}
-	
+
 	// pageSize=一頁幾筆資料
 	public Page<AcceptRecord> getAccpetRecordPage(PageInfo pageinfo) {
 		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC,
 				"startDate");
 		return acceptRecordDao.findAll(request);
 	}
-	
+
 	public Timestamp calEndDate(Timestamp t) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(t);
@@ -57,16 +57,24 @@ public class AcceptRecordService extends GenericService<AcceptRecord>{
 		Timestamp ts = new Timestamp(lastyear);
 		return ts;
 	}
-	
+
 	// 取出送養紀錄
 	public List<AcceptRecord> getCheckGive(Long ownerId) {
 		List<AcceptRecord> adoptions = acceptRecordDao.findByOwnerIdOrderByEndDate(ownerId);
 		return adoptions;
 	}
-	
+
 	// 取出認養紀錄
-		public List<AcceptRecord> getCheckGet(Long memberId) {
-			List<AcceptRecord> adoptions = acceptRecordDao.findByMemberIdOrderByEndDate(memberId);
-			return adoptions;
+	public List<AcceptRecord> getCheckGet(Long memberId) {
+		List<AcceptRecord> adoptions = acceptRecordDao.findByMemberIdOrderByEndDate(memberId);
+		return adoptions;
+	}
+	
+	public void checkProcessEnd(AcceptRecord ar) {
+		if (ar.getDoneMember() && ar.getDoneOwner()) {
+			ar.setStatus("認養成功");
 		}
+		
+	}
+
 }
