@@ -92,10 +92,10 @@
                                 <a class="nav-link active" data-toggle="tab" href="#home2" role="tab">認養申請確認</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#profile2" role="tab">認養申請確認</a>
+                                <a class="nav-link" data-toggle="tab" href="#profile2" role="tab">待完成認養程序</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#messages2" role="tab">Messages</a>
+                                <a class="nav-link" data-toggle="tab" href="#messages2" role="tab">待完成送養程序</a>
                             </li>
 
                         </ul>
@@ -220,12 +220,49 @@
 
                             <!-- 認養程序開始 -->
                             <div class="tab-pane" id="profile2" role="tabpanel">
-                                <p>Barton did feebly change man she afford square add. Want eyes by neat so just must. Past
-                                    draw tall up face show rent oh mr. Required is debating extended wondered as do. New
-                                    get described applauded incommode shameless out extremity but</p>
-                                <p>Resembled at perpetual no believing is otherwise sportsman. Is do he dispatched cultivated
-                                    travelling astonished.
-                                </p>
+                                <input type="hidden" id="getcount" value="${getcount}">
+
+                                <div id="accordion">
+                                    <div class="container" id="cleantable1">
+                                        <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+                                            <h2 style="margin-top:30px">待完成認養程序</h2>
+                                        </div>
+                                        <div class="row">
+                                            <table class="table table-hover table-expandable table-striped" style="text-align:center; margin-bottom:60px">
+                                                <thead>
+                                                    <tr>
+                                                        <th>飼主帳號</th>
+                                                        <th>飼主姓名</th>
+                                                        <th>動物名稱</th>
+                                                        <th>所在縣市</th>
+                                                        <th>剩餘時間</th>
+                                                        <th>支付押金/完成認養</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <c:forEach var="getrecord" items="${getrecord}">
+                                                        <input type="hidden" id="passendtime" value="${endDate}">
+                                                        <tr>
+                                                            <th scope="row">
+                                                                <a href="">${getrecord.adoption.animal.member.account}</a>
+                                                            </th>
+                                                            <td>${getrecord.adoption.animal.member.name}</td>
+                                                            <th scope="row">
+                                                                <a href="">${getrecord.adoption.animal.name}</a>
+                                                            </th>
+                                                            <td>${getrecord.adoption.animal.city.name}</td>
+                                                            <td id="getting-started"></td>
+                                                            <td id="appendbutton">
+                                                                <input type="hidden" id="depositMember" value="${getrecord.depositMember}">
+                                                                <input type="hidden" id="getrecordid" value="${getrecord.id}">
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <!-- 認養程序結束 -->
 
@@ -272,23 +309,94 @@
                 <script src="/js/contact-form-script.min.js"></script>
                 <script src="/js/main.js"></script>
                 <script src="/js/bootstrap-table-expandable.js"></script>
+                <script src="/js/jquery.countdown.js"></script>
                 <script>
 
                     $(document).ready(function () {
                         var count = $("#adoptioncount").val()
                         //alert(count);
                         var string = ` <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
-                                            <h2 style="margin-top:30px">尚未收到認養申請</h2>
+                                            <h2 style="margin-top:30px">目前沒有認養申請</h2>
                                         </div>`;
                         if (count == 0) {
                             $("#cleantable").empty()
                             $("#cleantable").append(string)
                         }
+
+                        var count1 = $("#getcount").val()
+                        //alert(count);
+                        var string1 = ` <div class="col-md-12 mb-50 text-center contact-title-text wow fadeIn" data-wow-delay="0.3s">
+                                            <h2 style="margin-top:30px">目前沒有待處理認養程序</h2>
+                                        </div>`;
+                        if (count1 == 0) {
+                            $("#cleantable1").empty()
+                            $("#cleantable1").append(string1)
+                        }
+
+                        alert($("#depositMember").val())
+                        if (!$("#depositMember").val()) {
+                            let button = `<div id="paymentdiv"><button id="payment" name="payment" class="btn btn-common" data-toggle="modal">
+                                    <i class="fa fa-credit-card"></i>
+                                    <span>支付押金</span>
+                                </button></div>`;
+                            $("#appendbutton").append(button);
+
+                        } else {
+                            let button1 = `<button id="payment" name="payment" class="btn btn-common" data-toggle="modal">
+                                    <i class="fa fa-credit-card"></i>
+                                    <span>前往完成認養程序</span>
+                                </button>`;
+                            $("#appendbutton").append(button1);
+                        }
+
+                        $('#payment').click(function () {
+                            $.ajax({
+                                url: '/halfway/setdepositMemberTrue/' + $("#getrecordid").val(),
+                                type: 'GET',
+                                //data: data,
+                                //data: json,
+                                //dataType: 'json',
+                                //processData: false,
+                                //contentType: "application/json",
+                                //contentType: "multipart/form-data",
+                                //enctype: 'multipart/form-data',
+                                //contentType: false,
+                                //processData: false,
+                            }).done(function () {
+                                $.ajax({
+                                    url: '/frontEnd/aioCheckOut/aioCheckOutALL/' + $("#getrecordid").val(),
+                                    type: 'POST',
+                                    //data: data,
+                                    //data: json,
+                                    //dataType: 'json',
+                                    //contentType: "application/json",
+                                }).done(function (datas) {
+                                    $('#paymentdiv').html(datas);
+                                });
+                            });
+
+
+                        });
                     });
+
+
+
+
+
+
                     $('.btn.btn-common.send').click(function (event) {
                         // event.preventDefault();
                     })
                 </script>
+                <script type="text/javascript">
+                    $("#getting-started")
+                        .countdown("2018/06/01", function (event) {
+                            $(this).text(
+                                event.strftime('%D 天 %H 小時 %M分 %S 秒')
+                            );
+                        });
+                </script>
+
 
 
             </body>

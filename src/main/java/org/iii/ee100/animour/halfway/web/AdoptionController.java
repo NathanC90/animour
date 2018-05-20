@@ -52,7 +52,6 @@ public class AdoptionController {
 			model.addAttribute("getrecord", getrecord);
 			model.addAttribute("getcount", getrecord.size());
 		}
-
 		return "/halfway/adoptionCheckTest";
 	}
 

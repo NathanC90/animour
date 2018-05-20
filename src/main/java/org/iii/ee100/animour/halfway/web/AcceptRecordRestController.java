@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.halfway.web;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -26,7 +27,7 @@ public class AcceptRecordRestController {
 
 	@Autowired
 	AnimalService animalService;
-	
+
 	@Autowired
 	AcceptRecordService acceptRecordService;
 
@@ -66,10 +67,22 @@ public class AcceptRecordRestController {
 	}
 
 	// 查詢一筆
-	@RequestMapping(value = { "/halfway/acceptrecord/{id}" }, method = RequestMethod.GET, produces = { "application/json",
-			"application/xml" })
+	@RequestMapping(value = { "/halfway/acceptrecord/{id}" }, method = RequestMethod.GET, produces = {
+			"application/json", "application/xml" })
 	public AcceptRecord oneAcceptRecord(@PathVariable Long id) {
 		AcceptRecord ad = acceptRecordService.getOne(id);
 		return ad;
+	}
+
+	// 設定 depositMember 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdepositMemberTrue/{id}") // findAll
+	public ResponseEntity<?> setdepositMemberTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDepositMember(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDepositMemberDate(ts);
+		acceptRecordService.update(ad);
+		
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 }

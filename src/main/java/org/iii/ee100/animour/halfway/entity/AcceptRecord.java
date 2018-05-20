@@ -34,7 +34,7 @@ public class AcceptRecord extends GenericEntity {
 
 	// 飼主是否繳納押金，當付款成功，資料回來的時候
 	@Column(name = "DEPOSIT_OWNER")
-	private Boolean depositOwner;
+	private Boolean depositOwner = false;
 
 	// 飼主繳納押金時間
 	@Column(name = "DEPOSIT_OWNER_DATE")
@@ -42,7 +42,7 @@ public class AcceptRecord extends GenericEntity {
 
 	// 會員是否繳納押金
 	@Column(name = "DEPOSIT_MEMBER")
-	private Boolean depositMember;
+	private Boolean depositMember = false;
 
 	// 會員繳納押金時間
 	@Column(name = "DEPOSIT_MEMBER_DATE")

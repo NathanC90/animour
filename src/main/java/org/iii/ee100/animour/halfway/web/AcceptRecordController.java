@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.halfway.web;
 
+import java.sql.Timestamp;
+
+import org.iii.ee100.animour.halfway.entity.AcceptRecord;
 import org.iii.ee100.animour.halfway.service.AcceptRecordService;
 import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
@@ -26,6 +29,7 @@ public class AcceptRecordController {
 	@Autowired
 	AcceptRecordService acceptRecordService;
 	
+	// 轉跳至認養程序詳情頁面
 	@RequestMapping(value = "/halfway/toacceptrecord/{id}") // findAll
 	public String listAcceptRecord(@PathVariable Long id, Model model) {
 		// 設定當前會員
@@ -35,5 +39,7 @@ public class AcceptRecordController {
 		model.addAttribute("id", id);
 		return "/halfway/adoptionDetail";
 	}
+	
+	
 	
 }

@@ -361,18 +361,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">
-                            <!-- 測試付款按鈕 -->
-                            <div id="paymentdiv">
-                                <button id="payment" name="payment" class="btn btn-common">前往支付押金</button>
-                                <br>
-                            </div>
-                            <form id="forappend" method="post" role="form" class="mt-30 shake" id="contactForm" name="contact-form" data-toggle="validator">
-                               
-                                <div class="form-group col-xs-12">
-                                    <button class="btn btn-common btn-lg btn-block" name="submit" id="form-submit" type="submit">
-                                        <i class="fa fa-envelope"></i> Submit</button>
-                                </div>
-                            </form>
+                           
+                           
                         </div>
                         <div class="col-md-4 contact-info-section">
                             <div class="contact-widget office-location">
@@ -520,24 +510,6 @@
                             event.strftime('%D天 %H時 %M分 %S秒')
                         );
                     });
-            </script>
-            <script>
-                $(document).ready(function () {
-                    $("#payment").click(function () {
-                        $.ajax({
-                            url: '/frontEnd/aioCheckOut/aioCheckOutALL',
-                            type: 'POST',
-                            //data: data,
-                            //data: json,
-                            //dataType: 'json',
-                            //contentType: "application/json",
-                        }).done(function (datas) {
-                            $('#paymentdiv').html(datas);
-                        });
-                    });
-
-                });
-
             </script>
         </body>
 
