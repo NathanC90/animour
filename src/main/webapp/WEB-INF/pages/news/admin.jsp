@@ -51,6 +51,15 @@
 	href="/fonts/simple-line-icons.css">
 
 <!-- Extras -->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap-table/src/bootstrap-table.css">
+    <link rel="stylesheet" href="../assets/examples.css">
+    <script src="../assets/jquery.min.js"></script>
+    <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/bootstrap-table/src/bootstrap-table.js"></script>
+    <script src="../assets/bootstrap-table/src/extensions/export/bootstrap-table-export.js"></script>
+    <script src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
+    <script src="../ga.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="/extras/owl/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
@@ -119,6 +128,32 @@
 				</button>
 			</div>
 		</div>
+		<div class="container">
+        <h1>Export</h1>
+        <div id="toolbar">
+            <select class="form-control">
+                <option value="">Export Basic</option>
+                <option value="all">Export All</option>
+                <option value="selected">Export Selected</option>
+            </select>
+        </div>
+        <table id="table"
+               data-toggle="table"
+               data-show-export="false"
+               data-pagination="true"
+               data-click-to-select="true"
+               data-toolbar="#toolbar"
+               data-url="../json/data1.json">
+            <thead>
+            <tr>
+                <th data-field="state" data-checkbox="true"></th>
+                <th data-field="id">ID</th>
+                <th data-field="name">Item Name</th>
+                <th data-field="price">Item Price</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 	</div>
 	<!-- Table Starts  -->
 	<div class="table-responsive">
@@ -566,7 +601,18 @@
 		</div>
 	</div>
 </div>
-
+<!-- Export Data starts-->
+<script>
+    var $table = $('#table');
+    $(function () {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('destroy').bootstrapTable({
+                exportDataType: $(this).val()
+            });
+        });
+    })
+</script>
+<!-- Export Data ends -->
 <!-- Modal Ends -->
 
 <!-- 每頁不同內容從此結束 -->
@@ -578,9 +624,11 @@
 <script src="../admin/assets/js/tablesorter.min.js"></script>
 <script src="../admin/assets/js/toolkit.js"></script>
 <script src="../admin/assets/js/application.js"></script>
+<script src="../admin/assets/js/bootstrap-table-export.js"></script>
 <script>
       // execute/clear BS loaders for docs
       $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
-    </script>
+</script>
+<script src="extensions/export/bootstrap-table-export.js"></script>
 </body>
 </html>

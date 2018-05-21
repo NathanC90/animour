@@ -49,6 +49,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/product/index">新品上市</a>
                                         <sec:authorize access="hasRole('Member')">
+                                        	<a class="dropdown-item" href="/product/insert">商品上架</a>
                                         	<a class="dropdown-item" href="/product/maintain">商品管理</a>
                                         </sec:authorize>
                                     </div>

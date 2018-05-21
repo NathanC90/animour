@@ -2,6 +2,7 @@ package org.iii.ee100.animour.common.model;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,9 @@ public class PageForAnimour {
 	int size;
 
 	Sort.Direction direction;
-
+	
+	String directionString;
+	
 	String properties;
 
 	public PageRequest getPageRequest() {
@@ -25,11 +28,16 @@ public class PageForAnimour {
 		if (this.pageNo == 0) {
 			this.setPageNo(1);
 		}
-		if ((this.properties == null || this.properties.isEmpty()) || this.direction == null) {
+		if (this.directionString == null || this.properties == null) {
 			return new PageRequest(this.pageNo - 1, this.size);
 		} else {
-			this.setDirection(Sort.DEFAULT_DIRECTION);
-			return new PageRequest(this.pageNo - 1, this.size, this.direction, this.properties);
+			if(directionString.equalsIgnoreCase("ASC")) {
+				this.setDirection(Direction.ASC);
+			}else {
+				this.setDirection(Direction.DESC);
+			}
+			Sort sort = new Sort(this.direction, this.properties);			
+			return new PageRequest(this.pageNo - 1, this.size, sort);
 		}
 	}
 }

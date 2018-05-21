@@ -83,7 +83,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>修改商品資料</h2>
+						<h2>商品上架</h2>
 					</div>
 				</div>
 			</div>
@@ -95,30 +95,31 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-				<div class="form-group col-md-4">
-					<img class="card-img-top"
-						src="${product.images}" alt="${product.name}">
-				</div>
+<!-- 				<div class="form-group col-md-4"> -->
+<!-- 					<img class="card-img-top" -->
+<%-- 						src="${product.images}" alt="${product.name}"> --%>
+<!-- 				</div> -->
+			<div class="form-group col-md-12">
 				<form:form method="POST" modelAttribute="product"
 					enctype="multipart/form-data">
 					<form:input id="images" path="images" type="hidden"/>
 					<form:input path="member" type="hidden"/>
 					<div class="form-group">
 						<h2 class="widget-title">商品名稱</h2>
-						<form:input path="name" type="text" class="form-control"
+						<form:input path="name" type="text" class="form-control" autofocus="true"
 							placeholder="商品名稱" />
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">商品價格</h2>
-							<form:input path="price" type="text" class="form-control"
+							<form:input path="price" type="number" min="0" class="form-control"
 								placeholder="商品價格" />
 						</div>
 
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">庫存</h2>
-							<form:input path="stock" type="text" class="form-control"
+							<form:input path="stock" type="number" min="0" class="form-control"
 								placeholder="庫存" />
 						</div>
 
@@ -129,36 +130,42 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<h2 class="widget-title">製造日期</h2>
-						<form:input path="makeDate" type="text" class="form-control"
-							placeholder="製造日期" />
-					</div>
 					<div class="form-row">
 						<div class="form-group col-md-4">
-							<h2 class="widget-title">保存期限</h2>
-							<form:input path="expire" type="text" class="form-control"
+							<h2 class="widget-title">製造日期</h2>
+							<form:input path="makeDate" type="text" class="form-control"
+								placeholder="製造日期" />
+						</div>
+						<div class="form-group col-md-4">
+							<h2 class="widget-title">保存期限(天)</h2>
+							<form:input path="expire" type="number" min="0" class="form-control"
 								placeholder="保存期限" />
 						</div>
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">上架日期</h2>
-							<form:input path="shelvesDate" type="text" class="form-control"
+							<form:input path="shelvesDate" type="date" class="form-control"
 								placeholder="上架日期" />
 						</div>
-					<div class="form-group col-md-4">
-						<h2 class="widget-title">商品描述</h2>
-						<form:textarea path="description" type="text" class="form-control"
- 							placeholder="商品描述" />
-					</div>
+						<div class="form-group col-md-6">
+							<h2 class="widget-title">商品規格</h2>
+							<form:textarea path="description" type="text" class="form-control" rows="5"
+	 							placeholder="商品描述" />
+						</div>
+						<div class="form-group col-md-6">
+							<h2 class="widget-title">注意事項</h2>
+							<form:textarea path="notice" type="text" class="form-control" rows="5"
+	 							placeholder="注意事項" />
+						</div>
 					</div>
 						<div class="form-row">
 							<form id="imgur">
 								<h2 class="widget-title"><span>圖片</span></h2>
 								<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
 							</form>
-							<input id="btn1" type="submit" class="btn btn-primary" value="確定" >
+							<input id="btn1" type="submit" class="btn btn-primary" value="確定商品上架" >
 						</div>
 				</form:form>
+				</div>
 			</div>
 		</div>
 	</section>

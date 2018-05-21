@@ -26,14 +26,18 @@ public class AcceptRecordController {
 	@Autowired
 	AcceptRecordService acceptRecordService;
 	
-	@RequestMapping(value = "/halfway/toacceptrecord/{id}") // findAll
-	public String listAcceptRecord(@PathVariable Long id, Model model) {
+	// 轉跳至認養程序詳情頁面
+	@RequestMapping(value = "/halfway/toacceptrecord/{role}/{id}") // findAll
+	public String listAcceptRecord(@PathVariable String role, @PathVariable Long id, Model model) {
 		// 設定當前會員
 		Member current = memberService.getNewCurrentMember();
 		model.addAttribute("currentMember", current);
 		
+		model.addAttribute("role", role);
 		model.addAttribute("id", id);
 		return "/halfway/adoptionDetail";
 	}
+	
+	
 	
 }

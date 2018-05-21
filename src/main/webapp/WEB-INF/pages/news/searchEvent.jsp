@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<!doctype html>
-<html lang="en">
-
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
@@ -39,7 +37,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product Detail</title>
+<title>Animour</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -66,91 +64,71 @@
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
-    </script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
-    </script>
-    <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>最新消息</title>
 </head>
 <body>
-
-	<!-- Header area wrapper starts -->
-	<header id="header-wrap">
-		<jsp:include page="../navbar.jsp"></jsp:include>
-	</header>
-	<!-- Header-wrap Section End -->
-
-	<!-- Page Header -->
+<header id="header-wrap">
+		<!-- Navbar Starts -->
+	<jsp:include page="../navbar.jsp"></jsp:include>
+		<!-- Navbar ends -->
+		<!-- Page Header -->
 	<div class="page-header-section">
 		<div class="container">
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>商品詳情</h2>
+						<h2>活動詳情</h2>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Page Header End -->
+	</header>
+		<!-- Container Starts -->
+<div class="container">
+	<div>
+	<form>
+		<p>活動名稱：${oneNews.subject}<br>活動日期：${oneNews.event_date}</p>
+		<p>活動地點：${oneNews.address}<br>活動內文：${oneNews.content}</p>
+	</form>
+	</div>
+	<hr>
 
-	<!-- Page Content Start 重複的內容開始 -->
-	<section class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-5 about2-intro-image">
-					<img class="card-img-top"
-						src="${product.images}" width="100px" alt="${product.name}">
+	<h3>查詢所有活動資料</h3>
+	<table>
+		<c:forEach var="news" items="${allNews}">
+		<p>活動名稱：${news.subject}<br>活動日期：${news.event_date}</p>
+		<p>活動地點：${news.address}<br>
+		<hr>
+		</c:forEach>
+	</table>
+	<hr>
+	
+<!-- 	<h3>刪除一筆活動資料</h3> -->
+<%-- 		<p>刪除編號：${delete} 一筆資料</p> --%>
+<!-- 	<hr> -->
+
+	<h3>新增一筆活動資料</h3>
+	<div>
+		<p>活動編號：${insertNews.seqno}<br>活動名稱：${insertNews.subject}</p>
+		<p>活動內容：${insertNews.content}<br>發布時間：${insertNews.publishTime}</p>
+		<p>結束時間：${insertNews.publishTimeEnd}<br>發布人：${insertNews.createUser}</p>
+	</div>
+	<hr>
+
+	<h3>修改一筆活動資料</h3>
+	<div>
+		<p>活動編號：${updateNews.seqno}<br>活動名稱：${updateNews.subject}</p>
+		<p>活動內容：${updateNews.content}<br>更新使用者：${updateNews.updateUser}</p>
+		<p>更新時間：${updateNews.updateTime}</p>
+		
+	</div>
+
+					<!-- Service-Block-000 Item Ends -->
 				</div>
-				<div class="col-md-6">
-					<h3 class="small-title">品名:&nbsp;&nbsp;&nbsp;${product.name}</h3>
-					<div id="default-tab" class="mt-10">
-						<ul class="nav nav-tabs" role="tablist">
-							<li class="nav-item"><a class="nav-link active" href="#productDetail"
-								aria-controls="productDetail" role="tab" data-toggle="tab">商品詳細介紹</a></li>
-							<li class="nav-item"><a class="nav-link" href="#productSepc"
-								aria-controls="productSepc" role="tab" data-toggle="tab">商品規格</a></li>
-							<li class="nav-item"><a class="nav-link" href="#precattention"
-								aria-controls="precattention" role="tab" data-toggle="tab">商品特色</a></li>
-						</ul>
-
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div role="tabpanel" class="tab-pane active" id="productDetail">
-								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
-								<p class="card-text" style="padding: 0px">編號：${product.id}</p>
-								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
-								<p class="card-text" style="padding: 0px">種類：${product.classify.name}</p>
-								<p class="card-text" style="padding: 0px">價格：${product.price}</p>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="productSepc">
-								<p>${product.description}</p>
-							</div>
-							<div role="tabpanel" class="tab-pane" id="precattention">
-								<div role="tabpanel" class="tab-pane" id="precattention">
-									<p>${product.notice}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div>
-						<a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span> 返回
-						</a>
-						<a href="/cart/buy/${product.id}" class='btn btn-warning btn-large'> <span
-									class='glyphicon-shopping-cart glyphicon'></span> 加入購物車
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<!-- 重複的內容結束 -->
-
+				<!-- Container Ends -->
 	<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
@@ -176,7 +154,7 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
+	
 
 </body>
-
 </html>

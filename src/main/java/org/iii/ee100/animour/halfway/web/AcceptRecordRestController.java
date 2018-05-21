@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.halfway.web;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.iii.ee100.animour.common.entity.PageInfo;
@@ -26,7 +27,7 @@ public class AcceptRecordRestController {
 
 	@Autowired
 	AnimalService animalService;
-	
+
 	@Autowired
 	AcceptRecordService acceptRecordService;
 
@@ -66,10 +67,61 @@ public class AcceptRecordRestController {
 	}
 
 	// 查詢一筆
-	@RequestMapping(value = { "/halfway/acceptrecord/{id}" }, method = RequestMethod.GET, produces = { "application/json",
-			"application/xml" })
+	@RequestMapping(value = { "/halfway/acceptrecord/{id}" }, method = RequestMethod.GET, produces = {
+			"application/json", "application/xml" })
 	public AcceptRecord oneAcceptRecord(@PathVariable Long id) {
 		AcceptRecord ad = acceptRecordService.getOne(id);
 		return ad;
 	}
+
+	// 設定 depositMember 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdepositMemberTrue/{id}") // findAll
+	public ResponseEntity<?> setdepositMemberTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDepositMember(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDepositMemberDate(ts);
+		acceptRecordService.update(ad);
+
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	// 設定 depositOwner 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdepositOwnerTrue/{id}") // findAll
+	public ResponseEntity<?> setdepositOwnerTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDepositOwner(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDepositOwnerDate(ts);
+		acceptRecordService.update(ad);
+
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	// 設定 doneMember 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdoneMemberTrue/{id}") // findAll
+	public ResponseEntity<?> setdoneMemberTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDoneMember(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDoneMemberDate(ts);
+		acceptRecordService.checkProcessEnd(ad);
+
+		acceptRecordService.update(ad);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	// 設定 doneOwner 為 true，id 為認養紀錄 id
+	@RequestMapping(value = "/halfway/setdoneOwnerTrue/{id}") // findAll
+	public ResponseEntity<?> setdoneOwnerTrue(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setDoneOwner(true);
+		Timestamp ts = new Timestamp(System.currentTimeMillis());
+		ad.setDoneOwnerDate(ts);
+		acceptRecordService.checkProcessEnd(ad);
+		
+		acceptRecordService.update(ad);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
 }

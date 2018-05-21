@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.member.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Transient;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,12 +28,14 @@ public class MemberRestfulController {
 	@Autowired
 	MemberService memberService;
 
+	//admin
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<Member> findAll() {
 		List<Member> members = memberService.getAll();
 		return members;
 	}
 
+	
 	@RequestMapping(value = "/api/member/{account}", method = RequestMethod.GET, produces = { "application/json" })
 	public Member findByAccount(@PathVariable("account") String account) {
 		return memberService.getOneByAccount(account);
@@ -50,8 +54,7 @@ public class MemberRestfulController {
 //
 //	}
 
-	
-	
+	//新增朋友	
 	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
 	public ResponseEntity<?> addFriend(MyFriend friend) {
 		friend.setMember(memberService.getNewCurrentMember());
@@ -67,6 +70,7 @@ public class MemberRestfulController {
 
 	}
 	
+	//homepage (加好友狀態)
 	@RequestMapping(value="/member/friend/{Id}",method = RequestMethod.GET, produces = { "application/json" })
 	public MyFriend heartStatus(@PathVariable String Id){
 		Long friendId=Long.valueOf(Id);
@@ -84,7 +88,7 @@ public class MemberRestfulController {
 
 		}
 	}
-
+	
 	@Autowired	
 	EmailService emailService;
 	
@@ -97,16 +101,15 @@ public class MemberRestfulController {
 	
 	@Transient
 	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST,consumes={ "application/json" })
-	public ResponseEntity<?> newMail(ManyMail manyMail) {
-		System.out.println("manyMail01"+manyMail.getSubject());
-		System.out.println("manyMail02"+manyMail.getContext());
-		System.out.println("manyMail03"+manyMail.getAccount());
-
-		
-		for(String account: manyMail.getAccount()) {
-		String email=memberService.getOneByAccount(account).getEmail();
-		emailService.sendEmail(email, manyMail.getSubject(), manyMail.getContext());
+	public ResponseEntity<?> newMail(@RequestBody ManyMail manyMail) {
+		if(! manyMail.getAccounts().isEmpty() && manyMail.getAccounts().size()>0) {
+			for (String account : manyMail.getAccounts()) {
+				String email = memberService.getOneByAccount(account).getEmail();
+				emailService.sendEmail(email, manyMail.getSubject(), account+"您好\n"+manyMail.getContext()+"\n\n\t\t\t\tAnimour");
+			}
+			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.OK);}
+		else {
+			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<ManyMail>(manyMail,HttpStatus.OK);
 	}
 }

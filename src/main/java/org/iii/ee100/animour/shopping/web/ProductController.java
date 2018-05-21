@@ -2,6 +2,7 @@ package org.iii.ee100.animour.shopping.web;
 
 import java.util.List;
 
+import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.shopping.entity.Product;
 import org.iii.ee100.animour.shopping.service.ClassifyService;
@@ -78,13 +79,19 @@ public class ProductController {
 	public String input(Model model) {
 		model.addAttribute("Classifies", classifyService.getAll());
 		model.addAttribute("product", new Product());
-		return "/shopping/Management";
+//		return "/shopping/Management";
+//		return "/shopping/TestCRUDindex";
+		return "/shopping/addProduct";
 	}
 
 	// Insert Product
 	@RequestMapping(value = "/product/insert", method = { RequestMethod.POST })
 	public String insertProduct(@ModelAttribute(name = "product") Product product, Model model) {
+		System.err.println(product.getMakeDate());
+		System.out.println(product);
 		try {
+			Member currentMember = memberService.getNewCurrentMember();
+			product.setMember(currentMember);
 			productService.insert(product);
 		} catch (Exception e) {
 			e.printStackTrace();

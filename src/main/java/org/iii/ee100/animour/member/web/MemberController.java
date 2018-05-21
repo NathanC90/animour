@@ -1,6 +1,7 @@
 ﻿package org.iii.ee100.animour.member.web;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Password;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.MyFriend;
 import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +67,7 @@ public class MemberController {
 		}		
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
-			member.setStatus(1);
+			member.setStatus(true);
 			if(member.getSignature()==null) {
 				member.setSignature(member.getAccount()+" say hi.");
 			}
@@ -139,7 +141,7 @@ public class MemberController {
 		return "redirect:/admin/user";// 回到主頁
 	}
 
-	// 列出(全部)會員
+	// 列出(全部)會員-admin
 	@RequestMapping("/users")
 	public String findAll() {
 		return "/member/users";// 先傳送頁面
@@ -163,6 +165,15 @@ public class MemberController {
 		//System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 		
+		
+		List<Member> memberList=new ArrayList<>();
+		List<MyFriend> list=memberService.findByMemberIdAndLove(userDetails.getId(), true);		
+		for (MyFriend friend:list) {
+			Member member =memberService.getOne(friend.getFriendId());
+			memberList.add(member);
+		}
+		model.addAttribute("friendlist", memberList);
+
 		return "/member/homepage";
 	}
 	
@@ -191,6 +202,7 @@ public class MemberController {
 	public String admin() {
 		return "/admin/member/admin_copy2a";
 	}
+    
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)

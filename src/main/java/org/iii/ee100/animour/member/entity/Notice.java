@@ -19,7 +19,11 @@ public class Notice extends GenericEntity{
 
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
-	private Member member;
+	private Member member;//被通知
+	
+	@Column(name = "WHO")
+	private Long who;//發通知
+
 	
 	@Column(name = "NOTICETIME")
 	private java.sql.Timestamp noticeTime;

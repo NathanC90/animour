@@ -96,10 +96,11 @@
 	<form:form method="POST" modelAttribute="product" enctype="multipart/form-data">
 		商品名稱:<form:input path="name"/><br>
 		商品價格:<form:input path="price"/><br>
-		商品數量:<form:input path="quantity"/><br>
+		商品數量:<form:input path="stock"/><br>
 		製造日期:<form:input path="makeDate"/><br>
 		保存期限:<form:input path="expire"/><br>
 		上架日期:<form:input path="shelvesDate"/><br>
+		上架描述:<form:input path="description"/><br>
 		商品類別:<form:select path="classify" items="${Classifies}" itemLabel="name" itemValue="id"></form:select>
 		<br>
 			<input type="submit" value="確定">
