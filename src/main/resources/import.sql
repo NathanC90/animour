@@ -280,46 +280,49 @@ insert into classify (name) values('寵物用品');
 insert into classify (name) values('寵物玩具');
 insert into classify (name) values('其它');
 
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id, images)
-values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-5-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 1, 2, 'https://i.imgur.com/ukAobd2.jpg');
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 1, 3);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365, '2018-3-3', 'dddddddddddddddddddd', 1, 5);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150, '2018-3-9', 'eeeeeeeeeeeeeeeee', 1, 2);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365, '2018-2-10', 'fffffffffffffffff', 1, 3);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100, '2018-2-15', 'gggggggggggggggg', 1, 4);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90, '2018-3-22', 'hhhhhhhhhhhhhh', 1, 4);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180, '2018-4-2', 'iiiiiiiiiiiiii', 1, 5);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 1, 2);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 1, 2);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 391, 100, '2018-3-15 12:00:00', 365, '2018-4-8', 'bbbbbbbbbbbbbbbbbbbbbbbbb', 2, 3);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家XJ31 超小型幼犬 1.5 公斤', 429, 88, '2018-3-15 12:00:00',180, '2018-3-5', 'ccccccccccccccccccc', 2, 4);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 462, 76, '2018-3-15 12:00:00',365, '2018-3-3', 'dddddddddddddddddddd', 2, 5);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRIA21 小型室內成犬 1.5 公斤', 462, 75, '2018-3-15 12:00:00',150, '2018-3-9', 'eeeeeeeeeeeeeeeee', 2, 2);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 553, 36, '2018-3-15 12:00:00',365, '2018-2-10', 'fffffffffffffffff', 3, 3);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('法國皇家PRP30 貴賓成犬 1.5 公斤', 481, 62, '2018-3-15 12:00:00',100, '2018-2-15', 'gggggggggggggggg', 3, 4);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 672, 67, '2018-3-15 12:00:00',90, '2018-3-22', 'hhhhhhhhhhhhhh', 3, 2);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('愛肯拿農場享宴-挑嘴無穀犬 放養雞肉火雞肉 1.2 公斤', 675, 53, '2018-3-15 12:00:00',180, '2018-4-2', 'iiiiiiiiiiiiii', 3, 5);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('Natural Balance低敏無穀地瓜鹿肉全犬 4.5 磅', 833, 92, '2018-3-15 12:00:00',150, '2018-2-14', 'jjjjjjjjjj', 4, 4);
-insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, classify_id, member_id)
-values ('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1488, 83, '2018-3-15 12:00:00',360, '2018-2-25', 'kkkkkkkkkkkk', 4, 3);
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('柏萊富功能性全齡護膚亮毛配方(羊肉+糙米) 5 磅', 714, 26, '2018-3-15 12:00:00', 365, '2018-5-8', '成分：濃縮羊肉、糙米、小米、研磨高粱穀粒、濃縮鯰魚肉、去殼燕麥、芥花油、馬鈴薯蛋白、番茄渣、天然風味劑、乾燥甜菜漿、胡蘿蔔、芹菜、甜菜、荷蘭芹、萵苣、水田芥、菠菜、雞脂肪(與維生素E混合)、卵磷脂 、雞軟骨、蘋果 、南瓜粉、迷迭香粉、研磨百里香、研磨小茴香、芥菜籽粉、碎紅辣椒、蔓越莓、海帶粉、嗜乳酸桿菌、乳酸菌、絲蘭萃取、果寡糖、牛磺酸、葡萄糖胺、有機乾海藻、各種必需維生素及礦物質。營養分析：蛋白質24.5%以上、脂肪14.0%以上、纖維3.5%以下、水份10.0%以下、Ω6脂肪酸2.45%以上、Ω3脂肪酸1.0%以上、葡萄糖胺440ppm以上、軟骨素70ppm以上、益生菌31m CFU/lb、卡路里3、720 kcal/kg', '●優質天然羊肉，有效預防食物過敏●精選食材，有效保護弱敏肌膚及敏感腸胃●高含量亞麻油酸，有效護膚亮毛●豐富蔬果精華，提升抗氧化強化免疫力●益生菌與果寡糖，有效保健腸道●葡萄糖胺及軟骨素，維護關節健康', 1, 2, 'https://i.imgur.com/2cSsNXJ.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', 646, 28, '2018-3-15 12:00:00',280, '2018-3-5', '濃縮雞肉、糙米、小米、去殼燕麥、雞脂肪(與維生素E混合)、研磨高粱穀粒、乾燥甜菜漿、濃縮鯡魚肉、米糠、胡蘿蔔、芹菜、甜菜、荷蘭芹、萵苣、水田芥、菠菜、蛋製品、乾燥啤酒酵母、天然風味劑、全粒亞麻籽、雞軟骨、鹽、鯡魚油、DL蛋胺酸、卵磷脂、氯化鉀、L離胺酸、迷迭香粉、研磨百里香、研磨小茴香、芥菜籽粉、碎紅辣椒、蔓越莓、蘋果、南瓜粉、乳酸菌、嗜乳酸桿菌、絲蘭萃取、果寡糖、牛磺酸、葡萄糖胺、有機乾燥海藻、、各種必需維生素及礦物質。營養分析：蛋白質24.5%以上、脂肪14.0%以上、纖維3.0%以下、水份10.0%以下、Ω6脂肪酸2.8%以上、Ω3脂肪酸0.55%以上、葡萄糖胺435ppm以上、軟骨素70ppm以上、益生菌31m CFU/lb、卡路里3、751 kcal/kgNatural Balance 自然平衡低敏無穀地瓜鮭魚 (小顆粒小型犬) 4.5 磅 (狗飼料)有些愛犬也許會對一般常用的蛋白，碳水化合物及食品添加劑極度敏感.過敏反應可能導致腸激躁，胃部不適，及一些皮膚問題. Natural Balance已經為這些因食物過敏的愛犬設計了特殊低敏無穀地瓜規于全犬配方.我們的地瓜鮭魚配方含有新鮮鮭魚，這是大部分狗糧少用的獨特動物性蛋白來源;新鮮地瓜，這也是一般狗糧中不常用的獨特碳水化合物來源;以及有效的天然原料，可幫助愛犬重建免疫系統.此配方沒有忽略任何細節！諸如原料，原料的來源，營養價值，口感，以及對糞便及毛髮的影響。', '●高優質全天然雞肉蛋白質，最容易消化吸收●不含玉米、小麥、黃豆成份，低便量低便臭●高含量亞麻油酸，有效護膚亮毛●豐富蔬果精華，提升抗氧化強化免疫力●益生菌與果寡糖，有效保健腸道●葡萄糖胺及軟骨素，有效維護關節健康。', 1, 3, 'https://i.imgur.com/CPxzWvW.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', 880, 55, '2018-3-15 12:00:00',365, '2018-3-3', '地瓜 、 鮭魚 、 鮭魚粉 、 芥花油 、 馬鈴薯纖維 、 天然香料 、 氯化鈉 、 鮭魚油 (DHA 來源 )、 亞麻籽 、 氯化鉀 、 蛋氨酸 、 氯化膽鹼 、 天然混合維生素 E、 牛磺酸 、 維生素 E 補充 、 鐵蛋白 、 鋅蛋白 、 銅蛋白 、 硫酸亞鐵 、 硫酸鋅 、 硫酸銅 、 碘化鉀 、 維生素 B1、 銅蛋白 、 氧化錳 、 維生素 C、 維生素 A 補充 、 維生素 H、 維生素 B3、 維生素 B5、 硫酸錳 、 亞硒酸鈉 、 維生素 B6、 維生素 B12 補充 、 維生素 B2、 維生素 D3 補充 、 維生素 B9 。天然蛋白質/最低含量 21.0 ％天然脂肪/最低含量 10.0 ％天然纖維/最高含量 4.5 ％水分/最高含量 10.0 ％鈣/最低含量 1.0 ％磷/最低含量 0.8 ％ Omega 3脂肪酸/最低含量 0.75 ％Omega 6脂肪酸/最低含量 1.4 ％ DHA不飽和脂肪酸/最低含量 0.01％卡路里 特殊低敏無穀地瓜鮭魚全犬配方-大顆粒 每杯(8oz)內含325大卡 特殊低敏無穀地瓜鮭魚全犬配方-小顆粒 每杯(8oz)內含335大卡※一杯約飼料重114公克', '●新鮮鮭魚：一般狗糧不常用的獨特優質蛋白質來源●新鮮地瓜：獨特優質碳水化合物，含有豐富的鉀及易消化的能量來源●芥花油：含有少量飽和脂肪酸及大量的不飽和脂肪酸， 優質的Omega 3 及 Omega 6 脂肪酸.●鮭魚油：含豐富的Omega 3， 是DHA的天然來源●亞麻籽：極佳的Omega 3 脂肪酸來源●絕不添加任何人工防腐劑，香料，色素，漂白原料，乳製品或葵瓜子油；顏色差異是正常現象。', 1, 5, 'https://i.imgur.com/VFy8b1a.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', 340, 55, '2018-3-15 12:00:00',365, '2018-3-3', '●無穀系列 含 70%高品質肉、30%水果蔬菜，保健食品添加並不含任何穀物，不使用任何下雜肉主要原料、添加物 (每公斤含量)：新鮮去骨雞肉 (30%)、脫水雞肉 (28%)、馬鈴薯、雞脂肪、脫水全蛋、新鮮鯡魚、脫水鯡魚、魚油、水解動物蛋白、豌豆纖維、胡蘿蔔、苜蓿、菊糖、果寡醣、甘露寡醣、石榴 (0.5%)、脫水蘋果、菠菜、洋車前子 (0.3%)、黑醋栗、脫水甜橙、藍莓、氯化鈉、啤酒酵母、薑黃根 (0.2%)、葡萄糖胺、硫酸軟骨素、金盞花萃取物 (葉黃素的來源)、維生素 A、維生素 D3、維生素 E (天然抗氧化劑)、維生素 C、菸鹼酸、泛酸、維生素 B2、維生素 B6、維生素 B1、生物素、葉酸、維生素 B12、氯化膽鹼、β-胡蘿蔔素、胺基酸螯合鋅、胺基酸螯合錳、胺基酸螯合亞鐵、胺基酸螯合銅、硒代甲硫胺酸、DL-甲硫胺酸、牛磺酸、左旋肉鹼、蘆薈萃取物、綠茶萃取物、迷迭香萃取物。營養成份：粗蛋白質 44%、粗脂肪 20%、粗纖維 1.8%、粗灰分 8.5%、水分 8%、鈣 1.5%、磷 1.3%、鎂 0.09%、Omega6 3.3%、Omega3 0.9%、DHA 0.5%、EPA 0.3%、牛磺酸 0.4%、葡萄糖胺 1200mg/kg、軟骨素 900mg/kg、代謝能 3930kcal/kg。適用寵物種類：本品為12月齡以下之幼貓飼料；或可作為懷孕、哺乳母貓之營養補充飼料。產地：義大利。', '法米納不使用基改食材，食材由產地直送安全無顧慮新鮮肉塊無肉粉，品質好又健康即時生產、新鮮美味真空鍍膜機，營養完整包覆不流失使用雙螺桿擠出機，提高 25% 消化率，營養更好吸收', 1, 2, 'https://i.imgur.com/OCwi2XK.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('紐頓 T24 無穀貓 鮭魚 1 公斤 (貓飼料)', 702, 36, '2018-3-15 12:00:00',365, '2018-2-10', '成份：去骨鱒魚、鮭魚粉、鯡魚粉、豌豆、扁豆、鷹嘴豆、菜籽油、去骨鮭魚、鮭魚油、天然素食香料調味、胡蘿蔔、蘋果、冬南瓜、奎奴亞藜種子、氯化膽鹼、蔓越橘、藍莓、黑莓、羽衣甘藍、菊苣根 (益生元) 、維生素和礦物質、牛磺酸、絲蘭、菠菜、芹菜種子、薄荷、洋甘菊、薑黃、生薑、乾迷迭香。成份分析：粗蛋白 (最低含量) 36.0%、粗脂肪 (最低含量) 17.0%、粗纖維 (最低含量) 5.5%、水分 (最低含量) 10.0%、粗灰分 (最高含量) 6.5%、鈣 (最低含量) 0.90%、磷 (最低含量) 0.70%、Omega-3 (最低含量) 1.30%、Omega-6 (最低含量) 2.80%。', 'T24 Nutram鱒魚&鮭魚全能無穀天然貓糧是一個採用草本概念，多元而富含營養配方的食譜，從裡到外改善你寵物的健康。 我們的總體方針始於天然健康的草本成分，這是可斷言的，如添加低血糖的青豆，扁豆和鷹嘴豆作為健康的碳水化合物和優質蛋白質的來源。這一點，再添加薑黃，薑黃素的來源，以及鮭魚油，含有豐富的Omega-3脂肪酸，提供免疫力提高性能，以幫助支持一個強大的免疫系統。 Nutram的最佳草本組合更進一步，提供蔓越莓，自然酸化劑，以及芹菜種子，幫助維持健康的液面高度，適當的pH值和溫和的灰分含量攜手合作，以支持一個健康的膀胱。你可以相信你的寵物所食用的食物對身體是有助益的，健康的並且是寵物健全生活方式所不可或缺的一部分。', 1, 3, 'https://i.imgur.com/hcBDsLD.jpg');
+
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('活力滋 成犬 雞肉體態強化配方 4 磅 (狗飼料)', 702, 62, '2018-3-15 12:00:00',100, '2018-2-15', '成分：雞肉粉、糙米、白米、燕麥粉、雞脂肪（添加綜合維生素E保存）、燕麥、豬肉粉、乾燥的甜菜根糖漿、亞麻籽、南瓜、蔓越莓、蘋果、乾燥啤酒酵母、鮭魚油、木瓜、藍莓、石榴、菊糖、乾海藻、維生素(A、B1、B2、B3、B5、B6、B7、B12、C、D3、E)、葡萄糖胺、葉酸、肉桂粉、茴香粉、薄荷粉、絲蘭萃取物、迷迭香萃取物、綠茶萃取物、綠薄荷萃取物。保證分析：蛋白質 25％以上、脂肪 15％以上、纖維 4％以下、水分 10％以下、鈣 1.3％以上、磷 0.9％以上、維生素A 22、000 IU / kg以上、維生素E 165 IU / kg以上、Omega-6 3.5％以上、Omega-3 0.7％以上、萄糖胺 340 mg / kg以上、總乳酸菌 100、000、000 CFU / 磅以上、總芽孢桿菌 7、000、000 CFU / 磅以上。', '●嚴選蛋白質：採用極易消化雞肉蛋白質，均衡維持體態●南瓜及木瓜富含天然纖維，維護健康的消化道系統●藍莓及石榴天然的抗氧化劑，並可維持細胞的健康', 1, 2, 'https://i.imgur.com/FEiDgqe.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('法國皇家 E42 挑嘴貓營養滿分配方 2 公斤 (貓飼料)', 676, 67, '2018-3-15 12:00:00',90, '2018-3-22', '脫水禽肉、玉米、分離大豆蛋白、玉米麩質、小麥、動物脂肪、植物纖維、水解動物蛋白、甜菜漿、礦物質、大豆油、琉璃苣油。添加營養素(每公斤)：維生素A：25000IU、維生素D3：1000IU、E1(鐵)：36毫克、E2(碘)：2.8毫克、E4(銅)：4毫克、E5(錳)：47毫克、E6(鋅)：156毫克、E8(硒)：0.06毫克。– 添加抗氧化物。營養分析：42%、脂肪：15%、灰分：8.5%、粗纖維3.4%、碳水化合物：25.6%。產地：法國', '營養滿分：蛋白質、碳水化合物和脂肪的完美比例，能滿足貓咪體內的需求。維持理想體重：加強營養滿分的同時提供適當的熱量，以維持理想體重。使毛髮有柔亮有光澤：結合生物素、琉璃苣油等活性複合物增加皮膚和毛髮的養分，使毛髮有柔亮有光澤。',1, 2, 'https://i.imgur.com/I3KhPDj.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('柏萊富 室內貓全齡優活配方(雞肉+糙米) 13.23 磅', 1785, 53, '2018-3-15 12:00:00',180, '2018-4-2', '濃縮雞肉、糙米、小米、研磨高粱穀粒、去殼燕麥、珍珠麥、胡蘿蔔、芹菜、甜菜、荷蘭芹、萵苣、水田芥、菠菜、乾燥甜菜漿、米糠、天然風味劑、雞脂肪(與維生素E混合)、乾燥啤酒酵母、蛋製品、濃縮鯡魚肉、雞軟骨、全粒亞麻籽、卵磷脂、鹽、DL蛋胺酸、鯡魚油、氯化鉀、L離胺酸、迷迭香粉、研磨百里香、研磨小茴香、芥菜籽粉、碎紅辣椒、蔓越莓、蘋果、南瓜粉、乳酸菌、嗜乳酸桿菌、絲蘭萃取、果寡糖、牛磺酸、葡萄糖胺、有機乾燥海藻、各種必需維生素及礦物質。營養分析：蛋白質20.5%以上、脂肪6.5%~9.0%以上、纖維4.0%以下、水份10.0%以下、Ω6脂肪酸1.4%以上、 Ω3脂肪酸0.4%以上、葡萄糖胺440ppm以上、軟骨素90ppm以上、益生菌31m CFU/lb、卡路里3、335 kcal/kg', '全齡階段貓咪●高優質全天然雞肉蛋白質，最容易消化吸收●適當的脂肪含量，幫助貓咪擁有健康的體態●不含玉米、小麥、黃豆成份，低便量低便臭●高含量亞麻油酸，有效護膚亮毛●豐富蔬果精華，提升抗氧化強化免疫力●濃縮蔓越莓精華，維護泌尿道的健康',1, 2, 'https://i.imgur.com/k1VVe1J.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('活力滋 無穀成犬 雞肉體重管理配方 4 磅 (狗飼料)', 882, 92, '2018-3-15 12:00:00',150, '2018-2-14', '成分：雞肉粉、馬鈴薯、豌豆、扁豆、乾燥的甜菜根糖漿、豌豆纖維、雞脂肪（添加綜合維生素E保存）、亞麻籽、脫水苜蓿粉、南瓜、蔓越莓、蘋果、乾燥啤酒酵母、木瓜、藍莓、石榴、菊糖、左旋肉鹼、乾海藻、維生素(A、B1、B2、B3、B5、B6、B7、B12、C、D3、E)、葡萄糖胺、葉酸、肉桂粉、茴香粉、薄荷粉、絲蘭萃取物、迷迭香萃取物、綠茶萃取物、綠薄荷萃取物。保證分析：蛋白質 26％以上、脂肪 8％以上、纖維 8.5％以下、水分 10％以下、鈣 0.8％以上、磷 0.6％以上、維生素A 22、000 IU / kg以上、維生素E 165 IU / kg以上、Omega-6 2.25％以上、Omega-3 0.75％以上、葡萄糖胺 325 mg / kg以上、硫酸軟骨素 250 mg / kg以上、左旋肉鹼 150 mg / kg以上、總乳酸菌 100、000、000 CFU / 磅以上、總芽孢桿菌 7、000、000 CFU / 磅以上。', '無穀再升級連續十五年以上獲得美國WDJ協會推薦', 1, 2, 'https://i.imgur.com/VbMUXr0.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', 1170, 83, '2018-3-15 12:00:00',360, '2018-2-25', '成份：去骨鱒魚、鮭魚粉、豌豆、鯡魚粉、鷹嘴豆、扁豆、菜籽油、去骨鮭魚、天然素食香料調味、鮭魚油、蘋果、胡蘿蔔、氯化膽鹼、冬南瓜、奎奴亞藜種子、曼越橘、藍莓、黑莓、羽衣甘藍、海帶、菊苣根 (益生元) 、絲蘭、綠唇貽貝、菠菜、芹菜種子、薄荷、洋甘菊、薑黃、生薑、乾迷迭香。營養分析：粗蛋白 (最低含量) 36.0%、粗脂肪 (最低含量) 17.0%、粗纖維 (最高含量) 5.0%、水分 (最高含量) 10.0%、粗灰分 (最高含量) 6.50%、鈣 (最低含量) 1.0%、磷 (最低含量) 0.80%、Omega-3 (最低含量) 1.90%、Omega-6 (最低含量) 2.9%。', '嗜口性極佳強化免疫力促進良好消化美國低升糖認證只選用新鮮肉品為主要動物性蛋白質來源堅持不使用廉價的馬鈴薯或馬鈴薯粉等高升糖成份加拿大當地新鮮食材製作全犬種適用減少便量、便臭對於現今社會上經驗豐富的飼主們，對於飼料的需求不在只是簡單的選擇全天然成分而已而是要求更多，因此Nutram提供 21種最佳草本組合，多元而富含營養配方的食譜由內而外的全面性改善寵物的健康。最佳組合確保寵物獲得每種成分的最大營養元素，再加上他們的組合優勢，確保寵物獲得每種組合相乘的最大健康益處。有食材都是自然保存純天然無任何激素食譜成分製成。完全不添加任何的玉米，小麥和大豆。特別添加薑黃及生薑、增強免疫力、提昇代謝率、及預防腫瘤發生機率。', 1, 2, 'https://i.imgur.com/SuuC0kV.jpg');
+
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('毛孩精選 HOOPET 呆呆鳥發聲玩具 - 黑', 168, 100, '2018-3-15 12:00:00', 365, '2018-4-8', '規格：35 cm 材質：玉米絨', '搞怪溫柔發聲不擾民！陪玩又陪睡的玩具～易發聲持續吸引狗狗注意力', 3, 2, 'https://i.imgur.com/lSQYOzk.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('毛孩精選【解渴神器】水壺+水碗2合1', 299, 88, '2018-3-15 12:00:00',180, '2018-3-5', '材質：食品級 ABS、食品級透明PC、醫用級密封圈 尺寸：杯身高度 208 mm 杯身直徑 75 mm 容量：350 ml', '寬水槽 - 適合各種狗狗食品級安全材質防水防漏 - 攜帶更安心防摔耐用 - 戶外更放心', 2, 3, 'https://i.imgur.com/k6cinAF.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('BONBONPET 髒臭腳腳的剋星 ! 草本抗菌清潔慕斯', 350, 76, '2018-3-15 12:00:00',365, '2018-3-3', '成分：純水、椰子油系界面活性劑、檸檬酸、抑菌劑、冷壓初榨橘子油、何首烏萃取液、益母草萃取液、生薑萃取液、人生萃取液、仙人掌萃取液、維他命 E、乳化劑、保濕劑 規格：150 ml 產地：台灣', '◎ 首創愛心造型矽膠慕斯刷頭，單手按壓就可直接刷洗清潔，超方便！◎ 草本營養精華成分，刷洗後不用沖水！直接拿乾毛巾擦拭即可◎ 瞬間除臭效果超好！針對趾縫或寵物局部清潔，抗菌、潤毛及保護皮膚◎ 看得見的髒污，看不見的細菌，只要輕輕刷，通通清潔溜溜◎ 不刺激、不流淚、不過敏、不含螢光劑，如果舔到也ok！', 2, 2, 'https://i.imgur.com/PEENJHF.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('Mr. bear 寵寵熊半封閉開放式單層貓砂盆貓便盆', 590, 75, '2018-3-15 12:00:00',150, '2018-3-9', '產品尺寸：56cmX40cmX25cm', '25cm 超高防護蓋—兩片式雙層設計，更高防護，防貓咪帶出貓砂。可分離式設計—採用可拆卸雙層設計，清潔及搬運貓砂盆更為方便。弧形防污保護—弧形側邊及防落砂踏板可以防止貓咪帶出貓砂。大尺寸空間—寬鬆的空間尺寸讓各種體型的貓咪都可以活動自如。主動落砂踏板及大號貓砂鏟—讓貓咪舒適如廁。', 2, 2, 'https://i.imgur.com/0Eetpzu.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('IRIS 犬貓外出多功能兩用硬殼提籃(白色)', 1180, 36, '2018-3-15 12:00:00',365, '2018-2-10', '尺寸：48(W) x 32.1(D) x 30(H)cm', '◆透明頂部及側部可隨時觀察寵物舉動 ◆可讓寵物欣賞外面的風景 ◆設有卡扣可繫上汽車安全帶 ◆固定寵物位置確保行車安全 ◆頂部側部都設有門方便寵物進出 ◆平時在家可用作寵物屋，給寵物安全感', 2, 2, 'https://i.imgur.com/BWiRaj7.jpg');
+
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('AFU 拉咬球 (顏色隨機出貨)', 69, 62, '2018-3-15 12:00:00',100, '2018-2-15', '尺寸：約 30 cm 重量：700 g 材質：棉繩 顏色：隨機出貨不挑色 注意事項：不可用機器浸泡清洗、避免受潮', '★ 啃咬，訓犬。★ 優質硬化棉繩，磨牙耐咬。★ 安全無毒材質使用，玩樂更安心。', 3, 2, 'https://i.imgur.com/fvIExGo.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('Petstages 耐咬史迪克 (XS)(迷你犬)', 162, 67, '2018-3-15 12:00:00',90, '2018-3-22', '實木與特殊合成材質 尺寸：L10 x W1.5 cm(適合4kg以下) 產地：中國製造/美國設計', '以真正的木頭合成，味道清新又耐咬！榮獲美國權威寵物雜誌Pet Product News票選2012年最佳推薦寵物商品。美國原廠專利材料製成。散發天然木頭香味。無毒合成材質，不會裂開刮傷狗狗牙齦。室內與室外玩耍都適合。', 3, 2, 'https://i.imgur.com/5R8NSwn.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('自然鮮 貓草薄荷球木天蓼健身棒棒糖', 99, 53, '2018-3-15 12:00:00',180, '2018-4-2', '清潔方式：不可直接水洗，可用濕布擦拭表面，再用日曬或烘乾機乾燥，香味就可以重新出現(請不要長時間曝曬於陽光下)。有機貓薄荷、木天蓼棒、人類食用膠 直徑：13.5cm(天然材料會有正負1cm的差距) 產地：台灣', '貓咪咬棒棒糖可以摩擦牙齒，達到清潔牙垢的功效。棒棒糖較不易遺失，貓咪可任意啃咬。人類食用等級膠黏著，可安心食用，貓咪玩耍時會有掉屑情況，屬正常現象。貓咪可利用玩耍棒棒糖而得到大量運動，消耗體能，增進食慾。', 3, 2, 'https://i.imgur.com/vAXhzfx.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('AFU 御用 二口原木餐桌 (附陶瓷碗 2 個)', 690, 92, '2018-3-15 12:00:00',150, '2018-2-14', '規格：36*18.5 cm 材質：天然100%原木製成 (非訪間貼廉價塑膠皮) 重量：1340 克/組 注意事項：★商品含白色寵物專用陶瓷碗2個 ★高度可調15 or 7.5 cm 買家注意：★商品需自行組裝。★表面經過高級防水處裡，用濕抹布擦拭即可。', '★可調整高低，適用幼貓 \ 成貓 \ 小型犬。★托盤式設計，方便貓奴服務。★貓狗長期低頭吃飯容易造成健康方面問題。★AFU碗架可以隨著寶貝們成長過程調整高度。★MIT台灣製造，TAIWAN NO.1～', 4, 2, 'https://i.imgur.com/YWtoq8J.jpg');
+insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRIPTION, NOTICE, classify_id, member_id, images)
+values ('ACEPET 貓咪蹭蹭刷 - 胡桃褐（附貓草）', 180, 83, '2018-3-15 12:00:00',360, '2018-2-25', '規格：13.5 X 10.5 X 5 cm', '主子的美毛工具!你知道貓主子為什麼會一直磨蹭家具或牆角嗎? 貓咪藉由磨蹭兩頰及側身留下費洛蒙，這個舉動可以讓牠們畫清地盤領域，在空間中更有安全感喔~ 蹭蹭刷柔軟的刷毛不僅可以幫貓咪散播氣味更可以幫主子梳理毛髮!達到舒壓的功能呢~', 4, 2, 'https://i.imgur.com/tUw5q2J.jpg');
 
 /*9 orders*/
 insert into orders (orderdate, totalamount, member_id) values('2018-5-10 12:38:10', 1280, 2);

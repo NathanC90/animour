@@ -114,7 +114,7 @@
 							<li class="nav-item"><a class="nav-link" href="#productSepc"
 								aria-controls="productSepc" role="tab" data-toggle="tab">商品規格</a></li>
 							<li class="nav-item"><a class="nav-link" href="#precattention"
-								aria-controls="precattention" role="tab" data-toggle="tab">注意事項</a></li>
+								aria-controls="precattention" role="tab" data-toggle="tab">商品特色</a></li>
 						</ul>
 
 						<!-- Tab panes -->

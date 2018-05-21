@@ -148,12 +148,12 @@
 						</div>
 						<div class="form-group col-md-6">
 							<h2 class="widget-title">商品規格</h2>
-							<form:textarea path="description" type="text" class="form-control"
+							<form:textarea path="description" type="text" class="form-control" rows="5"
 	 							placeholder="商品描述" />
 						</div>
 						<div class="form-group col-md-6">
 							<h2 class="widget-title">注意事項</h2>
-							<form:textarea path="notice" type="text" class="form-control"
+							<form:textarea path="notice" type="text" class="form-control" rows="5"
 	 							placeholder="注意事項" />
 						</div>
 					</div>
