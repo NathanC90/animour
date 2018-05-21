@@ -111,34 +111,24 @@
 						<table class="table" data-sort="table" id="table1">
 							<thead>
 								<tr>
-									<th>id</th>
-									<th>reservationDate</th>
-									<th>frontTime</th>
-									<th>content</th>
-									<th>designer</th>
-									<th>totalTime</th>
-									<th>price</th>
-									<th>payment</th>
+									<th>編號</th>
+									<th>預約日期</th>
+									<th>時段</th>
+									<th>內容</th>
+									<th>設計師</th>
+									<th>總時數</th>
+									<th>價位</th>
+									<th>付款狀態</th>
 									<!-- <th style="display: none">member_id</th> -->
 									<th id="notNeed">編輯</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<!-- <td>
-										<input type="checkbox" class="select-row">
-									</td> -->
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
+
 							</tbody>
 						</table>
 					</div>
-					<form style="display: none" id="form1">
+					<form style="display: inline" id="form1">
 
 
 

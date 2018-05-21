@@ -1,11 +1,16 @@
 package org.iii.ee100.animour.salon.service;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.model.PageForAnimour;
@@ -15,6 +20,7 @@ import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
+import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,5 +169,94 @@ public class ReservationService extends GenericService<Reservation> {
 
 		return reservationDao.findAll(request);
 	}
+	
+	public void decideThreeContentRepeateOrNot() throws ParseException {
+		// 取出各Table設計師名稱、時間內容種類
+		Reservation reservation = new Reservation();
+		// 時間、設計師、日期的空物件
+		ReservationTime reservationTime = null;
+		Designer designer = null;
+		ReservationDate reservationDate = null;
+		
+		//使用空set放置不重複物件
+		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
+		Set<Designer> designerSetList = new HashSet<Designer>();
+		List<ReservationDate> reservationDateSetList = new ArrayList<ReservationDate>();
+
+		//
+		List<Designer> designerList = this.getAllDesigner();
+		ArrayList<ReservationTime> reservationTimeList = this.getAllReservationTime();
+		// 前端日期輸入
+		// Date compareDate = reservation.getReservationDate();
+
+		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		//預設時間
+		int i=0;
+		
+        
+
+         //這個就是時間往後推一天的结果
+		// 預約內容明細
+		List<Reservation> reservationListData = new ArrayList<>();
+		reservationListData = reservationDao.findAll();
+		// 取出資料庫的日期、內容、設計師名稱
+		for (Reservation reservations : reservationListData) {
+			// 設計師Table
+			for (Designer designers : designerList) {
+				// 服務內容Table
+				for (ReservationTime reservationTimes : reservationTimeList) {
+					Date mainDate = reservations.getReservationDate();
+					Date CurrentDate=new Date();//取時間
+			        Calendar calendar = new GregorianCalendar();
+					calendar.setTime(CurrentDate);
+					calendar.add(calendar.DATE,i);//把日期往後增加一天.整數往後,負數往前
+			        CurrentDate=calendar.getTime();
+			        i++;
+//					String stringDate= simpleDateFormat.format(mainDate);
+//					Date mainDate2=simpleDateFormat.parse(stringDate);
+					String mainDesigner = reservations.getDesigner();
+					Time mainTime = reservations.getFrontTime();
+					String compareDesigner = designers.getDesigner();
+					Time compareTime = reservationTimes.getFrontTime();
+//					System.out.println(mainDate2);
+					if (!mainDate.equals(CurrentDate) || !mainDesigner.equals(compareDesigner)||!mainTime.equals(compareTime)) {
+
+						// if(!reservationTime.getFrontTime().equals(compareTime)) {
+						 reservationTime =new ReservationTime();
+						 reservationTime.setFrontTime(compareTime);
+						 reservationTimeSetList.add(reservationTime);
+//						 }
+						System.out.println("compareDate2: " + CurrentDate);
+//
+						designer = new Designer();
+						designer.setDesigner(compareDesigner);
+						designerSetList.add(designer);
+						// if(!reservationDate.getReservationDate().equals(compareDate2)) {
+						 reservationDate=new ReservationDate();
+						 reservationDate.setReservationDate(CurrentDate);
+						 reservationDateSetList.add(reservationDate);
+						 System.out.println(reservationDateSetList.size());
+//						 reservationDateFinallyList.add(reservationDate);
+						// }
+					}
+				}
+			}
+
+		}
+
+		 for(ReservationTime finalAnswer:reservationTimeSetList) {
+		 System.out.println("finalAnswer"+finalAnswer.getFrontTime());
+		 }
+ 		for (Designer finalAnswer2 : designerSetList) {
+			System.out.println("finalAnswer2" + finalAnswer2.getDesigner());
+		}
+		 for(ReservationDate finalAnswer3:reservationDateSetList) {
+		 System.out.println("finalAnswer3"+finalAnswer3.getReservationDate());
+		 }
+		 System.out.println(reservationDateSetList.size());
+
+	}
+
 
 }

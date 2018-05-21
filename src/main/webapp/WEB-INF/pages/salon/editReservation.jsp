@@ -121,14 +121,14 @@
 
                     <thead>
                       <tr>
-                        <th>id</th>
-                        <th>reservationDate</th>
-                        <th>frontTime</th>
-                        <th>content</th>
-                        <th>designer</th>
-                        <th>totalTime</th>
-                        <th>price</th>
-                        <th>payment</th>
+                        <th>編號</th>
+                        <th>預約日期</th>
+                        <th>時間</th>
+                        <th>內容</th>
+                        <th>設計師</th>
+                        <th>總時數</th>
+                        <th>價錢</th>
+                        <th>付款狀態</th>
                         <th style="display: noen">member_id</th>
                         <th id="notNeed">編輯</th>
 

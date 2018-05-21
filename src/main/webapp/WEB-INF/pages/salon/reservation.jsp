@@ -66,35 +66,25 @@
 								<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-										請用領養代替購買</h2>
+										</h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 點擊認養
-									</a>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">
 								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">中途見面會活動
+									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-										2018/06/01 上午9:00 台北市復興南路一段</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-coffee">
-										</i> 詳細資訊
-									</a>
+										</h3>
 								</div>
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
 								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New Arrival
+									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新商品上架</h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 看這裡
-									</a>
+									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
 								</div>
 							</div>
 							<div class="carousel-item">
@@ -103,7 +93,7 @@
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"></h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
 									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 點此更改
+										<i class="fa fa-download"> </i> 
 									</a>
 								</div>
 							</div>
@@ -145,14 +135,6 @@
 						</div>
 					</c:forEach>
 				</div>
-				<div class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total hours:
-					<span id="answer"></span>
-					<div id="number1"></div>
-				</div>
-				<div class="section-title wow fadeIn animated" data-wow-delay=".2s" href="">total pay:
-					<div id="number2"></div>
-				</div>
-				<input type="button" value="預約" onclick="location.href='/reservation'" class="btn btn-common btn-sm mt-10">
 
 				<!-- 重複的內容結束 -->
 			</section>

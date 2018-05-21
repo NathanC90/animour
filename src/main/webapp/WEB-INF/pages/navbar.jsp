@@ -55,15 +55,15 @@
                                 </li>
 
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="/reservation/introduce" aria-haspopup="true" aria-expanded="false">寵物salon</a>
+                                    <a class="nav-link dropdown-toggle" href="/reservation/introduce" aria-haspopup="true" aria-expanded="false">寵物沙龍</a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="/reservation/introduce">沙龍簡介</a>
+                                        <a class="dropdown-item" href="/appointment/firstPage">沙龍簡介</a>
                                                                         <sec:authorize access="hasRole('Admin')">
                                         
                                         <a class="dropdown-item" href="/salonAdminReservation">訂單編輯</a>
                                                                         </sec:authorize>
                                         
-                                        <a class="dropdown-item" href="/appointment/firstPage">預約</a>
+                                        <a class="dropdown-item" href="/reservation">預約</a>
                                         <a class="dropdown-item" href="/appointment/testForm">結帳</a>
                                     </div>
                                 </li>
