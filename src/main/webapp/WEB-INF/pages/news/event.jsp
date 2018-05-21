@@ -125,12 +125,12 @@
                   
                  <!-- Add to Google Calendar starts -->
                   <a href="http://www.google.com/calendar/event?
-							action=TEMPLATE                                           // 請勿修改
-							&text=[事件名稱]                                             // Calendar 事件的名稱
-							&dates=[開始時間]/[結束時間]                           //時間格式為 YYYYMMDDTHHMMSS
-							&details=[詳細的描述]                                      //使用 %0A 作為跳行
-							&location=[地點]                                            // 標示地點
-							&trp=false                                                     // 忙碌狀態 true=忙碌、false=有空
+							action=TEMPLATE             <!--請勿修改 -->
+							&text=[事件名稱]              <!--Calendar 事件的名稱 -->
+							&dates=[開始時間]/[結束時間]    <!--時間格式為 YYYYMMDDTHHMMSS -->
+							&details=[詳細的描述]          <!--使用 %0A 作為跳行 -->
+							&location=[地點]             <!--標示地點 -->
+							&trp=false                  <!--忙碌狀態 true=忙碌、false=有空 -->
 							" style="font-family:微軟正黑體">新增至Google行事曆</a>
                	</div>
                	<!-- Add to Google Calendar ends -->
