@@ -59,25 +59,26 @@ public class MemberService extends GenericService<Member> {
 	//更改會員當前狀態(status:0 close/1 on)
 	public void changeMemberStatus(String account) {
 		Member deletemember = memberDao.findByAccount(account);
-		if(deletemember.getStatus()==1) {
-				deletemember.setStatus(0);}
+		if(deletemember.getStatus()==true) {
+				deletemember.setStatus(false);}
 		else{
-			deletemember.setStatus(1);
+			deletemember.setStatus(true);
 		}
 		memberDao.save(deletemember);
 	}
 
 	
-	//查詢會員
+	//查詢單一會員
 	public Member getOne(Long id) {
 		return memberDao.findOne(id);
 	}
 
+	//查詢全部會員
 	public ArrayList<Member> getAll() {
 		return (ArrayList<Member>) memberDao.findAll();
 	}
 
-	
+	//讀取單一會員
 	public Member getOneByAccount(String account) {
 		return memberDao.findByAccount(account);
 	}
@@ -100,7 +101,9 @@ public class MemberService extends GenericService<Member> {
 		return principal;
 	}
 	
+
 	
+	/****************************/
 	//驗證密碼(會員修改密碼需驗證舊密碼)
 	public boolean validPassword(String password) {
 		if(getNewCurrentMember().getPassword().equals(password)) {
@@ -120,7 +123,7 @@ public class MemberService extends GenericService<Member> {
         return false;
 	}
 
-	//隨機碼
+	//產生隨機碼
 		public String newPassword() {
 			//密碼字串
 			String str="";
@@ -152,6 +155,9 @@ public class MemberService extends GenericService<Member> {
 			return str;
 		}
 		
+		
+		
+		/***********************Friend 好友**********************/
 		//收藏好友
 		
 		public MyFriend findByMemberIdAndFriendId(Long memberId,Long friendId) {
@@ -163,10 +169,12 @@ public class MemberService extends GenericService<Member> {
 			return myFriendDao.findByMemberIdAndLove(memberId, love);
 		}
 		
+		//新增好友
 		public void insertFriend(MyFriend friend) {
 			myFriendDao.save(friend);
 		}
 
+		//修改好友狀態
 		public void updateFriend(MyFriend friend) {
 			Long memberId=friend.getMember().getId();
 			Long friendId=friend.getFriendId();

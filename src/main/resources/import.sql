@@ -1,39 +1,39 @@
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS) 
-VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',1);
+VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) 
-VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', 1,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區','1','ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captain.lu', 'Aa123', '盧廣中', '晨之美','0912-345678','captain.lu@gail.com','台北市大安區','1','captain.lu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區','1','bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區','0','bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區','0','Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區','0','johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區','1','panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區','1','harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', true,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區',true,'ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區',true,'Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區',true,'kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captain.lu', 'Aa123', '盧廣中', '晨之美','0912-345678','captain.lu@gail.com','台北市大安區',true,'captain.lu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區',true,'bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區',true,'bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區',false,'Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區',false,'johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區',false,'panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區',false,'harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS)
-VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gmail.com','台北市中正區', 1);
+VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gail.com','台北市中正區', true);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,true) 
+VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gmail.com','台北市萬華區',0);
+VALUES ('Candy','Aa1','Candy Su','C','0900-000000','candy@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Candy','Aa1','Candy Su','C','0900-000000','candy@gmail.com','台北市萬華區',0);
+VALUES ('Dog','Aa1','Candy Co','D','0900-000000','dog@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Dog','Aa1','Candy Co','D','0900-000000','dog@gmail.com','台北市萬華區',0);
+VALUES ('Egg','Aa1','Egg u','E','0900-000000','egg@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Egg','Aa1','Egg u','E','0900-000000','egg@gmail.com','台北市萬華區',0);
+VALUES ('Fish','Aa1','Fish Su','F','0900-000000','fish@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Fish','Aa1','Fish Su','F','0900-000000','fish@gmail.com','台北市萬華區',0);
+VALUES ('Google','Aa1','Goo Su','G','0900-000000','google@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Google','Aa1','Goo Su','G','0900-000000','google@gmail.com','台北市萬華區',0);
+VALUES ('Hello','Aa1','Hello Word','Hi','0900-000000','hello@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Hello','Aa1','Hello Word','Hi','0900-000000','hello@gmail.com','台北市萬華區',0);
+VALUES ('IU','Aa1','I u','IEE','0900-000000','i@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('IU','Aa1','I u','IEE','0900-000000','i@gmail.com','台北市萬華區',0);
+VALUES ('Jessi','Aa1','J J','JJ','0900-000000','jj@gail.com','台北市萬華區',false);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Jessi','Aa1','J J','JJ','0900-000000','jj@gmail.com','台北市萬華區',0);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gmail.com','台北市萬華區',0);
+VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gail.com','台北市萬華區',false);
 
  
  
@@ -371,8 +371,15 @@ values ('剪毛',1,400,3);
 
 
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values ('3',true,'1');
+values (3,true,'1');
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values ('3',true,'2');
+values (3,true,'2');
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values ('3',true,'4');
+values (3,true,'4');
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,5);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,6);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,7);
+

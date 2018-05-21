@@ -67,7 +67,7 @@ public class MemberController {
 		}		
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
-			member.setStatus(1);
+			member.setStatus(true);
 			if(member.getSignature()==null) {
 				member.setSignature(member.getAccount()+" say hi.");
 			}
@@ -141,7 +141,7 @@ public class MemberController {
 		return "redirect:/admin/user";// 回到主頁
 	}
 
-	// 列出(全部)會員
+	// 列出(全部)會員-admin
 	@RequestMapping("/users")
 	public String findAll() {
 		return "/member/users";// 先傳送頁面
@@ -202,6 +202,7 @@ public class MemberController {
 	public String admin() {
 		return "/admin/member/admin_copy2a";
 	}
+    
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
