@@ -148,6 +148,7 @@ public class ArticleRestController {
 				article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
 				article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 				article.setClick(0L);
+				article.setStatus(true);
 				try {
 					forumService.insert(article);
 				} catch (Exception e) {

@@ -15,19 +15,19 @@ public interface ArticleDao extends GenericDao<Article> {
 	List<Article> findTop3ByOrderByPostTimeDesc();
 
 	// FROM Article ORDER BY UpdateTime DESC FETCH FIRST 4 ROWS ONLY
-	List<Article> findTop4ByOrderByClickDesc();
+	List<Article> findTop4ByStatusOrderByClickDesc(Boolean status);
 
-	List<Article> findBySubjectContainingIgnoreCase(String subject);
+	List<Article> findBySubjectContainingIgnoreCaseAndStatus(String subject,Boolean status);
 
-	Page<Article> findBySubjectContainingIgnoreCase(String subject, Pageable pageable);
+	Page<Article> findBySubjectContainingIgnoreCaseAndStatus(String subject, Pageable pageable,Boolean status);
 
-	List<Article> findByCategoryId(Long categoryId);
+	List<Article> findByCategoryIdAndStatus(Long categoryId,Boolean status);
 	
-	List<Article> findByMemberId(Long memberId);
+	List<Article> findByMemberIdAndStatus(Long memberId,Boolean status);
 
 	Page<Article> findByCategoryId(Long categoryId, Pageable pageable);
 	
-	List<Article> findTop4ByOrderByThumbsQuantityDesc();
+	List<Article> findTop4ByStatusOrderByThumbsQuantityDesc(Boolean status);
 	
 	Page<Article> findByOrderByPostTimeDesc(Pageable pageable);
 }
