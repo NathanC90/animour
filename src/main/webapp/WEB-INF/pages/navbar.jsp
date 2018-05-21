@@ -130,17 +130,30 @@
                                     </span>
                                 </div>
                             </form>
+                            
 							 <span class="navbar-brand">
-                        <i class="fas fa-shopping-cart"></i>
-                        <!--                         <img src="/images/shopping/product/shoppingCart.ico" alt=""> -->
-                      	  共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆</span>
-                    <a class="navbar-brand" href="/cart/index">
-                        <c:set var="total" value="0"></c:set>
-                        <c:forEach var="cartItem" items="${sessionScope.cart}">
-                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-                        </c:forEach>
-                        <span>金額 ：${total}</span>
-                    </a>
+	                         <i class="fas fa-shopping-cart"></i>
+	                         <span class="h6">
+	                         <c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
+	                         	 共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆
+	                         </c:if>
+	                         </span></span>
+	                         <c:choose>
+	                         	<c:when test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
+	                         		<a class="navbar-brand" href="/cart/index">
+			                        <c:set var="total" value="0"></c:set>
+			                        <c:forEach var="cartItem" items="${sessionScope.cart}">
+			                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
+			                        </c:forEach>
+			                         <span class="h6">金額 ：${total}</span>
+		                    	</a>
+	                         	</c:when>
+	                         	<c:otherwise>
+	                         		<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                         		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	                         		&nbsp;&nbsp;</span>
+	                         	</c:otherwise>
+	                         </c:choose>
                         </div>
 
                         <!-- Mobile Menu Start -->

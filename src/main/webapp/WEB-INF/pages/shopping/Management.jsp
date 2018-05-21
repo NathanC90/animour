@@ -129,12 +129,12 @@
 						</div>
 					</div>
 
-					<div class="form-group">
-						<h2 class="widget-title">製造日期</h2>
-						<form:input path="makeDate" type="text" class="form-control"
-							placeholder="製造日期" />
-					</div>
 					<div class="form-row">
+						<div class="form-group col-md-4">
+							<h2 class="widget-title">製造日期</h2>
+							<form:input path="makeDate" type="text" class="form-control"
+								placeholder="製造日期" />
+						</div>
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">保存期限</h2>
 							<form:input path="expire" type="text" class="form-control"
@@ -145,18 +145,31 @@
 							<form:input path="shelvesDate" type="text" class="form-control"
 								placeholder="上架日期" />
 						</div>
-					<div class="form-group col-md-4">
-						<h2 class="widget-title">商品描述</h2>
-						<form:textarea path="description" type="text" class="form-control"
- 							placeholder="商品描述" />
 					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<h2 class="widget-title">商品特色</h2>
+							<form:textarea path="notice" type="text" class="form-control" rows="5"
+	 							placeholder="商品特色" />
+						</div>
+						<div class="form-group col-md-6">
+							<h2 class="widget-title">商品規格</h2>
+							<form:textarea path="description" type="text" class="form-control" rows="5"
+	 							placeholder="商品規格" />
+						</div>
 					</div>
 						<div class="form-row">
 							<form id="imgur">
 								<h2 class="widget-title"><span>圖片</span></h2>
 								<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
 							</form>
-							<input id="btn1" type="submit" class="btn btn-primary" value="確定" >
+							<div class="container">
+							  <div class="row justify-content-md-center">
+							    <div class="col-md-auto">
+							      <input id="btn1" type="submit" class="btn btn-primary" value="確定修改" >
+							    </div>
+							  </div>
+							</div>
 						</div>
 				</form:form>
 			</div>
