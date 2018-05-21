@@ -122,12 +122,24 @@
                     <i class="icon icon-calendar" ></i>
                     	活動時間：2018/08/31(五) 至 2018/09/03(一)
                   </span>
+                  
+                 <!-- Add to Google Calendar starts -->
+                  <a href="http://www.google.com/calendar/event?
+							action=TEMPLATE                                           // 請勿修改
+							&text=[事件名稱]                                             // Calendar 事件的名稱
+							&dates=[開始時間]/[結束時間]                           //時間格式為 YYYYMMDDTHHMMSS
+							&details=[詳細的描述]                                      //使用 %0A 作為跳行
+							&location=[地點]                                            // 標示地點
+							&trp=false                                                     // 忙碌狀態 true=忙碌、false=有空
+							" style="font-family:微軟正黑體">新增至Google行事曆</a>
                	</div>
+               	<!-- Add to Google Calendar ends -->
+               	
                	<div>
                   <span style="font-family:微軟正黑體">
-                  <i class="fa fa-map-marker"></i>
+                  <i class="icon icon-globe"></i>
 <!--                     <i class="icon icon-globe"></i> -->
-                    	活動地點：台北世貿三館(110台北市信義區松壽路6號)
+                    	活動地點：台北世貿三館（110台北市信義區松壽路6號）
                   </span>
                  </div>
                  <div>
@@ -204,7 +216,8 @@
                   <a href='/news/enroll' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
 <!--                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px"> -->
 <!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->
-
+		
+		<!-- Share Page to Facebook starts -->
               	<div 
               		class="fb-share-button" 
               		data-href="http://localhost:8080/news/event" 
@@ -225,6 +238,8 @@
               	</div>
               </div>
             </aside>
+            
+            <!-- Share Page to Facebook starts -->
            
         <!-- End -->
       </div>
