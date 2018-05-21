@@ -75,6 +75,14 @@
 </style>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <header id="header-wrap">
 		<!-- Navbar Starts -->
 	<jsp:include page="../navbar.jsp"></jsp:include>
@@ -194,9 +202,27 @@
 
                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡主辦單位</a>
                   <a href='/news/enroll' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
-                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">
-                  	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a>
+<!--                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px"> -->
+<!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->
 
+              	<div 
+              		class="fb-share-button" 
+              		data-href="http://localhost:8080/news/event" 
+              		data-layout="button" 
+              		data-size="large" 
+              		data-mobile-iframe="true">
+              			<a 
+              				target="_blank" 
+              				href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2Fnews%2Fevent&amp;src=sdkpreparse" 
+              				class="fb-xfbml-parse-ignore btn btn-outline btn-radius mt-20 btn-lg btn-block"
+              				style="margin:10px">
+              					<img 
+              						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" 
+              						width="15 px" 
+              						style="margin-right: 10px"/>
+              							分享至臉書
+              			</a>
+              	</div>
               </div>
             </aside>
            
