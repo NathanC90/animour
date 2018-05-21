@@ -1,15 +1,20 @@
-package org.iii.ee100.animour.common.entity;
+package org.iii.ee100.animour.common.model;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class HelloMessage extends GenericEntity{
+public class HelloMessage {
+
 	private String name;
+
 	public HelloMessage() {
-    }
+
+	}
+
 	public HelloMessage(String name) {
-        this.name = name;
-    }
+		this.name = name;
+	}
+
 }
