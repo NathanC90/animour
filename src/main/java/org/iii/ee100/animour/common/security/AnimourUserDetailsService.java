@@ -13,7 +13,7 @@ public class AnimourUserDetailsService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String account) throws UsernameNotFoundException {		
-		if(memberDao.findByAccount(account)!=null && memberDao.findByAccount(account).getStatus()!=1) {
+		if(memberDao.findByAccount(account)!=null && memberDao.findByAccount(account).getStatus()!=true) {
 			throw new BadCredentialsException("此帳號已被封鎖惹喔~");
 		}		
 		if(memberDao.findByAccount(account)==null ) {

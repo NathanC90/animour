@@ -37,7 +37,7 @@ public class ForumService extends GenericService<Article> {
 	public void setTransientForPage(Page<Article> articleList) {
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-			article.getCategory().setArticleQuantity(articleDao.findByCategoryId(article.getCategory().getId()).size());
+			article.getCategory().setArticleQuantity(articleDao.findByCategoryIdAndStatus(article.getCategory().getId(),!false).size());
 			article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		}
 	}
@@ -61,7 +61,7 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
-		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCase(subject, pageable);
+		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject, pageable,!false);
 		setTransientForPage(articleList);
 		return articleList;
 	}
@@ -97,7 +97,7 @@ public class ForumService extends GenericService<Article> {
 
 	public Category getOneCateGory(Long id) {
 		Category category = categoryDao.findOne(id);
-		category.setArticleQuantity(articleDao.findByCategoryId(id).size());
+		category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(id,!false).size());
 		return category;
 	}
 
@@ -110,11 +110,11 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public List<Article> getPopularFour() {
-		return articleDao.findTop4ByOrderByClickDesc();
+		return articleDao.findTop4ByStatusOrderByClickDesc(!false);
 	}
 	
 	public List<Article> getThumbsFour() {
-		return articleDao.findTop4ByOrderByThumbsQuantityDesc();
+		return articleDao.findTop4ByStatusOrderByThumbsQuantityDesc(!false);
 	}
 
 	public List<Comment> getCommentByArticleId(Long id) {
@@ -122,24 +122,24 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public List<Article> getArticlesSearchBySubject(String subject) {
-		return articleDao.findBySubjectContainingIgnoreCase(subject);
+		return articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject,!false);
 	}
 
 	public List<Article> getArticlesByCategoryId(Long categoryId) {
-		return articleDao.findByCategoryId(categoryId);
+		return articleDao.findByCategoryIdAndStatus(categoryId,!false);
 	}
 
 	public List<Category> getAllCategory() {
 		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
 		for (Category category : categoryList) {
-			category.setArticleQuantity(articleDao.findByCategoryId(category.getId()).size());
+			category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(category.getId(),!false).size());
 		}
 		return categoryList;
 	}
 	
 	//getArticlesByMemberId
 	public List<Article> getArticlesByMemberId(Long Id) {
-		return articleDao.findByMemberId(Id);
+		return articleDao.findByMemberIdAndStatus(Id,!false);
 	}
 
 }

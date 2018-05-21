@@ -84,7 +84,7 @@ public class Member extends GenericEntity implements UserDetails {
 	private Integer freq; 	//登入次數
 	
 	@Column(name = "STATUS")//(0:封鎖不予登入,1:使用)
-	private Integer status;
+	private Boolean status;
 	
 	@Column(name = "ROLE")//("member","admin")
 	private String role;

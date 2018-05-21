@@ -28,12 +28,14 @@ public class MemberRestfulController {
 	@Autowired
 	MemberService memberService;
 
+	//admin
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<Member> findAll() {
 		List<Member> members = memberService.getAll();
 		return members;
 	}
 
+	
 	@RequestMapping(value = "/api/member/{account}", method = RequestMethod.GET, produces = { "application/json" })
 	public Member findByAccount(@PathVariable("account") String account) {
 		return memberService.getOneByAccount(account);
@@ -52,8 +54,7 @@ public class MemberRestfulController {
 //
 //	}
 
-	
-	
+	//新增朋友	
 	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
 	public ResponseEntity<?> addFriend(MyFriend friend) {
 		friend.setMember(memberService.getNewCurrentMember());
@@ -69,6 +70,7 @@ public class MemberRestfulController {
 
 	}
 	
+	//homepage (加好友狀態)
 	@RequestMapping(value="/member/friend/{Id}",method = RequestMethod.GET, produces = { "application/json" })
 	public MyFriend heartStatus(@PathVariable String Id){
 		Long friendId=Long.valueOf(Id);
@@ -100,10 +102,6 @@ public class MemberRestfulController {
 	@Transient
 	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST,consumes={ "application/json" })
 	public ResponseEntity<?> newMail(@RequestBody ManyMail manyMail) {
-		System.out.println("manyMail01"+manyMail.getSubject());
-		System.out.println("manyMail02"+manyMail.getContext());
-		System.out.println("manyMail03"+manyMail.getAccounts());
-			
 		if(! manyMail.getAccounts().isEmpty() && manyMail.getAccounts().size()>0) {
 			for (String account : manyMail.getAccounts()) {
 				String email = memberService.getOneByAccount(account).getEmail();
