@@ -1,14 +1,12 @@
 package org.iii.ee100.animour.member.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Transient;
 
-import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.member.Mail;
 import org.iii.ee100.animour.member.ManyMail;
-import org.iii.ee100.animour.member.dao.MyFriendDao;
+import org.iii.ee100.animour.member.MemberStatus;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.entity.MyFriend;
 import org.iii.ee100.animour.member.service.EmailService;
@@ -112,4 +110,14 @@ public class MemberRestfulController {
 			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	
+	@RequestMapping(value="/deletemember",method=RequestMethod.POST)
+	public ResponseEntity<?> delete(MemberStatus member) {
+		memberService.changeMemberStatus(member.getId());
+		Member member_changed=memberService.getOne(member.getId());
+		member.setStatus(member_changed.getStatus());
+		return new ResponseEntity<MemberStatus>(member,HttpStatus.OK);
+	}
+
 }

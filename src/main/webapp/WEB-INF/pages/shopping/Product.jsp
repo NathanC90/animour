@@ -105,7 +105,7 @@
 					<img class="card-img-top" src="${product.images}" width="100px" alt="${product.name}">
 				</div>
 				<div class="col-md-7">
-					<p class="h3">品名:&nbsp;&nbsp;&nbsp;${product.name}</p>
+					<p class="h3"><span class="text-danger">${product.name}</span></p>
 					<div id="default-tab" class="mt-10">
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="nav-item"><a class="nav-link active" href="#productDetail"
@@ -119,20 +119,20 @@
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="productDetail">
-								<p class="h5" style="padding:0px">商品名稱：${product.name}</p>
+								<p class="h5" class="text-success" style="padding-bottom:15px"><span class="text-success">商品名稱：${product.name}</span></p>
 <%-- 								<p class="card-text" style="padding: 0px">編號：${product.id}</p> --%>
-								<p class="h5" style="padding:0px">上架日期：${product.shelvesDate}</p>
-								<p class="h5" style="padding:0px">保存期限：${product.expire}</p>
-								<p class="h5" style="padding:0px">種類：${product.classify.name}</p>
-								<p class="h5" style="padding:0px">價格：${product.price}</p>
-								<p class="h5" style="padding:0px">庫存：${product.stock}</p>
+								<p class="h5" style="padding-bottom:15px"><span class="text-info">上架日期：${product.shelvesDate}</span></p>
+								<p class="h5" style="padding-bottom:15px"><span class="text-info">保存期限：${product.expire}</span></p>
+								<p class="h5" style="padding-bottom:15px"><span class="text-info">種類：${product.classify.name}</span></p>
+								<p class="h5" style="padding-bottom:15px"><span class="text-info">價格：${product.price}</span></p>
+								<p class="h5" style="padding-bottom:15px"><span class="text-info">庫存：${product.stock}</span></p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="productSepc">
-								<p class="h6">${product.description}</p>
+								<p class="h6"><span class="text-info">${product.description}</span></p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="precattention">
 								<div role="tabpanel" class="tab-pane" id="precattention">
-									<p class="h6">${product.notice}</p>
+									<p class="h6"><span class="text-info">${product.notice}</span></p>
 								</div>
 							</div>
 						</div>

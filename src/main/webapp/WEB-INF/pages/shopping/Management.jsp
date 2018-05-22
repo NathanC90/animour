@@ -166,7 +166,7 @@
 							<div class="container">
 							  <div class="row justify-content-md-center">
 							    <div class="col-md-auto">
-							      <input id="btn1" type="submit" class="btn btn-primary" value="確定修改" >
+							      <input id="btn1" type="submit" class="btn btn-primary" value="確定修改">
 							    </div>
 							  </div>
 							</div>

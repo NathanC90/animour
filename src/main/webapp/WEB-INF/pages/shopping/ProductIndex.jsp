@@ -141,7 +141,7 @@
 								<ul class="category-menu">
 									<c:forEach var="classify" items="${classifies}">
 										<li class="page-item">
-											<a href='<spring:url value="/products/${classify.id}"></spring:url>'>${classify.name}</a>
+											<a class="text-info" href='<spring:url value="/products/${classify.id}"></spring:url>'><span class="font-weight-bold">${classify.name}</span></a>
 										</li>
 									</c:forEach>
 								</ul>
@@ -178,10 +178,10 @@
 									<img class="card-img-top" src="${product.images}"
 										width="100px" alt="商品列表">
 									<div class="card-body" style="margin-bottom: 5px">
-											<p>商品名稱：${product.name}</p>
-											<p>價格：${product.price}<br>庫存：${product.stock}</p>
-											<p>製造日期：${product.makeDate}<br>保存期限：${product.expire}</p>
-											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
+											<p class="text-success">商品名稱：${product.name}</p>
+											<p class="text-warning">價格：${product.price}<br>庫存：${product.stock}</p>
+											<p class="text-primary">製造日期：${product.makeDate}<br>保存期限：${product.expire}</p>
+											<p class="text-danger">上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
 									<div class="card box-shadow">
 										<a href="<spring:url value='/selectOneProduct?id=${product.id}'/>"

@@ -57,8 +57,8 @@ public class MemberService extends GenericService<Member> {
 	
 	
 	//更改會員當前狀態(status:0 close/1 on)
-	public void changeMemberStatus(String account) {
-		Member deletemember = memberDao.findByAccount(account);
+	public void changeMemberStatus(Long id) {
+		Member deletemember = memberDao.getOne(id);
 		if(deletemember.getStatus()==true) {
 				deletemember.setStatus(false);}
 		else{
@@ -77,7 +77,7 @@ public class MemberService extends GenericService<Member> {
 	public ArrayList<Member> getAll() {
 		return (ArrayList<Member>) memberDao.findAll();
 	}
-
+	
 	//讀取單一會員
 	public Member getOneByAccount(String account) {
 		return memberDao.findByAccount(account);

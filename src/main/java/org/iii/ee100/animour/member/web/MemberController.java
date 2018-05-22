@@ -134,12 +134,6 @@ public class MemberController {
 
 	}
 
-	// 刪除會員(管理員才有資格)
-	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
-	public String delete(String account, Model model) {
-		memberService.changeMemberStatus(account);
-		return "redirect:/admin/user";// 回到主頁
-	}
 
 	// 列出(全部)會員-admin
 	@RequestMapping("/users")
