@@ -196,14 +196,14 @@ $("#button1").click(function() {
 		/* 				console.log(toJson(data1));
 		*/				
 		var r=confirm("馬上結帳");
-// 		if (r==true)
-// 		  {
-// 			  alert("為您轉跳中");
-// 		  }
-// 		else
-// 		  {
-// 		  alert("You pressed Cancel!");
-// 		  }
+		if (r==true)
+		  {
+			  alert("為您轉跳中");
+		  }
+		else
+		  {
+		  alert("You pressed Cancel!");
+		  }
 	})
 });
 
