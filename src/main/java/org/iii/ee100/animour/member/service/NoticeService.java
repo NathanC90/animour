@@ -22,7 +22,7 @@ public class NoticeService extends GenericService<Notice> {
 	
 	//查詢通知
 	public void findStatus(Notice notice)  {
-		noticeDao.findByMemberIdAndWhoAndStatusCountByStatus(notice.getMember().getId(), notice.getWho(), true, true);
+//		noticeDao.findByMemberIdAndWhoAndStatusCountByStatus(notice.getMember().getId(), notice.getWho(), true, true);
 	}
 
 
