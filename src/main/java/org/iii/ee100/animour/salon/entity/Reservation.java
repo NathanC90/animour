@@ -5,9 +5,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
+import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.data.annotation.Transient;
 
 
@@ -23,9 +26,9 @@ public class Reservation extends GenericEntity{
 		return "Reservation [reservationDate=" + reservationDate + ", frontTime=" + frontTime + ", content="
 				+ content + ", designer=" + designer + ", totalTime=" + totalTime + ", price=" + price + "]";
 	}
-//	@ManyToOne
-//	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
-//	private Member member; 
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID", referencedColumnName = "ID")
+	private Member member; 
 
 	
 
@@ -114,6 +117,14 @@ public class Reservation extends GenericEntity{
 
 	public void setAppointDate(String appointDate) {
 		this.appointDate = appointDate;
+	}
+
+	public Member getMember() {
+		return member;
+	}
+
+	public void setMember(Member member) {
+		this.member = member;
 	}
 	
 	

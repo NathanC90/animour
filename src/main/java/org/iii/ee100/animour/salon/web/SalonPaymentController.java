@@ -44,7 +44,7 @@ public class SalonPaymentController {
 		// 交易金額
 		aio.setTotalAmount("300");
 		// 交易描述
-		aio.setTradeDesc("認養編號:");
+		aio.setTradeDesc("編號:");
 		aio.setHoldTradeAMT("0");
 		// 顯示付款成功的頁面（預設
 		aio.setReturnURL("http://211.23.128.214:5000");

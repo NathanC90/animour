@@ -47,5 +47,10 @@ public class ChangeDateTest {
 		System.out.println("hhhhhhh"+reservationList);
 		
 	}
+	
+	@Test
+	public void findalltest() {
+		System.out.println("hhhhhhbbbh"+reservationDao.findAll());
+	}
 
 }

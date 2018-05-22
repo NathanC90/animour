@@ -74,7 +74,7 @@ public class ReservationRestController {
 	// insert a Reservation by id
 	// 付款成功不能改資料
 	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> updateReservation(@PathVariable(value = "id")Long id, Reservation reservation) throws ParseException {
+	public ResponseEntity<?> updateReservation(@PathVariable(value = "id")Long id, Reservation reservation,@RequestParam("member_id")Long memberid) throws ParseException {
 //		System.out.println("memberIdaaa"+memberId);
 //		reservation.setMember(memberService.getOne(memberId));
 //		 Reservation changeContent =reservationService.getOne(id);
@@ -93,6 +93,7 @@ public class ReservationRestController {
 		 	Date date = sdf.parse(reservation.getAppointDate());
 //		 	System.out.println("ccccc"+date);
 	 	reservation.setReservationDate(date);
+reservation.setMember(memberService.getOne(memberid));	 	
 		 		reservationService.insertReservation(reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 

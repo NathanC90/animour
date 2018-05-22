@@ -85,28 +85,42 @@
 
 						<div class="btn-toolbar dashhead-toolbar">
 							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+								<input type="text" value="- 06/01/2018" class="form-control" data-provide="datepicker">
 
 								<span class="icon icon-calendar"></span>
 							</div>
 						</div>
 					</div>
 
+					<!-- <div class="flextable table-actions">
+						<div class="flextable-item flextable-primary">
+							<div class="btn-toolbar-item input-with-icon">
+								<input type="text" class="form-control input-block" placeholder="搜尋紀錄">
+								<span class="icon icon-magnifying-glass"></span>
 
+							</div>
+							<button id="confirmEdit" name="id" class="btn btn-outline-primary" style="text-align: right">編輯完成</button>
+
+						</div>
+
+
+
+					</div> -->
 					<!-- Table Starts  -->
 					<div class="table-responsive">
 						<table class="table" data-sort="table" id="table1">
 							<thead>
 								<tr>
-									<th>id</th>
-									<th>reservationDate</th>
-									<th>frontTime</th>
-									<th>content</th>
-									<th>designer</th>
-									<th>totalTime</th>
-									<th>price</th>
-									<th>payment</th>
-									<th style="display: none">member_id</th>
+									<th>編號</th>
+									<th>預約日期</th>
+									<th>時段</th>
+									<th>內容</th>
+									<th>設計師</th>
+									<th>耗時</th>
+									<th>消費金額</th>
+									<th>付款狀態</th>
+									<th style="display: none">ID</th>
+									<th>會員帳號</th>
 									<th id="notNeed">編輯</th>
 								</tr>
 							</thead>
@@ -125,7 +139,7 @@
 							</tbody>
 						</table>
 					</div>
-					<form style="display: none" id="form1">
+					<form style="display: inline" id="form1">
 
 
 
@@ -238,13 +252,13 @@
 								var cell6 = $('<td id="cellEdit6" class="inputContent"></td>').text(reservation.totalTime);
 								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
 								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
-								// var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
+								var cell9 = $('<td id="cellEdit9" class="inputContent" style="display: none" ></td>').text(reservation.member.id)
+								var cell10 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
 								// var p = $('<p></p>')
-								var cell10 = $('<td id="addNewButton"><button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span class="icon icon-pencil"></span></button><button type="button" id="deleteButton" class="btn btn-outline-primary" title="刪除"><span class="icon icon-erase"></span></button></td>')
+								var cell11 = $('<td id="addNewButton"><button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span class="icon icon-pencil"></span></button><button type="button" id="deleteButton" class="btn btn-outline-primary" title="刪除"><span class="icon icon-erase"></span></button></td>')
 
 
-								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell1, cell2, cell3, cell4,
-									cell5, cell6, cell7, cell8, cell10]);
+								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10, cell11]);
 								$('#table1').append(row);
 							})
 
@@ -282,12 +296,21 @@
 
 				})
 			};
+			//編輯完成,並恢復
+			$("#confirmEdit").click(function () {
+
+
+
+			})
+
+
 
 			$(document).on("click", '#editButton', function () {
 				var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
 
 				// var data1 = new FormData(document.getElementById("myform1"));
 				$(this).attr({ 'style': 'display: none' });
+				$(this).parents('td').find('#deleteButton').remove();
 				var button = $('<button type="button" id="editFinish" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
 				$(this).parent().append(button);
 				$(this).parents('tr').find('.inputContent').on("dblclick", function () {
@@ -326,6 +349,7 @@
 					valueTotalTime = $(this).parents("tr").find('#cellEdit6').text();
 					valuePrice = $(this).parents("tr").find('#cellEdit7').text();
 					valuePayment = $(this).parents("tr").find('#cellEdit8').text();
+					valueMemberId = $(this).parents("tr").find('#cellEdit9').text();
 
 					// $.getJSON('/reservations/reservation/' + catchIdValue, { "pageNo": pageNo }, function (reservation) {
 					var cell = $('<input id="inputId" name="id" value="' + valueId + '"></input>')
@@ -336,9 +360,9 @@
 					var cell5 = $('<input id="inputId" name="totalTime" value="' + valueTotalTime + '"></input>')
 					var cell6 = $('<input id="inputId" name="price" value="' + valuePrice + '"></input>')
 					var cell7 = $('<input id="inputId" name="payment" value="' + valuePayment + '"></input>')
+					var cell8 = $('<input id="inputId" name="member_id" value="' + valueMemberId + '"></input>')
 
-
-					$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7])
+					$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8])
 					// cell1, cell2, cell3, cell4, cell5, cell6, cell7
 
 					var json;
