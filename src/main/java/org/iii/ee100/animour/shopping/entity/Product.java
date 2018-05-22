@@ -25,7 +25,7 @@ public class Product extends GenericEntity {
 	@Column(name = "STOCK", nullable = false)
 	private Integer stock;
 	@Column(name = "MAKE_DATE", nullable = false)
-	private java.sql.Timestamp makeDate;
+	private java.sql.Date makeDate;
 	@Column(name = "EXPIRE", nullable = false)
 	private Integer expire;
 	@Column(name = "SHELVES_DATE", nullable = false)

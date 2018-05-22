@@ -97,6 +97,21 @@
  			</div>
 		</div>
 	</div>
+	<div class="container">
+	<section class="featured-wrapper" style='padding-top:50px'>
+	              <div id="carousel-image-slider" class="owl-carousel">
+	                <div class="item">
+	                  <img src="/images/shopping/product/107.jpg" alt="">
+	                </div>
+	                <div class="item">
+	                  <img src="/images/shopping/product/108.jpg" alt="">
+	                </div>
+	                <div class="item">
+	                  <img src="/images/shopping/product/109.jpg" alt="">
+	                </div>
+	              </div>
+	            </section>
+	 </div>
 	<!-- Page Header End -->
 
 	<!-- End of call to action section -->
@@ -104,6 +119,8 @@
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
+	            <!-- Featured Content -->
+	            
 			<div class="row">
 <!-- 				Blog Sidebar Section -->
 				<div class="col-md-3">
@@ -112,7 +129,7 @@
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
 								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control">
-								<button type="submit"><i class="fa fa-search"></i></button>
+								<button type="submit"><i class="fa fa-search" style="color:#9C3"></i></button>
 							</form>
 						</aside>
 
@@ -163,7 +180,7 @@
 									<div class="card-body" style="margin-bottom: 5px">
 											<p>商品名稱：${product.name}</p>
 											<p>價格：${product.price}<br>庫存：${product.stock}</p>
-											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
+											<p>製造日期：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
 									<div class="card box-shadow">

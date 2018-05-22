@@ -122,7 +122,9 @@
 										<input type="submit" value="確定更改">
 								</td>
 								<td>${cartItem.product.price * cartItem.quantity}</td>
-								<td><a href="/cart/delete/${i.index}">刪除</a></td>
+								<c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
+								  <td><a href="/cart/delete/${i.index}">刪除</a></td>
+								</c:if>
 							</tr>
 						</c:forEach>
 						<tr>

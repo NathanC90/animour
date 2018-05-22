@@ -100,13 +100,10 @@
 						<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg"
 							alt="">
 						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New
-								Arrival</h2>
+							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New Arrival</h2>
 							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新商品上架</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 看這裡
-							</a>
+							<a href="/product/index" class="btn btn-lg btn-common fadeInUp wow"
+								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-download"></i> 看這裡</a>
 						</div>
 					</div>
 					<div class="carousel-item">
@@ -215,24 +212,6 @@
 		<div class="container">
 			<h1 class="section-title wow fadeInUpQuick" data-wow-delay=".3s">
 				寵物市集</h1>
-			<p class="section-subcontent wow fadeInUpQuick" data-wow-delay=".4s">
-				全館商品九折優惠中！！ <br> blanditiis praesentium
-			</p>
-			<div class="row">
-				<div class="col-md-12">
-					<!-- Portfolio Controller/Buttons -->
-					<div class="controls text-center">
-						<a href="/product/index" class="filter active btn btn-common"
-							data-filter="all"> 全項商品 </a> <a class="filter btn btn-common"
-							data-filter=".branding"> 狗 </a> <a class="filter btn btn-common"
-							data-filter=".marketing"> 貓 </a> <a class="filter btn btn-common"
-							data-filter=".planning"> 鼠 </a> <a class="filter btn btn-common"
-							data-filter=".research"> 兔 </a> <a class="filter btn btn-common"
-							data-filter=".research"> 其他 </a>
-					</div>
-					<!-- Portfolio Controller/Buttons Ends-->
-				</div>
-			</div>
 		</div>
 		<section id="service-block-main" class="section">
 			<!-- 重複的內容開始 -->
@@ -241,18 +220,17 @@
 					<c:forEach var="product" items="${product}">
 						<div class="col-md-3">
 							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" src="/images/shopping/product/pd1.jpg"
-									width="100px" alt="">
+								<img class="card-img-top" src="${product.images}" width="100px" alt="">
 								<div class="card-body" style="margin-bottom: 5px">
 									<p class="card-text" style="padding: 0px">${product.name}</p>
-									<p class="card-text" style="padding: 0px">價格：${product.price}</p>
-									<div class="d-flex justify-content-between align-items-center"
-										style="max-height: 100px">
-										<div class="btn-group" style="margin: 0px">
-											<button type="button" class="btn btn-common btn-sm mt-10">詳情</button>
-											<button type="button" class="btn btn-common btn-sm mt-10">購買</button>
+										
+										<div class="container">
+										  <div class="row justify-content-md-center">
+										    <div class="col-md-auto">
+										      <a href="/selectOneProduct?id=${product.id}"><span class="btn btn-primary">商品詳情</span></a>
+										    </div>
+										  </div>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>
