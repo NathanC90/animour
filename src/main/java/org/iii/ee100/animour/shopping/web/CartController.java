@@ -90,7 +90,7 @@ public class CartController {
 	public String removeShoppingCart(HttpSession session) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
 		cartItem.removeAll(cartItem);
-		return "redirect:/cart/index";
+		return "redirect:/product/index";
 	}
 	
 	

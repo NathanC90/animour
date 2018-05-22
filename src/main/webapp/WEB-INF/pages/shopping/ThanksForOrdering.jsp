@@ -95,7 +95,13 @@
 
 		<!-- Classic Blog Section -->
 		<c:if test="${ordersListSize <= 0}">
-					訂單內沒有任何商品資料
+			<div class="container">
+			  <div class="row justify-content-md-center">
+			    <div class="col-md-auto">
+			      <p class="h1">訂單內沒有任何商品資料</p>
+			    </div>
+			  </div>
+			</div>
 		</c:if>
 <c:if test="${ordersListSize > 0}">
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
@@ -123,14 +129,20 @@
 								</div>
 							</div>
 						</div>
-						<div id="div1">
-						<a href="<spring:url value='/' />" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span> 返回首頁
-						</a>
-						<button id="button1" class='btn btn-warning btn-large'> <span
-									class='glyphicon-shopping-cart glyphicon'></span> 結帳
-						</button>
-					</div>
+						<div class="container">
+						  <div class="row justify-content-md-center">
+						    <div class="col-md-auto">
+						      <div id="div1">
+								<a href="<spring:url value='/' />" class='btn btn-primary'> <span
+									class='glyphicon-info-sigh glyphicon'></span> 返回首頁
+								</a>
+								<button id="button1" class='btn btn-warning btn-large'> <span
+											class='glyphicon-shopping-cart glyphicon'></span> 結帳
+								</button>
+							  </div>
+						    </div>
+						  </div>
+						</div>
 				</div>
 			</div>
 		</section>
@@ -184,14 +196,14 @@ $("#button1").click(function() {
 		/* 				console.log(toJson(data1));
 		*/				
 		var r=confirm("馬上結帳");
-		if (r==true)
-		  {
-			  alert("為您轉跳中");
-		  }
-		else
-		  {
-		  alert("You pressed Cancel!");
-		  }
+// 		if (r==true)
+// 		  {
+// 			  alert("為您轉跳中");
+// 		  }
+// 		else
+// 		  {
+// 		  alert("You pressed Cancel!");
+// 		  }
 	})
 });
 

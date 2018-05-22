@@ -102,15 +102,14 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5 about2-intro-image">
-					<img class="card-img-top"
-						src="${product.images}" width="100px" alt="${product.name}">
+					<img class="card-img-top" src="${product.images}" width="100px" alt="${product.name}">
 				</div>
-				<div class="col-md-6">
-					<h3 class="small-title">品名:&nbsp;&nbsp;&nbsp;${product.name}</h3>
+				<div class="col-md-7">
+					<p class="h3">品名:&nbsp;&nbsp;&nbsp;${product.name}</p>
 					<div id="default-tab" class="mt-10">
 						<ul class="nav nav-tabs" role="tablist">
 							<li class="nav-item"><a class="nav-link active" href="#productDetail"
-								aria-controls="productDetail" role="tab" data-toggle="tab">商品詳細介紹</a></li>
+								aria-controls="productDetail" role="tab" data-toggle="tab">商品介紹</a></li>
 							<li class="nav-item"><a class="nav-link" href="#productSepc"
 								aria-controls="productSepc" role="tab" data-toggle="tab">商品規格</a></li>
 							<li class="nav-item"><a class="nav-link" href="#precattention"
@@ -120,31 +119,39 @@
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="productDetail">
-								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
-								<p class="card-text" style="padding: 0px">編號：${product.id}</p>
-								<p class="card-text" style="padding: 0px">商品名稱：${product.name}</p>
-								<p class="card-text" style="padding: 0px">種類：${product.classify.name}</p>
-								<p class="card-text" style="padding: 0px">價格：${product.price}</p>
+								<p class="h5" style="padding:0px">商品名稱：${product.name}</p>
+<%-- 								<p class="card-text" style="padding: 0px">編號：${product.id}</p> --%>
+								<p class="h5" style="padding:0px">上架日期：${product.shelvesDate}</p>
+								<p class="h5" style="padding:0px">保存期限：${product.expire}</p>
+								<p class="h5" style="padding:0px">種類：${product.classify.name}</p>
+								<p class="h5" style="padding:0px">價格：${product.price}</p>
+								<p class="h5" style="padding:0px">庫存：${product.stock}</p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="productSepc">
-								<p>${product.description}</p>
+								<p class="h6">${product.description}</p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="precattention">
 								<div role="tabpanel" class="tab-pane" id="precattention">
-									<p>${product.notice}</p>
+									<p class="h6">${product.notice}</p>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div>
-						<a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span> 返回
-						</a>
-						<a href="/cart/buy/${product.id}" class='btn btn-warning btn-large'> <span
-									class='glyphicon-shopping-cart glyphicon'></span> 加入購物車
-						</a>
-					</div>
 				</div>
+				
+					<div class="container">
+					  <div class="row justify-content-md-center">
+					    <div class="col col-lg-2"></div>
+					    <div class="col-md-auto">
+					      <a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
+							class='glyphicon-info-sigh glyphicon'>返回</span>
+						  </a>
+						  <a href="/cart/buy/${product.id}" class='btn btn-warning btn-large'> <span
+									class='glyphicon-shopping-cart glyphicon'>加入購物車</span>
+						  </a>
+					    </div>
+					  </div>
+					</div>
 			</div>
 		</div>
 	</section>

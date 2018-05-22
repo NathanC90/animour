@@ -82,7 +82,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>購物清單</h2>
+						<h2>購物車清單</h2>
 					</div>
 				</div>
 			</div>
@@ -91,6 +91,7 @@
 	<!-- Page Header End -->
 
 	<section class="classic-blog-section section">
+	  <c:if test="${sessionScope.cart != null}">
 		<div class="container">
 			<div class="row">
 				<div class="form-group col-md-12">
@@ -132,21 +133,26 @@
 				</form>
 				</div>
 			</div>
-			<a href="/product/index" class='btn btn-primary'> <span
+			<div class="container">
+			  <div class="row justify-content-md-center">
+			    <div class="col-md-auto">
+			        <a href="/product/index" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
-			<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
-							class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;			
-			
-			<sec:authorize access="isAnonymous()">
-			<a href="/cart/confirmBuy2" class='btn btn-warning btn-large'> <span
-							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
-			</sec:authorize>
-			
-			<sec:authorize access="hasRole('Member')">
-			<a href="/cart/confirmBuy" class='btn btn-warning btn-large'> <span
-							class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
-			</sec:authorize>				
+					<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
+									class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;			
+					<sec:authorize access="isAnonymous()">
+					<a href="/cart/confirmBuy2" class='btn btn-warning btn-large'> <span
+									class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
+					</sec:authorize>
+					<sec:authorize access="hasRole('Member')">
+					<a href="/cart/confirmBuy" class='btn btn-warning btn-large'> <span
+									class='glyphicon-shopping-cart glyphicon'></span>確定購買</a>
+					</sec:authorize>
+			    </div>
+			  </div>
+			</div>
 		</div>
+	  </c:if>
 	</section>
 
 	

@@ -136,7 +136,7 @@
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">價格低於</h2>
 							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="number" name="price" min="0" max="2000" step="100" value="500" class="col-md-6"><br><br>
+								<input type="number" name="price" min="0" max="10000" step="100" value="${param.price}" placeholder="請輸入價格" class="col-md-6"><br><br>
 								<input type="submit" class="btn btn-common" value="查尋">
 							</form>
 						</aside>
@@ -161,55 +161,57 @@
 									<img class="card-img-top" src="${product.images}"
 										width="100px" alt="商品列表">
 									<div class="card-body" style="margin-bottom: 5px">
-											<p>商品編號：${product.id}<br>產商品名稱：${product.name}</p>
+											<p>商品名稱：${product.name}</p>
 											<p>價格：${product.price}<br>庫存：${product.stock}</p>
 											<p>製造日：${product.makeDate}<br>保存期限：${product.expire}</p>
 											<p>上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
-									<div class="d-flex justify-content-between align-items-center"
-										style="max-height: 100px">
-									<div>
-										<a href="<spring:url value='/selectOneProduct?id=${product.id}' />"
-											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon"></span>商品詳情
+									<div class="card box-shadow">
+										<a href="<spring:url value='/selectOneProduct?id=${product.id}'/>"
+											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon">商品詳情</span>
 										</a>
-									</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-						
 					</div>
-						<div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
-							<nav aria-label="..." class="">
-								<ul class="pagination">
-								<c:choose>
-									<c:when test="${page.number + 1 - 1 le 0}">
-										<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
-											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-										<span class="sr-only">Previous</span></a></li>
-									</c:when>
-									<c:otherwise>
-										<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
-											tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
-										<span class="sr-only">Previous</span></a></li>
-									</c:otherwise>
-									</c:choose>
-									<li class="page-item active"><a class="page-link" href="#">第 ${page.number + 1}/${page.totalPages} 頁
-											<span class="sr-only">(current)</span></a></li>
+						<div class="container">
+						  <div class="row justify-content-md-center">
+						    <div class="col-md-auto">
+						      <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
+								<nav aria-label="..." class="">
+									<ul class="pagination">
 									<c:choose>
-										<c:when test="${page.number+1 ge page.totalPages}">
-											<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
-												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-											<span class="sr-only">Next</span></a></li>
+										<c:when test="${page.number + 1 - 1 le 0}">
+											<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
+												tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+											<span class="sr-only">Previous</span></a></li>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
-												aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
-											<span class="sr-only">Next</span></a></li>
+											<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 - 1}" 
+												tabindex="-1" aria-label="Previous"> <i class="fa fa-angle-left"></i> 上一頁 
+											<span class="sr-only">Previous</span></a></li>
 										</c:otherwise>
-									</c:choose>
-								</ul>
-							</nav>
+										</c:choose>
+										<li class="page-item active"><a class="page-link" href="#">第 ${page.number + 1}/${page.totalPages} 頁
+												<span class="sr-only">(current)</span></a></li>
+										<c:choose>
+											<c:when test="${page.number+1 ge page.totalPages}">
+												<li class="page-item disabled"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
+													aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+												<span class="sr-only">Next</span></a></li>
+											</c:when>
+											<c:otherwise>
+												<li class="page-item"><a class="page-link" href="?name=${product.name}&price=${product.price}&pageNo=${page.number + 1 + 1}"
+													aria-label="Next"> 下一頁 <i class="fa fa-angle-right"></i>
+												<span class="sr-only">Next</span></a></li>
+											</c:otherwise>
+										</c:choose>
+									</ul>
+								</nav>
+							  </div>
+						    </div>
+						  </div>
 						</div>
 					</div>
 				</c:if>
