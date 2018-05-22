@@ -11,14 +11,12 @@ import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
-import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.junit.Test;
@@ -48,12 +46,10 @@ public class DesignerDaoTest {
 		// 時間、設計師、日期的空物件
 		ReservationTime reservationTime = null;
 		Designer designer = null;
-		ReservationDate reservationDate = null;
 		
 		//使用空set放置不重複物件
 		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
 		Set<Designer> designerSetList = new HashSet<Designer>();
-		List<ReservationDate> reservationDateSetList = new ArrayList<ReservationDate>();
 
 		//
 		List<Designer> designerList = reservationService.getAllDesigner();
@@ -105,10 +101,6 @@ public class DesignerDaoTest {
 						designer.setDesigner(compareDesigner);
 						designerSetList.add(designer);
 						// if(!reservationDate.getReservationDate().equals(compareDate2)) {
-						 reservationDate=new ReservationDate();
-						 reservationDate.setReservationDate(CurrentDate);
-						 reservationDateSetList.add(reservationDate);
-						 System.out.println(reservationDateSetList.size());
 //						 reservationDateFinallyList.add(reservationDate);
 						// }
 					}
@@ -123,10 +115,6 @@ public class DesignerDaoTest {
  		for (Designer finalAnswer2 : designerSetList) {
 			System.out.println("finalAnswer2" + finalAnswer2.getDesigner());
 		}
-		 for(ReservationDate finalAnswer3:reservationDateSetList) {
-		 System.out.println("finalAnswer3"+finalAnswer3.getReservationDate());
-		 }
-		 System.out.println(reservationDateSetList.size());
 
 	}
 

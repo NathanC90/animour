@@ -5,15 +5,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.iii.ee100.animour.halfway.entity.Animal;
-import org.iii.ee100.animour.halfway.service.AnimalService;
-import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
-import org.iii.ee100.animour.salon.entity.ReservationDate;
 import org.iii.ee100.animour.salon.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
