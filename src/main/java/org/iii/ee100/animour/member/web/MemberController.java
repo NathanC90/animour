@@ -142,7 +142,7 @@ public class MemberController {
 	}
 
 	// 顯示個人首頁
-	@RequestMapping(value = "/{account}", method = RequestMethod.GET)
+	//@RequestMapping(value = "/{account}", method = RequestMethod.GET)
 	public String profile(Model model, @PathVariable String account) {
 		Member userDetails = memberService.getOneByAccount(account);
 		Member currentUserDetails=memberService.getNewCurrentMember();

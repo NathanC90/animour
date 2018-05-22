@@ -51,6 +51,14 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
 
+	public Reservation updateReservation(Reservation reservation) {
+		reservation.setAppointDate(reservation.getAppointDate());
+		reservation.setDesigner(reservation.getDesigner());
+		reservation.setPayment(reservation.getPayment());
+		return reservationDao.save(reservation);
+		
+	}
+	
 	public Reservation insertReservation(Reservation reservation) {
 		return reservationDao.save(reservation);
 	}

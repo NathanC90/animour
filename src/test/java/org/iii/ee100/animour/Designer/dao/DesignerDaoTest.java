@@ -38,7 +38,11 @@ public class DesignerDaoTest {
 
 	@Autowired
 	ReservationDao reservationDao;
-
+	
+	@Test
+	public void printsomething() {
+		System.out.println("hhhhhhhhhh"+reservationService);
+	}
 	@Test
 	public void decideThreeContentRepeateOrNot() throws ParseException {
 		// 取出各Table設計師名稱、時間內容種類
