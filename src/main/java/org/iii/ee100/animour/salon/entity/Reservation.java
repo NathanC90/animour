@@ -49,7 +49,7 @@ public class Reservation extends GenericEntity{
 	@Column(name="PAYMENT")
 	private String payment;
 	
-	@Transient
+	@Column(name="APPOINT_DATE")
 	private String appointDate;
 
 	public Date getReservationDate() {
