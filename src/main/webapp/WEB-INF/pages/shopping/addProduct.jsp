@@ -100,8 +100,7 @@
 <%-- 						src="${product.images}" alt="${product.name}"> --%>
 <!-- 				</div> -->
 			<div class="form-group col-md-12">
-				<form:form method="POST" modelAttribute="product"
-					enctype="multipart/form-data">
+				<form:form method="POST" modelAttribute="product" enctype="multipart/form-data">
 					<form:input id="images" path="images" type="hidden"/>
 					<form:input path="member" type="hidden"/>
 					<div class="form-group">
@@ -156,6 +155,11 @@
 							<form:textarea path="notice" type="text" class="form-control" rows="5" required="required"
 	 							placeholder="商品特色" />
 						</div>
+<!-- 						<div class="form-group col-md-6"> -->
+<!-- 							<h2 class="widget-title">圖片上傳</h2> -->
+<%-- 							<form:input path="photo" type="file" class="form-control" --%>
+<%-- 	 							placeholder="圖片上傳" /> --%>
+<!-- 						</div> -->
 					</div>
 						<div class="form-row">
 							<form id="imgur">
