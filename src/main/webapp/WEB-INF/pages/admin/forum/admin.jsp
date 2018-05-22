@@ -98,24 +98,8 @@
 								<span class="icon icon-magnifying-glass"></span>
 							</div>
 						</div>
-						<div class="flextable-item">
-							<div class="btn-group">
-								<button type="button" class="btn btn-outline-primary" title="寄送電子郵件">
-									<span class="icon icon-mail"></span>
-								</button>
-							</div>
-						</div>
+						
 
-						<div class="flextable-item">
-							<div class="btn-group">
-								<button type="button" class="btn btn-outline-primary" title="修改">
-									<span class="icon icon-pencil"></span>
-								</button>
-								<button type="button" class="btn btn-outline-primary" title="刪除">
-									<span class="icon icon-erase"></span>
-								</button>
-							</div>
-						</div>
 					</div>
 					<!-- Table Starts  -->
 					<div class="table-responsive">
@@ -126,7 +110,7 @@
 									<th>文章標題</th>
 									<th>發文時間</th>
 
-									<!-- 					<th>發文者編號</th> -->
+									<th>點擊次數</th>
 									<th>發文者編號</th>
 									<th>管理
 										<!-- 						<div class="btn-group"> -->
@@ -318,7 +302,7 @@
 						var cell1 = $("<td></td>").text(article.id);
 						var cell2 = $("<td></td>").text(article.subject);
 						var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
-						//     	              var cell4 = $("<td></td>").text(article.CLICK);
+						var cell4 = $("<td></td>").text(article.CLICK);
 						var cell5 = $("<td></td>").text(article.member.account);
 						if (article.status == false) {
 							var span02 = $('<span></span>').addClass('icon icon-eye');
@@ -329,7 +313,7 @@
 						var divb2 = $('<div></div>').addClass('btn-group').append([button02]);
 						var divf2 = $('<div></div>').addClass('flextable-item').append(divb2);
 						var cell09 = $('<td></td>').append([divf2]);
-						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell5, cell09]);
+						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell09]);
 						$('#table1>tbody').append(row);
 						$('#table1').trigger("update");
 					});

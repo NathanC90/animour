@@ -112,7 +112,7 @@
 							method="POST" modelAttribute="product">
 							<table class="table">
 								<thead class="thead-dark">
-									<tr>
+									<tr class="h6">
 										<th>圖片</th>
 										<th>產品名稱</th>
 										<th>價格</th>
@@ -127,12 +127,12 @@
 								<c:forEach var="product" items="${memberProducts}">
 									<tr>
 										<td><img src="${product.images}" width="100px" alt="商品列表"></td>
-										<td align="left">${product.name}</td>
-										<td>${product.price}</td>
-										<td>${product.stock}</td>
-										<td>${product.makeDate}</td>
-										<td>${product.expire}</td>
-										<td>${product.classify.name}</td>
+										<td class="h6"><span class="text-primary">${product.name}</span></td>
+										<td class="h6"><span class="text-success">${product.price}</span></td>
+										<td class="h6"><span class="text-info">${product.stock}</span></td>
+										<td class="h6"><span class="text-warning">${product.makeDate}</span></td>
+										<td class="h6"><span class="text-success">${product.expire}</span></td>
+										<td class="h6"><span class="text-danger">${product.classify.name}</span></td>
 										<td><a
 											href="<spring:url value='/product/${product.id}' />"
 											id="buttonUpdate" type="button" class="btn btn-info"><i
