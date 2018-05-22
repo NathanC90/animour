@@ -68,6 +68,7 @@
 <script defer
 	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script src="/js/jquery-min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 <body>
 	<!-- Header area wrapper starts -->
