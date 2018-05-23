@@ -29,8 +29,8 @@
 <!--Fonts-->
 <link rel="stylesheet" media="screen"
 	href="/fonts/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" media="screen"
-	href="/fonts/simple-line-icons.css">
+<!-- <link rel="stylesheet" media="screen" -->
+<!-- 	href="/fonts/simple-line-icons.css"> -->
 
 <!-- Extras -->
 <link rel="stylesheet" type="text/css"

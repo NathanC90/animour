@@ -7,7 +7,7 @@
 
             <head>
                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<!--                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
                 <title>Insert title here</title>
             </head>
 
@@ -88,7 +88,7 @@
                                 <sec:authorize access="hasRole('Admin')">
                                     <!-- 管理員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/user/" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>"" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" /> 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/admin/member">會員資料</a>
@@ -125,6 +125,23 @@
 
                                     </li>
                                 </sec:authorize>
+                                <sec:authorize access="hasRole('Member')">
+                                    <!-- 會員可讀 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/queue" aria-haspopup="true" aria-expanded="false">
+<!-- 										<i title="通知" class="fa fa-globe xs" style="color:#9C3"></i> -->
+										<i title="通知" class="fa fa-globe icon-xs" style="color:#9C3"></i>
+<!-- 										<i title="通知" class="fa fa-globe icon-sm" style="color:#9C3"></i> -->
+										
+										</a>
+                                        <div class="dropdown-menu">
+                                           
+
+                                        </div>
+                                    </li>
+                                </sec:authorize>
+                                
+                                
                             </ul>
                             <form class="form-inline">
                                 <div class="top_search_con">
@@ -136,7 +153,8 @@
                             </form>
                             
 							 <span class="navbar-brand">
-	                         <i class="fas fa-shopping-cart"></i>
+	                         <i class="fa fa-shopping-cart"></i>
+	                         
 	                         <span class="h6">
 	                         <c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
 	                         	 共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆

@@ -88,8 +88,8 @@
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
 											<div class="btn-group" style="margin: 0px">
-												<button type="button" onclick=""
-													class="btn btn-common btn-sm mt-10">add</button>
+<!-- 												<button type="button" onclick="" -->
+<!-- 													class="btn btn-common btn-sm mt-10">add</button> -->
 											</div>
 										</div>
 									</div>
@@ -109,7 +109,7 @@
 								<li><a href="/findOrders/index">訂單查詢</a></li>
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
-								<button type="button" class="btn btn-outline-primary" data-toggle='modal' data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="myFriendListbtn">好友清單</button>								
+								<button type="button" class="btn btn-common" data-toggle='modal' data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="myFriendListbtn">好友清單</button>								
 							</c:if>
 							<sec:authorize access="hasRole('Member')"> 
 							<c:if test="${member.id ne currentMember.id}">
