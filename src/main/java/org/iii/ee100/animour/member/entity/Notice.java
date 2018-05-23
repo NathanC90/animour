@@ -35,4 +35,5 @@ public class Notice extends GenericEntity{
 	@Column(name = "DETAIL")
 	private String detail;
 
+	
 }

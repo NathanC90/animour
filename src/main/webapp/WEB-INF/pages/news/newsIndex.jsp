@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,7 +38,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animour</title>
+<title>Animour 最新消息</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -137,7 +138,11 @@
 									</a><div class="card-body" style="margin-bottom: 5px">
 									 <p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
 											<a href="/news/event"><button type="button" class="btn btn-common">詳情</button></a>
-                 							<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>									
+                 							<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>	
+                 							<sec:authorize access="hasRole('Admin')">
+			                                <a href="/news/insertNews"><button type="button" class="btn btn-common">add</button></a>
+			                                <a href="/news/manage"><button type="button" class="btn btn-common">edit</button></a>						
+			                                </sec:authorize>					
 									</div>
 								</div>
 							</div>
@@ -150,7 +155,7 @@
 <center>
 	<h3>查詢一筆活動</h3>
 	<form name="selectOneForm" action="<c:url value="/findOneNews"/>" method="GET">
-	<input name="seqno" value="${param.seqno}" type="text" size="50" style="text-align: left">
+	<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
 	<input type="submit" value="查詢單筆"> 
 	</form>
 	<hr>
@@ -163,7 +168,7 @@
 	
 	<h3>刪除一筆活動</h3>
 	<form name="deleteForm" action="<c:url value="/deleteNews"/>" method="GET">
-	<input name="seqno" value="${param.seqno}" type="text" size="50" style="text-align: left">
+	<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
 	<input type="submit" value="送出"> 
 	<input type="reset" value="清除"> 
 	</form>
@@ -188,13 +193,13 @@
 					<tr>
 						<td width="120" height="40">發布時間:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="publishTime" value="${param.publishTime}" type="text" size="50"
+							name="publishDate" value="${param.publishDate}" type="text" size="50"
 							style="text-align: left"></td>
 					</tr>
 					<tr>
 						<td width="120" height="40">結束時間:</td>
 						<td width="600" height="40" align="left"><input id='num'
-							name="publishTimeEnd" value="${param.publishTimeEnd}" type="text" size="50"
+							name="publishExpire" value="${param.publishExpire}" type="text" size="50"
 							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
 					</tr>
 					<tr>
@@ -222,19 +227,13 @@
 			<table border="1">
 				<tbody>
 					<tr>
-						<td width="120" height="40">活動編號:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="seqno" value="${param.seqno}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
 						<td width="120" height="40">活動名稱:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="subject" value="${param.subject}" type="text" size="50"
 							style="text-align: left">
 					</tr>
 					<tr>
-						<td width="120" height="40">活動內容:</td>
+						<td width="120" height="40">活動簡介:</td>
 						<td width="600" height="40" align="left"><input id='num'
 							name="content" value="${param.content}" type="text" size="50"
 							style="text-align: left">

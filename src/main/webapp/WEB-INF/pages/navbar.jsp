@@ -104,10 +104,10 @@
                                 <sec:authorize access="hasRole('Member')">
                                     <!-- 會員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" var="username" />${username} 您好</a>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="/${username}">個人首頁</a>
+                                            <a class="dropdown-item" href="/user/${username}">個人首頁</a>
                                             <a class="dropdown-item" href="/update">修改個人資料</a>
                                             <a class="dropdown-item" href="/changepassword">修改密碼</a>
                                             <a class="dropdown-item" href="/logout">登出</a>

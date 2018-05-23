@@ -23,10 +23,10 @@ public class NoticeService extends GenericService<Notice> {
 		noticeDao.save(notice);
 	}
 
-	// 查詢通知
-	public void findStatus(Notice notice) {
-		// noticeDao.findByMemberIdAndWhoAndStatusCountByStatus(notice.getMember().getId(),
-		// notice.getWho(), true, true);
+
+	//查詢通知
+	public void findStatus(Notice notice)  {
+		noticeDao.countStatusByMemberIdAndStatus(notice.getMember().getId(), notice.getStatus());
 	}
 
 	// websocket 發送通知

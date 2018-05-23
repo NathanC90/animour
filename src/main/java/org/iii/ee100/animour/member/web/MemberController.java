@@ -35,7 +35,7 @@ public class MemberController {
 
 	@Autowired
 	AnimalService animalService;
-	
+
 	@Autowired
 	ForumService forumService;
 
@@ -51,7 +51,7 @@ public class MemberController {
 	// 送出註冊資料=新增會員
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult) {
-		if (bindingResult.hasErrors() || 
+		if (bindingResult.hasErrors() ||
 				memberService.emailExist(member.getEmail()) ||
 				memberService.getOneByAccount(member.getUsername())!=null) {
             List<FieldError> errorList = bindingResult.getFieldErrors();
@@ -59,22 +59,22 @@ public class MemberController {
 //            	System.out.println("error-param:"+error.getField());
 //                System.out.println("error-message:"+error.getDefaultMessage());
 //            }
-			
+
 			if (memberService.emailExist(member.getEmail())) {bindingResult.rejectValue("email","email message", "email exist");}
 			if (memberService.getOneByAccount(member.getUsername())!=null) {bindingResult.rejectValue("account","account message", "帳號重複");}
 
 			return "/member/register_original";
-		}		
+		}
 		else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(true);
 			if(member.getSignature()==null) {
 				member.setSignature(member.getAccount()+" say hi.");
 			}
-			
+
 			if(member.getImages()==null) {
 				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
-			}		
+			}
 			memberService.insert(member);
 			return "redirect:/";// 註冊成功跳轉 login
 		}
@@ -128,8 +128,8 @@ public class MemberController {
 			result.rejectValue("oldpassword", "oldpassword", "請確定密碼");
 			map.put("oldpassword", result.getFieldError("oldpassword").getDefaultMessage());
 			map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
-			return "/member/updatepassword";	
-		
+			return "/member/updatepassword";
+
 		}
 
 	}
@@ -142,7 +142,7 @@ public class MemberController {
 	}
 
 	// 顯示個人首頁
-	//@RequestMapping(value = "/{account}", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/{account}", method = RequestMethod.GET)
 	public String profile(Model model, @PathVariable String account) {
 		Member userDetails = memberService.getOneByAccount(account);
 		Member currentUserDetails=memberService.getNewCurrentMember();
@@ -150,18 +150,18 @@ public class MemberController {
 		model.addAttribute("member", userDetails);
 		//current Member
 		model.addAttribute("currentMember", currentUserDetails);
-		
+
 		//System.out.println("userdetails"+userDetails.getAccount());
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
-		
+
 		List<Article> artls=forumService.getArticlesByMemberId(userDetails.getId());
 		//System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
-		
-		
+
+
 		List<Member> memberList=new ArrayList<>();
-		List<MyFriend> list=memberService.findByMemberIdAndLove(userDetails.getId(), true);		
+		List<MyFriend> list=memberService.findByMemberIdAndLove(userDetails.getId(), true);
 		for (MyFriend friend:list) {
 			Member member =memberService.getOne(friend.getFriendId());
 			memberList.add(member);
@@ -170,7 +170,7 @@ public class MemberController {
 
 		return "/member/homepage";
 	}
-	
+
 	// post
 	@RequestMapping(value="/forgetpassword",method=RequestMethod.POST)
 	public String forgetPassword(@RequestParam(value="account") String account,@RequestParam(value="email") String email) {
@@ -187,8 +187,8 @@ public class MemberController {
 		}else {
 		return "/login/login";
 		}
-	}	
-	
+	}
+
 
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
@@ -196,30 +196,30 @@ public class MemberController {
 	public String admin() {
 		return "/admin/member/admin_copy2a";
 	}
-    
+
 	// 前往後台頁
     @PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
 	public String adminforum() {
 		return "/admin/forum/admin";
 	}
-    
+
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {
 		return "/403";
 	}
-	
-	
+
+
 	// 前往mail寄信頁面
 	@RequestMapping(value = "/mailto", method = RequestMethod.GET)
 	public String mailPage() {
 		return "/member/mail";
 		}
-		
+
 	@Autowired
 	EmailService mailService;
-		
+
 	@RequestMapping(value = "/mailto", method = RequestMethod.POST)
 	public String mailSussese(@RequestParam(value="email") String email,
 			@RequestParam(value="subject") String subject,
@@ -227,9 +227,9 @@ public class MemberController {
 			mailService.sendEmail(email,subject, text);
 			return "/member/mail";
 		}
-		
-		
-	
+
+
+
 //	@RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)
 //	public void adminSendMails(
 //			@RequestParam(value="account") String account,
@@ -238,5 +238,5 @@ public class MemberController {
 //			String email=memberService.getOneByAccount(account).getEmail();
 //			mailService.sendEmail(email,subject, text);
 //		}
-			
+
 }

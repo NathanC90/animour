@@ -38,6 +38,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		//.failureUrl("/login?error=true")
 		.and().csrf().disable()
 		;
+    	
 }
     
     @Bean

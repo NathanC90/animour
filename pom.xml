@@ -152,12 +152,13 @@
 			<version>3.8</version>
 		</dependency>
 
-		<!-- Google Vision API Client Libraries -->
-		<dependency>
-			<groupId>com.google.cloud</groupId>
-			<artifactId>google-cloud-vision</artifactId>
-			<version>1.28.0</version>
-		</dependency>
+		
+		 <!-- Google Vision API Client Libraries -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-vision</artifactId>
+            <version>1.28.0</version>
+        </dependency>
 
 	</dependencies>
 
