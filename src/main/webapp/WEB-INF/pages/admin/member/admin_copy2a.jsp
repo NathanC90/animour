@@ -191,14 +191,6 @@
 
 		<!-- Modal Ends -->
 		<!-- Modal open -->
-		<div class="modal fade" id="trueModal" tabindex="-1" role="dialog" aria-labelledby="trueModalLabel" aria-hidden="true">
-			<h5 class="modal-title" id="trueModalLabel">修改權限</h5>
-			<button id="off" class="btn01 btn-common">確定封鎖</button>
-			<button id="on" class="btn02 btn-common">取消封鎖</button>
-			<button data-dismiss="modal" aria-label="Close" class="btn btn-common">取消</button>
-
-		</div>
-
 
 		<!--Modal send many Mail-->
 		<div class="modal fade" id="exampleModalMany" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
