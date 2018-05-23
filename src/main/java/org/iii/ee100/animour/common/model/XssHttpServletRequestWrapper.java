@@ -41,6 +41,7 @@ public class XssHttpServletRequestWrapper extends SecurityContextHolderAwareRequ
                 //You'll need to remove the spaces from the html entities below
 //        value = value.replaceAll("<", "& lt;").replaceAll(">", "& gt;");
         value = value.replaceAll("[\\\"\\\'][\\s]*javascript:(.*)[\\\"\\\']", "\"\"");
+        value = value.replaceAll("/[Ss][Cc][Rr][Ii][Pp][Tt]", "");
         value = value.replaceAll("[Ss][Cc][Rr][Ii][Pp][Tt]", "");
         return value;
     }
