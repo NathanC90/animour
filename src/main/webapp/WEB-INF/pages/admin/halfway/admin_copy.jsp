@@ -118,7 +118,7 @@
 					
 					<form id="statusForm">
 						<input type="hidden" name="id">
-						<input type="hidden" name="status">
+						<input type="hidden" name="disabled">
 					</form>
 				</div>
 			</div>
@@ -204,7 +204,7 @@
 		</script>
 		<script>
 		$(document).ready(function () {
-		$(document).on('click', 'button[title="上架/封鎖"]', function () {
+		$(document).on('click', 'button[title="上架/下架"]', function () {
 			var id=$(this).val();
 			$('input[name="id"]').attr('value', $(this).val());
 			if ($(this).attr('status') == true){
@@ -227,7 +227,7 @@
 						
 			$.ajax({
 				type: "POST",
-				url: "",
+				url: "/halfway/animal",
 				data: formData,
 				contentType: false,
 				processData: false,
