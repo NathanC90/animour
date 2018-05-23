@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -282,9 +283,19 @@ padding: auto;
       </tr>
    </table>
    </div>
+   <!-- 訪客需登入 -->
+   <sec:authorize access="isAnonymous()">
+   <div class="btn-enroll">
+   <a href="/news/confirmbuy2" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
+   </div>
+   </sec:authorize>
+   <sec:authorize access="hasRole('Member')">
    <div class="btn-enroll">
    <a href="/news/enroll" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
    </div>
+   </sec:authorize>
+   
+   
 <div class="refund">
    <hr>
 <h2 style="font-family:微軟正黑體">退款須知</h2>

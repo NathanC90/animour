@@ -157,7 +157,11 @@ public class NewsController {
 //}
 	
 	//Booking confirm
-	
+	//確定購買
+	@RequestMapping(value="/news/confirmbuy2", method=RequestMethod.GET)
+	public String confirmBuy2() {
+		return "redirect:/news/enroll";
+	}
 	
 	
 	//Export Excel
