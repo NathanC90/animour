@@ -9,4 +9,6 @@ public interface NoticeDao extends GenericDao<Notice>{
 
 //	Integer findByMemberIdAndWhoAndStatusCountByStatus(Long member_id,Long id, Boolean status, Boolean statuso);
 
+	
+	Long countByStatus(Boolean status);
 }

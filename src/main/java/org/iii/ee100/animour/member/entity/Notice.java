@@ -28,8 +28,9 @@ public class Notice extends GenericEntity{
 	@Column(name = "NOTICETIME")
 	private java.sql.Timestamp noticeTime;
 	
+	// 是否已讀，預設未讀 = false
 	@Column(name = "STATUS")
-	private boolean status;
+	private Boolean status = false;
 	
 	@Column(name = "DETAIL")
 	private String detail;

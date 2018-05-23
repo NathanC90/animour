@@ -8,7 +8,9 @@ import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.Notice;
 import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.member.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,10 +27,13 @@ public class AnimalController {
 
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	NoticeService noticeService;
 
 	// 首頁，list
 	@RequestMapping(value = "/halfway")
-	public String listPage(Model model) {
+	public String listPage(Model model, Notice notice) {
 		// 設定當前會員
 		Member current = memberService.getNewCurrentMember();
 		model.addAttribute("currentMember", current);
@@ -36,6 +41,13 @@ public class AnimalController {
 		animalservice.updateAnimalCount();
 		List<City> citys = animalservice.getQueryCity();
 		model.addAttribute("citys", citys);
+		
+		//notice.setDetail("以為您轉跳至中途首頁");
+		notice.setDetail("已為您轉跳至中途首頁");
+		noticeService.insert(notice);
+		Long count = noticeService.findNotReadCount();
+		noticeService.notify(current.getAccount(), count);
+		
 		return "/halfway/list";
 	}
 
