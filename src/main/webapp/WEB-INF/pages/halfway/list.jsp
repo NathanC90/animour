@@ -120,7 +120,7 @@
 									<form>
 										<input type="text" placeholder="Search" class="form-control">
 										<button type="submit">
-											<i class="fa fa-plus"></i>
+											<i class="fa fa-search" style="color:#9c3"></i>
 										</button>
 
 									</form>

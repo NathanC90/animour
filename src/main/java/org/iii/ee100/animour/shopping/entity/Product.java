@@ -1,13 +1,17 @@
 package org.iii.ee100.animour.shopping.entity;
 
+import java.sql.Blob;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
 import org.iii.ee100.animour.member.entity.Member;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +29,7 @@ public class Product extends GenericEntity {
 	@Column(name = "STOCK", nullable = false)
 	private Integer stock;
 	@Column(name = "MAKE_DATE", nullable = false)
-	private java.sql.Timestamp makeDate;
+	private java.sql.Date makeDate;
 	@Column(name = "EXPIRE", nullable = false)
 	private Integer expire;
 	@Column(name = "SHELVES_DATE", nullable = false)
@@ -36,6 +40,10 @@ public class Product extends GenericEntity {
 	private String notice;
 	@Column(name = "IMAGES")
 	private String images;
+//	@Column(name="COVERIMAGES")
+//	private Blob coverImages;
+//	@Transient
+//	private MultipartFile photo;
 	
 //	@ManyToOne(cascade = CascadeType.ALL)
 	@ManyToOne

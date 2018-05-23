@@ -95,7 +95,7 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-				<div class="form-group col-md-4">
+				<div class="form-group col-md-5">
 					<img class="card-img-top"
 						src="${product.images}" alt="${product.name}">
 				</div>
@@ -105,20 +105,20 @@
 					<form:input path="member" type="hidden"/>
 					<div class="form-group">
 						<h2 class="widget-title">商品名稱</h2>
-						<form:input path="name" type="text" class="form-control"
+						<form:input path="name" type="text" class="form-control" required="required"
 							placeholder="商品名稱" />
 					</div>
 
 					<div class="form-row">
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">商品價格</h2>
-							<form:input path="price" type="text" class="form-control"
+							<form:input path="price" type="number" class="form-control" required="required"
 								placeholder="商品價格" />
 						</div>
 
 						<div class="form-group col-md-4">
 							<h2 class="widget-title">庫存</h2>
-							<form:input path="stock" type="text" class="form-control"
+							<form:input path="stock" type="number" class="form-control" required="required"
 								placeholder="庫存" />
 						</div>
 
@@ -131,42 +131,42 @@
 
 					<div class="form-row">
 						<div class="form-group col-md-4">
-							<h2 class="widget-title">製造日期</h2>
-							<form:input path="makeDate" type="text" class="form-control"
+<!-- 							<h2 class="widget-title">製造日期</h2> -->
+							<form:input path="makeDate" type="hidden" class="form-control" required="required"
 								placeholder="製造日期" />
 						</div>
 						<div class="form-group col-md-4">
-							<h2 class="widget-title">保存期限</h2>
-							<form:input path="expire" type="text" class="form-control"
+<!-- 							<h2 class="widget-title">保存期限</h2> -->
+							<form:input path="expire" type="hidden" class="form-control" required="required"
 								placeholder="保存期限" />
 						</div>
 						<div class="form-group col-md-4">
-							<h2 class="widget-title">上架日期</h2>
-							<form:input path="shelvesDate" type="text" class="form-control"
+<!-- 							<h2 class="widget-title">上架日期</h2> -->
+							<form:input path="shelvesDate" type="hidden" class="form-control" required="required"
 								placeholder="上架日期" />
 						</div>
 					</div>
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<h2 class="widget-title">商品特色</h2>
-							<form:textarea path="notice" type="text" class="form-control" rows="5"
+							<form:textarea path="notice" type="text" class="form-control" rows="5" required="required"
 	 							placeholder="商品特色" />
 						</div>
 						<div class="form-group col-md-6">
 							<h2 class="widget-title">商品規格</h2>
-							<form:textarea path="description" type="text" class="form-control" rows="5"
+							<form:textarea path="description" type="text" class="form-control" rows="5" required="required"
 	 							placeholder="商品規格" />
 						</div>
 					</div>
 						<div class="form-row">
 							<form id="imgur">
-								<h2 class="widget-title"><span>圖片</span></h2>
+								<h2 class="widget-title"><span>更改圖片</span></h2>
 								<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
 							</form>
 							<div class="container">
 							  <div class="row justify-content-md-center">
 							    <div class="col-md-auto">
-							      <input id="btn1" type="submit" class="btn btn-primary" value="確定修改" >
+							      <input id="btn1" type="submit" class="btn btn-primary" value="確定修改">
 							    </div>
 							  </div>
 							</div>

@@ -108,16 +108,6 @@
 							</div>
 						</div>
 
-						<div class="flextable-item">
-							<div class="btn-group">
-								<button type="button" class="btn btn-outline-primary" title="修改">
-									<span class="icon icon-pencil"></span>
-								</button>
-								<button type="button" class="btn btn-outline-primary" title="刪除">
-									<span class="icon icon-erase"></span>
-								</button>
-							</div>
-						</div>
 					</div>
 					<!-- Table Starts  -->
 					<div class="table-responsive">
@@ -136,31 +126,19 @@
 									<th>會員地址</th>
 									<th>會員狀態</th>
 									<th>管理
-										<!-- 						<div class="btn-group"> -->
-										<!-- 							<button type="button" class="btn btn-outline-primary" title="修改"> -->
-										<!-- 								<span class="icon icon-pencil"></span> -->
-										<!-- 							</button> -->
-										<!-- 							<button type="button" class="btn btn-outline-primary" title="刪除"> -->
-										<!-- 								<span class="icon icon-erase"></span> -->
-										<!-- 							</button> -->
-										<!-- 						</div> -->
 									</th>
 								</tr>
 							</thead>
 							<tbody>
-								<!-- 			<tr> -->
-								<!-- 					<td><p type="text" class="select-row">#10001</p></td> -->
-								<!-- 					<td>ViewSonic</td> -->
-								<!-- 					<td>Alex Wu</td> -->
-								<!-- 					<td>Alex</td> -->
-								<!-- 					<td>09123456789</td> -->
-								<!-- 					<td>alex@gmail.com</td> -->
-								<!-- 					<td>台北市大安區信義路三段100號</td> -->
-								<!-- 					<td>on</td> -->
-								<!-- 				</tr> -->
 							</tbody>
 						</table>
 					</div>
+					
+					<form id="statusForm">
+						<input type="hidden" name="id">
+						<input type="hidden" name="status">
+					</form>
+					
 
 					<!-- Table Ends -->
 
@@ -326,17 +304,6 @@
 					});
 				});
 
-				$('#trueModal').on('show.bs.modal', function (event) {
-					var button = $(event.relatedTarget) // Button that triggered the modal
-					var account = button.data('whatever') // Extract info from data-* attributes
-					// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-					// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-					var modal = $(this)
-					modal.find('.modal-title').text('change status: ' + account)
-					modal.find('#account').val(account)
-				})
-
-
 
 				$('#exampleModal').on('show.bs.modal', function (event) {
 					var button = $(event.relatedTarget) // Button that triggered the modal
@@ -363,15 +330,22 @@
 						var cell7 = $("<td></td>").text(member.email);
 						var cell8 = $("<td></td>").text(member.address);
 
-						if (member.status == 0) {
-							var cell9 = $("<td></td>").text('close');
+						if (member.status == false) {
+							var cell9 = $("<td></td>").text('off').attr({"id":'td_status'+member.id});
 						}
 						else {
-							var cell9 = $("<td></td>").text('on');
+							var cell9 = $("<td></td>").text('on').attr({"id":'td_status'+member.id});
 						}
-
-						var span01 = $('<span></span>').addClass('icon icon-pencil');
-						var button01 = $('<button></button>').attr({ 'type': 'button', 'title': '封鎖', 'data-modal': 'true', 'data-target': '#errModal', 'data-whatever': member.account }).addClass('btn btn-outline-primary').append(span01);
+						
+						if (member.status == false) {
+							var span01 = $('<span></span>').addClass('icon icon-eye');
+						} else {
+							var span01 = $('<span></span>').addClass('icon icon-erase');
+						}
+						
+						
+						
+						var button01 = $('<button></button>').attr({ 'type': 'button', 'title': '封鎖/解除', 'data-modal': 'true', 'data-whatever': member.id,'status':member.status ,'id':'button'+member.id, 'value':member.id}).addClass('btn btn-outline-primary').append(span01);
 						//     	              	var span02=$('<span></span>').addClass('icon icon-erase');
 						// 						var button02=$('<button></button>').attr({'type':'button','title':'刪除'}).addClass('btn btn-outline-primary').append(span02);
 						var span03 = $('<span></span>').addClass('icon icon-mail');
@@ -391,6 +365,8 @@
 						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
 
 						$('#table1>tbody').append(row);
+						$('#table1').trigger("update");
+
 					});
 
 
@@ -443,7 +419,7 @@
 						contentType: "application/json",
 						success: function () {
 							alert("成功_寄送");
-							//	$('#exampleModal').modal('hide')
+							$('#exampleModal').modal('hide')
 						}
 					});
 
@@ -453,6 +429,53 @@
 
 
 			});
+		</script>
+		
+		<script>
+		$(document).ready(function () {
+		$(document).on('click', 'button[title="封鎖/解除"]', function () {
+			var id=$(this).val();
+			$('input[name="id"]').attr('value', $(this).val());
+			if ($(this).attr('status') == true){
+				$('input[name="status"]').attr('value', true);
+				console.log('status:'+$(this).attr('status'));
+
+			}
+			else{
+				$('input[name="status"]').attr('value', false);					
+			}
+			console.log($(this).val());
+			console.log('status:'+$(this).attr('status'));
+			console.log('id:'+$(this).attr('id'))
+
+			var formData = new FormData(document.getElementById("statusForm"));
+			
+			for(var pair of formData.entries()){
+				console.log(pair[0]+','+pair[1])
+			}
+						
+			$.ajax({
+				type: "POST",
+				url: "/api/member/all/deletemember",
+				data: formData,
+				contentType: false,
+				processData: false,
+				success: function (result) {
+					$('#button' +result.id).attr('status', result.status);
+					$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
+					if(result.status==true){
+					$('#td_status'+result.id).text('on')
+					}
+					else{
+						$('#td_status'+result.id).text('off')
+
+					}
+					alert('#button' +result.id + ' change its status')
+				}
+			});
+		});
+		});
+		
 		</script>
 	</body>
 

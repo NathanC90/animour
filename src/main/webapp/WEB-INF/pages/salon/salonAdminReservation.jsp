@@ -85,27 +85,27 @@
 
 						<div class="btn-toolbar dashhead-toolbar">
 							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+								<input type="text" value="- 06/01/2018" class="form-control" data-provide="datepicker">
 
 								<span class="icon icon-calendar"></span>
 							</div>
 						</div>
 					</div>
 
-					<div class="flextable table-actions">
+					<!-- <div class="flextable table-actions">
 						<div class="flextable-item flextable-primary">
 							<div class="btn-toolbar-item input-with-icon">
 								<input type="text" class="form-control input-block" placeholder="搜尋紀錄">
 								<span class="icon icon-magnifying-glass"></span>
 
 							</div>
-							<button id="confirmEdit" name="id" class="btn btn-outline-primary" style="text-align: right">確認更改</button>
+							<button id="confirmEdit" name="id" class="btn btn-outline-primary" style="text-align: right">編輯完成</button>
 
 						</div>
 
 
 
-					</div>
+					</div> -->
 					<!-- Table Starts  -->
 					<div class="table-responsive">
 						<table class="table" data-sort="table" id="table1">
@@ -116,15 +116,26 @@
 									<th>時段</th>
 									<th>內容</th>
 									<th>設計師</th>
-									<th>總時數</th>
-									<th>價位</th>
+									<th>耗時</th>
+									<th>消費金額</th>
 									<th>付款狀態</th>
-									<!-- <th style="display: none">member_id</th> -->
+									<th style="display: none">ID</th>
+									<th>會員帳號</th>
 									<th id="notNeed">編輯</th>
 								</tr>
 							</thead>
 							<tbody>
-
+								<tr>
+									<!-- <td>
+										<input type="checkbox" class="select-row">
+									</td> -->
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -234,20 +245,20 @@
 							console.log(datas);
 							$.each(datas, function (i, reservation) {
 								var cell1 = $('<td id="NewEdit" class="inputContent"></td>').append(reservation.id);
-								var cell2 = $('<td id="cellEdit2" class="inputContent"></td>').append(reservation.reservationDate);
+								var cell2 = $('<td id="cellEdit2" class="inputContent"></td>').append(reservation.appointDate);
 								var cell3 = $('<td id="cellEdit3" class="inputContent"></td>').text(reservation.frontTime);
 								var cell4 = $('<td id="cellEdit4" class="inputContent"></td>').text(reservation.content);
 								var cell5 = $('<td id="cellEdit5" class="inputContent"></td>').text(reservation.designer);
 								var cell6 = $('<td id="cellEdit6" class="inputContent"></td>').text(reservation.totalTime);
 								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
 								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
-								// var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
+								var cell9 = $('<td id="cellEdit9" class="inputContent" style="display: none" ></td>').text(reservation.member.id)
+								var cell10 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
 								// var p = $('<p></p>')
-								var cell10 = $('<td id="addNewButton"><button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span class="icon icon-pencil"></span></button><button type="button" id="deleteButton" class="btn btn-outline-primary" title="刪除"><span class="icon icon-erase"></span></button></td>')
+								var cell11 = $('<td id="addNewButton"><button type="button" id="editButton" class="btn btn-outline-primary" title="修改"><span class="icon icon-pencil"></span></button><button type="button" id="deleteButton" class="btn btn-outline-primary" title="刪除"><span class="icon icon-erase"></span></button></td>')
 
 
-								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell1, cell2, cell3, cell4,
-									cell5, cell6, cell7, cell8, cell10]);
+								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10, cell11]);
 								$('#table1').append(row);
 							})
 
@@ -282,108 +293,125 @@
 						})
 					})
 					//編輯按鈕
-					$(document).on("click", '#editButton', function () {
-						var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
-
-						// var data1 = new FormData(document.getElementById("myform1"));
-						$(this).attr({ 'style': 'display: none' });
-						var button = $('<button type="button" id="editFinish" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
-						$(this).parent().append(button);
-						$(this).parents('tr').find('.inputContent').on("dblclick", function () {
-
-							if (window.$currEditing)
-								finishEditing($currEditing);
-							var $cell = $(this);
-							var $inp = $('<input type="text" style="width:100px;height:30px;"/>');
-							$inp.val($cell.text());
-							$cell.attr('name', 'cellEditor').html('').append($inp);
-							$inp[0].select();
-							window.$currEditing = $inp;
-							console.log("test...")
-						}).on('click', function () {
-							if (window.$currEditing && $currEditing.parent()[0] != this)
-								finishEditing($currEditing);
-						});
-
-						$("input[name*='cellEditor']").on("keydown", function (e) {
-							console.log(e.which);
-							if (e.which == 13 || e.which == 9)
-								finishEditing($(this));
-						});
-						function finishEditing($inp) {
-							$inp.parent().removeAttr("cellEditor").text($inp.val());
-							window.$currEditing = null;
-						}
-						var formData;
-						$(document).on("click", '#editFinish', function () {
-
-							valueId = $(this).parents("tr").find('#NewEdit').text();
-							valueReservationDate = $(this).parents("tr").find('#cellEdit2').text();
-							valueFrontTime = $(this).parents("tr").find('#cellEdit3').text();
-							valueContent = $(this).parents("tr").find('#cellEdit4').text();
-							valueDesigner = $(this).parents("tr").find('#cellEdit5').text();
-							valueTotalTime = $(this).parents("tr").find('#cellEdit6').text();
-							valuePrice = $(this).parents("tr").find('#cellEdit7').text();
-							valuePayment = $(this).parents("tr").find('#cellEdit8').text();
-
-							// $.getJSON('/reservations/reservation/' + catchIdValue, { "pageNo": pageNo }, function (reservation) {
-							var cell = $('<input id="inputId" name="id" value="' + valueId + '"></input>')
-							var cell1 = $('<input id="inputId" name="reservationDate" value="' + valueReservationDate + '"></input>')
-							var cell2 = $('<input id="inputId" name="frontTime" value="' + valueFrontTime + '"></input>')
-							var cell3 = $('<input id="inputId" name="content" value="' + valueContent + '"></input>')
-							var cell4 = $('<input id="inputId" name="designer" value="' + valueDesigner + '"></input>')
-							var cell5 = $('<input id="inputId" name="totalTime" value="' + valueTotalTime + '"></input>')
-							var cell6 = $('<input id="inputId" name="price" value="' + valuePrice + '"></input>')
-							var cell7 = $('<input id="inputId" name="payment" value="' + valuePayment + '"></input>')
-
-
-							$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7])
-							// cell1, cell2, cell3, cell4, cell5, cell6, cell7
-
-							var json;
-							var object = {};
-							formData = new FormData(document.getElementById("form1"));
-							// formDate.forEach 把資料改成[array]:values格式再轉成jason
-							// function toJson(formData) {
-							// 	var object = {};
-							// 	formData.forEach(function (key, value) {
-
-							// 		object[key] = value;
-							// 	});
-							// 	json = JSON.stringify(object, null);
-							// 	return json;
-							// };
-							// console.log(toJson(formData))
-							$(document).on("click", '#confirmEdit', function () {
-								$.ajax({
-									url: '/reservations/reservation/' + catchIdValue,
-									contentType: false,
-									processData: false,
-									type: 'post',
-									data: formData,
-									// dataType: "json",
-									success: function (result) {
-									}
-
-								}).done(function (datas) {
-									$('#inputId').remove();
-
-									console.log('變更成功');
-								});
-							})
-
-
-
-
-
-						})
-
-					})
 
 				})
 			};
+			//編輯完成,並恢復
+			$("#confirmEdit").click(function () {
 
+
+
+			})
+
+
+
+			$(document).on("click", '#editButton', function () {
+				var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
+
+				// var data1 = new FormData(document.getElementById("myform1"));
+				$(this).attr({ 'style': 'display: none' });
+				$(this).parents('td').find('#deleteButton').remove();
+				var button = $('<button type="button" id="editFinish" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
+				$(this).parent().append(button);
+				$(this).parents('tr').find('.inputContent').on("dblclick", function () {
+
+					if (window.$currEditing)
+						finishEditing($currEditing);
+					var $cell = $(this);
+					var $inp = $('<input type="text" style="width:100px;height:30px;"/>');
+					$inp.val($cell.text());
+					$cell.attr('name', 'cellEditor').html('').append($inp);
+					$inp[0].select();
+					window.$currEditing = $inp;
+					console.log("test...")
+				}).on('click', function () {
+					if (window.$currEditing && $currEditing.parent()[0] != this)
+						finishEditing($currEditing);
+				});
+
+				$("input[name*='cellEditor']").on("keydown", function (e) {
+					console.log(e.which);
+					if (e.which == 13 || e.which == 9)
+						finishEditing($(this));
+				});
+				function finishEditing($inp) {
+					$inp.parent().removeAttr("cellEditor").text($inp.val());
+					window.$currEditing = null;
+				}
+				var formData;
+				$(document).on("click", '#editFinish', function () {
+
+					valueId = $(this).parents("tr").find('#NewEdit').text();
+					valueReservationDate = $(this).parents("tr").find('#cellEdit2').text();
+					valueFrontTime = $(this).parents("tr").find('#cellEdit3').text();
+					valueContent = $(this).parents("tr").find('#cellEdit4').text();
+					valueDesigner = $(this).parents("tr").find('#cellEdit5').text();
+					valueTotalTime = $(this).parents("tr").find('#cellEdit6').text();
+					valuePrice = $(this).parents("tr").find('#cellEdit7').text();
+					valuePayment = $(this).parents("tr").find('#cellEdit8').text();
+					valueMemberId = $(this).parents("tr").find('#cellEdit9').text();
+
+					// $.getJSON('/reservations/reservation/' + catchIdValue, { "pageNo": pageNo }, function (reservation) {
+					var cell = $('<input id="inputId" name="id" value="' + valueId + '"></input>')
+					var cell1 = $('<input id="inputId" name="appointDate" value="' + valueReservationDate + '"></input>')
+					var cell2 = $('<input id="inputId" name="frontTime" value="' + valueFrontTime + '"></input>')
+					var cell3 = $('<input id="inputId" name="content" value="' + valueContent + '"></input>')
+					var cell4 = $('<input id="inputId" name="designer" value="' + valueDesigner + '"></input>')
+					var cell5 = $('<input id="inputId" name="totalTime" value="' + valueTotalTime + '"></input>')
+					var cell6 = $('<input id="inputId" name="price" value="' + valuePrice + '"></input>')
+					var cell7 = $('<input id="inputId" name="payment" value="' + valuePayment + '"></input>')
+					var cell8 = $('<input id="inputId" name="member_id" value="' + valueMemberId + '"></input>')
+
+					$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8])
+					// cell1, cell2, cell3, cell4, cell5, cell6, cell7
+
+					var json;
+					var object = {};
+					formData = new FormData(document.getElementById("form1"));
+
+					// formDate.forEach 把資料改成[array]:values格式再轉成jason
+					// function toJson(formData) {
+					// 	var object = {};
+					// 	formData.forEach(function (key, value) {
+
+					// 		object[key] = value;
+					// 	});
+					// 	json = JSON.stringify(object, null);
+					// 	return json;
+					// };
+					// console.log(toJson(formData))
+					// $(document).on("click", '#confirmEdit', function () {
+					// 	for (var pair of formData.entries()) {
+					// 		console.log(pair[0] + ',' + pair[1]);
+
+					// 	}
+					$.ajax({
+						url: '/reservations/reservation/' + catchIdValue,
+						contentType: false,
+						processData: false,
+						type: 'post',
+						data: formData,
+						// dataType: "json",
+						success: function (result) {
+						}
+
+					}).done(function (datas) {
+						$('#form1').remove();
+
+						console.log('變更成功');
+					});
+				})
+			})
+					// })
 		</script>
+
+
+
+
+
+
+
+
 
 	</body>
 

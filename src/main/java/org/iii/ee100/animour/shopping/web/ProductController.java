@@ -1,6 +1,9 @@
 package org.iii.ee100.animour.shopping.web;
 
+import java.sql.Blob;
 import java.util.List;
+
+import javax.sql.rowset.serial.SerialBlob;
 
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class ProductController {
@@ -64,7 +68,6 @@ public class ProductController {
 	
 	@RequestMapping(value = "/product/maintain")
 	public String maintain(Model model) {
-		System.err.println(memberService.getNewCurrentMember().getId());
 		List<Product> memberProducts = productService.getByMemberId(memberService.getCurrentMember().getId());
 		for(Product product:memberProducts) {
 			System.err.println("product" + product.getName());
@@ -87,8 +90,16 @@ public class ProductController {
 	// Insert Product
 	@RequestMapping(value = "/product/insert", method = { RequestMethod.POST })
 	public String insertProduct(@ModelAttribute(name = "product") Product product, Model model) {
-		System.err.println(product.getMakeDate());
-		System.out.println(product);
+//		MultipartFile photo = product.getPhoto();
+//		if(photo != null && !photo.isEmpty()) {
+//			try {
+//				byte[] bytes = photo.getBytes();
+//				Blob blob = new SerialBlob(bytes);
+//				product.setCoverImages(blob);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
 		try {
 			Member currentMember = memberService.getNewCurrentMember();
 			product.setMember(currentMember);
