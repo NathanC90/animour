@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Transient;
 
+import org.iii.ee100.animour.halfway.entity.Animal;
+import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Mail;
 import org.iii.ee100.animour.member.ManyMail;
 import org.iii.ee100.animour.member.MemberStatus;
@@ -120,4 +122,23 @@ public class MemberRestfulController {
 		return new ResponseEntity<MemberStatus>(member,HttpStatus.OK);
 	}
 
+	@Autowired
+	AnimalService animalService;
+	
+	@RequestMapping(value="/deleteanimal",method=RequestMethod.POST)
+	public ResponseEntity<?> delete(Animal animal) {
+		
+		Animal animal_changed=animalService.getOne(animal.getId());
+		if(animal.getDisabled()==true) {
+		animal_changed.setDisabled(false);
+		}
+		else {
+		animal_changed.setDisabled(true);
+
+		}
+		return new ResponseEntity<Animal>(animal,HttpStatus.OK);
+	}
+	
+	
+	
 }

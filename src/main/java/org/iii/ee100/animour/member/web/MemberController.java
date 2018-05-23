@@ -120,7 +120,7 @@ public class MemberController {
 	public String updatePassword(@Valid Password password, BindingResult result, Map<String, Object> map) {
 		if (memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
 			if (result.hasErrors()) {
-				map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
+				map.put("newpassword", "請輸入大小寫字母和數字,且長度大於3");
 				return "/member/update_password";
 			} else {
 				memberService.update(memberService.getNewCurrentMember(), password.getNewpassword());
@@ -129,7 +129,7 @@ public class MemberController {
 		} else {
 			result.rejectValue("oldpassword", "oldpassword", "請確定密碼");
 			map.put("oldpassword", result.getFieldError("oldpassword").getDefaultMessage());
-			map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
+			map.put("newpassword", "請輸入大小寫字母和數字,且長度大於3");
 			return "/member/updatepassword";
 
 		}

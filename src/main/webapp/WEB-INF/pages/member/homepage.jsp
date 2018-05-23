@@ -204,7 +204,7 @@
 
 				<!-- Blog Item Wrapper Ends-->
 		<div class="modal fade" id="exampleModalMyFriend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog" role="document" >
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">My Follow List</h5>
@@ -212,17 +212,17 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body" id="modal_myFriendList">
+					<div class="modal-body" id="modal_myFriendList" >
 					<c:forEach items='${friendlist}' var='friend'>
 <!-- 					<div class='row'> -->
 					<div class='col-md-6'>
-					<div class="card mb-3 box-shadow">
-					<div style="padding:4px" >
-					<a href='/${friend.account}'>
-					<div style="width:60px; height:60px;margin:4px;float:left">
+					<div class="card mb-5 box-shadow ">
+					<div style="padding:1px;" >
+					<a href='/user/${friend.account}'>
+					<div style="width:60px; height:60px;margin:1px;float:left" >
 					<img src="${friend.images}" alt="${friend.id}" class="card-img-top img-circle">
 					</div>
-					<span>${friend.account}</span>
+					<div style="float:left;text-align: center;height:60px"><span>${friend.account}</span></div>
 					</a>
 					</div>
 					</div>
