@@ -387,3 +387,13 @@ values (3,true,6);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)
 values (3,true,7);
 
+insert into Notice (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
+values (2,1,true,now(),'現在有人發通知給您');
+insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
+values (2,1,true,now(),'現在有人發通知給您');
+insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
+values (2,1,true,now(),'現在有人發通知給您');
+insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
+values (2,1,true,now(),'現在有人發通知給您');
+insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
+values (2,1,true,now(),'現在有人發通知給您');
