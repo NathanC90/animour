@@ -25,6 +25,7 @@ public class GoogleVisionController {
 	
 	@RequestMapping (value="/visionapitest")
 	public void Label() throws Exception {
+	
 	    // Instantiates a client
 	    try (ImageAnnotatorClient vision = ImageAnnotatorClient.create()) {
 
