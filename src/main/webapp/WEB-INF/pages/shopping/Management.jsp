@@ -62,7 +62,7 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -83,7 +83,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>修改商品資料</h2>
+						<h2>變更商品資料</h2>
 					</div>
 				</div>
 			</div>
@@ -94,7 +94,7 @@
 	<!-- Page Content Start 重複的內容開始 -->
 	<section class="section">
 		<div class="container">
-			<div class="row">
+			<div class="row animated zoomIn">
 				<div class="form-group col-md-5">
 					<img class="card-img-top"
 						src="${product.images}" alt="${product.name}">

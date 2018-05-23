@@ -130,7 +130,7 @@
 <!-- 						Search Bar -->
 						<aside class="widget search-bar wow" data-wow-delay="0.3s">
 							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
-								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control">
+								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control" required="required">
 								<button type="submit"><i class="fa fa-search" style="color:#9C3"></i></button>
 							</form>
 						</aside>
@@ -155,8 +155,8 @@
 							data-wow-delay="0.3s">
 							<h2 class="widget-title">價格低於</h2>
 							<form name="selectPriceForm" action="/selectPrice" method="GET">
-								<input type="number" name="price" min="0" max="10000" step="100" value="${param.price}" placeholder="請輸入價格" class="col-md-6"><br><br>
-								<input type="submit" class="btn btn-common" value="查尋">
+								<input type="number" name="price" min="0" max="10000" step="100" value="${param.price}" required="required" placeholder="請輸入價格" class="col-md-6"><br><br>
+								<input id="shake" type="submit" class="btn btn-common" value="查尋">
 							</form>
 						</aside>
 						<!--End of Price -->
@@ -171,8 +171,8 @@
 				</c:if>
 				<c:if test="${page != null || page.numberOfElements > 0}">
 				<div class="col-md-9">
-				<ul class="pagination"><li class="page-item active"><p class="page-link animated bounceInDown">商品資料共有 ${page.totalElements} 筆</p></li></ul>
-					<div class="row animated bounceInDown" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
+				<ul class="pagination"><li class="page-item active"><p class="page-link animated lightSpeedIn">商品資料共有 ${page.totalElements} 筆</p></li></ul>
+					<div class="row" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
 						<c:forEach var="product" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-3 box-shadow">
@@ -182,7 +182,7 @@
 									<div class="card-body fadeIn" style="margin-bottom: 5px">
 											<p class="text-success">商品名稱：${product.name}</p>
 											<p class="text-primary">價格：${product.price}<br>庫存：${product.stock}</p>
-											<p class="text-primary">製造日期：${product.makeDate}<br>保存期限：${product.expire}</p>
+<%-- 											<p class="text-primary">製造日期：${product.makeDate}<br>保存期限：${product.expire}</p> --%>
 											<p class="text-primary">上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
 									<div class="card box-shadow">
@@ -267,13 +267,13 @@
 		$(document).ready(function() {
 			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
 			var o2 = {"background":"white", "color":"green", "padding":"10px"};
-			$("#row1").css(o2).mouseover(over).mouseout(out);
+			$("#shake").mouseover(over).mouseout(out);
 			
 			function over(){
-				$(this).css(o1);
+				$(this).removeClass("btn btn-common").addClass("btn btn-common animated shake");
 			}
 			function out(){
-				$(this).css(o2);
+				$(this).removeClass("btn btn-common animated shake").addClass("btn btn-common");
 			}
 		})
 	</script>
