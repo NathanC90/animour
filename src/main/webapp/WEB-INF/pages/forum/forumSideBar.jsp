@@ -249,7 +249,7 @@
               if (datas != null) {
                 if (pageNo <= datas[0].totalPage) {
                   $.each(datas, function (idx, article) {
-                    if (article.status || article.status == null) {
+                    if (article.status) {
                       var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id=' + article.id + '">' + article.subject
                         + '</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i><a href="">發文時間:' + formatDate(new Date(article.postTime))
                         + '</a></li><li><i class="fa fa-user"></i><a href="#">' + article.member.account
