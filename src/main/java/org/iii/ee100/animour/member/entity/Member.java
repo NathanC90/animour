@@ -43,8 +43,8 @@ public class Member extends GenericEntity implements UserDetails {
 	private String account;// 帳號
 	
 	//	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9]).{3,10}$", message = "請輸入大小寫字母和數字,且長度在3-10之間")
-	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{3,10}$", message = "請輸入大小寫字母和數字,且長度在3-10之間")
-	@Column(name = "PASSWORD")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{3,}$", message = "請輸入大小寫字母和數字,且長度至少3")
+	@Column(name = "PASSWORD",length=80)
 	private String password;// 密碼
 
 	@NotBlank(message="enter your name")
