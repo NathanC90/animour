@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NoticeDao extends GenericDao<Notice>{
-
-//	Integer findByMemberIdAndWhoAndStatusCountByStatus(Long member_id,Long id, Boolean status, Boolean statuso);
-
+												//被通知        true
+	Integer countStatusByMemberIdAndStatus(Long memberId,Boolean Status);
 }
