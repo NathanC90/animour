@@ -17,7 +17,7 @@ public class NewsService{
 	
 	public Page<News> getPage(int pageNo, int pageSize) {
 		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
-		return newsDao.findTop6ByOrderBySeqnoDesc(pageable);
+		return newsDao.findTop6ByOrderByIdDesc(pageable);
 	}
 		
 	
@@ -35,22 +35,24 @@ public class NewsService{
 
 	
 	
-	public void delete(Long seqno) {
-		newsDao.delete(seqno);
+	public void delete(Long id) {
+		newsDao.delete(id);
 	}
 
 	
 	
 	public List<News> getAll() {
 		return Lists.newArrayList(newsDao.findAll());
-	}
-
+	}	
 	
-	
-	public News getOne(Long seqno) {
-		return newsDao.findOne(seqno);
+	public News getOne(Long id) {
+		return newsDao.findOne(id);
 	}
 	public List<News> getSixNews(){
 		return newsDao.findTop6ByOrderByEventDateDesc();
+	}
+
+	public List<News> getByMemberId(Long id) {
+		return newsDao.findByMember_id(id);
 	}
 }

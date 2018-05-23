@@ -2,12 +2,13 @@ package org.iii.ee100.animour.news.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
+import org.iii.ee100.animour.common.entity.GenericEntity;
+import org.iii.ee100.animour.member.entity.Member;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,13 +16,8 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name="NEWS")
-@Data
-public class News {
-
-	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="SUBJECT_ID")
-	private Long subjectId;
+public class News extends GenericEntity{
+	
 	@Column(name="SUBJECT")
 	private String subject;
 	@Column(name="EVENT_DATE")
@@ -56,6 +52,10 @@ public class News {
 	private String isOn;
 	@Column(name="IMAGES")
 	private String images;
+	
+	@ManyToOne
+	@JoinColumn(name="MEMBER_ID")
+	private Member member;
 	
 
 }

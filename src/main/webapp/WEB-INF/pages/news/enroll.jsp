@@ -270,12 +270,15 @@ padding: auto;
          <th style="font-family:微軟正黑體">票券名稱</th>
          <th style="font-family:微軟正黑體">票價</th>
          <th style="font-family:微軟正黑體">張數</th>
+         <th style="font-family:微軟正黑體">小計</th>
+         <th style="font-family:微軟正黑體"></th>
       </tr>
 
       <tr>         
          <td style="font-family:微軟正黑體">【2018上聯寵物用品博覽會】</td>
          <td style="font-family:微軟正黑體">150</td>
          <td style="font-family:微軟正黑體"><input id="number" type="number" value="0"></td>
+         <td style="font-family:微軟正黑體">150</td>
       </tr>
    </table>
    </div>

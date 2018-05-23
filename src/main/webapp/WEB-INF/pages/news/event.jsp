@@ -88,17 +88,17 @@
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
 		<!-- Page Header -->
-<!-- 	<div class="page-header-section"> -->
-<!-- 		<div class="container"> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="page-header-area"> -->
-<!-- 					<div class="page-header-content"> -->
-<!-- 						<h2>活動詳情</h2> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+	<div class="page-header-section">
+		<div class="container">
+			<div class="row">
+				<div class="page-header-area">
+					<div class="page-header-content">
+						<h2>活動詳情</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Page Header End -->
 	</header>
 
@@ -107,14 +107,14 @@
     <div class="container">
       <div class="row">
     <img class="card-img-top" src="/images/news/PetExpo.jpg" width="100%" alt="" >
-        <!-- BLog Article Section -->
+        <!-- Event Section -->
         <div class="col-md-9">
-          <!-- Single Blog Post -->
+          <!-- Single Event Post -->
           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
-            <!-- Author Info -->
-            <header class="author-info" >
-              <h2 class="blog-post-title" style="font-family:微軟正黑體">
-                <a href="#">【2018上聯寵物用品博覽會】</a>
+            <!-- Event Info -->
+            <header class="author-info">
+              <h2 class="blog-post-title"  style="font-family:微軟正黑體">
+                <a href="#subject">【2018上聯寵物用品博覽會】</a>
               </h2>
               <div class="tag-posted-in">
                	<div>
@@ -122,15 +122,22 @@
                     <i class="icon icon-calendar" ></i>
                     	活動時間：2018/08/31(五) 至 2018/09/03(一)
                   </span>
-                  
+                  <!-- Google Calendar Notes -->
+                  <!--  action=TEMPLATE             //請勿修改
+						&text=[事件名稱]              	//Calendar 事件的名稱
+						&dates=[開始時間]/[結束時間]    	//時間格式為 YYYYMMDDTHHMMSS
+						&details=[詳細的描述]          //使用 %0A 作為跳行 
+						&location=[地點]             //標示地點
+						&trp=false                  //忙碌狀態 true=忙碌、false=有空  -->
+					<!-- Google Calendar Notes -->
                  <!-- Add to Google Calendar starts -->
                   <a href="http://www.google.com/calendar/event?
-							action=TEMPLATE             <!--請勿修改 -->
-							&text=[事件名稱]              <!--Calendar 事件的名稱 -->
-							&dates=[開始時間]/[結束時間]    <!--時間格式為 YYYYMMDDTHHMMSS -->
-							&details=[詳細的描述]          <!--使用 %0A 作為跳行 -->
-							&location=[地點]             <!--標示地點 -->
-							&trp=false                  <!--忙碌狀態 true=忙碌、false=有空 -->
+							action=TEMPLATE
+							&text=
+							&dates=
+							&details=
+							&location=
+							&trp=false
 							" style="font-family:微軟正黑體">新增至Google行事曆</a>
                	</div>
                	<!-- Add to Google Calendar ends -->
@@ -157,8 +164,8 @@
 <!--               </a> -->
             </section>
             <!-- Post Content -->
-            <section class="blog-post-content">
-              	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2><hr>
+            <section class="blog-post-content"><hr>
+              	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2>
               <div class="blog-post" style="border: 2px solid grey; font-family:微軟正黑體">
                 <p style="padding: 10px; font-family:微軟正黑體">
                 	匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。
