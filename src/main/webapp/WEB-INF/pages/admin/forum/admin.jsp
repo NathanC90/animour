@@ -259,7 +259,7 @@
 							var cell1 = $("<td></td>").text(article.id);
 							var cell2 = $("<td></td>").text(article.subject);
 							var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
-							//     	              var cell4 = $("<td></td>").text(article.CLICK);
+							    	              var cell4 = $("<td></td>").text(article.click);
 							var cell5 = $("<td></td>").text(article.member.account);
 							if (article.status == false) {
 								var span02 = $('<span></span>').addClass('icon icon-eye');
@@ -302,7 +302,7 @@
 						var cell1 = $("<td></td>").text(article.id);
 						var cell2 = $("<td></td>").text(article.subject);
 						var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
-						var cell4 = $("<td></td>").text(article.CLICK);
+						var cell4 = $("<td></td>").text(article.click);
 						var cell5 = $("<td></td>").text(article.member.account);
 						if (article.status == false) {
 							var span02 = $('<span></span>').addClass('icon icon-eye');
