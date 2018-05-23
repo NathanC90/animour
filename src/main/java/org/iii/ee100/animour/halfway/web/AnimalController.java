@@ -27,7 +27,7 @@ public class AnimalController {
 
 	@Autowired
 	MemberService memberService;
-	
+
 	@Autowired
 	NoticeService noticeService;
 
@@ -41,13 +41,15 @@ public class AnimalController {
 		animalservice.updateAnimalCount();
 		List<City> citys = animalservice.getQueryCity();
 		model.addAttribute("citys", citys);
-		
-		//notice.setDetail("以為您轉跳至中途首頁");
+
+		// notice.setDetail("以為您轉跳至中途首頁");
 		notice.setDetail("已為您轉跳至中途首頁");
 		noticeService.insert(notice);
 		Long count = noticeService.findNotReadCount();
-		noticeService.notify(current.getAccount(), count);
-		
+		if (current != null) {
+			noticeService.notify(current.getAccount(), count);
+		}
+
 		return "/halfway/list";
 	}
 
