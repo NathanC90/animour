@@ -73,31 +73,30 @@ public class NewsController {
 	
 	
 	
-	@RequestMapping(path= {"/findOneNews"}, method={RequestMethod.GET})
+	@RequestMapping(value= {"/findOneNews"}, method={RequestMethod.GET})
 	public String findOne(News news, Model model) {
 		News nb = newsService.getOne(Long.valueOf(news.getId()));
 		if (nb != null) {
 			model.addAttribute("oneNews", nb);
-		}
-		
+		}		
 		return "/news/manage";
 	}
 	
-	@RequestMapping(path= {"/findAllNews"}, method={RequestMethod.GET})
+	@RequestMapping(value= {"/findAllNews"}, method={RequestMethod.GET})
 	public String selectAll(Model model) {
 		model.addAttribute("allNews", newsService.getAll());
 		return "/news/manage";
 	}
 
 	
-	@RequestMapping(path= {"/deleteNews"}, method={RequestMethod.GET})
+	@RequestMapping(value= {"/deleteNews"}, method={RequestMethod.GET})
 	public String deleteNews(News news, Model model) {
 		newsService.delete(news.getId());
 		model.addAttribute("delete", Long.valueOf(news.getId()));
 		return "/news/manage";
 	}
 	
-	@RequestMapping(path= {"/insertNews"}, method={RequestMethod.POST})
+	@RequestMapping(value = {"/insertNews"}, method={RequestMethod.POST})
 	public String insertNews(News news, Model model) {
 		newsService.insert(news);
 		model.addAttribute("insertNews", news);
@@ -142,11 +141,27 @@ public class NewsController {
 //		return "/news/manage";
 //	}
 	
-	@RequestMapping(path= {"/findSixNews"}, method={RequestMethod.GET})
+	@RequestMapping(value= {"/findSixNews"}, method={RequestMethod.GET})
 	public String findSixNews(Model model) {
 		model.addAttribute("sixNews", newsService.getSixNews());
 		return "/news/newsIndex";
 	}
+	
+	//Facebook Share
+	
+//	@RequestMapping(value = {"/news/event{id}"}, method={RequestMethod.GET})
+//	public String shareNews(News news, Model model) {
+//		model.addAttribute("dynamicUrl", "/news/eventid="+id);
+//		return "/news/event";
+//	}
+//}
+	
+	//Booking confirm
+	
+	
+	
+	//Export Excel
+	
 	
 	
 	

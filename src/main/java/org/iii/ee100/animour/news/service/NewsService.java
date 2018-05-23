@@ -18,28 +18,19 @@ public class NewsService{
 	public Page<News> getPage(int pageNo, int pageSize) {
 		PageRequest pageable = new PageRequest(pageNo - 1, pageSize);
 		return newsDao.findTop6ByOrderByIdDesc(pageable);
-	}
-		
-	
-	
+	}	
 	
 	public void insert(News news) {
 		newsDao.save(news);
-	}
-	
-	
+	}	
 	
 	public void update(News news) {
 		newsDao.save(news);
-	}
-
-	
+	}	
 	
 	public void delete(Long id) {
 		newsDao.delete(id);
-	}
-
-	
+	}	
 	
 	public List<News> getAll() {
 		return Lists.newArrayList(newsDao.findAll());
@@ -55,4 +46,6 @@ public class NewsService{
 	public List<News> getByMemberId(Long id) {
 		return newsDao.findByMember_id(id);
 	}
+	
+	
 }
