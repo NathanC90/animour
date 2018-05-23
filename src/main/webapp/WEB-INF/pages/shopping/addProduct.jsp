@@ -62,7 +62,7 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -99,7 +99,7 @@
 <!-- 					<img class="card-img-top" -->
 <%-- 						src="${product.images}" alt="${product.name}"> --%>
 <!-- 				</div> -->
-			<div class="form-group col-md-12">
+			<div class="form-group col-md-12 animated zoomIn">
 				<form:form method="POST" modelAttribute="product" enctype="multipart/form-data">
 					<form:input id="images" path="images" type="hidden"/>
 					<form:input path="member" type="hidden"/>

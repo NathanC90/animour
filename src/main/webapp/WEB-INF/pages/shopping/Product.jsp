@@ -102,7 +102,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-5 about2-intro-image">
-					<img class="card-img-top" src="${product.images}" width="100px" alt="${product.name}">
+					<img class="card-img-top" src="${product.images}" width="100px" alt="${product.name}" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
 				</div>
 				<div class="col-md-7">
 					<p class="h3"><span class="text-danger">${product.name}</span></p>

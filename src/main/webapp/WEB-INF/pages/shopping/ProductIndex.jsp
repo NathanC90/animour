@@ -62,7 +62,9 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+<!-- or -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -126,7 +128,7 @@
 				<div class="col-md-3">
 					<div class="sidebar-area">
 <!-- 						Search Bar -->
-						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
+						<aside class="widget search-bar wow" data-wow-delay="0.3s">
 							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
 								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control">
 								<button type="submit"><i class="fa fa-search" style="color:#9C3"></i></button>
@@ -169,19 +171,19 @@
 				</c:if>
 				<c:if test="${page != null || page.numberOfElements > 0}">
 				<div class="col-md-9">
-				<ul class="pagination"><li class="page-item active"><p class="page-link">商品資料共有 ${page.totalElements} 筆</p></li></ul>
-					<div class="row">
+				<ul class="pagination"><li class="page-item active"><p class="page-link animated bounceInDown">商品資料共有 ${page.totalElements} 筆</p></li></ul>
+					<div class="row animated bounceInDown" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
 						<c:forEach var="product" items="${page.content}">
 							<div class="col-md-4">
 								<div class="card mb-3 box-shadow">
 <!-- 									<img class="card-img-top" src="/images/shopping/product/pd1.jpg" -->
 									<img class="card-img-top" src="${product.images}"
 										width="100px" alt="商品列表">
-									<div class="card-body" style="margin-bottom: 5px">
+									<div class="card-body fadeIn" style="margin-bottom: 5px">
 											<p class="text-success">商品名稱：${product.name}</p>
-											<p class="text-warning">價格：${product.price}<br>庫存：${product.stock}</p>
+											<p class="text-primary">價格：${product.price}<br>庫存：${product.stock}</p>
 											<p class="text-primary">製造日期：${product.makeDate}<br>保存期限：${product.expire}</p>
-											<p class="text-danger">上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
+											<p class="text-primary">上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
 									<div class="card box-shadow">
 										<a href="<spring:url value='/selectOneProduct?id=${product.id}'/>"
@@ -192,7 +194,7 @@
 							</div>
 						</c:forEach>
 					</div>
-						<div class="container">
+						<div class="container" style="padding-top:20px">
 						  <div class="row justify-content-md-center">
 						    <div class="col-md-auto">
 						      <div class="blog-pagination clearfix wow fadeIn" data-wow-delay="0.3s">
@@ -261,6 +263,20 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
+	<script>
+		$(document).ready(function() {
+			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
+			var o2 = {"background":"white", "color":"green", "padding":"10px"};
+			$("#row1").css(o2).mouseover(over).mouseout(out);
+			
+			function over(){
+				$(this).css(o1);
+			}
+			function out(){
+				$(this).css(o2);
+			}
+		})
+	</script>
 </body>
 
 </html>

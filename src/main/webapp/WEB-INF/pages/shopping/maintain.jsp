@@ -62,7 +62,7 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -100,44 +100,43 @@
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
-			<div class="row">
+			<div class="row animated bounceInDown">
 				<div class="col-md-12">
 					<ul class="pagination">
 						<li class="page-item active"><p class="page-link">您的上架商品資料共有
 								${memberProductQuantity} 筆</p></li>
 					</ul>
-					<div class="row">
+					<div class="row" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
 						<form:form
-							action="${pageContent.request.contextPath}/product/insert"
-							method="POST" modelAttribute="product">
+							action="${pageContent.request.contextPath}/product/insert" method="POST" modelAttribute="product" >
 							<table class="table">
-								<thead class="thead-dark">
-									<tr class="h6">
-										<th>圖片</th>
-										<th>產品名稱</th>
-										<th>價格</th>
-										<th>庫存</th>
-										<th>製造日期</th>
-										<th>保存期限</th>
-										<th>產品類別</th>
-										<th>編輯</th>
-										<th>刪除</th>
+								<thead>
+									<tr class="bg-info text-white">
+										<th class="h6">圖片</th>
+										<th class="h6">產品名稱</th>
+										<th class="h6">價格</th>
+										<th class="h6">庫存</th>
+										<th class="h6">製造日期</th>
+										<th class="h6">保存期限</th>
+										<th class="h6">產品類別</th>
+										<th class="h6">編輯</th>
+										<th class="h6">刪除</th>
 									</tr>
 								</thead>
 								<c:forEach var="product" items="${memberProducts}">
 									<tr>
 										<td><img src="${product.images}" width="100px" alt="商品列表"></td>
-										<td class="h6"><span class="text-primary">${product.name}</span></td>
-										<td class="h6"><span class="text-success">${product.price}</span></td>
-										<td class="h6"><span class="text-info">${product.stock}</span></td>
-										<td class="h6"><span class="text-warning">${product.makeDate}</span></td>
-										<td class="h6"><span class="text-success">${product.expire}</span></td>
-										<td class="h6"><span class="text-danger">${product.classify.name}</span></td>
-										<td><a
+										<td class="align-middle"><span class="text-primary"><span class="h6">${product.name}</span></span></td>
+										<td class="align-middle"><span class="text-success"><span class="h6">${product.price}</span></span></td>
+										<td class="align-middle"><span class="text-success"><span class="h6">${product.stock}</span></span></td>
+										<td class="align-middle"><span class="text-success"><span class="h6">${product.makeDate}</span></span></td>
+										<td class="align-middle"><span class="text-success"><span class="h6">${product.expire}</span></span></td>
+										<td class="align-middle"><span class="text-danger"><span class="h6">${product.classify.name}</span></span></td>
+										<td class="align-middle"><a
 											href="<spring:url value='/product/${product.id}' />"
 											id="buttonUpdate" type="button" class="btn btn-info"><i
 												class="fas fa-edit"></i></a></td>
-										<td><a
+										<td class="align-middle"><a
 											href="<spring:url value='/delete/${product.id}' />"
 											id="delete" type="button" class="btn btn-danger"><i
 												class="fas fa-trash-alt"></i></a></td>
@@ -176,6 +175,20 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
+	<script>
+		$(document).ready(function() {
+			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
+			var o2 = {"background":"white", "color":"green", "padding":"10px"};
+			$("tr").css(o2).mouseover(over).mouseout(out);
+			
+			function over(){
+				$(this).css(o1);
+			}
+			function out(){
+				$(this).css(o2);
+			}
+		})
+	</script>
 
 </body>
 

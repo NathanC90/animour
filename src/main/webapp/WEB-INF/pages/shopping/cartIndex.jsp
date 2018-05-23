@@ -69,6 +69,24 @@
 	src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 <script src="/js/jquery-min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<style>
+.invoice-title h2, .invoice-title h3 {
+    display: inline-block;
+}
+
+.table > tbody > tr > .no-line {
+    border-top: none;
+}
+
+.table > thead > tr > .no-line {
+    border-bottom: none;
+}
+
+.table > tbody > tr > .thick-line {
+    border-top: 2px solid;
+}
+</style>
 </head>
 <body>
 	<!-- Header area wrapper starts -->
@@ -89,6 +107,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<!-- Page Header End -->
 
 	<section class="classic-blog-section section">
@@ -97,40 +117,39 @@
 			<div class="row">
 				<div class="form-group col-md-12">
 				<form action="/cart/update" method="POST">
-					<table class="table" border="1">
-						<thead class="thead-dark">
-							<tr>
-								<td>品名</td>
-								<td>價格</td>
-								<td>數量
+					<table class="table table-striped" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
+						<thead>
+							<tr class="bg-info text-white">
+								<td class="h6">品名</td>
+								<td class="h6">價格</td>
+								<td class="h6">數量
 <!-- 									<input value="update" type="submit"> -->
 								</td>
-								<td>小計</td>
-								<td>Option</td>
+								<td class="h6">小計</td>
+								<td class="h6">操作</td>
 							</tr>
 						</thead>
 						<c:set var="total" value="0"></c:set>
-						<c:forEach var="cartItem" items="${sessionScope.cart}"
-							varStatus="i">
+						<c:forEach var="cartItem" items="${sessionScope.cart}" varStatus="i">
 							<c:set var="total"
 								value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-							<tr>
+							<tr class="h6">
 								<td>${cartItem.product.name}</td>
 								<td>${cartItem.product.price}</td>
 								<td>
-									<input type="number" value="${cartItem.quantity}" min="0" 
+									<input type="number" value="${cartItem.quantity}" min="1" 
 										max="${cartItem.product.stock}" name="quantity">
 										<input type="submit" value="確定更改">
 								</td>
 								<td>${cartItem.product.price * cartItem.quantity}</td>
 								<c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
-								  <td><a href="/cart/delete/${i.index}">刪除</a></td>
+								  <td><a href="/cart/delete/${i.index}"><span class="text-danger">刪除</span></a></td>
 								</c:if>
 							</tr>
 						</c:forEach>
-						<tr>
-							<td colspan="4"><span>總價</span></td>
-							<td>${total}元</td>
+						<tr class="h6">
+							<td class="thick-line" colspan="4"><span>總價</span></td>
+							<td class="thick-line">${total}元</td>
 						</tr>
 					</table>
 				</form>
@@ -185,4 +204,18 @@
 		<script src="/js/contact-form-script.min.js"></script>
 		<script src="/js/main.js"></script>
 	</body>
+	<script>
+		$(document).ready(function() {
+			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
+			var o2 = {"background":"white", "color":"green", "padding":"10px"};
+			$("tr").css(o2).mouseover(over).mouseout(out);
+			
+			function over(){
+				$(this).css(o1);
+			}
+			function out(){
+				$(this).css(o2);
+			}
+		})
+	</script>
 </html>
