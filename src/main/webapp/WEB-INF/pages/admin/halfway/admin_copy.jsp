@@ -227,14 +227,14 @@
 						
 			$.ajax({
 				type: "POST",
-				url: "/halfway/animal",
+				url: "/deleteanimal",
 				data: formData,
 				contentType: false,
 				processData: false,
 				success: function (result) {
-					$('#button' +result.id).attr('status', result.status);
+					$('#button' +result.id).attr('status', result.disabled);
 					$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
-					if(result.status==true){
+					if(result.disabled==true){
 					$('#td_status'+result.id).text('on')
 					}
 					else{
