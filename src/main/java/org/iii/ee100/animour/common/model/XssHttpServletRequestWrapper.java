@@ -1,4 +1,4 @@
-package org.iii.ee100.animour.common.web;
+package org.iii.ee100.animour.common.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;

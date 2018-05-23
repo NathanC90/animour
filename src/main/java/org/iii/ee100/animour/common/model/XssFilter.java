@@ -10,7 +10,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import org.iii.ee100.animour.common.security.XssHttpServletRequestWrapper;
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 
 //@Component
