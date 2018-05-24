@@ -4,6 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<!-- AddEvent script -->
+<script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -75,6 +78,12 @@
 </style>
 </head>
 <body>
+<!-- Facebook Url starts-->
+<script>
+var fbhtml_url=window.location.toString();
+</script>
+<!-- Facebook Url ends-->
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -113,7 +122,7 @@
           <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
             <!-- Event Info -->
             <header class="author-info">
-              <h2 class="blog-post-title"  style="font-family:微軟正黑體">
+              <h2 class="blog-post-title"  style="font-family:微軟正黑體; padding-top:15px">
                 <a href="#subject">【2018上聯寵物用品博覽會】</a>
               </h2>
               <div class="tag-posted-in">
@@ -122,25 +131,26 @@
                     <i class="icon icon-calendar" ></i>
                     	活動時間：2018/08/31(五) 至 2018/09/03(一)
                   </span>
-                  <!-- Google Calendar Notes -->
-                  <!--  action=TEMPLATE             //請勿修改
-						&text=[事件名稱]              	//Calendar 事件的名稱
-						&dates=[開始時間]/[結束時間]    	//時間格式為 YYYYMMDDTHHMMSS
-						&details=[詳細的描述]          //使用 %0A 作為跳行 
-						&location=[地點]             //標示地點
-						&trp=false                  //忙碌狀態 true=忙碌、false=有空  -->
-					<!-- Google Calendar Notes -->
                  <!-- Add to Google Calendar starts -->
-                  <a href="http://www.google.com/calendar/event?
-							action=TEMPLATE
-							&text=
-							&dates=
-							&details=
-							&location=
-							&trp=false
-							" style="font-family:微軟正黑體">新增至Google行事曆</a>
+               	<!-- Button code -->
+					<div title="Add to Calendar" class="addeventatc btn btn-outline btn-radius btn-xs" style="float:right; border:2px solid #9C3; font-family:微軟正黑體">
+					    <a>新增活動到行事曆
+					    <span class="start">08/31/2018 08:00 AM</span>
+					    <span class="end">09/03/2018 10:00 AM</span>
+					    <span class="timezone">America/Los_Angeles</span>
+					    <span class="title">Summary of the event</span>
+					    <span class="description">Description of the event</span>
+					    </a>
+					</div>
                	</div>
                	<!-- Add to Google Calendar ends -->
+               	<!-- Timezone Getter -->
+               	<script type="text/javascript">
+					var d = new Date()
+					var gmtHours = d.getTimezoneOffset()/60
+					console.log("The local time zone is: GMT " + gmtHours)
+					
+				</script>
                	
                	<div>
                   <span style="font-family:微軟正黑體">
@@ -217,7 +227,7 @@
             <!-- Subscribe Widget -->
             <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
  
-              <div class="subscribe-area">
+              <div class="subscribe-area" style="padding-top:15px">
 
                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡主辦單位</a>
                   <a href='/news/enroll' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
@@ -243,10 +253,29 @@
               							分享至臉書
               			</a>
               	</div>
+            <!--Facebook Url-->
+              	<div 
+              		class="fb-share-button" 
+              		data-href="http://localhost:8080/news/event" 
+              		data-layout="button" 
+              		data-size="large" 
+              		data-mobile-iframe="true">
+              			<a 
+              				target="_blank" 
+              				href="javascript:void(0);"
+              				onclick="window.open('http://www.facebook.com/sharer/sharer.php?u='+fbhtml_url);return false;"
+              				class="fb-xfbml-parse-ignore btn btn-outline btn-radius mt-20 btn-lg btn-block"
+              				style="margin:10px">
+              					<img 
+              						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" 
+              						width="15 px" 
+              						style="margin-right: 10px"/>
+              							分享至臉書url
+              			</a>
+              	</div>
               </div>
-            </aside>
-            
-            <!-- Share Page to Facebook starts -->
+            </aside>            
+            <!-- Share Page to Facebook ends -->
            
         <!-- End -->
       </div>
@@ -373,5 +402,20 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMrZCxle4RWMLbJ0TXmafreHWxOFhmso&callback=initMap"
     async defer></script>
 <!-- Google Map Callback ends -->
+
+<!-- Add Events to Google Calendar starts-->
+<script type="text/javascript">
+window.addeventasync = function(){
+    addeventatc.settings({
+        appleical  : {show:true, text:"Apple Calendar"},
+        google     : {show:true, text:"Google <em>(online)</em>"},
+        outlook    : {show:true, text:"Outlook"},
+        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
+        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+    });
+};
+</script>
+<!-- Add Event to Google Calendar ends -->
+
 </body>
 </html>
