@@ -132,6 +132,7 @@
 							<a class="dropdown-item" href="/sign_up">註冊</a>
 						</div></li>
 				</sec:authorize>
+				<!-- 設定通知區塊 -->
 				<sec:authorize access="hasRole('Member')">
 					<!-- 會員可讀 -->
 					<li class="nav-item dropdown"><jsp:include

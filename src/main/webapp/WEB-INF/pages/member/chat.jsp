@@ -156,19 +156,20 @@
 			$("#greetings").html("");
 		}
 
-		function connect() {
-			var socket = new SockJS('/endpointChat');
+		/* function connect() {
+			var socket = new SockJS('/chatTest');
 			stompClient = Stomp.over(socket);
 			stompClient.connect({}, function(frame) {
 				setConnected(true);
 				console.log('Connected: ' + frame);
 				// subscribe 改成
-				stompClient.subscribe("/user/queue/notifications", function(
+				stompClient.subscribe("/user/queue/chat", function(
 						message) {
 					showGreeting(message.body);
 				});
+				alert("alert from chat")
 			});
-		}
+		} */
 
 		function disconnect() {
 			if (stompClient !== null) {
@@ -180,12 +181,13 @@
 
 		function sendText() {
 			stompClient.send("/app/chat", {}, $("#name").val());
+			alert("alert from chat")
 			$("#greetings").append(
 					"<tr><td style='color:blue'>" + $("#name").val()
 							+ "</td></tr>");
 		}
 
-		function showGreeting(message) {
+		function showGreetingChat(message) {
 			$("#greetings").append("<tr><td>" + message + "</td></tr>");
 		}
 

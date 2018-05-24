@@ -80,7 +80,7 @@
 						<div id="notification" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
 							<a class="dropdown-item" style="background-color: #9C3; color: #ffffff">通知</a>
-							<div class="dropdown-divider" style="background-color: #9C3"></div>
+							<!--<div class="dropdown-divider" style="background-color: #9C3"></div>-->
 
 						</div>
 					</div>
@@ -127,7 +127,7 @@
 					}
 
 					function connect() {
-						var socket = new SockJS('/endpointChat');
+						var socket = new SockJS('/chatTest');
 						stompClient = Stomp.over(socket);
 						stompClient.connect({}, function (frame) {
 							setConnected(true);
@@ -135,8 +135,15 @@
 							// subscribe 改成
 							stompClient.subscribe("/user/queue/notifications", function (
 								message) {
+								alert("from noti")
 								showGreeting(JSON.parse(message.body));
 								showCount(JSON.parse(message.body).count);
+							});
+							// 兩種訂閱寫在一起，用一個連線，一個 endpoint
+							stompClient.subscribe("/user/queue/chat", function (
+								message) {
+								alert("from chat")
+								showGreetingChat(message.body);
 							});
 						});
 					}
@@ -152,6 +159,7 @@
 					// 發送訊息，這邊用不到
 					function sendText() {
 						stompClient.send("/app/chat", {}, $("#name").val());
+						alert("alert from noti")
 						$("#greetings").append(
 							"<tr><td style='color:blue'>" + $("#name").val()
 							+ "</td></tr>");
@@ -160,9 +168,10 @@
 
 					// 接收訊息，新增元素顯示
 					function showGreeting(message) {
-
-						var template = `<a class="dropdown-item" href="` + message.href + `">` + message.detail + `</a>
-			<div class="dropdown-divider"></div>`
+						if ($('#nonitice').length != 0){
+							$("#nonitice").remove();
+						}
+						var template = `<a class="dropdown-item" href="` + message.href + `">` + message.detail + `</a>`;
 						$("#notification").append(template);
 					}
 
@@ -175,20 +184,20 @@
 						$("form").on('submit', function (e) {
 							e.preventDefault();
 						});
-						$("#connect").click(function () {
+						/* $("#connect").click(function () {
 							connect();
-						});
-						$("#disconnect").click(function () {
-							disconnect();
-						});
-						$("#send").click(function () {
+						}); */
+						/* 	$("#disconnect").click(function () {
+								disconnect();
+							}); */
+						/* $("#send").click(function () {
 							sendText();
-						});
+						}); */
 					});
 
 					$(document).ready(function () {
 						connect();
-
+						alert("alert from noti")
 						$.ajax({
 							type: "GET",
 							url: "/api/member/all/loadnotice",
@@ -198,7 +207,12 @@
 							$.each(datas.data, function (idx, notice) {
 								showGreeting(notice);
 							});
-							showCount(datas.parameters.count);
+							if (datas.parameters.count > 0) {
+								showCount(datas.parameters.count);
+							}else{
+								var template = `<a class="dropdown-item" id="nonitice">目前沒有未讀通知</a>`
+						$("#notification").append(template);
+							}
 
 						});
 

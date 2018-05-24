@@ -347,9 +347,9 @@ img {
 					<div class="panel-footer">
 						<div class="input-group">
 							<input id="btn-input" type="text"
-								class="form-control input-sm chat_input" placeholder="" /> <span
+								class="form-control form-control-sm input-sm chat_input" placeholder="" /> <span
 								class="input-group-btn">
-								<button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+								<button class="btn btn-info btn-radius btn-xs" id="btn-chat">Send</button>
 							</span>
 						</div>
 					</div>

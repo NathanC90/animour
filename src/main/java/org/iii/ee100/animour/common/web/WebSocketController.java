@@ -17,10 +17,10 @@ public class WebSocketController {
 	public void handleChat(Principal principal, String msg) {
 		if(principal.getName().equals("ViewSonic")){
 			System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
-			simpMessagingTemplate.convertAndSendToUser("Admin", "/queue/notifications", principal.getName() + "-發送訊息:" + msg);
+			simpMessagingTemplate.convertAndSendToUser("BenQ", "/queue/chat", principal.getName() + "-發送訊息:" + msg);
 		} else {
 			System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
-			simpMessagingTemplate.convertAndSendToUser("ViewSonic", "/queue/notifications", principal.getName() + "-發送訊息:" + msg);
+			simpMessagingTemplate.convertAndSendToUser("ViewSonic", "/queue/chat", principal.getName() + "-發送訊息:" + msg);
 		}
 	}
 	
