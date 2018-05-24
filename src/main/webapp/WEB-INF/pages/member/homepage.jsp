@@ -80,14 +80,14 @@
 						<!-- Search Bar -->
 						<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
 							<div>
-								<div class="card mb-3 box-shadow" id="eachdiv2" >
+								<div class="card mb-3 box-shadow" id="eachdiv2">
 									<span> <img class="card-img-top img-circle" width="75px"
 										src="${member.images}"  alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
-										<p class="card-text" style="padding: 0px">${member.account}</p>
-										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}</p>
-										<small class="text-muted"></small>
+<%-- 										<p class="card-text" style="padding: 0px">${member.account}</p> --%>
+<%-- 										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}</p> --%>
+<!-- 										<small class="text-muted"></small> -->
 
 										<div class="d-flex justify-content-between align-items-center"
 											style="max-height: 100px">
@@ -134,9 +134,41 @@
 				</div>
 				<!-- End -->
 				<!-- BLog Article Section -->
-				<div class="col-md-9">
+				<div class="col-md-8">
 					<!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
+<!-- 從這裡開始 -->
+			<h4>發文東西</h4>					
+					<div id="portfolio" class="row">
+			<c:forEach var="animal" items="${animalls}">
+            <div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 mix marketing planning" style="display: inline-block;" data-bound="">
+              <div class="portfolio-item">
+                <div class="portfolio-img">
+                  <img src="/showAnimalImage?fileName=${animal.fileName}" alt="" >                  
+                </div> 
+                <div class="portfoli-content">
+                  <div class="sup-desc-wrap">
+                    <div class="sup-desc-inner">
+                      <div class="sup-link">
+                        <a class="left-link" href="#"><i class="icon-link"></i></a>
+                        
+                        
+                      </div>
+                      <div class="sup-meta-wrap">
+                        <a class="sup-title" href="/halfway/detail?id=${animal.id}"><h4>${animal.name}</h4></a>
+                        <p class="sup-description">${animal.status}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>               
+              </div>
+            </div>
+            </c:forEach>
+            </div>
+            
+					
+					
+					
 					<h4>動物資料</h4>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
@@ -162,7 +194,9 @@
 				</c:forEach>
 				</div>				
 					<!-- 每頁不同的內容到這裡結束 -->
-					<h3>發文過的資料</h3>
+<!-- 條列文章 -->					
+					
+					<h3>文章列表</h3>
 				<!-- Row Starts -->
 			<div class="row">
 				<c:forEach var="article" items="${articles}">
@@ -195,7 +229,7 @@
 						</div>
 					</div>
 				</c:forEach>
-
+		</div>
 
 				<!-- Blog Item Wrapper Ends-->
 		<div class="modal fade" id="exampleModalMyFriend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -232,7 +266,6 @@
 				</div>
 			</div>
 		</div>			
-				</div>
 				
 				<!-- Blog Pagination -->
 				<!-- 分頁開始 -->

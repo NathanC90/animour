@@ -157,7 +157,7 @@ public class MemberController {
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
 
-		List<Article> artls = forumService.getArticlesByMemberId(userDetails.getId());
+		List<Article> artls = memberService.getArticlesByMemberId(userDetails.getId());
 		// System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 
