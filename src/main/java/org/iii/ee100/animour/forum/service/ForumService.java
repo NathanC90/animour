@@ -14,7 +14,6 @@ import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.entity.Category;
 import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.entity.ThumbsUp;
-import org.iii.ee100.animour.member.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -149,10 +148,6 @@ public class ForumService extends GenericService<Article> {
 		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		for(Article article:list) {
-			System.out.println(article.getMember().getAccount());
-			System.out.println(article.getThumbsQuantity());
-			System.out.println("======================");
-			
 			if (map.containsKey(article.getMember().getAccount())) {
 				map.put(article.getMember().getAccount(), map.get(article.getMember().getAccount()) + article.getThumbsQuantity());
 			}else {
