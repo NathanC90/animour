@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
- 
+
 import org.apache.poi.util.SystemOutLogger;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
@@ -72,7 +72,7 @@ public class MemberController {
 		} else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(true);
-			if (member.getSignature() =="") {
+			if (member.getSignature() == "") {
 				member.setSignature(member.getAccount() + " say hi.");
 			}
 
@@ -157,7 +157,7 @@ public class MemberController {
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
 
-		List<Article> artls = forumService.getArticlesByMemberId(userDetails.getId());
+		List<Article> artls = memberService.getArticlesByMemberId(userDetails.getId());
 		// System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 
@@ -191,6 +191,7 @@ public class MemberController {
 		}
 	}
 
+	// 前往後台頁
 	// 前往會員後台頁
 	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
@@ -198,6 +199,7 @@ public class MemberController {
 		return "/admin/member/admin_copy2a";
 	}
 
+	// 前往後台頁
 	// 前往文章後台頁
 	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
@@ -231,6 +233,27 @@ public class MemberController {
 			@RequestParam(value = "subject") String subject, @RequestParam(value = "text") String text) {
 		mailService.sendEmail(email, subject, text);
 		return "/member/mail";
+	}
+
+	// 導向聊天頁面
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String chatPage() {
+		return "/member/chat";
+	}
+
+	// 導向聊天對話框
+	@RequestMapping(value = "/chatbox", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String chatboxPage() {
+		return "/member/chatbox";
+	}
+
+	// 導向通知頁面
+	@RequestMapping(value = "/notification", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String notificationPage() {
+		return "/member/notification";
 	}
 
 	// @RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)

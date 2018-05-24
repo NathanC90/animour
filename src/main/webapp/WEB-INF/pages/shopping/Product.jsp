@@ -61,7 +61,7 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -146,7 +146,7 @@
 					      <a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'>返回</span>
 						  </a>
-						  <a href="/cart/buy/${product.id}" class='btn btn-warning btn-large'> <span
+						  <a id="shake" href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
 									class='glyphicon-shopping-cart glyphicon'>加入購物車</span>
 						  </a>
 					    </div>
@@ -183,7 +183,20 @@
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-
+	<script>
+		$(document).ready(function() {
+			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
+			var o2 = {"background":"white", "color":"green", "padding":"10px"};
+			$("#shake").mouseover(over).mouseout(out);
+			
+			function over(){
+				$(this).removeClass("btn btn-success btn-large").addClass("btn btn-success btn-large animated bounceIn");
+			}
+			function out(){
+				$(this).removeClass("btn btn-success btn-large animated bounceIn").addClass("btn btn-success btn-large");
+			}
+		})
+	</script>
 </body>
 
 </html>

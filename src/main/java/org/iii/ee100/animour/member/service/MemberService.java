@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.iii.ee100.animour.common.service.GenericService;
-import org.iii.ee100.animour.forum.entity.ThumbsUp;
+import org.iii.ee100.animour.forum.dao.ArticleDao;
+import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
@@ -188,5 +189,15 @@ public class MemberService extends GenericService<Member> {
 			}
 			myFriendDao.save(newFriend);
 		}
+		
+		
+		//homepage 撈資料
+		@Autowired
+		ArticleDao articleDao;
+		
+		public List<Article> getArticlesByMemberId(Long Id) {
+			return articleDao.findByMemberIdAndStatus(Id,null);
+		}
+		
 }
 

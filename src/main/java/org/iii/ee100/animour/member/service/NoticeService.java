@@ -1,6 +1,6 @@
 package org.iii.ee100.animour.member.service;
 
-import java.security.Principal;
+import java.util.List;
 
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.member.dao.NoticeDao;
@@ -22,23 +22,27 @@ public class NoticeService extends GenericService<Notice> {
 	public void insert(Notice notice) {
 		noticeDao.save(notice);
 	}
+	
+	public List<Notice> findNotReadByMember(Long memberId, Boolean status){
+		return noticeDao.findByMemberIdAndStatus(memberId, status);
+	}
 
 
 	//查詢通知
-	public void findStatus(Notice notice)  {
-		noticeDao.countStatusByMemberIdAndStatus(notice.getMember().getId(), notice.getStatus());
-	}
+//	public Long findStatus(Notice notice)  {
+//		return noticeDao.countByStatusAndMemberId(notice.getStatus(), notice.getMember().getId());
+//	}
 
 	// websocket 發送通知
 	// public void notify(Notice notice, String username) {
 	public void notify(String username, Object message) {
-		simpMessagingTemplate.convertAndSendToUser(username, "/queue/notifications", "-您共有"+message+"筆未讀訊息");
+		simpMessagingTemplate.convertAndSendToUser(username, "/queue/notifications", message);
 		return;
 	}
 
-	// 查詢通知
-	public Long findNotReadCount() {
-		return noticeDao.countByStatus(false);
+	// 查詢未讀通知數量
+	public Long findNotReadCount(Long memberId) {
+		return noticeDao.countByMemberIdAndStatus(memberId, false);
 	}
 
 }

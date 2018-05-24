@@ -1,9 +1,12 @@
 package org.iii.ee100.animour.member.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Transient;
 
+import org.iii.ee100.animour.common.model.ResponseForAnimour;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.Mail;
@@ -11,8 +14,10 @@ import org.iii.ee100.animour.member.ManyMail;
 import org.iii.ee100.animour.member.MemberStatus;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.entity.MyFriend;
+import org.iii.ee100.animour.member.entity.Notice;
 import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.member.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -120,6 +125,26 @@ public class MemberRestfulController {
 		Member member_changed=memberService.getOne(member.getId());
 		member.setStatus(member_changed.getStatus());
 		return new ResponseEntity<MemberStatus>(member,HttpStatus.OK);
+	}
+	
+	@Autowired
+	NoticeService noticeService;
+	
+	@Autowired
+	ResponseForAnimour response;
+	// 登入時先去撈資料庫中未讀取的通知
+	@RequestMapping(value = { "/loadnotice" }, method = RequestMethod.GET, produces = { "application/json",
+	"application/xml" })
+	public ResponseEntity<?> findNotRead(){
+		Member current = memberService.getNewCurrentMember();
+		if (current != null) {
+			List<Notice> notread = noticeService.findNotReadByMember(current.getId(), false);
+			response.setData(notread);
+			Map<String, Object> parameters = new HashMap<>();
+			parameters.put("count", notread.size());
+			response.setParameters(parameters);
+		}
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
 	@Autowired

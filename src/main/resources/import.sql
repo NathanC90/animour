@@ -38,7 +38,6 @@ VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gail.com','台北�
  
  
 /*2 Hospital*/
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('AAAAAAAA',  'A8',  '01-000',  '路上','10000' );  
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('aurora_animal',  '極光動物醫院',  '02-27848211',  '台北市大安區建國南路二段31號','10000' );  
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('drpet',  '敦品動物醫院',  '02-27070877',  '台北市大安區大安路一段205-1號','10000' );  
 insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('chengyi',  '澄毅動物醫院',  '02-27334341',  '台北市大安區安和路二段171巷13號','10000' );  

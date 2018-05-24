@@ -63,8 +63,6 @@
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
-<!-- or -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
