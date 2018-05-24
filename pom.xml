@@ -5,7 +5,7 @@
 	<groupId>org.iii.ee100</groupId>
 	<artifactId>iii-ee100</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 
 	<parent>
