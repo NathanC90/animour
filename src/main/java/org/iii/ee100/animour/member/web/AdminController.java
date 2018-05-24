@@ -42,10 +42,10 @@ public class AdminController {
 			return "/admin/halfway/admin_copy";
 		}
 		
+		//前往統計頁面
+		@PreAuthorize("hasRole('Admin')")
 		@RequestMapping(path = { "/admin/chart" }, method = { RequestMethod.GET })
 		public String chart(Model model) {
-			System.out.println("controller chart");
-			System.out.println(forumService.findByStatusOrderByThumbsQuantityDesc());
 			return "/admin/chart";
 		}
 }

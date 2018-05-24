@@ -48,13 +48,8 @@
 		</title>
 
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
-
 		<link href="https://cdnjs.com/libraries/Chart.js">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js">
-
 		<link href="../admin/assets/css/toolkit-inverse.css" rel="stylesheet">
-
-
 		<link href="../admin/assets/css/application.css" rel="stylesheet">
 
 		<style>
@@ -105,33 +100,14 @@
 
 					</div>
 					<h3>部落客獲讚統計:</h3>
-					<div class="chart-container" style="position: relative; height:600px; width:600px">
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
-						<div id="myChart" style="height: 370px; width: 100%;background-color:#666"></div>
+						<div id="myChart" style="height: 450px; width: 100%;"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- Modal Starts -->
-		<div id="docsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog">
-				<div class="modal-content">
-
-					<div class="modal-header">
-						<h4 class="modal-title" id="myModalLabel">樣板示意</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<p>您已經位於樣板頁面</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" data-dismiss="modal">好的，了解</button>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Modal Ends -->
 
@@ -159,13 +135,13 @@
                     let obj = data;
                     Object.keys(obj).forEach(key => {
                         map.set(key, obj[key]);
-                        memberArray.push(key);
-                        thumbsArray.push(obj[key]);
+                        // memberArray.push(key);
+                        // thumbsArray.push(obj[key]);
                         dataArray.push({ 'label': key, 'y': obj[key] });
                     });
-                    console.log(map);
-                    console.log(memberArray);
-                    console.log(thumbsArray);
+                    // console.log(map);
+                    // console.log(memberArray);
+                    // console.log(thumbsArray);
                     var options = {
                         animationEnabled: true,
                         title: {
@@ -188,72 +164,6 @@
                     $("#myChart").CanvasJSChart(options);
                 });
 				});
-
-					// var ctx = document.getElementById("myChart");
-					// var myChart = new Chart(ctx, {
-					// 	type: 'bar',
-					// 	data: {
-					// 		labels: memberArray,
-					// 		datasets: [{
-					// 			label: '點讚數',
-					// 			data: thumbsArray,
-					// 			backgroundColor: [
-					// 				'rgba(255, 99, 132, 0.5)',
-					// 				'rgba(54, 162, 235, 0.5)',
-					// 				'rgba(255, 206, 86, 0.5)',
-					// 				'rgba(75, 192, 192, 0.5)',
-					// 				'rgba(153, 102, 255, 0.5)',
-					// 				'rgba(255, 159, 64, 0.5)',
-					// 				'rgba(255, 99, 132, 0.5)',
-					// 				'rgba(54, 162, 235, 0.5)',
-					// 				'rgba(255, 206, 86, 0.5)',
-					// 				'rgba(75, 192, 192, 0.5)',
-					// 				'rgba(153, 102, 255, 0.5)',
-					// 				'rgba(255, 159, 64, 0.5)'
-					// 			],
-					// 			borderColor: [
-					// 				'rgba(255,99,132,1)',
-					// 				'rgba(54, 162, 235, 1)',
-					// 				'rgba(255, 206, 86, 1)',
-					// 				'rgba(75, 192, 192, 1)',
-					// 				'rgba(153, 102, 255, 1)',
-					// 				'rgba(255, 159, 64, 1)',
-					// 				'rgba(255,99,132,1)',
-					// 				'rgba(54, 162, 235, 1)',
-					// 				'rgba(255, 206, 86, 1)',
-					// 				'rgba(75, 192, 192, 1)',
-					// 				'rgba(153, 102, 255, 1)',
-					// 				'rgba(255, 159, 64, 1)'
-					// 			],
-					// 			borderWidth: 1,
-					// 			hoverBackgroundColor: [
-					// 				'rgba(255, 99, 132, 0.7)',
-					// 				'rgba(54, 162, 235, 0.7)',
-					// 				'rgba(255, 206, 86, 0.7)',
-					// 				'rgba(75, 192, 192, 0.7)',
-					// 				'rgba(153, 102, 255, 0.7)',
-					// 				'rgba(255, 159, 64, 0.7)',
-					// 				'rgba(255, 99, 132, 0.7)',
-					// 				'rgba(54, 162, 235, 0.7)',
-					// 				'rgba(255, 206, 86, 0.7)',
-					// 				'rgba(75, 192, 192, 0.7)',
-					// 				'rgba(153, 102, 255, 0.7)',
-					// 				'rgba(255, 159, 64, 0.7)'
-					// 			]
-					// 		}]
-					// 	},
-					// 	options: {
-					// 		scales: {
-					// 			yAxes: [{
-					// 				ticks: {
-					// 					beginAtZero: true
-					// 				}
-					// 			}]
-					// 		}
-					// 	}
-					// });
-			
-			
 		</script>
 		<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
         <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
