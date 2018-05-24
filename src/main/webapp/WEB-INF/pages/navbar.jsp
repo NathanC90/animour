@@ -33,31 +33,31 @@
 		<div class="collapse navbar-collapse" id="main-menu">
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/news/index?pageNo=1"
-					aria-haspopup="true" aria-expanded="false">最新消息</a>
-					<div class="dropdown-menu">
-						<!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
-							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a> -->
-
-					</div></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/halfway"
-					aria-haspopup="true" aria-expanded="false">中途專區</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/halfway/addAnimal">我要送養</a> <a
-							class="dropdown-item" href="/halfway">動物搜尋</a> <a
-							class="dropdown-item" href="/halfway/showAdoption">認養程序處理</a>
-					</div></li>
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/product/index">寵物市集</a>
-					<div class="dropdown-menu">
-						<a class="dropdown-item" href="/product/index">新品上市</a>
-						<sec:authorize access="hasRole('Member')">
-							<a class="dropdown-item" href="/product/insert">商品上架</a>
-							<a class="dropdown-item" href="/product/maintain">商品管理</a>
-						</sec:authorize>
-					</div></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="/news/index?pageNo=1" aria-haspopup="true" aria-expanded="false">最新消息</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/news/insertNews">新增活動</a>
+                                        <a class="dropdown-item" href="/news/manage">管理活動</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="/halfway" aria-haspopup="true" aria-expanded="false">中途專區</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/halfway/addAnimal">我要送養</a>
+                                        <a class="dropdown-item" href="/halfway">動物搜尋</a>
+                                        <a class="dropdown-item" href="/halfway/showAdoption">認養程序處理</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="/product/index">寵物市集</a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/product/index">新品上市</a>
+                                        <sec:authorize access="hasRole('Member')">
+                                        	<a class="dropdown-item" href="/product/insert">商品上架</a>
+                                        	<a class="dropdown-item" href="/product/maintain">商品管理</a>
+                                        </sec:authorize>
+                                    </div>
+                                </li>
 
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/reservation/introduce"
