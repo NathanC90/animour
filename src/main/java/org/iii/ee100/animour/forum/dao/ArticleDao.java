@@ -30,4 +30,6 @@ public interface ArticleDao extends GenericDao<Article> {
 	List<Article> findTop4ByStatusOrderByThumbsQuantityDesc(Boolean status);
 	
 	Page<Article> findByOrderByPostTimeDesc(Pageable pageable);
+	
+	List<Article> findByStatusOrderByThumbsQuantityDesc(Boolean status);
 }

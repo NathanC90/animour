@@ -191,29 +191,6 @@ public class MemberController {
 		}
 	}
 
-	// 前往後台頁
-	// 前往會員後台頁
-	@PreAuthorize("hasRole('Admin')")
-	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
-	public String adminMember() {
-		return "/admin/member/admin_copy2a";
-	}
-
-	// 前往後台頁
-	// 前往文章後台頁
-	@PreAuthorize("hasRole('Admin')")
-	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
-	public String adminforum() {
-		return "/admin/forum/admin";
-	}
-
-	// 前往動物後台
-	@PreAuthorize("hasRole('Admin')")
-	@RequestMapping(value = "/admin/animal", method = RequestMethod.GET)
-	public String adminAnimal() {
-		return "/admin/halfway/admin_copy";
-	}
-
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {
 		return "/403";

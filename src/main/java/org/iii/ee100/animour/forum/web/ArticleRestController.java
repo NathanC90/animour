@@ -3,6 +3,7 @@ package org.iii.ee100.animour.forum.web;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.forum.dao.ThumbsUpDao;
@@ -65,6 +66,11 @@ public class ArticleRestController {
 		PageRequest pageable = pageForAnimour.getPageRequest();
 		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageable);
 		return pageHandler(pageForAnimour, articlePage, pageable);
+	}
+	
+	@RequestMapping(path = { "/chart" }, method = RequestMethod.GET, produces = { "application/json" })
+	public Map<String,Integer> chart() {
+		return forumService.findByStatusOrderByThumbsQuantityDesc();
 	}
 
 	// 新增留言
