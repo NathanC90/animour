@@ -72,60 +72,40 @@
 		<!-- Navbar Starts -->
 	<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
+		<!-- Page Header -->
+      <div class="page-header-section">
+        <div class="container">
+          <div class="row">
+            <div class="page-header-area">
+              <div class="page-header-content">
+                <h2 style="font-family:微軟正黑體 ">活動報名</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page Header End -->
 	</header>	
 	<!-- Container Starts -->
-				<div class="container">
-
-					<div class="row">
-						<c:forEach var="news" items="${allNews}">
-							<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-									<img class="card-img-top" src="/images/news/catexpo.jpg" width="80px" alt="">
-									<div class="card-body" style="margin-bottom: 5px">
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
-					<h3>查詢一筆活動資料</h3>
-	<div>
-		<p>活動編號：${oneNews.seqno}<br>活動名稱：${oneNews.subject}</p>
-		<p>活動內文：${oneNews.content}<br>更新時間：${oneNews.updateTime}</p>
-	</div>
-	<hr>
-
-	<h3>查詢所有活動資料</h3>
-	<table>
-		<c:forEach var="news" items="${allNews}">
-		<p>活動編號：${news.seqno}<br>活動名稱：${news.subject}</p>
-		<p>活動內文：${news.content}<br>更新時間：${news.updateTime}</p>
-		<hr>
-		</c:forEach>
-	</table>
-	<hr>
-	
-<!-- 	<h3>刪除一筆活動資料</h3> -->
-<%-- 		<p>刪除編號：${delete} 一筆資料</p> --%>
-<!-- 	<hr> -->
-
-	<h3>新增一筆活動資料</h3>
-	<div>
-		<p>活動編號：${insertNews.seqno}<br>活動名稱：${insertNews.subject}</p>
-		<p>活動內容：${insertNews.content}<br>發布時間：${insertNews.publishTime}</p>
-		<p>結束時間：${insertNews.publishTimeEnd}<br>發布人：${insertNews.createUser}</p>
-	</div>
-	<hr>
-
-	<h3>修改一筆活動資料</h3>
-	<div>
-		<p>活動編號：${updateNews.seqno}<br>活動名稱：${updateNews.subject}</p>
-		<p>活動內容：${updateNews.content}<br>更新使用者：${updateNews.updateUser}</p>
-		<p>更新時間：${updateNews.updateTime}</p>
-		
-	</div>
-
-					<!-- Service-Block-000 Item Ends -->
-				</div>
+				<!-- Main jumbotron for a primary marketing message or call to action -->
+				<div class="container" style="padding: 50px">
+      	<div class="jumbotron">
+				  <div class="row">
+				    <div class="col">
+				    	<div class="align-middle">
+				          <h1 class="display-3" style="font-family:微軟正黑體">報名成功!</h1>
+				          <h3 style="font-family:微軟正黑體">感謝您報名參加本活動，請點擊
+				          	<h3 style="font-family:微軟正黑體">「線上付款」進行交易。</h3>
+				          </h3>
+				         </div>
+         				<p><a class="btn btn-primary btn-lg" href="#" role="button">線上付款 &raquo;</a></p>
+				    </div>
+				    <div class="col">
+         				 <img class="card-img-top" src="/images/news/transaction.png" style="width: 350px; display:inline-block" alt="">
+				    </div>
+				  </div>
+        </div>
+      </div>
 				<!-- Container Ends -->
 	<!-- Footer Section -->
 	<footer>
