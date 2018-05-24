@@ -31,9 +31,8 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/news/index?pageNo=1" aria-haspopup="true" aria-expanded="false">最新消息</a>
                                     <div class="dropdown-menu">
-                                        <!--<a class="dropdown-item" href="/NewsIndex">認養活動</a> <a class="dropdown-item"
-							href="">寵物保健</a> <a class="dropdown-item" href="">演講座談</a> -->
-
+                                        <a class="dropdown-item" href="/news/insertNews">新增活動</a>
+                                        <a class="dropdown-item" href="/news/manage">管理活動</a>
                                     </div>
                                 </li>
                                 <li class="nav-item dropdown">

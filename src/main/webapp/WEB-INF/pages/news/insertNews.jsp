@@ -83,7 +83,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>新增活動貼文</h2>
+						<h2 style="font-family:微軟正黑體">新增活動貼文</h2>
 					</div>
 				</div>
 			</div>
@@ -96,83 +96,75 @@
 		<div class="container">
 			
 			
-			<!-- Insert News starts -->
-			 <div class="form-group col-md-12">
-				<form:form method="POST" modelAttribute="news" enctype="multipart/form-data">
-					<form:input id="images" path="images" type="hidden"/>
-<%-- 					<form:input path="" type="hidden"/> --%>
-					<div class="form-group">
-						<h2 class="widget-title">活動名稱</h2>
-						<form:input path="subject" type="text" class="form-control" autofocus="true" required="required"
-							placeholder="請輸入活動名稱" />
-					</div>
+<!-- Insert News starts -->
+<div class="form-group col-md-12">
+	<form:form method="POST" modelAttribute="news" enctype="multipart/form-data" id="insertNews" name="insertNews">
+		<form:input id="images" path="images" type="hidden"/>
+		<div class="form-group">
+			<h2 class="widget-title" style="font-family:微軟正黑體">活動名稱</h2>
+			<form:input id="subject" name="subject" path="subject" type="text" class="form-control" autofocus="true" required="required"
+				placeholder="請輸入活動名稱" />
+		</div>
 
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<h2 class="widget-title">活動地點</h2>
-							<form:input path="address" type="text" min="0" class="form-control" required="required"
-								placeholder="請輸入活動地點" />
-						</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">活動地點</h2>
+				<form:input id="address" name="address" path="address" type="text" min="0" class="form-control" required="required"
+					placeholder="請輸入活動地點" />
+			</div>
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">張貼人</h2>
+				<form:input id="createUser" name="createUser" path="createUser" type="text" min="0" class="form-control" required="required"
+					placeholder="張貼人" />
+			</div>
+		</div>
 
-						<div class="form-group col-md-6">
-							<h2 class="widget-title">張貼人</h2>
-							<form:input path="createUser" type="text" min="0" class="form-control" required="required"
-								placeholder="張貼人" />
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">活動日期</h2>
+				<form:input id="eventDate" name="eventDate" path="eventDate" type="date" class="form-control" required="required"
+					placeholder="活動日期" />
+			</div>
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">活動時間</h2>
+				<form:input id="eventTime" name="eventTime" path="eventTime" type="time" class="form-control" required="required"
+					placeholder="活動日期" />
+			</div>
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">結束公告日期</h2>
+				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-control" required="required"
+					placeholder="結束公告日期" />
+			</div>
+			<div class="form-group col-md-3">
+				<h2 class="widget-title" style="font-family:微軟正黑體">發布日期</h2>
+				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-control" required="required"
+					placeholder="發布日期" />
+			</div>
+			<div class="form-group col-md-3">
+				<h2 class="widget-title" style="font-family:微軟正黑體">發布時間</h2>
+				<form:input id="createTime" name="createTime" path="createTime" type="time" class="form-control" required="required"
+					placeholder="發布時間" />
+			</div>
+			<div class="form-group col-lg-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">活動簡介</h2>
+				<form:textarea id="content" name="content" path="content" type="text" class="form-control" rows="5" required="required"
+	 				placeholder="請輸入活動簡介" />
+			</div>
+		</div>
+			<div class="form-row">
+				<form id="imgur">
+					<h2 class="widget-title"><span style="font-family:微軟正黑體">圖片</span></h2>
+					<input id="imgur" name="imgur" path="imgur" type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+				</form>
+				<div class="container">
+						<div class="row justify-content-md-center">
+							 <div class="col-md-auto">
+							   <input id="btn1" type="submit" class="btn btn-primary" value="張貼活動" >
+						     </div>
 						</div>
-
-<!-- 						<div class="form-group col-md-4"> -->
-<!-- 							<h2 class="widget-title">類別</h2> -->
-<%-- 							<form:select path="classify" items="${Classifies}" --%>
-<%-- 								itemLabel="name" itemValue="id" class="form-control" /> --%>
-<!-- 						</div> -->
-					</div>
-
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<h2 class="widget-title">活動日期</h2>
-							<form:input path="eventDate" type="date" class="form-control" required="required"
-								placeholder="活動日期" />
-						</div>
-						<div class="form-group col-md-6">
-							<h2 class="widget-title">活動時間</h2>
-							<form:input path="eventTime" type="time" class="form-control" required="required"
-								placeholder="活動日期" />
-						</div>
-						<div class="form-group col-md-6">
-							<h2 class="widget-title">結束公告日期</h2>
-							<form:input path="publishExpire" type="date" class="form-control" required="required"
-								placeholder="結束公告日期" />
-						</div>
-						<div class="form-group col-md-3">
-							<h2 class="widget-title">發布日期</h2>
-							<form:input path="publishDate" type="date" class="form-control" required="required"
-								placeholder="發布日期" />
-						</div>
-						<div class="form-group col-md-3">
-							<h2 class="widget-title">發布時間</h2>
-							<form:input path="createTime" type="time" class="form-control" required="required"
-								placeholder="發布時間" />
-						</div>
-						<div class="form-group col-lg-6">
-							<h2 class="widget-title">活動簡介</h2>
-							<form:textarea path="content" type="text" class="form-control" rows="5" required="required"
-	 							placeholder="請輸入活動簡介" />
-						</div>
-					</div>
-						<div class="form-row">
-							<form id="imgur">
-								<h2 class="widget-title"><span>圖片</span></h2>
-								<input type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
-							</form>
-							<div class="container">
-							  <div class="row justify-content-md-center">
-							    <div class="col-md-auto">
-							      <input id="btn1" type="submit" class="btn btn-primary" value="張貼活動" >
-						        </div>
-						 	 </div>
-							</div>
-						</div>
-						<!-- Insert News ends -->
+				</div>
+			</div>
+			<!-- Insert News ends -->
 						
 						
 				</form:form>
@@ -209,6 +201,8 @@
 	<script src="/js/main.js"></script>
 	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 	<script src="http://malsup.github.com/jquery.form.js"></script>
+	
+	<!-- upload Photos starts-->
 	<script>
 	$(document).ready(function (){
 						
@@ -260,6 +254,7 @@
 		});
 	});
 	</script>
+	<!-- upload Photos ends-->
 </body>
 
 </html>
