@@ -63,8 +63,9 @@
 		<!-- Navbar Starts -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
+	<div class="page-header-section">
+      </div>	
 	</header>
-	<br>
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
@@ -82,7 +83,7 @@
 						<div class="panel panel-info" style="border: 1px">
 							<div class="panel-heading"
 								style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-								<div class="panel-title">填寫個人資料</div>
+								<div class="panel-title">修改密碼</div>
 								<div
 									style="float: right; font-size: 80%; position: relative; top: -10px">
 									<a href="#"></a>
@@ -158,14 +159,7 @@
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
+
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 

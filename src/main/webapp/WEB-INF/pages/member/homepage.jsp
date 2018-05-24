@@ -61,7 +61,7 @@
           <div class="row">
             <div class="page-header-area">
               <div class="page-header-content">
-                <h2>${member.account}的個人首頁</h2>
+                <h2 style="font-family: '微軟正黑體';">${member.account}的個人首頁</h2>
               </div>
             </div>
           </div>
@@ -137,10 +137,7 @@
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
-
-					<h3>${member.account}的個人首頁</h3>
-
-					<h4>已發過的動物資料</h4>
+					<h4>動物資料</h4>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
 					<div class="col-md-3">
