@@ -51,28 +51,30 @@ public class MemberController {
 	// 送出註冊資料=新增會員
 	@RequestMapping(value = "/sign_up", method = RequestMethod.POST)
 	public String register(@Valid @ModelAttribute("member") Member member, BindingResult bindingResult) {
-		if (bindingResult.hasErrors() ||
-				memberService.emailExist(member.getEmail()) ||
-				memberService.getOneByAccount(member.getUsername())!=null) {
-            List<FieldError> errorList = bindingResult.getFieldErrors();
-//            for(FieldError error : errorList){
-//            	System.out.println("error-param:"+error.getField());
-//                System.out.println("error-message:"+error.getDefaultMessage());
-//            }
+		if (bindingResult.hasErrors() || memberService.emailExist(member.getEmail())
+				|| memberService.getOneByAccount(member.getUsername()) != null) {
+			List<FieldError> errorList = bindingResult.getFieldErrors();
+			// for(FieldError error : errorList){
+			// System.out.println("error-param:"+error.getField());
+			// System.out.println("error-message:"+error.getDefaultMessage());
+			// }
 
-			if (memberService.emailExist(member.getEmail())) {bindingResult.rejectValue("email","email message", "email exist");}
-			if (memberService.getOneByAccount(member.getUsername())!=null) {bindingResult.rejectValue("account","account message", "帳號重複");}
-
-			return "/member/register_original";
-		}
-		else {
-			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
-			member.setStatus(true);
-			if(member.getSignature()==null) {
-				member.setSignature(member.getAccount()+" say hi.");
+			if (memberService.emailExist(member.getEmail())) {
+				bindingResult.rejectValue("email", "email message", "email exist");
+			}
+			if (memberService.getOneByAccount(member.getUsername()) != null) {
+				bindingResult.rejectValue("account", "account message", "帳號重複");
 			}
 
-			if(member.getImages()==null) {
+			return "/member/register_original";
+		} else {
+			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
+			member.setStatus(true);
+			if (member.getSignature() == null) {
+				member.setSignature(member.getAccount() + " say hi.");
+			}
+
+			if (member.getImages() == null) {
 				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
 			}
 			memberService.insert(member);
@@ -94,13 +96,13 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 			return "/member/update";
 		} else {
-			if(member.getImages()==null && memberService.getNewCurrentMember().getImages()!=null) {
+			if (member.getImages() == null && memberService.getNewCurrentMember().getImages() != null) {
 				member.setImages(memberService.getNewCurrentMember().getImages());
 			}
-			if(member.getSignature()==null && memberService.getNewCurrentMember().getSignature()!=null) {
+			if (member.getSignature() == null && memberService.getNewCurrentMember().getSignature() != null) {
 				member.setSignature(memberService.getNewCurrentMember().getSignature());
 			}
-					memberService.update(member);
+			memberService.update(member);
 			return "redirect:/";
 		}
 	}
@@ -113,18 +115,16 @@ public class MemberController {
 
 	// <會員>(post)修改密碼頁面
 	@RequestMapping(value = "/changepassword", method = RequestMethod.POST)
-	public String updatePassword(@Valid Password password,BindingResult result,Map<String,Object> map) {
-		if(memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
-			if(result.hasErrors()) {
+	public String updatePassword(@Valid Password password, BindingResult result, Map<String, Object> map) {
+		if (memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
+			if (result.hasErrors()) {
 				map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
 				return "/member/update_password";
-			}
-			else {
+			} else {
 				memberService.update(memberService.getNewCurrentMember(), password.getNewpassword());
 				return "redirect:/logout";
 			}
-		}
-		else {
+		} else {
 			result.rejectValue("oldpassword", "oldpassword", "請確定密碼");
 			map.put("oldpassword", result.getFieldError("oldpassword").getDefaultMessage());
 			map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
@@ -133,7 +133,6 @@ public class MemberController {
 		}
 
 	}
-
 
 	// 列出(全部)會員-admin
 	@RequestMapping("/users")
@@ -145,25 +144,24 @@ public class MemberController {
 	@RequestMapping(value = "/user/{account}", method = RequestMethod.GET)
 	public String profile(Model model, @PathVariable String account) {
 		Member userDetails = memberService.getOneByAccount(account);
-		Member currentUserDetails=memberService.getNewCurrentMember();
-		//who's hompage (member)
+		Member currentUserDetails = memberService.getNewCurrentMember();
+		// who's hompage (member)
 		model.addAttribute("member", userDetails);
-		//current Member
+		// current Member
 		model.addAttribute("currentMember", currentUserDetails);
 
-		//System.out.println("userdetails"+userDetails.getAccount());
+		// System.out.println("userdetails"+userDetails.getAccount());
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
 
-		List<Article> artls=forumService.getArticlesByMemberId(userDetails.getId());
-		//System.out.println("userdetails::"+userDetails.getAccount());
+		List<Article> artls = forumService.getArticlesByMemberId(userDetails.getId());
+		// System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 
-
-		List<Member> memberList=new ArrayList<>();
-		List<MyFriend> list=memberService.findByMemberIdAndLove(userDetails.getId(), true);
-		for (MyFriend friend:list) {
-			Member member =memberService.getOne(friend.getFriendId());
+		List<Member> memberList = new ArrayList<>();
+		List<MyFriend> list = memberService.findByMemberIdAndLove(userDetails.getId(), true);
+		for (MyFriend friend : list) {
+			Member member = memberService.getOne(friend.getFriendId());
 			memberList.add(member);
 		}
 		model.addAttribute("friendlist", memberList);
@@ -172,71 +170,80 @@ public class MemberController {
 	}
 
 	// post
-	@RequestMapping(value="/forgetpassword",method=RequestMethod.POST)
-	public String forgetPassword(@RequestParam(value="account") String account,@RequestParam(value="email") String email) {
-		if(memberService.emailExist(email) && memberService.getOneByAccount(account)!=null &&
-		   memberService.getOneByAccount(account).getEmail().equals(email)){
-			//寄信
-			String text =memberService.newPassword();
-			System.out.println("newPassword():"+text);
+	@RequestMapping(value = "/forgetpassword", method = RequestMethod.POST)
+	public String forgetPassword(@RequestParam(value = "account") String account,
+			@RequestParam(value = "email") String email) {
+		if (memberService.emailExist(email) && memberService.getOneByAccount(account) != null
+				&& memberService.getOneByAccount(account).getEmail().equals(email)) {
+			// 寄信
+			String text = memberService.newPassword();
+			System.out.println("newPassword():" + text);
 
 			memberService.update(memberService.getOneByAccount(account), text);
-			mailService.sendEmail(email, "Animour密碼", account+"您好:\n"+"您的新密碼"+text);
+			mailService.sendEmail(email, "Animour密碼", account + "您好:\n" + "您的新密碼" + text);
 			return "redirect:/";
 
-		}else {
-		return "/login/login";
+		} else {
+			return "/login/login";
 		}
 	}
 
-
 	// 前往後台頁
-    @PreAuthorize("hasRole('Admin')")
+	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
 	public String admin() {
 		return "/admin/member/admin_copy2a";
 	}
 
 	// 前往後台頁
-    @PreAuthorize("hasRole('Admin')")
+	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
 	public String adminforum() {
 		return "/admin/forum/admin";
 	}
-
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public String usermange() {
 		return "/403";
 	}
 
-
 	// 前往mail寄信頁面
 	@RequestMapping(value = "/mailto", method = RequestMethod.GET)
 	public String mailPage() {
 		return "/member/mail";
-		}
+	}
 
 	@Autowired
 	EmailService mailService;
 
 	@RequestMapping(value = "/mailto", method = RequestMethod.POST)
-	public String mailSussese(@RequestParam(value="email") String email,
-			@RequestParam(value="subject") String subject,
-			@RequestParam(value="text") String text) {
-			mailService.sendEmail(email,subject, text);
-			return "/member/mail";
-		}
+	public String mailSussese(@RequestParam(value = "email") String email,
+			@RequestParam(value = "subject") String subject, @RequestParam(value = "text") String text) {
+		mailService.sendEmail(email, subject, text);
+		return "/member/mail";
+	}
 
+	// 導向聊天頁面
+	@RequestMapping(value = "/chat", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String chatPage() {
+		return "/member/chat";
+	}
 
+	// 導向通知頁面
+	@RequestMapping(value = "/notification", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String notificationPage() {
+		return "/member/notification";
+	}
 
-//	@RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)
-//	public void adminSendMails(
-//			@RequestParam(value="account") String account,
-//			@RequestParam(value="subject") String subject,
-//			@RequestParam(value="content") String text) {
-//			String email=memberService.getOneByAccount(account).getEmail();
-//			mailService.sendEmail(email,subject, text);
-//		}
+	// @RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)
+	// public void adminSendMails(
+	// @RequestParam(value="account") String account,
+	// @RequestParam(value="subject") String subject,
+	// @RequestParam(value="content") String text) {
+	// String email=memberService.getOneByAccount(account).getEmail();
+	// mailService.sendEmail(email,subject, text);
+	// }
 
 }
