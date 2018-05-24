@@ -72,12 +72,13 @@ public class MemberController {
 		} else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(true);
-			if (member.getSignature() == null) {
+			if (member.getSignature() =="") {
 				member.setSignature(member.getAccount() + " say hi.");
 			}
 
-			if (member.getImages() == null) {
+			if (member.getImages() == "") {
 				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
+
 			}
 			memberService.insert(member);
 			return "redirect:/";// 註冊成功跳轉 login
@@ -98,10 +99,10 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 			return "/member/update";
 		} else {
-			if (member.getImages() == null && memberService.getNewCurrentMember().getImages() != null) {
+			if (member.getImages() == "" && memberService.getNewCurrentMember().getImages() != "") {
 				member.setImages(memberService.getNewCurrentMember().getImages());
 			}
-			if (member.getSignature() == null && memberService.getNewCurrentMember().getSignature() != null) {
+			if (member.getSignature() == "" && memberService.getNewCurrentMember().getSignature() != "") {
 				member.setSignature(memberService.getNewCurrentMember().getSignature());
 			}
 			memberService.update(member);

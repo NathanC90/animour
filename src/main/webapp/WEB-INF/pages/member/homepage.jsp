@@ -7,44 +7,37 @@
 <html lang="en">
 
 <head>
-<!-- Required meta tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Icon Tags end -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animour</title>
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!-- Slicknav Css -->
+    <link rel="stylesheet" type="text/css" href="/css/slicknav.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+    <!-- Responsive Style -->
+      <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+      <!--Fonts-->
+      <link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
+      <link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
 
-<title>Animour</title>
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-<!-- Main Style -->
-<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!-- Slicknav Css -->
-<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+      <!-- Extras -->
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+      <link rel="stylesheet" type="text/css" href="/extras/animate.css">
+      <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
 
-<!-- Responsive Style -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css">
-<!--Fonts-->
-<link rel="stylesheet" media="screen"
-	href="/fonts/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" media="screen"
-	href="/fonts/simple-line-icons.css">
 
-<!-- Extras -->
-<link rel="stylesheet" type="text/css"
-	href="/extras/owl/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
-<link rel="stylesheet" type="text/css" href="/extras/animate.css">
-<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-<!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
-	media="screen" />
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
+      <!-- Color CSS Styles  -->
+      <link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
@@ -64,6 +57,20 @@
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
 	</header>
+
+<!-- Page Header -->
+      <div class="page-header-section">
+        <div class="container">
+          <div class="row">
+            <div class="page-header-area">
+              <div class="page-header-content">
+                <h2>${member.account}的個人首頁</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
@@ -138,7 +145,7 @@
 
 					<h3>${member.account}的個人首頁</h3>
 
-					<h3>已發過的動物資料</h3>
+					<h4>已發過的動物資料</h4>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
 					<div class="col-md-3">
@@ -148,18 +155,14 @@
 								alt="待領養小貓">
 							<div class="card-body" style="margin-bottom: 5px">
 								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-								<p class="card-text" style="padding: 0px">編號：${animal.id}
-									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city.name} 鄉鎮市區：${animal.district}
-								</p>
+								<p class="card-text" style="padding: 0px">綽號：${animal.name}</p>
 								<div class="d-flex justify-content-between align-items-center"
-									style="max-height: 100px">
+									style="max-height: 80px">
 									<div class="btn-group" style="margin: 0px">
 										<button type="button"
 											onclick="location.href='/halfway/detail?id=${animal.id}';"
 											class="btn btn-common btn-sm mt-10">詳情</button>
 									</div>
-									<small class="text-muted">${animal.upload}</small>
 								</div>
 							</div>
 						</div>
@@ -271,24 +274,6 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-<!-- 	<script src="/js/jquery-min.js"></script> -->
-<!-- 	<script src="/js/popper.min.js"></script> -->
-<!-- 	<script src="/js/bootstrap.min.js"></script> -->
-<!-- 	<script src="/js/jquery.mixitup.js"></script> -->
-<!-- 	<script src="/js/smoothscroll.js"></script> -->
-<!-- 	<script src="/js/wow.js"></script> -->
-<!-- 	<script src="/js/owl.carousel.js"></script> -->
-<!-- 	<script src="/js/waypoints.min.js"></script> -->
-<!-- 	<script src="/js/jquery.counterup.min.js"></script> -->
-<!-- 	<script src="/js/jquery.slicknav.js"></script> -->
-<!-- 	<script src="/js/jquery.appear.js"></script> -->
-<!-- 	<script src="/js/form-validator.min.js"></script> -->
-<!-- 	<script src="/js/contact-form-script.min.js"></script> -->
-<!-- 	<script src="/js/main.js"></script> -->
-<!-- 	<!-- Placed at the end of the document so the pages load faster --> -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
 	<script>
  		window.jQuery
  				|| document
