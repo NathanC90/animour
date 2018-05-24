@@ -108,7 +108,7 @@
 								<th>醫院名稱</th>
 								<th>電話</th>
 								<th>地址</th>
-								<th>預約</th>
+<!-- 								<th>預約</th> -->
 								
 							</tr>
 						</thead>
@@ -118,15 +118,15 @@
 					<td>${hosp.name}</td>
 					<td>${hosp.tel}</td>
 					<td>${hosp.address}</td>
-					<td>
-					<form method="POST" action="/hospital/appointmentdate">
-					<input type="hidden" name="id" value="${hosp.id}" />
-					<input type="submit" value="預約" name="id"/>
+<!-- 					<td> -->
+<!-- 					<form method="POST" action="/hospital/appointmentdate"> -->
+<%-- 					<input type="hidden" name="id" value="${hosp.id}" /> --%>
+<!-- 					<input type="submit" value="預約" name="id"/> -->
 			
-					</form>
+<!-- 					</form> -->
 					
 					
-					</td>
+<!-- 					</td> -->
 					</tr>
 					</c:forEach>
 						</tbody>

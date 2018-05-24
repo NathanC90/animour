@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
- 
+
 import org.apache.poi.util.SystemOutLogger;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
@@ -72,7 +72,7 @@ public class MemberController {
 		} else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(true);
-			if (member.getSignature() =="") {
+			if (member.getSignature() == "") {
 				member.setSignature(member.getAccount() + " say hi.");
 			}
 
@@ -157,7 +157,7 @@ public class MemberController {
 		List<Animal> animalls = animalService.getHomepageAnimalList(userDetails.getId());
 		model.addAttribute("animalls", animalls);
 
-		List<Article> artls = forumService.getArticlesByMemberId(userDetails.getId());
+		List<Article> artls = memberService.getArticlesByMemberId(userDetails.getId());
 		// System.out.println("userdetails::"+userDetails.getAccount());
 		model.addAttribute("articles", artls);
 
@@ -240,6 +240,13 @@ public class MemberController {
 	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
 	public String chatPage() {
 		return "/member/chat";
+	}
+
+	// 導向聊天對話框
+	@RequestMapping(value = "/chatbox", method = RequestMethod.GET)
+	// public String chatPage(@RequestParam(value = "memberId") Long memberId) {
+	public String chatboxPage() {
+		return "/member/chatbox";
 	}
 
 	// 導向通知頁面
