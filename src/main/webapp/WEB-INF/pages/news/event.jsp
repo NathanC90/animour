@@ -40,7 +40,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animour</title>
+<title>Animour 活動詳情</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -68,7 +68,6 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>活動詳情</title>
 <style>
   #map{
     height:400px;
@@ -187,6 +186,7 @@ var fbhtml_url=window.location.toString();
             </section>
             <div class="blog-post-footer clearfix">
               <!-- Post Meta -->
+              
               
             </div>
             <h2 style="padding: 10px; font-family:微軟正黑體">活動地點</h2>

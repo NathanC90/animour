@@ -97,7 +97,7 @@ public class NewsController {
 			// 設定交易時間
 			aio.setMerchantTradeDate(sdf.format(date));
 			// 商品名稱＋單價＋數量
-			aio.setItemName("中途認養押金 100元X1");
+			aio.setItemName("【2018上聯寵物用品博覽會】");
 			// 交易金額
 			aio.setTotalAmount("150");
 			// 交易描述
@@ -127,6 +127,8 @@ public class NewsController {
 		@RequestMapping(value = "/news/insertNews", method = RequestMethod.GET)
 		public String input(Model model) {
 			model.addAttribute("news", new News());
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 			return "/news/insertNews";
 		}
 	

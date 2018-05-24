@@ -35,10 +35,13 @@
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/news/index?pageNo=1" aria-haspopup="true" aria-expanded="false">最新消息</a>
+                                    <sec:authorize access="hasRole('Admin')">
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/news/insertNews">新增活動</a>
                                         <a class="dropdown-item" href="/news/manage">管理活動</a>
+                                        <a class="dropdown-item" href="/news/admin">後臺測試(未完成)</a>
                                     </div>
+                                    </sec:authorize>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="/halfway" aria-haspopup="true" aria-expanded="false">中途專區</a>
@@ -173,11 +176,12 @@
                             </li>
                             <li>
                                 <a href="/news/index?pageNo=1">最新消息</a>
-                                <!-- <ul>
-	<li><a href="">認養活動</a></li>
-	<li><a href="">寵物保健</a></li>
-	<li><a href="">演講座談</a></li>
-</ul>-->
+                                <sec:authorize access="hasRole('Admin')">
+                                </sec:authorize>
+                                <ul>
+									<li><a href="/news/insertNews">新增活動</a></li>
+									<li><a href="/news/manage">管理保健</a></li>
+								</ul>
                             </li>
                             <li>
                                 <a href="/halfway">中途專區</a>
