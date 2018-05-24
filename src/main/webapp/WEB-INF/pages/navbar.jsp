@@ -177,7 +177,7 @@
                                 <a class="active" href="index.jsp">首頁</a>
                             </li>
                             <li>
-                                <a href="#">最新消息</a>
+                                <a href="/news/index?pageNo=1">最新消息</a>
                                 <!-- <ul>
 	<li><a href="">認養活動</a></li>
 	<li><a href="">寵物保健</a></li>
@@ -185,47 +185,62 @@
 </ul>-->
                             </li>
                             <li>
-                                <a href="#">寵物市集</a>
+                                <a href="/halfway">中途專區</a>
                                 <ul>
                                     <li>
-                                        <a href="">新品上市</a>
+                                        <a href="/halfway/addAnimal">我要送養</a>
                                     </li>
                                     <li>
-                                        <a href="">好康優惠</a>
+                                        <a href="/halfway">動物搜尋</a>
                                     </li>
                                     <li>
-                                        <a href="">寵物飲食</a>
-                                    </li>
-                                    <li>
-                                        <a href="">寵物用品</a>
+                                        <a href="/halfway/showAdoption">認養程序處理</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">寵物旅店</a>
+                                <a href="/product/index">寵物市集</a>
                                 <ul>
                                     <li>
-                                        <a href="">旅店簡介</a>
+                                        <a href="/product/index">新品上市</a>
+                                    </li>
+                                    <sec:authorize access="hasRole('Member')">
+                                    <li>
+                                        <a href="/product/insert">商品上架</a>
                                     </li>
                                     <li>
-                                        <a href="">房型價格</a>
+                                        <a href="/product/maintain">商品管理</a>
+                                    </li>
+                                    </sec:authorize>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">寵物沙龍</a>
+                                <ul>
+                                    <li>
+                                        <a href="/appointment/firstPage">沙龍簡介</a>
+                                    </li>
+                                    <sec:authorize access="hasRole('Admin')">  
+                                    <li>
+                                        <a href="/salonAdminReservation">訂單編輯</a>
+                                    </li>
+                                    </sec:authorize>
+                                    <li>
+                                        <a href="/reservation">預約</a>
                                     </li>
                                     <li>
-                                        <a href="">特色設備</a>
-                                    </li>
-                                    <li>
-                                        <a href="">線上訂房</a>
+                                        <a href="/appointment/testForm">結帳</a>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">寵物醫院</a>
+                                <a href="/hospital">寵物醫院</a>
                                 <ul>
                                     <li>
-                                        <a href="">各區醫院</a>
+                                        <a href="/hospital">各區醫院</a>
                                     </li>
                                     <li>
-                                        <a href="">預約結果查詢</a>
+                                        <a href="/findorder">預約結果查詢</a>
                                     </li>
                                     <li>
                                         <a href=""></a>
@@ -233,22 +248,64 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">部落格分享</a>
-                                <ul>
-                                    <li>
-                                        <a href="">本周最新</a>
-                                    </li>
-                                    <li>
-                                        <a href="">熱門文章</a>
-                                    </li>
-                                    <li>
-                                        <a href="">精選圖文</a>
-                                    </li>
-                                </ul>
+                                <a href="/forum/findAll">部落格分享</a>
                             </li>
-                            <li>
-                                <a href="#">會員登入/註冊</a>
-                            </li>
+                            
+                            <sec:authorize access="hasRole('Admin')">
+                                    <!-- 管理員可讀 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>"" aria-haspopup="true" aria-expanded="false">
+                                            <sec:authentication property="principal.username" /> 您好</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/admin/member">會員資料</a>
+                                            <a class="dropdown-item" href="/mailto">寄信</a>
+                                            <a class="dropdown-item" href="/logout">登出</a>
+
+                                        </div>
+                                    </li>
+                                </sec:authorize>
+
+
+
+                                <sec:authorize access="hasRole('Member')">
+                                    <!-- 會員可讀 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
+                                            <sec:authentication property="principal.username" var="username" />${username} 您好</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/user/${username}">個人首頁</a>
+                                            <a class="dropdown-item" href="/update">修改個人資料</a>
+                                            <a class="dropdown-item" href="/changepassword">修改密碼</a>
+                                            <a class="dropdown-item" href="/logout">登出</a>
+
+                                        </div>
+                                    </li>
+                                </sec:authorize>
+                                <sec:authorize access="isAnonymous()">
+                                    <!-- 匿名者 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/login" aria-haspopup="true" aria-expanded="false">會員登入/註冊</a>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="/sign_up">註冊</a>
+                                        </div>
+
+                                    </li>
+                                </sec:authorize>
+                                <sec:authorize access="hasRole('Member')">
+                                    <!-- 會員可讀 -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="/queue" aria-haspopup="true" aria-expanded="false">
+<!-- 										<i title="通知" class="fa fa-globe xs" style="color:#9C3"></i> -->
+										<i title="通知" class="fa fa-globe icon-xs" style="color:#9C3"></i>
+<!-- 										<i title="通知" class="fa fa-globe icon-sm" style="color:#9C3"></i> -->
+										
+										</a>
+                                        <div class="dropdown-menu">
+                                           
+
+                                        </div>
+                                    </li>
+                                </sec:authorize>
                         </ul>
                         <!-- Mobile Menu End -->
                     </div>
