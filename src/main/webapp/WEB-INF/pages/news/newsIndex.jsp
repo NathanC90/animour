@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -66,7 +67,6 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>最新消息</title>
 </head>
 <body>
 	<header id="header-wrap">
@@ -79,93 +79,76 @@
           <div class="row">
             <div class="page-header-area">
               <div class="page-header-content">
-                <h2>最新消息</h2>
+                <h2 style="font-family:微軟正黑體">最新消息</h2>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Page Header End -->
 	</header>
-	
-				<div class="container">
-				<!-- Carousel Area starts -->
+      <!-- Page Header Ends -->
+	<!-- Container starts -->
 	<div class="container">
-	 <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block w-60" src="/images/news/dogtable.jpg" alt="">
-            <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
-            <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
-            <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-      </div>
-	
-	<!-- Carousel Area ends -->
-					
-					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-						活動一覽</h1>
-						
-					<div class="row">
-						<c:forEach var="news" items="${page.content}">
-							<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-								<a href="/news/index?pageNo=1">
-									<img class="card-img-top" src="/images/news/PetExpo.jpg" width="80px" alt="" >
-									</a><div class="card-body" style="margin-bottom: 5px">
-									 <p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
-											<a href="/news/event"><button type="button" class="btn btn-common">詳情</button></a>
-                 							<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>	
-                 							<sec:authorize access="hasRole('Admin')">
-			                                <a href="/news/insertNews"><button type="button" class="btn btn-common">add</button></a>
-			                                <a href="/news/manage"><button type="button" class="btn btn-common">edit</button></a>						
-			                                </sec:authorize>					
-									</div>
-								</div>
-							</div>
-						</c:forEach>
-					</div>					
-					<!-- Service-Block-000 Item Ends -->
+	<!-- Carousel Area starts -->
+		<div class="container" style="padding-top:20px">
+		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+	        <ol class="carousel-indicators">
+	          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+	          <li data-target="#myCarousel" data-slide-to="1"></li>
+	          <li data-target="#myCarousel" data-slide-to="2"></li>
+	        </ol>
+	        <div class="carousel-inner">
+	          <div class="carousel-item active">
+	            <img class="d-block w-60" src="/images/news/dogtable.jpg" alt="">
+	            <div class="container">
+	            </div>
+	          </div>
+	          <div class="carousel-item">
+	            <img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
+	            <div class="container">
+	            </div>
+	          </div>
+	          <div class="carousel-item">
+	            <img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
+	            <div class="container">
+	            </div>
+	          </div>
+	        </div>
+	        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+	          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	          <span class="sr-only">Previous</span>
+	        </a>
+	        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+	          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	          <span class="sr-only">Next</span>
+	        </a>
+	      </div>
+	      </div>	
+	<!-- Carousel Area ends -->					
+	<h1 style="font-family:微軟正黑體; text-align:center" class="animated bounceIn">活動一覽</h1>						
+		<div class="row">
+			<c:forEach var="news" items="${page.content}">
+				<div class="col-md-4">
+					<div class="card mb-4 box-shadow">
+						<a href="/news/index?pageNo=1">
+							<img class="card-img-top" src="/images/news/PetExpo.jpg" width="80px" alt="" >
+						</a>
+						<div class="card-body" style="margin-bottom: 5px">
+							<p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
+								<a href="/news/event"><button type="button" class="btn btn-common">詳情</button></a>
+                 				<a href="/news/enroll"><button type="button" class="btn btn-common">報名</button></a>	
+                 					<sec:authorize access="hasRole('Admin')">
+                 					<div style="margin-top:10px";>
+			                    	    <a href="/news/insertNews"><button type="button" class="btn btn-common">新增</button></a>
+			                            <a href="/news/manage"><button type="button" class="btn btn-common">修改</button></a>						
+                 					</div>
+			                        </sec:authorize>					
+						</div>
+					</div>
 				</div>
+			</c:forEach>
+		</div>
+	</div>
 				<!-- Container Ends -->
 
 	<!-- Footer Section -->
