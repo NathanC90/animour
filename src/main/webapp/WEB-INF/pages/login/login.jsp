@@ -1,21 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en">
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<!-- Required meta tags -->
+<!--Icon Tags start -->
+<link rel="apple-touch-icon" sizes="57x57"
+	href="/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+	href="/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+	href="/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+	href="/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/images/icon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+
+<!--Icon Tags end -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-
-<title>Login</title>
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animour</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -32,9 +55,47 @@
 	href="/fonts/simple-line-icons.css">
 
 <!-- Extras -->
-<link rel="stylesheet" type="text/css" href="/css/login.css">
 <link rel="stylesheet" type="text/css"
 	href="/extras/owl/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="/extras/animate.css">
+<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+
+
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
+	media="screen" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Required meta tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!-- Main Style -->
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!-- Slicknav Css -->
+<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+
+<!-- Responsive Style -->
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+<!--Fonts-->
+<link rel="stylesheet" media="screen"
+	href="/fonts/font-awesome/font-awesome.min.css">
+<!-- <link rel="stylesheet" media="screen" -->
+<!-- 	href="/fonts/simple-line-icons.css"> -->
+
+<!-- Extras -->
+<link rel="stylesheet" type="text/css"
+	href="/extras/owl/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/css/login.css">	
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
@@ -48,13 +109,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
-
-<!-- style/css -->
-<style>
-</style>
-<!-- style/css:end -->
-</head>
-
 <body>
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
@@ -171,11 +225,10 @@
 	</section>
 	<!-- Classic Blog Section End -->
 
-
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
-
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -198,28 +251,24 @@
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
+<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
+<!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+<!-- 		crossorigin="anonymous"></script> -->
+<!-- 	<script> -->
+// 		window.jQuery
+// 				|| document
+// 						.write('<script src="/js/jquery-slim.min.js"><\/script>')
+<!-- 	</script> -->
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-
-
-	<script src="/js/pace.min.js"></script>
+	<script src="/js/vendor/holder.min.js"></script>
 	<script type="text/javascript">
 		// Login Page Flipbox control
 		$('.login-content [data-toggle="flip"]').click(function() {
 			$('.login-box').toggleClass('flipped');
 			return false;
-		});
-		
-		
-		
+		});		
 	</script>
+
 </body>
 </html>
