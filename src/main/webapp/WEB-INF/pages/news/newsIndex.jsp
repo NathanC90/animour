@@ -87,45 +87,61 @@
       </div>
       <!-- Page Header End -->
 	</header>
+	
 				<div class="container">
-					<!-- 輪播牆開始 -->
-				<div id="carousel-area">
-					<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-slider" data-slide-to="1"></li>
-							<li data-target="#carousel-slider" data-slide-to="2"></li>
-						</ol>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<img class="d-block w-60" src="/images/news/dogtable.jpg" alt="">
-								<div class="carousel-caption">
-								
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
-								<div class="carousel-caption">
-								</div>
-							</div>
-							<div class="carousel-item">
-								<img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
-								<div class="carousel-caption">									
-								</div>
-							</div>
-							
-						</div>
-						<a class="carousel-control-prev" href="#carousel-slider" role="button" data-slide="prev">
-							<span class="carousel-control carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a>
-						<a class="carousel-control-next" href="#carousel-slider" role="button" data-slide="next">
-							<span class="carousel-control carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
-				</div>
-				<!-- 輪播牆結束-->
+				<!-- Carousel Area starts -->
+	<div class="container">
+	 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-60" src="/images/news/dogtable.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-left">
+                <h1>Example headline.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-60" src="/images/news/catillu.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Another example headline.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-60" src="/images/news/olddogcare.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-right">
+                <h1>One more for good measure.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      </div>
+	
+	<!-- Carousel Area ends -->
+					
 					<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 						活動一覽</h1>
 						
@@ -151,113 +167,7 @@
 					<!-- Service-Block-000 Item Ends -->
 				</div>
 				<!-- Container Ends -->
-<!--
-<center>
-	<h3>查詢一筆活動</h3>
-	<form name="selectOneForm" action="<c:url value="/findOneNews"/>" method="GET">
-	<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
-	<input type="submit" value="查詢單筆"> 
-	</form>
-	<hr>
-	
-	<h3>查詢所有活動</h3>
-	<form name="selectAllForm" action="<c:url value="/findAllNews"/>" method="GET">
-	<input type="submit" value="查詢所有">
-	</form>
-	<hr>
-	
-	<h3>刪除一筆活動</h3>
-	<form name="deleteForm" action="<c:url value="/deleteNews"/>" method="GET">
-	<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
-	<input type="submit" value="送出"> 
-	<input type="reset" value="清除"> 
-	</form>
-	<hr>
-	
-	<h3>新增活動公告</h3>
-		<form name="insertForm" action="<c:url value="/insertNews"/>" method="POST">
-			<table border="1">
-				<tbody>
-					<tr>
-						<td width="120" height="40">活動名稱:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="subject" value="${param.subject}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">活動內容:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="content" value="${param.content}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">發布時間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="publishDate" value="${param.publishDate}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-					<tr>
-						<td width="120" height="40">結束時間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="publishExpire" value="${param.publishExpire}" type="text" size="50"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
-					</tr>
-					<tr>
-						<td width="120" height="40">發布人:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="createUser" value="${param.createUser}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-					<tr>
-						<td width="120" height="40">建立時間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="createTime" value="${param.createTime}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-				</tbody>
-			</table>
-			<br>
-				<input type="submit" value="確定新增">
-				<input type="reset" value="清除">
-			<hr>
-		</form>
-		
-		<form name="updateNewsForm" action="/updateNews" method="GET">
-			<h3>修改活動訊息</h3>
-			<table border="1">
-				<tbody>
-					<tr>
-						<td width="120" height="40">活動名稱:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="subject" value="${param.subject}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">活動簡介:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="content" value="${param.content}" type="text" size="50"
-							style="text-align: left">
-					</tr>
-					<tr>
-						<td width="120" height="40">更新使用者:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="updateUser" value="${param.updateUser}" type="text" size="50"
-							style="text-align: left"></td>
-					</tr>
-					<tr>
-						<td width="120" height="40">更新時間:</td>
-						<td width="600" height="40" align="left"><input id='num'
-							name="updateTime" value="${param.updateTime}" type="text" size="50"
-							style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
-					</tr>
-				
-				</tbody>
-			</table>
-			<br>
-			<input type="submit" value="確定修改">
-			<input type="reset" value="清除">
-		</form>
-	</center>  -->
+
 	<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>

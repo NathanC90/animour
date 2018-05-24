@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
-
+ 
+import org.apache.poi.util.SystemOutLogger;
 import org.iii.ee100.animour.forum.entity.Article;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.halfway.entity.Animal;
@@ -18,6 +19,7 @@ import org.iii.ee100.animour.member.service.EmailService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -70,12 +72,13 @@ public class MemberController {
 		} else {
 			member.setRegistrationTime(new Timestamp(System.currentTimeMillis()));
 			member.setStatus(true);
-			if (member.getSignature() == null) {
+			if (member.getSignature() =="") {
 				member.setSignature(member.getAccount() + " say hi.");
 			}
 
-			if (member.getImages() == null) {
+			if (member.getImages() == "") {
 				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
+
 			}
 			memberService.insert(member);
 			return "redirect:/";// 註冊成功跳轉 login
@@ -96,10 +99,10 @@ public class MemberController {
 		if (bindingResult.hasErrors()) {
 			return "/member/update";
 		} else {
-			if (member.getImages() == null && memberService.getNewCurrentMember().getImages() != null) {
+			if (member.getImages() == "" && memberService.getNewCurrentMember().getImages() != "") {
 				member.setImages(memberService.getNewCurrentMember().getImages());
 			}
-			if (member.getSignature() == null && memberService.getNewCurrentMember().getSignature() != null) {
+			if (member.getSignature() == "" && memberService.getNewCurrentMember().getSignature() != "") {
 				member.setSignature(memberService.getNewCurrentMember().getSignature());
 			}
 			memberService.update(member);
@@ -118,7 +121,7 @@ public class MemberController {
 	public String updatePassword(@Valid Password password, BindingResult result, Map<String, Object> map) {
 		if (memberService.getNewCurrentMember().getPassword().equals(password.getOldpassword())) {
 			if (result.hasErrors()) {
-				map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
+				map.put("newpassword", "請輸入大小寫字母和數字,且長度大於3");
 				return "/member/update_password";
 			} else {
 				memberService.update(memberService.getNewCurrentMember(), password.getNewpassword());
@@ -127,7 +130,7 @@ public class MemberController {
 		} else {
 			result.rejectValue("oldpassword", "oldpassword", "請確定密碼");
 			map.put("oldpassword", result.getFieldError("oldpassword").getDefaultMessage());
-			map.put("newpassword", "請輸入大小寫字母和數字,且長度在3-10之間");
+			map.put("newpassword", "請輸入大小寫字母和數字,且長度大於3");
 			return "/member/updatepassword";
 
 		}
@@ -189,17 +192,26 @@ public class MemberController {
 	}
 
 	// 前往後台頁
+	// 前往會員後台頁
 	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/member", method = RequestMethod.GET)
-	public String admin() {
+	public String adminMember() {
 		return "/admin/member/admin_copy2a";
 	}
 
 	// 前往後台頁
+	// 前往文章後台頁
 	@PreAuthorize("hasRole('Admin')")
 	@RequestMapping(value = "/admin/forum", method = RequestMethod.GET)
 	public String adminforum() {
 		return "/admin/forum/admin";
+	}
+
+	// 前往動物後台
+	@PreAuthorize("hasRole('Admin')")
+	@RequestMapping(value = "/admin/animal", method = RequestMethod.GET)
+	public String adminAnimal() {
+		return "/admin/halfway/admin_copy";
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)

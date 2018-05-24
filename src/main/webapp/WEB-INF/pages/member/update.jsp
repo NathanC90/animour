@@ -7,44 +7,37 @@
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Icon Tags end -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animour</title>
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!-- Slicknav Css -->
+    <link rel="stylesheet" type="text/css" href="/css/slicknav.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+    <!-- Responsive Style -->
+      <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+      <!--Fonts-->
+      <link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
+      <link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
 
-<title>修改個人資料</title>
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-<!-- Main Style -->
-<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!-- Slicknav Css -->
-<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+      <!-- Extras -->
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+      <link rel="stylesheet" type="text/css" href="/extras/animate.css">
+      <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
 
-<!-- Responsive Style -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css">
-<!--Fonts-->
-<link rel="stylesheet" media="screen"
-	href="/fonts/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" media="screen"
-	href="/fonts/simple-line-icons.css">
 
-<!-- Extras -->
-<link rel="stylesheet" type="text/css"
-	href="/extras/owl/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
-<link rel="stylesheet" type="text/css" href="/extras/animate.css">
-<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-<!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
-	media="screen" />
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
+      <!-- Color CSS Styles  -->
+      <link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
@@ -63,8 +56,22 @@
 		<!-- Navbar Starts -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
+		
+	<!-- Page Header -->
+      <div class="page-header-section">
+        <div class="container">
+          <div class="row">
+            <div class="page-header-area">
+              <div class="page-header-content">
+                <h2>${member.account}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Header area wrapper ends -->		
 	</header>
-	<br>
+	
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
@@ -185,14 +192,14 @@
 			</div>
 			<!-- End -->
 		</div>
-		</div>
 	</section>
 	<!-- Classic Blog Section End -->
 
 
 	<!-- Footer Section -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
-
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -200,6 +207,8 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+
 	<script src="/js/jquery-min.js"></script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -215,17 +224,12 @@
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- Placed at the end of the document so the pages load faster -->
-	 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                        crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-			<script src="http://malsup.github.com/jquery.form.js"></script>
+	<script src="http://malsup.github.com/jquery.form.js"></script>
                     <script>
                         window.jQuery
                             || document
                                 .write('<script src="/js/jquery-slim.min.js"><\/script>')
                     </script>
-                    <script src="/js/popper.min.js"></script>
-                    <script src="/js/bootstrap.min.js"></script>
 					<script>
 					$(document).ready(function (){
 						

@@ -44,17 +44,16 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
     <![endif]-->
-                </head>
-
-                <body>
-                    <!-- Header area wrapper starts -->
-                    <header id="header-wrap">
-                        <!-- Navbar Starts -->
-                        <jsp:include page="../navbar.jsp"></jsp:include>
-                        <!-- Navbar ends -->
-                    </header>
-                    <br>
-                    <!-- Classic Blog Section -->
+</head>
+<body>
+			<!-- Header area wrapper starts -->
+          <header id="header-wrap">
+              <!-- Navbar Starts -->
+              <jsp:include page="../navbar.jsp"></jsp:include>
+              <!-- Navbar ends -->
+          </header>
+          <br>
+          <!-- Classic Blog Section -->
                     <section class="classic-blog-section section">
                         <div class="container">
                             <div class="row">
@@ -63,7 +62,7 @@
                                 <!-- End -->
 
                                 <!-- BLog Article Section -->
-<!--                                 <div class="col-md-9"> -->
+                                <div class="col-md-9"> -->
                                     <!-- Single Blog Post -->
                                     <!-- 每頁不同的內容從這裡開始 -->
                                     <div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -161,9 +160,7 @@
                                         </div>
                                     </div>
                                     <!-- 每頁不同的內容到這裡結束 -->
-
-<!--                                 </div> -->
-                                <!-- Blog Pagination -->
+                                    <!-- Blog Pagination -->
                                 <!-- 頁碼 -->
                             </div>
                             <!-- End -->
@@ -171,19 +168,24 @@
                         </div>
                     </section>
                     <!-- Classic Blog Section End -->
+          
+          
+	<!-- Footer Section -->
+	<footer>
+	<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
+	<!-- Footer Section End-->
 
-
-                    <!-- Footer Section -->
-                    <jsp:include page="../footer.jsp"></jsp:include>
-
-                    <!-- Footer Section End-->
-
-                    <!-- Go To Top Link -->
+	<!-- Go To Top Link -->
                     <a href="#" class="back-to-top">
                         <i class="fa fa-angle-up"> </i>
                     </a>
 
-                    <!-- JavaScript & jQuery Plugins -->
+	<!-- JavaScript & jQuery Plugins -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                        crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+			<script src="http://malsup.github.com/jquery.form.js"></script>
                     <script src="/js/jquery-min.js"></script>
                     <script src="/js/popper.min.js"></script>
                     <script src="/js/bootstrap.min.js"></script>
@@ -198,12 +200,8 @@
                     <script src="/js/form-validator.min.js"></script>
                     <script src="/js/contact-form-script.min.js"></script>
                     <script src="/js/main.js"></script>
-                    <!-- Placed at the end of the document so the pages load faster -->
-                    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-                        crossorigin="anonymous"></script>
-                        <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-			<script src="http://malsup.github.com/jquery.form.js"></script>
-                    <script>
+	<!-- Placed at the end of the document so the pages load faster -->
+ 	<script>
                         window.jQuery
                             || document
                                 .write('<script src="/js/jquery-slim.min.js"><\/script>')

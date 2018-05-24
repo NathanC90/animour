@@ -1,10 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
-<html lang="en">
-
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
+<!--Icon Tags start -->
+<link rel="apple-touch-icon" sizes="57x57"
+	href="/images/icon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60"
+	href="/images/icon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72"
+	href="/images/icon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76"
+	href="/images/icon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114"
+	href="/images/icon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120"
+	href="/images/icon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144"
+	href="/images/icon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152"
+	href="/images/icon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180"
+	href="/images/icon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"
+	href="/images/icon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="/images/icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96"
+	href="/images/icon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="/images/icon/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+
+<!--Icon Tags end -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Viewport Meta Tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Animour</title>
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<!-- Main Style -->
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+<!-- Slicknav Css -->
+<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+
+<!-- Responsive Style -->
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+<!--Fonts-->
+<link rel="stylesheet" media="screen"
+	href="/fonts/font-awesome/font-awesome.min.css">
+<link rel="stylesheet" media="screen"
+	href="/fonts/simple-line-icons.css">
+
+<!-- Extras -->
+<link rel="stylesheet" type="text/css"
+	href="/extras/owl/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+<link rel="stylesheet" type="text/css" href="/extras/animate.css">
+<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+
+
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
+	media="screen" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Required meta tags -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport"
@@ -16,7 +77,6 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>Animour</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -49,7 +109,6 @@
     </script>
     <![endif]-->
 </head>
-
 <body>
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
@@ -57,86 +116,72 @@
 		<jsp:include page="navbar.jsp"></jsp:include>
 
 		<!-- Navbar ends -->
-
-
-		<!-- 輪播牆開始 -->
-		<div id="carousel-area">
-			<div id="carousel-slider" class="carousel slide" data-ride="carousel">
-				<ol class="carousel-indicators">
-					<li data-target="#carousel-slider" data-slide-to="0" class="active"></li>
-					<li data-target="#carousel-slider" data-slide-to="1"></li>
-					<li data-target="#carousel-slider" data-slide-to="2"></li>
-					<li data-target="#carousel-slider" data-slide-to="3"></li>
-				</ol>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								請用領養代替購買</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點擊認養
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">中途見面會活動
-							</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-								2018/06/01 上午9:00 台北市復興南路一段</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-coffee">
-							</i> 詳細資訊
-							</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg"
-							alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">New Arrival</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">最新商品上架</h3>
-							<a href="/product/index" class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i class="fa fa-download"></i> 看這裡</a>
-						</div>
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							src="/images/slider/bg-rabbit1-gray.jpg" alt="">
-						<div class="carousel-caption">
-							<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-								LaLa醫生門診時間異動</h2>
-							<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">
-								已掛號會員請更改看診時間</h3>
-							<a class="btn btn-lg btn-common fadeInUp wow"
-								data-sppb-wow-delay="1.4s" href="#"> <i
-								class="fa fa-download"> </i> 點此更改
-							</a>
-						</div>
-					</div>
-				</div>
-				<a class="carousel-control-prev" href="#carousel-slider"
-					role="button" data-slide="prev"> <span
-					class="carousel-control carousel-control-prev-icon"
-					aria-hidden="true"></span> <span class="sr-only">Previous</span>
-				</a> <a class="carousel-control-next" href="#carousel-slider"
-					role="button" data-slide="next"> <span
-					class="carousel-control carousel-control-next-icon"
-					aria-hidden="true"></span> <span class="sr-only">Next</span>
-				</a>
-			</div>
-		</div>
-		<!-- 輪播牆結束-->
-	</header>
+		</header>
 	<!-- Header-wrap Section End -->
-
-	<!-- 中途之家頁面 -->
+	<!--  Carousel Area starts -->
+		<section id="service-block-main" class="section">
+		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>          
+		  <li data-target="#myCarousel" data-slide-to="3"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">						
+            <div class="container">
+              <div class="carousel-caption text-left">
+                <h1>Example headline.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">						
+            <div class="container">
+              <div class="carousel-caption">
+                <h1>Another example headline.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-right">
+                <h1>One more for good measure.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
+            <div class="container">
+              <div class="carousel-caption text-right">
+                <h1>One more for good measure.</h1>
+                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      </section>
+		
+		<!--  Carousel Area ends-->
+		<!-- 中途之家頁面 -->
 	<section id="service-block-main" class="section">
 		<!-- 重複的內容開始 -->
 		<div class="container">
@@ -176,12 +221,10 @@
 	<!-- 中途之家結束 -->
 	<!-- 最新消息開始 -->
 	<section>
-
 		<!-- Container Starts -->
 		<div class="container">
 			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 				最新活動專區</h1>
-
 			<div class="row">
 				<c:forEach var="news" items="${sixNews}">
 					<div class="col-md-4">
@@ -200,10 +243,7 @@
 			<!-- Service-Block-000 Item Ends -->
 		</div>
 		<!-- Container Ends -->
-
-
 	</section>
-
 	<!-- 最新消息結束 -->
 	<!-- 寵物市集頁面 -->
 	<!-- Portfolio Section -->
@@ -273,17 +313,13 @@
 		</div> -->
 		<!-- 重複的內容結束 -->
 	</section>
-
-	<!-- 寵物旅館結束 -->
-
-
+	<!-- 寵物沙龍結束 -->
 	<!-- 醫院開始 -->
 	<section id="service-block-main" class="section">
 		<!-- Container Starts -->
 		<div class="container">
 			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 				醫院資訊專區</h1>
-
 			<div class="row">
 				<c:forEach var="hosp" items="${hospitals}">
 					<div class="col-md-4">
@@ -309,14 +345,11 @@
 					</div>
 				</c:forEach>
 			</div>
-
 			<!-- Service-Block-000 Item Ends -->
 		</div>
 		<!-- Container Ends -->
 	</section>
 	<!-- 醫院結束 -->
-
-
 	<!-- Blog Section -->
 	<section id="blog" class="section">
 		<!-- Container Starts -->
@@ -359,20 +392,12 @@
 						</div>
 					</div>
 				</c:forEach>
-
-
 				<!-- Blog Item Wrapper Ends-->
-
-
 			</div>
-
-
 		</div>
 		<!-- Container Ends -->
 	</section>
 	<!-- blog Section End -->
-
-
 	<!-- Pricing Table Section -->
 	<section id="pricing" class="section">
 		<div class="container">
@@ -454,11 +479,10 @@
 	</section>
 	<!-- Pricing Table  End -->
 
-
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="footer.jsp"></jsp:include>
-
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -466,6 +490,9 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
 	<script src="/js/jquery-min.js"></script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
@@ -481,18 +508,14 @@
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
 	<script>
-		window.jQuery
-				|| document
-						.write('<script src="/js/jquery-slim.min.js"><\/script>')
-	</script>
+ 		window.jQuery
+ 				|| document
+ 						.write('<script src="/js/jquery-slim.min.js"><\/script>')
+ 	</script>
 	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/vendor/holder.min.js"></script>
 
 </body>
-
 </html>

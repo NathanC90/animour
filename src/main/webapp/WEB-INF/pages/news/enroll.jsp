@@ -291,7 +291,7 @@ padding: auto;
    </sec:authorize>
    <sec:authorize access="hasRole('Member')">
    <div class="btn-enroll">
-   <a href="/news/enroll" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
+   <a href="/news/ticket" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
    </div>
    </sec:authorize>
    

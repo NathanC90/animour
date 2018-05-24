@@ -1,50 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<!doctype html>
-<html lang="en">
-
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<!-- Required meta tags -->
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--Icon Tags end -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Animour</title>
+	
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!-- Slicknav Css -->
+    <link rel="stylesheet" type="text/css" href="/css/slicknav.css">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
+    <!-- Responsive Style -->
+      <link rel="stylesheet" type="text/css" href="/css/responsive.css">
+      <!--Fonts-->
+      <link rel="stylesheet" media="screen" href="/fonts/font-awesome/font-awesome.min.css">
+      <link rel="stylesheet" media="screen" href="/fonts/simple-line-icons.css">
 
-<title>Animour</title>
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-<!-- Main Style -->
-<link rel="stylesheet" type="text/css" href="/css/main.css">
-<!-- Slicknav Css -->
-<link rel="stylesheet" type="text/css" href="/css/slicknav.css">
+      <!-- Extras -->
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.carousel.css">
+      <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
+      <link rel="stylesheet" type="text/css" href="/extras/animate.css">
+      <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
 
-<!-- Responsive Style -->
-<link rel="stylesheet" type="text/css" href="/css/responsive.css">
-<!--Fonts-->
-<link rel="stylesheet" media="screen"
-	href="/fonts/font-awesome/font-awesome.min.css">
-<link rel="stylesheet" media="screen"
-	href="/fonts/simple-line-icons.css">
 
-<!-- Extras -->
-<link rel="stylesheet" type="text/css"
-	href="/extras/owl/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
-<link rel="stylesheet" type="text/css" href="/extras/animate.css">
-<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-<!-- Color CSS Styles  -->
-<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
-	media="screen" />
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
+      <!-- Color CSS Styles  -->
+      <link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+      <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
@@ -56,16 +47,29 @@
 </style>
 <!-- style/css:end -->
 </head>
-
 <body>
-	<!-- Header area wrapper starts -->
+		<!-- Header area wrapper starts -->
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
-	</header>
+	
 
-	<!-- Classic Blog Section -->
+<!-- Page Header -->
+      <div class="page-header-section">
+        <div class="container">
+          <div class="row">
+            <div class="page-header-area">
+              <div class="page-header-content">
+                <h2 style="font-family: '微軟正黑體';">${member.account}的個人首頁</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Header area wrapper ends -->
+   </header>
+   <!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
@@ -98,7 +102,6 @@
 						</aside>
 						<!-- Text Widgets -->
 						<!-- Recent Post Widgets -->
-
 						<!-- Category -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
@@ -130,15 +133,11 @@
 					</div>
 				</div>
 				<!-- End -->
-
 				<!-- BLog Article Section -->
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
 					<!-- 每頁不同的內容從這裡開始 -->
-
-					<h3>${member.account}的個人首頁</h3>
-
-					<h3>已發過的動物資料</h3>
+					<h4>動物資料</h4>
 					<div class="row">
 					<c:forEach var="animal" items="${animalls}">
 					<div class="col-md-3">
@@ -148,18 +147,14 @@
 								alt="待領養小貓">
 							<div class="card-body" style="margin-bottom: 5px">
 								<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-								<p class="card-text" style="padding: 0px">編號：${animal.id}
-									綽號：${animal.name} 種類：${animal.specie} 顏色：${animal.color}
-									發現日期：${animal.found} 縣市：${animal.city.name} 鄉鎮市區：${animal.district}
-								</p>
+								<p class="card-text" style="padding: 0px">綽號：${animal.name}</p>
 								<div class="d-flex justify-content-between align-items-center"
-									style="max-height: 100px">
+									style="max-height: 80px">
 									<div class="btn-group" style="margin: 0px">
 										<button type="button"
 											onclick="location.href='/halfway/detail?id=${animal.id}';"
 											class="btn btn-common btn-sm mt-10">詳情</button>
 									</div>
-									<small class="text-muted">${animal.upload}</small>
 								</div>
 							</div>
 						</div>
@@ -167,7 +162,7 @@
 				</c:forEach>
 				</div>				
 					<!-- 每頁不同的內容到這裡結束 -->
-				<h3>發文過的資料</h3>
+					<h3>發文過的資料</h3>
 				<!-- Row Starts -->
 			<div class="row">
 				<c:forEach var="article" items="${articles}">
@@ -204,7 +199,7 @@
 
 				<!-- Blog Item Wrapper Ends-->
 		<div class="modal fade" id="exampleModalMyFriend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
+			<div class="modal-dialog" role="document" >
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">My Follow List</h5>
@@ -212,17 +207,17 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body" id="modal_myFriendList">
+					<div class="modal-body" id="modal_myFriendList" >
 					<c:forEach items='${friendlist}' var='friend'>
 <!-- 					<div class='row'> -->
 					<div class='col-md-6'>
-					<div class="card mb-3 box-shadow">
-					<div style="padding:4px" >
-					<a href='/${friend.account}'>
-					<div style="width:60px; height:60px;margin:4px;float:left">
+					<div class="card mb-5 box-shadow ">
+					<div style="padding:1px;" >
+					<a href='/user/${friend.account}'>
+					<div style="width:60px; height:60px;margin:1px;float:left" >
 					<img src="${friend.images}" alt="${friend.id}" class="card-img-top img-circle">
 					</div>
-					<span>${friend.account}</span>
+					<div style="float:left;text-align: center;height:60px"><span>${friend.account}</span></div>
 					</a>
 					</div>
 					</div>
@@ -236,13 +231,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-			
-				
-				
-				
+		</div>			
 				</div>
+				
 				<!-- Blog Pagination -->
 				<!-- 分頁開始 -->
 				<div class="blog-pagination clearfix wow fadeIn"
@@ -256,14 +247,13 @@
 			</section>
 		
 	<!-- Classic Blog Section End -->
-
-
-
-
+      
+	
 
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -271,37 +261,33 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-<!-- 	<script src="/js/jquery-min.js"></script> -->
-<!-- 	<script src="/js/popper.min.js"></script> -->
-<!-- 	<script src="/js/bootstrap.min.js"></script> -->
-<!-- 	<script src="/js/jquery.mixitup.js"></script> -->
-<!-- 	<script src="/js/smoothscroll.js"></script> -->
-<!-- 	<script src="/js/wow.js"></script> -->
-<!-- 	<script src="/js/owl.carousel.js"></script> -->
-<!-- 	<script src="/js/waypoints.min.js"></script> -->
-<!-- 	<script src="/js/jquery.counterup.min.js"></script> -->
-<!-- 	<script src="/js/jquery.slicknav.js"></script> -->
-<!-- 	<script src="/js/jquery.appear.js"></script> -->
-<!-- 	<script src="/js/form-validator.min.js"></script> -->
-<!-- 	<script src="/js/contact-form-script.min.js"></script> -->
-<!-- 	<script src="/js/main.js"></script> -->
-<!-- 	<!-- Placed at the end of the document so the pages load faster --> -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/jquery-min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.mixitup.js"></script>
+	<script src="/js/smoothscroll.js"></script>
+	<script src="/js/wow.js"></script>
+	<script src="/js/owl.carousel.js"></script>
+	<script src="/js/waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/jquery.appear.js"></script>
+	<script src="/js/form-validator.min.js"></script>
+	<script src="/js/contact-form-script.min.js"></script>
+	<script src="/js/main.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
+<!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+<!-- 		crossorigin="anonymous"></script> -->
+< 	<script> 
  		window.jQuery
  				|| document
  						.write('<script src="/js/jquery-slim.min.js"><\/script>')
- 	</script> 
-<!-- 	<script src="/js/popper.min.js"></script> -->
+ 	</script>
+	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-
-
-<!-- 	<script -->
-<!-- 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-
+	<script src="/js/vendor/holder.min.js"></script>
 	<script>
 	
 	 $(document).ready(function () {
@@ -319,40 +305,38 @@
  			});//end .each
  		
  		})//end .json;
- 		 
-		 $("#addFriend").on('click' ,function (event) {
+ 		
+ 		$("#addFriend").on('click' ,function (event) {
 			 console.log("#addFriend:");
 			 console.log($(this));
-             var formData = new FormData(document.getElementById("insertFriend"));
-             console.log(formData);
-             $.ajax({
-               type: "POST",
-               url: "/api/member/all/addfriend",
-               data: formData,
-               contentType: false,
-               processData: false
-             })
+            var formData = new FormData(document.getElementById("insertFriend"));
+            console.log(formData);
+            $.ajax({
+              type: "POST",
+              url: "/api/member/all/addfriend",
+              data: formData,
+              contentType: false,
+              processData: false
+            })
 			 .done(function (data) {
-             $.each(data, function (i, friend) {
-            	 console.log("friendstatus");
-                 console.log(friend);
-                 console.log("friend.id:: "+friend.id)
-                 console.log("friend:: "+friend)
-                 
-                 if(friend == true){
-                	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
-                 }else{
-                 $("#span").html('<i class="icon-heart"></i> 加好友 ');
-                 }
-               });
-             }); //end .done
-		 
-		 })
- 		 }//end if
- 		 });
-	 
-	</script>
-	<script>
+            $.each(data, function (i, friend) {
+		           	 console.log("friendstatus");
+		                console.log(friend);
+		                console.log("friend.id:: "+friend.id)
+		                console.log("friend:: "+friend)
+		                
+		                if(friend == true){
+		               	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+		                }else{
+		                $("#span").html('<i class="icon-heart"></i> 加好友 ');
+		                }
+		              });
+		            }); //end .done
+		 		})
+		 	}//end if
+		 });
+	 </script>
+	 <script>
 	$(document).ready(function () {
 
 			$('#exampleModalMyFriend').on('show.bs.modal', function (event) {
@@ -370,6 +354,7 @@
 
 	
 	</script>
-</body>
+	
 
+</body>
 </html>

@@ -107,17 +107,17 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" title="寵物管理" data-toggle="tooltip" data-placement="right" data-container="body">
+          <a class="nav-link" href="/admin/animal" title="寵物管理" data-toggle="tooltip" data-placement="right" data-container="body">
             <span class="icon icon-baidu"></span>
             <small class="iconav-nav-label hidden-md-up">寵物管理</small>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" title="市集管理" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-shopping-cart"></span>
-            <small class="iconav-nav-label hidden-md-up">市集管理</small>
-          </a>
-        </li>
+<!--         <li class="nav-item"> -->
+<!--           <a class="nav-link" href="#" title="市集管理" data-toggle="tooltip" data-placement="right" data-container="body"> -->
+<!--             <span class="icon icon-shopping-cart"></span> -->
+<!--             <small class="iconav-nav-label hidden-md-up">市集管理</small> -->
+<!--           </a> -->
+<!--         </li> -->
         <li class="nav-item">
           <a class="nav-link" href="/admin/forum" title="部落格管理" data-toggle="tooltip" data-placement="right" data-container="body">
             <span class="icon icon-text-document"></span>

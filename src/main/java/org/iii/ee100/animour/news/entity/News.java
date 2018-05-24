@@ -41,9 +41,11 @@ public class News extends GenericEntity{
 	@Column(name="UPDATE_TIME")
 	private java.sql.Timestamp updateTime;
 	@Column(name="TICKET_PRICE")
-	private int ticketPrice;
+	private Integer ticketPrice;
 	@Column(name="TICKET_QUANTITY")
-	private int ticketQuantity;
+	private Integer ticketQuantity;
+	@Column(name="STOCK")
+	private Integer stock;
 //	@Column(name="PAGE_VIEW")
 //	private int pageView;
 	@Column(name="IS_DEL")
