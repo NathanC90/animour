@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<!doctype html>
-<html lang="en">
-
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
     <!--Icon Tags end -->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -49,14 +47,13 @@
 </style>
 <!-- style/css:end -->
 </head>
-
 <body>
-	<!-- Header area wrapper starts -->
+		<!-- Header area wrapper starts -->
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
 		<jsp:include page="../navbar.jsp"></jsp:include>
 		<!-- Navbar ends -->
-	</header>
+	
 
 <!-- Page Header -->
       <div class="page-header-section">
@@ -70,9 +67,9 @@
           </div>
         </div>
       </div>
-
-
-	<!-- Classic Blog Section -->
+      <!-- Header area wrapper ends -->
+   </header>
+   <!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
@@ -105,7 +102,6 @@
 						</aside>
 						<!-- Text Widgets -->
 						<!-- Recent Post Widgets -->
-
 						<!-- Category -->
 						<aside class="widget flickr-widget wow fadeIn"
 							data-wow-delay="0.3s">
@@ -137,7 +133,6 @@
 					</div>
 				</div>
 				<!-- End -->
-
 				<!-- BLog Article Section -->
 				<div class="col-md-9">
 					<!-- Single Blog Post -->
@@ -170,7 +165,7 @@
 				</c:forEach>
 				</div>				
 					<!-- 每頁不同的內容到這裡結束 -->
-				<h3>發文過的資料</h3>
+					<h3>發文過的資料</h3>
 				<!-- Row Starts -->
 			<div class="row">
 				<c:forEach var="article" items="${articles}">
@@ -239,13 +234,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
-
-			
-				
-				
-				
+		</div>			
 				</div>
+				
 				<!-- Blog Pagination -->
 				<!-- 分頁開始 -->
 				<div class="blog-pagination clearfix wow fadeIn"
@@ -259,14 +250,13 @@
 			</section>
 		
 	<!-- Classic Blog Section End -->
-
-
-
-
+      
+	
 
 	<!-- Footer Section -->
-	<!-- (footer.jsp) -->
+	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
+	</footer>
 	<!-- Footer Section End-->
 
 	<!-- Go To Top Link -->
@@ -274,19 +264,33 @@
 	</a>
 
 	<!-- JavaScript & jQuery Plugins -->
-	<script>
+	<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+	<script src="/js/jquery-min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.mixitup.js"></script>
+	<script src="/js/smoothscroll.js"></script>
+	<script src="/js/wow.js"></script>
+	<script src="/js/owl.carousel.js"></script>
+	<script src="/js/waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/jquery.appear.js"></script>
+	<script src="/js/form-validator.min.js"></script>
+	<script src="/js/contact-form-script.min.js"></script>
+	<script src="/js/main.js"></script>
+	<!-- Placed at the end of the document so the pages load faster -->
+<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
+<!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+<!-- 		crossorigin="anonymous"></script> -->
+< 	<script> 
  		window.jQuery
  				|| document
  						.write('<script src="/js/jquery-slim.min.js"><\/script>')
- 	</script> 
-<!-- 	<script src="/js/popper.min.js"></script> -->
+ 	</script>
+	<script src="/js/popper.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-
-
-<!-- 	<script -->
-<!-- 		src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> -->
-    <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-
+	<script src="/js/vendor/holder.min.js"></script>
 	<script>
 	
 	 $(document).ready(function () {
@@ -304,40 +308,38 @@
  			});//end .each
  		
  		})//end .json;
- 		 
-		 $("#addFriend").on('click' ,function (event) {
+ 		
+ 		$("#addFriend").on('click' ,function (event) {
 			 console.log("#addFriend:");
 			 console.log($(this));
-             var formData = new FormData(document.getElementById("insertFriend"));
-             console.log(formData);
-             $.ajax({
-               type: "POST",
-               url: "/api/member/all/addfriend",
-               data: formData,
-               contentType: false,
-               processData: false
-             })
+            var formData = new FormData(document.getElementById("insertFriend"));
+            console.log(formData);
+            $.ajax({
+              type: "POST",
+              url: "/api/member/all/addfriend",
+              data: formData,
+              contentType: false,
+              processData: false
+            })
 			 .done(function (data) {
-             $.each(data, function (i, friend) {
-            	 console.log("friendstatus");
-                 console.log(friend);
-                 console.log("friend.id:: "+friend.id)
-                 console.log("friend:: "+friend)
-                 
-                 if(friend == true){
-                	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
-                 }else{
-                 $("#span").html('<i class="icon-heart"></i> 加好友 ');
-                 }
-               });
-             }); //end .done
-		 
-		 })
- 		 }//end if
- 		 });
-	 
-	</script>
-	<script>
+            $.each(data, function (i, friend) {
+		           	 console.log("friendstatus");
+		                console.log(friend);
+		                console.log("friend.id:: "+friend.id)
+		                console.log("friend:: "+friend)
+		                
+		                if(friend == true){
+		               	 $("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
+		                }else{
+		                $("#span").html('<i class="icon-heart"></i> 加好友 ');
+		                }
+		              });
+		            }); //end .done
+		 		})
+		 	}//end if
+		 });
+	 </script>
+	 <script>
 	$(document).ready(function () {
 
 			$('#exampleModalMyFriend').on('show.bs.modal', function (event) {
@@ -355,6 +357,7 @@
 
 	
 	</script>
-</body>
+	
 
+</body>
 </html>
