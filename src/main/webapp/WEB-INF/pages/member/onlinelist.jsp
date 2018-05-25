@@ -29,6 +29,7 @@
 				<title>Animour</title>
 				<!-- Bootstrap -->
 				<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+				
 				<!-- Main Style -->
 				<link rel="stylesheet" type="text/css" href="/css/main.css">
 				<!-- Slicknav Css -->
@@ -52,6 +53,8 @@
 
 				<!-- Color CSS Styles  -->
 				<link rel="stylesheet" type="text/css" href="/css/colors/green.css" media="screen" />
+				                <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+				
 
 				<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 				<!--[if lt IE 9]>
@@ -60,11 +63,6 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
 	<![endif]-->
-
-				<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
-				<!-- FancyBox Plugins -->
-				<script src="/webjars/sockjs-client/sockjs.min.js"></script>
-				<script src="/webjars/stomp-websocket/stomp.min.js"></script>
 			</head>
 
 			<body>
@@ -80,7 +78,6 @@
 						<div id="online" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 
 							<a class="dropdown-item" style="background-color: #9C3; color: #ffffff">線上</a>
-							<!--<div class="dropdown-divider" style="background-color: #9C3"></div>-->
 
 						</div>
 					</div>
@@ -123,10 +120,9 @@
 							type: "GET",
 							url: "/api/member/all/findonline",
 						}).done(function (data) {
-							console.log(data)
 							$.each(data, function (idx, list) {
 								console.log("list::::"+list)
-							var c=$('<a></a>').addClass('dropdown-item').css("background-color: #9C3; color: #ffffff").text(list);
+							var c=`<a id=` + list + ` class="dropdown-item" href="/user/` + list + `">` +  list +`在線上` + `</a>`;
 							$('#online').append(c);
 							});
 							
