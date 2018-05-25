@@ -103,7 +103,7 @@
 			<!-- Insert Test starts-->
 				<h3>查詢一筆活動</h3>
 					<form name="selectOneForm" action="/findOneNews" method="GET">
-						<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
+						<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
 						<input type="submit" value="查詢單筆"> 
 					</form>
 					<!-- Show One News starts-->
@@ -144,7 +144,7 @@
 		<div class="row">
 			<h3>刪除一筆活動</h3>
 				<form name="deleteForm" action="/deleteNews" method="GET">
-					<input name="subjectId" value="${param.subjectId}" type="text" size="50" style="text-align: left">
+					<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
 					<input type="submit" value="送出"> 
 					<input type="reset" value="清除"> 
 				</form>

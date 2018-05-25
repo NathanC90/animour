@@ -1,7 +1,12 @@
 package org.iii.ee100.animour.news.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+import org.iii.ee100.animour.halfway.service.AdoptionService;
+import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
@@ -12,6 +17,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import allPay.payment.integration.AllInOne;
+import allPay.payment.integration.domain.AioCheckOutALL;
+import allPay.payment.integration.domain.InvoiceObj;
+import allPay.payment.integration.exception.AllPayException;
 
 @Controller
 public class NewsController {
@@ -39,40 +51,95 @@ public class NewsController {
 		return "/news/newsIndex";
 	}
 	
+	//活動詳情	
 	@RequestMapping("/news/event")
 	public String newsIndex(Model model) {
 		return "/news/event";
 	}
-	
+	//報名活動
 	@RequestMapping("/news/enroll")
 	public String newsEnroll(Model model) {
 		return "/news/enroll";
 	}
 	
-	@RequestMapping("/news/admin")
-	public String newsAdmin(Model model) {
-		return "/news/admin";
-	}
-	
+	//報名成功
 	@RequestMapping("/news/ticket")
 	public String newsTicket(Model model) {
 		return "/news/ticket";
 	}
 	
+	//Booking confirm
+		//確定購買
+		@RequestMapping(value="/news/confirmbuy2", method=RequestMethod.GET)
+		public String confirmBuy2() {
+			return "redirect:/news/enroll";
+		}
+		
+		//Ticket Payment
+		@Autowired
+		AnimalService animalService;
+		
+		@Autowired
+		AdoptionService adoptionService;
+
+		// 結帳，在此設定歐付寶結帳所需參數
+		@RequestMapping(value = "/newsfrontEnd/aioCheckOut/aioCheckOutALL/{id}", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
+		public @ResponseBody String aioCheckOutALL(@PathVariable Long id) {
+			AioCheckOutALL aio = new AioCheckOutALL();
+			AllInOne all = new AllInOne("");
+			InvoiceObj invoice = new InvoiceObj();
+			// 不指定付款方式，給nulls
+			invoice = null;
+			// 設定訂單編號，20碼。可自訂
+			aio.setMerchantTradeNo("NewsAdp"+String.format("%04t", adoptionService.getOne(id).getId())+UUID.randomUUID().toString().replaceAll("-", "").substring(0, 6));
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+			// 設定交易時間
+			aio.setMerchantTradeDate(sdf.format(date));
+			// 商品名稱＋單價＋數量
+			aio.setItemName("【2018上聯寵物用品博覽會】");
+			// 交易金額
+			aio.setTotalAmount("150");
+			// 交易描述
+			aio.setTradeDesc("認養編號:");
+			aio.setHoldTradeAMT("0");
+			// 顯示付款成功的頁面（預設
+			aio.setReturnURL("http://localhost:8080/backstage/checkoutStatus");
+			// 付款成功後轉跳的頁面 
+			aio.setClientBackURL("http://localhost:8080/halfway/");
+			try {
+				String html = all.aioCheckOut(aio, invoice);
+				System.out.println(html);
+				return html;
+			} catch (AllPayException e) {
+				throw new Error(e.getNewExceptionMessage());
+			}
+		}
+	
+	//後臺管理
+	@RequestMapping("/news/admin")
+	public String newsAdmin(Model model) {
+		return "/news/admin";
+	}
+	
+	
 	// Insert News
 		@RequestMapping(value = "/news/insertNews", method = RequestMethod.GET)
 		public String input(Model model) {
 			model.addAttribute("news", new News());
+			Date date = new Date();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 			return "/news/insertNews";
 		}
 	
+	//後臺管理
 	@RequestMapping("/news/manage")
 	public String newsManage(Model model) {
 		return "/news/manage";
 	}
 	
 	
-	
+	//後臺查詢一筆活動（以活動ＩＤ搜尋）
 	@RequestMapping(value= {"/findOneNews"}, method={RequestMethod.GET})
 	public String findOne(News news, Model model) {
 		News nb = newsService.getOne(Long.valueOf(news.getId()));
@@ -82,13 +149,14 @@ public class NewsController {
 		return "/news/manage";
 	}
 	
+	//後臺查詢所有活動	
 	@RequestMapping(value= {"/findAllNews"}, method={RequestMethod.GET})
 	public String selectAll(Model model) {
 		model.addAttribute("allNews", newsService.getAll());
 		return "/news/manage";
 	}
 
-	
+	//後臺刪除一筆活動（以活動ID刪除）
 	@RequestMapping(value= {"/deleteNews"}, method={RequestMethod.GET})
 	public String deleteNews(News news, Model model) {
 		newsService.delete(news.getId());
@@ -96,6 +164,7 @@ public class NewsController {
 		return "/news/manage";
 	}
 	
+	//後台新增一筆活動
 	@RequestMapping(value = {"/insertNews"}, method={RequestMethod.POST})
 	public String insertNews(News news, Model model) {
 		newsService.insert(news);
@@ -103,6 +172,7 @@ public class NewsController {
 		return "/news/manage";
 	}
 	
+	//後台更新一筆活動
 	@RequestMapping(value = "/news/update")
 	public String maintain(Model model) {
 		List<News> adminPosts = newsService.getByMemberId(memberService.getCurrentMember().getId());
@@ -133,6 +203,8 @@ public class NewsController {
 			}
 			return "redirect:/news/manage";
 		}
+		
+
 	
 //	@RequestMapping(path= {"/updateNews"}, method={RequestMethod.POST})
 //	public String updateNews(News news, Model model) {
@@ -140,29 +212,13 @@ public class NewsController {
 //		model.addAttribute("updateNews", news);
 //		return "/news/manage";
 //	}
-	
+		
+	//活動首頁：顯示六筆活動	
 	@RequestMapping(value= {"/findSixNews"}, method={RequestMethod.GET})
 	public String findSixNews(Model model) {
 		model.addAttribute("sixNews", newsService.getSixNews());
 		return "/news/newsIndex";
-	}
-	
-	//Facebook Share
-	
-//	@RequestMapping(value = {"/news/event{id}"}, method={RequestMethod.GET})
-//	public String shareNews(News news, Model model) {
-//		model.addAttribute("dynamicUrl", "/news/eventid="+id);
-//		return "/news/event";
-//	}
-//}
-	
-	//Booking confirm
-	//確定購買
-	@RequestMapping(value="/news/confirmbuy2", method=RequestMethod.GET)
-	public String confirmBuy2() {
-		return "redirect:/news/enroll";
-	}
-	
+	}	
 	
 	//Export Excel
 	

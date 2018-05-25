@@ -7,6 +7,10 @@
 <html lang="en">
 
 <head>
+<script language="javascript">
+　var Today=new Date();
+　document.write("今天日期是 " + Today.getFullYear()+ " 年 " + (Today.getMonth()+1) + " 月 " + Today.getDate() + " 日");
+</script>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -125,26 +129,26 @@
 				<form:input id="eventDate" name="eventDate" path="eventDate" type="date" class="form-control" required="required"
 					placeholder="活動日期" />
 			</div>
-			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">活動時間</h2>
-				<form:input id="eventTime" name="eventTime" path="eventTime" type="time" class="form-control" required="required"
-					placeholder="活動日期" />
-			</div>
-			<div class="form-group col-md-6">
+<!-- 			<div class="form-group col-md-6"> -->
+<!-- 				<h2 class="widget-title" style="font-family:微軟正黑體">活動時間</h2> -->
+<%-- 				<form:input id="eventTime" name="eventTime" path="eventTime" type="time" class="form-control" required="required" --%>
+<%-- 					placeholder="活動日期" /> --%>
+<!-- 			</div> -->
+			<div class="form-group col-md-3">
 				<h2 class="widget-title" style="font-family:微軟正黑體">結束公告日期</h2>
-				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-control" required="required"
+				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-text text-muted" required="required"
 					placeholder="結束公告日期" />
 			</div>
 			<div class="form-group col-md-3">
 				<h2 class="widget-title" style="font-family:微軟正黑體">發布日期</h2>
-				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-control" required="required"
+				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-text text-muted" required="required"
 					placeholder="發布日期" />
 			</div>
-			<div class="form-group col-md-3">
-				<h2 class="widget-title" style="font-family:微軟正黑體">發布時間</h2>
-				<form:input id="createTime" name="createTime" path="createTime" type="time" class="form-control" required="required"
-					placeholder="發布時間" />
-			</div>
+<!-- 			<div class="form-group col-md-3"> -->
+<!-- 				<h2 class="widget-title" style="font-family:微軟正黑體">發布時間</h2> -->
+<%-- 				<form:input id="createTime" name="createTime" path="createTime" type="time" class="form-control" required="required" --%>
+<%-- 					placeholder="發布時間" /> --%>
+<!-- 			</div> -->
 			<div class="form-group col-lg-6">
 				<h2 class="widget-title" style="font-family:微軟正黑體">活動簡介</h2>
 				<form:textarea id="content" name="content" path="content" type="text" class="form-control" rows="5" required="required"
