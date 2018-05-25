@@ -301,7 +301,7 @@
 		</body>
 		<script>
 			$(document).ready(function () {
-				alert($('#upload').val())
+				//alert($('#upload').val())
 				var uploadObj = new Date($('#upload').val());
 				$('#upload').append(uploadObj.toLocaleString());
 

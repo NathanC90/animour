@@ -142,7 +142,7 @@
 							// 兩種訂閱寫在一起，用一個連線，一個 endpoint
 							stompClient.subscribe("/user/queue/chat", function (
 								message) {
-								alert("from chat")
+								//alert("from chat")
 								showGreetingChat(message.body);
 							});
 						});
@@ -159,7 +159,7 @@
 					// 發送訊息，這邊用不到
 					function sendText() {
 						stompClient.send("/app/chat", {}, $("#name").val());
-						alert("alert from noti")
+						//alert("alert from noti")
 						$("#greetings").append(
 							"<tr><td style='color:blue'>" + $("#name").val()
 							+ "</td></tr>");
@@ -207,7 +207,7 @@
 					// 綁定click事件，設定為已讀
 					function bindNotice(){
 						$(".dropdown-item").click(function () {
-							alert($(this).attr('id'));
+							//alert($(this).attr('id'));
 							$.ajax({
 								type: "GET",
 								url: "/api/member/all/setread/"+$(this).attr('id'),
@@ -221,7 +221,7 @@
 
 					$(document).ready(function () {
 						connect();
-						alert("alert from noti")
+						//alert("alert from noti")
 
 						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
 						$.ajax({
