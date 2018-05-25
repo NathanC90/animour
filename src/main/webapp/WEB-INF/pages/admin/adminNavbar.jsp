@@ -64,7 +64,7 @@
 
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     
-      <link href="../admin/assets/css/toolkit-inverse.css" rel="stylesheet">
+      <link href="../admin/assets/css/toolkit-light.css" rel="stylesheet">
     
     
     <link href="../admin/assets/css/application.css" rel="stylesheet">
@@ -126,7 +126,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/admin/chart" title="統計圖表" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-text-document"></span>
+            <span class="icon icon-pie-chart"></span>
             <small class="iconav-nav-label hidden-md-up">統計圖表</small>
           </a>
         </li>
