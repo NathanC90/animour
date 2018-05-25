@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 		<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 			<!doctype html>
@@ -69,7 +71,7 @@
 				<!-- Example single danger button -->
 				<div class="btn-group">
 
-					<div class="dropdown show" id="data-role" name="${currentMember.account}">
+					<div class="dropdown show" id="data-role" name='<sec:authentication property="principal.username" />' >
 						<a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i title="線上" class="fa fa-user" style="color: #9C3; font-size: 30px"></i>
 							<span id="count" class="badge" style="background: #cc0000; color: #ffffff; font-weight: bold; border-radius: 9px; -moz-border-radius: 9px; -webkit-border-radius: 9px; position: absolute; margin-top: 5%; margin-left: -15%; font-size: 11px;"></span>
@@ -115,8 +117,7 @@
 					$(document).ready(function () {
 						//alert("alert from noti")
 							var acc=$('#data-role').attr('name');
-								console.log("acc:"+acc)
-
+// 								console.log("acc:"+acc)						
 						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
 						$.ajax({
 							type: "GET",
