@@ -240,7 +240,7 @@
                             <sec:authorize access="hasRole('Admin')">
                                     <!-- 管理員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>"" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" /> 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/admin/member">會員資料</a>
