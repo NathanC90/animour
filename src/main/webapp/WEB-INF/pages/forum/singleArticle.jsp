@@ -80,7 +80,7 @@
             <div class="row">
               <div class="page-header-area">
                 <div class="page-header-content">
-                  <h2>Single Blog Post</h2>
+                  <h2>${article.subject}</h2>
                 </div>
               </div>
             </div>
@@ -123,11 +123,11 @@
                           </li>
                           <li>
                             <i class="fa fa-comments"></i>
-                            <a href="#">${article.commentLength} comment</a>
+                            <a href="#showcomment">${article.commentLength} comment</a>
                           </li>
                           <li>
                             <i class="fa fa-thumbs-up"></i>
-                            <a href="#">${article.thumbsQuantity} Like!</a>
+                            <a id="thumb" style="cursor:pointer;">${article.thumbsQuantity} Like!</a>
                           </li>
                         </ul>
                       </div>
@@ -201,7 +201,7 @@
                   <a name="comment"></a>
                   <div class="comments-area clearfix mt-5 wow fadeIn" data-wow-delay="0.3s">
                     <h3 class="small-title">
-                      <i class="fa fa-comment"></i> Comments</h3>
+                      <i class="fa fa-comment"></i> 留言:</h3>
                     <ul class="media-left comment-list mt-30">
                       <div id="showcomment"></div>
                       <c:forEach var="comment" items="${comments}">
@@ -241,20 +241,20 @@
                       </c:forEach>
                     </ul>
                     <div class="new-comment mt-5">
-                      <h3 class="small-title">Post new Comment</h3>
+                      
                       <form id="comment" class="mt-30" name="commentForm">
                         <input name="article" type="hidden" value="${article.id}" />
                         <div class="row">
                           <sec:authorize access="hasRole('Member')">
-                            <sec:authentication property="principal.username" />:
+                            <h5><sec:authentication property="principal.username" />:</h5>
                           </sec:authorize>
                         </div>
                         <div class="form-group">
-                          <label class="sr-only" for="usermessage">Message</label>
+                          <label class="sr-only" for="usermessage">留言</label>
                           <textarea name="detail" placeholder="Type here message" id="usermessage" rows="4" required="" class="form-control"></textarea>
                         </div>
                         <button id="btn1" class="btn btn-common">
-                          <i class="fa fa-comment"></i> Post Comment</button>
+                          <i class="fa fa-comment"></i>發表留言</button>
                       </form>
                     </div>
                   </div>
@@ -318,6 +318,23 @@
               }).done(function () {
                 window.location.reload();
                 // alert("ajax post");
+              });
+            });
+
+            $(document).on('click', '#thumb', function () {
+              var formData = new FormData(document.getElementById('comment'));
+              $.ajax({
+                type: "POST",
+                url: "/articles/thumbsUp",
+                data: formData,
+                contentType: false,
+                processData: false
+                // async:false
+              }).done(function (data) {
+                $.each(data, function (idx, thumbsUp) {
+                  console.log(thumbsUp);
+                  $('#thumb').text(thumbsUp.article.thumbsQuantity + 'Like!');
+                });
               });
             });
 
