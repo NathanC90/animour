@@ -208,4 +208,9 @@ public class MemberRestfulController {
 		}
 	}
 	
+	@RequestMapping(path = { "/chart" }, method = RequestMethod.GET, produces = { "application/json" })
+	public Map<String, Integer> chart() {
+		return memberService.chart();
+	}
+	
 }
