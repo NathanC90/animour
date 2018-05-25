@@ -82,12 +82,12 @@
 <!-- FancyBox Plugins -->
 
 <style>
-body {
+/* body {
 	height: 400px;
 	position: fixed;
 	bottom: 0;
 }
-
+ */
 .col-md-2, .col-md-10 {
 	padding: 0;
 }
