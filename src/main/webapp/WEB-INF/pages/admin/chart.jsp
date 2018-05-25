@@ -104,6 +104,11 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="myChart" style="height: 450px; width: 100%;"></div>
 					</div>
+					<h3>寵物啟示統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="animalChart" style="height: 450px; width: 100%;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -163,6 +168,41 @@
                     };
                     $("#myChart").CanvasJSChart(options);
                 });
+
+				$.getJSON('/halfway/animal/chart', {}, function (data) {
+                    console.log(data);
+                    //obj轉型Map
+                    var animalArray = new Array();
+                    const map = new Map();
+                    let obj = data;
+                    Object.keys(obj).forEach(key => {
+                        map.set(key, obj[key]);
+                        
+                        animalArray.push({ 'label': key, 'y': obj[key] });
+                    });
+                    
+                    var options = {
+                        animationEnabled: true,
+                        title: {
+                            text: "Animal Chart"
+                        },
+                        axisY: {
+                            title: "rows",
+                            suffix: "",
+                            includeZero: false
+                        },
+                        axisX: {
+                            title: "Specie"
+                        },
+                        data: [{
+                            type: "pie",
+                            yValueFormatString: "#,##0.0#" % "",
+                            dataPoints: animalArray
+                        }]
+                    };
+                    $("#animalChart").CanvasJSChart(options);
+                });
+
 				});
 		</script>
 		<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
