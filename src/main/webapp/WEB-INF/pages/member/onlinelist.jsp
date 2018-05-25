@@ -69,7 +69,7 @@
 				<!-- Example single danger button -->
 				<div class="btn-group">
 
-					<div class="dropdown show">
+					<div class="dropdown show" id="data-role" name="${currentMember.account}">
 						<a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<i title="線上" class="fa fa-user" style="color: #9C3; font-size: 30px"></i>
 							<span id="count" class="badge" style="background: #cc0000; color: #ffffff; font-weight: bold; border-radius: 9px; -moz-border-radius: 9px; -webkit-border-radius: 9px; position: absolute; margin-top: 5%; margin-left: -15%; font-size: 11px;"></span>
@@ -114,6 +114,8 @@
 
 					$(document).ready(function () {
 						//alert("alert from noti")
+							var acc=$('#data-role').attr('name');
+								console.log("acc:"+acc)
 
 						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
 						$.ajax({
@@ -121,9 +123,11 @@
 							url: "/api/member/all/findonline",
 						}).done(function (data) {
 							$.each(data, function (idx, list) {
-								console.log("list::::"+list)
-							var c=`<a id=` + list + ` class="dropdown-item" href="/user/` + list + `">` +  list +`在線上` + `</a>`;
-							$('#online').append(c);
+							if(list!=acc){
+								var c=`<a id=` + list + ` class="dropdown-item" href="/user/` + list + `">` +  list +`在線上` + `</a>`;
+								$('#online').append(c);
+
+							}//不顯示自己
 							});
 							
 						});//end do

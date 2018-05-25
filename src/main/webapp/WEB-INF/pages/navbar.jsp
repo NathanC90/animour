@@ -140,10 +140,10 @@
 					<!-- 會員可讀 -->
 					<li class="nav-item dropdown"><jsp:include
 							page="member/notification.jsp"></jsp:include></li>
-				</sec:authorize>
 					<li class="nav-item dropdown"><jsp:include
 							page="member/onlinelist.jsp"></jsp:include></li>
 					
+				</sec:authorize>
 
 			</ul>
 			<form class="form-inline">
