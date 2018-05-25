@@ -152,32 +152,34 @@ public class ArticleRestController {
 	public ResponseEntity<?> newArticle(Article article) {
 		if (article.getStatus() == null) {
 			System.out.println(article.getStatus());
-			if (article.getId() != null) {
-				Article existArticle = forumService.getOne(article.getId());
-				existArticle.setSubject(article.getSubject());
-				existArticle.setCategory(article.getCategory());
-				existArticle.setContent(article.getContent());
-				existArticle.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-				if (article.getImages().equals(null)) {
-					existArticle.setImages(article.getImages());
-				}
-				try {
-					forumService.update(existArticle);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else {
-				article.setMember(memberService.getNewCurrentMember());
-				article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-				article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
-				article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
-				article.setClick(0L);
-				article.setStatus(true);
-				try {
-					forumService.insert(article);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+			if (memberService.getNewCurrentMember() != null) {
+				if (article.getId() != null && memberService.getNewCurrentMember()==article.getMember()) {
+					Article existArticle = forumService.getOne(article.getId());
+					existArticle.setSubject(article.getSubject());
+					existArticle.setCategory(article.getCategory());
+					existArticle.setContent(article.getContent());
+					existArticle.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+					if (article.getImages().equals(null)) {
+						existArticle.setImages(article.getImages());
+					}
+					try {
+						forumService.update(existArticle);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+					article.setMember(memberService.getNewCurrentMember());
+					article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+					article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
+					article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
+					article.setClick(0L);
+					article.setStatus(true);
+					try {
+						forumService.insert(article);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} 
 			}
 		} else {
 			System.out.println(article.getStatus());
