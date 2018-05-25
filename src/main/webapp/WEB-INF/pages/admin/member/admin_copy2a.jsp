@@ -117,14 +117,14 @@
 									<th>
 										<input type="checkbox" class="select-all" id="selectAll">
 									</th>
-									<th>會員編號</th>
-									<th>會員帳號</th>
-									<th>會員姓名</th>
-									<th>會員暱稱</th>
-									<th>會員手機</th>
-									<th>會員信箱</th>
-									<th>會員地址</th>
-									<th>會員狀態</th>
+									<th>編號</th>
+									<th>帳號</th>
+									<th>姓名</th>
+									<th>暱稱</th>
+									<th>手機</th>
+									<th>信箱</th>
+									<th>地址</th>
+									<th>狀態</th>
 									<th>管理
 									</th>
 								</tr>
@@ -140,27 +140,6 @@
 					</form>
 					
 
-					<!-- Table Ends -->
-
-					<!-- 	<div class="text-center"> -->
-					<!-- 		<nav> -->
-					<!-- 		<ul class="pagination"> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#" -->
-					<!-- 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span -->
-					<!-- 					class="sr-only">上一頁</span> -->
-					<!-- 			</a></li> -->
-					<!-- 			<li class="page-item active"><a class="page-link" href="#">1</a></li> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#">2</a></li> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#">3</a></li> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#">4</a></li> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#">5</a></li> -->
-					<!-- 			<li class="page-item"><a class="page-link" href="#" -->
-					<!-- 				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span -->
-					<!-- 					class="sr-only">下一頁</span> -->
-					<!-- 			</a></li> -->
-					<!-- 		</ul> -->
-					<!-- 		</nav> -->
-					<!-- 	</div> -->
 
 				</div>
 			</div>
