@@ -152,23 +152,9 @@
 				</div>
 			</form>
 
-			<span class="navbar-brand"> <i class="fa fa-shopping-cart"></i>
-
-				<span class="h6"> <c:if
-						test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
-	                         	 共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆
-	                         </c:if>
-	                         </span></span>
-								<c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
-	                         		<a class="navbar-brand" href="/cart/index">
-			                        <c:set var="total" value="0"></c:set>
-			                        <c:forEach var="cartItem" items="${sessionScope.cart}">
-			                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-			                        </c:forEach>
-			                         <span class="h6">金額 ：${total}</span>
-		                    	</a>
-		                    	</c:if>
-                        </div>
+			<sec:authorize access="hasRole('Member')">
+				<jsp:include page="shopping/shoppingCart.jsp"></jsp:include>
+			</sec:authorize>
 
                         <!-- Mobile Menu Start -->
                         <ul class="wpb-mobile-menu">

@@ -100,10 +100,10 @@
 	<!-- Classic Blog Section -->
 	<section class="classic-blog-section section">
 		<div class="container">
-			<div class="row animated bounceInDown">
+			<div class="row">
 				<div class="col-md-12">
 					<ul class="pagination">
-						<li class="page-item active"><p class="page-link">您的上架商品資料共有
+						<li class="page-item active"><p class="page-link animated bounceInRight">您的上架商品資料共有
 								${memberProductQuantity} 筆</p></li>
 					</ul>
 					<div class="row" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
@@ -138,7 +138,7 @@
 												class="fas fa-edit"></i></a></td>
 										<td class="align-middle"><a
 											href="<spring:url value='/delete/${product.id}' />"
-											id="delete" type="button" class="btn btn-danger"><i
+											id="buttonDelete" type="button" class="btn btn-danger"><i
 												class="fas fa-trash-alt"></i></a></td>
 									</tr>
 								</c:forEach>

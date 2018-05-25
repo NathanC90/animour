@@ -105,8 +105,10 @@
 									<div style="display: none" id="login-alert"
 										class="alert alert-danger col-sm-12"></div>
 										<c:forEach var="orders" items="${memberOrders}">
+											<c:if test="${memberOrders != null && orders.ordersItem != null}">
 												<tr><td><h4>訂單編號：${orders.id}</h4></td></tr>
 												<tr><td><h4>訂單日期：${orders.orderDate}</h4></td></tr>
+											</c:if>
 											<c:forEach var="ordersItem" items="${orders.ordersItem}">
 												<tr>
 													<td><h2 class="widget-title">商品名稱：${ordersItem.name}</h2></td>

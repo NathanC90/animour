@@ -146,7 +146,7 @@
 					      <a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'>返回</span>
 						  </a>
-						  <a id="shake" href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
+						  <a id="pulse" href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
 									class='glyphicon-shopping-cart glyphicon'>加入購物車</span>
 						  </a>
 					    </div>
@@ -187,13 +187,13 @@
 		$(document).ready(function() {
 			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
 			var o2 = {"background":"white", "color":"green", "padding":"10px"};
-			$("#shake").mouseover(over).mouseout(out);
+			$("#pulse").mouseover(over).mouseout(out);
 			
 			function over(){
-				$(this).removeClass("btn btn-success btn-large").addClass("btn btn-success btn-large animated bounceIn");
+				$(this).removeClass("btn btn-success btn-large").addClass("btn btn-success btn-large animated pulse");
 			}
 			function out(){
-				$(this).removeClass("btn btn-success btn-large animated bounceIn").addClass("btn btn-success btn-large");
+				$(this).removeClass("btn btn-success btn-large animated pulse").addClass("btn btn-success btn-large");
 			}
 		})
 	</script>
