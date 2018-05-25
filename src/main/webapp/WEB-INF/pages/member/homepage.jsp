@@ -346,6 +346,10 @@
 	<script>
 	//預約訂單按鈕
 	$('#checkOrder').click(function(){
+		$.getJSON('/reservationForms/getServiceCotent', {},
+				function(data) {
+
+				});		
 		alert('aaa')
 	})
 	
