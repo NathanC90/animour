@@ -140,8 +140,10 @@
 					<!-- 會員可讀 -->
 					<li class="nav-item dropdown"><jsp:include
 							page="member/notification.jsp"></jsp:include></li>
+					<li class="nav-item dropdown"><jsp:include
+							page="member/onlinelist.jsp"></jsp:include></li>
+					
 				</sec:authorize>
-
 
 			</ul>
 			<form class="form-inline">
@@ -152,23 +154,7 @@
 				</div>
 			</form>
 
-			<span class="navbar-brand"> <i class="fa fa-shopping-cart"></i>
-
-				<span class="h6"> <c:if
-						test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
-	                         	 共${sessionScope.cart != null ? sessionScope.cart.size() : 0}筆
-	                         </c:if>
-	                         </span></span>
-								<c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
-	                         		<a class="navbar-brand" href="/cart/index">
-			                        <c:set var="total" value="0"></c:set>
-			                        <c:forEach var="cartItem" items="${sessionScope.cart}">
-			                            <c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
-			                        </c:forEach>
-			                         <span class="h6">金額 ：${total}</span>
-		                    	</a>
-		                    	</c:if>
-                        </div>
+				<jsp:include page="shopping/shoppingCart.jsp"></jsp:include>
 
                         <!-- Mobile Menu Start -->
                         <ul class="wpb-mobile-menu">
@@ -254,7 +240,7 @@
                             <sec:authorize access="hasRole('Admin')">
                                     <!-- 管理員可讀 -->
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>"" aria-haspopup="true" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle" href="/user/<sec:authentication property="principal.username"/>" aria-haspopup="true" aria-expanded="false">
                                             <sec:authentication property="principal.username" /> 您好</a>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/admin/member">會員資料</a>
@@ -288,7 +274,6 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/sign_up">註冊</a>
                                         </div>
-
                                     </li>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('Member')">
@@ -298,7 +283,6 @@
 <!-- 										<i title="通知" class="fa fa-globe xs" style="color:#9C3"></i> -->
 										<i title="通知" class="fa fa-globe icon-xs" style="color:#9C3"></i>
 <!-- 										<i title="通知" class="fa fa-globe icon-sm" style="color:#9C3"></i> -->
-										
 										</a>
                                         <div class="dropdown-menu">
                                            

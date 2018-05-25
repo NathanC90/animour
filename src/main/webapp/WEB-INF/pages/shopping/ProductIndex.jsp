@@ -183,9 +183,9 @@
 <%-- 											<p class="text-primary">製造日期：${product.makeDate}<br>保存期限：${product.expire}</p> --%>
 											<p class="text-primary">上架日期：${product.shelvesDate}<br>商品類別：${product.classify.name}</p>
 									</div>
-									<div class="card box-shadow">
+									<div class="card">
 										<a href="<spring:url value='/selectOneProduct?id=${product.id}'/>"
-											class="btn btn-primary"><span class="glyphicon-info-sigh glyphicon">商品詳情</span>
+											class="btn btn-common">商品詳情
 										</a>
 									</div>
 								</div>
@@ -273,6 +273,12 @@
 			function out(){
 				$(this).removeClass("btn btn-common animated shake").addClass("btn btn-common");
 			}
+			
+			$('.col-md-4').hover(function(){
+				$(this).fadeTo(500, 0.6);
+			},function(){
+				$(this).fadeTo(500, 1);
+			})
 		})
 	</script>
 </body>

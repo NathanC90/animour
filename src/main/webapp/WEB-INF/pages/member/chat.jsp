@@ -181,7 +181,7 @@
 
 		function sendText() {
 			stompClient.send("/app/chat", {}, $("#name").val());
-			alert("alert from chat")
+			// alert("alert from chat")
 			$("#greetings").append(
 					"<tr><td style='color:blue'>" + $("#name").val()
 							+ "</td></tr>");

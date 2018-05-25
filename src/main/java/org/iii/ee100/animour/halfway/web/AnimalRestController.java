@@ -183,5 +183,10 @@ public class AnimalRestController {
 
 		return animals;
 	}
+	
+	@RequestMapping(path = { "/halfway/animal/chart" }, method = RequestMethod.GET, produces = { "application/json" })
+	public Map<String, Integer> chart() {
+		return animalservice.chart();
+	}
 
 }

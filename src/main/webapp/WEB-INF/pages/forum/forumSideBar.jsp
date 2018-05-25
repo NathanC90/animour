@@ -8,12 +8,16 @@
       <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
-        <!-- <style>
+        <style>
   .featured-wrapper img {
   /* width: 100px; */
-  height: 350px;
+  height: 70%;
 }
-</style> -->
+.image-style-side {
+		float: right;
+		margin-left: 50%;
+	}
+</style>
 
       </head>
 
@@ -23,7 +27,7 @@
             <!-- Search Bar -->
             <aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
               <form name="searchForm"></form>
-              <input id="search" type="text" name="search" placeholder="SearchBySubject" class="form-control" value="">
+              <input id="search" type="text" name="search" placeholder="標題搜尋" class="form-control" value="">
               <button id="searchbtn" type="button">
                 <i class="fa fa-search"></i>
               </button>
@@ -37,17 +41,17 @@
             <!--             </aside> -->
 
             <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
-              <h2 class="widget-title">Post Somthing</h2>
+              <h2 class="widget-title">發表文章</h2>
               <div class="subscribe-area">
                 <p></p>
-                <form class="form-group" name="Post" action="/postArticle" method="GET">
-                  <button type="submit" class="mt-10 btn btn-common btn-block">Post</button>
-                </form>
+                
+                  <a href="/postArticle"><button type="button" class="mt-10 btn btn-common btn-block">Post</button></a>
+                
               </div>
             </aside>
             <!-- Recent Post Widgets -->
             <aside class="widget popular-post wow fadeIn" data-wow-delay="0.3s">
-              <h2 class="widget-title">Popular Post</h2>
+              <h2 class="widget-title">熱門文章</h2>
               <ul>
                 <c:forEach var="pop" items="${popular}">
                   <li>
@@ -77,7 +81,7 @@
             </aside>
             <!-- Category -->
             <aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.3s">
-              <h2 class="widget-title">Category</h2>
+              <h2 class="widget-title">文章分類</h2>
               <ul class="category-menu">
                 <c:forEach var="category" items="${categorys}">
                   <li name="category" value="${category.id}" style='cursor:pointer;'>
@@ -145,6 +149,7 @@
         </div>
         <!-- End -->
         <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/10.0.0/classic/ckeditor.js"></script>
         <script>
           var pageNo = 1;
           var articlesString = "";

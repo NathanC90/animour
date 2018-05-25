@@ -2,19 +2,20 @@ package org.iii.ee100.animour.shopping.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
-import org.iii.ee100.animour.halfway.service.AdoptionService;
-import org.iii.ee100.animour.halfway.service.AnimalService;
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.shopping.entity.Orders;
+import org.iii.ee100.animour.shopping.service.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import allPay.payment.integration.AllInOne;
-import allPay.payment.integration.domain.AioChargebackObj;
 import allPay.payment.integration.domain.AioCheckOutALL;
 import allPay.payment.integration.domain.InvoiceObj;
 import allPay.payment.integration.exception.AllPayException;
@@ -23,10 +24,10 @@ import allPay.payment.integration.exception.AllPayException;
 public class ShoppingPaymentController {
 
 	@Autowired
-	AnimalService animalService;
+	private OrdersService ordersService;
 	
 	@Autowired
-	AdoptionService adoptionService;
+	private MemberService memberService;
 
 	// 結帳，在此設定歐付寶結帳所需參數
 	@RequestMapping(value = "/ShopfrontEnd/CheckOut/CheckOutALL", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
@@ -42,17 +43,27 @@ public class ShoppingPaymentController {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		// 設定交易時間
 		aio.setMerchantTradeDate(sdf.format(date));
+		
+		Member currentMember = memberService.getNewCurrentMember();
+		List<Orders> ordersList = ordersService.getByMemberOrders(currentMember.getId());
+		String itemName = new String();
+		String totalAmount = String.valueOf(ordersList.get(ordersList.size() - 1).getTotalAmount());
+		
+		for(int i = 0; i < ordersList.get(ordersList.size() - 1).getOrdersItem().size(); i++) {
+			itemName += ordersList.get(ordersList.size() - 1).getOrdersItem().get(i).getName() + "#";
+		}
+		
 		// 商品名稱＋單價＋數量
-		aio.setItemName("0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅 391元X2 # 0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅 391元X2");
+		aio.setItemName(itemName);
 		// 交易金額
-		aio.setTotalAmount("782");
+		aio.setTotalAmount(totalAmount);
 		// 交易描述
 		aio.setTradeDesc("認養編號:");
 		aio.setHoldTradeAMT("0");
 		// 顯示付款成功的頁面（預設
 		aio.setReturnURL("http://211.23.128.214:5000");
 		// 付款成功後轉跳的頁面 
-		aio.setClientBackURL("http://localhost:8080/halfway/");
+		aio.setClientBackURL("http://localhost:8080/product/index");
 		try {
 			String html = all.aioCheckOut(aio, invoice);
 			System.out.println(html);

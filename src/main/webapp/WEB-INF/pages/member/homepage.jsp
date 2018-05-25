@@ -106,8 +106,8 @@
 										src="${member.images}"  alt="${member.id}">
 									</span>
 									<div class="card-body" style="margin-bottom: 5px">
-<%-- 										<p class="card-text" style="padding: 0px">${member.account}</p> --%>
-<%-- 										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}</p> --%>
+<!-- 										<p class="card-text" style="padding: 0px">${member.account}</p> -->
+<!-- 										<p class="card-text" style="padding: 0px">暱稱：${member.nickname}</p> -->
 <!-- 										<small class="text-muted"></small> -->
 
 										<div class="d-flex justify-content-between align-items-center"
@@ -335,7 +335,7 @@
 <!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
 <!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
 <!-- 		crossorigin="anonymous"></script> -->
-< 	<script> 
+ 	<script> 
  		window.jQuery
  				|| document
  						.write('<script src="/js/jquery-slim.min.js"><\/script>')

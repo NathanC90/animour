@@ -4,7 +4,6 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +18,6 @@ import org.iii.ee100.animour.halfway.dao.AnimalDao;
 import org.iii.ee100.animour.halfway.dao.CityDao;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.entity.City;
-import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -168,5 +166,20 @@ public class AnimalService extends GenericService<Animal>{
 	public void setResponseParameters(String key, Object value) {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put(key, value);
+	}
+	
+	//for chart
+	
+	public Map<String,Integer> chart() {
+		List<Animal> list = animalDao.findAll();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		for(Animal animal:list) {
+			if (map.containsKey(animal.getSpecie())) {
+				map.put(animal.getSpecie(), map.get(animal.getSpecie()) + 1);
+			}else {
+				map.put(animal.getSpecie(), 1);
+			}
+		}
+		return map;
 	}
 }

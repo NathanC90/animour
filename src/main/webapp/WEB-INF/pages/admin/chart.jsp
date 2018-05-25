@@ -104,6 +104,16 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="myChart" style="height: 450px; width: 100%;"></div>
 					</div>
+					<h3>寵物啟示統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="animalChart" style="height: 450px; width: 100%;"></div>
+					</div>
+					<h3>好友數統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="friendChart" style="height: 450px; width: 100%;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -126,48 +136,142 @@
 
 			$(document).ready(function () {
 				$.getJSON('/articles/chart', {}, function (data) {
-                    console.log(data);
-                    //obj轉型Map
-                    var dataArray = new Array();
-                    var memberArray = new Array();
-                    var thumbsArray = new Array();
-                    const map = new Map();
-                    let obj = data;
-                    Object.keys(obj).forEach(key => {
-                        map.set(key, obj[key]);
-                        // memberArray.push(key);
-                        // thumbsArray.push(obj[key]);
-                        dataArray.push({ 'label': key, 'y': obj[key] });
-                    });
-                    // console.log(map);
-                    // console.log(memberArray);
-                    // console.log(thumbsArray);
-                    var options = {
-                        animationEnabled: true,
-                        title: {
-                            text: "Likes Chart"
-                        },
-                        axisY: {
-                            title: "likes",
-                            suffix: "",
-                            includeZero: false
-                        },
-                        axisX: {
-                            title: "Author"
-                        },
-                        data: [{
-                            type: "column",
-                            yValueFormatString: "#,##0.0#" % "",
-                            dataPoints: dataArray
-                        }]
-                    };
-                    $("#myChart").CanvasJSChart(options);
-                });
+					console.log(data);
+					//obj轉型Map
+					var dataArray = new Array();
+					var memberArray = new Array();
+					var thumbsArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+						// memberArray.push(key);
+						// thumbsArray.push(obj[key]);
+						dataArray.push({ 'label': key, 'y': obj[key] });
+					});
+					// console.log(map);
+					// console.log(memberArray);
+					// console.log(thumbsArray);
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "Likes Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "likes",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "Author",
+							interval: 1,
+							labelAngle: -70
+						},
+						data: [{
+							type: "column",
+							// color: "#B0D0B0",
+							// yValueFormatString: "#,##0.0#" % "",
+							dataPoints: dataArray
+						}]
+					};
+					$("#myChart").CanvasJSChart(options);
 				});
+
+				$.getJSON('/halfway/animal/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var animalArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+
+						animalArray.push({ 'legendText': key + ':' + obj[key], 'indexLabel': key, 'y': obj[key] });
+					});
+
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "Animal Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "rows",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "Specie"
+						},
+						data: [{
+							indexLabelFontSize: 20,
+							indexLabelFontFamily: "Garamond",
+							indexLabelFontColor: "darkgrey",
+							indexLabelLineColor: "darkgrey",
+							indexLabelPlacement: "outside",
+							type: "doughnut",
+							showInLegend: true,
+							dataPoints: animalArray
+						}]
+					};
+					$("#animalChart").CanvasJSChart(options);
+				});
+
+				$.getJSON('/api/member/all/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var friendArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+
+						friendArray.push({ 'label': key, 'y': obj[key] });
+					});
+
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "Friend Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "friends",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "member",
+							interval: 1,
+							labelAngle: -70
+						},
+						data: [{
+							type: "column",
+							// yValueFormatString: "#,##0.0#" % "",
+							dataPoints: friendArray
+						}]
+					};
+					$("#friendChart").CanvasJSChart(options);
+				});
+
+			});
 		</script>
 		<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div> -->
-        <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-        <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+		<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+		<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 	</body>
 
 	</html>

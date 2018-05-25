@@ -106,6 +106,10 @@ public class CartController {
 	public String confirmBuy(HttpSession session, Model model) {
 		List<CartItem> cartItem = (List<CartItem>) session.getAttribute("cart");
 		
+		if(cartItem.size() == 0) {
+			return "redirect:/product/index";
+		}
+		else {
 		Member currentMember = memberService.getNewCurrentMember();
 		
 		if(currentMember == null) {
@@ -154,6 +158,7 @@ public class CartController {
 		cartItem.removeAll(cartItem);
 		
 		return "/shopping/ThanksForOrdering";
+		}
 	}
 	
 	//修改購物車購買數量

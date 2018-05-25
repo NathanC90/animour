@@ -62,7 +62,7 @@
                                 <!-- End -->
 
                                 <!-- BLog Article Section -->
-                                <div class="col-md-9"> -->
+                                <div class="col-md-9"> 
                                     <!-- Single Blog Post -->
                                     <!-- 每頁不同的內容從這裡開始 -->
                                     <div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

@@ -12,6 +12,7 @@ import org.iii.ee100.animour.forum.entity.Comment;
 import org.iii.ee100.animour.forum.entity.ThumbsUp;
 import org.iii.ee100.animour.forum.service.ForumService;
 import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.member.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,9 +32,12 @@ public class ArticleRestController {
 
 	@Autowired
 	MemberService memberService;
-	
+
 	@Autowired
 	ThumbsUpDao thumbsUpDao;
+
+	@Autowired
+	NoticeService noticeService;
 
 	// 綜覽文章頁面AJAX用的
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
@@ -67,104 +71,120 @@ public class ArticleRestController {
 		Page<Article> articlePage = forumService.getPageSearchByCategoryId(categoryId, pageable);
 		return pageHandler(pageForAnimour, articlePage, pageable);
 	}
-	
+
 	@RequestMapping(path = { "/chart" }, method = RequestMethod.GET, produces = { "application/json" })
-	public Map<String,Integer> chart() {
+	public Map<String, Integer> chart() {
 		return forumService.findByStatusOrderByThumbsQuantityDesc();
 	}
 
 	// 新增留言
 	@RequestMapping(value = { "/comment" }, method = RequestMethod.POST)
-	public ResponseEntity<?> newComment(Comment comment) {
-		comment.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-		comment.setMember(memberService.getNewCurrentMember());
-		comment.setArticle(comment.getArticle());
-		forumService.insertComment(comment);
-		System.out.println("控制器呼叫新增留言");
-		return new ResponseEntity<Comment>(comment, HttpStatus.OK);
+	public ResponseEntity<Comment> newComment(Comment comment) {
+		if (memberService.getNewCurrentMember() != null) {
+			comment.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+			comment.setMember(memberService.getNewCurrentMember());
+			comment.setArticle(comment.getArticle());
+			forumService.insertComment(comment);
+			if (memberService.getNewCurrentMember() != comment.getArticle().getMember()) {
+				noticeService.setNotify(comment.getArticle().getMember().getId(), "在您的文章底下留言",
+						"/forum/findOne?id=" + comment.getArticle().getId());
+			}
+			System.out.println("控制器呼叫新增留言");
+			return new ResponseEntity<Comment>(comment, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<Comment>(comment, HttpStatus.NON_AUTHORITATIVE_INFORMATION);
+		}
 	}
-	
+
 	@RequestMapping(value = { "/thumbsUp" }, method = RequestMethod.POST)
 	public ResponseEntity<?> thumbsUp(ThumbsUp thumbsUp) {
-		System.out.println("控制器呼叫thumbsUp");
-		thumbsUp.setMember(memberService.getNewCurrentMember());
-		System.out.println(thumbsUp.getMember().getId());
-		System.out.println(thumbsUp.getArticle().getId());
-		List<ThumbsUp> thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
-		
-		System.out.println(thumbsList);
-		if(!thumbsList.isEmpty()) {
-			for(ThumbsUp thumb:thumbsList) {
-				if(thumb.getThumb() == true) {
-					thumb.setThumb(false);
-				}else {
-					thumb.setThumb(true);
+		if (memberService.getNewCurrentMember() != null) {
+			System.out.println("控制器呼叫thumbsUp");
+			thumbsUp.setMember(memberService.getNewCurrentMember());
+			System.out.println(thumbsUp.getMember().getId());
+			System.out.println(thumbsUp.getArticle().getId());
+			List<ThumbsUp> thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(),
+					thumbsUp.getArticle().getId());
+			System.out.println(thumbsList);
+			if (!thumbsList.isEmpty()) {
+				for (ThumbsUp thumb : thumbsList) {
+					if (thumb.getThumb() == true) {
+						thumb.setThumb(false);
+					} else {
+						thumb.setThumb(true);
+					}
+					forumService.insertThumbsUp(thumb);
+					List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumb.getArticle().getId(),
+							true);
+					thumb.getArticle().setThumbsQuantity(trueThumbs.size());
+					try {
+						forumService.update(thumb.getArticle());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 				}
-				forumService.insertThumbsUp(thumb);
-				List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumb.getArticle().getId(), true);
-				thumb.getArticle().setThumbsQuantity(trueThumbs.size());
+				thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(),
+						thumbsUp.getArticle().getId());
+				return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
+			} else {
+				thumbsUp.setThumb(true);
+				forumService.insertThumbsUp(thumbsUp);
+				List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumbsUp.getArticle().getId(),
+						true);
+				thumbsUp.getArticle().setThumbsQuantity(trueThumbs.size());
 				try {
-					forumService.update(thumb.getArticle());
+					forumService.update(thumbsUp.getArticle());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+
+				thumbsList = new ArrayList<ThumbsUp>();
+				thumbsList.add(0, thumbsUp);
+				return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
 			}
-			thumbsList = forumService.findThumbsUpByMemberIdAndArticleId(thumbsUp.getMember().getId(), thumbsUp.getArticle().getId());
-			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
-		}else {
-			thumbsUp.setThumb(true);
-			forumService.insertThumbsUp(thumbsUp);
-			List<ThumbsUp> trueThumbs = forumService.findThumbsUpByArticleIdAndThumb(thumbsUp.getArticle().getId(), true);
-			thumbsUp.getArticle().setThumbsQuantity(trueThumbs.size());
-			try {
-				forumService.update(thumbsUp.getArticle());
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			
-			thumbsList = new ArrayList<ThumbsUp>();
-			thumbsList.add(0, thumbsUp);
-			return new ResponseEntity<List<ThumbsUp>>(thumbsList, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<ThumbsUp>(thumbsUp, HttpStatus.NON_AUTHORITATIVE_INFORMATION);
 		}
 	}
-	
-	
+
 	// 新增&修改文章
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<?> newArticle(Article article) {
 		if (article.getStatus() == null) {
 			System.out.println(article.getStatus());
-			if (article.getId() != null) {
-				Article existArticle = forumService.getOne(article.getId());
-				existArticle.setSubject(article.getSubject());
-				existArticle.setCategory(article.getCategory());
-				existArticle.setContent(article.getContent());
-				existArticle.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-				if(article.getImages().equals(null)) {
-					existArticle.setImages(article.getImages());
-				}
-				try {
-					forumService.update(existArticle);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else {
-				article.setMember(memberService.getNewCurrentMember());
-				article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
-				article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
-				article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
-				article.setClick(0L);
-				article.setStatus(true);
-				try {
-					forumService.insert(article);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} 
-		}else {
+			if (memberService.getNewCurrentMember() != null) {
+				if (article.getId() != null && memberService.getNewCurrentMember()==article.getMember()) {
+					Article existArticle = forumService.getOne(article.getId());
+					existArticle.setSubject(article.getSubject());
+					existArticle.setCategory(article.getCategory());
+					existArticle.setContent(article.getContent());
+					existArticle.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+					if (article.getImages().equals(null)) {
+						existArticle.setImages(article.getImages());
+					}
+					try {
+						forumService.update(existArticle);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+					article.setMember(memberService.getNewCurrentMember());
+					article.setUpdateTime(new Timestamp(System.currentTimeMillis() - 1));
+					article.setPostTime(new Timestamp(System.currentTimeMillis() - 1));
+					article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
+					article.setClick(0L);
+					article.setStatus(true);
+					try {
+						forumService.insert(article);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} 
+			}
+		} else {
 			System.out.println(article.getStatus());
 			Article existArticle = forumService.getOne(article.getId());
-			if(existArticle.getStatus() == null || existArticle.getStatus() == true) {
+			if (existArticle.getStatus() == null || existArticle.getStatus() == true) {
 				existArticle.setStatus(false);
 				try {
 					forumService.update(existArticle);
@@ -172,7 +192,7 @@ public class ArticleRestController {
 					e.printStackTrace();
 				}
 				return new ResponseEntity<Article>(existArticle, HttpStatus.OK);
-			}else {
+			} else {
 				existArticle.setStatus(true);
 				try {
 					forumService.update(existArticle);

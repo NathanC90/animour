@@ -43,15 +43,15 @@ public class AnimalController {
 		model.addAttribute("citys", citys);
 
 		// notice.setDetail("以為您轉跳至中途首頁");
-		if (current != null) {
-			notice.setDetail("已為您轉跳至中途首頁");
-			notice.setMemberId(current.getId());
-			notice.setHref("http://tw.yahoo.com");
-			noticeService.insert(notice);
-			Long count = noticeService.findNotReadCount(current.getId());
-			notice.setCount(count);
-			noticeService.notify(current.getAccount(), notice);
-		}
+//		if (current != null) {
+//			notice.setDetail("已為您轉跳至中途首頁");
+//			notice.setMemberId(current.getId());
+//			notice.setHref("http://tw.yahoo.com");
+//			noticeService.insert(notice);
+//			Long count = noticeService.findNotReadCount(current.getId());
+//			notice.setCount(count);
+//			noticeService.notify(current.getAccount(), notice);
+//		}
 
 		return "/halfway/list";
 	}

@@ -1,11 +1,14 @@
 package org.iii.ee100.animour.member.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.forum.dao.ArticleDao;
 import org.iii.ee100.animour.forum.entity.Article;
+import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.member.dao.MemberDao;
 import org.iii.ee100.animour.member.dao.MyFriendDao;
 import org.iii.ee100.animour.member.entity.Member;
@@ -197,6 +200,15 @@ public class MemberService extends GenericService<Member> {
 		
 		public List<Article> getArticlesByMemberId(Long Id) {
 			return articleDao.findByMemberIdAndStatus(Id,null);
+		}
+		
+		public Map<String,Integer> chart() {
+			List<Member> list = memberDao.findAll();
+			Map<String,Integer> map = new HashMap<String,Integer>();
+			for(Member member:list) {
+				map.put(member.getAccount(), myFriendDao.findByMemberIdAndLove(member.getId(), true).size());
+			}
+			return map;
 		}
 		
 }

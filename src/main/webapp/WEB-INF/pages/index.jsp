@@ -267,7 +267,7 @@
 										<div class="container">
 										  <div class="row justify-content-md-center">
 										    <div class="col-md-auto">
-										      <a href="/selectOneProduct?id=${product.id}"><span class="btn btn-primary">商品詳情</span></a>
+										      <a href="/selectOneProduct?id=${product.id}"><span class="btn btn-common">商品詳情</span></a>
 										    </div>
 										  </div>
 										</div>

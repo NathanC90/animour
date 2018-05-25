@@ -55,7 +55,12 @@
     </script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
-    <![endif]-->
+	<![endif]-->
+			<style>
+				.ck-editor__editable {
+					min-height: 350px;
+				}
+			</style>
 		</head>
 
 		<body>
@@ -136,7 +141,6 @@
 											<input type="file" class="form-control-file" id="image" name="file">
 										</div> -->
 										<button id="btn1" type="button" class="btn btn-common" value="送出">送出</button>
-										<input type="reset" class="btn btn-common" value="清除">
 									</form>
 								</div>
 							</div>
@@ -168,26 +172,30 @@
 				var myEditor;
 
 				ClassicEditor
-						.create(document.querySelector('#content'), {
-							cloudServices: {
-								tokenUrl: 'https://16608.cke-cs.com/token/dev/djm4EZOtRAKn7AdDRQejz2aSUQSZPmO7cwIJsfoBCaE2IFI0foEYPwbvS4Oh',
-								uploadUrl: 'https://16608.cke-cs.com/easyimage/upload/'
-							}
-						}).then(editor => {
-							console.log('Editor was initialized', editor.getData());
-							myEditor = editor;
-							// window.content = content;
-						})
-						.catch(error => {
-							console.error(error);
-						});
-						
+					.create(document.querySelector('#content'), {
+						cloudServices: {
+							tokenUrl: 'https://16608.cke-cs.com/token/dev/djm4EZOtRAKn7AdDRQejz2aSUQSZPmO7cwIJsfoBCaE2IFI0foEYPwbvS4Oh',
+							uploadUrl: 'https://16608.cke-cs.com/easyimage/upload/'
+						},
+						images: {
+							styles: ['full', 'side']
+						}
+						, config: height = '800px'
+					}).then(editor => {
+						console.log('Editor was initialized', editor.getData());
+						myEditor = editor;
+						// window.content = content;
+					})
+					.catch(error => {
+						console.error(error);
+					});
+
 				$(document).ready(function () {
 
 					$('#btn1').click(function () {
 						console.log(myEditor.getData());
 						$('#content').html(myEditor.getData());
-					
+
 						var formData = new FormData(document.getElementById("insertform"));
 						//     		var jsons = transformToJson(formData);
 						console.log(formData);

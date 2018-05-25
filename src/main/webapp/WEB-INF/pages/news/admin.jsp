@@ -91,12 +91,32 @@
 
 
 <body>
+<script language="JavaScript"> 
+function saveToExcel(str) { 
+   try { 
+      var xls = new ActiveXObject("Excel.Application"); 
+      xls.Visible = true; 
+   } 
+   catch(e) { 
+      alert("開啟失敗，請確定你的電腦已經安裝excel，且瀏覽器必須允許ActiveX控件執行"); 
+      return; 
+   } 
+   var objTable = document.getElementById(str); 
+   var xlBook = xls.Workbooks.Add; 
+   var xlsheet = xlBook.Worksheets(1); 
+   for (var i=0;i<objTable.rows.length;i++) 
+      for (var j=0;j<objTable.rows[i].cells.length;j++) 
+         xlsheet.Cells(i+1,j+1).value = objTable.rows[i].cells[j].innerHTML; 
+} 
+</script>
 <!-- adminNavbar Starts -->
 		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
 <!-- adminNavbar ends -->
  
 <!-- 每頁不同的內容從此開始 -->
-  <div class="container">
+
+
+<div class="container">
     <div class="row">
 
 <div class="col-md-12 content">
@@ -121,43 +141,27 @@
 					class="icon icon-magnifying-glass"></span>
 			</div>
 		</div>
+		<!-- Export Excel starts -->
 		<div class="flextable-item">
 			<div class="btn-group">
-				<button type="button" class="btn btn-outline-primary" title="匯出成Excel檔">
+						<!--   給使用者按的下載按鈕，點擊後呼叫tableToExcel
+						傳入參數為(要匯出的Table的Id, 定義一個名字, 匯出後的Excel檔名)-->
+				<button  type="button" class="btn btn-outline-primary" title="匯出成Excel檔"
+						       onclick="tableToExcel('myTableId', 'myTableId', '活動紀錄表單.xls')">
 					<span class="icon icon-upload"></span>
+						<!-- 需要一個隱藏的超連結，id="dlink" -->
+					<a id="dlink" style="display:none;"></a>
 				</button>
 			</div>
 		</div>
-		<div class="container">
-        <h1>Export</h1>
-        <div id="toolbar">
-            <select class="form-control">
-                <option value="">Export Basic</option>
-                <option value="all">Export All</option>
-                <option value="selected">Export Selected</option>
-            </select>
-        </div>
-        <table id="table"
-               data-toggle="table"
-               data-show-export="false"
-               data-pagination="true"
-               data-click-to-select="true"
-               data-toolbar="#toolbar"
-               data-url="../json/data1.json">
-            <thead>
-            <tr>
-                <th data-field="state" data-checkbox="true"></th>
-                <th data-field="id">ID</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
-            </tr>
-            </thead>
-        </table>
-    </div>
+		<!-- Export Excel ends -->
+	</div>
 	</div>
 	<!-- Table Starts  -->
-	<div class="table-responsive">
-		<table class="table" data-sort="table">
+	<!-- //要匯出的Table，記得訂id -->
+		<table class="table" data-sort="table" id="myTableId">
+		<div class="table-responsive container">
+		    <div class="row">
 			<thead>
 				<tr>
 					<th><input type="checkbox" class="select-all" id="selectAll"></th>
@@ -361,259 +365,78 @@
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10011</a></td>
-					<td>活動名稱11</td>
-					<td>活動介紹11</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>60</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10012</a></td>
-					<td>活動名稱12</td>
-					<td>活動介紹12</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>80</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10013</a></td>
-					<td>活動名稱13</td>
-					<td>活動介紹13</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>120</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10014</a></td>
-					<td>活動名稱14</td>
-					<td>活動介紹14</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>60</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10015</a></td>
-					<td>活動名稱15</td>
-					<td>活動介紹15</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>45</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10016</a></td>
-					<td>活動名稱16</td>
-					<td>活動介紹16</td>
-					<td>01/01/2015</td>
-					<td>$200.00</td>
-					<td>60</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10017</a></td>
-					<td>活動名稱17</td>
-					<td>活動介紹17</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>20</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10018</a></td>
-					<td>活動名稱18</td>
-					<td>活動介紹18</td>
-					<td>01/01/2015</td>
-					<td>$100.00</td>
-					<td>35</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10019</a></td>
-					<td>活動名稱19</td>
-					<td>活動介紹19</td>
-					<td>01/01/2015</td>
-					<td>$300.00</td>
-					<td>60</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">#10020</a></td>
-					<td>活動名稱20</td>
-					<td>活動介紹20</td>
-					<td>01/02/2015</td>
-					<td>$200.00</td>
-					<td>40</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
 			</tbody>
 		</table>
 	</div>
-
 	<!-- Table Ends -->
 
-	<div class="text-center">
-		<nav>
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span
-					class="sr-only">上一頁</span>
-			</a></li>
-			<li class="page-item active"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">4</a></li>
-			<li class="page-item"><a class="page-link" href="#">5</a></li>
-			<li class="page-item"><a class="page-link" href="#"
-				aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-					class="sr-only">下一頁</span>
-			</a></li>
-		</ul>
-		</nav>
-	</div>
+</div>
+
+
 
 </div>
 </div>
 </div>
-<!-- Modal Starts -->
-<div id="docsModal" class="modal fade" tabindex="-1" role="dialog"
-	aria-labelledby="myModalLabel">
-	<div class="modal-dialog">
-		<div class="modal-content">
 
-			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">樣板示意</h4>
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<p>您已經位於樣板頁面</p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" data-dismiss="modal">好的，了解</button>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- Export Data starts-->
+</table>
+
+
 <script>
-    var $table = $('#table');
-    $(function () {
-        $('#toolbar').find('select').change(function () {
-            $table.bootstrapTable('destroy').bootstrapTable({
-                exportDataType: $(this).val()
-            });
-        });
-    })
+function tableToExcel(table, name, filename) {
+  var uri = 'data:application/vnd.ms-excel;base64,';
+  //定義格式及編碼方式
+
+  var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office"'
+               + '      xmlns:x="urn:schemas-microsoft-com:office:excel"'
+               + '      xmlns="http://www.w3.org/TR/REC-html40">'
+               + '<head>'
+               + '<!--[if gte mso 9]>'
+               + '<xml>'
+               + '  <x:ExcelWorkbook>'
+               + '    <x:ExcelWorksheets>'
+               + '      <x:ExcelWorksheet>'
+               + '        <x:Name>{worksheet}</x:Name>'
+               + '        <x:WorksheetOptions>'
+               + '          <x:DisplayGridlines/>'
+               + '        </x:WorksheetOptions>'
+               + '      </x:ExcelWorksheet>'
+               + '    </x:ExcelWorksheets>'
+               + '  </x:ExcelWorkbook>'
+               + '</xml>'
+               + '<![endif]-->'
+               + '</head>'
+               + '<body>'
+               + '  <table>{table}</table>'
+               + '</body>'
+               + '</html>';
+  //Excel的基本框架
+
+  if (!table.nodeType)
+    table = document.getElementById(table)
+
+  var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+
+  document.getElementById("dlink").href = uri + base64(format(template, ctx));
+  //將超連結指向Excel內容
+  document.getElementById("dlink").download = filename;
+  //定義超連結下載的檔名
+  document.getElementById("dlink").click();
+  //執行點擊超連結的動作來下載檔案
+  
+}
+
+function base64(s) {
+  return window.btoa(unescape(encodeURIComponent(s)))
+}
+//將文字編譯成Base64格式
+
+function format(s, c) {
+  return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; })
+}
+//將文字裡的{worksheet}和{table}替換成相對應文字
+//把Table內容塞進Excel框架內
+
 </script>
-<!-- Export Data ends -->
-<!-- Modal Ends -->
 
 <!-- 每頁不同內容從此結束 -->
 
