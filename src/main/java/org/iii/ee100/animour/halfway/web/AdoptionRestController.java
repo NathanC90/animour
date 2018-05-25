@@ -13,7 +13,9 @@ import org.iii.ee100.animour.halfway.entity.Adoption;
 import org.iii.ee100.animour.halfway.service.AdoptionService;
 import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.entity.Notice;
 import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.member.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,9 @@ public class AdoptionRestController {
 
 	@Autowired
 	ResponseForAnimour response;
+	
+	@Autowired
+	NoticeService noticeService;
 
 	private PageInfo defaultPageInfo = new PageInfo(1, 8);
 
@@ -60,7 +65,7 @@ public class AdoptionRestController {
 
 	// 新增，回傳id
 	@RequestMapping(value = { "/halfway/adoption" }, method = RequestMethod.POST)
-	public ResponseEntity<?> addAdoption(@RequestBody Adoption adoption) {
+	public ResponseEntity<?> addAdoption(@RequestBody Adoption adoption, Notice notice) {
 		// 設定送出時間
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		adoption.setRequestDate(ts);
@@ -72,6 +77,20 @@ public class AdoptionRestController {
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("id", adoption.getId());
 		response.setParameters(parameter);
+		
+//		if (current != null) {
+//			notice.setDetail("會員向您發送認養申請");
+//			notice.setFromWho(current);
+//			notice.setMemberId(adoption.getOwnerId());
+//			notice.setHref("/halfway/showAdoption");
+//			noticeService.insert(notice);
+//			Long count = noticeService.findNotReadCount(adoption.getOwnerId());
+//			notice.setCount(count);
+//			noticeService.notify(memberService.getOne(adoption.getOwnerId()).getAccount(), notice);
+//		}
+		
+		noticeService.setNotify(adoption.getOwnerId(), "會員向您發送認養申請", "/halfway/showAdoption");
+		
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 	

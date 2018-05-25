@@ -166,13 +166,22 @@
 					}
 
 
-					// 接收訊息，新增元素顯示
-					function showGreeting(message) {
-						if ($('#nonitice').length != 0){
+					// 接收socket來的訊息，新增元素顯示
+					function showGreeting(notice) {
+						if ($('#nonitice').length != 0) {
 							$("#nonitice").remove();
 						}
-						var template = `<a class="dropdown-item" href="` + message.href + `">` + message.detail + `</a>`;
+
+						var fromMember;
+						if (!notice.fromWho){
+							fromMember = "";
+						} else {
+							fromMember = notice.fromWho.account;
+						}
+						var template = `<a id=` + notice.id + ` class="dropdown-item" href="` + notice.href + `">` + fromMember + notice.detail + `</a>`;
 						$("#notification").append(template);
+
+						bindNotice();
 					}
 
 					function showCount(count) {
@@ -195,9 +204,26 @@
 						}); */
 					});
 
+					// 綁定click事件，設定為已讀
+					function bindNotice(){
+						$(".dropdown-item").click(function () {
+							alert($(this).attr('id'));
+							$.ajax({
+								type: "GET",
+								url: "/api/member/all/setread/"+$(this).attr('id'),
+								//contentType: "application/json",
+								//processData: false
+							}).done(function(){
+								$(this).remove();
+							})
+						});
+					}
+
 					$(document).ready(function () {
 						connect();
 						alert("alert from noti")
+
+						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
 						$.ajax({
 							type: "GET",
 							url: "/api/member/all/loadnotice",
@@ -209,17 +235,12 @@
 							});
 							if (datas.parameters.count > 0) {
 								showCount(datas.parameters.count);
-							}else{
+							} else {
 								var template = `<a class="dropdown-item" id="nonitice">目前沒有未讀通知</a>`
-						$("#notification").append(template);
+								$("#notification").append(template);
 							}
-
+							//bindNotice();
 						});
-
-
-
-
-
 					});
 
 				</script>

@@ -33,14 +33,13 @@ public class MemberRestfulController {
 	@Autowired
 	MemberService memberService;
 
-	//admin
+	// admin
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
 	public List<Member> findAll() {
 		List<Member> members = memberService.getAll();
 		return members;
 	}
 
-	
 	@RequestMapping(value = "/api/member/{account}", method = RequestMethod.GET, produces = { "application/json" })
 	public Member findByAccount(@PathVariable("account") String account) {
 		return memberService.getOneByAccount(account);
@@ -51,91 +50,95 @@ public class MemberRestfulController {
 		return memberService.getOne(id);
 	}
 
-	//不確定能不能用
-//	@RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
-//	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long id, @Valid @RequestBody Member member) {
-//		memberService.insert(member);
-//		return new ResponseEntity<Member>(member, HttpStatus.OK);
-//
-//	}
+	// 不確定能不能用
+	// @RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes
+	// = { "application/json" })
+	// public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long
+	// id, @Valid @RequestBody Member member) {
+	// memberService.insert(member);
+	// return new ResponseEntity<Member>(member, HttpStatus.OK);
+	//
+	// }
 
-	//新增朋友	
+	// 新增朋友
 	@RequestMapping(value = { "/addfriend" }, method = RequestMethod.POST)
 	public ResponseEntity<?> addFriend(MyFriend friend) {
 		friend.setMember(memberService.getNewCurrentMember());
-		if(memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId()) ==null) {
+		if (memberService.findByMemberIdAndFriendId(friend.getMember().getId(), friend.getFriendId()) == null) {
 			friend.setLove(true);
-			memberService.insertFriend(friend);			
-			return new ResponseEntity<MyFriend>(friend, HttpStatus.OK); 
-		}else {
+			memberService.insertFriend(friend);
+			return new ResponseEntity<MyFriend>(friend, HttpStatus.OK);
+		} else {
 			memberService.updateFriend(friend);
-			MyFriend newFriend=memberService.findByMemberIdAndFriendId(friend.getMember().getId(),friend.getFriendId());
-			return new ResponseEntity<MyFriend>(newFriend, HttpStatus.OK); 
+			MyFriend newFriend = memberService.findByMemberIdAndFriendId(friend.getMember().getId(),
+					friend.getFriendId());
+			return new ResponseEntity<MyFriend>(newFriend, HttpStatus.OK);
 		}
 
 	}
-	
-	//homepage (加好友狀態)
-	@RequestMapping(value="/member/friend/{Id}",method = RequestMethod.GET, produces = { "application/json" })
-	public MyFriend heartStatus(@PathVariable String Id){
-		Long friendId=Long.valueOf(Id);
-		Long memberId =memberService.getNewCurrentMember().getId();
-		MyFriend friend= memberService.findByMemberIdAndFriendId(memberId, friendId);
-		if(friend==null) {
-			System.out.println("friend.id:"+friend);
+
+	// homepage (加好友狀態)
+	@RequestMapping(value = "/member/friend/{Id}", method = RequestMethod.GET, produces = { "application/json" })
+	public MyFriend heartStatus(@PathVariable String Id) {
+		Long friendId = Long.valueOf(Id);
+		Long memberId = memberService.getNewCurrentMember().getId();
+		MyFriend friend = memberService.findByMemberIdAndFriendId(memberId, friendId);
+		if (friend == null) {
+			System.out.println("friend.id:" + friend);
 			MyFriend friend1 = new MyFriend();
-			return friend1; 
+			return friend1;
 
-		}else {
-			System.out.println("friend.id:"+friend.getId()+"friend.love:"+friend.getLove());
+		} else {
+			System.out.println("friend.id:" + friend.getId() + "friend.love:" + friend.getLove());
 
-			return friend; 
+			return friend;
 
 		}
 	}
-	
-	@Autowired	
+
+	@Autowired
 	EmailService emailService;
-	
-	@RequestMapping(value="/adminsendmail",method = RequestMethod.POST)
+
+	@RequestMapping(value = "/adminsendmail", method = RequestMethod.POST)
 	public ResponseEntity<?> newMail(Mail mail) {
-		String email=memberService.getOneByAccount(mail.getAccount()).getEmail();
+		String email = memberService.getOneByAccount(mail.getAccount()).getEmail();
 		emailService.sendEmail(email, mail.getSubject(), mail.getContext());
-		return new ResponseEntity<Mail>(mail,HttpStatus.OK);
+		return new ResponseEntity<Mail>(mail, HttpStatus.OK);
 	}
-	
+
 	@Transient
-	@RequestMapping(value="/adminsendmanymail",method = RequestMethod.POST,consumes={ "application/json" })
+	@RequestMapping(value = "/adminsendmanymail", method = RequestMethod.POST, consumes = { "application/json" })
 	public ResponseEntity<?> newMail(@RequestBody ManyMail manyMail) {
-		if(! manyMail.getAccounts().isEmpty() && manyMail.getAccounts().size()>0) {
+		if (!manyMail.getAccounts().isEmpty() && manyMail.getAccounts().size() > 0) {
 			for (String account : manyMail.getAccounts()) {
 				String email = memberService.getOneByAccount(account).getEmail();
-				emailService.sendEmail(email, manyMail.getSubject(), account+"您好\n"+manyMail.getContext()+"\n\n\t\t\t\tAnimour");
+				emailService.sendEmail(email, manyMail.getSubject(),
+						account + "您好\n" + manyMail.getContext() + "\n\n\t\t\t\tAnimour");
 			}
-			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.OK);}
-		else {
+			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.OK);
+		} else {
 			return new ResponseEntity<ManyMail>(manyMail, HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	
-	@RequestMapping(value="/deletemember",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/deletemember", method = RequestMethod.POST)
 	public ResponseEntity<?> delete(MemberStatus member) {
 		memberService.changeMemberStatus(member.getId());
-		Member member_changed=memberService.getOne(member.getId());
+		Member member_changed = memberService.getOne(member.getId());
 		member.setStatus(member_changed.getStatus());
-		return new ResponseEntity<MemberStatus>(member,HttpStatus.OK);
+		return new ResponseEntity<MemberStatus>(member, HttpStatus.OK);
 	}
-	
+
 	@Autowired
 	NoticeService noticeService;
-	
+
 	@Autowired
 	ResponseForAnimour response;
+
 	// 登入時先去撈資料庫中未讀取的通知
 	@RequestMapping(value = { "/loadnotice" }, method = RequestMethod.GET, produces = { "application/json",
-	"application/xml" })
-	public ResponseEntity<?> findNotRead(){
+			"application/xml" })
+	public ResponseEntity<?> findNotRead() {
 		Member current = memberService.getNewCurrentMember();
 		if (current != null) {
 			List<Notice> notread = noticeService.findNotReadByMember(current.getId(), false);
@@ -147,23 +150,36 @@ public class MemberRestfulController {
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
-	@Autowired
-	AnimalService animalService;
-	
-	@RequestMapping(value="/deleteanimal",method=RequestMethod.POST)
-	public ResponseEntity<?> delete(Animal animal) {
-		
-		Animal animal_changed=animalService.getOne(animal.getId());
-		if(animal.getDisabled()==true) {
-		animal_changed.setDisabled(false);
+	// 設定通知為已讀
+	@RequestMapping (value = {"/setread/{noticeId}"}, method = RequestMethod.GET)
+	public ResponseEntity<?> setNoticeRead(@PathVariable Long noticeId){
+		try {
+			Notice notice = (Notice)noticeService.getOne(noticeId);
+			notice.setStatus(true);
+			noticeService.update(notice);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		else {
-		animal_changed.setDisabled(true);
-
-		}
-		return new ResponseEntity<Animal>(animal,HttpStatus.OK);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 	
 	
-	
+
+	@Autowired
+	AnimalService animalService;
+
+	// 動物後台下架
+	@RequestMapping(value = "/deleteanimal", method = RequestMethod.POST)
+	public ResponseEntity<?> delete(Animal animal) {
+
+		Animal animal_changed = animalService.getOne(animal.getId());
+		if (animal.getDisabled() == true) {
+			animal_changed.setDisabled(false);
+		} else {
+			animal_changed.setDisabled(true);
+
+		}
+		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
+	}
+
 }
