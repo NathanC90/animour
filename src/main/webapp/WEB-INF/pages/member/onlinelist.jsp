@@ -117,7 +117,7 @@
 					$(document).ready(function () {
 						//alert("alert from noti")
 							var acc=$('#data-role').attr('name');
-								console.log("acc:"+acc)						
+// 								console.log("acc:"+acc)						
 						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
 						$.ajax({
 							type: "GET",
@@ -125,8 +125,6 @@
 						}).done(function (data) {
 							$.each(data, function (idx, list) {
 							if(list!=acc){
-								alert("acc:"+acc+",list"+list+","+typeof(list))
-
 								var c=`<a id=` + list + ` class="dropdown-item" href="/user/` + list + `">` +  list +`在線上` + `</a>`;
 								$('#online').append(c);
 
