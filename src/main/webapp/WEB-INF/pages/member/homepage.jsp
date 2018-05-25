@@ -278,11 +278,22 @@
 		</div>
 
 			</section>
-		
+			<div id="chatBox" style="display:none">
+			<jsp:include page="chatbox.jsp"></jsp:include>
+		</div>
 	<!-- Classic Blog Section End -->
       
-	
+	<button type="button" class="btn btn-common" data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="toChat">發送訊息</button>			
 
+	<script>
+		$(document).ready(function(){
+
+$("#toChat").click(function(){
+	$("#chatBox").css("display", "")
+});
+		});
+	
+	</script>
 	<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
