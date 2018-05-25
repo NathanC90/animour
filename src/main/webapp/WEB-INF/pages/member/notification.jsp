@@ -135,7 +135,7 @@
 							// subscribe 改成
 							stompClient.subscribe("/user/queue/notifications", function (
 								message) {
-								alert("from noti")
+								//alert("from noti")
 								showGreeting(JSON.parse(message.body));
 								showCount(JSON.parse(message.body).count);
 							});
