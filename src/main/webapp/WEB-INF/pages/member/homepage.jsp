@@ -73,6 +73,27 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
+			<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">結帳訊息</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body" id='showReservation'></div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">下次再結</button>
+								<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!-- Blog Sidebar Section -->
 				<div class="col-md-3">
 
@@ -110,6 +131,7 @@
 							
 							<c:if test="${member.id eq currentMember.id}">
 								<li><a href="/findOrders/index">訂單查詢</a></li>
+								<li><a id="checkOrder" href="#" data-toggle="modal" data-target="#exampleModal">預約查詢</a></li>							
 								<li><a href="#">活動紀錄</a></li>
 								<li><a href="/update">修改個人資料</a></li>
 								<button type="button" class="btn btn-common" data-toggle='modal' data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="myFriendListbtn">好友清單</button>								
@@ -322,6 +344,10 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/vendor/holder.min.js"></script>
 	<script>
+	//預約訂單按鈕
+	$('#checkOrder').click(function(){
+		alert('aaa')
+	})
 	
 	 $(document).ready(function () {
  		 var a=$("#addFriend").attr('value');

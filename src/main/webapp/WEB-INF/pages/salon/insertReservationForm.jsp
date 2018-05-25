@@ -93,7 +93,7 @@
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>RESERVATION</h2>
+						<h2>預約表單</h2>
 					</div>
 				</div>
 			</div>
@@ -104,7 +104,7 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-<!-- Modal -->
+				<!-- Modal -->
 				<div class="modal fade" id="exampleModal" tabindex="-1"
 					role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
@@ -126,14 +126,16 @@
 						</div>
 					</div>
 				</div>
+								<!-- Modal end-->
+				
 				<!-- boutton check-->
 				<div>
-<!-- 				左邊
- -->				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+					<!-- 				左邊
+ -->
+					<button type="button" class="btn btn-primary" data-toggle="modal"
+						data-target="#exampleModal">Launch demo modal</button>
 				</div>
-<!-- Modal end-->
+				<!-- Modal end-->
 
 				<div id="loginbox" style="margin-top: 50px; margin: auto"
 					class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -176,18 +178,19 @@
 
 					</div>
 					<br>
-					
-					
-					
-					<div id="paymentdiv" style="text-align: center; border: 3px white double;">
+
+
+
+					<div id="paymentdiv"
+						style="text-align: center; border: 3px white double;">
 						<!-- style="text-align: center; border: 3px white double;">
 						<input id="response" type="submit" onclick="show_confirm()"
 							class="btn btn-common" value="預約"> -->
 
 
-						<button id="response" type="button" class="btn btn-common" data-toggle="modal"
-							data-target="#exampleModal">預約</button>
-							<button type="button" class="btn btn-common" data-toggle="modal"
+						<button id="response" type="button" class="btn btn-common"
+							data-toggle="modal" data-target="#exampleModal">預約</button>
+						<button type="button" class="btn btn-common" data-toggle="modal"
 							data-target="#exampleModal">清除</button>
 					</div>
 
@@ -358,12 +361,13 @@
 							function(data) {
 
 							});
+
 					$.getJSON('/reservationForms/getServiceCotent', {},
 							function(data) {
-								console.log(data);
 								$.each(data, function(i, serviceCotent) {
 									// var cell1 = $("<option></option>").text(a.content+a.price);
 									// $('#servicer').append(cell1);
+
 									var cell1 = $("<option></option>").text(
 											serviceCotent.content);
 									var cell2 = $("<option></option>").text(
@@ -372,8 +376,39 @@
 
 									$('#price').append(cell2);
 
-								});
 
+								})
+
+								$('#designer').change(function() {
+											$('#servicer option' ).remove();
+									$.each(data, function(i, serviceCotent) {
+										if(serviceCotent.designer.id===1){
+										var cell1 = $("<option></option>").text(
+												serviceCotent.content);
+										
+											
+										}
+										$('#servicer').append(cell1);
+
+
+									})
+
+								})
+								$('#servicer').change(function() {
+											$('#price option' ).remove();
+									$.each(data, function(i, serviceCotent) {
+										if(serviceCotent.designer.id===1){
+										var cell2 = $("<option></option>").text(
+												serviceCotent.price);
+										
+											
+										}
+										$('#price').append(cell2);
+
+
+									})
+
+								})
 							})
 				});
 		$(document).ready(function() {
@@ -397,7 +432,7 @@
 
 			})
 		});
-		$("#checkout").click(function(){
+		$("#checkout").click(function() {
 			$.ajax({
 				url : '/SalonfrontEnd/CheckOut/CheckOutALL',
 				type : 'POST',
@@ -410,14 +445,12 @@
 
 			})
 		});
-		
-		
-		
+
 		$("#response").click(function() {
 
 			var data1 = new FormData(document.getElementById("myform"));
-/* 			console.log(toJson(data1));
- */
+			/* 			console.log(toJson(data1));
+			 */
 
 			$.ajax({
 				url : '/reservationForms',

@@ -81,6 +81,7 @@ public class ReservationService extends GenericService<Reservation> {
 	}
 
 	public ArrayList<ServiceContent> getAllServiceContent() {
+		
 		return Lists.newArrayList(serviceContentDao.findAll());
 
 	}
