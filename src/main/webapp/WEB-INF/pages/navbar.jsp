@@ -152,9 +152,7 @@
 				</div>
 			</form>
 
-			<sec:authorize access="hasRole('Member')">
 				<jsp:include page="shopping/shoppingCart.jsp"></jsp:include>
-			</sec:authorize>
 
                         <!-- Mobile Menu Start -->
                         <ul class="wpb-mobile-menu">

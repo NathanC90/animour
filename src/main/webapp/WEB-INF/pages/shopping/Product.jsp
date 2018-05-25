@@ -195,6 +195,13 @@
 			function out(){
 				$(this).removeClass("btn btn-success btn-large animated pulse").addClass("btn btn-success btn-large");
 			}
+			
+			$('.card-img-top').hover(function(){
+				$(this).fadeTo(500, 0.5);
+			},function(){
+				$(this).fadeTo(500, 1);
+			})
+			
 		})
 	</script>
 </body>
