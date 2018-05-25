@@ -40,7 +40,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>RESERVATION</title>
+<title>預約表單</title>
 <!-- calendar css -->
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -76,53 +76,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">
     </script>
 	<![endif]-->
-<style>
-.calendar {
-	width: 450px;
-	height: 350px;
-	background: #fff;
-	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-}
 
-.body-list ul {
-	width: 100%;
-	font-family: arial;
-	font-weight: bold;
-	font-size: 14px;
-}
-
-.body-list ul li {
-	width: 14.28%;
-	height: 36px;
-	line-height: 36px;
-	list-style-type: none;
-	display: block;
-	box-sizing: border-box;
-	float: left;
-	text-align: center;
-}
-
-.lightgrey {
-	color: #a8a8a8;
-	/*浅灰色*/
-}
-
-.darkgrey {
-	color: #565656;
-	/*深灰色*/
-}
-
-.green {
-	color: #6ac13c;
-	/*绿色*/
-}
-
-.greenbox {
-	border: 1px solid #6ac13c;
-	background: #e9f8df;
-	/*浅绿色背景*/
-}
-</style>
 </head>
 
 <body>
@@ -150,57 +104,45 @@
 	<section class="classic-blog-section section">
 		<div class="container">
 			<div class="row">
-				<!-- End -->
+<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">結帳訊息</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">請在七天內付款</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">下次再結</button>
+								<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- boutton check-->
+				<div>
+<!-- 				左邊
+ -->				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+				</div>
+<!-- Modal end-->
 
 				<div id="loginbox" style="margin-top: 50px; margin: auto"
 					class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 					<div class="panel panel-info" style="border: 1px">
 						<div class="panel-heading"
 							style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-							<div class="panel-title">新增預約</div>
-							<!--
-										<div style="float: right; font-size: 80%; position: relative; top: -10px">
-											<a href="#"></a>
-										</div>
-									</div>
-
-									<div style="padding-top: 30px" class="panel-body">
-										<div style="display: none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-										<div class="calendar">
-											<div class="title">
-												<h1 class="green" id="calendar-title">Month</h1>
-												<h2 class="green small" id="calendar-year">Year</h2>
-												<a href="" id="prev">Prev Month</a>
-												<a href="" id="next">Next Month</a>
-											</div>
-											<div class="body">
-												<div class="lightgrey body-list">
-													<ul>
-														<li>MON</li>
-														<li>TUE</li>
-														<li>WED</li>
-														<li>THU</li>
-														<li>FRI</li>
-														<li>SAT</li>
-														<li>SUN</li>
-													</ul>
-												</div>
-												<div class="darkgrey body-list">
-													<ul id="days">
-													</ul>
-												</div>
-											</div>
-										</div>
-										<br> -->
 
 
 							<form id="myform" style="margin-top: 50px; margin: auto">
-								<!-- <ul>
-												<li>
-													<span></span>
-													<select></select>
-												</li>
-											</ul> -->
 								預約日期 <input class="form-group col-md-8" id="meeting" type="date"
 									name="reservationDate" /> <br> 美容師: <select id="designer"
 									class="form-control" name="designer">
@@ -211,7 +153,7 @@
 
 								</select> 價位： <select id="price" class="form-control" name="price">
 									<option value="price" label="請選擇價位" />
-									
+
 								</select> 時段: <select id="frontTime" class="form-control"
 									name="frontTime">
 									<option value="frontTime" label="請選擇時段" />
@@ -234,9 +176,19 @@
 
 					</div>
 					<br>
+					
+					
+					
 					<div id="paymentdiv" style="text-align: center; border: 3px white double;">
-						<input id="response" type="submit" onclick="show_confirm()"class="btn btn-common"
-							value="預約">
+						<!-- style="text-align: center; border: 3px white double;">
+						<input id="response" type="submit" onclick="show_confirm()"
+							class="btn btn-common" value="預約"> -->
+
+
+						<button id="response" type="button" class="btn btn-common" data-toggle="modal"
+							data-target="#exampleModal">預約</button>
+							<button type="button" class="btn btn-common" data-toggle="modal"
+							data-target="#exampleModal">清除</button>
 					</div>
 
 				</div>
@@ -400,25 +352,30 @@
 	<!-- 	<different content from here> -->
 
 	<script>
-		$(document).ready(function() {
-			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
-				
-			});
-			$.getJSON('/reservationForms/getServiceCotent', {}, function(data) {
-				console.log(data);
-				$.each(data, function(i, serviceCotent) {
-					// var cell1 = $("<option></option>").text(a.content+a.price);
-					// $('#servicer').append(cell1);
-					var cell1 = $("<option></option>").text(serviceCotent.content);
-					var cell2 = $("<option></option>").text(serviceCotent.price);
-					$('#servicer').append(cell1);
+		$(document).ready(
+				function() {
+					$.getJSON('/reservationForms/getServiceCotent', {},
+							function(data) {
 
-					$('#price').append(cell2);
+							});
+					$.getJSON('/reservationForms/getServiceCotent', {},
+							function(data) {
+								console.log(data);
+								$.each(data, function(i, serviceCotent) {
+									// var cell1 = $("<option></option>").text(a.content+a.price);
+									// $('#servicer').append(cell1);
+									var cell1 = $("<option></option>").text(
+											serviceCotent.content);
+									var cell2 = $("<option></option>").text(
+											serviceCotent.price);
+									$('#servicer').append(cell1);
 
+									$('#price').append(cell2);
+
+								});
+
+							})
 				});
-
-			})
-		});
 		$(document).ready(function() {
 			$.getJSON('/reservationForms/getTimeSection', {}, function(data) {
 				console.log(data);
@@ -440,16 +397,27 @@
 
 			})
 		});
+		$("#checkout").click(function(){
+			$.ajax({
+				url : '/SalonfrontEnd/CheckOut/CheckOutALL',
+				type : 'POST',
+			//data: data,
+			//data: json,
+			//dataType: 'json',
+			//contentType: "application/json",
+			}).done(function(datas) {
+				$('#paymentdiv').html(datas);
+
+			})
+		});
+		
+		
+		
 		$("#response").click(function() {
 
 			var data1 = new FormData(document.getElementById("myform"));
-			console.log(toJson(data1));
-			
-// $.getJSON('/reservationForms//getReservationDate',{},function(data2){
-	
-// })
-// if(a==a){
-// }
+/* 			console.log(toJson(data1));
+ */
 
 			$.ajax({
 				url : '/reservationForms',
@@ -457,34 +425,13 @@
 				data : toJson(data1),
 				contentType : "application/json",
 				dataType : "json",
-				success: function(data1){
-					var r=confirm("馬上結帳");
-				if (r==true)
-				  {
- 				  alert("為您轉跳中");
- 			
-					$.ajax({
-						url: '/SalonfrontEnd/CheckOut/CheckOutALL',
-						type: 'POST',
-						//data: data,
-						//data: json,
-						//dataType: 'json',
-						//contentType: "application/json",
-					}).done(function (datas) {
-						$('#paymentdiv').html(datas);
-
-					});
-				  }
-				else
-				  {
-				  alert("請在7天內儘速結帳");
-				  }
+				success : function(data1) {
+					console.log("成功")
 				}
 
 			}).done(function(data) {
-/* 				console.log(toJson(data1));
- */				
-				
+				/* 				console.log(toJson(data1));
+				 */
 
 			});
 
@@ -507,7 +454,7 @@
 
 		});
 	</script>
-	
+
 	<!-- <script>
 					var month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 					var month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
