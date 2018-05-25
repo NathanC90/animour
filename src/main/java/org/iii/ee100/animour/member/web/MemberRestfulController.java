@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.member.web;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.iii.ee100.animour.member.service.NoticeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -182,4 +184,28 @@ public class MemberRestfulController {
 		return new ResponseEntity<Animal>(animal, HttpStatus.OK);
 	}
 
+	//顯示
+	@Autowired
+	SessionRegistry sessionRegistry;
+	@RequestMapping(value = "/findonline", method = RequestMethod.GET)
+	public ResponseEntity<?> findOnline() {
+		List<Object> slist = sessionRegistry.getAllPrincipals();
+		List<String> usersNamesList = new ArrayList<String>();
+		if(slist.size()>0) {
+		for (Object principal: slist) {
+		    if (principal instanceof Member) {
+		        usersNamesList.add(((Member) principal).getUsername());
+		    }
+		}
+
+		System.out.println("查詢全部:"+slist.size());
+		System.out.println("查詢結果:"+usersNamesList.get(0));
+//		model.addAttribute("loginingAlluser",usersNamesList);
+		return new ResponseEntity<List<String>>(usersNamesList, HttpStatus.OK);
+		}
+		else {
+			return new ResponseEntity<List<String>>(usersNamesList, HttpStatus.OK);
+		}
+	}
+	
 }

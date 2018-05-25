@@ -141,7 +141,9 @@
 					<li class="nav-item dropdown"><jsp:include
 							page="member/notification.jsp"></jsp:include></li>
 				</sec:authorize>
-
+					<li class="nav-item dropdown"><jsp:include
+							page="member/onlinelist.jsp"></jsp:include></li>
+					
 
 			</ul>
 			<form class="form-inline">
@@ -272,7 +274,6 @@
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item" href="/sign_up">註冊</a>
                                         </div>
-
                                     </li>
                                 </sec:authorize>
                                 <sec:authorize access="hasRole('Member')">
@@ -282,7 +283,6 @@
 <!-- 										<i title="通知" class="fa fa-globe xs" style="color:#9C3"></i> -->
 										<i title="通知" class="fa fa-globe icon-xs" style="color:#9C3"></i>
 <!-- 										<i title="通知" class="fa fa-globe icon-sm" style="color:#9C3"></i> -->
-										
 										</a>
                                         <div class="dropdown-menu">
                                            

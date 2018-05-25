@@ -1,15 +1,13 @@
 package org.iii.ee100.animour.common.config;
 
 import org.iii.ee100.animour.common.security.AnimourUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.session.SessionRegistry;
+import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
 
 
 @EnableWebSecurity
@@ -37,6 +35,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 		.loginPage("/login")
 		//.failureUrl("/login?error=true")
 		.and().csrf().disable()
+		.sessionManagement().maximumSessions(-1).sessionRegistry(sessionRegistry())
 		;
     	
 }
@@ -45,6 +44,17 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     public AnimourUserDetailsService animourUserDetailsService() {
     	return new AnimourUserDetailsService();
     }
+    
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
+    @Bean
+    public HttpSessionEventPublisher httpSessionEventPublisher() {
+        return new HttpSessionEventPublisher();
+    }
+
 
     //加密
 //    @Bean
