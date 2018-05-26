@@ -52,8 +52,8 @@ public class NewsService{
 	public Map<String,Integer[]> chart(){
 		List<News> list = newsDao.findAll();
 		Map<String,Integer[]> map = new HashMap<String,Integer[]>();
-		Integer[] array = new Integer[2];
 		for(News news:list) {
+			Integer[] array = new Integer[2];
 			array[0] = news.getTicketQuantity();
 			array[1] = news.getTicketQuantity() * news.getTicketPrice();
 			map.put(news.getSubject(), array);

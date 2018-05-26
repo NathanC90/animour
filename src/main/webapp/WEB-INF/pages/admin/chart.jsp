@@ -114,6 +114,11 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="friendChart" style="height: 450px; width: 100%;"></div>
 					</div>
+					<h3>活動售票統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="newsChart" style="height: 450px; width: 100%;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -266,6 +271,74 @@
 					};
 					$("#friendChart").CanvasJSChart(options);
 				});
+
+				$.getJSON('/news/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var ticketArray = new Array();
+					var priceArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+						ticketArray.push({ 'label': key, 'y': obj[key][0] });
+						priceArray.push({ 'label': key, 'y': obj[key][1] });
+					});
+					// console.log(ticketArray);
+					// console.log(priceArray);
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "News Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: [
+							{
+								title: "Ticket sales",
+								lineColor: "#4682B4",
+								tickColor: "#4682B4",
+								labelFontColor: "#4682B4",
+								titleFontColor: "#4682B4",
+								lineThickness: 2
+							},
+							{
+								title: "Income",
+								lineColor: "#66CDAA",
+								tickColor: "#66CDAA",
+								labelFontColor: "#66CDAA",
+								titleFontColor: "#66CDAA",
+								lineThickness: 2
+							}
+						],
+						axisX: {
+							title: "Event",
+							interval: 1,
+							labelAngle: -40
+						},
+						data: [  //array of dataSeries     
+							{ //dataSeries - first quarter
+								type: "column",
+								color:"#4682B4",
+								name: "First Quarter",
+								dataPoints: ticketArray
+							},
+							{ //dataSeries - second quarter
+								type: "column",
+								color:"#66CDAA",
+								name: "Second Quarter",
+								axisYIndex: 1,
+								dataPoints: priceArray
+							}
+						]
+						
+					};
+					$("#newsChart").CanvasJSChart(options);
+				});
+
 
 			});
 		</script>
