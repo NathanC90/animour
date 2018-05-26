@@ -113,7 +113,7 @@ function saveToExcel(str) {
 </script>
 <!-- Export Excel JS ends -->
 <!-- adminNavbar Starts -->
-		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
+		<jsp:include page="../adminNavbar.jsp"></jsp:include>
 <!-- adminNavbar ends -->
  
 <!-- Page Content Start 重複的內容開始 -->
