@@ -41,6 +41,51 @@ public class ServiceContent extends GenericEntity{
 		return "ServiceContent [designer=" + designer + ", content=" + content + ", time=" + time + ", price=" + price
 				+ "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + ((content == null) ? 0 : content.hashCode());
+		result = prime * result + ((designer == null) ? 0 : designer.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((time == null) ? 0 : time.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ServiceContent other = (ServiceContent) obj;
+		if (content == null) {
+			if (other.content != null)
+				return false;
+		} else if (!content.equals(other.content))
+			return false;
+		if (designer == null) {
+			if (other.designer != null)
+				return false;
+		} else if (!designer.equals(other.designer))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (time == null) {
+			if (other.time != null)
+				return false;
+		} else if (!time.equals(other.time))
+			return false;
+		return true;
+	}
+
+	
 	
 	
 	

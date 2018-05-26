@@ -81,6 +81,7 @@ public class ReservationService extends GenericService<Reservation> {
 	}
 
 	public ArrayList<ServiceContent> getAllServiceContent() {
+		
 		return Lists.newArrayList(serviceContentDao.findAll());
 
 	}
@@ -89,6 +90,10 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(serviceContentDao.findTop3ByOrderByIdDesc());
 
 	}
+//	public ArrayList<Reservation> getServiceContenByMemberId(Long id) {
+//		return Lists.newArrayList(reservationDao.findByMember_id());
+
+//	}
 	
 	
 	//判斷服務內容是否重複
