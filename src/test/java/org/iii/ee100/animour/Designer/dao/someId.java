@@ -31,12 +31,14 @@ public class someId {
 
 	@Test
 	public void test() throws Exception {
-//		ArrayList<Reservation> list=new ArrayList<>();
+		ArrayList<Reservation> list=new ArrayList<>();
 //		long id=1;
 //		list=reservationService.getServiceContenByMemberId(id);
 //		System.out.println("aaabbb"+list);
 		long id=2;
-		reservationDao.findByMember_id(id);
+		
+		list =reservationService.getAll();
+		
 	}
 
 }

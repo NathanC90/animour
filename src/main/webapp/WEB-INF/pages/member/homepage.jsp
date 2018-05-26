@@ -84,7 +84,22 @@
 												<span aria-hidden="true">&times;</span>
 											</button>
 										</div>
-										<div class="modal-body" id='showReservation'></div>
+										<div class="modal-body" id="paymentdiv">
+											<table id='showReservation' class="table" data-sort="table">
+												<thead>
+													<tr>
+														<th>預約日期</th>
+														<th>時段</th>
+														<th>內容</th>
+														<th>設計師</th>
+														<th>耗時</th>
+														<th>消費金額</th>
+														<th>付款狀態</th>
+														<th>會員帳號</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">下次再結</button>
 											<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
@@ -147,8 +162,7 @@
 														<form id="insertFriend" enctype="multipart/form-data">
 															<input name="friendId" type="hidden" value="${member.id}" />
 														</form>
-														<span id="span">
-														</span>
+														<span id="span"> </span>
 													</li>
 												</c:if>
 											</sec:authorize>
@@ -197,9 +211,6 @@
 									</c:forEach>
 								</div>
 
-
-
-
 								<h4>動物資料</h4>
 								<div class="row">
 									<c:forEach var="animal" items="${animalls}">
@@ -232,14 +243,14 @@
 											<div class="blog-item-wrapper" style="height: 405px;">
 												<div class="blog-item-img">
 													<a href="/forum/findOne?id=${article.id}">
-														<img style="width:320px;height:220px;padding:10px;" src="${article.images}" alt="">
+														<img style="width: 320px; height: 220px; padding: 10px;" src="${article.images}" alt="">
 													</a>
 												</div>
 												<div class="blog-item-text">
 
 													<h3 class="small-title" style="height: 60px;">
 
-														<a href="/forum/findOne?id=${article.id}" style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:24px;height:48px;">
+														<a href="/forum/findOne?id=${article.id}" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 24px; height: 48px;">
 															<c:out value="${article.subject}" />
 														</a>
 
@@ -266,7 +277,8 @@
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
 											<div class="modal-header">
-												<h5 class="modal-title" id="exampleModalLabel">My Follow List</h5>
+												<h5 class="modal-title" id="exampleModalLabel">My Follow List
+												</h5>
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -276,12 +288,12 @@
 													<!-- 					<div class='row'> -->
 													<div class='col-md-6'>
 														<div class="card mb-5 box-shadow ">
-															<div style="padding:1px;">
+															<div style="padding: 1px;">
 																<a href='/user/${friend.account}'>
-																	<div style="width:60px; height:60px;margin:1px;float:left">
+																	<div style="width: 60px; height: 60px; margin: 1px; float: left">
 																		<img src="${friend.images}" alt="${friend.id}" class="card-img-top img-circle">
 																	</div>
-																	<div style="float:left;text-align: center;height:60px">
+																	<div style="float: left; text-align: center; height: 60px">
 																		<span>${friend.account}</span>
 																	</div>
 																</a>
@@ -293,8 +305,7 @@
 												</c:forEach>
 
 											</div>
-											<div class="modal-footer">
-											</div>
+											<div class="modal-footer"></div>
 										</div>
 									</div>
 								</div>
@@ -306,7 +317,6 @@
 							</div>
 							<!-- End -->
 						</div>
-
 				</section>
 
 				<!-- 控制私訊彈跳視窗開始 -->
@@ -318,7 +328,6 @@
 						});
 					});
 				</script>
-				<!-- 控制私訊彈跳視窗結束 -->
 
 				<!-- Footer Section -->
 				<footer>
@@ -348,15 +357,13 @@
 				<script src="/js/contact-form-script.min.js"></script>
 				<script src="/js/main.js"></script>
 				<!-- Placed at the end of the document so the pages load faster -->
-				<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
-				<!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
-				<!-- 		crossorigin="anonymous"></script> -->
-				<script> 
+				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+				<script>
 					window.jQuery
 						|| document
 							.write('<script src="/js/jquery-slim.min.js"><\/script>')
 				</script>
-				<script src="/js/popper.min.js"></script>Ｆ
+				<script src="/js/popper.min.js"></script>
 				<script src="/js/bootstrap.min.js"></script>
 				<script src="/js/vendor/holder.min.js"></script>
 				<script>
@@ -428,12 +435,8 @@
 							//	 			modal.find('#account').val(account)
 						})
 
-
 					})
-
-
 				</script>
-
 
 			</body>
 

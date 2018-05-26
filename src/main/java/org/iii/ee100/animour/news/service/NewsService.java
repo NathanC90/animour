@@ -1,6 +1,8 @@
 package org.iii.ee100.animour.news.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.news.dao.NewsDao;
@@ -47,5 +49,15 @@ public class NewsService{
 		return newsDao.findByMember_id(id);
 	}
 	
-	
+	public Map<String,Integer[]> chart(){
+		List<News> list = newsDao.findAll();
+		Map<String,Integer[]> map = new HashMap<String,Integer[]>();
+		Integer[] array = new Integer[2];
+		for(News news:list) {
+			array[0] = news.getTicketQuantity();
+			array[1] = news.getTicketQuantity() * news.getTicketPrice();
+			map.put(news.getSubject(), array);
+		}
+		return map;
+	}
 }

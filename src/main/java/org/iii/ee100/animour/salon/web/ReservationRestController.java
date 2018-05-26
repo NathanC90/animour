@@ -40,21 +40,19 @@ public class ReservationRestController {
 
 	// findAll
 	@RequestMapping(method = RequestMethod.GET, produces = { "application/json" })
-	public List<Reservation> reservationForm(PageForAnimour pageForAnimour){
+	public List<Reservation> reservationForm(PageForAnimour pageForAnimour) {
 		List<Reservation> all = null;
 		try {
 			all = reservationService.getAll();
 		} catch (Exception e) {
 		}
-		for(Reservation reservation:all) {
+		for (Reservation reservation : all) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-			String date=sdf.format(reservation.getReservationDate());
-			System.out.println("bbbbbb"+date.getClass());
+			String date = sdf.format(reservation.getReservationDate());
 			reservation.setAppointDate(date);
 		}
 		Page<Reservation> page = reservationService.getReservationPage(pageForAnimour);
 		all = page.getContent();
-		System.out.println("aaaaa"+all.get(0).getAppointDate().getClass());
 		return all;
 
 	}
@@ -70,43 +68,53 @@ public class ReservationRestController {
 	public Reservation getReservationById(@PathVariable(value = "id") Long reservationId) {
 		return reservationService.getOne(reservationId);
 	}
+	
+	
+	//只回傳特定會員的訂單
+	@RequestMapping(value = "/reservation/member", method = RequestMethod.GET, produces = { "application/json" })
+	public List<Reservation> getMemberContent(Reservation reservation) {
+		Member currentMember = memberService.getNewCurrentMember();
+		List<Reservation> all = null;
+		try {
+			all = reservationService.getMemberContent(currentMember.getId());
+		} catch (Exception e) {
+		}
+		for (Reservation reservation2 : all) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String date = sdf.format(reservation2.getReservationDate());
+			reservation2.setAppointDate(date);
+		}		
+		return all;
+	}
 
 	// insert a Reservation by id
 	// 付款成功不能改資料
 	@RequestMapping(value = "/reservation/{id}", method = RequestMethod.POST)
-	public ResponseEntity<?> updateReservation(@PathVariable(value = "id")Long id, Reservation reservation,@RequestParam("member_id")Long memberid) throws ParseException {
-//		System.out.println("memberIdaaa"+memberId);
-//		reservation.setMember(memberService.getOne(memberId));
-//		 Reservation changeContent =reservationService.getOne(id);
-//		 changeContent.setContent(reservation.getContent());
-//		 changeContent.setDesigner(reservation.getDesigner());
-//		 changeContent.setPayment(reservation.getPayment());
-//		 changeContent.setFrontTime(reservation.getFrontTime());
-//		 changeContent.setPrice(reservation.getPrice());
-//		 changeContent.setTotalTime(reservation.getTotalTime());
-//		 changeContent.setReservationDate(reservation.getReservationDate());
+	public ResponseEntity<?> updateReservation(@PathVariable(value = "id") Long id, Reservation reservation,
+			@RequestParam("member_id") Long memberid) throws ParseException {
+		//取得訂單pk、預約日期
 		reservation.getId();
-			reservation.getAppointDate();
-		 	System.out.println("aaaaaccccc"+reservation.getAppointDate());
-		 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-//		 	System.out.println("id"+id+"ddddd"+reservation.getAppointDate());
-		 	Date date = sdf.parse(reservation.getAppointDate());
-//		 	System.out.println("ccccc"+date);
-	 	reservation.setReservationDate(date);
-reservation.setMember(memberService.getOne(memberid));	 	
-		 		reservationService.insertReservation(reservation);
+		reservation.getAppointDate();
+		//String 轉成 Date
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = sdf.parse(reservation.getAppointDate());
+		reservation.setReservationDate(date);
+		//把回傳的memberid set進會員裡面
+		reservation.setMember(memberService.getOne(memberid));
+		reservationService.insertReservation(reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 
 	}
-//	@RequesPramm , 不能接
-// @
-//	@RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes = { "application/json" })
-//	public ResponseEntity<?> updateMember(@PathVariable(value = "id") Long id,
-//			@Valid @RequestBody接Jonson Member member) {
-//		memberService.insert(memberService.getOne(id));
-//		return new ResponseEntity<Member>(member, HttpStatus.OK);
-//
-//	}
+	// @RequesPramm , 不能接
+	// @
+	// @RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes
+	// = { "application/json" })
+	// public ResponseEntity<?> updateMember(@PathVariable(value = "id") Long id,
+	// @Valid @RequestBody接Jonson Member member) {
+	// memberService.insert(memberService.getOne(id));
+	// return new ResponseEntity<Member>(member, HttpStatus.OK);
+	//
+	// }
 
 	@RequestMapping(value = { "/reservation/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long reservationId) {

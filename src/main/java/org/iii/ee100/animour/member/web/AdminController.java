@@ -27,6 +27,14 @@ public class AdminController {
 		public String adminMember() {
 			return "/admin/member/admin_copy2a";
 		}
+		
+		//前往活動後台頁
+		@PreAuthorize("hasRole('Admin')")
+		@RequestMapping(value = "/admin/news", method = RequestMethod.GET)
+		public String adminNews() {
+			return "/admin/news/manage";
+		}
+		
 
 		// 前往文章後台頁
 		@PreAuthorize("hasRole('Admin')")

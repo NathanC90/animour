@@ -6,5 +6,5 @@ import org.iii.ee100.animour.common.dao.GenericDao;
 import org.iii.ee100.animour.salon.entity.Reservation;
 
 public interface ReservationDao extends GenericDao<Reservation> {
-	List<Reservation> findByMember_id(Long memberid);
+	List<Reservation> findByMemberId(Long id);
 }

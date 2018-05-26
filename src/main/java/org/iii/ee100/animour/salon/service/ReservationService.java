@@ -50,6 +50,11 @@ public class ReservationService extends GenericService<Reservation> {
 	public ArrayList<Reservation> getAllReservationContent() {
 		return Lists.newArrayList(reservationDao.findAll());
 	}
+	public ArrayList<Reservation> getMemberContent(long id) {
+		return Lists.newArrayList(reservationDao.findByMemberId(id));
+	}
+	
+	
 
 	public Reservation updateReservation(Reservation reservation) {
 		reservation.setAppointDate(reservation.getAppointDate());
