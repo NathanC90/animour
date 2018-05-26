@@ -92,6 +92,26 @@
 
 
 <body>
+<!-- Export Excel JS starts -->
+<script language="JavaScript"> 
+function saveToExcel(str) { 
+   try { 
+      var xls = new ActiveXObject("Excel.Application"); 
+      xls.Visible = true; 
+   } 
+   catch(e) { 
+      alert("開啟失敗，請確定你的電腦已經安裝excel，且瀏覽器必須允許ActiveX控件執行"); 
+      return; 
+   } 
+   var objTable = document.getElementById(str); 
+   var xlBook = xls.Workbooks.Add; 
+   var xlsheet = xlBook.Worksheets(1); 
+   for (var i=0;i<objTable.rows.length;i++) 
+      for (var j=0;j<objTable.rows[i].cells.length;j++) 
+         xlsheet.Cells(i+1,j+1).value = objTable.rows[i].cells[j].innerHTML; 
+} 
+</script>
+<!-- Export Excel JS ends -->
 <!-- adminNavbar Starts -->
 		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
 <!-- adminNavbar ends -->
@@ -100,24 +120,78 @@
 	<section class="section">
 		<div class="container">
 			<div class="row">
-			<!-- Insert Test starts-->
-				<h3>查詢一筆活動</h3>
-					<form name="selectOneForm" action="/findOneNews" method="GET">
-						<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
-						<input type="submit" value="查詢單筆"> 
-					</form>
-					<!-- Show One News starts-->
-					<div class="container">
-						<div class="row">
-							<h2>活動名稱：${oneNews.subject}</h2><br>
-							<h4>活動日期：${oneNews.eventDate}</h4><br>
-							<h4>活動地點：${oneNews.address}</h4><br>
-							<h4>活動簡介：${oneNews.content}</h4><br>
+			<div class="col-md-12 content">
+	<div class="dashhead">
+		<div class="dashhead-titles">
+			<h2 class="dashhead-title">活動紀錄</h2>
+		</div>
+
+		<div class="btn-toolbar dashhead-toolbar">
+			<div class="btn-toolbar-item input-with-icon">
+				<input type="text" value="01/01/15 - 01/08/15" class="form-control"
+					data-provide="datepicker"> <span class="icon icon-calendar"></span>
+			</div>
+		</div>
+	</div>
+	<div class="flextable table-actions">
+		<div class="flextable-item flextable-primary">
+			<div class="btn-toolbar-item input-with-icon">
+				<input type="text" class="form-control input-block"
+					placeholder="搜尋活動"> <span
+					class="icon icon-magnifying-glass"></span>
+			</div>
+		</div>
+	</div>
+			<!-- Show One News starts-->
+		<h3>查詢一筆活動</h3>
+			<form name="selectOneForm" action="/findOneNews" method="GET">
+				<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
+				<input type="submit" value="查詢單筆"> 
+			</form>
+				
+	<table class="table" data-sort="table">
+		<div class="table-responsive container">
+		    <div class="row">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="select-all" id="selectAll"></th>
+					<th>活動編號</th>
+					<th>活動名稱</th>
+					<th>活動日期</th>
+					<th>活動地點</th>
+					<th>費用</th>
+					<th>人數</th>
+					<th>編輯</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="checkbox" class="select-row"></td>
+					<td><a href="#">${oneNews.id}</a></td>
+					<td>${oneNews.subject}</td>
+					<td>${oneNews.eventDate}</td>
+					<td>${oneNews.address}</td>
+					<td>${oneNews.ticketPrice}</td>
+					<td>${oneNews.ticketQuantity}</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-primary" title="修改">
+								<span class="icon icon-pencil"></span>
+							</button>
+							<button type="button" class="btn btn-outline-primary" title="刪除">
+								<span class="icon icon-erase"></span>
+							</button>
 						</div>
-					</div>
-						<!-- Show One News ends -->
-						
-						
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+	<!-- Table Ends -->
+						<!-- Show One News ends -->						
+	<div class="container">
+    <div class="row">
 			</div>
 		</div>
 	<div class="container">
@@ -128,18 +202,77 @@
 				</form>
 			<hr>
 		</div>
-		<!-- Show All News starts -->
-						<div class="row">
-							<c:forEach var="news" items="${allNews}">
-								<h2>活動名稱：${news.subject}</h2>
-								<h4>活動日期：${news.eventDate}</h4>
-								<h4>活動地點：${news.address}</h4>
-								<h4>活動簡介：${news.content}</h4>
-							</c:forEach>
-						</div>
-						
-						<!-- Show All News ends -->
+	<!-- Show All News starts -->
+
+<div class="container">
+    <div class="row">
+
+<div class="col-md-12 content">
+	
+
+	<div class="flextable table-actions">
+		
+		<!-- Export Excel starts -->
+		<div class="flextable-item">
+			<div class="btn-group" style="float:right">
+						<!--   給使用者按的下載按鈕，點擊後呼叫tableToExcel
+						傳入參數為(要匯出的Table的Id, 定義一個名字, 匯出後的Excel檔名)-->
+				<button  type="button" class="btn btn-outline-primary" title="匯出成Excel檔"
+						       onclick="tableToExcel('myTableId', 'myTableId', '活動紀錄表單.xls')">
+					<span class="icon icon-upload"></span>
+						<!-- 需要一個隱藏的超連結，id="dlink" -->
+					<a id="dlink" style="display:none;"></a>
+				</button>
+			</div>
+		</div>
+		<!-- Export Excel ends -->
 	</div>
+	</div>
+	<!-- Table Starts  -->
+	<!-- //要匯出的Table，記得訂id -->
+		<table class="table" data-sort="table" id="myTableId">
+		<div class="table-responsive container">
+		    <div class="row">
+			<thead>
+				<tr>
+					<th><input type="checkbox" class="select-all" id="selectAll"></th>
+					<th>活動編號</th>
+					<th>活動名稱</th>
+					<th>活動日期</th>
+					<th>活動地點</th>
+					<th>費用</th>
+					<th>人數</th>
+					<th>編輯</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="news" items="${allNews}">
+				<tr>
+					<td><input type="checkbox" class="select-row"></td>
+					<td><a href="#">${news.id}</a></td>
+					<td>${news.subject}</td>
+					<td>${news.eventDate}</td>
+					<td>${news.address}</td>
+					<td>${news.ticketPrice}</td>
+					<td>${news.ticketQuantity}</td>
+					<td>
+						<div class="btn-group">
+							<button type="button" class="btn btn-outline-primary" title="修改">
+								<span class="icon icon-pencil"></span>
+							</button>
+							<button type="button" class="btn btn-outline-primary" title="刪除">
+								<span class="icon icon-erase"></span>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+		</table>
+	</div>
+</div>
+	<!-- Table Ends -->
+						<!-- Show All News ends -->
 	<div class="container">
 		<div class="row">
 			<h3>刪除一筆活動</h3>
@@ -252,6 +385,66 @@
 	</section>
 
 	<!-- 重複的內容結束 -->
+
+
+<script>
+function tableToExcel(table, name, filename) {
+  var uri = 'data:application/vnd.ms-excel;base64,';
+  //定義格式及編碼方式
+
+  var template = '<html xmlns:o="urn:schemas-microsoft-com:office:office"'
+               + '      xmlns:x="urn:schemas-microsoft-com:office:excel"'
+               + '      xmlns="http://www.w3.org/TR/REC-html40">'
+               + '<head>'
+               + '<!--[if gte mso 9]>'
+               + '<xml>'
+               + '  <x:ExcelWorkbook>'
+               + '    <x:ExcelWorksheets>'
+               + '      <x:ExcelWorksheet>'
+               + '        <x:Name>{worksheet}</x:Name>'
+               + '        <x:WorksheetOptions>'
+               + '          <x:DisplayGridlines/>'
+               + '        </x:WorksheetOptions>'
+               + '      </x:ExcelWorksheet>'
+               + '    </x:ExcelWorksheets>'
+               + '  </x:ExcelWorkbook>'
+               + '</xml>'
+               + '<![endif]-->'
+               + '</head>'
+               + '<body>'
+               + '  <table>{table}</table>'
+               + '</body>'
+               + '</html>';
+  //Excel的基本框架
+
+  if (!table.nodeType)
+    table = document.getElementById(table)
+
+  var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+
+  document.getElementById("dlink").href = uri + base64(format(template, ctx));
+  //將超連結指向Excel內容
+  document.getElementById("dlink").download = filename;
+  //定義超連結下載的檔名
+  document.getElementById("dlink").click();
+  //執行點擊超連結的動作來下載檔案
+  
+}
+
+function base64(s) {
+  return window.btoa(unescape(encodeURIComponent(s)))
+}
+//將文字編譯成Base64格式
+
+function format(s, c) {
+  return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; })
+}
+//將文字裡的{worksheet}和{table}替換成相對應文字
+//把Table內容塞進Excel框架內
+
+</script>
+
+<!-- 每頁不同內容從此結束 -->
 
 
 <script src="../admin/assets/js/jquery.min.js"></script>
