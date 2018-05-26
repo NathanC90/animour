@@ -101,7 +101,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" title="活動管理" data-toggle="tooltip" data-placement="right" data-container="body">
+          <a class="nav-link" href="/admin/news" title="活動管理" data-toggle="tooltip" data-placement="right" data-container="body">
             <span class="icon icon-globe"></span>
             <small class="iconav-nav-label hidden-md-up">活動管理</small>
           </a>
