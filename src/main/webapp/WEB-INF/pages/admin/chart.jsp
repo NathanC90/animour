@@ -99,7 +99,7 @@
 
 
 					</div>
-					<h3>部落客獲讚統計:</h3>
+					<h3>部落客統計:</h3>
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="myChart" style="height: 450px; width: 100%;"></div>
@@ -143,46 +143,66 @@
 				$.getJSON('/articles/chart', {}, function (data) {
 					console.log(data);
 					//obj轉型Map
-					var dataArray = new Array();
-					var memberArray = new Array();
-					var thumbsArray = new Array();
+					var thumbArray = new Array();
+					var clickArray = new Array();
 					const map = new Map();
 					let obj = data;
 					Object.keys(obj).forEach(key => {
 						map.set(key, obj[key]);
-						// memberArray.push(key);
-						// thumbsArray.push(obj[key]);
-						dataArray.push({ 'label': key, 'y': obj[key] });
+						thumbArray.push({ 'label': key, 'y': obj[key][0] });
+						clickArray.push({ 'label': key, 'y': obj[key][1] });
 					});
-					// console.log(map);
-					// console.log(memberArray);
-					// console.log(thumbsArray);
+					// console.log(ticketArray);
+					// console.log(priceArray);
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Likes Chart",
+							text: "Author Chart",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
 							fontSize: 25,
 							padding: 10
 						},
-						axisY: {
-							title: "likes",
-							suffix: "",
-							includeZero: false
-						},
+						axisY: [
+							{
+								title: "Likes",
+								lineColor: "#2E8B57",
+								tickColor: "#2E8B57",
+								labelFontColor: "#2E8B57",
+								titleFontColor: "#2E8B57",
+								lineThickness: 2
+							},
+							{
+								title: "Clicks",
+								lineColor: "#4169E1",
+								tickColor: "#4169E1",
+								labelFontColor: "#4169E1",
+								titleFontColor: "#4169E1",
+								lineThickness: 2
+							}
+						],
 						axisX: {
 							title: "Author",
 							interval: 1,
-							labelAngle: -70
+							labelAngle: -40
 						},
-						data: [{
-							type: "column",
-							// color: "#B0D0B0",
-							// yValueFormatString: "#,##0.0#" % "",
-							dataPoints: dataArray
-						}]
+						data: [  //array of dataSeries     
+							{ //dataSeries - first quarter
+								type: "column",
+								color:"#2E8B57",
+								name: "First Quarter",
+								dataPoints: thumbArray
+							},
+							{ //dataSeries - second quarter
+								type: "column",
+								color:"#4169E1",
+								name: "Second Quarter",
+								axisYIndex: 1,
+								dataPoints: clickArray
+							}
+						]
+						
 					};
 					$("#myChart").CanvasJSChart(options);
 				});
@@ -307,6 +327,7 @@
 							},
 							{
 								title: "Income",
+								prefix: "NT$",
 								lineColor: "#66CDAA",
 								tickColor: "#66CDAA",
 								labelFontColor: "#66CDAA",

@@ -73,8 +73,8 @@ public class ArticleRestController {
 	}
 
 	@RequestMapping(path = { "/chart" }, method = RequestMethod.GET, produces = { "application/json" })
-	public Map<String, Integer> chart() {
-		return forumService.findByStatusOrderByThumbsQuantityDesc();
+	public Map<String, ArrayList<Long>> chart() {
+		return forumService.chart();
 	}
 
 	// 新增留言

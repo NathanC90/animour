@@ -68,7 +68,7 @@ public class Article extends GenericEntity {
 	private int commentLength;
 
 	@Column(name = "THUMBS_QUANTITY")
-	private int thumbsQuantity;
+	private Integer thumbsQuantity;
 	
 	@Transient
 	private int totalPage;

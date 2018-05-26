@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.forum.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +40,8 @@ public class ForumService extends GenericService<Article> {
 	public void setTransientForPage(Page<Article> articleList) {
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
-			article.getCategory().setArticleQuantity(articleDao.findByCategoryIdAndStatus(article.getCategory().getId(),!false).size());
+			article.getCategory().setArticleQuantity(
+					articleDao.findByCategoryIdAndStatus(article.getCategory().getId(), !false).size());
 			article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		}
 	}
@@ -49,7 +51,7 @@ public class ForumService extends GenericService<Article> {
 		setTransientForPage(articleList);
 		return articleList;
 	}
-	
+
 	public Page<Article> getPageByPostTime(PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByOrderByPostTimeDesc(pageable);
 		setTransientForPage(articleList);
@@ -63,7 +65,7 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
-		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject, pageable,!false);
+		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject, pageable, !false);
 		setTransientForPage(articleList);
 		return articleList;
 	}
@@ -99,7 +101,7 @@ public class ForumService extends GenericService<Article> {
 
 	public Category getOneCateGory(Long id) {
 		Category category = categoryDao.findOne(id);
-		category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(id,!false).size());
+		category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(id, !false).size());
 		return category;
 	}
 
@@ -114,7 +116,7 @@ public class ForumService extends GenericService<Article> {
 	public List<Article> getPopularFour() {
 		return articleDao.findTop4ByStatusOrderByClickDesc(!false);
 	}
-	
+
 	public List<Article> getThumbsFour() {
 		return articleDao.findTop4ByStatusOrderByThumbsQuantityDesc(!false);
 	}
@@ -124,39 +126,58 @@ public class ForumService extends GenericService<Article> {
 	}
 
 	public List<Article> getArticlesSearchBySubject(String subject) {
-		return articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject,!false);
+		return articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject, !false);
 	}
 
 	public List<Article> getArticlesByCategoryId(Long categoryId) {
-		return articleDao.findByCategoryIdAndStatus(categoryId,!false);
+		return articleDao.findByCategoryIdAndStatus(categoryId, !false);
 	}
 
 	public List<Category> getAllCategory() {
 		List<Category> categoryList = Lists.newArrayList(categoryDao.findAll());
 		for (Category category : categoryList) {
-			category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(category.getId(),!false).size());
+			category.setArticleQuantity(articleDao.findByCategoryIdAndStatus(category.getId(), !false).size());
 		}
 		return categoryList;
 	}
-	
-	//getArticlesByMemberId
+
+	// getArticlesByMemberId
 	public List<Article> getArticlesByMemberId(Long Id) {
-		return articleDao.findByMemberIdAndStatus(Id,!false);
+		return articleDao.findByMemberIdAndStatus(Id, !false);
 	}
-	
-	public Map<String,Integer> findByStatusOrderByThumbsQuantityDesc() {
+
+//	public Map<String, Integer> findByStatusOrderByThumbsQuantityDesc() {
+//		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
+//		Map<String, Integer> map = new HashMap<String, Integer>();
+//		for (Article article : list) {
+//			if (map.containsKey(article.getMember().getAccount())) {
+//				map.put(article.getMember().getAccount(),
+//						map.get(article.getMember().getAccount()) + article.getThumbsQuantity());
+//			} else {
+//				map.put(article.getMember().getAccount(), article.getThumbsQuantity());
+//			}
+//		}
+//		return map;
+//	}
+
+	public Map<String, ArrayList<Long>> chart() {
 		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
-		Map<String,Integer> map = new HashMap<String,Integer>();
-		for(Article article:list) {
+		Map<String, ArrayList<Long>> map = new HashMap<String, ArrayList<Long>>();
+		for (Article article : list) {
+			System.out.println(article.getId());
+			ArrayList<Long> array = new ArrayList<Long>();
 			if (map.containsKey(article.getMember().getAccount())) {
-				map.put(article.getMember().getAccount(), map.get(article.getMember().getAccount()) + article.getThumbsQuantity());
+			array.add(0, map.get(article.getMember().getAccount()).get(0) + article.getThumbsQuantity());
+			array.add(1, map.get(article.getMember().getAccount()).get(1) + article.getClick());
+			System.out.println(array);
 			}else {
-				map.put(article.getMember().getAccount(), article.getThumbsQuantity());
+				array.add(0, article.getThumbsQuantity().longValue());
+				array.add(1, article.getClick());	
 			}
+			map.put(article.getMember().getAccount(), array);
 		}
-		
+		System.out.println(map);
 		return map;
 	}
-	
 
 }
