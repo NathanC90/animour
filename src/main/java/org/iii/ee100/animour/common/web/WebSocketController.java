@@ -2,7 +2,12 @@ package org.iii.ee100.animour.common.web;
 
 import java.security.Principal;
 
+import org.iii.ee100.animour.member.entity.Chat;
+import org.iii.ee100.animour.member.entity.Member;
+import org.iii.ee100.animour.member.service.ChatService;
+import org.iii.ee100.animour.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -12,16 +17,27 @@ public class WebSocketController {
 	
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
+	
+	@Autowired
+	private MemberService memberService;
+	
+	@Autowired
+	private ChatService chatService;
 
-	@MessageMapping("/chat")
-	public void handleChat(Principal principal, String msg) {
-		if(principal.getName().equals("ViewSonic")){
-			System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
-			simpMessagingTemplate.convertAndSendToUser("BenQ", "/queue/chat", principal.getName() + "-發送訊息:" + msg);
-		} else {
-			System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
-			simpMessagingTemplate.convertAndSendToUser("ViewSonic", "/queue/chat", principal.getName() + "-發送訊息:" + msg);
-		}
+	@MessageMapping("/chat/{memberId}")
+	public void handleChat(Principal principal, Chat chat, @DestinationVariable Long memberId) {
+		//if(principal.getName().equals("ViewSonic")){
+			System.out.println("++++++++++++++++"+chat.getMessage()+"+++++++++++++++++");
+			System.out.println("++++++++++++++++"+memberId+"+++++++++++++++++");
+			//memberService.getOne(memberId).getAccount();
+			Member current = memberService.getOneByAccount(principal.getName());
+			chat.setFromWho(current);
+			chat.setMemberId(memberId);
+			simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat", chat);
+		//} else {
+			//System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
+			//simpMessagingTemplate.convertAndSendToUser("ViewSonic", "/queue/chat", principal.getName() + "-發送訊息:" + msg);
+		//}
 	}
 	
 }

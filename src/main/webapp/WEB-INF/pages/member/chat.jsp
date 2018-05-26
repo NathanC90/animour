@@ -143,42 +143,7 @@
 	<!-- Footer Section End-->
 
 	<script>
-		var stompClient = null;
-
-		function setConnected(connected) {
-			$("#connect").prop("disabled", connected);
-			$("#disconnect").prop("disabled", !connected);
-			if (connected) {
-				$("#conversation").show();
-			} else {
-				$("#conversation").hide();
-			}
-			$("#greetings").html("");
-		}
-
-		/* function connect() {
-			var socket = new SockJS('/chatTest');
-			stompClient = Stomp.over(socket);
-			stompClient.connect({}, function(frame) {
-				setConnected(true);
-				console.log('Connected: ' + frame);
-				// subscribe 改成
-				stompClient.subscribe("/user/queue/chat", function(
-						message) {
-					showGreeting(message.body);
-				});
-				alert("alert from chat")
-			});
-		} */
-
-		function disconnect() {
-			if (stompClient !== null) {
-				stompClient.disconnect();
-			}
-			setConnected(false);
-			console.log("Disconnected");
-		}
-
+		
 		function sendText() {
 			stompClient.send("/app/chat", {}, $("#name").val());
 			// alert("alert from chat")

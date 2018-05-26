@@ -103,16 +103,6 @@
 				<script src="/js/main.js"></script>
 
 				<script>
-					$(document).ready(function () {
-						$(".btn.dropdown-toggle").hover(function (event) {
-							event.preventDefault();
-							//alert("e04")
-						});
-					})
-
-				</script>
-
-				<script>
 					var stompClient = null;
 
 					function setConnected(connected) {
@@ -141,9 +131,11 @@
 							});
 							// 兩種訂閱寫在一起，用一個連線，一個 endpoint
 							stompClient.subscribe("/user/queue/chat", function (
-								message) {
+								chat) {
 								//alert("from chat")
-								showGreetingChat(message.body);
+								showChat(JSON.parse(chat.body));
+								//showChat(chat.body);
+								$("#chatBox").css("display", "")
 							});
 						});
 					}
@@ -157,16 +149,15 @@
 					}
 
 					// 發送訊息，這邊用不到
-					function sendText() {
-						stompClient.send("/app/chat", {}, $("#name").val());
-						//alert("alert from noti")
-						$("#greetings").append(
-							"<tr><td style='color:blue'>" + $("#name").val()
-							+ "</td></tr>");
-					}
+					// function sendText() {
+					// 	stompClient.send("/app/chat", {}, $("#name").val());
+					// 	//alert("alert from noti")
+					// 	$("#greetings").append(
+					// 		"<tr><td style='color:blue'>" + $("#name").val()
+					// 		+ "</td></tr>");
+					// }
 
-
-					// 接收socket來的訊息，新增元素顯示
+					// 接收socket來的訊息，新增元素顯示，型別為JSON物件
 					function showGreeting(notice) {
 						if ($('#nonitice').length != 0) {
 							$("#nonitice").remove();

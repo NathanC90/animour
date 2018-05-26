@@ -68,7 +68,7 @@
 						position: fixed;
 						width: 270px;
 						bottom: 0;
-						right: 200px;
+						right: 5%;
 					}
 
 					.chat-header {
@@ -157,28 +157,28 @@
 			</head>
 
 			<body>
-				<div class="container"  style="z-index:9999;position: relative;">
+				<input type="hidden" id="memberId" value="${member.id}">
+				<div class="container" style="z-index:9999;position: relative;">
 					<div class="row pt-3">
 						<div class="chat-main">
 							<div class="col-md-12 chat-header rounded-top bg-primary text-white">
 								<div class="row">
 									<div class="col-md-6 username pl-2">
 										<i class="fa fa-circle text-success" aria-hidden="true"></i>
-										<h6 class="m-0">Adam Finn</h6>
+										<h6 class="m-0">${member.account}</h6>
 									</div>
 									<div class="col-md-6 options text-right pr-2">
-										<i class="fa fa-plus mr-2" aria-hidden="true"></i>
+										<i class="fa fa-plus mr-2 hide-chat-box" aria-hidden="true"></i>
 										<i class="fa fa-video-camera" aria-hidden="true"></i>
 										<i class="fa fa-circle text-success live-video mr-1" aria-hidden="true"></i>
-										<i class="fa fa-phone mr-2" aria-hidden="true"></i>
-										<i class="fa fa-cog mr-2" aria-hidden="true"></i>
-										<i class="fa fa-times hide-chat-box" aria-hidden="true"></i>
+
 									</div>
 								</div>
 							</div>
 							<div class="chat-content">
 								<div class="col-md-12 chats border">
-									<ul class="p-0">
+									<ul class="p-0" id="appendMsg">
+										<!--
 										<li class="pl-2 pr-2 bg-primary rounded text-white text-center send-msg mb-1">
 											hiii
 										</li>
@@ -220,33 +220,26 @@
 										</li>
 										<li class="pl-2 pr-2 bg-primary rounded text-white text-center send-msg mb-1">
 											Ok
-										</li>
+										</li> -->
 									</ul>
 								</div>
 								<div class="col-md-12 message-box border pl-2 pr-2 border-top-0">
-									<input type="text" class="pl-0 pr-0 w-100" placeholder="Type a message..." />
+									<form class="form-inline" id="msgForm">
+										<div class="form-group">
+											<input type="text" id="msgArea" class="pl-0 pr-0 w-100 form-control" placeholder="Type a message..." />
+										</div>
+									</form>
 									<div class="tools">
+										<i class="fa fa-send" aria-hidden="true" id="sendMsg"></i>
 										<i class="fa fa-picture-o" aria-hidden="true"></i>
-										<i class="fa fa-telegram" aria-hidden="true"></i>
-										<i class="fa fa-bell" aria-hidden="true"></i>
-										<i class="fa fa-meh-o" aria-hidden="true"></i>
 										<i class="fa fa-paperclip" aria-hidden="true"></i>
-										<i class="fa fa-gamepad" aria-hidden="true"></i>
 										<i class="fa fa-camera" aria-hidden="true"></i>
-										<i class="fa fa-folder" aria-hidden="true"></i>
-										<i class="fa fa-thumbs-o-up m-0" aria-hidden="true"></i>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-
-				<script type="text/javascript">
-					$('.hide-chat-box').click(function () {
-						$('.chat-content').slideToggle();
-					});
-				</script>
 
 				<!-- JavaScript & jQuery Plugins -->
 				<script src="/js/jquery-min.js"></script>
@@ -267,6 +260,74 @@
 					$('.hide-chat-box').click(function () {
 						$('.chat-content').slideToggle();
 					});
+				</script>
+				<script>
+					var fromWhoId;
+					$(document).ready(function () {
+
+
+
+
+
+					});
+
+					function sendMsg() {
+						//alert(fromWhoId);
+						if (fromWhoId == null) {
+							fromWhoId = $("#memberId").attr('value');
+						}
+						stompClient.send("/app/chat/" + fromWhoId, {}, JSON.stringify({ 'message': $("#msgArea").val() }));
+						// alert("alert from chat")
+						$("#appendMsg").append(`<li class="pl-2 pr-2 bg-primary rounded text-white text-center send-msg mb-1">` +
+							$("#msgArea").val()
+							+ `</li>`);
+					}
+
+					// 接收socket來的訊息，新增元素顯示，型別為JSON物件
+					function showChat(chat) {
+						//alert("有打到")
+						var template = `<li class="p-1 rounded  mb-1">
+											<div class="receive-msg">
+												<img src="demo/image1.jpg">
+												<div class="receive-msg-desc rounded text-center mt-1 ml-1 pl-2 pr-2">
+													<p class="pl-2 pr-2 rounded">`+ chat.message + `</p>
+												</div>
+											</div>
+										</li>`;
+						$("#appendMsg").append(template);
+						$("h6").text(chat.fromWho.account);
+						
+						fromWhoId = chat.fromWho.id;
+										//alert(fromWhoId);
+						//bindNotice();
+					}
+
+
+					$(function () {
+						$('#msgArea').keypress(function (e) {
+							if (e.which == 13) {
+								$("#msgForm").submit();
+								sendMsg();
+								$('#msgArea').val('');
+							}
+						});
+
+						$("#sendMsg").click(function () {
+							$("#msgForm").submit();
+							sendMsg();
+							$('#msgArea').val('');
+						});
+						$("#msgArea").on('submit', function (e) {
+							e.preventDefault();
+						});
+						$("#connect").click(function () {
+							connect();
+						});
+						$("#disconnect").click(function () {
+							disconnect();
+						});
+					});
+
 				</script>
 
 
