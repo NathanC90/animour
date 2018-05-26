@@ -214,9 +214,7 @@
                                     <li>
                                         <a href="/reservation">預約</a>
                                     </li>
-                                    <li>
-                                        <a href="/appointment/testForm">結帳</a>
-                                    </li>
+                                    
                                 </ul>
                             </li>
                             <li>
