@@ -11,6 +11,14 @@
 　var Today=new Date();
 　document.write("今天日期是 " + Today.getFullYear()+ " 年 " + (Today.getMonth()+1) + " 月 " + Today.getDate() + " 日");
 </script>
+<style>
+.h1{
+font-family:微軟正黑體
+}
+.p{
+font-family:微軟正黑體
+}
+</style>
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -44,7 +52,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Viewport Meta Tag -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Animour</title>
+<title>Animour 新增活動貼文</title>
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 <!-- Main Style -->
@@ -66,11 +74,15 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+<link rel="stylesheet" type="text/css" href="css/newsstyle.css">
 
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="css/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
 <body>
@@ -96,9 +108,38 @@
 	<!-- Page Header End -->
 
 	<!-- Page Content Start 重複的內容開始 -->
-	<div>新增成功！
-	<h2>${news.subject}</h2>
+	<div class="container" style="padding:20px 20px 20px 20px; margin:auto">
+			<div class="jumbotron" style="padding-top: 15px; padding-bottom: 15px;	border-radius:15px; margin: auto">
+			
+			  <h1 class="display-4" style="font-family:微軟正黑體; padding:10px 5px 15px 20px">新增活動成功！</h1>
+	<div class="container" style="padding-top: 15px; padding-bottom: 15px">
+		<div class="row">
+			<!-- Jumbotron starts-->
+			  <div style="float:left" >
+			    <img src="https://png.icons8.com/cotton/2x/checkmark.png"/>
+			  </div>
+				
+			  <div class="insert" style="float:right; valign:center">
+				  <p class="lead">活動名稱：${news.subject}</p>
+				  <p class="lead">活動日期：${news.eventDate}</p>
+				  <p class="lead">活動地點：${news.address}</p>
+				  <p class="lead">活動簡介：${news.content}</p>		
+				  <p class="lead" style="display:inline-block">
+			    <a class="btn btn-primary btn-lg" href="/" role="button" style="border-radius:5px; margin:20px 20px 20px 0px">回首頁</a>
+			  </p>
+			  <p class="lead" style="display:inline-block;">
+			    <a class="btn btn-primary btn-lg" href="/news/insertNews" role="button" style="border-radius:5px; margin:20px 20px 20px 20px">繼續新增貼文</a>
+			  </p>	  
+			  </div>
+			  <hr>
+			</div>
+			<!-- Jumbotron ends -->
 	</div>
+	
+			  </div>
+	</div>
+	
+	
 
 	<!-- 重複的內容結束 -->
 
