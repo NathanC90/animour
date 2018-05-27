@@ -260,14 +260,14 @@
                         + '</li><li><i class="fa fa-user"></i>' + article.member.account
                         + '</li><li><i class="fa fa-pencil-square-o"></i>' + article.category.name
                         + '</li><li><i class="fa fa-comments"></i>' + article.commentLength
-                        + ' comment</li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images
+                        + ' 則留言</li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images
                         + '" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
                         + '</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right">'
                         + '<li><span><a href="findOne?id=' + article.id + '"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
                         + '<li id="thumb' + article.id + '"><span id="span' + article.id + '"><a name="thumb" style="color:#9c3;"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</a></span></li>'
-                        + '<li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li>'
+                        + '<li><span><a href="#"><i class="fa fa-share"></i> 分享</a></span></li>'
                         + '</ul><a href="/forum/findOne?id=' + article.id
-                        + '" class="pull-left btn btn-common btn-xs">詳細</a></div></article>'
+                        + '" class="pull-left btn btn-common btn-xs">詳細內容</a></div></article>'
                         + '<form id="thumbsform' + article.id + '" enctype="multipart/form-data"><input name="article" type="hidden" value="' + article.id + '"/></form>';
                       articlesString = articlesString + articleString;
                     }

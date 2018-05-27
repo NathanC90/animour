@@ -356,10 +356,9 @@
 	<section id="blog" class="section">
 		<!-- Container Starts -->
 		<div class="container">
-			<h1 class="section-title wow fadeInUpQuick">The Blog</h1>
+			<h1 class="section-title wow fadeInUpQuick">部落格分享</h1>
 			<p class="section-subcontent">
-				At vero eos et accusamus et iusto odio dignissimos ducimus qui <br>
-				blanditiis praesentium
+				與我們分享你的生活點滴
 			</p>
 			<!-- Row Starts -->
 			<div class="row">
@@ -384,10 +383,10 @@
 									style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
 									</p>
 								<div class="blog-one-footer">
-									<a href="/forum/findOne?id=${article.id}">Read More</a> <a
-										href="#"> <i class="icon-heart"></i> 0 Likes
+									<a href="/forum/findOne?id=${article.id}">詳細內容</a> <a
+										href=""> <i class="icon-heart"></i> ${article.thumbsQuantity} 讚
 									</a> <a href="/forum/findOne?id=${article.id}#comment"> <i
-										class="icon-bubbles"></i> ${article.commentLength} Comments
+										class="icon-bubbles"></i> ${article.commentLength} 則留言
 									</a>
 								</div>
 							</div>
