@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-		<%@ taglib prefix="sec"	uri="http://www.springframework.org/security/tags"%>
+		<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 			<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 			<html>
 
@@ -55,8 +56,6 @@
 					<!-- Navbar Starts -->
 					<jsp:include page="../navbar.jsp"></jsp:include>
 					<!-- Navbar ends -->
-
-
 					<!-- Page Header -->
 					<div class="page-header-section">
 						<div class="container">
@@ -211,6 +210,9 @@
 									</c:forEach>
 								</div>
 
+
+
+
 								<h4>動物資料</h4>
 								<div class="row">
 									<c:forEach var="animal" items="${animalls}">
@@ -317,18 +319,21 @@
 							</div>
 							<!-- End -->
 						</div>
+					</div>
+
 				</section>
 
-				<!-- 控制私訊彈跳視窗開始 -->
-				<button type="button" class="btn btn-common" data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="toChat">發送訊息</button>
-				<script>
-					$(document).ready(function () {
-						$("#toChat").click(function () {
-							$("#chatBox").css("display", "")
-						});
-					});
-				</script>
-
+        <!-- 控制私訊彈跳視窗開始 -->
+        <button type="button" class="btn btn-common" data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="toChat">發送訊息</button>
+        <script>
+          $(document).ready(function () {
+            $("#toChat").click(function () {
+              $("#chatBox").css("display", "")
+            });
+          });
+        </script>
+        <!-- 控制私訊彈跳視窗結束 -->
+        
 				<!-- Footer Section -->
 				<footer>
 					<jsp:include page="../footer.jsp"></jsp:include>
@@ -357,7 +362,9 @@
 				<script src="/js/contact-form-script.min.js"></script>
 				<script src="/js/main.js"></script>
 				<!-- Placed at the end of the document so the pages load faster -->
-				<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous"></script>
+				<!-- 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" -->
+				<!-- 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" -->
+				<!-- 		crossorigin="anonymous"></script> -->
 				<script>
 					window.jQuery
 						|| document
@@ -369,58 +376,128 @@
 				<script>
 					//預約訂單按鈕
 					$('#checkOrder').click(function () {
-						$.getJSON('/reservationForms/getServiceCotent', {},
-							function (data) {
+						$.getJSON('/reservations/reservation/member', {}, function (data) {
+							$.each(data, function (i, reservation) {
+								var cell2 = $('<td id="cellEdit2" class="inputContent"></td>').append(reservation.appointDate);
+								var cell3 = $('<td id="cellEdit3" class="inputContent"></td>').text(reservation.frontTime);
+								var cell4 = $('<td id="cellEdit4" class="inputContent"></td>').text(reservation.content);
+								var cell5 = $('<td id="cellEdit5" class="inputContent"></td>').text(reservation.designer);
+								var cell6 = $('<td id="cellEdit6" class="inputContent"></td>').text(reservation.totalTime);
+								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
+								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
+								var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
+								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]);
+								$('th').attr({ 'style': 'padding:auto' });
 
-							});
-						alert('aaa')
+								$('#showReservation').append(row);
+							})
+						});
 					})
 
-					$(document).ready(function () {
-						var a = $("#addFriend").attr('value');
-						if (a != null) {
-							$.getJSON('/api/member/all/member/friend/' + a, {}, function (result) {
+					$("#checkout").click(function () {
+						$.ajax({
+							url: '/SalonfrontEnd/CheckOut/CheckOutALL',
+							type: 'POST',
+							//data: data,
+							//data: json,
+							//dataType: 'json',
+							//contentType: "application/json",
+						}).done(function (datas) {
+							$('#paymentdiv').html(datas);
 
-								$.each(result, function (i, friend) {
-									console.log("friend:" + friend)
-									if (friend == true) {
-										$("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
-									} else {
-										$("#span").html('<i class="icon-heart"></i> 加好 友 ');
-									}
-								});//end .each
-
-							})//end .json;
-
-							$("#addFriend").on('click', function (event) {
-								console.log("#addFriend:");
-								console.log($(this));
-								var formData = new FormData(document.getElementById("insertFriend"));
-								console.log(formData);
-								$.ajax({
-									type: "POST",
-									url: "/api/member/all/addfriend",
-									data: formData,
-									contentType: false,
-									processData: false
-								})
-									.done(function (data) {
-										$.each(data, function (i, friend) {
-											console.log("friendstatus");
-											console.log(friend);
-											console.log("friend.id:: " + friend.id)
-											console.log("friend:: " + friend)
-
-											if (friend == true) {
-												$("#span").html('<i class="fa fa-heart icon-default"></i>  my好友');
-											} else {
-												$("#span").html('<i class="icon-heart"></i> 加好友 ');
-											}
-										});
-									}); //end .done
-							})
-						}//end if
+						})
 					});
+
+					$(document)
+						.ready(
+							function () {
+								var a = $("#addFriend").attr('value');
+								if (a != null) {
+									$
+										.getJSON(
+											'/api/member/all/member/friend/'
+											+ a,
+											{},
+											function (result) {
+
+												$
+													.each(
+														result,
+														function (i,
+															friend) {
+															console
+																.log("friend:"
+																	+ friend)
+															if (friend == true) {
+																$(
+																	"#span")
+																	.html(
+																		'<i class="fa fa-heart icon-default"></i>  my好友');
+															} else {
+																$(
+																	"#span")
+																	.html(
+																		'<i class="icon-heart"></i> 加好 友 ');
+															}
+														});//end .each
+
+											})//end .json;
+
+									$("#addFriend")
+										.on(
+											'click',
+											function (event) {
+												console.log("#addFriend:");
+												console.log($(this));
+												var formData = new FormData(
+													document
+														.getElementById("insertFriend"));
+												console.log(formData);
+												$
+													.ajax(
+														{
+															type: "POST",
+															url: "/api/member/all/addfriend",
+															data: formData,
+															contentType: false,
+															processData: false
+														})
+													.done(
+														function (
+															data) {
+															$
+																.each(
+																	data,
+																	function (
+																		i,
+																		friend) {
+																		console
+																			.log("friendstatus");
+																		console
+																			.log(friend);
+																		console
+																			.log("friend.id:: "
+																				+ friend.id)
+																		console
+																			.log("friend:: "
+																				+ friend)
+
+																		if (friend == true) {
+																			$(
+																				"#span")
+																				.html(
+																					'<i class="fa fa-heart icon-default"></i>  my好友');
+																		} else {
+																			$(
+																				"#span")
+																				.html(
+																					'<i class="icon-heart"></i> 加好友 ');
+																		}
+																	});
+														}); //end .done
+											})
+								}//end if
+							});
 				</script>
 				<script>
 					$(document).ready(function () {
@@ -437,6 +514,7 @@
 
 					})
 				</script>
+
 
 			</body>
 
