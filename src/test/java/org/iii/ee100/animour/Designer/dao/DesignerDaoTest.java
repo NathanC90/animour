@@ -16,6 +16,7 @@ import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.FreeTime;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.service.ReservationService;
@@ -47,17 +48,18 @@ public class DesignerDaoTest {
 	public void decideThreeContentRepeateOrNot() throws ParseException {
 		// 取出各Table設計師名稱、時間內容種類
 		Reservation reservation = new Reservation();
+		FreeTime freeTime= new FreeTime();
 		// 時間、設計師、日期的空物件
-		ReservationTime reservationTime = null;
-		Designer designer = null;
-		
+//		ReservationTime reservationTime = null;
+//		Designer designer = null;
+		List<Reservation> reservationList = reservationService.getAllReservationContent();
 		//使用空set放置不重複物件
 		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
 		Set<Designer> designerSetList = new HashSet<Designer>();
 
 		//
-		List<Designer> designerList = reservationService.getAllDesigner();
-		ArrayList<ReservationTime> reservationTimeList = reservationService.getAllReservationTime();
+//		List<Designer> designerList = reservationService.getAllDesigner();
+//		ArrayList<ReservationTime> reservationTimeList = reservationService.getAllReservationTime();
 		// 前端日期輸入
 		// Date compareDate = reservation.getReservationDate();
 
