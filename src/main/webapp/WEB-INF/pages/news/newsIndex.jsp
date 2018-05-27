@@ -67,6 +67,18 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Card Body starts -->
+<style>
+.card-body{
+ width:332px;
+ height:160px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.card-img-top{
+height:182px;}
+</style>
+<!-- Card Body ends -->
 </head>
 <body>
 	<header id="header-wrap">
@@ -130,11 +142,12 @@
 			<c:forEach var="allEvents" items="${allEvents}">
 				<div class="col-md-4">
 					<div class="card mb-4 box-shadow">
-						<a href="/news/index?pageNo=1">
-							<img class="card-img-top" src="/images/news/PetExpo.jpg" width="80px" alt="" >
+						<a href="/findOneEvent?id=${allEvents.id}">
+							<img class="card-img-top" src="${allEvents.images}" width="80px" alt="" >
 						</a>
 						<div class="card-body" style="margin-bottom: 5px">
-							<p class="sup-description">寵物用品博覽會匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務</p>
+						<h5 class="card-title"><a href="/findOneEvent?id=${allEvents.id}">${allEvents.subject}</a></h5>
+							<p class="sup-description">${allEvents.content}</p>
 								<a href="/findOneEvent?id=${allEvents.id}"><button type="button" class="btn btn-common">詳情</button></a>
                  				<a href="/enrollOneNews?id=${allEvents.id}"><button type="button" class="btn btn-common">報名</button></a>	
                  					<sec:authorize access="hasRole('Admin')">
@@ -151,34 +164,7 @@
 	</div>
 				<!-- Container Ends -->
 	<section>
-		<!-- 最新消息開始 -->
-	<section>
-		<!-- Container Starts -->
-		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" style="font-family:微軟正黑體">
-				最新活動專區</h1>
-			<div class="row">
-				<c:forEach var="sixNews" items="${sixNews}">
-					<div class="col-md-4">
-						<div class="card mb-4 box-shadow">
-							<a href="/findOneEvent?id=${sixNews.id}"> <img class="card-img-top"
-								src="${sixNews.images}" width="80px" alt=""></a>
-							<div class="card-body" style="margin-bottom: 5px">
-							<h5 class="blog-post-title" style="font-family:微軟正黑體"><a href="/findOneEvent?id=${sixNews.id}">${sixNews.subject}</a></h5>
-							<p style="font-family:微軟正黑體">精彩活動熱烈報名中，請點詳情查看！</p>
-							<a href="/findOneEvent?id=${sixNews.id}"><button type="button" class="btn btn-common">詳情</button></a>
-                 			<a href="/enrollOneNews?id=${sixNews.id}"><button type="button" class="btn btn-common">報名</button></a>	
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-
-			<!-- Service-Block-000 Item Ends -->
-		</div>
-		<!-- Container Ends -->
-	</section>
-	<!-- 最新消息結束 -->
+		
 
 	<!-- Footer Section -->
 	<footer>
