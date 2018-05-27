@@ -33,7 +33,15 @@ public class WebSocketController {
 			Member current = memberService.getOneByAccount(principal.getName());
 			chat.setFromWho(current);
 			chat.setMemberId(memberId);
-			simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat", chat);
+			
+			if (principal.getName().equals("BenQ")) {
+				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat/BenQ", chat);
+			} else if (principal.getName().equals("ryu")){
+				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat/ryu", chat);
+			} else {
+				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat", chat);
+				
+			}
 		//} else {
 			//System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");
 			//simpMessagingTemplate.convertAndSendToUser("ViewSonic", "/queue/chat", principal.getName() + "-發送訊息:" + msg);

@@ -117,6 +117,7 @@
 					}
 
 					function connect() {
+						
 						var socket = new SockJS('/chatTest');
 						stompClient = Stomp.over(socket);
 						stompClient.connect({}, function (frame) {
@@ -130,7 +131,15 @@
 								showCount(JSON.parse(message.body).count);
 							});
 							// 兩種訂閱寫在一起，用一個連線，一個 endpoint
-							stompClient.subscribe("/user/queue/chat", function (
+							stompClient.subscribe("/user/queue/chat/ryu", function (
+								chat) {
+								//alert("from chat")
+								showChat(JSON.parse(chat.body));
+								//showChat(chat.body);
+								$("#chatBox").css("display", "")
+							});
+
+							stompClient.subscribe("/user/queue/chat/BenQ", function (
 								chat) {
 								//alert("from chat")
 								showChat(JSON.parse(chat.body));
