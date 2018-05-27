@@ -86,6 +86,12 @@ public class ReservationRestController {
 		}		
 		return all;
 	}
+	
+	@RequestMapping(value = "/reservation/chart", method = RequestMethod.GET, produces = { "application/json" })
+	public Map<String,Integer> getReservationInChart() {
+		return reservationService.chart();
+	}
+	
 
 	// insert a Reservation by id
 	// 付款成功不能改資料
@@ -105,17 +111,7 @@ public class ReservationRestController {
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 
 	}
-	// @RequesPramm , 不能接
-	// @
-	// @RequestMapping(value = "/member/{id}", method = RequestMethod.PUT, consumes
-	// = { "application/json" })
-	// public ResponseEntity<?> updateMember(@PathVariable(value = "id") Long id,
-	// @Valid @RequestBody接Jonson Member member) {
-	// memberService.insert(memberService.getOne(id));
-	// return new ResponseEntity<Member>(member, HttpStatus.OK);
-	//
-	// }
-
+	
 	@RequestMapping(value = { "/reservation/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<?> deleteReservation(@PathVariable(value = "id") Long reservationId) {
 		Reservation reservation = reservationService.getOne(reservationId);

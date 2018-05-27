@@ -4,8 +4,10 @@ import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.model.PageForAnimour;
@@ -38,38 +40,40 @@ public class ChangeDateTest {
 	@Autowired
 	MemberService memberService;
 
-	// @Test
-	// public void changeDate() {
-	//// System.out.println(reservationService);
-	// List<Reservation> reservationList= new ArrayList<>();
-	// reservationList=reservationDao.findAll();
-	// for(Reservation newList:reservationList) {
-	//
-	// SimpleDateFormat sdf = new SimpleDateFormat();
-	// String date=sdf.format(newList.getReservationDate());
-	// newList.setAppointDate(date);
-	//
-	//
-	// }
-	// PageForAnimour pageForAnimour =new PageForAnimour();
-	// Page<Reservation> page=reservationService.getReservationPage(pageForAnimour);
-	// reservationList = page.getContent();
-	//
-	// System.out.println("hhhhhhh"+reservationList);
-	//
-	// }
+//	 @Test
+//	 public void changeDate() {
+//	// System.out.println(reservationService);
+//	 List<Reservation> reservationList= new ArrayList<>();
+//	 reservationList=reservationDao.findAll();
+//	 for(Reservation newList:reservationList) {
+//	
+//	 SimpleDateFormat sdf = new SimpleDateFormat();
+//	 String date=sdf.format(newList.getReservationDate());
+//	 newList.setAppointDate(date);
+//	
+//	
+//	 }
+//	 PageForAnimour pageForAnimour =new PageForAnimour();
+//	 Page<Reservation> page=reservationService.getReservationPage(pageForAnimour);
+//	 reservationList = page.getContent();
+//	
+//	 System.out.println("hhhhhhh"+reservationList);
+//	
+//	 }
 
 	@Test
-	public void getAllServiceContent() {
-		
-		Member currentMember = memberService.getNewCurrentMember();
-		
-//		long id=2;
-//		List<Reservation> test2 = new ArrayList<>();
-//		test2 = reservationDao.findByMemberId(id);
-//
-		System.out.println("aaaabbb" + currentMember.getId());
-
+	public void chart() {
+		List<Reservation> list=new ArrayList<>();
+		list = reservationService.getAllReservationContent();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		for(Reservation reservation:list) {
+			if (map.containsKey(reservation.getDesigner())) {
+				map.put(reservation.getDesigner(), map.get(reservation.getDesigner()) + 1);
+			}else {
+				map.put(reservation.getDesigner(), 1);
+			}
+		}
+		System.out.println("aaabbbccc"+map);
 	}
 
 }

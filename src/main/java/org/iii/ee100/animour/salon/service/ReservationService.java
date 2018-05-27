@@ -8,13 +8,16 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.common.service.GenericService;
+import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
@@ -95,10 +98,19 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(serviceContentDao.findTop3ByOrderByIdDesc());
 
 	}
-//	public ArrayList<Reservation> getServiceContenByMemberId(Long id) {
-//		return Lists.newArrayList(reservationDao.findByMember_id());
-
-//	}
+	
+	public Map<String,Integer> chart() {
+		List<Reservation> list = reservationDao.findAll();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		for(Reservation reservation:list) {
+			if (map.containsKey(reservation.getDesigner())) {
+				map.put(reservation.getDesigner(), map.get(reservation.getDesigner()) + 1);
+			}else {
+				map.put(reservation.getDesigner(), 1);
+			}
+		}
+		return map;
+	}
 	
 	
 	//判斷服務內容是否重複

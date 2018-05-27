@@ -109,6 +109,14 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="animalChart" style="height: 450px; width: 100%;"></div>
 					</div>
+					
+					<h3>預約設計師統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="designerChart" style="height: 450px; width: 100%;"></div>
+					</div>
+					
+					
 					<h3>好友數統計:</h3>
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
@@ -291,6 +299,48 @@
 					};
 					$("#friendChart").CanvasJSChart(options);
 				});
+				//設計師紅牌統計
+				$.getJSON('/reservations/reservation/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var designerArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+
+						designerArray.push({ 'label': key, 'y': obj[key] });
+					});
+
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "紅牌統計",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "被預約次數",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "設計師",
+							interval: 1,
+							labelAngle: -70
+						},
+						data: [{
+							type: "column",
+							// yValueFormatString: "#,##0.0#" % "",
+							dataPoints: designerArray
+						}]
+					};
+					$("#designerChart").CanvasJSChart(options);
+				});
+				//
 
 				$.getJSON('/news/chart', {}, function (data) {
 					console.log(data);
