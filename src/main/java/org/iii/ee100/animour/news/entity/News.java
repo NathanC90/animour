@@ -23,7 +23,7 @@ public class News extends GenericEntity{
 	@Column(name="EVENT_DATE")
 	private java.sql.Date eventDate;
 	@Column(name="EVENT_TIME")
-	private java.sql.Timestamp eventTime;
+	private String eventTime;
 	@Column(name="ADDRESS")
 	private String address;
 	@Column(name="CONTENT")
