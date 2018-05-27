@@ -117,9 +117,9 @@
 					placeholder="請輸入活動地點" />
 			</div>
 			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.createUser}</h2>
+				<h2 class="widget-title" style="font-family:微軟正黑體">張貼人</h2>
 				<form:input id="createUser" name="createUser" path="createUser" type="text" min="0" class="form-control" required="required"
-					placeholder="張貼人" />
+					placeholder="${news.createUser}"/>
 			</div>
 		</div>
 
@@ -130,26 +130,26 @@
 					placeholder="活動日期" />
 			</div>
 			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.publishDate}</h2>
+				<h2 class="widget-title" style="font-family:微軟正黑體">活動時間</h2>
 				<form:input id="eventTime" name="eventTime" path="eventTime" type="time" class="form-control" required="required"
-							placeholder="活動日期" />
+							placeholder="活動時間" />
  			</div>
-			<div class="form-group col-md-3">
+ 			<div class="form-group col-md-6">
 				<h2 class="widget-title" style="font-family:微軟正黑體">結束公告日期</h2>
-				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-text text-muted" required="required"
+				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-control" required="required"
 					placeholder="結束公告日期" />
 			</div>
-			<div class="form-group col-md-3">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.createTime}</h2>
-				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-text text-muted" required="required"
-					placeholder="發布日期" />
+			<div class="form-group col-md-6">
+				<h2 class="widget-title" style="font-family:微軟正黑體">發布日期</h2>
+				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-control" required="required"
+					placeholder="${news.publishDate}" />
 			</div>
 <!-- 			<div class="form-group col-md-3"> -->
 <!-- 				<h2 class="widget-title" style="font-family:微軟正黑體">發布時間</h2> -->
 <%-- 				<form:input id="createTime" name="createTime" path="createTime" type="time" class="form-control" required="required" --%>
 <%-- 					placeholder="發布時間" /> --%>
 <!-- 			</div> -->
-			<div class="form-group col-lg-6">
+			<div class="form-group col-lg-12">
 				<h2 class="widget-title" style="font-family:微軟正黑體">活動簡介</h2>
 				<form:textarea id="content" name="content" path="content" type="text" class="form-control" rows="5" required="required"
 	 				placeholder="請輸入活動簡介" />
