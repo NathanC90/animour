@@ -295,7 +295,7 @@
 				}
 
 
-				$.getJSON('/articles', { "pageNo": pageNo, "size": 10 }, function (data) {
+				$.getJSON('/articles', { "pageNo": pageNo, "size": 30 }, function (data) {
 					console.log(data);
 					$('#table1>tbody').empty();
 					$.each(data, function (i, article) {
