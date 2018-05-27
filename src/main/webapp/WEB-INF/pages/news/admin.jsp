@@ -114,6 +114,26 @@ function saveToExcel(str) {
 <!-- adminNavbar ends -->
  
 <!-- 每頁不同的內容從此開始 -->
+<!-- Show All News Col -->
+    <div class="container">
+		<div class="row">	
+			<h3>查詢所有活動</h3>
+				<form name="selectAllForm" action="findAllNewsCol" method="GET">
+					<input type="submit" value="查詢所有">
+				</form>
+			<hr>
+		</div>
+		<!-- Show All News starts -->
+		<div class="row">
+			<c:forEach var="news" items="${allNewsCol}">
+				<h2>活動名稱：${news.subject}</h2>
+				<h4>活動日期：${news.eventDate}</h4>
+				<h4>活動地點：${news.address}</h4>
+				<h4>活動簡介：${news.content}</h4>
+			</c:forEach>
+		</div>						
+	</div>
+	<!-- Show All News ends -->
 
 
 <div class="container">
@@ -371,14 +391,6 @@ function saveToExcel(str) {
 	<!-- Table Ends -->
 
 </div>
-
-
-
-</div>
-</div>
-</div>
-
-</table>
 
 
 <script>

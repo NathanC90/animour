@@ -23,10 +23,12 @@ public class WebSocketController {
 	
 	@Autowired
 	private ChatService chatService;
-
+	
 	@MessageMapping("/chat/{memberId}")
 	public void handleChat(Principal principal, Chat chat, @DestinationVariable Long memberId) {
 		//if(principal.getName().equals("ViewSonic")){
+		
+		
 			System.out.println("++++++++++++++++"+chat.getMessage()+"+++++++++++++++++");
 			System.out.println("++++++++++++++++"+memberId+"+++++++++++++++++");
 			//memberService.getOne(memberId).getAccount();
@@ -36,11 +38,13 @@ public class WebSocketController {
 			
 			if (principal.getName().equals("BenQ")) {
 				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat/BenQ", chat);
+				System.out.println("++++++++++++++++"+"BENQ發給ViewSonic"+"+++++++++++++++++");
 			} else if (principal.getName().equals("ryu")){
 				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat/ryu", chat);
+				System.out.println("++++++++++++++++"+"RYU發給ViewSonic"+"+++++++++++++++++");
 			} else {
 				simpMessagingTemplate.convertAndSendToUser(memberService.getOne(memberId).getAccount(), "/queue/chat", chat);
-				
+				System.out.println("++++++++++++++++"+"ViewSonic發給大家"+"+++++++++++++++++");
 			}
 		//} else {
 			//System.out.println("++++++++++++++++"+msg+"+++++++++++++++++");

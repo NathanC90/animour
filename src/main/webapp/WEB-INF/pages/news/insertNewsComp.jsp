@@ -96,85 +96,9 @@
 	<!-- Page Header End -->
 
 	<!-- Page Content Start 重複的內容開始 -->
-	<section class="section">
-		<div class="container">
-			
-			
-<!-- Insert News starts -->
-<div class="form-group col-md-12">
-	<form:form method="POST" modelAttribute="news" enctype="multipart/form-data" id="insertNews" name="insertNews" action="/news/insertNews">
-		<form:input id="images" path="images" type="hidden"/>
-		<div class="form-group">
-			<h2 class="widget-title" style="font-family:微軟正黑體">活動名稱</h2>
-			<form:input id="subject" name="subject" path="subject" type="text" class="form-control" autofocus="true" required="required"
-				placeholder="請輸入活動名稱" />
-		</div>
-
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">活動地點</h2>
-				<form:input id="address" name="address" path="address" type="text" min="0" class="form-control" required="required"
-					placeholder="請輸入活動地點" />
-			</div>
-			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.createUser}</h2>
-				<form:input id="createUser" name="createUser" path="createUser" type="text" min="0" class="form-control" required="required"
-					placeholder="張貼人" />
-			</div>
-		</div>
-
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">活動日期</h2>
-				<form:input id="eventDate" name="eventDate" path="eventDate" type="date" class="form-control" required="required"
-					placeholder="活動日期" />
-			</div>
-			<div class="form-group col-md-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.publishDate}</h2>
-				<form:input id="eventTime" name="eventTime" path="eventTime" type="time" class="form-control" required="required"
-							placeholder="活動日期" />
- 			</div>
-			<div class="form-group col-md-3">
-				<h2 class="widget-title" style="font-family:微軟正黑體">結束公告日期</h2>
-				<form:input id="publishExpire" name="publishExpire" path="publishExpire" type="date" class="form-text text-muted" required="required"
-					placeholder="結束公告日期" />
-			</div>
-			<div class="form-group col-md-3">
-				<h2 class="widget-title" style="font-family:微軟正黑體">${news.createTime}</h2>
-				<form:input id="publishDate" name="publishDate" path="publishDate" type="date" class="form-text text-muted" required="required"
-					placeholder="發布日期" />
-			</div>
-<!-- 			<div class="form-group col-md-3"> -->
-<!-- 				<h2 class="widget-title" style="font-family:微軟正黑體">發布時間</h2> -->
-<%-- 				<form:input id="createTime" name="createTime" path="createTime" type="time" class="form-control" required="required" --%>
-<%-- 					placeholder="發布時間" /> --%>
-<!-- 			</div> -->
-			<div class="form-group col-lg-6">
-				<h2 class="widget-title" style="font-family:微軟正黑體">活動簡介</h2>
-				<form:textarea id="content" name="content" path="content" type="text" class="form-control" rows="5" required="required"
-	 				placeholder="請輸入活動簡介" />
-			</div>
-		</div>
-			<div class="form-row">
-				<form id="imgur">
-					<h2 class="widget-title"><span style="font-family:微軟正黑體">圖片</span></h2>
-					<input id="imgur" name="imgur" path="imgur" type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
-				</form>
-				<div class="container">
-						<div class="row justify-content-md-center">
-							 <div class="col-md-auto">
-							   <input id="btn1" type="submit" class="btn btn-primary" value="張貼活動" >
-						     </div>
-						</div>
-				</div>
-			</div>
-			<!-- Insert News ends -->
-						
-						
-				</form:form>
-				</div>
-			</div>
-	</section>
+	<div>新增成功！
+	<h2>${news.subject}</h2>
+	</div>
 
 	<!-- 重複的內容結束 -->
 

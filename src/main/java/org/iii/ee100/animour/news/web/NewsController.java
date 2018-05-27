@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.news.web;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -116,7 +118,7 @@ public class NewsController {
 			}
 		}
 	
-	//後臺管理
+	//後臺表格管理
 	@RequestMapping("/news/admin")
 	public String newsAdmin(Model model) {
 		return "/news/admin";
@@ -126,10 +128,19 @@ public class NewsController {
 	// Insert News
 		@RequestMapping(value = "/news/insertNews", method = RequestMethod.GET)
 		public String input(Model model) {
-			model.addAttribute("news", new News());
-			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+			News news = new News();
+			news.setCreateTime(new Timestamp(System.currentTimeMillis()));
+			news.setPublishDate(new java.sql.Date(System.currentTimeMillis()));
+			news.setCreateUser(memberService.getNewCurrentMember().getAccount());
+			model.addAttribute("news", news);
 			return "/news/insertNews";
+		}
+		
+		@RequestMapping(value = "/news/insertNews", method = RequestMethod.POST)
+		public String insertNews(Model model, @ModelAttribute("news") News news) {
+			newsService.insert(news);
+			model.addAttribute(news);
+			return "/news/insertNewsComp";
 		}
 	
 	//後臺管理
@@ -169,34 +180,48 @@ public class NewsController {
 	public String insertNews(News news, Model model) {
 		newsService.insert(news);
 		model.addAttribute("insertNews", news);
-		return "/news/manage";
+		return "/news/inserNews";
 	}
 	
 	//後台更新一筆活動
-	@RequestMapping(value = "/news/update")
-	public String maintain(Model model) {
-		List<News> adminPosts = newsService.getByMemberId(memberService.getCurrentMember().getId());
-		for(News news:adminPosts) {
-			System.err.println("news" + news.getSubject());
-		}
-		model.addAttribute("PostsQuantity", adminPosts.size());
-		model.addAttribute("adminPosts", adminPosts);
-		return "/news/manage";
-	}
+//	@RequestMapping(value = "/news/update")
+//	public String maintain(Model model) {
+//		List<News> adminPosts = newsService.getAll();
+//		for(News news:adminPosts) {
+//			System.err.println("news" + news.getSubject());
+//		}
+//		model.addAttribute("PostsQuantity", adminPosts.size());
+//		model.addAttribute("adminPosts", adminPosts);
+//		return "/news/manage";
+//	}
 	
 	// Form Data Return Show
-		@RequestMapping(value = "/news/{id}", method = { RequestMethod.GET })
-		public String input(@PathVariable("id") Long id, Model model) {
-			News news = newsService.getOne(id);
-			model.addAttribute("news", news);
-			return "/news/manage";
-		}
+//		@RequestMapping(value = "/news/{id}", method = { RequestMethod.GET })
+//		public String input(@PathVariable("id") Long id, Model model) {
+//			News news = newsService.getOne(id);
+//			model.addAttribute("news", news);
+//			return "/news/manage";
+//		}
+	
+	//step 1
+	// pass ID and ticket_Quantity(insert)
+	// get news by ID
+	// get ticket_Quantity(stock)
+	// insert+ stock (total_Quantity)
+	// set total_Quantity -> stock
+	// update news
+	// return ____;
 
 		// Update News
-		@RequestMapping(value = { "/news/{id}" }, method = { RequestMethod.POST })
+		@RequestMapping(value = { "/updateNews" }, method = { RequestMethod.POST })
 		public String updateNews(News news, Model model) {
+			News exist = newsService.getOne(news.getId()); //MANDATORY!!!!! 
+			exist.setSubject(news.getSubject());
+			exist.setContent(news.getContent());
+			exist.setUpdateUser(news.getUpdateUser());
+			exist.setUpdateTime(news.getUpdateTime());
 			try {
-				newsService.update(news);
+				newsService.update(exist);
 			} catch (Exception e) {
 				e.printStackTrace();
 				return "/rollback";
@@ -218,9 +243,7 @@ public class NewsController {
 	public String findSixNews(Model model) {
 		model.addAttribute("sixNews", newsService.getSixNews());
 		return "/news/newsIndex";
-	}	
-	
-	//Export Excel
+	}
 	
 	
 	

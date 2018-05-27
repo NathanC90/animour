@@ -337,10 +337,16 @@ function saveToExcel(str) {
 		</div>
 		<div class="container">
 			<div class="row">
-				<form name="updateNewsForm" action="/updateNews" method="GET">
+				<form name="updateNewsForm" action="/updateNews" method="POST">
 					<h3>修改活動訊息</h3>
 					<table border="1">
 						<tbody>
+						<tr>
+								<td width="120" height="40">活動編號:</td>
+								<td width="600" height="40" align="left"><input id='num'
+									name="id" value="${param.id}" type="text" size="50"
+									style="text-align: left">
+							</tr>
 							<tr>
 								<td width="120" height="40">活動名稱:</td>
 								<td width="600" height="40" align="left"><input id='num'
