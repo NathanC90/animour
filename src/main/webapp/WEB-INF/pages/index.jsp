@@ -232,7 +232,7 @@
 							<a href="/findOneEvent?id=${sixNews.id}"> <img class="card-img-top"
 								src="${sixNews.images}" width="80px" alt=""></a>
 							<div class="card-body" style="margin-bottom: 5px">
-							<h5 class="blog-post-title" style="font-family:微軟正黑體"><a href="#subject">${sixNews.subject}</a></h5>
+							<h5 class="blog-post-title" style="font-family:微軟正黑體"><a href="/findOneEvent?id=${sixNews.id}">${sixNews.subject}</a></h5>
 							<p style="font-family:微軟正黑體">精彩活動熱烈報名中，請點詳情查看！</p>
 							<a href="/findOneEvent?id=${sixNews.id}"><button type="button" class="btn btn-common">詳情</button></a>
                  			<a href="/enrollOneNews?id=${sixNews.id}"><button type="button" class="btn btn-common">報名</button></a>	
