@@ -9,12 +9,16 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface NewsDao extends JpaRepository<News, Long>{
-	//SELECT seqno, subject, content, updateTime FROM news ORDER BY seqno desc fetch first 6 rows only";
+	//SELECT id, subject, content, updateTime FROM news ORDER BY id desc fetch first 6 rows only";
 	Page<News> findTop6ByOrderByIdDesc(Pageable pageable);
-	//SELECT seqno, subject, content, updateTime FROM news ORDER BY seqno desc fetch first 6 rows only";
-	List<News> findTop6ByOrderByEventDateDesc();
+	
+	List<News> findTop6ByOrderByIdDesc();
+	
+	List<News> findTop6ByOrderByEventDateDesc();	
 	
 	List<News> findByMember_id(Long id);
+
+	List<News> findTop6ByOrderByPublishDateDesc();
 	
 
 }

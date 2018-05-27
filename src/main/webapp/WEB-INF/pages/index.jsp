@@ -223,17 +223,19 @@
 	<section>
 		<!-- Container Starts -->
 		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
+			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" style="font-family:微軟正黑體">
 				最新活動專區</h1>
 			<div class="row">
-				<c:forEach var="news" items="${sixNews}">
+				<c:forEach var="sixNews" items="${sixNews}">
 					<div class="col-md-4">
 						<div class="card mb-4 box-shadow">
-							<a href="/news/index?pageNo=1"> <img class="card-img-top"
-								src="/images/news/catexpo.jpg" width="80px" alt=""></a>
+							<a href="/findOneEvent?id=${sixNews.id}"> <img class="card-img-top"
+								src="${sixNews.images}" width="80px" alt=""></a>
 							<div class="card-body" style="margin-bottom: 5px">
-							<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">詳情</button></a>
-                 			<a href="/news/index?pageNo=1"><button type="button" class="btn btn-common">報名</button></a>	
+							<h5 class="blog-post-title" style="font-family:微軟正黑體"><a href="#subject">${sixNews.subject}</a></h5>
+							<p style="font-family:微軟正黑體">精彩活動熱烈報名中，請點詳情查看！</p>
+							<a href="/findOneEvent?id=${sixNews.id}"><button type="button" class="btn btn-common">詳情</button></a>
+                 			<a href="/enrollOneNews?id=${sixNews.id}"><button type="button" class="btn btn-common">報名</button></a>	
 							</div>
 						</div>
 					</div>

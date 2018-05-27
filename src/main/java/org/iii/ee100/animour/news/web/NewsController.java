@@ -11,6 +11,7 @@ import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
+import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -53,11 +54,36 @@ public class NewsController {
 		return "/news/newsIndex";
 	}
 	
+//	@RequestMapping("/news/index")
+//	public String latest6(Model model) {
+//		model.addAttribute("allNews", newsService.getAll());
+//		return "/news/newsIndex";
+//	}
+	
 	//活動詳情	
-	@RequestMapping("/news/event")
-	public String newsIndex(Model model) {
-		return "/news/event";
-	}
+	// SelectOne
+		@RequestMapping(value = "/selectOneNews", method = { RequestMethod.GET })
+		public String selectOneNews(@RequestParam(name = "id") Long id, News news, Model model) {
+			model.addAttribute("news", newsService.getOne(id));
+			return "/news/event";
+		}
+	//報名活動
+	// enrollOne
+		@RequestMapping(value = "/enrollOneNews", method = { RequestMethod.GET })
+		public String enrollOneNews(@RequestParam(name = "id") Long id, News news, Model model) {
+			model.addAttribute("news", newsService.getOne(id));
+			return "/news/enroll";
+		}
+	
+	//單筆活動詳情（以活動ＩＤ搜尋）
+		@RequestMapping(value= {"/findOneEvent"}, method={RequestMethod.GET})
+		public String OneEvent(News news, Model model) {
+			News nb = newsService.getOne(Long.valueOf(news.getId()));
+			if (nb != null) {
+				model.addAttribute("oneEvent", nb);
+			}		
+			return "/news/event";
+		}
 	//報名活動
 	@RequestMapping("/news/enroll")
 	public String newsEnroll(Model model) {
@@ -238,12 +264,19 @@ public class NewsController {
 //		return "/news/manage";
 //	}
 		
-	//活動首頁：顯示六筆活動	
+	//活動首頁：顯示六比活動	
 	@RequestMapping(value= {"/findSixNews"}, method={RequestMethod.GET})
 	public String findSixNews(Model model) {
 		model.addAttribute("sixNews", newsService.getSixNews());
 		return "/news/newsIndex";
 	}
+	
+	//活動首頁：顯示全部活動	
+		@RequestMapping(value= {"/findAllEvents"}, method={RequestMethod.GET})
+		public String findAllEvents(Model model) {
+			model.addAttribute("allEvents", newsService.getAll());
+			return "/news/newsIndex";
+		}
 	
 	
 	

@@ -41,9 +41,14 @@ public class NewsService{
 	public News getOne(Long id) {
 		return newsDao.findOne(id);
 	}
-	public List<News> getSixNews(){
-		return newsDao.findTop6ByOrderByEventDateDesc();
+	public List<News> getSixEvents(){
+		return newsDao.findTop6ByOrderByPublishDateDesc();
 	}
+	
+	public List<News> getSixNews(){
+		return newsDao.findTop6ByOrderByIdDesc();
+	}
+	
 
 	public List<News> getByMemberId(Long id) {
 		return newsDao.findByMember_id(id);

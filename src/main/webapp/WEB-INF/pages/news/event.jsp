@@ -101,7 +101,7 @@ var fbhtml_url=window.location.toString();
 			<div class="row">
 				<div class="page-header-area">
 					<div class="page-header-content">
-						<h2>活動詳情</h2>
+						<h2 style="font-family:微軟正黑體">活動詳情</h2>
 					</div>
 				</div>
 			</div>
@@ -111,10 +111,13 @@ var fbhtml_url=window.location.toString();
 	</header>
 
 <!-- Event Section -->
-  <section class="classic-blog-section section">
-    <div class="container">
+    <div class="container" style="padding-top: 15px ">
       <div class="row">
-    <img class="card-img-top" src="/images/news/PetExpo.jpg" width="100%" alt="" >
+      <form name="selectOneForm" action="/findOneEvent" method="GET">
+<%-- 				<input name="id" value="${param.id}" type="text" size="50" style="text-align: left"> --%>
+<!-- 				<input type="submit" value="查詢單筆">  -->
+			</form>
+    <img class="card-img-top" src="${oneEvent.images}" width="100%" alt="" >
         <!-- Event Section -->
         <div class="col-md-9">
           <!-- Single Event Post -->
@@ -122,13 +125,13 @@ var fbhtml_url=window.location.toString();
             <!-- Event Info -->
             <header class="author-info">
               <h2 class="blog-post-title"  style="font-family:微軟正黑體; padding-top:15px">
-                <a href="#subject">【2018上聯寵物用品博覽會】</a>
+                <a href="#subject">${oneEvent.subject}</a>
               </h2>
               <div class="tag-posted-in">
                	<div>
                	<span style="font-family:微軟正黑體">
                     <i class="icon icon-calendar" ></i>
-                    	活動時間：2018/08/31(五) 至 2018/09/03(一)
+                    	活動時間：${oneEvent.eventDate}
                   </span>
                  <!-- Add to Google Calendar starts -->
                	<!-- Button code -->
@@ -155,7 +158,7 @@ var fbhtml_url=window.location.toString();
                   <span style="font-family:微軟正黑體">
                   <i class="icon icon-globe"></i>
 <!--                     <i class="icon icon-globe"></i> -->
-                    	活動地點：台北世貿三館（110台北市信義區松壽路6號）
+                    	活動地點：${oneEvent.address}
                   </span>
                  </div>
                  <div>
@@ -176,11 +179,7 @@ var fbhtml_url=window.location.toString();
             <section class="blog-post-content"><hr>
               	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2>
               <div class="blog-post" style="border: 2px solid grey; font-family:微軟正黑體">
-                <p style="padding: 10px; font-family:微軟正黑體">
-                	匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。
-                	本展歡迎所有寵物愛好者攜帶寵物一同入場參觀！除了提供年度最優惠的商品促銷外，
-                	更規畫一系列與愛寵同歡的趣味活動，讓飼主與寵物能玩得開心、滿載而歸。除了讓各類參展商展示產品外，
-                	也是與業界合作交流、開發商機的管道。歡迎寵物相關業者預約洽談、換證入場。
+                <p style="padding: 10px; font-family:微軟正黑體">${oneEvent.content}
                 </p>
               </div>
             </section>
@@ -198,16 +197,24 @@ var fbhtml_url=window.location.toString();
             <section class="featured-wrapper">
               <div id="carousel-image-slider" class="owl-carousel">
                 <div class="item">
-                  <img src="/images/news/PetFamily.jpg" alt="">
+                  <a href="/findOneEvent?id=10">
+                  <img src="https://i.imgur.com/H4mSZKo.jpg" alt="">
+                  </a>
                 </div>
                 <div class="item">
-                  <img src="/images/news/PetFoodSummer.png" alt="">
+                  <a href="/findOneEvent?id=11">
+                  <img src="https://i.imgur.com/6T10gMm.png" alt="">
+                  </a>
                 </div>
                 <div class="item">
-                  <img src="/images/news/DogGames.jpg" alt="">
+                  <a href="/findOneEvent?id=3">
+                  <img src="https://i.imgur.com/SSyz021.jpg" alt="">
+                  </a>
                 </div>
                 <div class="item">
-                  <img src="/images/news/Adopt.jpg" alt="">
+                  <a href="/findOneEvent?id=9">
+                  <img src="https://i.imgur.com/MXFdjAF.jpg" alt="">
+                  </a>
                 </div>
               </div>
             </section>
@@ -215,7 +222,7 @@ var fbhtml_url=window.location.toString();
             
             
             <!-- Footer -->
-            <div class="blog-post-footer clearfix">
+            <div class="blog-post-footer clearfix" style="padding-bottom:15px">
             </div>
           </article>
         </div>
@@ -280,7 +287,9 @@ var fbhtml_url=window.location.toString();
         <!-- End -->
       </div>
     </div>
-  </section>
+    </div>
+    </div>
+
   
   <!-- Classic Blog Section End -->
 
