@@ -74,6 +74,7 @@
 
 body * {
   box-sizing: border-box;
+   /* background-color: #91ced4; */
 }
 
 .header {
@@ -262,7 +263,8 @@ padding: auto;
 	</header>	
 	<!-- Container Starts -->
 	
-	
+<div class="container">
+<div class="row">
 <div class="table-users">
    <div class="header" >票券資訊</div>
    
@@ -276,13 +278,15 @@ padding: auto;
       </tr>
 
       <tr>         
-         <td style="font-family:微軟正黑體">【2018上聯寵物用品博覽會】</td>
-         <td style="font-family:微軟正黑體">150</td>
+         <td style="font-family:微軟正黑體">${news.subject}</td>
+         <td style="font-family:微軟正黑體">${news.ticketPrice}</td>
          <td style="font-family:微軟正黑體"><input id="number" type="number" value="1" min="1"></td>
-         <td style="font-family:微軟正黑體">150</td>
+         <td style="font-family:微軟正黑體">${news.ticketPrice}</td>
       </tr>
    </table>
    </div>
+   </div>
+ 
    <!-- 訪客需登入 -->
    <sec:authorize access="isAnonymous()">
    <div class="btn-enroll">

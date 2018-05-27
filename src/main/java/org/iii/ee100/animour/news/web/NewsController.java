@@ -264,7 +264,7 @@ public class NewsController {
 //		return "/news/manage";
 //	}
 		
-	//活動首頁：顯示六比活動	
+	//活動首頁：顯示六筆活動	
 	@RequestMapping(value= {"/findSixNews"}, method={RequestMethod.GET})
 	public String findSixNews(Model model) {
 		model.addAttribute("sixNews", newsService.getSixNews());

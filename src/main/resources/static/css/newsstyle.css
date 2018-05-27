@@ -1,6 +1,4 @@
-body {
-  background-color: #91ced4;
-}
+
 body * {
   box-sizing: border-box;
 }
@@ -77,7 +75,6 @@ table tr:nth-child(2n+1) {
     text-align: left;
   }
   td:not(:first-child):before {
-    color: #91ced4;
     content: '';
     display: block;
     left: 0;
