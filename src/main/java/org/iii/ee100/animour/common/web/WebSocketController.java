@@ -28,7 +28,6 @@ public class WebSocketController {
 	public void handleChat(Principal principal, Chat chat, @DestinationVariable Long memberId) {
 		//if(principal.getName().equals("ViewSonic")){
 		
-		
 			System.out.println("++++++++++++++++"+chat.getMessage()+"+++++++++++++++++");
 			System.out.println("++++++++++++++++"+memberId+"+++++++++++++++++");
 			//memberService.getOne(memberId).getAccount();

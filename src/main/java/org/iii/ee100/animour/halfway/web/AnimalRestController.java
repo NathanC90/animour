@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.halfway.web;
 
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
@@ -13,6 +14,7 @@ import org.iii.ee100.animour.common.model.ResponseForAnimour;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.halfway.model.QueryFormHalfway;
 import org.iii.ee100.animour.halfway.service.AnimalService;
+import org.iii.ee100.animour.halfway.service.GoogleVisionUtils;
 import org.iii.ee100.animour.halfway.service.SpecificationHalfway;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
@@ -187,6 +189,17 @@ public class AnimalRestController {
 	@RequestMapping(path = { "/halfway/animal/chart" }, method = RequestMethod.GET, produces = { "application/json" })
 	public Map<String, Integer> chart() {
 		return animalservice.chart();
+	}
+	
+	@RequestMapping(value = { "/vision" }, method = RequestMethod.GET)
+	public String visionTest() {
+		String response = null;
+		try {
+			response = GoogleVisionUtils.VisionApiRequest();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return response;
 	}
 
 }
