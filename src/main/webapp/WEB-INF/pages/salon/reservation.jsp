@@ -123,11 +123,10 @@
 						<div class="col-md-4">
 							<div class="card mb-4 box-shadow">
 								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="20px" alt="待預約小貓">
-								<div class="card-body" style="margin-bottom: 5px">
-									<p class="card-text" style="padding: 0px">服務：${avar.content} 耗時：${avar.time}時 價錢:${avar.price}元</p>
+								<div class="card-body" style="margin-bottom: 5px" id="bbb${avar.id}">
+									<p class="card-text" style="padding: 0px">服務：${avar.content} 耗時：${avar.time}時 <p id="aaa${avar.id}"><br></p>
 									<div class="d-flex justify-content-between align-items-center" style="max-height: 20px">
 										<div class="btn-group" style="margin: 0px">
-											<input type="button" value="add" id="addNumber" class="btn btn-common btn-sm mt-10">
 										</div>
 									</div>
 								</div>
@@ -265,19 +264,21 @@
 
 			<script>
 
-				var addNumber = function () {
-					var a = a++;
-				}
-
-
-				$(document).ready(function () {
-
-					$('div > input').on("click", function () {
-						//console.log("aaa")
-						$('#number1').append()
-					})
-				});
-
+			 $('#aaa9').append('服務人員立即過來服務。她拿剪刀剪我們雜亂的毛，於是我們就像各點一杯冰淇淋解熱過癮。'+
+					 '儘管天候已是入夏，週遭空氣中依然濕氣瀰漫。剪完之後，心涼脾肚開，剛才散步排出的汗珠，瞬間收斂消失於無形，渾身感覺舒暢心寬。');
+			 
+			 $('#aaa8').append('這般的潔淨感受，除了身體上洗乾淨之外，當然還有內在心理上的潔淨！這個時候為了讓放鬆的'+
+					 '感覺可以停留更久，延續到上床睡覺，你可以試著在擦乾身體之後，在身上抹上一些自己喜歡的味道、帶有放鬆香氣'+
+					 '的按摩精油、乳液或是身體舒緩油，也一邊告訴自己透過洗澡，卸下了焦慮及不適，因為洗乾淨也擦上了精油或乳液，換上了輕鬆及平靜。');
+			 
+					 
+			 $('#aaa7').append('這裡的設計也能到這種地步，令人為之讚嘆。細嫩的毛髮、造型的表達方式、色彩發亮的毛色、'+
+					 '魅力十足的變化，都在這這幾位大師的巧手之下一一呈現，難怪會成為現代著名設計中心。但是，不管再怎麼說，'
+					 );
+			 
+			 $('#bbb9').css({'height':'300px'});
+			 $('#bbb8').css({'height':'300px'});
+			 $('#bbb7').css({'height':'300px'});
 			</script>
 
 		</body>

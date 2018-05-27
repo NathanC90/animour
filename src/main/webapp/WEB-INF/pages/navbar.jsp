@@ -62,7 +62,7 @@
 					</div></li>
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/reservation/introduce"
+					class="nav-link dropdown-toggle" href="/appointment/firstPage"
 					aria-haspopup="true" aria-expanded="false">寵物沙龍</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/appointment/firstPage">沙龍簡介</a>
