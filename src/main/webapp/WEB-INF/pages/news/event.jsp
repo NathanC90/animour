@@ -236,7 +236,7 @@ var fbhtml_url=window.location.toString();
  
               <div class="subscribe-area" style="padding-top:15px">
 
-                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡主辦單位</a>
+                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡我們</a>
                   <a href='/news/enroll' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
 <!--                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px"> -->
 <!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->

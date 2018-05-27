@@ -445,10 +445,10 @@ insert into reservation (reservation_Date,FRONT_TIME,content,designer,total_Time
 /*7 news*/
 
 INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Date, publish_Expire, create_User, create_Time, ticket_Price, ticket_Quantity, images) values
- ('台北寵物用品博覽會', '2018/8/31', '台北世貿三館(110台北市信義區松壽路6號)', '匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。本展歡迎所有寵物愛好者攜帶寵物一同入場參觀！除了提供年度最優惠的商品促銷外，更規畫一系列與愛寵同歡的趣味活動，讓飼主與寵物能玩得開心、滿載而歸。除了讓各類參展商展示產品外，也是與業界合作交流、開發商機的管道。歡迎寵物相關業者預約洽談、換證入場。', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '300', 'https://i.imgur.com/VmSAms7.jpg');
+ ('台北寵物用品博覽會', '2018/8/31', '台北世貿三館(110台北市信義區松壽路6號)', '匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。本展歡迎所有寵物愛好者攜帶寵物一同入場參觀！除了提供年度最優惠的商品促銷外，更規畫一系列與愛寵同歡的趣味活動，讓飼主與寵物能玩得開心、滿載而歸。除了讓各類參展商展示產品外，也是與業界合作交流、開發商機的管道。歡迎寵物相關業者預約洽談、換證入場。', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '300', 'https://i.imgur.com/504f4Bn.jpg');
 
 INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Date, publish_Expire, create_User, create_Time, ticket_Price, ticket_Quantity, images) values
-('《集盒》2018城市貓貓 插畫展', '2018/1/28', '高雄市前鎮區復興三路五號 (IKEA對面)', '匯集全台各大寵物用品廠商，提供最新寵物用品、飼料零食、保健營養品、服飾配件、美容清潔、住宿醫療等週邊服務。本展歡迎所有寵物愛好者攜帶寵物一同入場參觀！除了提供年度最優惠的商品促銷外，更規畫一系列與愛寵同歡的趣味活動，讓飼主與寵物能玩得開心、滿載而歸。除了讓各類參展商展示產品外，也是與業界合作交流、開發商機的管道。歡迎寵物相關業者預約洽談、換證入場。', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '600', 'https://i.imgur.com/XcN5XJk.jpg');
+('《集盒》2018城市貓貓 插畫展', '2018/1/28', '高雄市前鎮區復興三路五號 (IKEA對面)', '創作者李允榕將「心情日常」轉為創作靈感，透過插畫抒發心情與記錄城市生活。她將貓擬人化為都市人，現場展出的七十幅貓貓作品細膩靈動，反應出人生體悟，加上些許天馬行空的想像，令觀者會心一笑。創作者並以紙板搭建一座「貓樂園」象徵城市空間，並融入亞洲新灣區意象，讓貓咪成為一隻隻漫遊於高雄的城市觀察者，從貓的角度觀察一座城市的轉變，以插畫探索環境、城市及空間的關係。', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '600', 'https://i.imgur.com/XcN5XJk.jpg');
 	
 INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Date, publish_Expire, create_User, create_Time, ticket_Price, ticket_Quantity, images) values
 ('第一屆Doglympics狗林匹克運動會', '2018/10/1', '新北市永和綠寶石寵物公園', '將在10月18日於新北市永和綠寶石寵物公園登場，比賽項目為折返跑、基礎障礙、停留與等待三項趣味競賽，現場還邀請熊爸進行寵物行為講座，開放飼主報名中。 主辦單位法國皇家寵物食品市場經理蔡詩妤表示，現代人與狗普遍有肥胖困擾，所以藉由舉辦寵物運動會的方式來提醒飼主，注意寵物肥胖問題。', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '300', 'https://i.imgur.com/SSyz021.jpg');
@@ -477,6 +477,7 @@ INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Dat
 
 INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Date, publish_Expire, create_User, create_Time, ticket_Price, ticket_Quantity, images) values
 ('夏季寵物盛會', '2018/7/8', '台北南港展覽館(11568台北市南港區經貿二路1號)', '炎炎夏日，快帶家中寶貝來展場吹冷氣囉！不僅省電費還能搶超值優惠寵物商品，還有最萌寵物家族日、專屬毛寶貝的障礙趣味競賽，夏季唯一寵物嘉年華盛會', '2018-09-03 08:00:00', '2018-01-01', '2018-09-03', 'Admin', '2018-01-01 08:00:00', '200', '1500', 'https://i.imgur.com/6T10gMm.png'); 
+ 
  
 /*8 product*/
 insert into classify (name) values('寵物伺料');

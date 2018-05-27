@@ -163,7 +163,7 @@
 			<!-- Mobile Menu Start -->
 			<ul class="wpb-mobile-menu">
 				<li><a class="active" href="index.jsp">首頁</a></li>
-				<li><a href="/news/index?pageNo=1">最新消息</a> <sec:authorize
+				<li><a href="/news/newsIndex">最新消息</a> <sec:authorize
 						access="hasRole('Admin')">
 					</sec:authorize>
 					<ul>

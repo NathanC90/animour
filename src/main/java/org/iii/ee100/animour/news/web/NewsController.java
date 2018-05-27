@@ -161,7 +161,7 @@ public class NewsController {
 			model.addAttribute("news", news);
 			return "/news/insertNews";
 		}
-		
+		//insert successfully
 		@RequestMapping(value = "/news/insertNews", method = RequestMethod.POST)
 		public String insertNews(Model model, @ModelAttribute("news") News news) {
 			newsService.insert(news);
@@ -272,13 +272,17 @@ public class NewsController {
 	}
 	
 	//活動首頁：顯示全部活動	
-		@RequestMapping(value= {"/findAllEvents"}, method={RequestMethod.GET})
+//		@RequestMapping(value= {"/findAllEvents"}, method={RequestMethod.GET})
+//		public String findAllEvents(Model model) {
+//			model.addAttribute("allEvents", newsService.getAll());
+//			return "/news/newsIndex";
+//		}
+	
+		@RequestMapping("/news/newsIndex")
 		public String findAllEvents(Model model) {
 			model.addAttribute("allEvents", newsService.getAll());
 			return "/news/newsIndex";
 		}
-	
-	
 	
 	
 }
