@@ -95,7 +95,8 @@
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">
 			<div class="container">
-				<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單明細表</h1>
+				<p class="section-title wow fadeIn h5 text-secondary" data-wow-delay="0.1s">會員
+				<span class="text-primary">${currentMember.username}</span>您好，您共有${memberOrders.size()}筆訂單</p>
 				<div class="row">
 						<div style="margin-top: 50px; margin: auto"
 							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -106,16 +107,32 @@
 										class="alert alert-danger col-sm-12"></div>
 										<c:forEach var="orders" items="${memberOrders}">
 											<c:if test="${memberOrders != null && orders.ordersItem != null}">
-												<tr><td><h4>訂單編號：${orders.id}</h4></td></tr>
-												<tr><td><h4>訂單日期：${orders.orderDate}</h4></td></tr>
+												<div>
+												  <div class="h6 text-primary pull-right">訂單日期：${orders.orderDate}</div>
+												  <div class="h6 text-primary">訂單編號：${orders.id}</div>
+												</div>
 											</c:if>
-											<c:forEach var="ordersItem" items="${orders.ordersItem}">
-												<tr>
-													<td><h2 class="widget-title">商品名稱：${ordersItem.name}</h2></td>
-													<td><h2 class="widget-title">購買數量：${ordersItem.quantity}</h2></td>
-													<td><h2 class="widget-title">商品價格：${ordersItem.price}</h2></td>
+											<table class="table table-striped" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
+												<thead>
+													<tr class="bg-info text-white">
+														<td class="h6">品名</td>
+														<td class="h6">數量</td>
+														<td class="h6">價格</td>
+													</tr>
+												</thead>
+												<c:forEach var="ordersItem" items="${orders.ordersItem}">
+													<tr>
+														<td class="h6">${ordersItem.name}</td>
+														<td class="h6">${ordersItem.quantity}</td>
+														<td class="h6">${ordersItem.price}</td>
+													</tr>
+												</c:forEach>
+												<tr class="h6 text-success">
+													<td class="thick-line" colspan="2"><span>總價</span></td>
+													<td class="thick-line">${orders.totalAmount}元</td>
 												</tr>
-											</c:forEach>
+											</table>
+											<br/><br/>
 										</c:forEach>
 								</div>
 							</div>

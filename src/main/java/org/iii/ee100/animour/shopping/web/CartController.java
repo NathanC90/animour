@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.shopping.web;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -153,8 +154,13 @@ public class CartController {
 		orders.setOrdersItem(ordersList);
 		ordersService.insert(orders);
 		
+		SimpleDateFormat convertDate = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+		String date = convertDate.format(orderDate);
+		
 		model.addAttribute("memberOrders", ordersList);
 		model.addAttribute("ordersListSize", ordersList.size());
+		model.addAttribute("totalAmount", totalAmount);
+		model.addAttribute("date", date);
 		cartItem.removeAll(cartItem);
 		
 		return "/shopping/ThanksForOrdering";

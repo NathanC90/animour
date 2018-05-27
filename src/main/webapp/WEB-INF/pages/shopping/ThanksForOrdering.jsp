@@ -62,7 +62,7 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
 
 <!-- Color CSS Styles  -->
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
@@ -107,25 +107,39 @@
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">
 			<div class="container">
-				<h1 class="section-title wow fadeIn" data-wow-delay="0.1s">訂單巳成立，感謝您的購買</h1>
-				<hr>
+				<p class="section-title wow fadeIn h5 text-danger text-info" data-wow-delay="0.1s">訂單巳成立，感謝您的購買</p>
 				<div class="row">
 						<div style="margin-top: 50px; margin: auto"
 							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
 							<div class="panel panel-info" style="border: 1px">
 	
-								<div style="padding-top: 30px" class="panel-body">
+								<div style="padding-top: 30px" class="panel-body animated flipInX">
 									<div style="display: none" id="login-alert"
 										class="alert alert-danger col-sm-12"></div>
-										<h4>訂單編號：${memberOrders.get(0).orders.id}</h4>
-										<h4>訂單日期：${memberOrders.get(0).orders.orderDate}</h4>
-										<c:forEach var="memberOrder" items="${memberOrders}">
-											<tr>
-												<td><h2 class="widget-title">商品名稱：${memberOrder.name}</h2></td>
-												<td><h2 class="widget-title">購買數量：${memberOrder.quantity}</h2></td>
-												<td><h2 class="widget-title">商品價格：${memberOrder.price}</h2></td>
+										<div>
+										  <div class="h6 text-primary pull-right">訂單日期：${date}</div>
+										  <div class="h6 text-primary">訂單編號：${memberOrders.get(0).orders.id}</div>
+										</div>
+										<table class="table table-striped" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
+											<thead>
+												<tr class="bg-info text-white">
+													<td class="h6">品名</td>
+													<td class="h6">價格</td>
+													<td class="h6">小計</td>
+												</tr>
+											</thead>
+											<c:forEach var="memberOrder" items="${memberOrders}">
+												<tr class="h6">
+													<td>${memberOrder.name}</td>
+													<td>${memberOrder.quantity}</td>
+													<td>${memberOrder.price}</td>
+												</tr>
+											</c:forEach>
+											<tr class="h6 text-success">
+												<td class="thick-line" colspan="2"><span>總價</span></td>
+												<td class="thick-line">${totalAmount}元</td>
 											</tr>
-										</c:forEach>
+										</table>
 								</div>
 							</div>
 						</div>
@@ -137,7 +151,7 @@
 									class='glyphicon-info-sigh glyphicon'></span> 返回首頁
 								</a>
 								<button id="button1" class='btn btn-warning btn-large'> <span
-											class='glyphicon-shopping-cart glyphicon'></span> 結帳
+											class='glyphicon-shopping-cart glyphicon'></span>進行結帳
 								</button>
 							  </div>
 						    </div>

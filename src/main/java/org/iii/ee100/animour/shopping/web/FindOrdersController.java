@@ -24,6 +24,7 @@ public class FindOrdersController {
 	public String findOrders(Model model) {
 		Member currentMember = memberService.getNewCurrentMember();
 		List<Orders> ordersList = ordersService.getByMemberOrders(currentMember.getId());
+		model.addAttribute("currentMember", currentMember);
 		model.addAttribute("orders_size", ordersList.size());
 		model.addAttribute("memberOrders", ordersList);
 		

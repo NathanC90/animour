@@ -140,11 +140,11 @@
 							<form:input path="expire" type="number" min="0" class="form-control" required="required"
 								placeholder="保存期限" />
 						</div>
-						<div class="form-group col-md-4">
-							<h2 class="widget-title">上架日期</h2>
-							<form:input path="shelvesDate" type="date" class="form-control" required="required"
-								placeholder="上架日期" />
-						</div>
+<!-- 						<div class="form-group col-md-4"> -->
+<!-- 							<h2 class="widget-title">上架日期</h2> -->
+<%-- 							<form:input path="shelvesDate" type="date" class="form-control" required="required" --%>
+<%-- 								placeholder="上架日期" /> --%>
+<!-- 						</div> -->
 						<div class="form-group col-md-6">
 							<h2 class="widget-title">商品規格</h2>
 							<form:textarea path="description" type="text" class="form-control" rows="5" required="required"

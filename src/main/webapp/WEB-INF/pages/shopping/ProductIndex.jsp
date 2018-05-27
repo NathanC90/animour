@@ -268,10 +268,10 @@
 			$("#shake").mouseover(over).mouseout(out);
 			
 			function over(){
-				$(this).removeClass("btn btn-common").addClass("btn btn-common animated shake");
+				$(this).removeClass("btn btn-common").addClass("btn btn-common animated rubberBand");
 			}
 			function out(){
-				$(this).removeClass("btn btn-common animated shake").addClass("btn btn-common");
+				$(this).removeClass("btn btn-common animated rubberBand").addClass("btn btn-common");
 			}
 			
 			$('.col-md-4').hover(function(){

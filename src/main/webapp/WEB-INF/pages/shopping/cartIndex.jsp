@@ -131,8 +131,7 @@
 						</thead>
 						<c:set var="total" value="0"></c:set>
 						<c:forEach var="cartItem" items="${sessionScope.cart}" varStatus="i">
-							<c:set var="total"
-								value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
+							<c:set var="total" value="${total + cartItem.product.price * cartItem.quantity}"></c:set>
 							<tr class="h6">
 								<td>${cartItem.product.name}</td>
 								<td>${cartItem.product.price}</td>
@@ -158,7 +157,7 @@
 			<div class="container">
 			  <div class="row justify-content-md-center">
 			    <div class="col-md-auto">
-			        <a href="/product/index" class='btn btn-primary'> <span
+			        <a href="/product/index" class='btn btn-success'> <span
 							class='glyphicon-info-sigh glyphicon'></span>繼續購物</a>&nbsp;&nbsp;&nbsp;
 					<a href="/cart/removeShoppingCart" class='btn btn-primary'> <span
 									class='glyphicon-info-sigh glyphicon'></span>清空購物車</a>&nbsp;&nbsp;&nbsp;			

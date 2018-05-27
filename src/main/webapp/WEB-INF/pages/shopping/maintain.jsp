@@ -116,7 +116,7 @@
 										<th class="h6">產品名稱</th>
 										<th class="h6">價格</th>
 										<th class="h6">庫存</th>
-										<th class="h6">製造日期</th>
+										<th class="h6">上架日期</th>
 										<th class="h6">保存期限</th>
 										<th class="h6">產品類別</th>
 										<th class="h6">編輯</th>
@@ -129,7 +129,7 @@
 										<td class="align-middle"><span class="text-primary"><span class="h6">${product.name}</span></span></td>
 										<td class="align-middle"><span class="text-success"><span class="h6">${product.price}</span></span></td>
 										<td class="align-middle"><span class="text-success"><span class="h6">${product.stock}</span></span></td>
-										<td class="align-middle"><span class="text-success"><span class="h6">${product.makeDate}</span></span></td>
+										<td class="align-middle"><span class="text-success"><span class="h6">${product.shelvesDate}</span></span></td>
 										<td class="align-middle"><span class="text-success"><span class="h6">${product.expire}</span></span></td>
 										<td class="align-middle"><span class="text-danger"><span class="h6">${product.classify.name}</span></span></td>
 										<td class="align-middle"><a

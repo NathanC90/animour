@@ -1,5 +1,6 @@
 package org.iii.ee100.animour.shopping.web;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.iii.ee100.animour.member.entity.Member;
@@ -59,7 +60,6 @@ public class ProductController {
 		page = productService.getPage(pageNo, 6);
 		model.addAttribute("page", page);
 		return "/shopping/maintain";
-		// return "/shopping/ProcessProductForm";
 	}
 	
 	@RequestMapping(value = "/product/maintain")
@@ -78,8 +78,6 @@ public class ProductController {
 	public String input(Model model) {
 		model.addAttribute("Classifies", classifyService.getAll());
 		model.addAttribute("product", new Product());
-//		return "/shopping/Management";
-//		return "/shopping/TestCRUDindex";
 		return "/shopping/addProduct";
 	}
 
@@ -96,9 +94,11 @@ public class ProductController {
 //				e.printStackTrace();
 //			}
 //		}
+		java.sql.Date createDate = new Date(System.currentTimeMillis());
 		try {
 			Member currentMember = memberService.getNewCurrentMember();
 			product.setMember(currentMember);
+			product.setShelvesDate(createDate);
 			productService.insert(product);
 		} catch (Exception e) {
 			e.printStackTrace();

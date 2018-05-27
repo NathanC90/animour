@@ -149,6 +149,11 @@
 						  <a id="pulse" href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
 									class='glyphicon-shopping-cart glyphicon'>加入購物車</span>
 						  </a>
+						  <c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
+						  <a id="pulse" href="/cart/index" class='btn btn-warning btn-large'> <span
+									class='glyphicon-shopping-cart glyphicon'>查看購物車</span>
+						  </a>
+						  </c:if>
 					    </div>
 					  </div>
 					</div>
