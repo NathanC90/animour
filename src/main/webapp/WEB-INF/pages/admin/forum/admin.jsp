@@ -259,7 +259,7 @@
 							var cell1 = $("<td></td>").text(article.id);
 							var cell2 = $("<td></td>").text(article.subject);
 							var cell3 = $("<td></td>").text(formatDate(new Date(article.postTime)));
-							    	              var cell4 = $("<td></td>").text(article.click);
+							var cell4 = $("<td></td>").text(article.click);
 							var cell5 = $("<td></td>").text(article.member.account);
 							if (article.status == false) {
 								var span02 = $('<span></span>').addClass('icon icon-eye');
@@ -270,7 +270,7 @@
 							var divb2 = $('<div></div>').addClass('btn-group').append([button02]);
 							var divf2 = $('<div></div>').addClass('flextable-item').append(divb2);
 							var cell09 = $('<td></td>').append([divf2]);
-							var row = $('<tr></tr>').append([cell1, cell2, cell3, cell5, cell09]);
+							var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell09]);
 							$('#table1>tbody').append(row);
 							$('#table1').trigger("update");
 						});

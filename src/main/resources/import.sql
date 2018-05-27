@@ -119,7 +119,7 @@ insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMB
 
 insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('養貓新手上路（認養貓咪的觀念＆帶貓咪回家要注意的事）','<h2>養貓新手上路（認養貓咪的觀念＆帶貓咪回家要注意的事＆貓咪的日常清潔與運動＆日常生活該怎麼照顧＆關於結紮這檔事＆貓咪生的什麼病？！）&nbsp;</h2><p>&nbsp;認養貓咪的觀念， 認養前，我們的10個約定：&nbsp;</p><ul><li>請給我一點時間，讓我瞭解你對我的要求</li><li>請信任我，這是我幸福的泉源</li><li>請不要忘記，我也是有血有肉的</li><li>在責罵前，請先試著瞭解我</li><li>請偶爾對我說說話，雖然我聽不懂，但我懂你的心</li><li>請不要打我，別忘了，我認真起來是比你還強壯的</li><li>請好好照顧我，當我逐漸變老時</li><li>請記住，你有你的工作、娛樂和朋友，但我就只有你</li><li>請想想，我的生命有10~15年，遺棄我會是對我最大的傷害</li><li>請在我最終離去前陪著我，這是我最後的心願。最後，請記得，我愛你。</li></ul><p>另外請注意：&nbsp;</p><ol><li>如家中已有貓咪者，家中的貓是否已完成疫苗注射？</li><li>隔離籠或小房間已準備妥當？</li><li>貓咪的水盆、飼料、貓砂盆是否已準備？</li><li>外出提籠是否已準備？</li><li>家俱可能會受傷的這件事，是否已準備包容?</li></ol><figure class="image"><img src="https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg" srcset="https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_144 144w, https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_224 224w, https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_304 304w, https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_384 384w, https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_464 464w, https://16608.cdn.cke-cs.com/nZO2k5WiHIWjQYuCvKvS/images/a81ac234bdf90c5213d6d8474387727b6b0b4e291f7eb770_貓床2.jpg/w_544 544w" sizes="100vw" width="544"></figure>','2015-10-10 00:00:00','2015-10-10 00:00:00',2,51,0,2,'https://i.imgur.com/jp1wO6P.jpg',true);
 
-insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('養狗知識: 狗狗動作及身體語言','<h3><i>你知道狗狗的很多動作其實是有特別意思的嗎? 以下是一些典型的犬隻肢體語言:&nbsp;</i></h3><ol><li>聞地面：這個動作被認為是當狗狗害怕對方（人或狗）時，想要使對方冷靜的信號。</li><li>一瞬間轉頭，把頭或眼睛轉向別方，有時這只是一瞬間的動作，可能您根本沒注意到這樣的行為。當小朋友跑向狗狗要抱牠時，害怕的狗狗可能就會有這樣的動作。 所以，請特別告誡小朋友，不要接近一隻瞪著你的陌生狗狗，"瞪著你"在狗狗的肢體語言就代表了攻擊性。當然，在沒有大人可隨時監看著的情況下，最好不要讓小朋友任意接近陌生的狗狗。&nbsp;</li><li>舔自己的鼻子：快或慢，都被認為是安撫陌生的對方的信號。而且有趣的是，黑色的狗狗會比其他毛色的狗狗更常使用這個動作。可能是因為黑色的狗狗比較不容易被看清楚臉部表情，而粉紅色的舌頭又特別明顯吧。&nbsp;</li><li>舔其他狗狗或人的臉：這普遍被認為是歡迎你的動作，有可能也是一個安撫的信號。&nbsp;</li><li>打呵欠：這是最普遍的一個正處於壓力下的信號。最常看到的時候就是在動物醫院、服從訓練中狗狗覺得主人要求太多、或被主人教訓時。&nbsp;</li><li>尾巴搖搖、兩腳站起、用前腳抓你：狗狗想要玩遊戲，表示想邀請你和他玩。熱情的狗狗，最希望你陪他一起玩，不管是你丟我撿、你跑我追、搶玩具。&nbsp;</li><li>翻著身子躺在地上，把肚子露出：狗狗認輸臣服的表示，肚子是狗狗最脆弱的地方，遇到老大或是比自己強勢的狗，認輸的一方便會躺在地上把肚子露出來，表示自己沒有敵意，你是老大般地向你釋出誠意。&nbsp;</li><li>尾巴搖動的速度越快：狗狗常常都是開心的，尤其是看到主人回家，幫他準備晚餐；或是聽到熟悉的腳步聲，知道你即將帶他出門散步。&nbsp;</li><li>露出牙齒低吼，或直接對目標狂吠：狗狗生氣，警告不要靠近，通常他們不會這樣對待你，但如果真的生氣了，狗狗會露出牙齒低吼示威。並不是真的要咬你，就像西部電影的牛仔生氣時，愛拔出武器示威一樣。&nbsp;</li><li>尾巴會垂下，屁屁向內弓：「夾著尾巴逃跑，先溜為妙」絕對是從狗狗得來的成語，狗狗感到害怕時，狀況不對先溜為妙。</li></ol>。','2018-05-07 00:00:00','2018-05-07 00:00:00',4,48,0,2,'https://i.imgur.com/NpK8a0G.jpg',true);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('養狗知識: 狗狗動作及身體語言','<h3><i>你知道狗狗的很多動作其實是有特別意思的嗎? 以下是一些典型的犬隻肢體語言:&nbsp;</i></h3><ol><li>聞地面：這個動作被認為是當狗狗害怕對方（人或狗）時，想要使對方冷靜的信號。</li><li>一瞬間轉頭，把頭或眼睛轉向別方，有時這只是一瞬間的動作，可能您根本沒注意到這樣的行為。當小朋友跑向狗狗要抱牠時，害怕的狗狗可能就會有這樣的動作。 所以，請特別告誡小朋友，不要接近一隻瞪著你的陌生狗狗，"瞪著你"在狗狗的肢體語言就代表了攻擊性。當然，在沒有大人可隨時監看著的情況下，最好不要讓小朋友任意接近陌生的狗狗。&nbsp;</li><li>舔自己的鼻子：快或慢，都被認為是安撫陌生的對方的信號。而且有趣的是，黑色的狗狗會比其他毛色的狗狗更常使用這個動作。可能是因為黑色的狗狗比較不容易被看清楚臉部表情，而粉紅色的舌頭又特別明顯吧。&nbsp;</li><li>舔其他狗狗或人的臉：這普遍被認為是歡迎你的動作，有可能也是一個安撫的信號。&nbsp;</li><li>打呵欠：這是最普遍的一個正處於壓力下的信號。最常看到的時候就是在動物醫院、服從訓練中狗狗覺得主人要求太多、或被主人教訓時。&nbsp;</li><li>尾巴搖搖、兩腳站起、用前腳抓你：狗狗想要玩遊戲，表示想邀請你和他玩。熱情的狗狗，最希望你陪他一起玩，不管是你丟我撿、你跑我追、搶玩具。&nbsp;</li><li>翻著身子躺在地上，把肚子露出：狗狗認輸臣服的表示，肚子是狗狗最脆弱的地方，遇到老大或是比自己強勢的狗，認輸的一方便會躺在地上把肚子露出來，表示自己沒有敵意，你是老大般地向你釋出誠意。&nbsp;</li><li>尾巴搖動的速度越快：狗狗常常都是開心的，尤其是看到主人回家，幫他準備晚餐；或是聽到熟悉的腳步聲，知道你即將帶他出門散步。&nbsp;</li><li>露出牙齒低吼，或直接對目標狂吠：狗狗生氣，警告不要靠近，通常他們不會這樣對待你，但如果真的生氣了，狗狗會露出牙齒低吼示威。並不是真的要咬你，就像西部電影的牛仔生氣時，愛拔出武器示威一樣。&nbsp;</li><li>尾巴會垂下，屁屁向內弓：「夾著尾巴逃跑，先溜為妙」絕對是從狗狗得來的成語，狗狗感到害怕時，狀況不對先溜為妙。</li></ol>。','2018-05-07 00:00:00','2018-05-07 00:00:00',4,48,0,2,'https://i.imgur.com/NpK8a0G.jpg',false);
 
 insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('請問養一隻狗開銷怎麼樣?','<p>問這問題是因為過去幾十年來, 從我爸小時候算起, 到現在我都快四十了, 我爸也當阿公了, 但我們家就是從來沒養過任何寵物. 所以自然對這方面的知識與經驗=0&nbsp;</p><p>其實我們家是蠻喜歡狗的, 兒子最近在嚷嚷說想養一隻, 只是一直沒有很認真的想要去做這件事. 能不能借這個版問一下, 請教各位, 先撇開購入幼犬的費用不計.....單純就幼犬抱回家之後, 大概每個月或每年要面臨哪些開銷啊? 能否用黃金獵犬跟威爾斯柯基犬, 這二種大小的狗, 讓我知道一下花費的預算大概會是多少啊? 非常感謝!!</p>','2018-03-07 00:00:00','2018-03-07 00:00:00',5,35,0,6,'https://i.imgur.com/e9i9jC5.jpg',true);
 
@@ -163,11 +163,205 @@ insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMB
 
 insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('你們家的貓咪睡哪種床呢？','<p>最近養了雙喵才知道原來貓咪跟狗狗東西一樣好買， 狗狗可能花在衣服上面可以花上很多錢， 但我發現喵喵不但有抓版，跳台，還有各式各樣碗跟水盆， 還有床可以買，加上我發現我家喵喵竟然會乖乖在自己床睡覺時候， 而且用了三星期觀察，雙喵到時間就會各自回各自床睡覺， 不會亂睡在床底下或者平日休息地方， 甚至上來床上撒嬌之後還是會回到自己的床上去睡覺， 不會打擾任何人，就像那床是他房間一樣！我的慾望就一直上升，想幫他們升級更好的床， 今天在樂天上看到這個<a href=" http://ppt.cc/8py0"> http://ppt.cc/8py0</a><a href=""> </a><a href="http://ppt.cc/mEqr">http://ppt.cc/mEqr</a>&nbsp;</p><p>整個好適合雙喵唷！ 加上他是可以拆開來變成單人床！ 慾望整個大上升～～～～ 但是看到價格之後就默默關掉， 一萬多的床還是拿來給毛孩子吃飯比較實在！ 這是網友請人家木工訂製的&nbsp;</p><p><a href="http://ppt.cc/JdVe">http://ppt.cc/JdVe</a>&nbsp;</p><p>還有小桌子整個很豪華耶！ 但我想價格應該也不太便宜才是啦&gt;"&lt; 還有適合多喵的上下床</p><p>&nbsp;<a href="http://ppt.cc/KejK">http://ppt.cc/KejK</a>&nbsp;</p><p>看了真的是讓我哇哇叫，也太夢幻了！ 重點是喵咪會乖乖去睡耶～～～ 這個是看了有打算購入放在雙喵阿嬤家的&nbsp;</p><p><a href="http://ppt.cc/2TnO">http://ppt.cc/2TnO</a>&nbsp;</p><p>我們每星期都會回台北，但是雙喵都沒地方窩，所以有打算買這個 這個屋頂是可以拆開來的，底部是塑膠可以清洗的， 感覺很適合雙喵阿嬤潔癖個性，也可以很方便清洗， 加上他的屋頂可以掀開蓋起來，很適合愛偷窺的喵麻我:P 但是看來看去很多木床 最後應該是會買lkea的 好像版上也有版友推薦&nbsp;</p><p><a href="http://ppt.cc/UlQI">http://ppt.cc/UlQI</a>&nbsp;</p><p>這個加上被套組是799 比之前版友推薦貴了一百，不過感覺很有質感， 正打算回台北時候去看看看是不是要購入回來～ 目前我們家雙喵是睡在類似這種</p><p>&nbsp;<a href="http://goo.gl/qJNSl">http://goo.gl/qJNSl</a>&nbsp;</p><p>畢竟剛開始帶他們回家很擔心他們不睡所以剛開始購入最便宜的 各位版友喵咪都睡哪裡呢？ 還是喵咪都跟各位睡呢？</p>','2018-04-08 00:00:00','2018-04-08 00:00:00',4,22,0,6,'https://i.imgur.com/eeAipHv.jpg',true);
 
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('這到底是什麼動物？！毛絨絨的「謎之生物」你有看過嗎？','<p>日前，位於日本的茨城縣かみね動物園，被拍到了一張引人熱議的動物照片，照片中的動物只露出了四隻腳，還被許多毛絨絨的尾巴包覆住，讓前來動物園觀賞的民眾們不禁滿頭霧水，想說動物園什麼時候進了如此奇異的新品種？</p><p>照片中可見，這個「不知名生物」不僅被毛絨絨的黑白相間尾巴包覆住之外，還露出了兩顆以上的頭，整體身軀呈現圓形，面向外頭的表情，看起來正很舒適地睡覺著。</p><p>這張「謎之生物」的照片被上傳至網路上分享後，立即引來大批網友熱議，紛紛猜測這是什麼新的物種嗎？怎麼從來沒見過？但答案一下子就揭開了，而且這種生物只有在「天氣冷」的時候才會以這樣子的型態出現。</p><p>牠們的原型就是熱門電影《馬達加斯加》裏曾出現過的「狐猴」，擁有毛絨絨的可愛尾巴，根據かみね動物園負責「狐猴」的篠原久飼育員所述，這些狐猴之所以會聚集在一起，是因為那幾日正好碰上寒流，動物園內非常低溫，所以狐猴們才會窩在一起取暖，形成一顆球的樣子，但他也說，這是第一次看到狐猴們有這樣子的行為，可以說是非常稀有。</p><p>位於日本茨城縣日立市的かみね公園內的かみね動物園，除了園區內高達一百多種的動物之外，最出名的就是可以從園區內的高處平台眺望太平洋，而かみね動物園為了要讓民眾可以與動物們有更進一步的互動，也在近年新增了許多動物們的戶外活動設施，讓前來參觀的民眾可以在近距離內觀賞動物，像是文中狐猴所在的區域，園方就新建了個「サルの楽園（猴子的樂園）」，大小朋友們都可以在這些新架設的高台上看著猴子們玩耍。</p><p>這些窩在一起的狐猴總共有「十八隻」，看著他們窩在一起取暖的幸福模樣，雖然現在已經要邁向夏天了，但這張照片完全可以存起來冬天的時候拿出來讓眼睛取暖XD</p>','2018-05-07 00:00:00','2018-05-07 00:00:00',10,88,0,4,'https://i.imgur.com/zL3Eeo5.jpg',true);
 
-insert into comment (detail,update_Time,Article_Id,Member_Id) values ('nice!','2018-04-01 00:00:00',1,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('【寵物專欄】毛小孩們的飲食大忌','<p>關於哪些人類食品不應該跟貓貓狗狗分享，不管是在網路上，還是流傳於親朋好友口耳之間，小道消息又多又雜亂，各位讀者們是否和筆者一樣，總是覺得有些無所適從呢？好消息是，從現在起不用再憂慮了，「Frontiers in Veterinary Science」在今年三月份刊出一篇文章，回顧了各種不宜貓狗寵物食用的人類食物。現在就讓我們來看看哪些毛孩子是要忌口的吧！<strong> </strong><span id="more-25484"></span></p>
+<figure id="attachment_25507" style="width: 400px" class="wp-caption alignleft"><img class="wp-image-25507" src="https://case.ntu.edu.tw/blog/wp-content/uploads/2016/09/19-2-1.jpg" alt="幾種常見的蔥屬植物食材：洋蔥(左上)、韭蔥(右上)、青蔥(左下)、蒜(右下)。圖片來源：維基百科。" width="400" height="396" /><figcaption class="wp-caption-text">幾種常見的蔥屬植物食材：洋蔥(左上)、韭蔥(右上)、青蔥(左下)、蒜(右下)。圖片來源：維基百科。</figcaption></figure>
+<p><span style="color: #008080;"><strong>●蔥屬植物 (<em>Allium</em> spp.)</strong></span></p>
+<p>蔥屬植物大多數都具有膨大的鱗莖、散發濃重氣味等等特色，如洋蔥、蒜、蔥、韭菜等等，是廣泛使用於各類料理的超常見蔬食食材之一。蔥屬植物含有有機硫化物，在經咀嚼之後，會轉化成一系列複雜的硫化合物，在貓狗體內會引發氧化溶血作用 (oxidative haemolysis)，導致變性血紅素血症 (methemoglobinemia)，並使紅血球內的血紅素蛋白氧化形成海因茲氏小體 (Heinz bodies)，使貓狗貧血。</p>
+<p>這類的硫化合物，無法透過清洗、烹調或乾燥等等加工處理手續自食物中清除。先前的報導指出，貓狗吃下自己體重0.5% (貓) 或1.5－3% (狗) 重量的洋蔥，就會出現明顯的血液問題。中毒發病速度依食用量而異，大抵在一到數天內會出現嘔吐、腹瀉、腹痛、無食慾、情緒低落等症狀，貧血發生後會陸續出現粘膜蒼白、體弱、呼吸及心跳急速、黃疸、或因血紅素尿 (haemoglobinuria) 而導致的小便黃赤現象。曾經有貓狗因為吃太多蔥屬植物食物而死亡的案例。目前尚無解毒劑可以對付這類型的食物中毒事件，最直接的解決方案是在誤食後兩小時內進行催吐，或是用輸血的方法救助貧血症狀嚴重的動物。</p>
+<p><span style="color: #008080;"><strong>●葡萄及葡萄乾</strong></span></p>
+<figure id="attachment_25508" style="width: 650px" class="wp-caption aligncenter"><img class="wp-image-25508" src="https://case.ntu.edu.tw/blog/wp-content/uploads/2016/09/19-3.jpg" alt="圖片來源：維基百科，by Franco di filippo (CC-BY-SA-3.0)。" width="650" height="334" /><figcaption class="wp-caption-text">圖片來源：維基百科，by Franco di filippo (CC-BY-SA-3.0)。</figcaption></figure>
+<p>沒錯，各種含有葡萄成分的食品，都對狗狗都不好。已經有很多臨床案例顯示狗狗吃葡萄或葡萄乾會引發腎衰竭。但是詳細的毒理機制仍然不明朗，像是到底是葡萄裡的什麼成份有毒、為什麼對腎臟具有毒性等等問題，至今尚無明確解答。此外，不同的狗狗對葡萄毒性的忍受力差異頗大，有些狗可以吃到一公斤的葡萄仍無中毒症狀，但有些狗只要吃幾顆葡萄就會死。一般來說，狗狗在吃到葡萄後的 24小時內的中毒初期會嘔吐，後期會出現腹瀉、厭食、嗜睡、腹痛、乏尿或無尿等等症狀。如果能夠確定狗狗是因為短時間內吃到葡萄而出現病徵，則可以使用催吐或服用活性炭的方式治療。因為狗狗葡萄中毒的死亡率高達50—75%，所以吃到葡萄的狗狗都應該接受至少兩到三天的住院積極治療，至少三天的觀察時間觀察腎功能運作是否正常。</p>
+<figure id="attachment_25509" style="width: 450px" class="wp-caption alignleft"><img class="wp-image-25509" src="https://case.ntu.edu.tw/blog/wp-content/uploads/2016/09/19-4.jpg" alt="圖片來源：維基百科，CSIRO (CC BY 3.0) 。" width="450" height="294" /><figcaption class="wp-caption-text">圖片來源：維基百科，CSIRO (CC BY 3.0) 。</figcaption></figure>
+<p><span style="color: #008080;"><strong>●夏威夷果仁 (Macadamia nuts)</strong></span></p>
+<p>很多餅乾、蛋糕、點心棒等等食品，因為添加了低膽固醇、低鈉、又富含維他命B1的夏威夷果仁，讓人在享受甜食時少了一點損害健康的罪惡感。但如果把你的點心和狗狗分享，可就要為損害狗狗的健康感到罪惡。雖然目前還沒有研究指出是夏威夷果仁裡的什麼成分讓狗狗中毒，但已知狗狗吃下自己體重0.07%重量的夏威夷果仁，就可能引發身體不適。中毒的狗狗大抵在誤食後12小時內會有後肢無力、情緒低落、嘔吐、失調、發抖、高燒、腹痛、懶散、僵直、仰臥及口腔粘膜蒼白等等不正常的現象。好在是夏威夷果仁的毒性不算太兇猛，截至目前為止，還有沒狗狗因為吃了夏威夷果仁而致命的案例，大多數中毒的狗狗在休養一兩天內就會恢復正常。<strong> </strong></p>
+<p><span style="color: #008080;"><strong>●啤酒花（Hops）</strong></span></p>
+<figure id="attachment_25510" style="width: 650px" class="wp-caption aligncenter"><img class="wp-image-25510" src="https://case.ntu.edu.tw/blog/wp-content/uploads/2016/09/19-5.jpg" alt="圖片來源：維基百科，Visitor7 (CC-BY-SA-3.0)。" width="650" height="433" /><figcaption class="wp-caption-text">圖片來源：維基百科，Visitor7 (CC-BY-SA-3.0)。</figcaption></figure>
+<p>在釀製啤酒時為增加啤酒風味及泡沫穩定性而加入的啤酒花，不管是新鮮的還是用過的，對狗狗來說都是劇毒，雖然啤酒花讓狗狗中毒的機制，和葡萄、夏威夷果仁一樣目前還不清楚。誤食啤酒花的狗狗會數小時內出現惡性高熱 (malignant hyperthermia) 的現象，症狀包括發高燒、焦慮、心跳加速、呼吸急促、氣喘、嘔吐、腹痛和痙攣。即使是受到積極治療的狗狗，死亡率還是很高，所以即便是啤酒花不是一般家庭冰箱或儲藏室裡會有的東西，飼主們自己喝啤酒、或是帶狗狗去啤酒工廠遊玩時，一定要多加注意狗狗是不是偷偷吃喝了什麼不該碰的東西。</p>
+<figure id="attachment_25511" style="width: 300px" class="wp-caption alignleft"><img class="wp-image-25511" src="https://case.ntu.edu.tw/blog/wp-content/uploads/2016/09/19-6.jpg" alt="圖片來源：維基百科，Edrean (CC-BY-SA-3.0)。" width="300" height="270" /><figcaption class="wp-caption-text">圖片來源：維基百科，Edrean (CC-BY-SA-3.0)。</figcaption></figure>
+<p><span style="color: #008080;"><strong>●酪梨也有毒？</strong></span></p>
+<p>相信有些毛家長們曾經聽過貓狗不能吃酪梨 (avocado, <em>Persea americana, </em>又稱牛油果、鱷梨) 這樣的說法。過去確實有愛吃酪梨的狗狗死於急性心肌病變的病例報導，但是絕大多數因食用酪梨而出現中毒生病情況的案例，都是發生在鳥類寵物身上。目前沒有證據顯示酪梨對貓狗具有毒性，甚至有<a href="http://www.avocadofactsfordogsandcats.com/">網站</a>認為食用酪梨能夠為貓狗提供營養和健康。所以家裡的毛小孩能不能嚐一口加州卷的滋味，就讓毛家長們自己決定吧。</p><br/>','2018-05-22 00:00:00','2018-05-23 00:00:00',3,83,0,4,'https://i.imgur.com/fuRVKFu.jpg',true);
 
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('狗狗真的聽得懂人話','<p><span style="color: #333399;"><strong>■很多愛狗人士會對狗說話，那是對牛彈琴嗎？一項新研究顯示狗真的有在認真聽人話。</strong></span></p><p>當我們在聽話時，我們不僅會留意字義，還會同時關注語調的變化和性別的特徵，來聽出情緒等言外之意，狗也可能有同樣的語言辦識能力。英國薩塞克斯大學的心理學家Victoria Ratcliffe和David Reby的一項新研究發現，雖然還無法瞭解狗是否真的聽得懂人話，可是牠們對字句以及語調語氣等變化其實是會有反應的。<span id="more-19936"></span></p>
+<p>他們之前的研究顯示，狗腦的左右半球對其他狗的不同吠聲有不同的反應。他們好奇狗對人話也會有類似的反應嗎？於是他們找了250隻狗，在狗左右耳邊播放聲量大小一致的人聲。左耳聽到的話會送到右腦，反之亦然。如果狗的頭往左轉，表示狗主要用右腦在處理資訊。</p>
+<p>當播出的人聲是狗熟悉的命令而沒有性別和情緒等訊息時，牠們的大腦左半球會反應，可是如果字句本身沒有意義但出現了聲調上的變化時，右半球就產生了反應。這意味著，狗腦處理語言資訊的左右腦分工和人類的是相似的。人類就是用左腦處理字句的意思，並且用右腦來辨識說話的人是否是熟人，以及情緒和性別等資訊。</p>
+<p>當然，這並非意味著狗能完理解人話的意思，但是狗顯然不單單在注意人話的字句，也關注話是怎麼說以及是誰說的。不過，目前還不曉得這個能力是在人類馴化狗之後產生的？或是狗與生俱來的？其他哺乳動物是否也有相同的能力？釐清這些問題，有助瞭解解人類語言的起源和演化。</p>
+<p>改天對狗說話，或者看到有人對狗說話，請瞭解到原來我們人類都不是在對牛彈琴。</p>
+<p><strong>參考資料：</strong><br />
+Colin Barras. <a href="http://www.newscientist.com/article/mg22429974.400-dog-headturning-shows-they-do-understand-what-you-say.html" target="_blank">Dog head-turning shows they do understand what you say</a>. 26 November 2014.<br />
+Virginia Morell. <a href="http://news.sciencemag.org/biology/2014/11/dogs-really-do-listen-us" target="_blank">Dogs really do listen to us. Science News</a>. 26 November 2014.<br />
+Jacqui Bealing. <a href="http://www.sussex.ac.uk/newsandevents/?id=27785" target="_blank">Dogs listen to our words, not just our voices, says Sussex study</a>. University of Sussex. 26 November 2014.<br />','2018-05-04 00:00:00','2018-05-04 00:00:00',6,55,0,4,'https://i.imgur.com/5hCTNRN.jpg',true);
 
-insert into comment (detail,update_Time,Article_Id,Member_Id) values ('nice!','2018-04-01 00:00:00',1,1);
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('【生物考古】狗狗的雙重起源','<p>多年來，科學家一直在爭論，家犬究竟是從哪裡來的。狼是在歐洲，還是在亞洲，和人類產生特別的關係？科學家分析了數百隻家犬的遺傳資料，發現狗可能在歐洲或近東，以及亞洲各馴化了一次。</p>
+<p>這項研究包括一個獨特的樣本：一個近五千年老的狗內耳骨，是從愛爾蘭東海岸紐格萊奇墓（Newgrange）出土的。紐格萊奇墓位於愛爾蘭東北部的米斯郡（County Meath），是博因河河曲地區的一座通道式墳墓。是愛爾蘭最為著名的史前墳墓之一，是世界文化遺產博因河河曲考古遺址的一部分。<span id="more-24882"></span></p>
+<p>紐格萊奇墓一般認為在新石器時代的公元前3200年，由一群在博因河谷從事農業耕作的人類所建造。博因河曲在凱爾特神話中經常出現。紐格萊奇墓被認為是他們的神的居所，也被公元三世紀時的羅馬人所崇拜。石堆上發掘出許多當時的貢品、錢幣、珠寶等。</p>
+<p><iframe src="https://www.youtube.com/embed/ejfRIdqS-Nk" width="640" height="360" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p>
+<p>英國牛津大學的演化遺傳學家Laurent Frantz等人，從該五千年前的狗耳骨萃取出DNA進行了定序，並公佈了該樣本的全基因體，加上59隻14,000至6,400年前的古歐洲犬的粒線體基因體，並用來和605隻世界各地現代狗的基因體相比較。</p>
+<p>接著，他們重建了狗的演化系譜，發現歐洲狗（如紐格蘭奇犬和黃金獵犬）和亞洲犬（如沙皮狗和來自西藏和越南的鄉村狗）之間有很深的分歧。過去沒有足夠的樣本，所以未見這樣的分歧。他們認為這樣的分歧，是因為各來自不同的狼祖先。有些現代品系，如愛斯基摩犬和格陵蘭雪橇狗，分別有來自兩個地區的祖先。</p>
+<p>為了弄清楚該分化是何時發生的，該紐格萊奇墓的樣本至關重要。他們用牠來和一些現代狗和狼的基因體資訊，計算犬的基因突變率。該速率顯示，東西方分歧發生在14,000到6,400年前之間。這分析還顯示西方狗經歷了「遺傳瓶頸」，遺傳多樣性因犬口數量急劇下降而減少，這通常見於一個小群體從大群體中分裂出來後。類似的現象是一小撮人遷徙出非洲時。</p>
+<p>考古學家從前曾發現，德國地區在16,000多年前就有狗，亞洲犬到那裡時，在歐洲的灰狼已被馴化成家犬。當今一些歐洲狗可能攜帶早期馴化的遺傳痕跡，但難以找到。尤其當他們分析母系遺傳的粒線體DNA，發現舊石器時代的歐洲犬，很多基因型在現代歐洲犬中找不到。這結果可能意味著，古歐洲犬沒留下多少後代，有可能是因為亞洲犬在新石器時代就逐漸取代了古歐洲犬。</p>
+<p>他們認為，人類在亞洲馴化狗，發生在超過14,000年前，一小部分家犬和人通過歐亞大陸西遷。這意味著，所有現代家犬，還有紐格萊奇墓犬，牠們的祖先可追溯回到亞洲。東亞犬的基因在遙遠的過去至少部分取代了歐洲犬。隨著人類從東方西遷的亞洲狗，比原本的古歐洲狗有更多後代，而取代了歐洲馴化的狗。</p>
+<p>這有可能是人們在某處獲得了更好的狗，在幾百或上千年的過程中，那些狗擴散到整個歐亞大陸。不過，兩次馴化的故事要說得通，是建立在突變率的估算是準確的基礎上。另外，馴化後家犬和野狼仍不時暗通款曲有雜交。要解決這問題，可能要有上千隻狗的基因體資料。</p>
+<p>狗的雙重起源是個有趣的可能，特別是貓和豬都有多次馴化的證據。這可能意味著這些動物幾乎一定會被馴化。瞭解狗的馴化，對瞭解人類的文明演化非常重要。家犬的演化還提供了一個窗口，以窺探人類的過去。在農場和定居農業出現之前，人們就有了狗，是人類文化蒐首個主要的創新之一。</p><br/>','2018-05-28 00:00:00','2018-05-28 00:00:00',7,105,0,5,'https://i.imgur.com/Uxr9t8w.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('【科學短新聞】狗狗也有親社會行為','<p>人類之所以異於其他禽獸，是人類能夠在沒有直接關係到個人利益的情況下，幫助、關懷他人。人類能夠進行大型協作，這是因為人類有親社會行為，人們在共同的社會生活中經常會表現出親社會行為，比如幫助、分享、合作、安慰、捐贈、同情、關心、謙讓、互助等等，親社會行為是人與人之間在交往過程中維護良好關係的關鍵基礎。</p>
+<p>狗狗在和人類相處的上萬年時間時，似乎也演化出了親社會行為，只是科學家仍不清楚，狗狗是真的有親社會行為，抑或是只是單純聽從人的命令。奧地利維也納獸醫大學的動物行為學家Friederike Range等人，設計了一個實驗，用了16隻狗來測試他們如何做出有益熟悉狗或陌生狗的行為。<span id="more-23408"></span></p>
+<p>在實驗中，狗狗覺會拉桿子來決定另一隻狗是否會獲得食物。牠們用嘴巴把盤子拉到另一個籠子裡的另一隻狗面前，牠們可以選擇送過去的是有食物的或沒有食物的盤子。在實驗過程中，自己不會吃到食物，只有另一隻狗會吃到，這能夠測試狗狗有沒有親社會行為。他們發現，狗狗能夠瞭解其中的差異，牠們更常把有食物的盤子送給熟悉的狗，對陌生的狗就較少送食物過去。</p>
+<p>他們排除了狗狗是因為害怕陌生的狗而不送食物過去，因為實驗完成後，他們會讓狗狗能夠把有食物的盤子送到自己面前，所有狗都會這麼做，這意味著狗狗也不是為了好玩，而是想要和認識的狗有互動才把有食物的盤子送過去。</p><>','2018-05-26 00:00:00','2018-05-26 00:00:00',12,32,0,1,'https://i.imgur.com/ZGUASSl.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('人類也聽得懂狗叫？','<p>過去的研究大多著重在狗狗能否理解人類發出的訊息，較少注意人類是否能理解狗狗發出的。&nbsp;</p>
+<p>布達佩斯奧斯沃斯洛蘭大學的Tamas Farago等人，找來了40名志願者聽18隻狗的不同咆哮聲，讓他們判斷狗狗是在守衛食物、面對一個陌生人的威脅，或是在玩一場拔河比賽。隨著狗被人類馴養，吠聲可能發生顯著變化，成為狗溝通的主要方式。然而，狗與狼分家後，咆哮聲可能沒有變化。<span id="more-28215"></span></p>
+<p>總體而言，受試者正確辨認了63％的咆哮聲，顯著高於所預期的隨機亂猜。所有種類的咆哮聲被辨認的程度也都高於隨機亂猜的預期，其中玩耍的咆哮聲最易被辨別，有高達81%能被正確識別，守衛食物和受威脅時則各只有60%和50%被辨認出。玩耍的咆哮聲是多次且較短、較快速的反复咆哮聲，和受威脅時的咆哮聲有聲調上的差別。在這個任務中，有養狗經驗的女人，準確度最高，可能是因為女人對別人的情緒更敏感。</p>
+<p>受試者還需要為咆哮聲代表的侵略、恐懼、絕望、幸福和玩樂程度作五個向度的評分。嬉戲的咆哮聲被評為侵略最低，食物守衛時最高。他們認為，當對抗的代價較高時，例如守衛食物，狗狗的咆哮聲誠實地顯露出內心狀態。可是在玩耍和受到威脅時，牠們會操縱咆哮聲中的情感因素來掩藏內心的狀態。</p>
+<p>這些發現意味著，人們在與狗互動時，能夠瞭解並回應牠們的聲學訊息。這樣的跨物種理解，可能是哺乳動物普遍的現象。</p>
+<p>&nbsp;</p><br/>','2018-05-28 00:00:00','2018-05-28 00:00:00',4,97,0,6,'https://i.imgur.com/TbP9Mr1.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('貓咪從何而來？','<p>人類最鍾愛的毛小孩之一：貓咪，是人類最早馴養的動物之一。</p>
+<p>貓的祖先是「非洲野貓」（Felis silvestris lybica）。比利時魯汶大學的Claudio Ottoni、法國雅克莫諾研究院（Institut Jacques Monod）的Thierry Grange和Eva-Maria Geigl等人召集了世界各地的科學家採集貓咪DNA樣本。牠們有些來自石器時代的遺址，或者從古埃及木乃伊和維京人墓穴中挖掘出來。科學家們最終分析了生活時間橫跨約9千年的209隻貓咪的線粒體DNA（mtDNA）。利用母系遺傳的mtDNA來追蹤貓咪的演化歷程。研究發現發表在《自然生態和演化》（<em>Nature Ecology &amp; Evolution</em>）期刊上。<span id="more-28547"></span></p>
+<p>過去大家認為古埃及是第一個馴養貓的文明。從考古證據可知，牠們早已佔據了古埃及人生活，甚至成為膜拜對象。貓咪不但在古埃及壁畫中可見，死後還可能被製成木乃伊。然而，遺傳證據顯示，在比古埃及還古老的新石器時代，人類就已經開始馴養貓咪了。貓咪並非天生懶洋洋，牠們的祖先被馴養前後的數千年裡，都在商船、農莊、糧倉中辛勤地捕鼠呢！</p>
+<p>貓和人的關係中，應該是貓主動找人類為伴，但客觀上這種關係是互惠互利的，之後人類有意或無意地帶著牠們跋涉旅行，擴展了貓咪的地盤。在上萬年的歷史中，有兩次人類馴養貓的記錄，第一次發生在近東地區，大約9,000年前，近東文明發源地的人類遠祖開始馴養野貓。從新石器時代開始，人類結束了狩獵採集浪跡天涯的生活，開始種植農作物並搭建村落定居。豐盛的農穫吸引鼠輩聚集，也招來野貓到村落裡捕鼠。貓咪開始在那些地方流連忘返，慢慢地成就了人類和貓咪間經久不衰的關係。</p>
+<p>第二次發生在大約3,600年前的古埃及。古埃及人可能發現貓咪能在糧倉抓老鼠，間接能夠保護穀物。這波養貓風潮造就了貓咪的二次馴化，人擇挑選出愈來愈多地域觀念較弱的貓咪。即便埃及於公元前1700禁止買賣貓，貓咪仍在地中海區域受到歡迎。</p>
+<p>古羅馬時期，貓咪進入歐洲。在維京時期開始時，埃及貓的領土進一步大幅擴張，波羅的海的維京海港亦能發現貓的蹤跡，顯示牠們是維京船上的一員，進一步北上到斯堪地納維亞。老鼠在船上不僅吃掉糧食，還會啃咬繩索，對以海為家的人而言是個大災難，因此在受鼠患影響的船上特別盛行養貓。貓咪隨著商船的軌跡迅速擴散到世界其他地區，現在地表上除了南極洲，到處都有家貓。</p>
+<p>數千年來，人類養貓的主要是因為牠們是捕鼠高手，可以保護糧倉內的農作物或船上食物。要到相當晚期人們才開始對貓咪的外表產生興趣。大約14世紀，土耳其西部出現皮毛呈虎斑狀的家貓，而這種毛色源於基因變異。顯示人類在跟貓咪共存了多個世紀以後，才開始育種家貓，使牠們有特定外表或行為。</p>
+<p>隨後幾百年，虎斑貓在全世界開枝散葉，約八成現代家貓身上都帶有虎斑DNA，而貓的價值也從它們的實用技能轉到外表長相。貓的育種和選汰主要從19世紀開始。現在家貓有許多不同品種，外觀和皮毛各具特色，有無毛、卷毛、長毛的等等。養貓風潮也迅速席捲歐亞，貓咪逐漸成為寵物。</p>
+<p>喵星人大部分時間在家裡被寵著，許多人因為貓咪的萌態，自願擔任貓咪的「鏟屎官」。亦有科學家認為，現代家貓仍未完全馴化，人類被貓咪馴化的程度恐怕更高，所以有些人會淪作「貓奴」。家貓外表看來跟野貓相似，只是比較能容忍人類和其他貓咪。狗狗會被選作特定任務，使牠們在馴化過程中因人擇而變得和祖先非常不同，但這並沒有在家貓身上發生。</p>
+<p><iframe src="https://www.youtube.com/embed/SgZKFVaSDRw" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></p><br />','2018-05-02 00:00:00','2018-05-02 00:00:00',8,52,0,5,'https://i.imgur.com/p5JghEB.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('貓咪的真性情','<p>英國愛丁堡大學的Marieke Gartner和美國布朗克斯動物園的科學家把家貓和其他貓科動物的行為作了比較，發現家貓和其他野生大型貓科動物有著相似的個性。</p>
+<p>他們把蘇格蘭收容所貓舍的上百隻貓，和美國布朗克斯動物園裡的雪豹、雲豹、蘇格蘭野貓、非洲獅等大型貓科動物比較了五大性格特質（Big Five personality traits）。家貓的個性過去比較讓人熟悉，可是其他貓科動物的個性比較少被探討，和貓咪的差異也鮮為人知。</p>
+<p>五大性格特質又稱大五性格模型，或五因素模型（The Five Factor Model，簡稱FFM），是現代心理學中描述最高級組織層次的五個方面的人格特質。這五大人格特質構成了人的主要性格，近年科學家也把這個五大性格特質用在研究其他動物，如靈長類和家犬。<span id="more-23067"></span></p>
+<p>該五大性格特質是「經驗開放性」（Openness to experience）、「盡責性」（Conscientiousness）、「外向性」（Extraversion）、「親和性」（Agreeableness）、「情緒穩定性」（Neuroticism），這些性格特質和健康、壽命和福祉都息息相關。</p>
+<p>他們的觀察發現這些貓科動物在支配性、衝動性和情緒穩定性有著高度相似性。雲豹和其他豹亞科貓科動物的共同祖先分家了一千萬年，野貓大約在六百萬年前分支出來，這研究顯示貓科動物的個性過去千萬年來變化不大。他們的這個研究結果發表在《比較心理學期刊》（<em>Journal of Comparative Psychology</em>）。</p>
+<p>不過，他們無法排除這些貓科動物的神經質，是因為生活在人工的環境下，例如那些大型貓科動物被關在動物園裡頭，而貓咪是在收容所而非在家庭裡。在收容所的貓咪，可能對人類有較高的焦慮、沒安全感、疑慮和害怕，可是在家庭裡的寵物貓則不，不同貓咪也有不同的個性，有些較黏人，有些較獨立。</p><br/>','2018-05-15 00:00:00','2018-05-15 00:00:00',11,97,0,6,'https://i.imgur.com/QaysQSB.png',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('歐洲蠑螈的夢魘－－進擊的亞洲真菌','<p><span style="color: #333399;"><strong>■新興疾病不僅對世界人類的健康造成重大危脅，對生物多樣性也是產生了重大衝擊，不少物種更身處在存亡之秋。2010年荷蘭出現大量的火蠑螈死亡，科學家現在發現，原來罪魁禍首是來自亞洲的真菌。</strong></span></p><p>當荷蘭火蠑螈在野外大量死亡時，動物保育人士試圖尋找看似健康的個體，並且在人工環境下飼育，沒想到牠們也全軍覆沒。</p>
+<p>剛開始，一種蛙病毒有重大嫌疑，可是測試結果卻是陰性。於是真菌<em>Batrachochytrium dendrobatidis</em>（<em>Bd</em>）很自然地成了另一個重大嫌犯，<em>Bd</em>曾對兩桋動物造成重大傷亡，甚至在八十年代讓超過200種兩桋動物永不見天日地滅絕了。</p>
+<p>可是當比利時的外科獸醫師An Martel把死亡的火蠑螈皮膚放到顯微鏡下觀察時，她發現了真菌感染，那些死亡的蠑螈也碓實有類似<em>Bd</em>感染的潰瘍和傷口。可是測試結果顯示該真菌並非<em>Bd</em>，於是她發現原來那是一種新種真菌，並命名為<em>Batrachochytrium salamandrivorans</em>（<em>Bs</em>），是<em>Bd</em>的近親。他們還發現歐洲和美洲的蠑螈遇到了此真菌，都成了階下囚。該發現發表在2013年的《美國國家科學院院刊》（<em>Proceedings of the National Academy of Sciences</em>）。<span id="more-19657"></span></p>
+<p>這兩種真菌<em>Bd</em>和<em>Bs</em>都屬於一種壺菌門（chytrids）的一類真菌。這個名字來源於希臘文chytridion，意思是「小壺」，因為含有許多未釋放的孢子之結構。</p>
+<p>到了2013年，只有約四趴的荷蘭火蠑螈殘存，在歐洲也沒有天險能夠阻擋疫情往荷蘭外播散。為了預測該真菌的衝擊，Martel等人讓十種蛙類、24種蠑螈及一種無足目等35種兩桋類和該真菌的孢子邂逅24小時，結果發現逃不過<em>Bs</em>真菌魔爪的只有蠑螈：44隻歐洲蠑螈染上該真菌後，41隻魂歸天國。</p>
+<p>接著他們窮追不捨地追蹤了超過5,400隻來自世界各地150種兩桋動物後，發現<em>Bs</em>真菌很可能是來自泰國、越南和日本，因為只有來自那些地區的兩桋類含有<em>Bs</em>。不過這些地方的蠑螈遇上了<em>Bs</em>仍老神在在，顯然牠們早已演化出了扺抗力，因為亞洲蠑螈早在幾百萬年就遇上了<em>Bs</em>。歐洲的疫情，有可能是進口自亞洲的蠑螈闖的禍。他們把新發現發表在《科學》（<em>Science</em>）。</p>
+<p>他們還未在北美的蠑螈發現該真菌，可是美洲的蠑螈也對該真菌無招架之力，所以也可能危在日夕。北美共有190種蠑螈可能都在剉著等，如果<em>Bs</em>進擊美洲，對當地的蠑螈而言將會是個前所未有的災難。</p><br/>','2018-05-21 00:00:00','2018-05-21 00:00:00',5,66,0,5,'https://i.imgur.com/YEnx5Mf.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('想跟企鵝打成一片？化妝一下吧！','<p>居住於南極的國王企鵝(king penguin)是所有企鵝種類中體型最大的，同時也是最為害羞的一種企鵝。當科學家想要靠近它們的時候，往往會嚇到企鵝們。當然觀察在動物園裡面的企鵝也是一種方法，但是我們無法確定企鵝在人工的環境內是跟在他們所處的自然環境中有著相同的反應。因此對研究企鵝的科學家而言，要如何在自然環境中接近企鵝但卻不要對企鵝造成干擾便成了相當關鍵的課題。</p>
+<p>以法國史特拉斯堡大學的Yvon Le Maho為首的多國研究團隊想要研究國王企鵝的心跳，於是在34隻國王企鵝身上裝了帶有射頻辨別(RFID)的心跳感應器。但是RFID的感應範圍約只有60公分，這使得研究人員必須以手持訊號讀取器來接近企鵝。當研究人員手持著訊號接收器靠近企鵝的時候，研究人員發現企鵝的心跳明顯加速，而且很難靜止下來。換句話說，企鵝被嚇到了。為了解決這個問題，他們想到了利用遙控車來接近企鵝的方法，希望能夠<span id="more-19637"></span>不要嚇到企鵝。研究人員發現，當遙控車接近企鵝的時候，企鵝的心跳看起來相當正常，就像是看到另外一隻企鵝經過一樣。相對的，當人類接近的時候，企鵝約要花上六分鐘才能回到之前平穩的心跳。</p>
+<p>在這個成功的實驗之後，研究人員打造了另外一台遙控車。這次他們把遙控車做成類似企鵝寶寶的外型。這隻間諜企鵝寶寶成功的打入企鵝寶寶群體中，甚至還有成年的帝王企鵝對著這隻假企鵝唱歌。Le Maho認為，這些成年企鵝是在為他們的企鵝寶寶找伴，所以希望能聽到這隻間諜企鵝的回應。</p>
+<p>利用這隻間諜企鵝，研究人員不但得以接近企鵝群，同時也能夠得到許多珍貴的影片，例如企鵝下蛋的鏡頭。但是除了這些有趣的影片之外，這個新的研究方式提供了許多關於企鵝生活的新資訊，讓研究人員能夠更了解企鵝的生態。</p><>br/','2018-05-16 00:00:00','2018-05-16 00:00:00',9,25,0,4,'https://i.imgur.com/oT9cRDJ.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('【醫學新知】貓愛滋的基因體療法','<p>就跟人一樣，貓也有愛滋。美國著名的梅約診所 (Mayo Clinic)  研究團隊，與日本人合作，研發出一套以基因體為主的免疫系統建立策略，專門對付貓愛滋病，並且於九月初發表於網路版的《自然方法》雜誌。</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你知道貓也有愛滋病嗎？跟人類免疫缺陷病毒 (HIV) 會造成人們感染愛滋病一樣，貓科免疫缺陷病毒 (FIV) 也會刪除貓體內抵抗感染的Ｔ細胞，讓貓罹患愛滋病。人類愛滋病迄今已經造成三千多萬人死亡，造就無數孤兒，而大家比較不知道的是，貓愛滋病每年也會造成幾百萬隻貓死亡，讓三十六種野貓種類陷入瀕危。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不過美國著名的梅約診所 (Mayo Clinic) 研究團隊，與日本人合作，研發出一套以基因體為主的免疫系統建立策略，專門對付貓愛滋病，並且於九月初發表於網路版的《自然方法》雜誌。人跟貓都有一些叫做「限制因子」的關鍵蛋白質，負責讓身體抵禦病毒入侵，但它們卻對免疫缺陷病毒沒有效果。研究團隊的做法是，將能夠有效對抗貓科免疫缺陷病毒的猴子版蛋白質，想辦法插入貓的基因體中，藉此模擬通常需要好幾個時代，才得以自然演化出來的抗病效果。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;這套技法稱為「接合體慢病毒基因導入」，基本上就是在貓的卵子受精前，就先插入特定基因。研究團隊第一次試驗成功，是插入了一個叫做 TRIMCyp 的恆河猴限制因子，用來阻隔細胞免受貓科免疫缺陷病毒感染。當貓科免疫缺陷病毒試圖入侵細胞時，這個限制因子會攻擊病毒，癱瘓病毒的外部防護。<span id="more-9741"></span></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他們另外也插入一個水母基因，以供追蹤之用，這個基因讓後來生出來的小貓，身上發出一種綠綠的顏色，這樣就可以知道接受基因導入的貓，牠們所生的綠色後代，天生就有免疫性。這套基因導入的做法相當有效率，防護性蛋白質不但通透貓的全身，牠們後代的身體細胞也都能產生這種蛋白質。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;領導這項研究計畫的梅約診所分子生物學家波西拉 (Eric Poeschla) 表示，這套生醫技法最棒的地方，就是在於人跟貓一體適用。雖然這套特定的基因導入技法，還不會直接用來治療人或貓的愛滋病，不過卻有助於研究人員瞭解可以怎樣運用限制因子，來推動愛滋病的基因療法。</p><br/>','2018-05-11 00:00:00','2018-05-11 00:00:00',3,33,0,5,'https://i.imgur.com/wMoKAPJ.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('老而不衰的老貓？','<p>正如飲食和醫療改善讓人壽命增長，良好的營養和獸醫護理也增加了貓咪的壽命。因此貓界也有了高齡化的問題，在美國據估計，寵物貓有兩成是11歲以上的老貓。</p>
+<p>貓咪一般上在15歲（相當於人的76歲）就已古來稀，但不尋常的是，不少老貓甚至能活到到20歲（相當於百歲人瑞）。過去的統計顯示，貓在上個世紀八十年代大概平均能活到七歲，而九十年代是九歲。已知最老的老貓Creme Puff活到38歲。<span id="more-25182"></span></p>
+<p>現在，讓老貓更健康被認為是可行的，就像人可以有健康的晚年一樣。貓老了，就像人老了一樣，必定會在行為、外觀和日常功能上出現不少變化，因此貓衰老發生的正常變化不該被視為是病態的。那麼什麼樣的變化是「正常年齡」（即生理上的）變化，而非不良的（病理上的）變化呢？如果不知道是什麼跡象和健康的老化有關，飼主和獸醫就難以確保老貓的身心健康。</p>
+<p>要回答這個問題，一個團隊獸醫專家檢視了和貓咪健康相關的資料，包括骨骼肌肉系統、認知和行為健康。他們也利用其他動物的資料來界定貓咪的健康狀況，例如他們用沒有出現狗狗的DISHA模式來定義健康的老貓，DISHA包括神智不清、互動的變化、睡眠/覺醒障礙，污染房子和活動的變化。他們也用600隻健康老貓產生血清生化資料。</p>
+<p>簡單來說，他們發現健康的老貓雖然活動減少了，仍然可以玩耍和跳躍；在體重以及肌肉和脂肪比例上，都沒有顯著變化；毛皮可能會開始變薄，鬍鬚可能變成黑色。</p>
+<p>老貓還可能出現一些正常的變化：</p>
+<p>行為變化：睡眠週期改變、聲音改變、抗壓性下降。</p>
+<p>外觀變化：在眼睛的外觀變化，包括透鏡狀硬化，讓瞳孔產生模糊、藍灰色白色的外觀和虹膜萎縮、皮膚彈性下降、趾甲增厚；體重和視覺有細微變化。牙齒壁的增厚，導致它們變黃色、灰白色，甚至是玻璃狀。</p>
+<p>日常功能的變化：活動模式的改變，活動力下降，還有視力、嗅覺和聽力下降。</p>
+<p>如果有了上述變化，老貓可能還是健康的，隨著獸醫學的進步，說不定未來老貓都能成為貓瑞。</p>
+<p>&nbsp;</p><br/>','2018-05-07 00:00:00','2018-05-20 00:00:00',4,47,0,4,'https://i.imgur.com/M6a2vJq.jpg',true);
+
+insert into article (subject,content,post_Time,UPDATE_TIME,MEMBER_ID,CLICK,THUMBS_QUANTITY,CATEGORY_ID,images,status) values ('「友善狗狗公車」看見超多可愛犬星人　好想搭上充滿毛小孩的專車呀！','<p>現代人假日出門曬毛小孩早不是新鮮事，尤其愛狗（貓）如子也是許多廣大奴才的特徵，近年來動保意識抬頭，去年北市政府推出「假日友善狗狗公車」，截至今年4月為止，公車路線已由2條增加至7條，並得到民眾的正面支持，據統計已搭載超過500隻犬隻。不僅毛爸媽滿意，更有96%的民眾認同狗狗公車，顯示狗狗公車非常受到歡迎，相信大家如果在假日看到滿車的狗狗猶如要去郊遊般，實在是太幸福啦！</p><p>友善狗狗公車每逢例假日發車，分別有上午、中午和下午3班次，特色就是毛小孩不需要被關在籠子裡或推車，只要飼主全程牽繩、完成寵物登記，以及狂犬病疫苗注射就可以上車，但每名乘客只能攜帶1隻，寵物不需收費、不能佔位和禁止餵食。此外，為方便民眾辨視狗狗友善公車與一般公車的差別，會在車輛前方放置「友善狗狗公車」標示板子，以及LED路線牌顯示狗狗公車字樣。</p><p>貼心的友善狗狗公車更提供到動物公園的服務，其中迎風狗運動公園、華山狗活動區、萬興狗活動區、潭美毛寶貝快樂公園等地，至少都有1條公車可到達，方便毛爸媽輕鬆帶毛寶貝出遊，目前北市7條假日友善狗狗公車為0東、棕6、225、279、604、669、681等路線，因應至善公園狗活動區將於6月15日開幕，六月中新增行經「至善公園」的狗狗公車，毛孩爸媽可在雙溪公園站下車，詳細資訊將在下月公布，看來這股毛小孩的勢力是越來越龐大啦！想在假日帶毛小孩出去遊玩，下次不妨試試和滿車的狗狗們一同出遊吧！</p><p></p><p></p><br/>','2018-04-28 00:00:00','2018-04-28 00:00:00',7,68,0,5,'https://i.imgur.com/3C2mvHm.jpg',true);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('感謝分享!','2018-04-01 12:00:00',1,3);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('推推!','2018-05-28 13:00:00',6,8);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('讚喔!','2018-05-28 14:00:00',16,5);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('原來如此','2018-05-28 15:00:00',17,11);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('頭香!','2018-05-28 16:00:00',1,12);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('樓下作者本人','2018-05-28 18:00:00',11,7);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('太有趣了!','2018-05-28 20:00:00',13,5);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('學到新知識了','2018-05-28 23:00:00',13,6);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('感謝分享','2018-05-28 00:00:00',13,4);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('月月超可愛','2018-05-28 00:00:00',13,5);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('推優質文','2018-05-28 00:00:00',13,6);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('認真?','2018-05-28 00:00:00',15,12);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('真的假的','2018-05-28 00:00:00',15,10);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('噓','2018-05-28 00:00:00',22,5);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('好文','2018-05-28 00:00:00',10,8);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('蝦','2018-05-28 00:00:00',6,9);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('噓','2018-05-28 00:00:00',8,11);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('唬爛啦!','2018-05-01 00:00:00',11,6);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('噓','2018-05-28 00:00:00',21,8);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('謝謝分享','2018-05-28 00:00:00',20,5);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('謝謝分享','2018-05-28 00:00:00',19,4);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('謝謝分享','2018-05-28 00:00:00',18,3);
+
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('謝謝分享','2018-05-28 00:00:00',17,6);
+
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,3);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,4);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,6);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,7);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,9);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,10);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,11);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,12);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,4);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,1);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,7);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',3,13);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',15,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',15,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',15,13);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',15,11);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',22,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',21,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',21,4);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',21,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',20,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',20,6);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',20,10);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',19,11);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',18,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',18,3);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',17,1);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',17,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',16,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',14,7);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',12,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',12,13);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,7);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,6);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,4);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,3);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',11,2);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',10,5);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',10,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',9,6);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',8,1);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',8,6);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',8,3);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',7,3);
 /*5 donate */
 insert into donate (id, name, price, email)
 values (1, 'Serena van der Woodsen', 30000, 'serena1203@gmail.com');

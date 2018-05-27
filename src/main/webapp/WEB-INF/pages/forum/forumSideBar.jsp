@@ -45,7 +45,7 @@
               <div class="subscribe-area">
                 <p></p>
                 
-                  <a href="/postArticle"><button type="button" class="mt-10 btn btn-common btn-block">Post</button></a>
+                  <a href="/postArticle"><button type="button" class="mt-10 btn btn-common btn-block">發文</button></a>
                 
               </div>
             </aside>
@@ -267,7 +267,7 @@
                         + '<li id="thumb' + article.id + '"><span id="span' + article.id + '"><a style="color:#9c3;"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</a></span></li>'
                         + '<li><span><a href="#"><i class="fa fa-share"></i> Share</a></span></li>'
                         + '</ul><a href="/forum/findOne?id=' + article.id
-                        + '" class="pull-left btn btn-common btn-xs">Read more</a></div></article>'
+                        + '" class="pull-left btn btn-common btn-xs">詳細</a></div></article>'
                         + '<form id="thumbsform' + article.id + '" enctype="multipart/form-data"><input name="article" type="hidden" value="' + article.id + '"/></form>';
                       articlesString = articlesString + articleString;
                     }

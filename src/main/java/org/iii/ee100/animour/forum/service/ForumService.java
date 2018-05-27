@@ -146,19 +146,20 @@ public class ForumService extends GenericService<Article> {
 		return articleDao.findByMemberIdAndStatus(Id, !false);
 	}
 
-//	public Map<String, Integer> findByStatusOrderByThumbsQuantityDesc() {
-//		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
-//		Map<String, Integer> map = new HashMap<String, Integer>();
-//		for (Article article : list) {
-//			if (map.containsKey(article.getMember().getAccount())) {
-//				map.put(article.getMember().getAccount(),
-//						map.get(article.getMember().getAccount()) + article.getThumbsQuantity());
-//			} else {
-//				map.put(article.getMember().getAccount(), article.getThumbsQuantity());
-//			}
-//		}
-//		return map;
-//	}
+	// public Map<String, Integer> findByStatusOrderByThumbsQuantityDesc() {
+	// List<Article> list =
+	// articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
+	// Map<String, Integer> map = new HashMap<String, Integer>();
+	// for (Article article : list) {
+	// if (map.containsKey(article.getMember().getAccount())) {
+	// map.put(article.getMember().getAccount(),
+	// map.get(article.getMember().getAccount()) + article.getThumbsQuantity());
+	// } else {
+	// map.put(article.getMember().getAccount(), article.getThumbsQuantity());
+	// }
+	// }
+	// return map;
+	// }
 
 	public Map<String, ArrayList<Long>> chart() {
 		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
@@ -167,12 +168,12 @@ public class ForumService extends GenericService<Article> {
 			System.out.println(article.getId());
 			ArrayList<Long> array = new ArrayList<Long>();
 			if (map.containsKey(article.getMember().getAccount())) {
-			array.add(0, map.get(article.getMember().getAccount()).get(0) + article.getThumbsQuantity());
-			array.add(1, map.get(article.getMember().getAccount()).get(1) + article.getClick());
-			System.out.println(array);
-			}else {
+				array.add(0, map.get(article.getMember().getAccount()).get(0) + article.getThumbsQuantity());
+				array.add(1, map.get(article.getMember().getAccount()).get(1) + article.getClick());
+				System.out.println(array);
+			} else {
 				array.add(0, article.getThumbsQuantity().longValue());
-				array.add(1, article.getClick());	
+				array.add(1, article.getClick());
 			}
 			map.put(article.getMember().getAccount(), array);
 		}
