@@ -146,6 +146,14 @@
 								//showChat(chat.body);
 								$("#chatBox").css("display", "")
 							});
+
+							stompClient.subscribe("/user/queue/chat", function (
+								chat) {
+								//alert("from chat")
+								showChat(JSON.parse(chat.body));
+								//showChat(chat.body);
+								$("#chatBox").css("display", "")
+							});
 						});
 					}
 
