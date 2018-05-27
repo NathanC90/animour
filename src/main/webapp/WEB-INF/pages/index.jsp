@@ -384,7 +384,7 @@
 									</p>
 								<div class="blog-one-footer">
 									<a href="/forum/findOne?id=${article.id}">詳細內容</a> <a
-										href=""> <i class="icon-heart"></i> ${article.thumbsQuantity} 讚
+										href="/forum/findOne?id=${article.id}"> <i class="icon-heart"></i> ${article.thumbsQuantity} 讚
 									</a> <a href="/forum/findOne?id=${article.id}#comment"> <i
 										class="icon-bubbles"></i> ${article.commentLength} 則留言
 									</a>

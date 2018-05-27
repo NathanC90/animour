@@ -286,7 +286,7 @@ insert into comment (detail,update_Time,Article_Id,Member_Id) values ('學到新
 
 insert into comment (detail,update_Time,Article_Id,Member_Id) values ('感謝分享','2018-05-28 00:00:00',13,4);
 
-insert into comment (detail,update_Time,Article_Id,Member_Id) values ('月月超可愛','2018-05-28 00:00:00',13,5);
+insert into comment (detail,update_Time,Article_Id,Member_Id) values ('月月超可愛','2018-05-28 00:00:00',13,9);
 
 insert into comment (detail,update_Time,Article_Id,Member_Id) values ('推優質文','2018-05-28 00:00:00',13,6);
 
