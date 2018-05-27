@@ -165,19 +165,17 @@ public class ForumService extends GenericService<Article> {
 		List<Article> list = articleDao.findByStatusOrderByThumbsQuantityDesc(!false);
 		Map<String, ArrayList<Long>> map = new HashMap<String, ArrayList<Long>>();
 		for (Article article : list) {
-			System.out.println(article.getId());
+			article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 			ArrayList<Long> array = new ArrayList<Long>();
 			if (map.containsKey(article.getMember().getAccount())) {
 				array.add(0, map.get(article.getMember().getAccount()).get(0) + article.getThumbsQuantity());
 				array.add(1, map.get(article.getMember().getAccount()).get(1) + article.getClick());
-				System.out.println(array);
 			} else {
 				array.add(0, article.getThumbsQuantity().longValue());
 				array.add(1, article.getClick());
 			}
 			map.put(article.getMember().getAccount(), array);
 		}
-		System.out.println(map);
 		return map;
 	}
 
