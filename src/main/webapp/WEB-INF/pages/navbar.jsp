@@ -73,14 +73,14 @@
 
 						<a class="dropdown-item" href="/reservation">預約</a>
 					</div></li>
-				<li class="nav-item dropdown"><a
+				<!-- <li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/hospital"
 					aria-haspopup="true" aria-expanded="false">寵物醫院</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="/hospital">各區醫院</a> <a
 							class="dropdown-item" href="/findorder">預約結果查詢</a>
-						<!-- 								 <a class="dropdown-item" href="">看診進度查詢</a> -->
-					</div></li>
+														 <a class="dropdown-item" href="">看診進度查詢</a>
+					</div></li> -->
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/forum/findAll"
 					aria-haspopup="true" aria-expanded="false">部落格分享</a>
@@ -150,13 +150,13 @@
 				</sec:authorize>
 
 			</ul>
-			<form class="form-inline">
+			<!-- <form class="form-inline">
 				<div class="top_search_con">
 					<input class=" mr-sm-2" type="text" placeholder="站內搜尋 ...">
 					<span class="top_search_icon"> <i class="icon-magnifier"></i>
 					</span>
 				</div>
-			</form>
+			</form> -->
 
 			<jsp:include page="shopping/shoppingCart.jsp"></jsp:include>
 
