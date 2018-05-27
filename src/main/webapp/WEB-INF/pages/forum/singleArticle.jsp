@@ -188,10 +188,10 @@
                     <div class="row">
                       <c:forEach var="article" items="${thumbsArticle}">
                         <div class="col-md-3 wow fadeIn" data-wow-delay="0.4s">
-                          <a href="#">
+                          <a href="/forum/findOne?id=${article.id}">
                             <img src="${article.images}" alt="" class="img-responsive">
                           </a>
-                          <a href="#">
+                          <a href="/forum/findOne?id=${article.id}">
                             <h2>${article.subject}</h2>
                           </a>
                         </div>
@@ -333,7 +333,7 @@
               }).done(function (data) {
                 $.each(data, function (idx, thumbsUp) {
                   console.log(thumbsUp);
-                  $('#thumb').text(thumbsUp.article.thumbsQuantity + 'Like!');
+                  $('#thumb').text(thumbsUp.article.thumbsQuantity + ' Like!');
                 });
               });
             });
