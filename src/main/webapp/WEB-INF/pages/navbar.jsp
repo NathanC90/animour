@@ -71,8 +71,7 @@
 							<a class="dropdown-item" href="/salonAdminReservation">訂單編輯</a>
 						</sec:authorize>
 
-						<a class="dropdown-item" href="/reservation">預約</a> <a
-							class="dropdown-item" href="/appointment/testForm">結帳</a>
+						<a class="dropdown-item" href="/reservation">預約</a>
 					</div></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="/hospital"
