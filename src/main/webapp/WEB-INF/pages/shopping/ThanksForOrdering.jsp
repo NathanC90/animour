@@ -107,7 +107,7 @@
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">
 			<div class="container">
-				<p class="section-title wow fadeIn h5 text-danger text-info" data-wow-delay="0.1s">訂單巳成立，感謝您的購買</p>
+				<p class="section-title wow fadeIn text-danger" data-wow-delay="0.1s">訂單巳成立，感謝您的購買</p>
 				<div class="row">
 						<div style="margin-top: 50px; margin: auto"
 							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -117,8 +117,8 @@
 									<div style="display: none" id="login-alert"
 										class="alert alert-danger col-sm-12"></div>
 										<div>
-										  <div class="h6 text-primary pull-right">訂單日期：${date}</div>
-										  <div class="h6 text-primary">訂單編號：${memberOrders.get(0).orders.id}</div>
+										  <div class="h5 text-primary pull-right">訂單日期：${date}</div>
+										  <div class="h5 text-primary">訂單編號：${memberOrders.get(0).orders.id}</div>
 										</div>
 										<table class="table table-striped" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
 											<thead>

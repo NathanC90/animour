@@ -146,7 +146,7 @@
 					      <a href="<spring:url value='/product/index' />" class='btn btn-primary'> <span
 							class='glyphicon-info-sigh glyphicon'>返回</span>
 						  </a>
-						  <a id="pulse" href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
+						  <a href="/cart/buy/${product.id}" class='btn btn-success btn-large'> <span
 									class='glyphicon-shopping-cart glyphicon'>加入購物車</span>
 						  </a>
 						  <c:if test="${sessionScope.cart != null && sessionScope.cart.size() gt 0}">
@@ -190,8 +190,6 @@
 	<script src="/js/main.js"></script>
 	<script>
 		$(document).ready(function() {
-			var o1 = {"background":"cornsilk", "color":"red", "padding":"10px"};
-			var o2 = {"background":"white", "color":"green", "padding":"10px"};
 			$("#pulse").mouseover(over).mouseout(out);
 			
 			function over(){

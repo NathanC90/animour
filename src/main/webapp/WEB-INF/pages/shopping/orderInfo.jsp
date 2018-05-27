@@ -95,8 +95,8 @@
 	<aside class="widget flickr-widget wow fadeIn" data-wow-delay="0.1s">
 		<section class="classic-blog-section section">
 			<div class="container">
-				<p class="section-title wow fadeIn h5 text-secondary" data-wow-delay="0.1s">會員
-				<span class="text-primary">${currentMember.username}</span>您好，您共有${memberOrders.size()}筆訂單</p>
+				<p class="section-title wow fadeIn text-secondary" data-wow-delay="0.1s">會員
+				<span class="text-primary">${currentMember.username}</span>您好，您共有<span class="text-primary">${memberOrders.size()}</span>筆訂單</p>
 				<div class="row">
 						<div style="margin-top: 50px; margin: auto"
 							class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -108,8 +108,8 @@
 										<c:forEach var="orders" items="${memberOrders}">
 											<c:if test="${memberOrders != null && orders.ordersItem != null}">
 												<div>
-												  <div class="h6 text-primary pull-right">訂單日期：${orders.orderDate}</div>
-												  <div class="h6 text-primary">訂單編號：${orders.id}</div>
+												  <div class="h5 text-primary pull-right">訂單日期：${orders.orderDate}</div>
+												  <div class="h5 text-primary">訂單編號：${orders.id}</div>
 												</div>
 											</c:if>
 											<table class="table table-striped" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19)">
@@ -128,8 +128,8 @@
 													</tr>
 												</c:forEach>
 												<tr class="h6 text-success">
-													<td class="thick-line" colspan="2"><span>總價</span></td>
-													<td class="thick-line">${orders.totalAmount}元</td>
+													<td colspan="2"><span>總價</span></td>
+													<td>${orders.totalAmount}元</td>
 												</tr>
 											</table>
 											<br/><br/>

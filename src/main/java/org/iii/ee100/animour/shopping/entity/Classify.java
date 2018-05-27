@@ -1,10 +1,7 @@
 package org.iii.ee100.animour.shopping.entity;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.iii.ee100.animour.common.entity.GenericEntity;
@@ -22,7 +19,6 @@ public class Classify extends GenericEntity {
 	private String name;
 	
 //	@OneToMany(mappedBy="classify", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@OneToMany
-	private Set<Product> product;
+//	private Set<Product> product;
 	
 }
