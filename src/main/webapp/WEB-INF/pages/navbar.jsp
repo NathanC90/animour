@@ -34,7 +34,7 @@
 			<ul class="navbar-nav mr-auto w-100 justify-content-end">
 
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="/news/index?pageNo=1"
+					class="nav-link dropdown-toggle" href="/news/newsIndex"
 					aria-haspopup="true" aria-expanded="false">最新消息</a> <sec:authorize
 						access="hasRole('Admin')">
 						<div class="dropdown-menu">
