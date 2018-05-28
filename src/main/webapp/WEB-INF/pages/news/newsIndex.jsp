@@ -146,8 +146,8 @@ height:182px;}
 							<img class="card-img-top" src="${allEvents.images}" width="80px" alt="" >
 						</a>
 						<div class="card-body" style="margin-bottom: 5px">
-						<h5 class="card-title"><a href="/findOneEvent?id=${allEvents.id}">${allEvents.subject}</a></h5>
-							<p class="sup-description">${allEvents.content}</p>
+						<h5 class="card-title"><a href="/findOneEvent?id=${allEvents.id}" style="font-family:微軟正黑體">${allEvents.subject}</a></h5>
+							<p class="sup-description" style="font-family:微軟正黑體">${allEvents.content}</p>
 								<a href="/findOneEvent?id=${allEvents.id}"><button type="button" class="btn btn-common">詳情</button></a>
                  				<a href="/enrollOneNews?id=${allEvents.id}"><button type="button" class="btn btn-common">報名</button></a>	
                  					<sec:authorize access="hasRole('Admin')">

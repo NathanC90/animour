@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!doctype html>
+<html lang="en">
+
 <head>
 <!-- AddEvent script -->
 <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
 
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
@@ -74,15 +78,8 @@
     widht:100%;
   }
 </style>
-</style>
 </head>
 <body>
-<!-- Facebook Url starts-->
-<script>
-var fbhtml_url=window.location.toString();
-</script>
-<!-- Facebook Url ends-->
-
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -91,49 +88,45 @@ var fbhtml_url=window.location.toString();
   js.src = 'https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v3.0';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<!-- Header starts -->
 <header id="header-wrap">
-		<!-- Navbar Starts -->
-	<jsp:include page="../navbar.jsp"></jsp:include>
-		<!-- Navbar ends -->
-		<!-- Page Header -->
-	<div class="page-header-section">
-		<div class="container">
-			<div class="row">
-				<div class="page-header-area">
-					<div class="page-header-content">
-						<h2 style="font-family:微軟正黑體">活動詳情</h2>
+	<!-- Navbar Starts -->
+		<jsp:include page="../navbar.jsp"></jsp:include>
+	<!-- Navbar ends -->
+	<!-- Page Header -->
+		<div class="page-header-section">
+			<div class="container">
+				<div class="row">
+					<div class="page-header-area">
+						<div class="page-header-content">
+							<h2 style="font-family:微軟正黑體">活動詳情</h2>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- Page Header End -->
-	</header>
-
-<!-- Event Section -->
-    <div class="container" style="padding-top: 15px ">
-      <div class="row">
-      <form name="selectOneForm" action="/findOneEvent" method="GET">
-<%-- 				<input name="id" value="${param.id}" type="text" size="50" style="text-align: left"> --%>
-<!-- 				<input type="submit" value="查詢單筆">  -->
-			</form>
-    <img class="card-img-top" src="${oneEvent.images}" width="100%" alt="" >
-        <!-- Event Section -->
-        <div class="col-md-9">
-          <!-- Single Event Post -->
-          <article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
-            <!-- Event Info -->
-            <header class="author-info">
-              <h2 class="blog-post-title"  style="font-family:微軟正黑體; padding-top:15px">
-                <a href="#subject">${oneEvent.subject}</a>
-              </h2>
-              <div class="tag-posted-in">
-               	<div>
-               	<span style="font-family:微軟正黑體">
-                    <i class="icon icon-calendar" ></i>
-                    	活動時間：${oneEvent.eventDate}
-                  </span>
-                 <!-- Add to Google Calendar starts -->
+</header>
+<!-- Header ends -->
+<!-- Container starts -->
+<div class="container" style="padding-top: 15px ">
+	<div class="row">
+		<form name="selectOneForm" action="/findOneEvent" method="GET">
+		</form>
+		<img class="card-img-top" src="${oneEvent.images}" width="100%" alt="" >
+		<div class="col-md-9">
+			<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
+				<h2 class="blog-post-title"  style="font-family:微軟正黑體; padding-top:15px">
+                	<a href="/findOneEvent?id=${oneEvent.id}">${oneEvent.subject}</a>
+              	</h2>
+              	<div class="tag-posted-in">
+               		<div>
+               			<span style="font-family:微軟正黑體">
+                    		<i class="icon icon-calendar" ></i>
+                    		活動時間：${oneEvent.eventDate}
+                  		</span>
+                  	</div>
+                </div>
+                <!-- Add to Google Calendar starts -->
                	<!-- Button code -->
 					<div title="Add to Calendar" class="addeventatc btn btn-outline btn-radius btn-xs" style="float:right; border:2px solid #9C3; font-family:微軟正黑體">
 					    <a>新增活動到行事曆
@@ -144,17 +137,14 @@ var fbhtml_url=window.location.toString();
 					    <span class="description">Description of the event</span>
 					    </a>
 					</div>
-               	</div>
                	<!-- Add to Google Calendar ends -->
                	<!-- Timezone Getter -->
                	<script type="text/javascript">
 					var d = new Date()
 					var gmtHours = d.getTimezoneOffset()/60
-					console.log("The local time zone is: GMT " + gmtHours)
-					
+					console.log("The local time zone is: GMT " + gmtHours)					
 				</script>
-               	
-               	<div>
+				<div>
                   <span style="font-family:微軟正黑體">
                   <i class="icon icon-globe"></i>
 <!--                     <i class="icon icon-globe"></i> -->
@@ -167,35 +157,21 @@ var fbhtml_url=window.location.toString();
                     	相關連結：<a href="https://pet-fair.top-link.com.tw/home">活動官網</a>
                   </span>
                   </div>
-              </div>
-            </header>
-            <!-- Featured Content -->
-            <section class="featured-wrapper">
-<!--               <a href="#"> -->
-<!--                 <img src="/images/news/PetExpo.jpg" alt=""> -->
-<!--               </a> -->
-            </section>
-            <!-- Post Content -->
-            <section class="blog-post-content"><hr>
-              	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2>
-              <div class="blog-post" style="border: 2px solid grey; font-family:微軟正黑體">
-                <p style="padding: 10px; font-family:微軟正黑體">${oneEvent.content}
-                </p>
-              </div>
-            </section>
-            <div class="blog-post-footer clearfix">
-              <!-- Post Meta -->
-              
-              
-            </div>
-            <h2 style="padding: 10px; font-family:微軟正黑體">活動地點</h2>
-				<div id="map"></div>            
-          </article>
-          <!--Popular Event Slider-->
+                  <section class="blog-post-content"><hr>
+		          	<h2 style="padding: 10px; font-family:微軟正黑體" >活動簡介：</h2>
+		              <div class="blog-post" style="border: 2px solid grey; font-family:微軟正黑體">
+		                <p style="padding: 10px; font-family:微軟正黑體">${oneEvent.content}
+		                </p>
+		              </div>
+		          </section>
+		          <h2 style="padding: 10px; font-family:微軟正黑體">活動地點</h2>
+				<div id="map"></div>                                    
+			</article>
+			 <!--Popular Event Slider-->
           <h2 style="font-family:微軟正黑體">熱門活動</h2>         
             <!-- Featured Content -->
             <section class="featured-wrapper">
-              <div id="carousel-image-slider" class="owl-carousel">
+              <div id="carousel-image-slider" class="owl-carousel" style="padding-bottom:20px">
                 <div class="item">
                   <a href="/findOneEvent?id=10">
                   <img src="https://i.imgur.com/H4mSZKo.jpg" alt="">
@@ -218,26 +194,16 @@ var fbhtml_url=window.location.toString();
                 </div>
               </div>
             </section>
-            
-            
-            
-            <!-- Footer -->
-            <div class="blog-post-footer clearfix" style="padding-bottom:15px">
-            </div>
-          </article>
-        </div>
-        <!-- End -->
-
-        <!-- Event Sidebar Section -->
-        <div class="col-md-3">
-          <div class="sidebar-area">           
-            <!-- Subscribe Widget -->
-            <aside class="widget subscribe-widget wow fadeIn" data-wow-delay="0.3s">
- 
-              <div class="subscribe-area" style="padding-top:15px">
-
-                  <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">聯絡我們</a>
-                  <a href='/enrollOneNews?id=${oneEvent.id}' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
+		</div>
+		<!-- Event Sidebar Section starts -->
+		<div class="col-md-3">
+          <div class="sidebar-area">
+          	<div class="subscribe-area" style="padding-top:15px">
+          	<!-- Buttons trigger Modal -->
+<!-- 			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Open modal for @mdo</button> -->
+			
+          		<a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px" data-toggle="modal" data-target="#exampleModal" data-whatever="@Admin">聯絡我們</a>
+          		<a href='/enrollOneNews?id=${oneEvent.id}' class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px">我要報名</a>
 <!--                   <a class="btn btn-outline btn-radius mt-20 btn-lg btn-block" style="margin: 10px"> -->
 <!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->
 		
@@ -281,19 +247,46 @@ var fbhtml_url=window.location.toString();
               			</a>
               	</div>
               </div>
-            </aside>            
-            <!-- Share Page to Facebook ends -->
-           
-        <!-- End -->
-      </div>
-    </div>
-    </div>
-    </div>
+              <!-- Share Page to Facebook ends -->
+          	</div>
+          </div>
+         </div>
+		<!-- Event Sidebar Section ends -->
+	</div>
+<!-- Container ends -->
+			
+			<!-- Modal starts -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog modal-dialog-centered" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        <form>
+			          <div class="form-group">
+			            <label for="recipient-name" class="col-form-label">Recipient:</label>
+			            <input type="text" class="form-control" id="recipient-name">
+			          </div>
+			          <div class="form-group">
+			            <label for="message-text" class="col-form-label">Message:</label>
+			            <textarea class="form-control" id="message-text"></textarea>
+			          </div>
+			        </form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary">Send message</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- Modal ends -->
+	<!-- 重複的內容結束 -->
 
-  
-  <!-- Classic Blog Section End -->
-
-		<!-- Container Ends -->
 	<!-- Footer Section -->
 	<footer>
 	<jsp:include page="../footer.jsp"></jsp:include>
@@ -319,8 +312,25 @@ var fbhtml_url=window.location.toString();
 	<script src="/js/form-validator.min.js"></script>
 	<script src="/js/contact-form-script.min.js"></script>
 	<script src="/js/main.js"></script>
-	
-<!-- Google Map Callback starts-->
+	<!-- Facebook Url starts-->
+		<script>
+		var fbhtml_url=window.location.toString();
+		</script>
+	<!-- Facebook Url ends-->
+	<!-- Modal JS starts -->
+	<script>
+	$('#exampleModal').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget) // Button that triggered the modal
+		  var recipient = button.data('whatever') // Extract info from data-* attributes
+		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+		  var modal = $(this)
+		  modal.find('.modal-title').text('New message to ' + recipient)
+		  modal.find('.modal-body input').val(recipient)
+		})
+	</script>
+	<!-- Modal JS ends -->
+	<!-- Google Map Callback starts-->
 	<script>
       function initMap() {    	  
     	//Map options
@@ -411,20 +421,19 @@ var fbhtml_url=window.location.toString();
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxMrZCxle4RWMLbJ0TXmafreHWxOFhmso&callback=initMap"
     async defer></script>
 <!-- Google Map Callback ends -->
-
 <!-- Add Events to Google Calendar starts-->
 <script type="text/javascript">
 window.addeventasync = function(){
     addeventatc.settings({
-        appleical  : {show:true, text:"Apple Calendar"},
-        google     : {show:true, text:"Google <em>(online)</em>"},
-        outlook    : {show:true, text:"Outlook"},
+        <!-- appleical  : {show:true, text:"Apple Calendar"}, -->
+        google     : {show:true, text:"Google日曆"},
+        <!-- outlook    : {show:true, text:"Outlook"}, -->
         outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
         yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
     });
 };
 </script>
 <!-- Add Event to Google Calendar ends -->
-
 </body>
+
 </html>

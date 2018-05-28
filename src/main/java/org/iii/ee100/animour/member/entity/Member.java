@@ -18,6 +18,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,6 +45,7 @@ public class Member extends GenericEntity implements UserDetails {
 	private String account;// 帳號
 	
 	//	@Pattern(regexp = "^(?=.*[A-Za-z])(?=.*[0-9]).{3,10}$", message = "請輸入大小寫字母和數字,且長度在3-10之間")
+	@JsonIgnore
 	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{3,}$", message = "請輸入大小寫字母和數字,且長度至少3")
 	@Column(name = "PASSWORD",length=80)
 	private String password;// 密碼
@@ -55,7 +58,7 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "NICKNAME")
 	private String nickname;// 暱稱
 
-	
+
 	@Pattern(regexp ="^09[0-9]{2}-[0-9]{6}$",message="Invalid cell 09xx-xxxxxx")
 	@Column(name = "CELL")
 	private String cell;// 手機

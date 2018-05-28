@@ -1,10 +1,10 @@
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS) 
-VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true);
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS,images) 
+VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true,'https://i.imgur.com/7mC4im2.png');
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) 
 VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', true,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg');
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captain.lu', 'Aa123', '盧廣中', '晨之美','0912-345678','captain.lu@gail.com','台北市大安區','1','captain.lu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captainlu', 'Aa123', '盧廣中', '晨之美','0912-345678','captainlu@gail.com','台北市大安區','1','captainlu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區','1','bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區','0','bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區','0','Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
@@ -20,41 +20,8 @@ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Sig
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('badgalriri', 'Aa123', '蕾哈娜', 'Rihanna','0912-345678','badgalriri@gail.com','台北市大安區','1','badgalriri happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('cristiano', 'Aa123', 'C羅納度', 'C羅','0912-345678','cristiano@gail.com','台北市大安區','1','cristiano happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('jlin7', 'Aa123', '林書豪', 'Jeremy Lin','0912-345678','jlin7@gail.com','台北市大安區','1','jlin7 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gail.com','台北市中正區', true);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,true) 
-VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Candy','Aa1','Candy Su','C','0900-000000','candy@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Dog','Aa1','Candy Co','D','0900-000000','dog@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Egg','Aa1','Egg u','E','0900-000000','egg@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Fish','Aa1','Fish Su','F','0900-000000','fish@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Google','Aa1','Goo Su','G','0900-000000','google@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Hello','Aa1','Hello Word','Hi','0900-000000','hello@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('IU','Aa1','I u','IEE','0900-000000','i@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Jessi','Aa1','J J','JJ','0900-000000','jj@gail.com','台北市萬華區',false);
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS) 
-VALUES ('Kara','Aa1','Kara ka','kerker','0900-000000','kerker@gail.com','台北市萬華區',false);
 
- 
- 
-/*2 Hospital*/
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('aurora_animal',  '極光動物醫院',  '02-27848211',  '台北市大安區建國南路二段31號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('drpet',  '敦品動物醫院',  '02-27070877',  '台北市大安區大安路一段205-1號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('chengyi',  '澄毅動物醫院',  '02-27334341',  '台北市大安區安和路二段171巷13號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('BisousAH',  '磨鼻子動物醫院',  '03-4535740',  '桃園市中壢區延平路20號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('ChampionSAL',  '呈品動物醫院',  '03-2806070',  '桃園市中壢區中豐路359號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('petfamily007',  '圓霖動物醫院-中山',  '03-4653377',  ' 桃園縣中壢市中山東路二段16號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('noahvet',  '諾亞動物醫院',  '03-4264015',  ' 桃園縣中壢市中山路36號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('topvet',  '中壢太樸動物醫院',  '03-4569911',  ' 桃園縣中壢市中北路51號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('long-life-vet',  '恆生動物醫院',  '03-4251893',  ' 桃園縣中壢市中美路一段13號','10000' );  
-insert into Hospital ( Englishname, Name , Tel , Address, POSTCODE  ) values ('WellvetAnimalHospitalital',  '台大良一動物醫院',  '02-24263021',  '基隆市信義區義九路2號','10000' );  
+
 
 /*3 Animal */
 INSERT INTO CITY (id, name) VALUES 

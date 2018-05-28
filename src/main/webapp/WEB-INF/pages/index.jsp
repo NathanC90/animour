@@ -223,7 +223,7 @@
 	<section>
 		<!-- Container Starts -->
 		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" style="font-family:微軟正黑體">
+			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 				最新活動專區</h1>
 			<div class="row">
 				<c:forEach var="sixNews" items="${sixNews}">
@@ -284,7 +284,6 @@
 	</section>
 	<!-- 寵物市集結束 -->
 	<!-- 寵物沙龍開始 -->
-	<section id="service-block-main" class="section">
 		<!-- 重複的內容開始 -->
 		<!-- <div class="container">
 			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
@@ -317,40 +316,12 @@
 	</section>
 	<!-- 寵物沙龍結束 -->
 	<!-- 醫院開始 -->
-	<section id="service-block-main" class="section">
+<!-- 	<section id="service-block-main" class="section"> -->
 		<!-- Container Starts -->
-		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
-				醫院資訊專區</h1>
-			<div class="row">
-				<c:forEach var="hosp" items="${hospitals}">
-					<div class="col-md-4">
-						<div class="card mb-4 box-shadow">
-							<img class="card-img-top" src="/images/adopt/cats/ad-cat2.jpg"
-								width="80px" alt="醫院">
-							<div class="card-body" style="margin-bottom: 5px">
-								<p class="card-text" style="padding: 0px">醫院ID : ${hosp.id}
-								</p>
-								<p class="card-text" style="padding: 0px">醫院名稱 :
-									${hosp.name}</p>
-								<p class="card-text" style="padding: 0px">醫院電話 : ${hosp.tel}
-								</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-common btn-sm mt-20">詳情</button>
-										<button type="button" class="btn btn-common btn-sm mt-20">預約</button>
-									</div>
-									<small class="text-muted">bye</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-			<!-- Service-Block-000 Item Ends -->
-		</div>
+<!-- 		<div class="container"> -->
+<!-- 		</div> -->
 		<!-- Container Ends -->
-	</section>
+<!-- 	</section> -->
 	<!-- 醫院結束 -->
 	<!-- Blog Section -->
 	<section id="blog" class="section">

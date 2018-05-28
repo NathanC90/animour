@@ -30,22 +30,22 @@ public class MemberService extends GenericService<Member> {
 	
 	//新增會員
 	public void insert(Member newMember)  {
-		String passwordEncode=new BCryptPasswordEncoder().encode(newMember.getPassword());
-		 newMember.setPassword(passwordEncode);
-		System.out.println("member name:"+newMember.getAccount()+", member password:"+newMember.getPassword());
-		System.out.println("new "+"member name:"+newMember.getAccount()+", member password:"+newMember.getPassword());
+//		String passwordEncode=new BCryptPasswordEncoder().encode(newMember.getPassword());
+//		 newMember.setPassword(passwordEncode);
+//		System.out.println("member name:"+newMember.getAccount()+", member password:"+newMember.getPassword());
+//		System.out.println("new "+"member name:"+newMember.getAccount()+", member password:"+newMember.getPassword());
 
 		memberDao.save(newMember);
 	}
 
 	//會員修改密碼
 	public void update(Member member,String newPassword) {
-		String newPasswordEncode=new BCryptPasswordEncoder().encode(newPassword);
-		member.setPassword(newPasswordEncode);
-		memberDao.save(member);
-		
-//		member.setPassword(newPassword);
+//		String newPasswordEncode=new BCryptPasswordEncoder().encode(newPassword);
+//		member.setPassword(newPasswordEncode);
 //		memberDao.save(member);
+		
+		member.setPassword(newPassword);
+		memberDao.save(member);
 	}
 	
 	//會員修改個人資料
@@ -199,7 +199,7 @@ public class MemberService extends GenericService<Member> {
 		ArticleDao articleDao;
 		
 		public List<Article> getArticlesByMemberId(Long Id) {
-			return articleDao.findByMemberIdAndStatus(Id,null);
+			return articleDao.findByMemberIdAndStatus(Id,true);
 		}
 		
 		public Map<String,Integer> chart() {
