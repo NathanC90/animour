@@ -123,7 +123,7 @@
                           </li>
                           <li>
                             <i class="fa fa-comments"></i>
-                            <a href="#showcomment">${article.commentLength} comment</a>
+                            <a href="#showcomment">${article.commentLength} 則留言</a>
                           </li>
                           <li>
                             <i class="fa fa-thumbs-up"></i>
@@ -144,7 +144,7 @@
                         <p>${article.content}</p>
                       </div>
                       <a href="http://localhost:8080/updateArticle?id=${article.id}">
-                        <button id="btn2" class="btn btn-common" style="float:right">Update</button>
+                        <button id="btn2" class="btn btn-common" style="float:right">編輯</button>
                       </a>
                       <div id="articleId" style="display:none">${article.id}</div>
                     </section>
@@ -347,8 +347,8 @@
                 console.log(datas);
                 $.each(datas, function (idx, comment) {
                   var commentStr =
-                    '<li class="media"><div class="media-left"><a href="#"><img class="img-responsive img-circle" style="width:73px;" src="'
-                    + comment.member.images + '" alt=""></a></div><div class="media-body"><div class="commentor-info"><div class="comment-author"><a href="#">'
+                    '<li class="media"><div class="media-left"><a href="/user/'+comment.member.account+'"><img class="img-responsive img-circle" style="width:73px;" src="'
+                    + comment.member.images + '" alt=""></a></div><div class="media-body"><div class="commentor-info"><div class="comment-author"><a href="/user/'+comment.member.account+'">'
                     + comment.member.account
                     + '</a><span class="published-time"><i class="fa fa-calendar"></i>'
                     + formatDate(new Date(comment.updateTime))

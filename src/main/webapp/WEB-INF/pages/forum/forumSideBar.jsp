@@ -9,15 +9,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Insert title here</title>
         <style>
-  .featured-wrapper img {
-  /* width: 100px; */
-  height: 70%;
-}
-.image-style-side {
-		float: right;
-		margin-left: 50%;
-	}
-</style>
+          .featured-wrapper img {
+            /* width: 100px; */
+            height: 70%;
+          }
+
+          .image-style-side {
+            float: right;
+            margin-left: 50%;
+          }
+        </style>
 
       </head>
 
@@ -44,9 +45,11 @@
               <h2 class="widget-title">發表文章</h2>
               <div class="subscribe-area">
                 <p></p>
-                
-                  <a href="/postArticle"><button type="button" class="mt-10 btn btn-common btn-block">發文</button></a>
-                
+
+                <a href="/postArticle">
+                  <button type="button" class="mt-10 btn btn-common btn-block">發文</button>
+                </a>
+
               </div>
             </aside>
             <!-- Recent Post Widgets -->
@@ -257,14 +260,13 @@
                     if (article.status) {
                       var articleString = '<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s"><header class="author-info"><h2 class="blog-post-title"><a href="/forum/findOne?id=' + article.id + '">' + article.subject
                         + '</a></h2><div class="tag-posted-in"><ul class="list-unstyled"><li><i class="fa fa fa-calendar"></i>發文時間:' + formatDate(new Date(article.postTime))
-                        + '</li><li><i class="fa fa-user"></i>' + article.member.account
-                        + '</li><li><i class="fa fa-pencil-square-o"></i>' + article.category.name
-                        + '</li><li><i class="fa fa-comments"></i>' + article.commentLength
-                        + ' 則留言</li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images
+                        + '</li><li><i class="fa fa-user"></i><a href="/user/' + article.member.account + '">' + article.member.account
+                        + '</a></li><li><i class="fa fa-pencil-square-o"></i>' + article.category.name
+                        + '</li></ul></div></header><section class="featured-wrapper"><a href="#"><img src="' + article.images
                         + '" alt=""></a></section><section class="blog-post-content" ><div class="blog-post"><p style="overflow:hidden;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;line-height:24px;height:72px;">' + article.content
                         + '</p></div></section><div class="blog-post-footer clearfix"><ul class="post-meta pull-right">'
-                        + '<li><span><a href="findOne?id=' + article.id + '"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
-                        + '<li id="thumb' + article.id + '"><span id="span' + article.id + '"><a name="thumb" style="color:#9c3;"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</a></span></li>'
+                        + '<li><span><a href="findOne?id=' + article.id + '#comment"><i class="fa fa-comments"></i>' + article.commentLength + '</a></span></li>'
+                        + '<li id="thumb' + article.id + '"><span id="span' + article.id + '"><a name="thumb" style="color:#9c3;cursor:pointer;"><i class="fa fa-thumbs-up"></i>' + article.thumbsQuantity + '</a></span></li>'
                         + '<li><span><a href="#"><i class="fa fa-share"></i> 分享</a></span></li>'
                         + '</ul><a href="/forum/findOne?id=' + article.id
                         + '" class="pull-left btn btn-common btn-xs">詳細內容</a></div></article>'
@@ -301,7 +303,7 @@
                       }).done(function (data) {
                         $.each(data, function (idx, thumbsUp) {
                           console.log(thumbsUp);
-                          $(spanSelector).html('<a name="thumb" style="color:#9c3;"><i class="fa fa-thumbs-up"></i>' + thumbsUp.article.thumbsQuantity + '</a>');
+                          $(spanSelector).html('<a name="thumb" style="color:#9c3;cursor:pointer;"><i class="fa fa-thumbs-up"></i>' + thumbsUp.article.thumbsQuantity + '</a>');
                         });
                       });
                     });
