@@ -167,14 +167,7 @@ public class NewsController {
 			model.addAttribute(news);
 			return "/news/insertNewsComp";
 		}
-	
-	//後臺管理
-	@RequestMapping("/news/manage")
-	public String newsManage(Model model) {
-		return "/news/manage";
-	}
-	
-	
+		
 	//後臺查詢一筆活動（以活動ＩＤ搜尋）
 	@RequestMapping(value= {"/findOneNews"}, method={RequestMethod.GET})
 	public String findOne(News news, Model model) {
@@ -189,6 +182,13 @@ public class NewsController {
 	@RequestMapping(value= {"/findAllNews"}, method={RequestMethod.GET})
 	public String selectAll(Model model) {
 		model.addAttribute("allNews", newsService.getAll());
+		return "/news/manage";
+	}
+	
+	//後臺顯示所有活動
+	@RequestMapping("/news/manage")
+	public String showAllEvents(Model model) {
+		model.addAttribute("allEvents", newsService.getAll());
 		return "/news/manage";
 	}
 
@@ -251,14 +251,14 @@ public class NewsController {
 				e.printStackTrace();
 				return "/rollback";
 			}
-			return "redirect:/news/manage";
+			return "redirect:/news/updateNews";
 		}
 		//update successfully
 		@RequestMapping(value = "/news/updateNews", method = RequestMethod.GET)
 		public String updateNewsCom(Model model, @ModelAttribute("news") News news) {
-			newsService.insert(news);
+			newsService.update(news);
 			model.addAttribute(news);
-			return "/news/updateNewsComp";
+			return "/news/updateNews";
 		}
 		
 

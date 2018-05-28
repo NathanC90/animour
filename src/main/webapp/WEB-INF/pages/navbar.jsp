@@ -39,9 +39,7 @@
 						access="hasRole('Admin')">
 						<div class="dropdown-menu">
 							<a class="dropdown-item" href="/news/insertNews">新增活動</a>
-							<a class="dropdown-item" href="/news/updateNews">更新活動</a>
 							<a class="dropdown-item" href="/news/manage">管理活動</a>
-							<a class="dropdown-item" href="/news/admin">後臺測試(未完成)</a>
 						</div>
 					</sec:authorize></li>
 				<li class="nav-item dropdown"><a

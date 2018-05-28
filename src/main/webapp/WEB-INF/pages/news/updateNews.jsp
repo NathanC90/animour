@@ -7,10 +7,7 @@
 <html lang="en">
 
 <head>
-<script language="javascript">
-　var Today=new Date();
-　document.write("今天日期是 " + Today.getFullYear()+ " 年 " + (Today.getMonth()+1) + " 月 " + Today.getDate() + " 日");
-</script>
+
 <!--Icon Tags start -->
 <link rel="apple-touch-icon" sizes="57x57"
 	href="/images/icon/apple-icon-57x57.png">
@@ -75,14 +72,15 @@
 </head>
 <body>
 
-	<!-- Header area wrapper starts -->
-	<header id="header-wrap">
-		<jsp:include page="../navbar.jsp"></jsp:include>
-	</header>
+
+<!-- adminNavbar Starts -->
+<%-- 		<jsp:include page="../navbar.jsp"></jsp:include> --%>
+		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
+<!-- adminNavbar ends -->
+
 	<!-- Header-wrap Section End -->
 
 	<!-- Page Header -->
-	<div class="page-header-section">
 		<div class="container">
 			<div class="row">
 				<div class="page-header-area">
@@ -92,7 +90,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- Page Header End -->
 
 	<!-- Page Content Start 重複的內容開始 -->
@@ -165,7 +162,7 @@
 				<div class="container">
 						<div class="row justify-content-md-center">
 							 <div class="col-md-auto">
-							   <input id="btn1" type="submit" class="btn btn-primary" value="張貼活動" >
+							   <input id="btn1" type="submit" class="btn btn-primary" value="更新活動" >
 						     </div>
 						</div>
 				</div>
@@ -181,7 +178,7 @@
 
 	<!-- Footer Section -->
 	<footer>
-	<jsp:include page="../footer.jsp"></jsp:include>
+<%-- 	<jsp:include page="../footer.jsp"></jsp:include> --%>
 	</footer>
 	<!-- Footer Section End-->
 

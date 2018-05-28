@@ -117,7 +117,6 @@ function saveToExcel(str) {
 <!-- adminNavbar ends -->
  
 <!-- Page Content Start 重複的內容開始 -->
-	<section class="section">
 		<div class="container">
 			<div class="row">
 			<div class="col-md-12 content">
@@ -128,7 +127,7 @@ function saveToExcel(str) {
 
 		<div class="btn-toolbar dashhead-toolbar">
 			<div class="btn-toolbar-item input-with-icon">
-				<input type="text" value="01/01/15 - 01/08/15" class="form-control"
+				<input type="text" value="01/06/18" class="form-control"
 					data-provide="datepicker"> <span class="icon icon-calendar"></span>
 			</div>
 		</div>
@@ -143,65 +142,63 @@ function saveToExcel(str) {
 		</div>
 	</div>
 			<!-- Show One News starts-->
-		<h3>查詢一筆活動</h3>
-			<form name="selectOneForm" action="/findOneNews" method="GET">
-				<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
-				<input type="submit" value="查詢單筆"> 
-			</form>
+<!-- 		 <h3>查詢一筆活動</h3> -->
+<!-- 			<form name="selectOneForm" action="/findOneNews" method="GET"> -->
+<%-- 				<input name="id" value="${param.id}" type="text" size="50" style="text-align: left"> --%>
+<!-- 				<input type="submit" value="查詢單筆">  -->
+<!-- 			</form> -->
 				
-	<table class="table" data-sort="table">
-		<div class="table-responsive container">
-		    <div class="row">
-			<thead>
-				<tr>
-					<th><input type="checkbox" class="select-all" id="selectAll"></th>
-					<th>活動編號</th>
-					<th>活動名稱</th>
-					<th>活動日期</th>
-					<th>活動地點</th>
-					<th>費用</th>
-					<th>人數</th>
-					<th>編輯</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">${oneNews.id}</a></td>
-					<td>${oneNews.subject}</td>
-					<td>${oneNews.eventDate}</td>
-					<td>${oneNews.address}</td>
-					<td>${oneNews.ticketPrice}</td>
-					<td>${oneNews.ticketQuantity}</td>
-					<td>
-						<div class="btn-group">
-							<button type="button" class="btn btn-outline-primary" title="修改">
-								<span class="icon icon-pencil"></span>
-							</button>
-							<button type="button" class="btn btn-outline-primary" title="刪除">
-								<span class="icon icon-erase"></span>
-							</button>
-						</div>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
+<!-- 	<table class="table" data-sort="table"> -->
+<!-- 		<div class="table-responsive container"> -->
+<!-- 		    <div class="row"> -->
+<!-- 			<thead> -->
+<!-- 				<tr> -->
+<!-- 					<th><input type="checkbox" class="select-all" id="selectAll"></th> -->
+<!-- 					<th>活動編號</th> -->
+<!-- 					<th>活動名稱</th> -->
+<!-- 					<th>活動日期</th> -->
+<!-- 					<th>活動地點</th> -->
+<!-- 					<th>費用</th> -->
+<!-- 					<th>人數</th> -->
+<!-- 					<th>編輯</th> -->
+<!-- 				</tr> -->
+<!-- 			</thead> -->
+<!-- 			<tbody> -->
+<!-- 				<tr> -->
+<!-- 					<td><input type="checkbox" class="select-row"></td> -->
+<%-- 					<td><a href="#">${oneNews.id}</a></td> --%>
+<%-- 					<td>${oneNews.subject}</td> --%>
+<%-- 					<td>${oneNews.eventDate}</td> --%>
+<%-- 					<td>${oneNews.address}</td> --%>
+<%-- 					<td>${oneNews.ticketPrice}</td> --%>
+<%-- 					<td>${oneNews.ticketQuantity}</td> --%>
+<!-- 					<td> -->
+<!-- 						<div class="btn-group"> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="修改"> -->
+<!-- 								<span class="icon icon-pencil"></span> -->
+<!-- 							</button> -->
+<!-- 							<button type="button" class="btn btn-outline-primary" title="刪除"> -->
+<!-- 								<span class="icon icon-erase"></span> -->
+<!-- 							</button> -->
+<!-- 						</div> -->
+<!-- 					</td> -->
+<!-- 				</tr> -->
+<!-- 			</tbody> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		</table> -->
 	<!-- Table Ends -->
-						<!-- Show One News ends -->						
-	<div class="container">
-    <div class="row">
-			</div>
-		</div>
-	<div class="container">
-		<div class="row">	
-			<h3>查詢所有活動</h3>
-				<form name="selectAllForm" action="/findAllNews" method="GET">
-					<input type="submit" value="查詢所有">
-				</form>
-			<hr>
-		</div>
+	<!-- Show One News ends -->						
+	
+<!-- 	<div class="container"> -->
+<!-- 		<div class="row">	 -->
+<!-- 			<h3>查詢所有活動</h3> -->
+<!-- 				<form name="selectAllForm" action="/findAllNews" method="GET"> -->
+<!-- 					<input type="submit" value="查詢所有"> -->
+<!-- 				</form> -->
+<!-- 			<hr> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	<!-- Show All News starts -->
 
 <div class="container">
@@ -231,30 +228,30 @@ function saveToExcel(str) {
 	<!-- Table Starts  -->
 	<!-- //要匯出的Table，記得訂id -->
 		<table class="table" data-sort="table" id="myTableId">
-		<div class="table-responsive container">
+		<div class="table-responsive">
 		    <div class="row">
 			<thead>
 				<tr>
 					<th><input type="checkbox" class="select-all" id="selectAll"></th>
-					<th>活動編號</th>
-					<th>活動名稱</th>
-					<th>活動日期</th>
-					<th>活動地點</th>
+					<th>編號</th>
+					<th>名稱</th>
+					<th>日期</th>
+					<th>地點</th>
 					<th>費用</th>
 					<th>人數</th>
 					<th>編輯</th>
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach var="news" items="${allNews}">
+			<c:forEach var="allEvents" items="${allEvents}">
 				<tr>
 					<td><input type="checkbox" class="select-row"></td>
-					<td><a href="#">${news.id}</a></td>
-					<td>${news.subject}</td>
-					<td>${news.eventDate}</td>
-					<td>${news.address}</td>
-					<td>${news.ticketPrice}</td>
-					<td>${news.ticketQuantity}</td>
+					<td><a href="#">${allEvents.id}</a></td>
+					<td>${allEvents.subject}</td>
+					<td>${allEvents.eventDate}</td>
+					<td>${allEvents.address}</td>
+					<td>${allEvents.ticketPrice}</td>
+					<td>${allEvents.ticketQuantity}</td>
 					<td>
 						<div class="btn-group">
 							<button type="button" class="btn btn-outline-primary" title="修改">
@@ -273,122 +270,121 @@ function saveToExcel(str) {
 </div>
 	<!-- Table Ends -->
 						<!-- Show All News ends -->
-	<div class="container">
-		<div class="row">
-			<h3>刪除一筆活動</h3>
-				<form name="deleteForm" action="/deleteNews" method="GET">
-					<input name="id" value="${param.id}" type="text" size="50" style="text-align: left">
-					<input type="submit" value="送出"> 
-					<input type="reset" value="清除"> 
-				</form>
-			<hr>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<h3>新增活動公告</h3>
-				<form name="insertForm" action="/insertNews" method="POST">
-					<table border="1">
-						<tbody>
-							<tr>
-								<td width="120" height="40">活動名稱:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="subject" value="${param.subject}" type="text" size="50"
-									style="text-align: left">
-							</tr>
-							<tr>
-								<td width="120" height="40">活動內容:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="content" value="${param.content}" type="text" size="50"
-									style="text-align: left">
-							</tr>
-							<tr>
-								<td width="120" height="40">發布時間:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="publishDate" value="${param.publishDate}" type="text" size="50"
-									style="text-align: left"></td>
-							</tr>
-							<tr>
-								<td width="120" height="40">結束時間:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="publishExpire" value="${param.publishExpire}" type="text" size="50"
-									style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td>
-							</tr>
-							<tr>
-								<td width="120" height="40">發布人:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="createUser" value="${param.createUser}" type="text" size="50"
-									style="text-align: left"></td>
-							</tr>
-							<tr>
-								<td width="120" height="40">建立時間:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="createTime" value="${param.createTime}" type="text" size="50"
-									style="text-align: left"></td>
-							</tr>
-						</tbody>
-					</table>
-					<br>
-						<input type="submit" value="確定新增">
-						<input type="reset" value="清除">
-					<hr>
-				</form>
-			</div>
-		</div>
-		<div class="container">
-			<div class="row">
-				<form name="updateNewsForm" action="/updateNews" method="POST">
-					<h3>修改活動訊息</h3>
-					<table border="1">
-						<tbody>
-						<tr>
-								<td width="120" height="40">活動編號:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="id" value="${param.id}" type="text" size="50"
-									style="text-align: left">
-							</tr>
-							<tr>
-								<td width="120" height="40">活動名稱:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="subject" value="${param.subject}" type="text" size="50"
-									style="text-align: left">
-							</tr>
-							<tr>
-								<td width="120" height="40">活動簡介:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="content" value="${param.content}" type="text" size="50"
-									style="text-align: left">
-							</tr>
-							<tr>
-								<td width="120" height="40">更新使用者:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="updateUser" value="${param.updateUser}" type="text" size="50"
-									style="text-align: left"></td>
-							</tr>
-							<tr>
-								<td width="120" height="40">更新時間:</td>
-								<td width="600" height="40" align="left"><input id='num'
-									name="updateTime" value="${param.updateTime}" type="text" size="50"
-									style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td>
-							</tr>
+<!-- 	<div class="container"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<h3>刪除一筆活動</h3> -->
+<!-- 				<form name="deleteForm" action="/deleteNews" method="GET"> -->
+<%-- 					<input name="id" value="${param.id}" type="text" size="50" style="text-align: left"> --%>
+<!-- 					<input type="submit" value="送出">  -->
+<!-- 					<input type="reset" value="清除">  -->
+<!-- 				</form> -->
+<!-- 			<hr> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- 	<div class="container"> -->
+<!-- 		<div class="row"> -->
+<!-- 			<h3>新增活動公告</h3> -->
+<!-- 				<form name="insertForm" action="/insertNews" method="POST"> -->
+<!-- 					<table border="1"> -->
+<!-- 						<tbody> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">活動名稱:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="subject" value="${param.subject}" type="text" size="50" --%>
+<!-- 									style="text-align: left"> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">活動內容:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="content" value="${param.content}" type="text" size="50" --%>
+<!-- 									style="text-align: left"> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">發布時間:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="publishDate" value="${param.publishDate}" type="text" size="50" --%>
+<!-- 									style="text-align: left"></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">結束時間:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="publishExpire" value="${param.publishExpire}" type="text" size="50" --%>
+<!-- 									style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd</td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">發布人:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="createUser" value="${param.createUser}" type="text" size="50" --%>
+<!-- 									style="text-align: left"></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">建立時間:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="createTime" value="${param.createTime}" type="text" size="50" --%>
+<!-- 									style="text-align: left"></td> -->
+<!-- 							</tr> -->
+<!-- 						</tbody> -->
+<!-- 					</table> -->
+<!-- 					<br> -->
+<!-- 						<input type="submit" value="確定新增"> -->
+<!-- 						<input type="reset" value="清除"> -->
+<!-- 					<hr> -->
+<!-- 				</form> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 		<div class="container"> -->
+<!-- 			<div class="row"> -->
+<!-- 				<form name="updateNewsForm" action="/updateNews" method="POST"> -->
+<!-- 					<h3>修改活動訊息</h3> -->
+<!-- 					<table border="1"> -->
+<!-- 						<tbody> -->
+<!-- 						<tr> -->
+<!-- 								<td width="120" height="40">活動編號:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="id" value="${param.id}" type="text" size="50" --%>
+<!-- 									style="text-align: left"> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">活動名稱:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="subject" value="${param.subject}" type="text" size="50" --%>
+<!-- 									style="text-align: left"> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">活動簡介:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="content" value="${param.content}" type="text" size="50" --%>
+<!-- 									style="text-align: left"> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">更新使用者:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="updateUser" value="${param.updateUser}" type="text" size="50" --%>
+<!-- 									style="text-align: left"></td> -->
+<!-- 							</tr> -->
+<!-- 							<tr> -->
+<!-- 								<td width="120" height="40">更新時間:</td> -->
+<!-- 								<td width="600" height="40" align="left"><input id='num' -->
+<%-- 									name="updateTime" value="${param.updateTime}" type="text" size="50" --%>
+<!-- 									style="text-align: left">&nbsp;&nbsp;格式為yyyy-MM-dd hh:mm:ss</td> -->
+<!-- 							</tr> -->
 						
-						</tbody>
-					</table>
-					<br>
-					<input type="submit" value="確定修改">
-					<input type="reset" value="清除">
-				</form>
-			</div>
-		</div>
+<!-- 						</tbody> -->
+<!-- 					</table> -->
+<!-- 					<br> -->
+<!-- 					<input type="submit" value="確定修改"> -->
+<!-- 					<input type="reset" value="清除"> -->
+<!-- 				</form> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 			<!-- Insert Test ends -->
 						
 						
-				</form:form>
-				</div>
-			</div>
-		</div>
-	</section>
+<!-- 				</form:form> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 	<!-- 重複的內容結束 -->
 

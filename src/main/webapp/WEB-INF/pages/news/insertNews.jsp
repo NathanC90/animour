@@ -77,22 +77,25 @@
 
 	<!-- Header area wrapper starts -->
 	<header id="header-wrap">
-		<jsp:include page="../navbar.jsp"></jsp:include>
+<%-- 		<jsp:include page="../navbar.jsp"></jsp:include> --%>
+<!-- adminNavbar Starts -->
+		<jsp:include page="../admin/adminNavbar.jsp"></jsp:include>
+<!-- adminNavbar ends -->
 	</header>
 	<!-- Header-wrap Section End -->
 
 	<!-- Page Header -->
-	<div class="page-header-section">
+<!-- 	<div class="page-header-section"> -->
 		<div class="container">
-			<div class="row">
-				<div class="page-header-area">
-					<div class="page-header-content">
+<!-- 			<div class="row"> -->
+<!-- 				<div class="page-header-area"> -->
+<!-- 					<div class="page-header-content"> -->
 						<h2 style="font-family:微軟正黑體">新增活動貼文</h2>
-					</div>
-				</div>
-			</div>
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
-	</div>
+<!-- 	</div> -->
 	<!-- Page Header End -->
 
 	<!-- Page Content Start 重複的內容開始 -->
@@ -178,7 +181,7 @@
 
 	<!-- Footer Section -->
 	<footer>
-	<jsp:include page="../footer.jsp"></jsp:include>
+<%-- 	<jsp:include page="../footer.jsp"></jsp:include> --%>
 	</footer>
 	<!-- Footer Section End-->
 
