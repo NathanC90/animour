@@ -163,13 +163,21 @@
 								</select>
 
 
+
+
 								<!-- <form action="/" id="searchForm">
 													<input type="text" name="s" placeholder="Search...">
 													<input type="submit" value="Search">
 												</form>
 												<!-- the result of the search will be rendered inside this div -->
 								<!-- <div id="result"></div> -->
-
+								<div style="text-align: center;height:60px;line-height:60px;">
+														<input id="response" type="button" class="btn btn-common"
+							data-toggle="modal" data-target="#exampleModal" value="預約" style="background-color:#EE7700;">
+						<input id="cleanContent" type="reset" class="btn btn-common" data-toggle="modal" value="清除" style="background-color:#EE7700;"	>
+								</div>
+								
+								
 							</form>
 
 
@@ -183,15 +191,8 @@
 
 					<div id="paymentdiv"
 						style="text-align: center; border: 3px white double;">
-						<!-- style="text-align: center; border: 3px white double;">
-						<input id="response" type="submit" onclick="show_confirm()"
-							class="btn btn-common" value="預約"> -->
 
 
-						<button id="response" type="button" class="btn btn-common"
-							data-toggle="modal" data-target="#exampleModal">預約</button>
-						<button id="cleanContent" type="button" class="btn btn-common" data-toggle="modal"
-							data-target="#exampleModal">清除</button>
 					</div>
 
 				</div>
@@ -357,8 +358,12 @@
 	<script>
 	var data1 = new FormData(document.getElementById("myform"));
 	
-	
-		
+/* 		$('#cleanContent').click(function(){
+			$("#myform").clearForm();
+			
+			
+		})
+ */		
 
 		$(document).ready(
 				function() {
