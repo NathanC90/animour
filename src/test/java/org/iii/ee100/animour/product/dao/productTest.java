@@ -337,7 +337,7 @@ public class productTest {
 	//刪除一筆商品
 //	@Test
 //	public void testDelete() {
-//		productDao.delete(2L);
+//		productDao.delete(5L);
 //	}
 	
 //	@Test
