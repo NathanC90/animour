@@ -1,6 +1,5 @@
 package org.iii.ee100.animour.shopping.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -42,10 +41,10 @@ public class Product extends GenericEntity {
 //	@Transient
 //	private MultipartFile photo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "CLASSIFY_ID", referencedColumnName = "ID", nullable = false)
 	private Classify classify;
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name="MEMBER_ID", referencedColumnName = "ID", nullable = false)
 	private Member member;
 

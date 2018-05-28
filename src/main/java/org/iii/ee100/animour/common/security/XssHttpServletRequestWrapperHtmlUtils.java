@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
 import org.springframework.web.util.HtmlUtils;
-
+//目前沒有使用
 public class XssHttpServletRequestWrapperHtmlUtils extends SecurityContextHolderAwareRequestWrapper {
 
 	public XssHttpServletRequestWrapperHtmlUtils(HttpServletRequest request) {
