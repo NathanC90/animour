@@ -239,7 +239,7 @@ public class NewsController {
 	// return ____;
 
 		// Update News
-		@RequestMapping(value = { "/updateNews" }, method = { RequestMethod.POST })
+		@RequestMapping(value = { "/updateNews" }, method = { RequestMethod.GET })
 		public String updateNews(News news, Model model) {
 			News exist = newsService.getOne(news.getId()); //MANDATORY!!!!! 
 			exist.setSubject(news.getSubject());
@@ -253,6 +253,13 @@ public class NewsController {
 				return "/rollback";
 			}
 			return "redirect:/news/manage";
+		}
+		//update successfully
+		@RequestMapping(value = "/news/updateNews", method = RequestMethod.GET)
+		public String updateNewsCom(Model model, @ModelAttribute("news") News news) {
+			newsService.insert(news);
+			model.addAttribute(news);
+			return "/news/updateNewsComp";
 		}
 		
 

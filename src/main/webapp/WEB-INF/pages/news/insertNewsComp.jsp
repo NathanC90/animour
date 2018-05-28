@@ -135,8 +135,7 @@ font-family:微軟正黑體
 			</div>
 			<!-- Jumbotron ends -->
 	</div>
-	
-			  </div>
+	</div>
 	</div>
 	
 	
