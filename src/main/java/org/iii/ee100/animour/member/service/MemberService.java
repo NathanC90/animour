@@ -199,7 +199,7 @@ public class MemberService extends GenericService<Member> {
 		ArticleDao articleDao;
 		
 		public List<Article> getArticlesByMemberId(Long Id) {
-			return articleDao.findByMemberIdAndStatus(Id,null);
+			return articleDao.findByMemberIdAndStatus(Id,true);
 		}
 		
 		public Map<String,Integer> chart() {
