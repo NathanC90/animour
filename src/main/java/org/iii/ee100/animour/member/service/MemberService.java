@@ -206,7 +206,7 @@ public class MemberService extends GenericService<Member> {
 			List<Member> list = memberDao.findAll();
 			Map<String,Integer> map = new HashMap<String,Integer>();
 			for(Member member:list) {
-				map.put(member.getAccount(), myFriendDao.findByMemberIdAndLove(member.getId(), true).size());
+				map.put(member.getAccount(), myFriendDao.findByFriendIdAndLove(member.getId(), true).size());
 			}
 			return map;
 		}

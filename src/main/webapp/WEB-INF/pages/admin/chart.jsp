@@ -294,6 +294,7 @@
 						axisY: {
 							title: "friends",
 							suffix: "",
+							interval: 1,
 							includeZero: false
 						},
 						axisX: {
