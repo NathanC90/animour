@@ -1,7 +1,9 @@
 package org.iii.ee100.animour.shopping.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -73,6 +75,19 @@ public class ProductService extends GenericService<Product> {
 		return page;
 	}
 	
+	//for chart
+	public Map<String,Integer> chart() {
+		List<Product> list = productDao.findAll();
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		for(Product product:list) {
+			if (map.containsKey(product.getClassify().getName())) {
+				map.put(product.getClassify().getName(), map.get(product.getClassify().getName()) + 1);
+			}else {
+				map.put(product.getClassify().getName(), 1);
+			}
+		}
+		return map;
+	}
 	
 	@Override
 	public void insert(Product product) throws Exception {

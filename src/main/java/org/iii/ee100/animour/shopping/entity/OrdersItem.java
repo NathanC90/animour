@@ -23,6 +23,8 @@ public class OrdersItem extends GenericEntity {
 	private Integer price; //商品單價
 	@Column(name="QUANTITY")
 	private Integer quantity; //購買商品數量
+	@Column(name="CLASSIFY")
+	private String classify; //購買商品類別
 	@ManyToOne
 	@JoinColumn(name="ORDERS_ID", nullable=false)
 	private Orders orders;

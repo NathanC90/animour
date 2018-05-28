@@ -530,25 +530,25 @@ insert into product (NAME, PRICE, STOCK, MAKE_DATE, EXPIRE, SHELVES_DATE, DESCRI
 values ('ACEPET 貓咪蹭蹭刷 - 胡桃褐（附貓草）', 180, 83, '2018-3-15',360, '2018-2-25', '規格：13.5 X 10.5 X 5 cm', '主子的美毛工具!你知道貓主子為什麼會一直磨蹭家具或牆角嗎? 貓咪藉由磨蹭兩頰及側身留下費洛蒙，這個舉動可以讓牠們畫清地盤領域，在空間中更有安全感喔~ 蹭蹭刷柔軟的刷毛不僅可以幫貓咪散播氣味更可以幫主子梳理毛髮!達到舒壓的功能呢~', 4, 2, 'https://i.imgur.com/tUw5q2J.jpg');
 
 /*9 orders*/
-insert into orders (orderdate, totalamount, member_id) values('2018-5-10 12:38:10', 1280, 2);
-insert into orders (orderdate, totalamount, member_id) values('2018-5-15 16:25:35', 2280, 3);
-insert into orders (orderdate, totalamount, member_id) values('2018-5-13 03:31:09', 3650, 3);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-10 12:38:10', 945, 2);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-15 16:25:35', 439, 3);
+insert into orders (orderdate, totalamount, member_id) values('2018-5-13 03:31:09', 2740, 3);
 
 /*10 ordersItem*/
-insert into ordersitem (name, price, quantity, orders_id)
-values('0% 零穀 5 種魚–全齡犬 晶亮護毛配方 2.5 磅', 600, 1, 1);
-insert into ordersitem (name, price, quantity, orders_id) 
-values('法國皇家XJ31 超小型幼犬 1.5 公斤', 680, 1, 1);
-insert into ordersitem (name, price, quantity, orders_id)
-values('優格0% 零穀 羊肉＋鮭魚–全齡犬 敏感配方 15 磅', 1100, 2, 2);
-insert into ordersitem (name, price, quantity, orders_id) 
-values('烘焙客全犬無穀類雞肉 (小顆粒) 1 公斤', 1180, 3, 2);
-insert into ordersitem (name, price, quantity, orders_id)
-values('法國皇家PRIJ27 小型室內幼犬 1.5 公斤', 580, 2, 3);
-insert into ordersitem (name, price, quantity, orders_id) 
-values('法國皇家PRIA21 小型室內成犬 1.5 公斤', 400, 1, 3);
-insert into ordersitem (name, price, quantity, orders_id) 
-values('柏萊富特調全齡犬配方(羊肉+糙米+雞肉) 5 磅', 1045, 2, 3);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', '寵物伺料', 646, 1, 1);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('毛孩精選【解渴神器】水壺+水碗2合1', '寵物用品', 299, 1, 1);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', '寵物伺料', 340, 2, 2);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('自然鮮 貓草薄荷球木天蓼健身棒棒糖', '寵物玩具', 99, 3, 2);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', '寵物伺料', 880, 2, 3);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', '寵物伺料', 1170, 1, 3);
+insert into ordersitem (name, classify, price, quantity, orders_id)
+values('AFU 御用 二口原木餐桌 (附陶瓷碗 2 個)', '其它', 690, 2, 3);
 
 /*11 designer*/
 insert into designer (designer)values

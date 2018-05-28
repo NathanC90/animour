@@ -148,6 +148,7 @@ public class CartController {
 			ordersItem.setName(cart.getProduct().getName());
 			ordersItem.setPrice(cart.getProduct().getPrice());
 			ordersItem.setQuantity(cart.getQuantity());
+			ordersItem.setClassify(cart.getProduct().getClassify().getName());
 			ordersItem.setOrders(orders);
 			ordersList.add(ordersItem);
 		}

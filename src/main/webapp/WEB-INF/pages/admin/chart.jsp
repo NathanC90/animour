@@ -127,6 +127,16 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="newsChart" style="height: 450px; width: 100%;"></div>
 					</div>
+					<h3>商品上架類別統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="productChart" style="height: 450px; width: 100%;"></div>
+					</div>
+					<h3>商品購買類別統計:</h3>
+					<div class="chart-container" style="position: relative; height:500px; width:100%">
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="ordersChart" style="height: 450px; width: 100%;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -408,6 +418,94 @@
 						
 					};
 					$("#newsChart").CanvasJSChart(options);
+				});
+				
+				$.getJSON('/shopping/product/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var productArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+
+						productArray.push({ 'legendText': key + ':' + obj[key], 'indexLabel': key, 'y': obj[key] });
+					});
+
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "Product Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "rows",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "Classify"
+						},
+						data: [{
+							indexLabelFontSize: 20,
+							indexLabelFontFamily: "Garamond",
+							indexLabelFontColor: "darkgrey",
+							indexLabelLineColor: "darkgrey",
+							indexLabelPlacement: "outside",
+							type: "doughnut",
+							showInLegend: true,
+							dataPoints: productArray
+						}]
+					};
+					$("#productChart").CanvasJSChart(options);
+				});
+				
+				$.getJSON('/shopping/orders/chart', {}, function (data) {
+					console.log(data);
+					//obj轉型Map
+					var ordersArray = new Array();
+					const map = new Map();
+					let obj = data;
+					Object.keys(obj).forEach(key => {
+						map.set(key, obj[key]);
+
+						ordersArray.push({ 'legendText': key + ':' + obj[key], 'indexLabel': key, 'y': obj[key] });
+					});
+
+					var options = {
+						animationEnabled: true,
+						title: {
+							text: "Orders Chart",
+							fontWeight: "bolder",
+							fontColor: "#008B8B",
+							fontfamily: "tahoma",
+							fontSize: 25,
+							padding: 10
+						},
+						axisY: {
+							title: "rows",
+							suffix: "",
+							includeZero: false
+						},
+						axisX: {
+							title: "Classify"
+						},
+						data: [{
+							indexLabelFontSize: 20,
+							indexLabelFontFamily: "Garamond",
+							indexLabelFontColor: "darkgrey",
+							indexLabelLineColor: "darkgrey",
+							indexLabelPlacement: "outside",
+							type: "doughnut",
+							showInLegend: true,
+							dataPoints: ordersArray
+						}]
+					};
+					$("#ordersChart").CanvasJSChart(options);
 				});
 
 
