@@ -283,7 +283,7 @@ padding: auto;
    <!-- 訪客需登入 -->
    <sec:authorize access="isAnonymous()">
    <div class="btn-enroll">
-   <a href="/news/confirmbuy2" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
+   <a href="/news/confirmbuy2?id=${news.id}" class="btn btn-outline btn-radius btn-xs" style="margin: auto">立即報名</a>
    </div>
    </sec:authorize>
    <sec:authorize access="hasRole('Member')">

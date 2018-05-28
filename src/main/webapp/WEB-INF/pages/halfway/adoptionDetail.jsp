@@ -365,29 +365,8 @@
                         <div class="col-md-4 contact-info-section">
                             <div class="contact-widget office-location">
                                 <h2>聯絡資訊</h2>
-                                <ul class="contact-info2">
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-map-marker"></i> Address:</strong> 2367 Nash Street , Dearborn, Michigan</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-envelope"></i> Mail Us:</strong>
-                                            <a href="#">yourmail@gmail.com</a>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-phone"></i> Phone:</strong> +313-240-4015</p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <strong>
-                                                <i class="fa fa-print"></i> Fax:</strong> +313-555-4015</p>
-                                    </li>
+                                <ul class="contact-info2" id="forprepend">
+
                                 </ul>
                             </div>
                             <div class="contact-widget office-location">
@@ -473,7 +452,7 @@
 
                 $(document).ready(function () {
                     //var recordid = "" + $('input').attr('id')
-                    alert($('#aaa').val())
+                    //alert($('#aaa').val())
                     $.ajax({
                         url: '/halfway/acceptrecord/' + $('#aaa').val(),
                         type: 'GET',
@@ -490,16 +469,6 @@
                         // $.each(datas.data, function (idx, quiz) {
                         console.log(datas.adoption.animal.fileName);
                         var quizblock = `<div class="row" id="test">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="` + datas.adoption.animal.id + `">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="` + datas.adoption.animal.id + `">
-                                        </div>
-                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <img class="card-img-top" src="/showAnimalImage?fileName=`+ datas.adoption.animal.fileName + `" width="50px" alt="` + datas.adoption.animal.id + `">
@@ -546,8 +515,55 @@
 														</ul>
 													</div>
                                     </div>
+                                      
+                                    </div>
+                                    <div class="col-md-8">
+                                            <p>欲認養流浪動物的朋友們，請遵守以下規定：
+
+請詳細閱讀以下認養須知：
+須年滿20歲並取得家人同意
+須配合結紮及植入晶片
+須簽認養切結書並同意後續追蹤
+不得24小時綁繩或關籠
+每年需施打預防針並於每月投心絲蟲藥與除蚤
+在外租屋者需徵求房東同意
+若同意以上認養須知，可先透過留言方式，詢問該動物的詳細情況，或經由送養人留下的聯絡方式，聯絡送養人。
+若有意願認養，可告知送養人以下訊息：
+是否有養狗經驗
+生活環境
+飼養方式
+                                        </p>
+													
                                 </div>`
                         $('#forappend').append(quizblock);
+
+
+                        var text = `<li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-man"></i> 姓名:</strong> `+ datas.adoption.member.name + `</p>
+                                    </li>
+                        <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-map-marker"></i> 通訊地址:</strong> `+ datas.adoption.member.address + `</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-envelope"></i> email:</strong>
+                                            <a href="#">`+ datas.adoption.member.email + `</a>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <strong>
+                                                <i class="fa fa-phone"></i> 聯絡電話:</strong> `+ datas.adoption.member.cell + `</p>
+                                    </li>`;
+
+                                   $('#forprepend').append(text); 
+
+                        countdown(datas.endDate);
                     });
 
 
@@ -584,12 +600,16 @@
                // });
             </script>
             <script type="text/javascript">
-                $("#getting-started")
-                    .countdown("2018/06/01", function (event) {
-                        $(this).text(
-                            event.strftime('%D天 %H時 %M分 %S秒')
-                        );
-                    });
+                function countdown(deadline) {
+                    var dd = new Date(deadline);
+                    console.log(dd.toString());
+                    $("#getting-started")
+                        .countdown(deadline, function (event) {
+                            $(this).text(
+                                event.strftime('%D天 %H時 %M分 %S秒')
+                            );
+                        });
+                }
             </script>
             <script>
                 $(document).ready(function () {
