@@ -7,4 +7,8 @@ import org.iii.ee100.animour.salon.entity.FreeTime;
 
 public interface FreeTimeDao extends GenericDao<FreeTime> {
 	List<FreeTime> findByStatus(String status);
+	List<FreeTime> findByDesigner(String designer);
+	List<FreeTime> findByDesignerAndStatus(String designer,String status);
+
+
 }

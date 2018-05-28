@@ -13,14 +13,14 @@ import lombok.Data;
 @Table(name="FREETIME")
 public class FreeTime extends GenericEntity{
 
-	@Column(name="BRESERVATION_DATE")
-	private java.util.Date BreservationDate;
+	@Column(name="APPOINT_DATE")
+	private java.util.Date appointDate;
 	
-	@Column(name="BFRONT_TIME")
-	private java.sql.Time BfrontTime;
+	@Column(name="FRONT_TIME")
+	private java.sql.Time frontTime;
 	
-	@Column(name="BDESIGNER")
-	private String Bdesigner;
+	@Column(name="DESIGNER")
+	private String designer;
 	
 	@Column(name="STATUS")
 	private String status;
