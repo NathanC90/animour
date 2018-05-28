@@ -62,11 +62,64 @@
     <![endif]-->
 				<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 				<!-- FancyBox Plugins -->
+				<style>
+					.imageupload.imageupload-disabled {
+						cursor: not-allowed;
+						opacity: 0.60;
+					}
+
+					.imageupload.imageupload-disabled>* {
+						pointer-events: none;
+					}
+
+					.imageupload .panel-title {
+						margin-right: 15px;
+						padding-top: 8px;
+					}
+
+					.imageupload .alert {
+						margin-bottom: 10px;
+					}
+
+					.imageupload .btn-file {
+						overflow: hidden;
+						position: relative;
+					}
+
+					.imageupload .btn-file input[type="file"] {
+						cursor: inherit;
+						display: block;
+						font-size: 100px;
+						min-height: 100%;
+						min-width: 100%;
+						opacity: 0;
+						position: absolute;
+						right: 0;
+						text-align: right;
+						top: 0;
+					}
+
+					.imageupload .file-tab button {
+						display: none;
+					}
+
+					.imageupload .file-tab .thumbnail {
+						margin-bottom: 10px;
+					}
+
+					.imageupload .url-tab {
+						display: none;
+					}
+
+					.imageupload .url-tab .thumbnail {
+						margin: 10px 0;
+					}
+				</style>
 			</head>
 
 			<body>
 
-				<a id="check" style="display:none; max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30"
+				<a id="check" style="display: none; max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30"
 				 data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;">
 					<i class="fa fa-link"></i>我要認養
 				</a>
@@ -77,8 +130,9 @@
 					<div id="loginbox" style="margin-top: 50px; margin: auto" class="mainbox col-md-12 col-md-offset-3 col-sm-8 col-sm-offset-2">
 						<div class="panel panel-info" style="border: 1px">
 							<div class="panel-heading" style="padding: 10px 15px; border-bottom: 1px solid transparent; border-top-right-radius: 3px; border-top-left-radius: 3px; border-bottom: 0; color: #FFFFFF; background-color: #9C3; border-color: #ddd">
-								<div class="panel-title" style="font-size:24px; font-weight:900">
-									<i class="fa fa-paw"></i> 新增動物資料</div>
+								<div class="panel-title" style="font-size: 24px; font-weight: 900">
+									<i class="fa fa-paw"></i> 新增動物資料
+								</div>
 								<div style="float: right; font-size: 80%; position: relative; top: -10px">
 									<a href="#"></a>
 								</div>
@@ -99,6 +153,10 @@
 												<form:options items="${allSpecie}" />
 											</form:select>
 										</div>
+										<!-- 錯誤訊息 -->
+										<!--<div class="form-group">
+								<div class='help-block'>欸欸真的這樣就可以了嗎</div>
+							</div>-->
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-6">
@@ -139,8 +197,7 @@
 										發現日期:
 										<form:input type="date" class="form-control" id="found" path="found" placeholder="ex:yyyy-MM-dd" name="found" />
 										<span id="p3" class="correct"></span>
-										<small id="passwordHelpBlock" class="form-text text-muted">(格式:西元年-月-日&nbsp yyyy-MM-dd)
-										</small>
+										<small id="passwordHelpBlock" class="form-text text-muted">(格式:西元年-月-日&nbsp yyyy-MM-dd) </small>
 										<div class="st1"></div>
 									</div>
 									<div class="form-row">
@@ -186,10 +243,14 @@
 										備註:
 										<form:textarea class="form-control" id="remark" path="remark" rows="2" name="remark" />
 									</div>
-									<div class="form-group">
-										請上傳動物照片
-										<input type="file" class="form-control-file" id="image" name="file">
+									<div class="form-group" id="imgur">
+										<input id="avatar" name="images" type="hidden" value="" />
+										<!-- <form id="imgur"> -->
+											請上傳動物大頭貼:
+											<input name="file" type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+										<!-- </form> -->
 									</div>
+									
 									<input type="button" class="btn btn-common" value="送出" id="submit">
 									<input type="reset" class="btn btn-common" value="清除">
 									<a href="/halfway" class="btn btn-common"> 取消</a>
@@ -201,9 +262,13 @@
 					</div>
 				</div>
 				<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+				<script type="text/javascript" src="/js/bootstrap-imgupload.js"></script>
+
 
 				<script>
 					$(document).ready(function () {
+						uploadImgur();
+
 						$("#check").click();
 
 						$("#submit").click(add);
@@ -233,11 +298,10 @@
 								//enctype: 'multipart/form-data',
 								contentType: false,
 								processData: false,
-								success: function (data) {
-									window.location.href = "http://localhost:8080/halfway";
-								}
-							});
 
+							}).done(function(){
+								window.location.href = "http://localhost:8080/halfway";
+							});
 						}
 
 						function toJson(formData) {
@@ -255,6 +319,98 @@
 							console.log(json);
 							return json;
 						};
+
+						function uploadImgur() {
+							$('input[type=file]').on("change", function () {
+								$('#submit').prop("disabled", "disabled");
+								var $files = $(this).get(0).files;
+
+								if ($files.length) {
+
+									// Reject big files
+									if ($files[0].size > $(this).data("max-size") * 1024) {
+										console.log("Please select a smaller file");
+										return false;
+									}
+
+									// Begin file upload
+									console.log("Uploading file to Imgur..");
+
+									// Replace ctrlq with your own API key
+									var apiUrl = 'https://api.imgur.com/3/image';
+									var apiKey = 'de46ec271aa99c3';
+
+									var settings = {
+										// async: false,
+										crossDomain: true,
+										processData: false,
+										contentType: false,
+										type: 'POST',
+										url: apiUrl,
+										headers: {
+											Authorization: 'Client-ID ' + apiKey,
+											Accept: 'application/json'
+										},
+										mimeType: 'multipart/form-data'
+									};
+
+									var formData = new FormData();
+									formData.append("image", $files[0]);
+
+									// var ins = $files.length;
+									// for (var x = 0; x < ins; x++) {
+									// 	formData.append("images[]", $files[x]);
+									// }
+
+									// for(var pair of formData.entries()){
+									// 	console.log(pair[0]+','+pair[1]);
+									// }
+									settings.data = formData;
+
+									// Response contains stringified JSON
+									// Image URL available at response.data.link
+									$.ajax(settings).done(function (response) {
+										var jsonObj = JSON.parse(response)
+										console.log(jsonObj.data.link);
+										$("#avatar").val(jsonObj.data.link);
+										$('#submit').removeAttr("disabled");
+
+										callVisionApi(jsonObj.data.link);
+									});
+
+								}
+							});
+						}
+
+						function callVisionApi(imageUrl) {
+
+							$.ajax({
+								url: '/vision',
+								type: 'GET',
+								data: { "imageUrl" : imageUrl },
+								//data: json,
+								//dataType: 'json',
+								//processData: false,
+								//contentType: "application/json",
+								//contentType: "multipart/form-data",
+								//enctype: 'multipart/form-data',
+								//contentType: false,
+								//processData: false,
+							}).done(function (datas) {
+								var parsed = JSON.parse(datas);
+								//console.log(datas);
+								console.log(parsed.responses);
+								$.each(parsed.responses[0].labelAnnotations, function (idx, label) {
+									console.log(label.description + "----------" + label.score)
+
+								});
+								var template = `<div class="form-group">
+								<div class='help-block'>"您上傳的圖片可能包含`+parsed.responses[0].labelAnnotations[0].description+`"</div>
+							</div>`;
+									$("#imgur").append(template);
+
+							});
+						}
 					});
 				</script>
 			</body>

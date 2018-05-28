@@ -192,14 +192,14 @@ public class AnimalRestController {
 	}
 	
 	@RequestMapping(value = { "/vision" }, method = RequestMethod.GET)
-	public String visionTest() {
+	public ResponseEntity<?> visionTest(@RequestParam(value="imageUrl") String imageUrl) {
 		String response = null;
 		try {
-			response = GoogleVisionUtils.VisionApiRequest();
+			response = GoogleVisionUtils.visionApiRequest(imageUrl);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return response;
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
 }

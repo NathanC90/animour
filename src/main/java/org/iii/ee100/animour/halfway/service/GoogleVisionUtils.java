@@ -17,19 +17,10 @@ public class GoogleVisionUtils {
 	private static final String TARGET_URL = "https://vision.googleapis.com/v1/images:annotate?";
 	private static final String API_KEY = "key=AIzaSyBKKkqIwxvLdgC1bB5dgt5gbEhnL-TUn7A";
 
-	public static String VisionApiRequest() throws IOException {
+	public static String visionApiRequest(String imageUrl) throws IOException {
 
-		//URL url = new URL("https://vision.googleapis.com/v1/images:annotate?key=<API-KEY>"); 
-		//HttpsURLConnection http = (HttpsURLConnection)url.openConnection();
-		
 		URL serverUrl = new URL(TARGET_URL + API_KEY);
 		HttpsURLConnection httpConnection = (HttpsURLConnection)serverUrl.openConnection();
-		
-		
-		//HttpURLConnection httpcon = (HttpURLConnection) serverUrl.openConnection();
-		//httpcon.addRequestProperty("User-Agent", "Mozilla/4.76");
-
-		
 
 		httpConnection.setRequestMethod("POST");
 		httpConnection.setRequestProperty("Content-Type", "application/json");
@@ -41,7 +32,7 @@ public class GoogleVisionUtils {
 //		/image specifies the image file. It can be sent as a base64-encoded string, a Google Cloud Storage file location, or as a publicly-accessible URL.
 		httpRequestBodyWriter.write("{\"requests\":  [{ \"features\":  [ {\"type\": \"LABEL_DETECTION\""
 				+ "}], \"image\": {\"source\": { \"imageUri\":"
-				+ " \"https://i.imgur.com/AUZV0cd.jpg\"}}}]}");
+				+ " \""+imageUrl+"\"}}}]}");
 
 		httpRequestBodyWriter.close();
 
