@@ -116,7 +116,7 @@
 		<div class="col-md-9">
 			<article class="blog-post-wrapper wow fadeIn" data-wow-delay="0.3s">
 				<h2 class="blog-post-title"  style="font-family:微軟正黑體; padding-top:15px">
-                	<a href="#subject">${oneEvent.subject}</a>
+                	<a href="/findOneEvent?id=${oneEvent.id}">${oneEvent.subject}</a>
               	</h2>
               	<div class="tag-posted-in">
                		<div>
