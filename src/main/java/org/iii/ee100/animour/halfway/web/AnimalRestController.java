@@ -119,7 +119,6 @@ public class AnimalRestController {
 		}
 		lastspec.add(speciemap);
 		
-		
 		// 接收縣市的 checkbox
 		Map<String, Object> citymap = new IdentityHashMap<>();
 		if (queryform.getCityitems() != null && queryform.getCityitems().size() != 0) {

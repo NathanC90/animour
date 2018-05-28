@@ -148,7 +148,7 @@
                                                                                 <h4>會員資訊</h4>
                                                                                 <ul style="padding-left:0px; margin-left:0px">
                                                                                     <li>
-                                                                                        <a href="">${adoption.member.account}</a>
+                                                                                        <a href="/user/${adoption.member.account}">${adoption.member.account}</a>
                                                                                     </li>
                                                                                     <li>
                                                                                         ${adoption.member.nickname}

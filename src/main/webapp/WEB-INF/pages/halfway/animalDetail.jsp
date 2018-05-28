@@ -155,7 +155,7 @@
 							</p>
 						</div>
 						<div class="col-md-6">
-							<h3 class="small-title">會員"${animal.member.account}"的送養動物</h3>
+							<h3 class="small-title">會員" <a href="/user/${animal.member.account}">${animal.member.account}</a>"的送養動物</h3>
 							<p>We are unique and had working! We work for better product.</p>
 							<div id="default-tab" class="mt-10">
 								<!-- Nav tabs -->
