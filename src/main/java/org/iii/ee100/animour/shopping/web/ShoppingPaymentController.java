@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.shopping.entity.Orders;
@@ -31,7 +33,7 @@ public class ShoppingPaymentController {
 
 	// 結帳，在此設定歐付寶結帳所需參數
 	@RequestMapping(value = "/ShopfrontEnd/CheckOut/CheckOutALL", method = RequestMethod.POST, produces = "text/html;charset=UTF-8")
-	public @ResponseBody String aioCheckOutALL() {
+	public @ResponseBody String aioCheckOutALL(HttpServletRequest request) {
 		AioCheckOutALL aio = new AioCheckOutALL();
 		AllInOne all = new AllInOne("");
 		InvoiceObj invoice = new InvoiceObj();
@@ -63,7 +65,10 @@ public class ShoppingPaymentController {
 		// 顯示付款成功的頁面（預設
 		aio.setReturnURL("http://211.23.128.214:5000");
 		// 付款成功後轉跳的頁面 
-		aio.setClientBackURL("http://localhost:8080/product/index");
+		StringBuffer url = request.getRequestURL();
+		int lastIndexOf = url.lastIndexOf("/ShopfrontEnd");
+		String substring = url.substring(0, lastIndexOf);
+		aio.setClientBackURL(substring + "/product/index");
 		try {
 			String html = all.aioCheckOut(aio, invoice);
 			System.out.println(html);

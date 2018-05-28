@@ -3,7 +3,6 @@ package org.iii.ee100.animour.news.web;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 import org.iii.ee100.animour.halfway.service.AdoptionService;
@@ -11,7 +10,6 @@ import org.iii.ee100.animour.halfway.service.AnimalService;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.news.entity.News;
 import org.iii.ee100.animour.news.service.NewsService;
-import org.iii.ee100.animour.shopping.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -99,10 +97,11 @@ public class NewsController {
 	//Booking confirm
 		//確定購買
 		@RequestMapping(value="/news/confirmbuy2", method=RequestMethod.GET)
-		public String confirmBuy2() {
-			return "redirect:/news/enroll";
+		public String confirmBuy2(@RequestParam(name = "id") Long id, News news, Model model) {
+			model.addAttribute("news", newsService.getOne(id));
+			return "/news/enroll";
 		}
-		
+	
 		//Ticket Payment
 		@Autowired
 		AnimalService animalService;

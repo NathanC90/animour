@@ -457,7 +457,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "doughnut",
+							type: "pie",
 							showInLegend: true,
 							dataPoints: productArray
 						}]
@@ -501,7 +501,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "doughnut",
+							type: "pie",
 							showInLegend: true,
 							dataPoints: ordersArray
 						}]

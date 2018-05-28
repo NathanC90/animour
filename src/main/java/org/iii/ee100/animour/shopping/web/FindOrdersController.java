@@ -1,5 +1,8 @@
 package org.iii.ee100.animour.shopping.web;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.iii.ee100.animour.member.entity.Member;
@@ -24,6 +27,13 @@ public class FindOrdersController {
 	public String findOrders(Model model) {
 		Member currentMember = memberService.getNewCurrentMember();
 		List<Orders> ordersList = ordersService.getByMemberOrders(currentMember.getId());
+		List<String> date = new ArrayList<>();
+		for(Orders orders:ordersList) {
+			Date orderDate = orders.getOrderDate();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");
+			date.add(sdf.format(orderDate));
+		}
+		model.addAttribute("date", date);
 		model.addAttribute("currentMember", currentMember);
 		model.addAttribute("orders_size", ordersList.size());
 		model.addAttribute("memberOrders", ordersList);
