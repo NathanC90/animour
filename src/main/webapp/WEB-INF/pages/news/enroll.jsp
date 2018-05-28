@@ -60,7 +60,6 @@
 <link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 <link rel="stylesheet" type="text/css" href="/extras/animate.css">
 <link rel="stylesheet" type="text/css" href="/extras/normalize.css">
-<link rel="stylesheet" type="text/css" href="css/newsstyle.css">
 
 
 <!-- Color CSS Styles  -->
@@ -180,13 +179,6 @@ table tr:nth-child(2n+1) {
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
   }
 
-  img {
-    border: 3px solid;
-    border-color: #daeff1;
-    height: 100px;
-    margin: 0.5rem 0;
-    width: 100px;
-  }
 
   td:first-child {
     background-color: #c8e7ea;
@@ -243,6 +235,7 @@ padding: auto;
 </style>
 </head>
 <body>
+
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
 	<jsp:include page="../navbar.jsp"></jsp:include>
