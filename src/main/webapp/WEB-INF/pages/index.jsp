@@ -223,7 +223,7 @@
 	<section>
 		<!-- Container Starts -->
 		<div class="container">
-			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s" style="font-family:微軟正黑體">
+			<h1 class="section-title wow fadeIn animated" data-wow-delay=".2s">
 				最新活動專區</h1>
 			<div class="row">
 				<c:forEach var="sixNews" items="${sixNews}">
