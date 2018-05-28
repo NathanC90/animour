@@ -144,11 +144,11 @@
 									<div class="form-row">
 										<div class="form-group col-md-6">
 											暱稱:
-											<form:input type="text" class="form-control" id="name" path="name" name="name" />
+											<form:input type="text" class="form-control" id="name" path="name" name="name" required="required" />
 										</div>
 										<div class="form-group col-md-6">
 											種類:
-											<form:select path="specie" class="form-control" name="specie">
+											<form:select path="specie" class="form-control" name="specie" id="specie">
 												<form:option value="-1" label="請選擇種類" />
 												<form:options items="${allSpecie}" />
 											</form:select>
@@ -246,11 +246,12 @@
 									<div class="form-group" id="imgur">
 										<input id="avatar" name="images" type="hidden" value="" />
 										<!-- <form id="imgur"> -->
-											請上傳動物大頭貼:
-											<input name="file" type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
+										請上傳動物大頭貼:
+										<input name="file" type="file" class="imgur" multiple="multiple" accept="image/*" data-max-size="5000" />
 										<!-- </form> -->
+
 									</div>
-									
+
 									<input type="button" class="btn btn-common" value="送出" id="submit">
 									<input type="reset" class="btn btn-common" value="清除">
 									<a href="/halfway" class="btn btn-common"> 取消</a>
@@ -299,7 +300,7 @@
 								contentType: false,
 								processData: false,
 
-							}).done(function(){
+							}).done(function () {
 								window.location.href = "http://localhost:8080/halfway";
 							});
 						}
@@ -322,6 +323,7 @@
 
 						function uploadImgur() {
 							$('input[type=file]').on("change", function () {
+
 								$('#submit').prop("disabled", "disabled");
 								var $files = $(this).get(0).files;
 
@@ -375,6 +377,14 @@
 										$("#avatar").val(jsonObj.data.link);
 										$('#submit').removeAttr("disabled");
 
+										var template1 = `<div class=" wow fadeIn" data-wow-delay="0.3s" id="clients" style="padding:0px">
+											<div id="clients-scroller">
+												<img style="width:30%; margin:0px" src="`+ jsonObj.data.link + `" alt="">
+											</div>
+										</div>`;
+
+										$('#imgur').append(template1);
+
 										callVisionApi(jsonObj.data.link);
 									});
 
@@ -387,7 +397,7 @@
 							$.ajax({
 								url: '/vision',
 								type: 'GET',
-								data: { "imageUrl" : imageUrl },
+								data: { "imageUrl": imageUrl },
 								//data: json,
 								//dataType: 'json',
 								//processData: false,
@@ -397,18 +407,30 @@
 								//contentType: false,
 								//processData: false,
 							}).done(function (datas) {
+								var flag = false;
 								var parsed = JSON.parse(datas);
+								var speciechoose = $("#specie option:selected").text();
 								//console.log(datas);
 								console.log(parsed.responses);
 								$.each(parsed.responses[0].labelAnnotations, function (idx, label) {
 									console.log(label.description + "----------" + label.score)
-
+									
+									if (speciechoose == "狗") {
+										if (!(label.description.includes("dog"))) {
+											alert("幹")
+											flag = true;
+										}
+									}
+									
 								});
-								var template = `<div class="form-group">
-								<div class='help-block'>"您上傳的圖片可能包含`+parsed.responses[0].labelAnnotations[0].description+`"</div>
+								if (flag) {
+									var template = `<div class="form-group">
+								<div class='help-block'>"您上傳的圖片可能沒有包含"`+speciechoose + `"，建議您重新選擇圖片！"</div>
 							</div>`;
 									$("#imgur").append(template);
-
+									$(".imgur").val("");
+									flag = false;
+								}
 							});
 						}
 					});

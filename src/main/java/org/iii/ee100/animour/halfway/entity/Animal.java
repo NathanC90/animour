@@ -100,6 +100,6 @@ public class Animal extends GenericEntity{
 	
 	//接收byte陣列傳來的大頭貼，但只存檔名
 	@Transient
-	private MultipartFile avatar;
+	private String avatar;
 	
 }

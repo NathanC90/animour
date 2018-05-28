@@ -133,29 +133,126 @@
 			<!-- Page Content Start 重複的內容開始 -->
 			<section class="section">
 				<div class="container">
+
 					<div class="row">
 						<div class="col-md-6">
 
-							<p class="imglist" style="max-width: 500px; width: 100%">
-								<a data-trigger="preview" href="javascript:;">
-									<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" data-width="500" data-height="500" alt="${animal.id}">
-								</a>
-								<a href="https://source.unsplash.com/LuK-MuZ-yf0/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
-									<img src="https://source.unsplash.com/LuK-MuZ-yf0/120x80" />
-								</a>
-								<a href="https://source.unsplash.com/Oaqk7qqNh_c/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
-									<img src="https://source.unsplash.com/Oaqk7qqNh_c/120x80" />
-								</a>
-								<a href="https://source.unsplash.com/X9GHkHbJIaU/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
-									<img src="https://source.unsplash.com/X9GHkHbJIaU/120x80" />
-								</a>
-								<a href="https://source.unsplash.com/9c_djeQTDyY/1500x1000" data-fancybox="preview" data-width="1500" data-height="1000">
-									<img src="https://source.unsplash.com/9c_djeQTDyY/120x80" />
-								</a>
-							</p>
+
+							<h3>Images</h3>
+
+
+							<div class="row mb-4">
+								<div class="col-6 col-lg-4">
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/i-FqQIkJMqg/1536x2304" data-width="1536"
+									 data-height="2304">
+										<img class="img-fluid" src="https://source.unsplash.com/i-FqQIkJMqg/416x623">
+									</a>
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/EMSDtjVHdQ8/1279x853" data-width="1279"
+									 data-height="853">
+										<img class="img-fluid" src="https://source.unsplash.com/EMSDtjVHdQ8/416x278">
+									</a>
+
+								</div>
+								<div class="col-6 col-lg-4">
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/eaS5h6mR1BE/1279x719" data-width="1279"
+									 data-height="719">
+										<img class="img-fluid" src="https://source.unsplash.com/eaS5h6mR1BE/416x234">
+									</a>
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/z55CR_d0ayg/1279x853" data-width="1279"
+									 data-height="853">
+										<img class="img-fluid" src="https://source.unsplash.com/z55CR_d0ayg/416x278">
+									</a>
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/r0q06hjTgOc/1279x853" data-width="1279"
+									 data-height="853">
+										<img class="img-fluid" src="https://source.unsplash.com/r0q06hjTgOc/416x350">
+									</a>
+
+								</div>
+								<div class="col-6 col-lg-4 d-none d-lg-block">
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/Q1Zyjio6pIM/1279x870" data-width="1279"
+									 data-height="870">
+										<img class="img-fluid" src="https://source.unsplash.com/Q1Zyjio6pIM/416x283">
+									</a>
+
+									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/lw3GfSfGY9w/1519x2279" data-width="1519"
+									 data-height="2279">
+										<img class="img-fluid" src="https://source.unsplash.com/lw3GfSfGY9w/416x623">
+									</a>
+
+								</div>
+							</div>
+
+
+
+
+
+							<script>
+
+								// Clone defaults
+								var imgOpts = $.extend(true, {}, $.fancybox.defaults);
+
+								// Shortcut to apply options to image gallery
+								function applyImgOpts() {
+									$('[data-fancybox="images"]').fancybox(imgOpts);
+								}
+
+								$("#imgOpts select").change(function () {
+									var opt = $(this).attr("id");
+									var val = $(this).val();
+
+									imgOpts[opt] = val === "" ? false : val;
+
+									// Make "fade" transiton faster than others
+									if (opt === 'transitionEffect') {
+										imgOpts['transitionDuration'] = opt === 'fade' ? 330 : 550;
+									}
+
+									applyImgOpts();
+								});
+
+								$("#imgOpts input[type=radio][name=lang]").on("change", function () {
+									imgOpts.lang = $(this).val();
+
+									applyImgOpts();
+								});
+
+								$("#imgOpts .toggle").change(function () {
+									if (this.id === 'thumbs') {
+										imgOpts.thumbs.autoStart = this.checked ? true : false;
+									} else {
+										imgOpts[this.id] = this.checked ? true : false;
+									}
+
+									applyImgOpts();
+								});
+
+								$("#imgOpts .buttons").change(function () {
+									var buttonArr = $('input:checkbox:checked.buttons').map(function () {
+										return this.value;
+									}).get();
+
+									buttonArr.push('close');
+
+									imgOpts.buttons = buttonArr;
+
+									applyImgOpts();
+								});
+
+							</script>
+
+
+
+
 						</div>
+
 						<div class="col-md-6">
-							<h3 class="small-title">會員" <a href="/user/${animal.member.account}">${animal.member.account}</a>"的送養動物</h3>
+							<h3 class="small-title">會員"
+								<a href="/user/${animal.member.account}">${animal.member.account}</a>"的送養動物</h3>
 							<p>We are unique and had working! We work for better product.</p>
 							<div id="default-tab" class="mt-10">
 								<!-- Nav tabs -->
@@ -216,8 +313,9 @@
 																<span>晶片號碼：</span>${animal.cardNum}</li>
 															<li>
 																<span>結紮：</span>${animal.neuter}</li>
-															<li  id="upload" value="${animal.upload}">
-																<span>更新時間：</span></li>
+															<li id="upload" value="${animal.upload}">
+																<span>更新時間：</span>
+															</li>
 														</ul>
 													</div>
 												</div>
@@ -242,13 +340,13 @@
 								</div>
 							</div>
 						</div>
-						<c:if test="${animal.member.id ne currentMember.id}">
+					</div>
+					<c:if test="${animal.member.id ne currentMember.id}">
 							<a id="check" style="max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox
 							 data-src="#trueModal" data-modal="true" href="javascript:;">
 								<i class="fa fa-link"></i>我要認養
 							</a>
 						</c:if>
-					</div>
 				</div>
 				<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
