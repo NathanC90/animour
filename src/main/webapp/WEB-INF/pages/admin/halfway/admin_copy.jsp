@@ -118,7 +118,7 @@
 					
 					<form id="statusForm">
 						<input type="hidden" name="id">
-						<input type="hidden" name="disabled">
+						<input type="hidden" name="status">
 					</form>
 				</div>
 			</div>
@@ -169,7 +169,7 @@
 						var cell6 = $("<td></td>").text(formatDate(new Date(animal.upload)));//更新
 						var cell7 = $("<td></td>").text(animal.member.account);//會員帳號
 
-						var cell8 = $("<td></td>").text(animal.disabled);
+						var cell8 = $("<td></td>").text(animal.status).attr({'id':'td_status'+animal.id});
 
 						
 						if (animal.disabled == false) {
@@ -178,12 +178,9 @@
 							var span01 = $('<span></span>').addClass('icon icon-erase');
 						}
 						
-						
-						
 						var button01 = $('<button></button>').attr({ 'type': 'button', 'title': '上架/下架', 'status':animal.disabled ,'id':'button'+animal.id, 'value':animal.id}).addClass('btn btn-outline-primary').append(span01);
 						var divb1 = $('<div></div>').addClass('btn-group').append([button01]);
 						var divf1 = $('<div></div>').addClass('flextable-item').append(divb1);
-
 
 						var cell9 = $('<td></td>').append(divf1);
 
@@ -207,13 +204,13 @@
 		$(document).on('click', 'button[title="上架/下架"]', function () {
 			var id=$(this).val();
 			$('input[name="id"]').attr('value', $(this).val());
-			if ($(this).attr('status') == true){
-				$('input[name="status"]').attr('value', true);
+			if ($(this).attr('status') == '開放認養'){
+				$('input[name="status"]').attr('value', '開放認養');
 				console.log('status:'+$(this).attr('status'));
 
 			}
 			else{
-				$('input[name="status"]').attr('value', false);					
+				$('input[name="status"]').attr('value', '下架');					
 			}
 			console.log($(this).val());
 			console.log('status:'+$(this).attr('status'));
@@ -232,13 +229,13 @@
 				contentType: false,
 				processData: false,
 				success: function (result) {
-					$('#button' +result.id).attr('status', result.disabled);
+					$('#button' +result.id).attr('status', result.status);
 					$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
-					if(result.disabled==true){
-					$('#td_status'+result.id).text('on')
+					if(result.status=='開放認養'){
+					$('#td_status'+result.id).text('開放認養')
 					}
 					else{
-						$('#td_status'+result.id).text('off')
+						$('#td_status'+result.id).text('下架')
 
 					}
 					alert('#button' +result.id + ' change its status')

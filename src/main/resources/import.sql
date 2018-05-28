@@ -2,17 +2,24 @@ INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS
 VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) 
 VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', true,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區',true,'ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區',true,'Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區',true,'kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captain.lu', 'Aa123', '盧廣中', '晨之美','0912-345678','captain.lu@gail.com','台北市大安區',true,'captain.lu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區',true,'bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區',true,'bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區',false,'Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區',false,'johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區',false,'panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區',false,'harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS)
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captain.lu', 'Aa123', '盧廣中', '晨之美','0912-345678','captain.lu@gail.com','台北市大安區','1','captain.lu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區','1','bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區','0','bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區','0','Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區','0','johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區','1','ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區','1','panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區','1','harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('cherngyang', 'Aa123', '馬來貘', '馬來貘','0912-345678','cherngyang@gail.com','台北市大安區','1','cherngyang happy everyday.','https://i.imgur.com/gcN4sV7.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('wuchengan', 'Aa123', '爽爽貓', '爽爽','0912-345678','wuchengan@gail.com','台北市大安區','1','wuchengan happy everyday.','https://i.imgur.com/xXGgLOn.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('byebyechuchu', 'Aa123', '林柏維', '掰掰啾啾','0912-345678','byebyechuchu@gail.com','台北市大安區','1','byebyechuchu happy everyday.','https://i.imgur.com/2aVtzH6.png' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('xxxibgdrgn', 'Aa123', '權志龍', 'G-Dragon','0912-345678','xxxibgdrgn@gail.com','台北市大安區','1','xxxibgdrgn happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kwon_jo', 'Aa123', '趙權', '趙權','0912-345678','kwon_jo@gail.com','台北市大安區','1','kwon_jo happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('badgalriri', 'Aa123', '蕾哈娜', 'Rihanna','0912-345678','badgalriri@gail.com','台北市大安區','1','badgalriri happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('cristiano', 'Aa123', 'C羅納度', 'C羅','0912-345678','cristiano@gail.com','台北市大安區','1','cristiano happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('jlin7', 'Aa123', '林書豪', 'Jeremy Lin','0912-345678','jlin7@gail.com','台北市大安區','1','jlin7 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
 VALUES ('BenQ','123','Annie Wu','Annie','0900-000000','annie@gail.com','台北市中正區', true);
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,true) 
 VALUES ('Sony','Aa1','Sony Su','Apple','0900-000000','apple@gail.com','台北市萬華區',false);
@@ -580,19 +587,6 @@ insert into SERVICECONTENT (CONTENT,time,price,designer_id)
 values ('剪毛',1,400,3);
 
 
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,'1');
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,'2');
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,'4');
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,5);
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,6);
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)
-values (3,true,7);
-
 insert into Notice (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
 values (2,1,true,now(),'現在有人發通知給您');
 insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
@@ -603,3 +597,40 @@ insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
 values (2,1,true,now(),'現在有人發通知給您');
 insert into MYFRIEND (MEMBER_ID,Who,Status,NOTICETIME,DETAIL)
 values (2,1,true,now(),'現在有人發通知給您');
+
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,4);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,5);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,6);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)
+values (3,true,7);
+
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (3,true,9);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (3,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (4,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (4,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (4,true,3);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (4,true,13);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (4,true,14);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,3);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,4);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,16);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (5,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,13);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,14);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,15);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,16);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,5);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,15);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,17);
