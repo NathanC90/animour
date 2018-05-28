@@ -13,8 +13,10 @@ import org.assertj.core.util.Lists;
 import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
+import org.iii.ee100.animour.salon.dao.FreeTimeDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
+import org.iii.ee100.animour.salon.entity.FreeTime;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
 import org.iii.ee100.animour.salon.service.ReservationService;
@@ -39,7 +41,17 @@ public class ChangeDateTest {
 	
 	@Autowired
 	MemberService memberService;
+	
+	@Autowired
+	FreeTimeDao freeTimeDao;
 
+	@Test
+	public void freetimeDao() {
+		List<FreeTime> test = new ArrayList<>();
+		test= freeTimeDao.findByStatus("free");
+		System.out.println("aaabbbccc"+test);
+		
+	}
 //	 @Test
 //	 public void changeDate() {
 //	// System.out.println(reservationService);
@@ -61,19 +73,19 @@ public class ChangeDateTest {
 //	
 //	 }
 
-	@Test
-	public void chart() {
-		List<Reservation> list=new ArrayList<>();
-		list = reservationService.getAllReservationContent();
-		Map<String,Integer> map = new HashMap<String,Integer>();
-		for(Reservation reservation:list) {
-			if (map.containsKey(reservation.getDesigner())) {
-				map.put(reservation.getDesigner(), map.get(reservation.getDesigner()) + 1);
-			}else {
-				map.put(reservation.getDesigner(), 1);
-			}
-		}
-		System.out.println("aaabbbccc"+map);
-	}
+//	@Test
+//	public void chart() {
+//		List<Reservation> list=new ArrayList<>();
+//		list = reservationService.getAllReservationContent();
+//		Map<String,Integer> map = new HashMap<String,Integer>();
+//		for(Reservation reservation:list) {
+//			if (map.containsKey(reservation.getDesigner())) {
+//				map.put(reservation.getDesigner(), map.get(reservation.getDesigner()) + 1);
+//			}else {
+//				map.put(reservation.getDesigner(), 1);
+//			}
+//		}
+//		System.out.println("aaabbbccc"+map);
+//	}
 
 }
