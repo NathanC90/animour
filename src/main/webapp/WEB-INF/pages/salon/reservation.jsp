@@ -63,7 +63,7 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="https://i.imgur.com/c2usEiU.jpg" alt="">
+								<img class="d-block w-80" src="https://i.imgur.com/c2usEiU.jpg" alt="">
 <!-- 								<div class="carousel-caption"> -->
 <!-- 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"> -->
 <!-- 										</h2> -->
@@ -71,7 +71,7 @@
 <!-- 								</div> -->
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="https://i.imgur.com/BOLIhA1.png" alt="">
+								<img class="w-100" src="https://i.imgur.com/BOLIhA1.png" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
+								<img class="w-100" src="http://www.we.net.tw/upload/news/20171101115611_2s.png" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
@@ -88,13 +88,11 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
+								<img class="w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"></h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 
-									</a>
+									
 								</div>
 							</div>
 						</div>
