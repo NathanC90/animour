@@ -1,25 +1,25 @@
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS,images) 
-VALUES ('Admin','123','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true,'https://i.imgur.com/7mC4im2.png');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) 
-VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', true,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('captainlu', 'Aa123', '盧廣中', '晨之美','0912-345678','captainlu@gail.com','台北市大安區','1','captainlu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區','1','bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區','0','bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區','0','Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區','0','johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區','1','ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區','1','panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區','1','harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('cherngyang', 'Aa123', '馬來貘', '馬來貘','0912-345678','cherngyang@gail.com','台北市大安區','1','cherngyang happy everyday.','https://i.imgur.com/gcN4sV7.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('wuchengan', 'Aa123', '爽爽貓', '爽爽','0912-345678','wuchengan@gail.com','台北市大安區','1','wuchengan happy everyday.','https://i.imgur.com/xXGgLOn.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('byebyechuchu', 'Aa123', '林柏維', '掰掰啾啾','0912-345678','byebyechuchu@gail.com','台北市大安區','1','byebyechuchu happy everyday.','https://i.imgur.com/2aVtzH6.png' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('xxxibgdrgn', 'Aa123', '權志龍', 'G-Dragon','0912-345678','xxxibgdrgn@gail.com','台北市大安區','1','xxxibgdrgn happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('kwon_jo', 'Aa123', '趙權', '趙權','0912-345678','kwon_jo@gail.com','台北市大安區','1','kwon_jo happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('badgalriri', 'Aa123', '蕾哈娜', 'Rihanna','0912-345678','badgalriri@gail.com','台北市大安區','1','badgalriri happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('cristiano', 'Aa123', 'C羅納度', 'C羅','0912-345678','cristiano@gail.com','台北市大安區','1','cristiano happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images) VALUES ('jlin7', 'Aa123', '林書豪', 'Jeremy Lin','0912-345678','jlin7@gail.com','台北市大安區','1','jlin7 happy everyday.','https://i.imgur.com/MpJe3lW.jpg' );
+VALUES ('Admin','$2a$10$5PB7tASICyCGT2ZIRkpOLuIkxjsSNjjM0fhD61HD4wP4ra0dd9tAC','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true,'https://i.imgur.com/7mC4im2.png');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images,REGISTRATIONTIME) 
+VALUES ('ViewSonic','123','Alex Wu','Alex','0900-000000','alex@gmail.com','台北市大安區', true,'view sonic haha ', 'https://i.imgur.com/MpJe3lW.jpg','2018-01-04 12:00:00');
+--INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('Alisasa', 'Aa123', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('kingjames', 'Aa123', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('captainlu', 'Aa123', '盧廣中', '晨之美','0912-345678','captainlu@gail.com','台北市大安區','1','captainlu happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('bravolav', 'Aa123', '宋芸樺', '喬喬','0912-345678','bravolav@gail.com','台北市大安區','1','bravolav happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('bryanchang1988', 'Aa123', '張書豪', 'Bryan','0912-345678','bryanchang1988@gail.com','台北市大安區','0','bryanchang1988 happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('Yga0721', 'Aa123', '蔡阿嘎', '嘎','0912-345678','Yga0721@gail.com','台北市大安區','0','Yga0721 happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('johnny__bms', 'Aa123', '楊銘威', 'johnny','0912-345678','johnny__bms@gail.com','台北市大安區','0','johnny__bms happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('ryu', 'Aa123', '呂悠悠', 'ryu','0912-345678','ryu@gail.com','台北市大安區','1','ryu happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('panyingchu', 'Aa123', '潘暎竹', '阿竹','0912-345678','panyingchu@gail.com','台北市大安區','1','panyingchu happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('harrychang1122', 'Aa123', '張懷秋', 'Harry','0912-345678','harrychang1122@gail.com','台北市大安區','1','harrychang1122 happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('cherngyang', 'Aa123', '馬來貘', '馬來貘','0912-345678','cherngyang@gail.com','台北市大安區','1','cherngyang happy everyday.','https://i.imgur.com/gcN4sV7.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('wuchengan', 'Aa123', '爽爽貓', '爽爽','0912-345678','wuchengan@gail.com','台北市大安區','1','wuchengan happy everyday.','https://i.imgur.com/xXGgLOn.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('byebyechuchu', 'Aa123', '林柏維', '掰掰啾啾','0912-345678','byebyechuchu@gail.com','台北市大安區','1','byebyechuchu happy everyday.','https://i.imgur.com/2aVtzH6.png','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('xxxibgdrgn', 'Aa123', '權志龍', 'G-Dragon','0912-345678','xxxibgdrgn@gail.com','台北市大安區','1','xxxibgdrgn happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('kwon_jo', 'Aa123', '趙權', '趙權','0912-345678','kwon_jo@gail.com','台北市大安區','1','kwon_jo happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('badgalriri', 'Aa123', '蕾哈娜', 'Rihanna','0912-345678','badgalriri@gail.com','台北市大安區','1','badgalriri happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('cristiano', 'Aa123', 'C羅納度', 'C羅','0912-345678','cristiano@gail.com','台北市大安區','1','cristiano happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('jlin7', 'Aa123', '林書豪', 'Jeremy Lin','0912-345678','jlin7@gail.com','台北市大安區','1','jlin7 happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
 
 
 
@@ -482,7 +482,7 @@ INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Dat
  
  
 /*8 product*/
-insert into classify (name) values('寵物伺料');
+insert into classify (name) values('寵物飼料');
 insert into classify (name) values('寵物用品');
 insert into classify (name) values('寵物玩具');
 insert into classify (name) values('其它');
@@ -538,19 +538,19 @@ insert into orders (orderdate, totalamount, member_id) values('2018-5-15 16:25:3
 
 /*10 ordersItem*/
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', '寵物伺料', 646, 1, 1);
+values('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', '寵物飼料', 646, 1, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('毛孩精選【解渴神器】水壺+水碗2合1', '寵物用品', 299, 1, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('ACEPET 貓咪蹭蹭刷 - 胡桃褐（附貓草', '其它', 180, 2, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', '寵物伺料', 340, 2, 2);
+values('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', '寵物飼料', 340, 2, 2);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('自然鮮 貓草薄荷球木天蓼健身棒棒糖', '寵物玩具', 99, 3, 2);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', '寵物伺料', 880, 2, 3);
+values('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', '寵物飼料', 880, 2, 3);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', '寵物伺料', 1170, 1, 3);
+values('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', '寵物飼料', 1170, 1, 3);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('AFU 御用 二口原木餐桌 (附陶瓷碗 2 個)', '其它', 690, 2, 3);
 
