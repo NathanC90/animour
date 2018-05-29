@@ -136,37 +136,37 @@
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="狗" id="defaultCheck1" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 狗 (4) </label>
+												<label class="form-check-label" for="defaultCheck1"> 狗 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="貓" id="defaultCheck2" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 貓 (3) </label>
+												<label class="form-check-label" for="defaultCheck1"> 貓 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="兔" id="defaultCheck3" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 兔 (2) </label>
+												<label class="form-check-label" for="defaultCheck1"> 兔 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="鼠" id="defaultCheck4" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 鼠 (1) </label>
+												<label class="form-check-label" for="defaultCheck1"> 鼠 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="鳥" id="defaultCheck5" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 鳥 (7) </label>
+												<label class="form-check-label" for="defaultCheck1"> 鳥 </label>
 											</div>
 										</li>
 										<li>
 											<div class="form-check">
 												<input class="form-check-input" type="checkbox" value="其他" id="defaultCheck6" name="speciecheck">
-												<label class="form-check-label" for="defaultCheck1"> 其他 (7) </label>
+												<label class="form-check-label" for="defaultCheck1"> 其他 </label>
 											</div>
 										</li>
 									</ul>

@@ -1,4 +1,4 @@
-package org.iii.ee100.animour.common.config;
+﻿package org.iii.ee100.animour.common.config;
 
 import org.iii.ee100.animour.common.security.AnimourUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,8 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     	http.exceptionHandling().accessDeniedPage("/403");
     	http.
 		authorizeRequests()
-		.antMatchers("/admin/member").hasRole("Admin")
-		.antMatchers("/cart/confirmBuy2","/news/confirmbuy2").hasRole("Member")
+		.antMatchers("/admin/*").hasRole("Admin")
+		.antMatchers("/user/*","/cart/confirmBuy2","/news/confirmbuy2", "/halfway/adoption", "/postArticle", "/updateArticle").hasAnyRole("Member","Admin")
 		.antMatchers("/**","/showAnimalImage").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 	 "/css/**",
@@ -62,15 +62,14 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
 
     //加密
 //    @Bean
-//	public PasswordEncoder passwordEncoder(){
-//		PasswordEncoder encoder = new BCryptPasswordEncoder();
-//		return encoder;
-//	}
-//
-//	@Autowired
-//	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		System.out.println("sss:"+auth.getObject());
-//		auth.userDetailsService(animourUserDetailsService()).passwordEncoder(passwordEncoder());
-//	}
+	public PasswordEncoder passwordEncoder(){
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		return encoder;
+	}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(animourUserDetailsService()).passwordEncoder(passwordEncoder());
+	}
 }
 

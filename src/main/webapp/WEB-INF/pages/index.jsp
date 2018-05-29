@@ -120,7 +120,7 @@
 	<!-- Header-wrap Section End -->
 	<!--  Carousel Area starts -->
 		<section id="service-block-main" class="section">
-		 <div id="myCarousel" class="carousel slide" data-ride="carousel">
+		 <div id="myCarousel" class="carousel slide" data-ride="carousel" style="margin:auto;width:80%">
         <ol class="carousel-indicators">
           <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
           <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -129,43 +129,43 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">						
+            <img class="d-block w-100" src="https://i.imgur.com/H4mSZKo.jpg" alt="寵物家族大集合">						
             <div class="container">
-              <div class="carousel-caption text-left">
-                <h1>Example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-              </div>
+<!--               <div class="carousel-caption text-left"> -->
+<!--                 <h1>Example headline.</h1> -->
+<!--                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+<!--                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p> -->
+<!--               </div> -->
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">						
+            <img class="d-block w-100" src="https://i.imgur.com/MXFdjAF.jpg" alt="支持領養不棄養">						
             <div class="container">
-              <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
+<!--               <div class="carousel-caption"> -->
+<!--                 <h1>Another example headline.</h1> -->
+<!--                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+<!--                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p> -->
+<!--               </div> -->
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
+            <img class="d-block w-100" src="https://i.imgur.com/6T10gMm.png" alt="夏季寵物盛會">
             <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
+<!--               <div class="carousel-caption text-right"> -->
+<!--                 <h1>One more for good measure.</h1> -->
+<!--                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+<!--                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+<!--               </div> -->
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
+            <img class="d-block w-100" src="https://i.imgur.com/SSyz021.jpg" alt="第一屆Doglympics狗林匹克運動會">
             <div class="container">
-              <div class="carousel-caption text-right">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
+<!--               <div class="carousel-caption text-right"> -->
+<!--                 <h1>One more for good measure.</h1> -->
+<!--                 <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p> -->
+<!--                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p> -->
+<!--               </div> -->
             </div>
           </div>
         </div>
@@ -371,7 +371,7 @@
 	</section>
 	<!-- blog Section End -->
 	<!-- Pricing Table Section -->
-	<section id="pricing" class="section">
+	<!--<section id="pricing" class="section">
 		<div class="container">
 			<h1 class="section-title wow fadeInUpQuick" data-wow-delay=".2s">
 				Our Pricing</h1>
@@ -448,7 +448,7 @@
 
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Pricing Table  End -->
 
 	<!-- Footer Section -->

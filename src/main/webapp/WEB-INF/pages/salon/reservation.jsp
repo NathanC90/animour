@@ -13,7 +13,7 @@
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 			 crossorigin="anonymous">
 
-			<title>AllTypePage</title>
+			<title>Animour 寵物沙龍</title>
 			<!-- Bootstrap -->
 			<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 			<!-- Main Style -->
@@ -63,15 +63,15 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">
-								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-										</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3>
-								</div>
+								<img class="d-block w-80" src="https://i.imgur.com/c2usEiU.jpg" alt="">
+<!-- 								<div class="carousel-caption"> -->
+<!-- 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"> -->
+<!-- 										</h2> -->
+<!-- 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3> -->
+<!-- 								</div> -->
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">
+								<img class="w-100" src="https://i.imgur.com/BOLIhA1.png" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
+								<img class="w-100" src="http://www.we.net.tw/upload/news/20171101115611_2s.png" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
@@ -88,13 +88,11 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
+								<img class="w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"></h2>
 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s"></h3>
-									<a class="btn btn-lg btn-common fadeInUp wow" data-sppb-wow-delay="1.4s" href="#">
-										<i class="fa fa-download"> </i> 
-									</a>
+									
 								</div>
 							</div>
 						</div>

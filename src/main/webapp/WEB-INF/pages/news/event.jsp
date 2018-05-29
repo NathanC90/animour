@@ -208,24 +208,24 @@
 <!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->
 		
 		<!-- Share Page to Facebook starts -->
-              	<div 
-              		class="fb-share-button" 
-              		data-href="http://localhost:8080/news/event" 
-              		data-layout="button" 
-              		data-size="large" 
-              		data-mobile-iframe="true">
-              			<a 
-              				target="_blank" 
-              				href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2Fnews%2Fevent&amp;src=sdkpreparse" 
-              				class="fb-xfbml-parse-ignore btn btn-outline btn-radius mt-20 btn-lg btn-block"
-              				style="margin:10px">
-              					<img 
-              						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" 
-              						width="15 px" 
-              						style="margin-right: 10px"/>
-              							分享至臉書
-              			</a>
-              	</div>
+<!--               	<div  -->
+<!--               		class="fb-share-button"  -->
+<!--               		data-href="http://localhost:8080/news/event"  -->
+<!--               		data-layout="button"  -->
+<!--               		data-size="large"  -->
+<!--               		data-mobile-iframe="true"> -->
+<!--               			<a  -->
+<!--               				target="_blank"  -->
+<!--               				href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2Fnews%2Fevent&amp;src=sdkpreparse"  -->
+<!--               				class="fb-xfbml-parse-ignore btn btn-outline btn-radius mt-20 btn-lg btn-block" -->
+<!--               				style="margin:10px"> -->
+<!--               					<img  -->
+<!--               						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png"  -->
+<!--               						width="15 px"  -->
+<!--               						style="margin-right: 10px"/> -->
+<!--               							分享至臉書 -->
+<!--               			</a> -->
+<!--               	</div> -->
             <!--Facebook Url-->
               	<div 
               		class="fb-share-button" 
@@ -243,7 +243,7 @@
               						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" 
               						width="15 px" 
               						style="margin-right: 10px"/>
-              							分享至臉書url
+              							分享至臉書
               			</a>
               	</div>
               </div>
@@ -260,7 +260,7 @@
 			  <div class="modal-dialog modal-dialog-centered" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">編寫訊息</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -268,18 +268,18 @@
 			      <div class="modal-body">
 			        <form>
 			          <div class="form-group">
-			            <label for="recipient-name" class="col-form-label">Recipient:</label>
+			            <label for="recipient-name" class="col-form-label">收件人:</label>
 			            <input type="text" class="form-control" id="recipient-name">
 			          </div>
 			          <div class="form-group">
-			            <label for="message-text" class="col-form-label">Message:</label>
+			            <label for="message-text" class="col-form-label">訊息內容:</label>
 			            <textarea class="form-control" id="message-text"></textarea>
 			          </div>
 			        </form>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary">Send message</button>
+			        <button type="button" class="btn btn-primary">Close</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Send Message</button>
 			      </div>
 			    </div>
 			  </div>
