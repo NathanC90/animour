@@ -127,7 +127,7 @@
 					<div class="sidebar-area">
 <!-- 						Search Bar -->
 						<aside class="widget search-bar wow" data-wow-delay="0.3s">
-							<form name="selectByNameKeyWordForm" action="<c:url value="/selectByNameKeyWord"/>" method="GET">
+							<form name="selectByNameKeyWordForm" action="/selectByNameKeyWord" method="GET">
 								<input name="name" type="text" placeholder="關鍵字搜尋" class="form-control" required="required">
 								<button type="submit"><i class="fa fa-search" style="color:#9C3"></i></button>
 							</form>

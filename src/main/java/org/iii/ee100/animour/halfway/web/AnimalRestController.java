@@ -47,7 +47,7 @@ public class AnimalRestController {
 
 	private PageInfo defaultPageInfo = new PageInfo(1, 8);
 
-	// 查詢全部 ， 改用 Page 物件接值
+	// 查詢全部，改用 Page 物件接值
 	@RequestMapping(value = { "/halfway/animal" }, method = RequestMethod.GET, produces = { "application/json",
 			"application/xml" })
 	public ResponseEntity<?> listAnimal(PageInfo pageinfo) throws Exception {
@@ -118,7 +118,6 @@ public class AnimalRestController {
 			}
 		}
 		lastspec.add(speciemap);
-		
 		
 		// 接收縣市的 checkbox
 		Map<String, Object> citymap = new IdentityHashMap<>();

@@ -39,7 +39,7 @@ public class AdoptionPaymentController {
 		// 不指定付款方式，給nulls
 		invoice = null;
 		// 設定訂單編號，20碼。可自訂
-		aio.setMerchantTradeNo("AnimourAdp"+String.format("%04t", adoptionService.getOne(id).getId())+UUID.randomUUID().toString().replaceAll("-", "").substring(0, 6));
+		aio.setMerchantTradeNo("AnimourAdp"+String.format("%04d", adoptionService.getOne(id).getId())+UUID.randomUUID().toString().replaceAll("-", "").substring(0, 6));
 		Date date = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
 		// 設定交易時間

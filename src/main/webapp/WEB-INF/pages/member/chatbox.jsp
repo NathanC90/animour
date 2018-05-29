@@ -169,7 +169,6 @@
 									</div>
 									<div class="col-md-6 options text-right pr-2">
 										<i class="fa fa-plus mr-2 hide-chat-box" aria-hidden="true"></i>
-										<i class="fa fa-video-camera" aria-hidden="true"></i>
 										<i class="fa fa-circle text-success live-video mr-1" aria-hidden="true"></i>
 
 									</div>
@@ -231,9 +230,6 @@
 									</form>
 									<div class="tools">
 										<i class="fa fa-send" aria-hidden="true" id="sendMsg"></i>
-										<i class="fa fa-picture-o" aria-hidden="true"></i>
-										<i class="fa fa-paperclip" aria-hidden="true"></i>
-										<i class="fa fa-camera" aria-hidden="true"></i>
 									</div>
 								</div>
 							</div>
@@ -288,7 +284,7 @@
 						//alert("有打到")
 						var template = `<li class="p-1 rounded  mb-1">
 											<div class="receive-msg">
-												<img src="demo/image1.jpg">
+												<img src="`+ chat.fromWho.images + `">
 												<div class="receive-msg-desc rounded text-center mt-1 ml-1 pl-2 pr-2">
 													<p class="pl-2 pr-2 rounded">`+ chat.message + `</p>
 												</div>
@@ -296,9 +292,9 @@
 										</li>`;
 						$("#appendMsg").append(template);
 						$("h6").text(chat.fromWho.account);
-						
+
 						fromWhoId = chat.fromWho.id;
-										//alert(fromWhoId);
+						//alert(fromWhoId);
 						//bindNotice();
 					}
 

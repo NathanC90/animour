@@ -115,5 +115,11 @@ public class AnimalController {
 	public List<String> getAllSize() {
 		return animalservice.setSize();
 	}
-
+	
+	// 上傳更多圖片
+	@RequestMapping(value="/upload")
+	public String moreFile() {
+		return "/halfway/moreImage";
+	}
+	
 }

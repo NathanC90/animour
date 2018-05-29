@@ -19,9 +19,11 @@ import org.iii.ee100.animour.common.model.PageForAnimour;
 import org.iii.ee100.animour.common.service.GenericService;
 import org.iii.ee100.animour.halfway.entity.Animal;
 import org.iii.ee100.animour.salon.dao.DesignerDao;
+import org.iii.ee100.animour.salon.dao.FreeTimeDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.FreeTime;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
@@ -56,7 +58,22 @@ public class ReservationService extends GenericService<Reservation> {
 	public ArrayList<Reservation> getMemberContent(long id) {
 		return Lists.newArrayList(reservationDao.findByMemberId(id));
 	}
+	@Autowired
+	FreeTimeDao freeTimeDao;
+	public ArrayList<FreeTime> getBReservation(String status) {
+		return Lists.newArrayList(freeTimeDao.findByStatus(status));
+	}
 	
+	public ArrayList<FreeTime> getDesigner(String designer) {
+		return Lists.newArrayList(freeTimeDao.findByDesigner(designer));
+		
+	}
+	
+	
+	
+	public FreeTime updateBReservationStatus(FreeTime freeTime) {
+		return freeTimeDao.save(freeTime);
+	}
 	
 
 	public Reservation updateReservation(Reservation reservation) {
@@ -74,6 +91,10 @@ public class ReservationService extends GenericService<Reservation> {
 	public List<Designer> getAllDesigner() {
 		return Lists.newArrayList(designerDao.findAll());
 
+	}
+	
+	public ArrayList<FreeTime> getFreeDesignerTime(String designer,String status){
+		return Lists.newArrayList(freeTimeDao.findByDesignerAndStatus(designer, status));
 	}
 
 	public ArrayList<ReservationTime> getAllReservationTime() {
@@ -112,6 +133,42 @@ public class ReservationService extends GenericService<Reservation> {
 		return map;
 	}
 	
+	//判斷日期是否重複並改變狀態
+	public void freeTime(Reservation reservation) {
+		// 取出各Table設計師名稱、時間內容種類
+		String status="free";
+		List<Reservation> reservationList = this.getAllReservationContent();
+		List<FreeTime> freeTimeList = this.getBReservation(status);
+		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		//取出各object裡的屬性互相比較
+			for(FreeTime freeTimeFoum:freeTimeList) {
+				long id=freeTimeFoum.getId();
+				String Bdesigner=freeTimeFoum.getDesigner();
+				Time BfrontTime =freeTimeFoum.getFrontTime();
+				Date BreservationDate=freeTimeFoum.getAppointDate();
+				String stringDateB=simpleDateFormat.format(BreservationDate);
+				Date AreservationDate=reservation.getReservationDate();
+				String stringDateA=simpleDateFormat.format(AreservationDate);
+
+				String Adesigner=reservation.getDesigner();
+				Time AfrontTime=reservation.getFrontTime();
+				
+				//比較有沒有重複時間
+				if(stringDateA.equals(stringDateB)&&Adesigner.equals(Bdesigner)&&AfrontTime.equals(BfrontTime)) {
+					FreeTime freeTime=(freeTimeDao.findOne(id));
+					System.out.println("asdfgh"+id);
+					System.out.println("Adesigner"+Adesigner+"Bdesigner"+Bdesigner);
+					freeTime.setFrontTime(BfrontTime);
+					freeTime.setAppointDate(BreservationDate);
+					freeTime.setDesigner(Bdesigner);
+					freeTime.setStatus("busy");
+					freeTimeDao.save(freeTime);
+				}
+			}
+		
+		
+	
+	}
 	
 	//判斷服務內容是否重複
 	public Reservation decideThreeContentRepeateOrNot(Reservation reservation,ServiceContent serviceContentFinally) {

@@ -105,10 +105,10 @@
 								<div style="padding-top: 30px" class="panel-body">
 									<div style="display: none" id="login-alert"
 										class="alert alert-danger col-sm-12"></div>
-										<c:forEach var="orders" items="${memberOrders}">
+										<c:forEach var="orders" items="${memberOrders}" varStatus="status">
 											<c:if test="${memberOrders != null && orders.ordersItem != null}">
 												<div>
-												  <div class="h5 text-primary pull-right">訂單日期：${orders.orderDate}</div>
+												  <div class="h5 text-primary pull-right">訂單日期：${date.get(status.index)}</div>
 												  <div class="h5 text-primary">訂單編號：${orders.id}</div>
 												</div>
 											</c:if>

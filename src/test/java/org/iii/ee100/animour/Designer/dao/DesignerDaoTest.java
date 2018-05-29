@@ -13,9 +13,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.iii.ee100.animour.salon.dao.DesignerDao;
+import org.iii.ee100.animour.salon.dao.FreeTimeDao;
 import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.FreeTime;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.service.ReservationService;
@@ -39,88 +41,64 @@ public class DesignerDaoTest {
 	@Autowired
 	ReservationDao reservationDao;
 	
+	@Autowired
+	FreeTimeDao freeTimeDao;
 	@Test
 	public void printsomething() {
-		System.out.println("hhhhhhhhhh"+reservationService);
+//		System.out.println("hhhhhhhhhh"+freeTimeDao.findByDesigner("飛影"));
+		System.err.println("hhhhhhhhhh"+freeTimeDao.findByDesignerAndStatus("飛影", "free"));
 	}
-	@Test
-	public void decideThreeContentRepeateOrNot() throws ParseException {
-		// 取出各Table設計師名稱、時間內容種類
-		Reservation reservation = new Reservation();
-		// 時間、設計師、日期的空物件
-		ReservationTime reservationTime = null;
-		Designer designer = null;
-		
+//	@Test
+//	public void decideThreeContentRepeateOrNot() throws ParseException {
+//		// 取出各Table設計師名稱、時間內容種類
+//		FreeTime freeTime= new FreeTime();
+//		String status="free";
+//		List<Reservation> reservationList = reservationService.getAllReservationContent();
+//		List<FreeTime> freeTimeList = reservationService.getBReservation(status);
+//		//取出各object裡的屬性互相比較
+//		for(Reservation reservationFoum:reservationList) {
+//			for(FreeTime freeTimeFoum:freeTimeList) {
+//				long id=freeTimeFoum.getId();
+//				String Bdesigner=freeTimeFoum.getBdesigner();
+//				Time BfrontTime =freeTimeFoum.getBfrontTime();
+//				Date BreservationDate=freeTimeFoum.getBreservationDate();
+//				Date AreservationDate=reservationFoum.getReservationDate();
+//				String Adesigner=reservationFoum.getDesigner();
+//				Time AfrontTime=reservationFoum.getFrontTime();
+//				
+//				//比較有沒有重複時間
+//				if(AreservationDate.equals(BreservationDate)&&Adesigner.equals(Bdesigner)&&AfrontTime.equals(BfrontTime)) {
+//					freeTime=(freeTimeDao.findOne(id));
+//					freeTime.setBfrontTime(BfrontTime);
+//					freeTime.setBreservationDate(BreservationDate);
+//					freeTime.setBdesigner(Bdesigner);
+//					freeTime.setStatus("busy");
+//					freeTimeDao.save(freeTime);
+//				}
+//			}
+//		}
+//		
+//	}
+//}
 		//使用空set放置不重複物件
-		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
-		Set<Designer> designerSetList = new HashSet<Designer>();
+//		Set<ReservationTime> reservationTimeSetList = new HashSet<ReservationTime>();
+//		Set<Designer> designerSetList = new HashSet<Designer>();
 
 		//
-		List<Designer> designerList = reservationService.getAllDesigner();
-		ArrayList<ReservationTime> reservationTimeList = reservationService.getAllReservationTime();
+//		List<Designer> designerList = reservationService.getAllDesigner();
+//		ArrayList<ReservationTime> reservationTimeList = reservationService.getAllReservationTime();
 		// 前端日期輸入
 		// Date compareDate = reservation.getReservationDate();
 
-		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//		DateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		//預設時間
-		int i=0;
+//		int i=0;
 		
         
 
-         //這個就是時間往後推一天的结果
-		// 預約內容明細
-		List<Reservation> reservationListData = new ArrayList<>();
-		reservationListData = reservationDao.findAll();
-		// 取出資料庫的日期、內容、設計師名稱
-		for (Reservation reservations : reservationListData) {
-			// 設計師Table
-			for (Designer designers : designerList) {
-				// 服務內容Table
-				for (ReservationTime reservationTimes : reservationTimeList) {
-					Date mainDate = reservations.getReservationDate();
-					Date CurrentDate=new Date();//取時間
-			        Calendar calendar = new GregorianCalendar();
-					calendar.setTime(CurrentDate);
-					calendar.add(calendar.DATE,i);//把日期往後增加一天.整數往後,負數往前
-			        CurrentDate=calendar.getTime();
-			        i++;
-//					String stringDate= simpleDateFormat.format(mainDate);
-//					Date mainDate2=simpleDateFormat.parse(stringDate);
-					String mainDesigner = reservations.getDesigner();
-					Time mainTime = reservations.getFrontTime();
-					String compareDesigner = designers.getDesigner();
-					Time compareTime = reservationTimes.getFrontTime();
-//					System.out.println(mainDate2);
-					if (!mainDate.equals(CurrentDate) || !mainDesigner.equals(compareDesigner)||!mainTime.equals(compareTime)) {
-
-						// if(!reservationTime.getFrontTime().equals(compareTime)) {
-						 reservationTime =new ReservationTime();
-						 reservationTime.setFrontTime(compareTime);
-						 reservationTimeSetList.add(reservationTime);
-//						 }
-						System.out.println("compareDate2: " + CurrentDate);
-//
-						designer = new Designer();
-						designer.setDesigner(compareDesigner);
-						designerSetList.add(designer);
-						// if(!reservationDate.getReservationDate().equals(compareDate2)) {
-//						 reservationDateFinallyList.add(reservationDate);
-						// }
-					}
-				}
-			}
-
-		}
-
-		 for(ReservationTime finalAnswer:reservationTimeSetList) {
-		 System.out.println("finalAnswer"+finalAnswer.getFrontTime());
-		 }
- 		for (Designer finalAnswer2 : designerSetList) {
-			System.out.println("finalAnswer2" + finalAnswer2.getDesigner());
-		}
-
-	}
+       
+		
 
 	// public void TestInsertDesigner() {
 	// Designer designer = new Designer();

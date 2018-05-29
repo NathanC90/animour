@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import org.iii.ee100.animour.member.entity.Member;
 import org.iii.ee100.animour.member.service.MemberService;
 import org.iii.ee100.animour.salon.entity.Designer;
+import org.iii.ee100.animour.salon.entity.FreeTime;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
@@ -18,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -40,7 +42,31 @@ public class FormsRestController {
 //		return null;
 //		
 //	}
-
+	
+	@RequestMapping(value="/getDesignerTime",method = RequestMethod.GET)
+	public List<FreeTime> getDesigner(String engineer,FreeTime freeTime,@RequestParam (value="key") String designer1){
+//		engineer=freeTime.getEngineer();
+		System.out.println("yoyoyo"+designer1);
+		return reservationService.getDesigner(designer1);
+	}
+	
+	@RequestMapping(value="/getFreeDesignerTime",method = RequestMethod.GET)
+	public List<FreeTime> freeDesignerTime(@RequestParam (value="key")String designer,String status){
+		status ="free";
+		
+		return reservationService.getFreeDesignerTime(designer, status);
+	}
+	
+	//暫時好像沒有用
+	@RequestMapping(value="/getFreeTime",method = RequestMethod.GET,produces = { "application/json"})
+	public List<FreeTime> getFreeTime(String status){
+		status="free";
+		List<FreeTime> freeTimeList=reservationService.getBReservation(status);
+		
+		
+		return reservationService.getBReservation(status);
+	}
+	
 	
 	@RequestMapping(value="/getServiceCotent",method = RequestMethod.GET,produces = { "application/json"})
 	public List<ServiceContent> getServiceCotent(){
@@ -63,10 +89,10 @@ public class FormsRestController {
 	public ResponseEntity<?> insertReservation(@Valid @RequestBody Reservation reservation) throws ParseException {
 		Member currentMember = memberService.getNewCurrentMember();
 		reservation.setMember(currentMember);
-		reservation.setPayment("Unpaid");
+		reservation.setPayment("未付款");
 		reservation.setTotalTime(1);
 		 reservationService.repeateOrNot(reservation);
-
+		 reservationService.freeTime(reservation);
 		return new ResponseEntity<Reservation>(reservation, HttpStatus.OK);
 	}
 	

@@ -13,6 +13,6 @@ public class FormsController {
 	
 	@RequestMapping(path = { "/reservation" }, method = { RequestMethod.GET })
 	public String reservationTime(Model model) {
-		return "/salon/insertReservationForm";
+		return "/salon/insertReservationForm2";
 	}
 }
