@@ -129,7 +129,7 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">						
+            <img class="d-block w-100" src="https://i.imgur.com/H4mSZKo.jpg" alt="寵物家族大集合">						
             <div class="container">
 <!--               <div class="carousel-caption text-left"> -->
 <!--                 <h1>Example headline.</h1> -->
@@ -139,7 +139,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">						
+            <img class="d-block w-100" src="https://i.imgur.com/MXFdjAF.jpg" alt="支持領養不棄養">						
             <div class="container">
 <!--               <div class="carousel-caption"> -->
 <!--                 <h1>Another example headline.</h1> -->
@@ -149,7 +149,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-dog2-gray.jpg" alt="">
+            <img class="d-block w-100" src="https://i.imgur.com/6T10gMm.png" alt="夏季寵物盛會">
             <div class="container">
 <!--               <div class="carousel-caption text-right"> -->
 <!--                 <h1>One more for good measure.</h1> -->
@@ -159,7 +159,7 @@
             </div>
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="/images/slider/bg-rabbit1-gray.jpg" alt="">
+            <img class="d-block w-100" src="https://i.imgur.com/SSyz021.jpg" alt="第一屆Doglympics狗林匹克運動會">
             <div class="container">
 <!--               <div class="carousel-caption text-right"> -->
 <!--                 <h1>One more for good measure.</h1> -->

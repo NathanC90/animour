@@ -70,43 +70,10 @@
 					</div>
 					<!-- Header area wrapper ends -->
 				</header>
-				<!-- Classic Blog Section -->
-				<section class="classic-blog-section section">
+				<!-- Section -->
+				<section class="portfolio-3-column-section section blog" id="portfolios">
 					<div class="container">
 						<div class="row">
-							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-								<div class="modal-dialog" role="document">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h5 class="modal-title" id="exampleModalLabel">結帳訊息</h5>
-											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-												<span aria-hidden="true">&times;</span>
-											</button>
-										</div>
-										<div class="modal-body" id="paymentdiv">
-											<table id='showReservation' class="table" data-sort="table">
-												<thead>
-													<tr>
-														<th>預約日期</th>
-														<th>時段</th>
-														<th>內容</th>
-														<th>設計師</th>
-														<th>耗時</th>
-														<th>消費金額</th>
-														<th>付款狀態</th>
-														<th>會員帳號</th>
-													</tr>
-												</thead>
-											</table>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">下次再結</button>
-											<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- Blog Sidebar Section -->
 							<div class="col-md-3">
 
 								<div class="sidebar-area">
@@ -163,6 +130,18 @@
 														</form>
 														<span id="span"> </span>
 													</li>
+													<li>
+													        <!-- 控制私訊彈跳視窗開始 -->
+											        <button type="button" class="btn btn-common" data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="toChat">發送訊息</button>
+											        <script>
+											          $(document).ready(function () {
+											            $("#toChat").click(function () {
+											              $("#chatBox").css("display", "")
+											            });
+											          });
+											        </script>
+											        <!-- 控制私訊彈跳視窗結束 -->
+													</li>
 												</c:if>
 											</sec:authorize>
 										</ul>
@@ -178,10 +157,10 @@
 								<!-- Single Blog Post -->
 								<!-- 每頁不同的內容從這裡開始 -->
 								<!-- 從這裡開始 -->
-								<h4>發文東西</h4>
+								<h4>動物資料</h4>
 								<div id="portfolio" class="row">
 									<c:forEach var="animal" items="${animalls}">
-										<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 mix marketing planning" style="display: inline-block;" data-bound="">
+										<div class="col-md-3 col-lg-3 col-sm-3 col-xs-12 mix marketing planning" style="display: inline-block;padding:5px" data-bound="">
 											<div class="portfolio-item">
 												<div class="portfolio-img">
 													<img src="/showAnimalImage?fileName=${animal.fileName}" alt="">
@@ -212,44 +191,22 @@
 
 
 
-
-								<h4>動物資料</h4>
-								<div class="row">
-									<c:forEach var="animal" items="${animalls}">
-										<div class="col-md-3">
-											<div class="card mb-3 box-shadow">
-												<img class="card-img-top" src="/showAnimalImage?fileName=${animal.fileName}" width="100px" alt="待領養小貓">
-												<div class="card-body" style="margin-bottom: 5px">
-													<p class="card-text" style="padding: 0px">狀態：${animal.status}</p>
-													<p class="card-text" style="padding: 0px">綽號：${animal.name}</p>
-													<div class="d-flex justify-content-between align-items-center" style="max-height: 80px">
-														<div class="btn-group" style="margin: 0px">
-															<button type="button" onclick="location.href='/halfway/detail?id=${animal.id}';" class="btn btn-common btn-sm mt-10">詳情</button>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-								</div>
 								<!-- 每頁不同的內容到這裡結束 -->
 								<!-- 條列文章 -->
 
-								<h3>文章列表</h3>
+								<h4>文章列表</h4>
 								<!-- Row Starts -->
-								<div class="row">
+								<div class="row"  id="blog">
 									<c:forEach var="article" items="${articles}">
-										<div class="col-md-5 card mb-5 box-shadow">
-											<!-- 					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
+									<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 											<!-- Blog Item Starts -->
-											<div class="blog-item-wrapper" style="height: 405px;">
+											<div class="blog-item-wrapper" style="height: 405px; margin:4px">
 												<div class="blog-item-img">
 													<a href="/forum/findOne?id=${article.id}">
 														<img style="width: 320px; height: 220px; padding: 10px;" src="${article.images}" alt="">
 													</a>
 												</div>
 												<div class="blog-item-text">
-
 													<h3 class="small-title" style="height: 60px;">
 
 														<a href="/forum/findOne?id=${article.id}" style="overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-height: 24px; height: 48px;">
@@ -257,15 +214,13 @@
 														</a>
 
 													</h3>
-
-
 													<div class="blog-one-footer">
-														<a href="/forum/findOne?id=${article.id}">Read More</a>
+														<a href="/forum/findOne?id=${article.id}">詳情</a>
 														<a href="#">
-															<i class="icon-heart"></i> 0 Likes
+															<i class="icon-heart"></i> ${article.thumbsQuantity} 讚
 														</a>
 														<a href="/forum/findOne?id=${article.id}#comment">
-															<i class="icon-bubbles"></i> ${article.commentLength} Comments
+															<i class="icon-bubbles"></i> ${article.commentLength} 留言
 														</a>
 													</div>
 												</div>
@@ -273,8 +228,8 @@
 										</div>
 									</c:forEach>
 								</div>
-
-								<!-- Blog Item Wrapper Ends-->
+								
+								<!-- Friend Modal Item -->
 								<div class="modal fade" id="exampleModalMyFriend" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 									<div class="modal-dialog" role="document">
 										<div class="modal-content">
@@ -311,6 +266,43 @@
 										</div>
 									</div>
 								</div>
+								<!-- Friend List Modal  -->
+															<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">結帳訊息</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body" id="paymentdiv">
+											<table id='showReservation' class="table" data-sort="table">
+												<thead>
+													<tr>
+														<th>預約日期</th>
+														<th>時段</th>
+														<th>內容</th>
+														<th>設計師</th>
+														<th>耗時</th>
+														<th>消費金額</th>
+														<th>付款狀態</th>
+														<th>會員帳號</th>
+													</tr>
+												</thead>
+											</table>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">下次再結</button>
+											<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Blog Sidebar Section -->
+								
+								
+								
 
 								<!-- Blog Pagination -->
 								<!-- 分頁開始 -->
@@ -323,16 +315,7 @@
 
 				</section>
 
-        <!-- 控制私訊彈跳視窗開始 -->
-        <button type="button" class="btn btn-common" data-target="#exampleModalMyFriend" data-whatever='${currentMember.id}' id="toChat">發送訊息</button>
-        <script>
-          $(document).ready(function () {
-            $("#toChat").click(function () {
-              $("#chatBox").css("display", "")
-            });
-          });
-        </script>
-        <!-- 控制私訊彈跳視窗結束 -->
+
         
 				<!-- Footer Section -->
 				<footer>
