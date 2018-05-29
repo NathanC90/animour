@@ -83,7 +83,7 @@
 
 						<div class="btn-toolbar dashhead-toolbar">
 							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+								<input type="text" value="2018/06/01" class="form-control" data-provide="datepicker">
 								<span class="icon icon-calendar"></span>
 							</div>
 						</div>
@@ -92,32 +92,33 @@
 					<div class="flextable table-actions">
 						<div class="flextable-item flextable-primary">
 							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" class="form-control input-block" placeholder="搜尋會員">
+								<input type="text" class="form-control input-block" placeholder="">
 								<span class="icon icon-magnifying-glass"></span>
 							</div>
 						</div>
 
 
 					</div>
+					<div class="chart-container" style="position: relative; height:500px; width:50%; float:left;">
+								<h3>寵物啟示統計:</h3>
+						<!-- <canvas id="myChart"></canvas> -->
+					<div id="animalChart" style="height: 450px; width: 100%;"></div>
+					</div>
+					
+					<div class="chart-container" style="position: relative; height:500px; width:50%; float:right;">
+							<h3>寵物沙龍統計:</h3>
+						<!-- <canvas id="myChart"></canvas> -->
+						<div id="designerChart" style="height: 450px; width: 100%;"></div>
+					</div>
+
 					<h3>部落客統計:</h3>
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="myChart" style="height: 450px; width: 100%;"></div>
 					</div>
-					<h3>寵物啟示統計:</h3>
-					<div class="chart-container" style="position: relative; height:500px; width:100%">
-						<!-- <canvas id="myChart"></canvas> -->
-						<div id="animalChart" style="height: 450px; width: 100%;"></div>
-					</div>
-					
-					<h3>預約設計師統計:</h3>
-					<div class="chart-container" style="position: relative; height:500px; width:100%">
-						<!-- <canvas id="myChart"></canvas> -->
-						<div id="designerChart" style="height: 450px; width: 100%;"></div>
-					</div>
-					
-					
-					<h3>好友數統計:</h3>
+					<div>
+
+					<h3>會員好友數統計:</h3>
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="friendChart" style="height: 450px; width: 100%;"></div>
@@ -127,16 +128,18 @@
 						<!-- <canvas id="myChart"></canvas> -->
 						<div id="newsChart" style="height: 450px; width: 100%;"></div>
 					</div>
-					<h3>商品上架類別統計:</h3>
+					<!-- <h3>商品上架類別統計:</h3> -->
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
 						<!-- <canvas id="myChart"></canvas> -->
-						<div id="productChart" style="height: 450px; width: 100%;"></div>
+						<h3>寵物市集統計:</h3>
+						<div id="productChart" style="height: 450px; width: 45%; float:left;"></div>
+						<!-- <h3>商品購買類別統計:</h3> -->
+						<div id="ordersChart" style="height: 450px; width: 45%; float:right;"></div>
 					</div>
-					<h3>商品購買類別統計:</h3>
+					<!-- <h3>商品購買類別統計:</h3>
 					<div class="chart-container" style="position: relative; height:500px; width:100%">
-						<!-- <canvas id="myChart"></canvas> -->
 						<div id="ordersChart" style="height: 450px; width: 100%;"></div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -175,7 +178,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Author Chart",
+							text: "部落客統計",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -184,7 +187,7 @@
 						},
 						axisY: [
 							{
-								title: "Likes",
+								title: "按讚",
 								lineColor: "#2E8B57",
 								tickColor: "#2E8B57",
 								labelFontColor: "#2E8B57",
@@ -192,7 +195,7 @@
 								lineThickness: 2
 							},
 							{
-								title: "Clicks",
+								title: "點擊",
 								lineColor: "#4169E1",
 								tickColor: "#4169E1",
 								labelFontColor: "#4169E1",
@@ -201,7 +204,7 @@
 							}
 						],
 						axisX: {
-							title: "Author",
+							title: "部落客",
 							interval: 1,
 							labelAngle: -40
 						},
@@ -240,7 +243,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Animal Chart",
+							text: "寵物送養",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -284,7 +287,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Friend Chart",
+							text: "會員交友",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -292,13 +295,13 @@
 							padding: 10
 						},
 						axisY: {
-							title: "friends",
+							title: "好友數",
 							suffix: "",
 							interval: 1,
 							includeZero: false
 						},
 						axisX: {
-							title: "member",
+							title: "會員",
 							interval: 1,
 							labelAngle: -70
 						},
@@ -370,7 +373,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "News Chart",
+							text: "活動售票",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -379,7 +382,7 @@
 						},
 						axisY: [
 							{
-								title: "Ticket sales",
+								title: "售出票券",
 								lineColor: "#4682B4",
 								tickColor: "#4682B4",
 								labelFontColor: "#4682B4",
@@ -387,7 +390,7 @@
 								lineThickness: 2
 							},
 							{
-								title: "Income",
+								title: "收益",
 								prefix: "NT$",
 								lineColor: "#66CDAA",
 								tickColor: "#66CDAA",
@@ -397,7 +400,7 @@
 							}
 						],
 						axisX: {
-							title: "Event",
+							title: "活動",
 							interval: 1,
 							labelAngle: -40
 						},
@@ -436,7 +439,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Product Chart",
+							text: "上架商品",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -457,7 +460,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "pie",
+							type: "doughnut",
 							showInLegend: true,
 							dataPoints: productArray
 						}]
@@ -480,7 +483,7 @@
 					var options = {
 						animationEnabled: true,
 						title: {
-							text: "Orders Chart",
+							text: "成交訂單",
 							fontWeight: "bolder",
 							fontColor: "#008B8B",
 							fontfamily: "tahoma",
@@ -501,7 +504,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "pie",
+							type: "doughnut",
 							showInLegend: true,
 							dataPoints: ordersArray
 						}]
