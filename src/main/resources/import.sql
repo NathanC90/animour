@@ -628,3 +628,42 @@ insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (6,true,17);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,5);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,15);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (7,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,3);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,4);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,7);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,8);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,11);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,12);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,14);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,15);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,16);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,18);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,1);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,4);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,5);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,7);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,8);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,9);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,11);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,12);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,18);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,19);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,20);
+
+
+
+
+
+
+
+
+
+
+
+
+
