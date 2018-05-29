@@ -63,12 +63,12 @@
 						</ol>
 						<div class="carousel-inner">
 							<div class="carousel-item active">
-								<img class="d-block w-100" src="/images/slider/bg-dog1-gray.jpg" alt="">
-								<div class="carousel-caption">
-									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
-										</h2>
-									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3>
-								</div>
+								<img class="d-block w-100" src="https://i.imgur.com/c2usEiU.jpg" alt="">
+<!-- 								<div class="carousel-caption"> -->
+<!-- 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s"> -->
+<!-- 										</h2> -->
+<!-- 									<h3 class="fadeInUp wow" data-sppb-wow-delay="1.2s">愛護動物，從你我開始</h3> -->
+<!-- 								</div> -->
 							</div>
 							<div class="carousel-item">
 								<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">
