@@ -382,9 +382,10 @@
 					
 					data1 = new FormData(document.getElementById("myform"));
 				$('#engineer').change(function(){
+					var engin=$("#engineer").val();
 					console.log(cell1.text())
 					var aaa="飛影"
-					if(cell1.text()===aaa){
+					if(engin==aaa){
 						$('#picture1').remove();
 						$('#picture2').remove();
 						$('#picture3').remove();
@@ -393,12 +394,19 @@
 						$('#divPicture').append('<img id="picture2" alt="路人" src="/images/reservation/serviceContent/設計師-女.jpeg" height="400px" width="400px">');
 					}
 					
-					/* if(cell2.text()==="琦玉"){
-						$('#picture2').attr({"style":"display: none"});
-
-						$('#picture3').removeAttr("style");
-					} */
-					
+					 if(engin=="琦玉"){
+						 $('#picture1').remove();
+							$('#picture2').remove();
+							$('#picture3').remove();
+							$('#divPicture').append('<img id="picture3" alt="路人" src="/images/reservation/serviceContent/設計師-男.jpeg" height="400px" width="400px">');
+					} 
+					 if(engin=="陳浩南"){
+						 $('#picture1').remove();
+							$('#picture2').remove();
+							$('#picture3').remove();
+							$('#divPicture').append('<img id="picture3" alt="路人" src="/images/reservation/serviceContent/男模特4.jpeg" height="400px" width="400px">');
+						 
+					 }
 					
 					function toJson(formData) {
 						var object = {};
