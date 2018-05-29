@@ -85,21 +85,21 @@
 							</a>
 						</div>
 
-						<div class="btn-toolbar dashhead-toolbar">
-							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
-								<span class="icon icon-calendar"></span>
-							</div>
-						</div>
+<!-- 						<div class="btn-toolbar dashhead-toolbar"> -->
+<!-- 							<div class="btn-toolbar-item input-with-icon"> -->
+<!-- 								<input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker"> -->
+<!-- 								<span class="icon icon-calendar"></span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 					</div>
 
 					<div class="flextable table-actions">
-						<div class="flextable-item flextable-primary">
-							<div class="btn-toolbar-item input-with-icon">
-								<input type="text" class="form-control input-block" placeholder="搜尋會員">
-								<span class="icon icon-magnifying-glass"></span>
-							</div>
-						</div>
+<!-- 						<div class="flextable-item flextable-primary"> -->
+<!-- 							<div class="btn-toolbar-item input-with-icon"> -->
+<!-- 								<input type="text" class="form-control input-block" placeholder="搜尋會員"> -->
+<!-- 								<span class="icon icon-magnifying-glass"></span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 						<div class="flextable-item">
 							<div class="btn-group">
 								<button type="button" class="btn btn-outline-primary" title="寄送電子郵件" id="sendMailManyAccount" data-toggle='modal' data-target="#exampleModalMany">
@@ -119,10 +119,10 @@
 									</th>
 									<th>編號</th>
 									<th>帳號</th>
-									<th>姓名</th>
+<!-- 									<th>姓名</th> -->
 									<th>暱稱</th>
-									<th>手機</th>
-									<th>信箱</th>
+<!-- 									<th>手機</th> -->
+<!-- 									<th>信箱</th> -->
 									<th>地址</th>
 									<th>狀態</th>
 									<th>管理
@@ -295,10 +295,10 @@
 						var cell2 = $("<td></td>").text(member.id);
 						var cell3 = $("<td></td>").text(member.account);
 
-						var cell4 = $("<td></td>").text(member.name);
+// 						var cell4 = $("<td></td>").text(member.name);
 						var cell5 = $("<td></td>").text(member.nickname);
-						var cell6 = $("<td></td>").text(member.cell);
-						var cell7 = $("<td></td>").text(member.email);
+// 						var cell6 = $("<td></td>").text(member.cell);
+// 						var cell7 = $("<td></td>").text(member.email);
 						var cell8 = $("<td></td>").text(member.address);
 
 						if (member.status == false) {
@@ -333,8 +333,8 @@
 
 						var cell10 = $('<td></td>').append([divf1, divf3]);
 
-						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9, cell10]);
-
+						var row = $('<tr></tr>').append([cell1, cell2, cell3,  cell5,  cell8, cell9, cell10]);
+						//cell4 cell6, cell7,
 						$('#table1>tbody').append(row);
 						$('#table1').trigger("update");
 
