@@ -23,7 +23,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     	http.
 		authorizeRequests()
 		.antMatchers("/admin/member").hasRole("Admin")
-		.antMatchers("/cart/confirmBuy2","/news/confirmbuy2").hasRole("Member")
+		.antMatchers("/cart/confirmBuy2","/news/confirmbuy2", "/halfway/adoption", "/postArticle", "/updateArticle").hasRole("Member")
 		.antMatchers("/**","/showAnimalImage").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 	 "/css/**",

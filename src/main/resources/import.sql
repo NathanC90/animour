@@ -29,16 +29,24 @@ INSERT INTO CITY (id, name) VALUES
 (7, '新竹縣'),(8, '苗栗縣'),(9, '台中市'),(10, '彰化縣'),(11, '南投縣'),(12, '雲林縣'),
 (13, '嘉義市'),(14, '嘉義縣'),(15, '台南市'),(16, '高雄市'),(17, '屏東縣'),(18, '台東縣'),
 (19, '花蓮縣'),(20, '澎湖縣'),(21, '金門縣'),(22, '連江縣');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'BlackDog', '狗', 'BLACK', '2017-01-01', '2018-03-10 12:00:00', '1', '北投區', 1, '成年', '大型', '公', 'id_1.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'YellowDog', '狗', 'YELLOW', '2017-02-01', '2018-03-10 13:00:00', '1', '左營區', 1, '成年', '大型', '公', 'id_2.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'WhiteDog', '狗', 'WHITE', '2017-03-01', '2018-03-10 14:00:00', '1', '大安區', 1, '成年', '中型', '母', 'id_3.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'BrownDog', '狗', 'BROWN', '2018-04-01', '2018-03-10 15:00:00', '3', '東區', 1, '成年', '大型', '公', 'id_4.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'BlackCat', '貓', 'BLACK', '2017-05-01', '2018-03-10 16:00:00', '8', '左營區', 1, '幼年', '中型', '母', 'id_5.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'BlueCat', '貓', 'BLUE', '2017-06-01', '2018-03-10 17:00:00', '8', '北投區',2, '老年', '大型', '公', 'id_6.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'OrangeCat', '貓', 'ORANGE', '2017-07-01', '2018-03-10 18:00:00', '1', '左營區',2, '幼年', '小型', '母', 'id_7.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'WhiteRabbit', '兔', 'BLACK', '2017-08-01', '2018-03-10 19:00:00', '15', '北投區',2, '幼年', '大型', '公', 'id_8.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'GreyRabbit', '兔', 'BLACK', '2017-09-01', '2018-03-10 20:00:00', '1', '西區',2, '老年', '大型', '公', 'id_9.jpg');
-insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name) values  ('開放認養', 'YellowBird', '鳥', 'BLACK', '2017-10-01', '2018-03-10 21:00:00', '3', '西區',2, '幼年', '小型', '母', 'id_10.jpg');
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '短腿', '狗', '咖啡', '2017-01-01', '2018-03-10 12:00:00', '1', '北投區', 7, '成年', '大型', '公', 'id_1.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '小飛象', '兔', '灰', '2017-02-01', '2018-03-10 13:00:00', '1', '左營區', 7, '成年', '大型', '公', 'id_2.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '麵茶', '狗', '咖啡', '2017-03-01', '2018-03-10 14:00:00', '1', '大安區', 7, '成年', '中型', '母', 'id_3.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '抹茶', '兔', '黃', '2018-04-01', '2018-03-10 15:00:00', '3', '東區', 2, '成年', '大型', '公', 'id_4.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '橘子', '鳥', '橘', '2017-05-01', '2018-03-10 16:00:00', '8', '左營區', 2, '幼年', '中型', '母', 'id_5.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '豬仔', '狗', '白', '2017-06-01', '2018-03-10 17:00:00', '8', '北投區',2, '老年', '大型', '公', 'id_6.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '厭世狗', '狗', '白', '2017-07-01', '2018-03-10 18:00:00', '1', '左營區',3, '幼年', '小型', '母', 'id_7.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '厭世貓', '貓', '白', '2017-08-01', '2018-03-10 19:00:00', '15', '北投區',3, '幼年', '大型', '公', 'id_8.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled) values  ('開放認養', '勒布朗', '狗', '咖啡', '2017-09-01', '2018-03-10 20:00:00', '1', '西區',3, '老年', '大型', '公', 'id_9.jpg', false);
+insert into animal(status, name, specie, color, found, upload, city_id, district, member_id, age, size, gender, file_name, disabled, remark) values  ('開放認養', '亨利', '兔', '咖啡', '2017-10-01', '2018-03-10 21:00:00', '3', '西區',3, '幼年', '小型', '母', 'id_10.jpg', false, '在豐圳公園角落發現一個紙箱，裝著一隻大兔子，因當天寒流來襲，兔子又餓又冷也沒什麼體力，我馬上帶回來家裡，但因為家裡已經有兩隻兔子了，所以希望幫他們找到更棒、更合適的家。
+【個性】
+亨利（很大隻）：較外向，勇於探索世界。
+
+【狀況】
+年齡約1~2個月。
+活潑可愛、愛吃、黏人。
+已至動物醫院檢查沒問題。
+早中晚各一餐，都餵食飼料加上提摩西草。');
 
 /*4 article */
 INSERT INTO CATEGORY(NAME) VALUES ('寵物');
