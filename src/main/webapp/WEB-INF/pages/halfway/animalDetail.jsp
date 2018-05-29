@@ -177,10 +177,7 @@
 																<span>性別：</span>${animal.gender}</li>
 															<li>
 																<span>體型：</span>${animal.size}</li>
-															<li>
-																<span>年齡：</span>${animal.age}</li>
-															<li>
-																<span>顏色：</span>${animal.color}</li>
+
 
 
 														</ul>
@@ -194,11 +191,15 @@
 															<li>
 																<span>鄉鎮市區：</span>${animal.district}</li>
 															<li>
+																<span>年齡：</span>${animal.age}</li>
+															<li>
+																<span>顏色：</span>${animal.color}</li>
+															<!--<li>
 																<span>就醫紀錄：</span>${animal.hospitalized}</li>
 															<li>
 																<span>晶片號碼：</span>${animal.cardNum}</li>
 															<li>
-																<span>結紮：</span>${animal.neuter}</li>
+																<span>結紮：</span>${animal.neuter}</li> -->
 															<li id="upload" value="${animal.upload}">
 																<span>更新時間：</span>
 															</li>
@@ -226,69 +227,50 @@
 								</div>
 							</div>
 							<c:if test="${animal.member.id ne currentMember.id}">
-						<a id="check" style="max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox
-						 data-src="#trueModal" data-modal="true" href="javascript:;">
-							<i class="fa fa-link"></i>我要認養
-						</a>
-					</c:if>
+								<a id="check" style="margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox
+								 data-src="#trueModal" data-modal="true" href="javascript:;">
+									<i class="fa fa-link"></i>我要認養
+								</a>
+							</c:if>
 						</div>
 
 						<div class="col-md-6">
 							<div class="row mb-4">
 								<div class="col-6 col-lg-4">
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/lw3GfSfGY9w/1519x2279" data-width="1519"
-									 data-height="2279">
+									<a class="d-block mb-4" data-fancybox="images" href="/showAnimalImage?fileName=${animal.fileName}">
 										<img class="img-fluid" src="/showAnimalImage?fileName=${animal.fileName}">
 									</a>
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/i-FqQIkJMqg/1536x2304" data-width="1536"
-									 data-height="2304">
-										<img class="img-fluid" src="https://source.unsplash.com/i-FqQIkJMqg/416x623">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/QeigMir.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/QeigMir.jpg">
 									</a>
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/EMSDtjVHdQ8/1279x853" data-width="1279"
-									 data-height="853">
-										<img class="img-fluid" src="https://source.unsplash.com/EMSDtjVHdQ8/416x278">
-									</a>
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/lw3GfSfGY9w/1519x2279" data-width="1519"
-									 data-height="2279">
-										<img class="img-fluid" src="https://i.imgur.com/aE4VGkC.jpg">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/do4Kjyq.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/do4Kjyq.jpg">
 									</a>
 
 								</div>
 								<div class="col-6 col-lg-4">
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/eaS5h6mR1BE/1279x719" data-width="1279"
-									 data-height="719">
-										<img class="img-fluid" src="https://source.unsplash.com/eaS5h6mR1BE/416x234">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/gijZgHC.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/gijZgHC.jpg">
 									</a>
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/z55CR_d0ayg/1279x853" data-width="1279"
-									 data-height="853">
-										<img class="img-fluid" src="https://source.unsplash.com/z55CR_d0ayg/416x278">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/zNNBvRw.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/zNNBvRw.jpg8">
 									</a>
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/r0q06hjTgOc/1279x853" data-width="1279"
-									 data-height="853">
-										<img class="img-fluid" src="https://source.unsplash.com/r0q06hjTgOc/416x350">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/r8Upyp0g.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/r8Upyp0g.jpg">
 									</a>
-
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/lw3GfSfGY9w/1519x2279" data-width="1519"
-									 data-height="2279">
-										<img class="img-fluid" src="https://source.unsplash.com/lw3GfSfGY9w/416x623">
-									</a>
-
-
 								</div>
 								<div class="col-6 col-lg-4 d-none d-lg-block">
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/Q1Zyjio6pIM/1279x870" data-width="1279"
-									 data-height="870">
-										<img class="img-fluid" src="https://source.unsplash.com/Q1Zyjio6pIM/416x283">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/kAATWZz.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/kAATWZz.jpg">
 									</a>
 
-									<a class="d-block mb-4" data-fancybox="images" href="https://source.unsplash.com/lw3GfSfGY9w/1519x2279" data-width="1519"
-									 data-height="2279">
-										<img class="img-fluid" src="https://source.unsplash.com/lw3GfSfGY9w/416x623">
+									<a class="d-block mb-4" data-fancybox="images" href="https://i.imgur.com/eAGhBE8.jpg">
+										<img class="img-fluid" src="https://i.imgur.com/eAGhBE8.jpg">
 									</a>
 								</div>
 							</div>
@@ -358,7 +340,7 @@
 
 
 					</div>
-					
+
 				</div>
 				<!--<p class="mb-0">
 					<a data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;" class="btn btn-common">Open demo</a>
@@ -458,6 +440,8 @@
 						//contentType: false,
 						//processData: false,
 					}).done(function (datas) {
+
+						
 						var adoptionid = datas.parameters.id;
 						window.location.href = "http://localhost:8080/halfway/toquiz/" + adoptionid;
 					});

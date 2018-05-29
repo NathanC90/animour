@@ -198,9 +198,9 @@
 					}
 
 					$(function () {
-						$("form").on('submit', function (e) {
-							e.preventDefault();
-						});
+// 						$("form").on('submit', function (e) {
+// 							e.preventDefault();
+// 						});
 						/* $("#connect").click(function () {
 							connect();
 						}); */

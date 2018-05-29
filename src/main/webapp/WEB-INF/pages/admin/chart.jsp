@@ -78,7 +78,7 @@
 				<div class="col-md-12 content">
 					<div class="dashhead">
 						<div class="dashhead-titles">
-							<h2 class="dashhead-title">圖表統計</h2>
+							<h1 class="dashhead-title">圖表統計</h1>
 						</div>
 
 						<div class="btn-toolbar dashhead-toolbar">
@@ -460,7 +460,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "doughnut",
+							type: "pie",
 							showInLegend: true,
 							dataPoints: productArray
 						}]
@@ -504,7 +504,7 @@
 							indexLabelFontColor: "darkgrey",
 							indexLabelLineColor: "darkgrey",
 							indexLabelPlacement: "outside",
-							type: "doughnut",
+							type: "pie",
 							showInLegend: true,
 							dataPoints: ordersArray
 						}]

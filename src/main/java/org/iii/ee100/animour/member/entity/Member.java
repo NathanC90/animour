@@ -50,19 +50,22 @@ public class Member extends GenericEntity implements UserDetails {
 	@Column(name = "PASSWORD",length=80)
 	private String password;// 密碼
 
+	@JsonIgnore
 	@NotBlank(message="enter your name")
 	@Column(name = "NAME")
 	private String name;// 姓名
+	
 	
 	@NotBlank(message="enter your nickname")
 	@Column(name = "NICKNAME")
 	private String nickname;// 暱稱
 
-
+	@JsonIgnore
 	@Pattern(regexp ="^09[0-9]{2}-[0-9]{6}$",message="Invalid cell 09xx-xxxxxx")
 	@Column(name = "CELL")
 	private String cell;// 手機
 	
+	@JsonIgnore
 	@Pattern(regexp = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", message = "Invalid email")
 	@Column(name = "EMAIL")
 	private String email;// 信箱

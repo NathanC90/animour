@@ -1,4 +1,4 @@
-package org.iii.ee100.animour.common.config;
+﻿package org.iii.ee100.animour.common.config;
 
 import org.iii.ee100.animour.common.security.AnimourUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter {
     	http.
 		authorizeRequests()
 		.antMatchers("/admin/*").hasRole("Admin")
-		.antMatchers("/user/*","/cart/confirmBuy2","/news/confirmbuy2").hasAnyRole("Member","Admin")
+		.antMatchers("/user/*","/cart/confirmBuy2","/news/confirmbuy2", "/halfway/adoption", "/postArticle", "/updateArticle").hasAnyRole("Member","Admin")
 		.antMatchers("/**","/showAnimalImage").permitAll() //不須驗證
 		.antMatchers("/extras/**",
                 	 "/css/**",

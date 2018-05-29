@@ -417,7 +417,7 @@
 									
 									if (speciechoose == "狗") {
 										if (!(label.description.includes("dog"))) {
-											alert("幹")
+											//alert("幹")
 											flag = true;
 										}
 									}
