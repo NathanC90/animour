@@ -371,7 +371,7 @@
 	</section>
 	<!-- blog Section End -->
 	<!-- Pricing Table Section -->
-	<section id="pricing" class="section">
+	<!--<section id="pricing" class="section">
 		<div class="container">
 			<h1 class="section-title wow fadeInUpQuick" data-wow-delay=".2s">
 				Our Pricing</h1>
@@ -448,7 +448,7 @@
 
 			</div>
 		</div>
-	</section>
+	</section>-->
 	<!-- Pricing Table  End -->
 
 	<!-- Footer Section -->
