@@ -71,7 +71,7 @@
 <!-- 								</div> -->
 							</div>
 							<div class="carousel-item">
-								<img class="d-block w-100" src="/images/slider/bg-cat1-gray.jpg" alt="">
+								<img class="d-block w-100" src="https://i.imgur.com/BOLIhA1.png" alt="">
 								<div class="carousel-caption">
 									<h2 class="fadeInUp wow" data-sppb-wow-delay="0.8s">
 									</h2>
