@@ -474,7 +474,7 @@ INSERT INTO news (subject, event_Date, address, content, event_Time, publish_Dat
  
  
 /*8 product*/
-insert into classify (name) values('寵物伺料');
+insert into classify (name) values('寵物飼料');
 insert into classify (name) values('寵物用品');
 insert into classify (name) values('寵物玩具');
 insert into classify (name) values('其它');
@@ -530,19 +530,19 @@ insert into orders (orderdate, totalamount, member_id) values('2018-5-15 16:25:3
 
 /*10 ordersItem*/
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', '寵物伺料', 646, 1, 1);
+values('柏萊富特調成犬活力配方(雞肉+糙米) 5 磅 (狗飼料)', '寵物飼料', 646, 1, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('毛孩精選【解渴神器】水壺+水碗2合1', '寵物用品', 299, 1, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('ACEPET 貓咪蹭蹭刷 - 胡桃褐（附貓草', '其它', 180, 2, 1);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', '寵物伺料', 340, 2, 2);
+values('Farmina 法米納 ND 挑嘴幼母貓天然無穀糧-雞肉石榴', '寵物飼料', 340, 2, 2);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('自然鮮 貓草薄荷球木天蓼健身棒棒糖', '寵物玩具', 99, 3, 2);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', '寵物伺料', 880, 2, 3);
+values('Natural Balance特殊低敏無穀地瓜鮭魚全犬配方', '寵物飼料', 880, 2, 3);
 insert into ordersitem (name, classify, price, quantity, orders_id)
-values('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', '寵物伺料', 1170, 1, 3);
+values('紐頓 T28 無穀迷你犬 鮭魚 2.72 公斤 (狗飼料)', '寵物飼料', 1170, 1, 3);
 insert into ordersitem (name, classify, price, quantity, orders_id)
 values('AFU 御用 二口原木餐桌 (附陶瓷碗 2 個)', '其它', 690, 2, 3);
 
