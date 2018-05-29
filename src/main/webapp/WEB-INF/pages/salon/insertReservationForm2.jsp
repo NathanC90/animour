@@ -129,12 +129,13 @@
 								<!-- Modal end-->
 				
 				<!-- boutton check-->
-				<div>
-					<!-- 				左邊
- -->
-					<button type="button" class="btn btn-primary" data-toggle="modal"
+				<div id="divPicture">
+										<img id="picture1" alt="路人" src="/images/reservation/serviceContent/力.jpeg" height="500px" width="400px">					
+					<img id="picture2" alt="路人" src="/images/reservation/serviceContent/設計師-女.jpeg" height="400px" width="400px" style="display: none;">
+<img id="picture3" alt="路人" src="/images/reservation/serviceContent/設計師-男.jpeg" height="400px" width="400px" style="display: none;">
+<!-- 					<button type="button" class="btn btn-primary" data-toggle="modal"
 						data-target="#exampleModal">Launch demo modal</button>
-				</div>
+ -->				</div>
 				<!-- Modal end-->
 
 				<div id="loginbox" style="margin-top: 50px; margin: auto"
@@ -381,6 +382,23 @@
 					
 					data1 = new FormData(document.getElementById("myform"));
 				$('#engineer').change(function(){
+					console.log(cell1.text())
+					var aaa="飛影"
+					if(cell1.text()===aaa){
+						$('#picture1').remove();
+						$('#picture2').remove();
+						$('#picture3').remove();
+/* 						$('#picture1').attr({"style":"display: none"});
+ */
+						$('#divPicture').append('<img id="picture2" alt="路人" src="/images/reservation/serviceContent/設計師-女.jpeg" height="400px" width="400px">');
+					}
+					
+					/* if(cell2.text()==="琦玉"){
+						$('#picture2').attr({"style":"display: none"});
+
+						$('#picture3').removeAttr("style");
+					} */
+					
 					
 					function toJson(formData) {
 						var object = {};
@@ -398,7 +416,8 @@
 						contentType : "application/json",
 						dataType : "json"
 					}).done(function(datas) {
-						
+						$("#sectionTime option").remove();
+
 						$.getJSON('/reservationForms/getFreeDesignerTime', {"key":value},
 							function(data){
 						$.each(data, function(i, freeTime) {
