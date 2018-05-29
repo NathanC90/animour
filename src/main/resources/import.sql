@@ -1,6 +1,6 @@
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,ROLE,STATUS,images) 
-VALUES ('Admin','$2a$10$5PB7tASICyCGT2ZIRkpOLuIkxjsSNjjM0fhD61HD4wP4ra0dd9tAC','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true,'https://i.imgur.com/7mC4im2.png');
-INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('ViewSonic', '$2a$10$K.HQrsuiXf1dmexSg4xuAu34IWqmrId74x7w1ejwzMbg1Re8XBmy2', 'Alex Wu', 'Alex','0912-345678','alex@gail.com','台北市大安區','1','Sony ','https://i.imgur.com/7mC4im2.png','2018-01-01 05:00:00' );
+VALUES ('Admin','$2a$10$5PB7tASICyCGT2ZIRkpOLuIkxjsSNjjM0fhD61HD4wP4ra0dd9tAC','管理員','管理員','0000-000000','admin@animour.com','台北市大安區','Admin',true,'https://i.imgur.com/MpJe3lW.jpg');
+INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('ViewSonic', '$2a$10$K.HQrsuiXf1dmexSg4xuAu34IWqmrId74x7w1ejwzMbg1Re8XBmy2', 'Alex Wu', 'Alex','0912-345678','alex@gail.com','台北市大安區','1','Sony ','https://i.imgur.com/MpJe3lW.jpg','2018-01-01 05:00:00' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('Alisasa', '$2a$10$ugwJQJb3h2sGOaGvSu7D2uttdI3lhctpvXqbFe4mulrE.6LMBmAoi', '艾莉莎陳', '艾莉莎莎','0912-345678','Alisasa@gail.com','台北市大安區','1','Alisasa happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('kingjames', '$2a$10$yr7ppdijFXjClIm0dM83k.ZHdVplazri7QpfKkNliMSMj7DzpMcHO', '布朗勒', '布朗詹姆斯','0912-345678','kingjames@gail.com','台北市大安區','1','kingjames happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
 INSERT INTO MEMBER(ACCOUNT,PASSWORD,NAME,Nickname,CELL,EMAIL,Address,STATUS, Signature,images, REGISTRATIONTIME) VALUES ('captainlu', '$2a$10$qmW3lAtGRQ7P.hSRWeHCkO9KiX/HhIPk8GzJ.vhubxJZcrSuCO1Nu', '盧廣中', '晨之美','0912-345678','captainlu@gail.com','台北市大安區','1','captainlu happy everyday.','https://i.imgur.com/MpJe3lW.jpg','2018-05-01 05:00:00' );
@@ -642,11 +642,8 @@ insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,16);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,17);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (9,true,18);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,1);
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,2);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,4);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,5);
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,7);
-insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,8);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,9);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,11);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,12);
@@ -654,6 +651,35 @@ insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,17);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,18);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,19);
 insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (10,true,20);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,12);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,13);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,14);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,15);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,16);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,18);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (11,true,19);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,12);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,13);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,15);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,16);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,17);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,18);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (14,true,19);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,2);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,3);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,4);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,5);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,6);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,7);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,8);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,9);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (15,true,10);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (16,true,10);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (16,true,11);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (16,true,12);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (16,true,13);
+insert into MYFRIEND (MEMBER_ID,love,Friend_id)	values (16,true,14);
 
 
 
