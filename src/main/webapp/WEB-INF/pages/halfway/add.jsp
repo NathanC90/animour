@@ -414,18 +414,20 @@
 								console.log(parsed.responses);
 								$.each(parsed.responses[0].labelAnnotations, function (idx, label) {
 									console.log(label.description + "----------" + label.score)
-									
-									if (speciechoose == "狗") {
-										if (!(label.description.includes("dog"))) {
-											//alert("幹")
-											flag = true;
-										}
+
+									//alert(typeof (label.description));
+									alert(label.description.includes("dog"))
+									// if (speciechoose == "狗") {
+									if ((label.description.includes("dog"))) {
+										flag = true;
 									}
-									
+									// }
+
 								});
-								if (flag) {
+								alert(flag)
+								if (!flag) {
 									var template = `<div class="form-group">
-								<div class='help-block'>"您上傳的圖片可能沒有包含"`+speciechoose + `"，建議您重新選擇圖片！"</div>
+								<div class='help-block'>"您上傳的圖片可能沒有包含"`+ speciechoose + `"，建議您重新選擇圖片！"</div>
 							</div>`;
 									$("#imgur").append(template);
 									$(".imgur").val("");
