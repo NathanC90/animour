@@ -176,7 +176,7 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">New message For Many Member</h5>
+						<h5 class="modal-title" id="exampleModalLabel">寄信給會員們</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -189,17 +189,17 @@
 							</div> -->
 
 							<div class="form-group">
-								<label for="subject" class="col-form-label">Subject:</label>
+								<label for="subject" class="col-form-label">主旨:</label>
 								<input type="text" class="form-control" id="subject" name="subject">
 							</div>
 							<div class="form-group">
-								<label for="message-text" class="col-form-label">Message:</label>
+								<label for="message-text" class="col-form-label">訊息內容:</label>
 								<textarea class="form-control" id="context" name="context"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 						<button type="button" class="btn btn-primary" id="btn_many">Send message</button>
 					</div>
 				</div>
@@ -212,36 +212,76 @@
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">New message</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<h5 class="modal-title" id="exampleModalLabel">寄信給</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btn_exampleModalLabel">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
 						<form id="insertform">
 							<div class="form-group">
-								<label for="recipient-name" class="col-form-label">recipient:</label>
+								<label for="recipient-name" class="col-form-label">收件人:</label>
 								<input type="text" class="form-control recipient-name" id="account" name="account" readonly="readonly">
 							</div>
 
 							<div class="form-group">
-								<label for="subject" class="col-form-label">Subject:</label>
+								<label for="subject" class="col-form-label">主旨:</label>
 								<input type="text" class="form-control" id="subject" name="subject">
 							</div>
 							<div class="form-group">
-								<label for="message-text" class="col-form-label">Message:</label>
+								<label for="message-text" class="col-form-label">內容:</label>
 								<textarea class="form-control" id="context" name="context"></textarea>
 							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
 						<button type="button" class="btn btn-primary" id="btn1">Send message</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 每頁不同內容從此結束 -->
+		
+				<div class="modal" tabindex="-1" role="dialog" id='changeAccountStauts_modal'>
+				  <div class="modal-dialog modal-sm" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title"></h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <p>已成功修改.</p>
+				      </div>
+				      <div class="modal-footer">
+				      </div>
+				    </div>
+				  </div>
+				</div>		
+		
+				<div class="modal" tabindex="-1" role="dialog" id='SendMailSuccess_modal'>
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title">寄送信件成功</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+<!-- 				      <div class="modal-body"> -->
+<!-- 				        <p>成功寄送信件.</p> -->
+<!-- 				      </div> -->
+<!-- 				      <div class="modal-footer"> -->
+<!-- 				      </div> -->
+				    </div>
+				  </div>
+				</div>	
+		
+		
+		
+		
 
 		<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
 
@@ -269,8 +309,10 @@
 						processData: false,
 						//     		    dataType: "json",
 						success: function () {
-							alert("成功");
-							//	$('#exampleModal').modal('hide')
+// 							alert("成功");
+ 							$('#exampleModal').modal('hide')
+//  							$('#btn_exampleModalLabel').click()
+						$('#SendMailSuccess_modal').modal('show')
 						}
 					});
 				});
@@ -282,7 +324,7 @@
 					// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 					// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 					var modal = $(this)
-					modal.find('.modal-title').text('New message to ' + recipient)
+					modal.find('.modal-title').text('寄信給　' + recipient)
 					modal.find('#account').val(recipient)
 				})
 
@@ -389,7 +431,9 @@
 						dataType: 'json',
 						contentType: "application/json",
 						success: function () {
-							alert("成功_寄送");
+							//alert('成功寄信給XXXX')
+						$('#SendMailSuccess_modal').modal('show')
+							
 							$('#exampleModal').modal('hide')
 						}
 					});
@@ -441,7 +485,9 @@
 						$('#td_status'+result.id).text('off')
 
 					}
-					alert('#button' +result.id + ' change its status')
+// 					alert('#button' +result.id + ' change its status')
+
+					$('#changeAccountStauts_modal').modal('show')
 				}
 			});
 		});
