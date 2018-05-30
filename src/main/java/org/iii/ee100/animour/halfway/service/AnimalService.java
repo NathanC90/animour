@@ -29,7 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Transactional
 @Service
-public class AnimalService extends GenericService<Animal>{
+public class AnimalService extends GenericService<Animal> {
 
 	@Autowired
 	private AnimalDao animalDao;
@@ -63,7 +63,8 @@ public class AnimalService extends GenericService<Animal>{
 
 	// pageSize=一頁幾筆資料
 	public Page<Animal> getAnimalPage(PageInfo pageinfo) {
-		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC,
+				"upload");
 		return animalDao.findAll(request);
 	}
 
@@ -71,9 +72,10 @@ public class AnimalService extends GenericService<Animal>{
 		PageRequest request = new PageRequest(pageNumber - 1, pageSize, Sort.Direction.DESC, "upload");
 		return animalDao.findByNameContaining(name, request);
 	}
-	
+
 	public Page<Animal> getSpecPage(PageInfo pageinfo, Specification<Animal> spec) {
-		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC, "upload");
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC,
+				"upload");
 		return animalDao.findAll(spec, request);
 	}
 
@@ -140,7 +142,7 @@ public class AnimalService extends GenericService<Animal>{
 		species.add("其他");
 		return species;
 	}
-	
+
 	public List<String> setSize() {
 		List<String> size = new ArrayList<>();
 		size.add("大型");
@@ -148,7 +150,7 @@ public class AnimalService extends GenericService<Animal>{
 		size.add("小型");
 		return size;
 	}
-	
+
 	public List<String> setAge() {
 		List<String> age = new ArrayList<>();
 		age.add("成年");
@@ -156,30 +158,37 @@ public class AnimalService extends GenericService<Animal>{
 		age.add("老年");
 		return age;
 	}
-	
+
 	// for MemberPage
-	public List<Animal> getHomepageAnimalList(Long memberId){
+	public List<Animal> getHomepageAnimalList(Long memberId) {
 		return animalDao.findByMemberIdOrderByUploadDesc(memberId);
-		
+
 	}
-	
+
 	public void setResponseParameters(String key, Object value) {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put(key, value);
 	}
-	
-	//for chart
-	
-	public Map<String,Integer> chart() {
+
+	// for chart
+
+	public Map<String, Integer> chart() {
 		List<Animal> list = animalDao.findAll();
-		Map<String,Integer> map = new HashMap<String,Integer>();
-		for(Animal animal:list) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		for (Animal animal : list) {
 			if (map.containsKey(animal.getSpecie())) {
 				map.put(animal.getSpecie(), map.get(animal.getSpecie()) + 1);
-			}else {
+			} else {
 				map.put(animal.getSpecie(), 1);
 			}
 		}
 		return map;
+	}
+
+	// 會員帳號查詢，放大鏡
+	public Page<Animal> getAnimalPageByMemberAccount(Long memberId, PageInfo pageinfo) {
+		PageRequest request = new PageRequest(pageinfo.getPageNumber() - 1, pageinfo.getSize(), Sort.Direction.DESC,
+				"upload");
+		return animalDao.findByMemberIdOrderByUploadDesc(memberId, request);
 	}
 }
