@@ -119,7 +119,7 @@
 							</div>
 							<div class="modal-body">請在七天內付款</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary"
+								<button type="button" id="transferWeb" class="btn btn-secondary"
 									data-dismiss="modal">下次再結</button>
 								<button id="checkout" type="button" class="btn btn-common">現在結帳</button>
 							</div>
@@ -127,7 +127,14 @@
 					</div>
 				</div>
 								<!-- Modal end-->
-				
+								<!--
+				<!-- <script>
+				$('#transferWeb').click(function(){
+					document.location.href="http://localhost:8080/reservation";
+				})
+				 
+				</script>
+				-->
 				<!-- boutton check-->
 				<div id="divPicture">
 										<img id="picture1" alt="路人" src="/images/reservation/serviceContent/力.jpeg" height="500px" width="400px">					
@@ -146,20 +153,20 @@
 
 
 							<form id="myform" style="margin-top: 50px; margin: auto">
-								預約日期 <input class="form-group col-md-8" id="meeting" type="date"
+								預約日期 <input class="form-group col-md-8 contentclean" id="meeting" type="date"
 									name="reservationDate" /> <br> 美容師: <select id="engineer"
-									class="form-control" name="designer">
+									class="form-control contentclean" name="designer">
 									<option value="engineer" label="請選擇美容師" />
 
 
 
-								</select> 時段: <select id="sectionTime" class="form-control"
+								</select> 時段: <select id="sectionTime" class="form-control contentclean"
 									name="frontTime">
 									<option value="sectionTime" label="請選擇時段" />
-								</select> 服務類別: <select id="servicer" class="form-control" name="content">
+								</select> 服務類別: <select id="servicer" class="form-control contentclean" name="content">
 									<option value="content" label="請選擇類別" />
 
-								</select> 價位： <select id="price" class="form-control" name="price">
+								</select> 價位： <select id="price" class="form-control contentclean" name="price">
 									<option value="price" label="請選擇價位" />
 								</select>
 
@@ -175,7 +182,9 @@
 								<div style="text-align: center;height:60px;line-height:60px;">
 														<input id="response" type="button" class="btn btn-common"
 							data-toggle="modal" data-target="#exampleModal" value="預約" style="background-color:#EE7700;">
-						<input id="cleanContent" type="reset" class="btn btn-common" data-toggle="modal" value="清除" style="background-color:#EE7700;"	>
+													<button id="cleanContent" type="button" class="btn btn-common" 
+							data-target="#exampleModal" style="background-color:#EE7700;">清除</button>
+							
 								</div>
 								
 								
@@ -359,12 +368,25 @@
 	<script>
 	var data1 = new FormData(document.getElementById("myform"));
 	
-/* 		$('#cleanContent').click(function(){
-			$("#myform").clearForm();
-			
-			
-		})
- */		
+	$('#cleanContent').click(function(){
+		$(".contentclean option").remove();
+		var cell0 =$("<option class='test' id='testtest1'></option>").text("請選擇美容師")
+		var cell1 = $("<option class='test' id='testtest1'></option>").text(
+		"飛影");
+var cell2 = $("<option class='test'></option>").text(
+"琦玉");
+var cell3=$("<option class='test'></option>").text(
+"陳浩南");
+
+
+$('#engineer').append([cell0,cell1,cell2,cell3]);
+var cell4= $('<option/>').text('請選擇時段');
+$('#sectionTime').append([cell4]);
+var cell5= $('<option/>').text('請選擇服務');
+$('#servicer').append([cell5]);
+var cell6= $('<option/>').text('請選擇價位');
+$('#price').append([cell6]);
+	})
 
 		$(document).ready(
 				function() {
