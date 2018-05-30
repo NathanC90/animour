@@ -398,7 +398,7 @@
             </section>
 
             <!-- Map Section Start -->
-            <section id="google-map-area">
+            <!-- <section id="google-map-area">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -407,17 +407,27 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section>-->
+            <!-- Map Section End -->
             <a id="check" style="display:none; max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30"
                 data-fancybox data-src="#trueModal" data-modal="true" href="javascript:;">
-                <i class="fa fa-link"></i>我要認養
+                <i class="fa fa-link"></i>
             </a>
 
             <div style="display: none; width: 60%; border-radius: 20px" id="trueModal">
                 <h2>感謝您! 程序已經完成</h2>
-                <p>系統將於確認後，推款至您的帳戶！</p>
+                <p>系統將於確認後，退款至您的帳戶！</p>
             </div>
-            <!-- Map Section End -->
+
+            <a id="check1" style="display:none; max-width: 45%; margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30"
+                data-fancybox data-src="#trueModal123" data-modal="true" href="javascript:;">
+                <i class="fa fa-link"></i>
+            </a>
+
+            <div style="display: none; width: 60%; border-radius: 20px" id="trueModal123">
+                <h2>檢舉程序已提出！</h2>
+                <p>管理員確認後，將儘快與您聯繫，謝謝！</p>
+            </div>
 
             <!-- Footer Section -->
             <footer>
@@ -447,6 +457,7 @@
             <script src="/js/contact-form-script.min.js"></script>
             <script src="/js/main.js"></script>
             <script src="/js/jquery.countdown.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
 
             <script>
 
@@ -561,7 +572,7 @@
                                                 <i class="fa fa-phone"></i> 聯絡電話:</strong> 0912-345678</p>
                                     </li>`;
 
-                                   $('#forprepend').append(text); 
+                        $('#forprepend').append(text);
 
                         countdown(datas.endDate);
                     });
@@ -600,11 +611,11 @@
                     $('#report').click(function () {
 
                         $.ajax({
-                            url: "/halfway/setReport/"+$('#aaa').val(),
+                            url: "/halfway/setReport/" + $('#aaa').val(),
                             type: 'GET',
-                     
+
                         }).done(function () {
-                            $("#check").click();
+                            $("#check1").click();
                             setTimeout(function () {
                                 window.location = "/halfway";
                             }, 3000);

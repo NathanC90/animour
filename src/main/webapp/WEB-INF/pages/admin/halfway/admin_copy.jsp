@@ -161,7 +161,7 @@
 					console.log(data);
 					$('#table1>tbody').empty();
 					$.each(data.data, function (i, animal) {
-						var cell1 = $("<td></td>").attr({'id':animal.id, "value":animal.id}).text(animal.id);
+						var cell1 = $("<td></td>").text(animal.id);
 						var cell2 = $("<td></td>").text(animal.name);//綽號
 
 						var cell3 = $("<td></td>").text(animal.specie);//種類
@@ -169,7 +169,7 @@
 						var cell5 = $("<td></td>").text(formatDate(new Date(animal.found)));//日期
 						var cell6 = $("<td></td>").text(formatDate(new Date(animal.upload)));//更新
 						var cell7 = $("<td></td>").text(animal.member.account);//飼主帳號
-						var cell10 = $("<td></td>").attr({ 'id': 'setMember' }).text("無");//認養會員帳號
+						var cell10 = $("<td></td>").attr({ 'id': 'setMember'+animal.id }).text("無");//認養會員帳號
 						var cell8 = $("<td></td>").text(animal.status).attr({ 'id': 'td_status' + animal.id });
 
 
@@ -194,9 +194,7 @@
 
 						$.getJSON('/halfway/acceptrecord', { "pageNo": 1, "size": 20 }, function (datas) {
 							$.each(datas.data, function (i, record) {
-								if (record.adoption.animal.id == $("#"+record.adoption.animal.id).val()){
-									$("#setMember").text(record.adoption.member.account);
-								};
+									$("#setMember"+record.adoption.animal.id).text(record.adoption.member.account);
 
 								if (record.success == true){
 									$("#td_status"+ record.adoption.animal.id).text("認養成功");
