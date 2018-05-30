@@ -119,7 +119,15 @@ public class AcceptRecordRestController {
 		Timestamp ts = new Timestamp(System.currentTimeMillis());
 		ad.setDoneOwnerDate(ts);
 		acceptRecordService.checkProcessEnd(ad);
-		
+
+		acceptRecordService.update(ad);
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/halfway/setReport/{id}") 
+	public ResponseEntity<?> setReport(@PathVariable Long id) {
+		AcceptRecord ad = acceptRecordService.getOne(id);
+		ad.setSuccess(false);
 		acceptRecordService.update(ad);
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}

@@ -386,7 +386,7 @@
                                         <button class="btn btn-common btn-lg" type="submit" id="endprocess" value="${role}">
                                             <i class="fa fa-check"></i> 認養程序完成</button>
 
-                                        <button class="btn btn-secondary btn-lg" type="submit" id="form-submit">
+                                        <button class="btn btn-secondary btn-lg" type="submit" id="report" value="${role}">
                                             <i class="fa fa-envelope"></i> 檢舉</button>
                                     </div>
                                 </div>
@@ -595,6 +595,22 @@
                             }, 3000);
                         });
                     });
+
+                    // 檢舉
+                    $('#report').click(function () {
+
+                        $.ajax({
+                            url: "/halfway/setReport/"+$('#aaa').val(),
+                            type: 'GET',
+                     
+                        }).done(function () {
+                            $("#check").click();
+                            setTimeout(function () {
+                                window.location = "/halfway";
+                            }, 3000);
+                        });
+                    });
+
 
                 });
                // });
