@@ -77,7 +77,7 @@ public class MemberController {
 			}
 
 			if (member.getImages() == "") {
-				member.setImages("https://i.imgur.com/MpJe3lW.jpg");
+				member.setImages("https://i.imgur.com/q9PMXsf.png");
 
 			}
 			memberService.insert(member);
