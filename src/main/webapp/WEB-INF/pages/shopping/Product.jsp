@@ -121,11 +121,11 @@
 							<div role="tabpanel" class="tab-pane active" id="productDetail">
 								<p class="h5" class="text-success" style="padding-bottom:15px"><span class="text-success">商品名稱：${product.name}</span></p>
 <%-- 								<p class="card-text" style="padding: 0px">編號：${product.id}</p> --%>
-								<p class="h5" style="padding-bottom:15px"><span class="text-info">上架日期：${product.shelvesDate}</span></p>
-								<p class="h5" style="padding-bottom:15px"><span class="text-info">保存期限：${product.expire}</span></p>
-								<p class="h5" style="padding-bottom:15px"><span class="text-info">種類：${product.classify.name}</span></p>
-								<p class="h5" style="padding-bottom:15px"><span class="text-info">價格：${product.price}</span></p>
-								<p class="h5" style="padding-bottom:15px"><span class="text-info">庫存：${product.stock}</span></p>
+								<p class="h5" style="padding-bottom:15px">上架日期：<span class="text-info">${product.shelvesDate}</span></p>
+								<p class="h5" style="padding-bottom:15px">保存期限：<span class="text-info">${product.expire}</span></p>
+								<p class="h5" style="padding-bottom:15px">種類：<span class="text-info">${product.classify.name}</span></p>
+								<p class="h5" style="padding-bottom:15px">庫存：<span class="text-info">${product.stock}</span></p>
+								<p class="h5" style="padding-bottom:15px">網路價：<span class="text-danger h4"><strong>${product.price}</strong></span></p>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="productSepc">
 								<p class="h6"><span class="text-info">${product.description}</span></p>

@@ -97,21 +97,21 @@
  			</div>
 		</div>
 	</div>
-	<div class="container">
-	<section class="featured-wrapper" style='padding-top:50px'>
-	              <div id="carousel-image-slider" class="owl-carousel">
-	                <div class="item">
-	                  <img src="/images/shopping/product/107.jpg" alt="">
-	                </div>
-	                <div class="item">
-	                  <img src="/images/shopping/product/108.jpg" alt="">
-	                </div>
-	                <div class="item">
-	                  <img src="/images/shopping/product/109.jpg" alt="">
-	                </div>
-	              </div>
-	            </section>
-	 </div>
+<!-- 	<div class="container"> -->
+<!-- 	<section class="featured-wrapper" style='padding-top:50px'> -->
+<!-- 	              <div id="carousel-image-slider" class="owl-carousel"> -->
+<!-- 	                <div class="item"> -->
+<!-- 	                  <img src="/images/shopping/product/107.jpg" alt=""> -->
+<!-- 	                </div> -->
+<!-- 	                <div class="item"> -->
+<!-- 	                  <img src="/images/shopping/product/108.jpg" alt=""> -->
+<!-- 	                </div> -->
+<!-- 	                <div class="item"> -->
+<!-- 	                  <img src="/images/shopping/product/109.jpg" alt=""> -->
+<!-- 	                </div> -->
+<!-- 	              </div> -->
+<!-- 	            </section> -->
+<!-- 	 </div> -->
 	<!-- Page Header End -->
 
 	<!-- End of call to action section -->
