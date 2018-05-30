@@ -112,7 +112,7 @@
 							<table class="table" style="box-shadow:0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);">
 							<c:choose>
 								<c:when test="${memberProducts.size() eq 0}">
-									<tr><img src="/images/shopping/product/stop.png" style="margin-left:64%" width="500px" alt="商品列表"></tr>
+									<img src="/images/shopping/product/stop.png" style="margin-left:64%" width="500px" alt="商品列表">
 								</c:when>
 								<c:otherwise>
 									<thead>
