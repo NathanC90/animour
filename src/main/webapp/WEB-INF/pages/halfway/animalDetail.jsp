@@ -99,7 +99,8 @@
 				}
 
 				.li .span {
-					font-size: 72px
+					font-size: 72px;
+					color: rgb(35, 194, 101)
 				}
 
 				.p a img {
@@ -137,9 +138,10 @@
 					<div class="row">
 
 						<div class="col-md-6">
-							<h3 class="small-title">會員"
-								<a href="/user/${animal.member.account}">${animal.member.account}</a>"的送養動物</h3>
-							<p>We are unique and had working! We work for better product.</p>
+							<span style="border-style:groove;border-color:rgb(176, 235, 60); color:#ffffff; background-color:#9c3; border-radius:5px">${animal.status}</span>
+							<h3 style="display: inline" class="small-title">會員
+								<a href="/user/${animal.member.account}">${animal.member.account}</a>的送養動物</h3>
+
 							<div id="default-tab" class="mt-10">
 								<!-- Nav tabs -->
 								<ul class="nav nav-tabs" role="tablist">
@@ -161,52 +163,54 @@
 									<div role="tabpanel" class="tab-pane active" id="home">
 										<!-- Portfolio Details -->
 										<div class="col-md-12 wow fadeIn" data-wow-delay="0.5s">
-											<div class="portfolio-meta">
-												<h6>${animal.status}</h6>
-												<div class="row">
-													<div class="col-md-6">
+											<!--<div class="portfolio-meta">-->
 
-														<ul>
-															<li>
-																<span>編號：</span>${animal.id}</li>
-															<li>
-																<span>綽號：</span>${animal.name}</li>
-															<li>
-																<span>種類：</span>${animal.specie}</li>
-															<li>
-																<span>性別：</span>${animal.gender}</li>
-															<li>
-																<span>體型：</span>${animal.size}</li>
+											<div class="row">
+												<div class="col-md-4">
+
+													<ul>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">編號：</span>${animal.id}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">綽號：</span>${animal.name}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">種類：</span>${animal.specie}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">性別：</span>${animal.gender}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">體型：</span>${animal.size}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">年齡：</span>${animal.age}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">顏色：</span>${animal.color}</li>
 
 
 
-														</ul>
-													</div>
-													<div class="col-md-6">
-														<ul>
-															<li>
-																<span>張貼日期：</span>${animal.found}</li>
-															<li>
-																<span>縣市：</span>${animal.city.name}</li>
-															<li>
-																<span>鄉鎮市區：</span>${animal.district}</li>
-															<li>
-																<span>年齡：</span>${animal.age}</li>
-															<li>
-																<span>顏色：</span>${animal.color}</li>
-															<!--<li>
-																<span>就醫紀錄：</span>${animal.hospitalized}</li>
-															<li>
-																<span>晶片號碼：</span>${animal.cardNum}</li>
-															<li>
-																<span>結紮：</span>${animal.neuter}</li> -->
-															<li id="upload" value="${animal.upload}">
-																<span>更新時間：</span>
-															</li>
-														</ul>
-													</div>
+
+													</ul>
+												</div>
+												<div class="col-md-8">
+													<ul>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">張貼日期：</span>${animal.found}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">縣市&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</span>${animal.city.name}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">鄉鎮市區：</span>${animal.district}</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">就醫紀錄：</span>無</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">晶片號碼：</span>無</li>
+														<li>
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">結紮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</span>無</li>
+														<li id="upload">
+															<span style="color:rgb(11, 100, 173); font-weight:bold;">更新時間：</span>
+														</li>
+
+													</ul>
 												</div>
 											</div>
+											<!--</div>-->
 										</div>
 									</div>
 									<div role="tabpanel" class="tab-pane " id="messages">
@@ -227,8 +231,8 @@
 								</div>
 							</div>
 							<c:if test="${animal.member.id ne currentMember.id}">
-								<a id="check" style="margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox
-								 data-src="#trueModal" data-modal="true" href="javascript:;">
+								<a id="check" style="margin: auto; margin-top: 5%" class="btn btn-common btn-md btn-block mt-30" data-fancybox data-src="#trueModal"
+								 data-modal="true" href="javascript:;">
 									<i class="fa fa-link"></i>我要認養
 								</a>
 							</c:if>
@@ -393,9 +397,16 @@
 		</body>
 		<script>
 			$(document).ready(function () {
-				//alert($('#upload').val())
-				var uploadObj = new Date($('#upload').val());
-				$('#upload').append(uploadObj.toLocaleString());
+				//alert($("#animal").val());
+				$.ajax({
+					url: '/halfway/animal/' + $("#animal").val(),
+					type: 'GET',
+
+				}).done(function (datas) {
+					//alert($('#upload').val())
+					var uploadObj = new Date(datas.upload);
+					$('#upload').append(uploadObj.toLocaleString());
+				});
 
 				$("#check").click(function () {
 					$.getJSON('/halfway/adoption/check',
@@ -407,9 +418,8 @@
 								$("#trueModal").append(refuse);
 								// alert("您的認養次數已達上限")
 								setTimeout(function () {
-									window.location.href = "http://localhost:8080/halfway";
+									window.location = "/halfway";
 								}, 3000);
-								//window.location.href = "http://localhost:8080/halfway";
 							}
 						});
 				});
@@ -441,9 +451,9 @@
 						//processData: false,
 					}).done(function (datas) {
 
-						
+
 						var adoptionid = datas.parameters.id;
-						window.location.href = "http://localhost:8080/halfway/toquiz/" + adoptionid;
+						window.location = "/halfway/toquiz/" + adoptionid;
 					});
 				});
 			});

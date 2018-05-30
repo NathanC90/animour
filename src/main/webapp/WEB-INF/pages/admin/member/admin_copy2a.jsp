@@ -261,20 +261,18 @@
 				  </div>
 				</div>		
 		
-				<div class="modal" tabindex="-1" role="dialog" id='SendMailSuccess_modal'>
-				  <div class="modal-dialog modal-dialog-centered" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <h5 class="modal-title">寄送信件成功</h5>
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<div class="modal" tabindex="-1" role="dialog" id='SendMailSuccess_modal' >
+				  <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				    <div class="alert alert-primary">
+				      <div class="alert alert-primary">
+				        <h5 class="modal-title">	</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="">
 				          <span aria-hidden="true">&times;</span>
 				        </button>
 				      </div>
-<!-- 				      <div class="modal-body"> -->
-<!-- 				        <p>成功寄送信件.</p> -->
-<!-- 				      </div> -->
-<!-- 				      <div class="modal-footer"> -->
-<!-- 				      </div> -->
+				      <div class="alert alert-primary">
+				        <p>成功寄送信件.</p>
+				      </div>
 				    </div>
 				  </div>
 				</div>	
@@ -310,7 +308,7 @@
 						//     		    dataType: "json",
 						success: function () {
 // 							alert("成功");
- 							$('#exampleModal').modal('hide')
+// 							$('#exampleModal').modal('hide')
 //  							$('#btn_exampleModalLabel').click()
 						$('#SendMailSuccess_modal').modal('show')
 						}
@@ -434,7 +432,7 @@
 							//alert('成功寄信給XXXX')
 						$('#SendMailSuccess_modal').modal('show')
 							
-							$('#exampleModal').modal('hide')
+//							$('#exampleModal').modal('hide')
 						}
 					});
 
