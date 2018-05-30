@@ -147,8 +147,10 @@
                                                                             <div class="col-md-3">
                                                                                 <h4>會員資訊</h4>
                                                                                 <ul style="padding-left:0px; margin-left:0px">
-                                                                                    <li><a href="/user/${adoption.member.account}">${adoption.member.account}</a></li>
-                                                                                    
+                                                                                    <li>
+                                                                                        <a href="/user/${adoption.member.account}">${adoption.member.account}</a>
+                                                                                    </li>
+
                                                                                     <li>
                                                                                         ${adoption.member.nickname}
                                                                                     </li>
@@ -234,7 +236,7 @@
                                                         <th>飼主姓名</th>
                                                         <th>動物名稱</th>
                                                         <th>所在縣市</th>
-                                                        <th>剩餘時間</th>
+                                                        <th>截止時間</th>
                                                         <th>支付押金/完成認養</th>
                                                     </tr>
                                                 </thead>
@@ -250,7 +252,7 @@
                                                                 <a href="/halfway/detail?id=${getrecord.adoption.animal.id}">${getrecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.city.name}</td>
-                                                            <td class="getting-started"></td>
+                                                            <td>${getrecord.adoption.acceptRecord.endDate}</td>
                                                             <td>
                                                                 <c:choose>
                                                                     <c:when test="${!getrecord.depositMember}">
@@ -297,7 +299,7 @@
                                                         <th>會員姓名</th>
                                                         <th>動物名稱</th>
                                                         <th>所在縣市</th>
-                                                        <th>剩餘時間</th>
+                                                        <th>截止時間</th>
                                                         <th>支付押金/完成認養</th>
                                                     </tr>
                                                 </thead>
@@ -313,7 +315,7 @@
                                                                 <a href="/halfway/detail?id=${giverecord.adoption.animal.id}">${giverecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${giverecord.adoption.animal.city.name}</td>
-                                                            <td class="getting-started"></td>
+                                                            <td>${giverecord.adoption.acceptRecord.endDate}</td>
                                                             <td>
                                                                 <c:choose>
                                                                     <c:when test="${!giverecord.depositOwner}">
@@ -378,8 +380,21 @@
                 <script>
 
                     $(document).ready(function () {
+                        //alert($("#animal").val());
+                        // $.ajax({
+                        //     url: '/halfway/adoption/' + $("#animal").val(),
+                        //     type: 'GET',
+
+                        // }).done(function (datas) {
+                        //     //alert($('#upload').val())
+                        //     var uploadObj = new Date(datas.upload);
+                        //     $('#upload').append(uploadObj.toLocaleString());
+                        // });
+
+
+
                         $('.displaycancel').css('display', '').css('hover', '');
-                      
+
 
                         var count = $("#adoptioncount").val()
                         //alert(count);

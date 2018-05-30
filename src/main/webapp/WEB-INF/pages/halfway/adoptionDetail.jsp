@@ -541,24 +541,24 @@
                         var text = `<li>
                                         <p>
                                             <strong>
-                                                <i class="fa fa-address-book"></i> 姓名:</strong> `+ datas.adoption.member.name + `</p>
+                                                <i class="fa fa-address-book"></i> 姓名:</strong> 艾莉莎陳</p>
                                     </li>
                         <li>
                                         <p>
                                             <strong>
-                                                <i class="fa fa-map-marker"></i> 通訊地址:</strong> `+ datas.adoption.member.address + `</p>
+                                                <i class="fa fa-map-marker"></i> 通訊地址:</strong> 台北市大安區</p>
                                     </li>
                                     <li>
                                         <p>
                                             <strong>
                                                 <i class="fa fa-envelope"></i> email:</strong>
-                                            <a href="#">`+ datas.adoption.member.email + `</a>
+                                            <a href="#"> Alisasa@gail.com</a>
                                         </p>
                                     </li>
                                     <li>
                                         <p>
                                             <strong>
-                                                <i class="fa fa-phone"></i> 聯絡電話:</strong> `+ datas.adoption.member.cell + `</p>
+                                                <i class="fa fa-phone"></i> 聯絡電話:</strong> 0912-345678</p>
                                     </li>`;
 
                                    $('#forprepend').append(text); 
