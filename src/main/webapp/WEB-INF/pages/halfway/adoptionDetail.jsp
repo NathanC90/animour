@@ -480,38 +480,38 @@
 
 														<ul>
 															<li>
-																<span>編號：</span>`+ datas.adoption.animal.id + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">編號：</span>`+ datas.adoption.animal.id + `</li>
 															<li>
-																<span>綽號：</span>`+ datas.adoption.animal.name + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">綽號：</span>`+ datas.adoption.animal.name + `</li>
 															<li>
-																<span>種類：</span>`+ datas.adoption.animal.specie + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">種類：</span>`+ datas.adoption.animal.specie + `</li>
 															<li>
-																<span>性別：</span>`+ datas.adoption.animal.gender + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">性別：</span>`+ datas.adoption.animal.gender + `</li>
 															<li>
-																<span>體型：</span>`+ datas.adoption.animal.size + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">體型：</span>`+ datas.adoption.animal.size + `</li>
 															<li>
-																<span>年齡：</span>`+ datas.adoption.animal.age + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">年齡：</span>`+ datas.adoption.animal.age + `</li>
 															<li>
-																<span>顏色：</span>`+ datas.adoption.animal.color + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">顏色：</span>`+ datas.adoption.animal.color + `</li>
 
 														</ul>
 													</div>
 													<div class="col-md-6">
 														<ul>
 															<li>
-																<span>張貼日期：</span>`+ datas.adoption.animal.found + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">張貼日期：</span>`+ datas.adoption.animal.found + `</li>
 															<li>
-																<span>縣市：</span>`+ datas.adoption.animal.city.name + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">縣市&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</span>`+ datas.adoption.animal.city.name + `</li>
 															<li>
-																<span>鄉鎮市區：</span>`+ datas.adoption.animal.district + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">鄉鎮市區：</span>`+ datas.adoption.animal.district + `</li>
 															<li>
-																<span>就醫紀錄：</span>`+ datas.adoption.animal.hospitalized + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">就醫紀錄：</span>無</li>
 															<li>
-																<span>晶片號碼：</span>`+ datas.adoption.animal.cardNum + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">晶片號碼：</span>無</li>
 															<li>
-																<span>結紮：</span>`+ datas.adoption.animal.neuter + `</li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">結紮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：</span>無</li>
 															<li  id="upload" value="${datas.adoption.animal.upload}">
-																<span>更新時間：</span></li>
+																<span style="color:rgb(11, 100, 173); font-weight:bold;">更新時間：</span></li>
 														</ul>
 													</div>
                                     </div>
@@ -541,7 +541,7 @@
                         var text = `<li>
                                         <p>
                                             <strong>
-                                                <i class="fa fa-man"></i> 姓名:</strong> `+ datas.adoption.member.name + `</p>
+                                                <i class="fa fa-address-book"></i> 姓名:</strong> `+ datas.adoption.member.name + `</p>
                                     </li>
                         <li>
                                         <p>
@@ -591,7 +591,7 @@
                         }).done(function () {
                             $("#check").click();
                             setTimeout(function () {
-                                window.location.href = "http://localhost:8080/halfway";
+                                window.location = "/halfway";
                             }, 3000);
                         });
                     });

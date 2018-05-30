@@ -147,9 +147,8 @@
                                                                             <div class="col-md-3">
                                                                                 <h4>會員資訊</h4>
                                                                                 <ul style="padding-left:0px; margin-left:0px">
-                                                                                    <li>
-                                                                                        <a href="/user/${adoption.member.account}">${adoption.member.account}</a>
-                                                                                    </li>
+                                                                                    <li><a href="/user/${adoption.member.account}">${adoption.member.account}</a></li>
+                                                                                    
                                                                                     <li>
                                                                                         ${adoption.member.nickname}
                                                                                     </li>
@@ -244,11 +243,11 @@
                                                         <input type="hidden" class="passenddate" value="${getrecord.endDate}">
                                                         <tr class="displaycancel">
                                                             <th scope="row">
-                                                                <a href="">${getrecord.adoption.animal.member.account}</a>
+                                                                <a href="/user/${getrecord.adoption.animal.member.account}">${getrecord.adoption.animal.member.account}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.member.name}</td>
                                                             <th scope="row">
-                                                                <a href="">${getrecord.adoption.animal.name}</a>
+                                                                <a href="/halfway/detail?id=${getrecord.adoption.animal.id}">${getrecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.city.name}</td>
                                                             <td class="getting-started"></td>
@@ -263,7 +262,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/get/${getrecord.id}'">
+                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location ='/halfway/toacceptrecord/get/${getrecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成認養程序</span>
                                                                         </button>
@@ -307,11 +306,11 @@
                                                         <input type="hidden" class="passenddate" value="${giverecord.endDate}">
                                                         <tr class="displaycancel">
                                                             <th scope="row">
-                                                                <a href="">${giverecord.adoption.member.account}</a>
+                                                                <a href="/user/${giverecord.adoption.member.account}">${giverecord.adoption.member.account}</a>
                                                             </th>
                                                             <td>${giverecord.adoption.member.name}</td>
                                                             <th scope="row">
-                                                                <a href="">${giverecord.adoption.animal.name}</a>
+                                                                <a href="/halfway/detail?id=${giverecord.adoption.animal.id}">${giverecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${giverecord.adoption.animal.city.name}</td>
                                                             <td class="getting-started"></td>
@@ -326,7 +325,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/give/${giverecord.id}'">
+                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location='/halfway/toacceptrecord/give/${giverecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成送養程序</span>
                                                                         </button>

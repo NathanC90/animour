@@ -423,7 +423,6 @@
 								dataType: 'json',
 								contentType: "application/json",
 								success:
-									//window.location.href = "http://localhost:8080/halfway";
 									function (datas) {
 										var docFragment = $(document.createDocumentFragment());
 										$.each(datas, function (idx, animal) {
