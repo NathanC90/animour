@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!--                 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script> -->
-<title>Insert title here</title>
+<title>Animour</title>
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
@@ -162,13 +162,13 @@
 			<!-- Mobile Menu Start -->
 			<ul class="wpb-mobile-menu">
 				<li><a class="active" href="index.jsp">首頁</a></li>
-				<li><a href="/news/newsIndex">最新消息</a> <sec:authorize
-						access="hasRole('Admin')">
-					</sec:authorize>
+				<li><a href="/news/newsIndex">最新消息</a> 
+				<sec:authorize access="hasRole('Admin')">
 					<ul>
 						<li><a href="/news/insertNews">新增活動</a></li>
-						<li><a href="/news/manage">管理保健</a></li>
-					</ul></li>
+						<li><a href="/news/manage">管理活動</a></li>
+					</ul>
+				</sec:authorize>
 				<li><a href="/halfway">中途專區</a>
 					<ul>
 						<li><a href="/halfway/addAnimal">我要送養</a></li>
