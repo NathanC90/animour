@@ -299,7 +299,7 @@ insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,3);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,4);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,6);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,7);
-insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,8);
+insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,2);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,9);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,10);
 insert into thumbsup (thumb,Article_Id,Member_Id) values ('true',13,11);
