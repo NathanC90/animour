@@ -31,6 +31,10 @@
 				<link rel="stylesheet" type="text/css" href="/extras/owl/owl.theme.css">
 				<link rel="stylesheet" type="text/css" href="/extras/animate.css">
 				<link rel="stylesheet" type="text/css" href="/extras/normalize.css">
+				<!-- lun add -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <!-- lun end -->
 
 
 				<!-- Color CSS Styles  -->
@@ -269,7 +273,7 @@
 								<!-- Friend List Modal  -->
 															<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
-									<div class="modal-content">
+									<div class="modal-content text-center" style="width:800px;">
 										<div class="modal-header">
 											<h5 class="modal-title" id="exampleModalLabel">結帳訊息</h5>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -288,6 +292,8 @@
 														<th>消費金額</th>
 														<th>付款狀態</th>
 														<th>會員帳號</th>
+														<th>id</th>
+														<th id ="timeCount"></th>
 													</tr>
 												</thead>
 											</table>
@@ -312,6 +318,10 @@
 							<!-- End -->
 						</div>
 					</div>
+					
+					<!-- <div id="dialogSalon" title="訂單取消確認">
+						  <p>30秒內最多只能取消3次，超過將暫停您的預約權利30秒</p>
+						</div> -->
 
 				</section>
 
@@ -355,10 +365,41 @@
 				</script>
 				<script src="/js/popper.min.js"></script>
 				<script src="/js/bootstrap.min.js"></script>
-				<script src="/js/vendor/holder.min.js"></script>
+ 				<script src="/js/vendor/holder.min.js"></script>
+
+ <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script>
+	var totalTime=10;
+	
+	
+  function showTime()
+  {
+  								totalTime -= 1;
+  							$("#timeCount").html("倒數:"+totalTime);
+      
+      if(totalTime==0){
+    	  $("#timeCount").remove()
+    	  
+    	  }
+      
+      
+      //每秒執行一次,showTime()
+      setTimeout("showTime()",1000);
+  }
+
+  //執行showTime()
+  showTime();
+	
+	
+  
+  </script>
+  
 				<script>
 					//預約訂單按鈕
+					var id=null;
 					$('#checkOrder').click(function () {
+						$('.cleanColumn').remove();
 						$.getJSON('/reservations/reservation/member', {}, function (data) {
 							$.each(data, function (i, reservation) {
 								var cell2 = $('<td id="cellEdit2" class="inputContent"></td>').append(reservation.appointDate);
@@ -369,13 +410,35 @@
 								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
 								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
 								var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
-								var row = $('<tr id="rowNumber' + reservation.id + '"></tr>').append([cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]);
+								var cell10=$('<td class="deleteButton"></td>').text(reservation.id)
+								if(reservation.payment=="未付款"){
+								var cell11 = $('<button type="button" class="btn btn-secondary aaa">取消預約</button>')
+									
+								}
+								var row = $('<tr style="display: none;"></tr><tr class="cleanColumn" id="rowNumber' + reservation.id + '"></tr>').append([cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9,cell10,cell11]);
 								$('th').attr({ 'style': 'padding:auto' });
-
 								$('#showReservation').append(row);
 							})
+							
+							
+							
+							
+					$(".aaa").click(function(){
+						/* $(function() {
+						    $( "#dialogSalon" ).dialog();
+						  }); */
+
+						
+						var catchIdValue = $(this).parents('tr').find('.deleteButton').text();
+						  $(this).parents('tr').remove();
+						  $(this).append('<button id="checkout" type="button" class="btn btn-common">現在結帳</button>');
+						console.log(catchIdValue);
+					})
+					
+					
 						});
 					})
+					
 
 					$("#checkout").click(function () {
 						$.ajax({

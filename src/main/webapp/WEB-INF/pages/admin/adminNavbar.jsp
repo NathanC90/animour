@@ -120,7 +120,7 @@
 <!--         </li> -->
 <li class="nav-item">
           <a class="nav-link" href="/salonAdminReservation" title="沙龍管理" data-toggle="tooltip" data-placement="right" data-container="body">
-            <span class="icon icon-baidu"></span>
+            <img src="https://cdn0.iconfinder.com/data/icons/housicon/512/bathroom-512.png" width="18"/></span>
             <small class="iconav-nav-label hidden-md-up">沙龍管理</small>
           </a>
         </li>
