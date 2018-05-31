@@ -313,7 +313,7 @@
 							sendMsg();
 							$('#msgArea').val('');
 						});
-						$("#msgArea").on('submit', function (e) {
+						$("#msgForm").on('submit', function (e) {
 							e.preventDefault();
 						});
 						$("#connect").click(function () {

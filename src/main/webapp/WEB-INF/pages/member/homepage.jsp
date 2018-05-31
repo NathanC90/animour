@@ -365,9 +365,9 @@
 				</script>
 				<script src="/js/popper.min.js"></script>
 				<script src="/js/bootstrap.min.js"></script>
- 				<script src="/js/vendor/holder.min.js"></script>
+ 				<!--<script src="/js/vendor/holder.min.js"></script>-->
 
- <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+ <!--<script src="//code.jquery.com/jquery-1.9.1.js"></script>-->
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script>
 	var totalTime=10;

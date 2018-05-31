@@ -117,8 +117,8 @@
 						<div class="col-md-3">
 							<div class="sidebar-area">
 								<aside class="widget search-bar wow fadeIn" data-wow-delay="0.3s">
-									<form>
-										<input type="text" placeholder="Search" class="form-control">
+									<form id="accountForm">
+										<input id="account" name="account" type="text" placeholder="請輸入會員帳號..." class="form-control">
 										<button type="submit">
 											<i class="fa fa-search" style="color:#9c3"></i>
 										</button>
@@ -366,9 +366,61 @@
 						$('.form-check-input').prop("checked", false);
 						pageNumber = 1;
 						$('#each').empty();
+						$('#account').val("");
 							initSubmitForm();
 					});
 
+					// 會員帳號查詢
+					$("#accountForm").submit(function(event){
+						event.preventDefault();
+
+						$.ajax({
+								url: '/halfway/bymember',
+								type: 'GET',
+								data: {"account":$("#account").val()},
+								contentType: "application/json",
+								success:
+									function (datas) {
+										var docFragment = $(document.createDocumentFragment());
+										$.each(datas.data, function (idx, animal) {
+											var fileName = animal.fileName;
+											var img = $("<img />").attr({ 'src': '/showAnimalImage?fileName=' + fileName, 'width': '100px', 'alt': animal.id }).addClass('card-img-top');
+
+											var p1 = $("<p></p>").attr({ 'style': 'padding: 0px' }).addClass('card-text').append(animal.status);
+											var li1 = $("<li></li>").attr({ 'style': 'margin: 0px' }).append(['編號:' + animal.id]);
+											var li2 = $("<li></li>").append(['綽號:' + animal.name]);
+											var li3 = $("<li></li>").append(['種類:' + animal.specie]);
+											var li4 = $("<li></li>").append(['發現日期:' + animal.found]);
+											var li5 = $("<li></li>").append(['縣市:' + animal.city.name]);
+											var ul = $("<ul></ul>").attr({ 'style': 'margin:0; padding:0; list-style:none;' }).append([li1, li2, li3, li4, li5]);
+											var uploadObj = new Date(animal.upload);
+											var small = $("<small></small>").addClass('text-muted').append(uploadObj.toLocaleString());
+
+											var button1 = $("<button></button>").attr({ 'type': 'button', 'onclick': "location.href='/halfway/detail?id=" + animal.id + "'" }).addClass('btn btn-common btn-sm mt-10').append("詳情");
+											var eachdiv5 = $("<div></div>").attr({ 'id': 'eachdiv5' }).addClass('btn-group').append(button1);
+											var eachdiv4 = $("<div></div>").attr({ 'id': 'eachdiv4', 'style': 'max-height: 100px' }).addClass('d-flex justify-content-between align-items-center').append(eachdiv5);
+											var eachdiv3 = $("<div></div>").attr({ 'id': 'eachdiv3' }).addClass('card-body').append([p1, ul, small, eachdiv4]);
+											var eachdiv2 = $("<div></div>").attr({ 'id': 'eachdiv2' }).addClass('card mb-3 box-shadow').append([img, eachdiv3]);
+
+											var eachdiv1 = $("<div></div>").attr({ 'class': 'col-md-3', 'id': 'eachdiv1' }).append(eachdiv2);
+											docFragment.append(eachdiv1);
+											console.log(animal.name);
+										});
+										$('#each').empty();
+										$('#each').append(docFragment);
+									}
+							});
+					})
+
+
+
+
+
+
+
+
+
+					// 複合查詢開始
 					$('.form-check-input').change(function () {
 						//讀出所有被勾選checkbox的值
 						var cityitems = [];
@@ -423,7 +475,6 @@
 								dataType: 'json',
 								contentType: "application/json",
 								success:
-									//window.location.href = "http://localhost:8080/halfway";
 									function (datas) {
 										var docFragment = $(document.createDocumentFragment());
 										$.each(datas, function (idx, animal) {

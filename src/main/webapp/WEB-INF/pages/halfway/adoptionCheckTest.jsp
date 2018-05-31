@@ -150,6 +150,7 @@
                                                                                     <li>
                                                                                         <a href="/user/${adoption.member.account}">${adoption.member.account}</a>
                                                                                     </li>
+
                                                                                     <li>
                                                                                         ${adoption.member.nickname}
                                                                                     </li>
@@ -235,7 +236,7 @@
                                                         <th>飼主姓名</th>
                                                         <th>動物名稱</th>
                                                         <th>所在縣市</th>
-                                                        <th>剩餘時間</th>
+                                                        <th>截止時間</th>
                                                         <th>支付押金/完成認養</th>
                                                     </tr>
                                                 </thead>
@@ -244,14 +245,14 @@
                                                         <input type="hidden" class="passenddate" value="${getrecord.endDate}">
                                                         <tr class="displaycancel">
                                                             <th scope="row">
-                                                                <a href="">${getrecord.adoption.animal.member.account}</a>
+                                                                <a href="/user/${getrecord.adoption.animal.member.account}">${getrecord.adoption.animal.member.account}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.member.name}</td>
                                                             <th scope="row">
-                                                                <a href="">${getrecord.adoption.animal.name}</a>
+                                                                <a href="/halfway/detail?id=${getrecord.adoption.animal.id}">${getrecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${getrecord.adoption.animal.city.name}</td>
-                                                            <td class="getting-started"></td>
+                                                            <td>${getrecord.adoption.acceptRecord.endDate}</td>
                                                             <td>
                                                                 <c:choose>
                                                                     <c:when test="${!getrecord.depositMember}">
@@ -263,7 +264,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/get/${getrecord.id}'">
+                                                                        <button id="todetail${getrecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location ='/halfway/toacceptrecord/get/${getrecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成認養程序</span>
                                                                         </button>
@@ -298,7 +299,7 @@
                                                         <th>會員姓名</th>
                                                         <th>動物名稱</th>
                                                         <th>所在縣市</th>
-                                                        <th>剩餘時間</th>
+                                                        <th>截止時間</th>
                                                         <th>支付押金/完成認養</th>
                                                     </tr>
                                                 </thead>
@@ -307,14 +308,14 @@
                                                         <input type="hidden" class="passenddate" value="${giverecord.endDate}">
                                                         <tr class="displaycancel">
                                                             <th scope="row">
-                                                                <a href="">${giverecord.adoption.member.account}</a>
+                                                                <a href="/user/${giverecord.adoption.member.account}">${giverecord.adoption.member.account}</a>
                                                             </th>
                                                             <td>${giverecord.adoption.member.name}</td>
                                                             <th scope="row">
-                                                                <a href="">${giverecord.adoption.animal.name}</a>
+                                                                <a href="/halfway/detail?id=${giverecord.adoption.animal.id}">${giverecord.adoption.animal.name}</a>
                                                             </th>
                                                             <td>${giverecord.adoption.animal.city.name}</td>
-                                                            <td class="getting-started"></td>
+                                                            <td>${giverecord.adoption.acceptRecord.endDate}</td>
                                                             <td>
                                                                 <c:choose>
                                                                     <c:when test="${!giverecord.depositOwner}">
@@ -326,7 +327,7 @@
                                                                         </div>
                                                                     </c:when>
                                                                     <c:otherwise>
-                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location.href='http://localhost:8080/halfway/toacceptrecord/give/${giverecord.id}'">
+                                                                        <button id="todetail${giverecord.id}" class="btn btn-common" data-toggle="modal" onclick="window.location='/halfway/toacceptrecord/give/${giverecord.id}'">
                                                                             <i class="fa fa-share"></i>
                                                                             <span>前往完成送養程序</span>
                                                                         </button>
@@ -379,8 +380,21 @@
                 <script>
 
                     $(document).ready(function () {
+                        //alert($("#animal").val());
+                        // $.ajax({
+                        //     url: '/halfway/adoption/' + $("#animal").val(),
+                        //     type: 'GET',
+
+                        // }).done(function (datas) {
+                        //     //alert($('#upload').val())
+                        //     var uploadObj = new Date(datas.upload);
+                        //     $('#upload').append(uploadObj.toLocaleString());
+                        // });
+
+
+
                         $('.displaycancel').css('display', '').css('hover', '');
-                      
+
 
                         var count = $("#adoptioncount").val()
                         //alert(count);

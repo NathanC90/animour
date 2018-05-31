@@ -463,7 +463,7 @@
 									//contentType: false,
 									//processData: false,
 									success: function (data) {
-										window.location.href = "http://localhost:8080/halfway";
+										window.location = "/halfway";
 									}
 								})
 							})
