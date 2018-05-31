@@ -137,7 +137,7 @@
 				-->
 				<!-- boutton check-->
 				<div id="divPicture">
-										<img id="picture1" alt="路人" src="/images/reservation/serviceContent/力.jpeg" height="500px" width="400px">					
+										<img id="picture1" alt="路人" src="/images/reservation/serviceContent/力力力.jpg" height="400px" width="400px">					
 					<img id="picture2" alt="路人" src="/images/reservation/serviceContent/設計師-女.jpeg" height="400px" width="400px" style="display: none;">
 <img id="picture3" alt="路人" src="/images/reservation/serviceContent/設計師-男.jpeg" height="400px" width="400px" style="display: none;">
 <!-- 					<button type="button" class="btn btn-primary" data-toggle="modal"
@@ -405,7 +405,6 @@ $('#price').append([cell6]);
 					data1 = new FormData(document.getElementById("myform"));
 				$('#engineer').change(function(){
 					var engin=$("#engineer").val();
-					console.log(cell1.text())
 					var aaa="飛影"
 					if(engin==aaa){
 						$('#picture1').remove();
@@ -429,7 +428,16 @@ $('#price').append([cell6]);
 							$('#divPicture').append('<img id="picture3" alt="路人" src="/images/reservation/serviceContent/男模特4.jpeg" height="400px" width="400px">');
 						 
 					 }
-					
+					//json 格式
+// 					 var aaa='{"jjjj":"dddd","ddd":"ddd","ddd":"ddd"}'
+					 /* data: {
+						 account : account,
+						 pk  :  pk
+					 } */
+ 					var value=$('#engineer option:selected').text();
+					var dateValue=$("#meeting").val();
+					 var NameAndDate={"aaa2":value,"bbb2":dateValue}
+					 var hope = JSON.stringify(NameAndDate);
 					function toJson(formData) {
 						var object = {};
 						formData.forEach(function(value, key) {
@@ -439,21 +447,17 @@ $('#price').append([cell6]);
 						console.log(json);
 						return json;
 					};
- 					var value=$('#engineer option:selected').text();
-					$.ajax({
-						url : '/reservationForms/getDesignerTime',
-						data : {"key":value},
-						contentType : "application/json",
-						dataType : "json"
-					}).done(function(datas) {
+					
 						$("#sectionTime option").remove();
 
-						$.getJSON('/reservationForms/getFreeDesignerTime', {"key":value},
+						$.getJSON('/reservationForms/getFreeDesignerTime', {"aaa2":value,"bbb2":dateValue},
 							function(data){
+							var cell0=$("<option></option>").text("請選擇時段");
+							$('#sectionTime').append([cell0]);
+
 						$.each(data, function(i, freeTime) {
-							console.log(freeTime.sectionTime);
+							console.log(freeTime.frontTime);
 							var cell1 = $("<option></option>").text(freeTime.frontTime);
-							
 							$('#sectionTime').append([cell1]);
 
 						})
@@ -461,7 +465,7 @@ $('#price').append([cell6]);
 					})
 						
 						
-					})					
+										
 					
 					
 					$.getJSON('/reservationForms/getServiceCotent', {},function(data){
@@ -469,6 +473,8 @@ $('#price').append([cell6]);
 						//sectionTime
 				$('#sectionTime').change(function() {
 					$('#servicer option' ).remove();
+					var cell0=$("<option></option>").text("請選擇服務");
+					$('#servicer').append(cell0);
 			$.each(data, function(i, serviceCotent) {
 				if(serviceCotent.designer.id===1){
 				var cell1 = $("<option></option>").text(

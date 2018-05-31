@@ -292,8 +292,8 @@
 														<th>消費金額</th>
 														<th>付款狀態</th>
 														<th>會員帳號</th>
-														<th>id</th>
-														<th id ="timeCount"></th>
+														<th id="idHidden">id</th>
+														<th id =""></th>
 													</tr>
 												</thead>
 											</table>
@@ -410,13 +410,14 @@
 								var cell7 = $('<td id="cellEdit7" class="inputContent"></td>').text(reservation.price);
 								var cell8 = $('<td id="cellEdit8" class="inputContent"></td>').text(reservation.payment)
 								var cell9 = $('<td id="" class="inputContent"></td>').text(reservation.member.account)
-								var cell10=$('<td class="deleteButton"></td>').text(reservation.id)
+								var cell10=$('<td style="display: none;" class="deleteButton"></td>').text(reservation.id)
 								if(reservation.payment=="未付款"){
 								var cell11 = $('<button type="button" class="btn btn-secondary aaa">取消預約</button>')
 									
 								}
 								var row = $('<tr style="display: none;"></tr><tr class="cleanColumn" id="rowNumber' + reservation.id + '"></tr>').append([cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9,cell10,cell11]);
 								$('th').attr({ 'style': 'padding:auto' });
+								$('#idHidden').attr({ 'style': 'display: none;' });
 								$('#showReservation').append(row);
 							})
 							
@@ -430,8 +431,17 @@
 
 						
 						var catchIdValue = $(this).parents('tr').find('.deleteButton').text();
+						  
 						  $(this).parents('tr').remove();
-						  $(this).append('<button id="checkout" type="button" class="btn btn-common">現在結帳</button>');
+						  $.ajax({
+								url: '/reservations/reservation/' + catchIdValue,
+								type: 'delete',
+								success: function (result) {
+									console.log("It's work")
+								}
+
+							})
+						  
 						console.log(catchIdValue);
 					})
 					

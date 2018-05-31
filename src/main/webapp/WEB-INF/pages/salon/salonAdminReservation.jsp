@@ -139,7 +139,7 @@
 							</tbody>
 						</table>
 					</div>
-					<form style="display: inline" id="form1">
+					<form style="display: none" id="form1">
 
 
 
@@ -304,14 +304,13 @@
 			})
 
 
-
 			$(document).on("click", '#editButton', function () {
 				var catchIdValue = $(this).parents('tr').find('#NewEdit').text();
 
 				// var data1 = new FormData(document.getElementById("myform1"));
 				$(this).attr({ 'style': 'display: none' });
 				$(this).parents('td').find('#deleteButton').remove();
-				var button = $('<button type="button" id="editFinish" class="btn btn-outline-primary" title="修改"><span style="font-size:0.5px">done</span>')
+				var button = $('<button type="button" id="" class="btn btn-outline-primary editFinish" title="修改"><span style="font-size:0.5px">done</span>')
 				$(this).parent().append(button);
 				$(this).parents('tr').find('.inputContent').on("dblclick", function () {
 
@@ -339,7 +338,9 @@
 					window.$currEditing = null;
 				}
 				var formData;
-				$(document).on("click", '#editFinish', function () {
+// 				$(document).on("click", '#editFinish', function () {
+$('.editFinish').click(function(){
+	
 
 					valueId = $(this).parents("tr").find('#NewEdit').text();
 					valueReservationDate = $(this).parents("tr").find('#cellEdit2').text();
@@ -365,43 +366,32 @@
 					$('#form1').append([cell, cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8])
 					// cell1, cell2, cell3, cell4, cell5, cell6, cell7
 
-					var json;
-					var object = {};
-					formData = new FormData(document.getElementById("form1"));
+					
+				var json;
+				var object = {};
+				formData = new FormData(document.getElementById("form1"));
+				
+				$.ajax({
+					url: '/reservations/reservation/' + catchIdValue,
+					contentType: false,
+					processData: false,
+					type: 'post',
+					data: formData,
+					success: function (result) {
+					}
 
-					// formDate.forEach 把資料改成[array]:values格式再轉成jason
-					// function toJson(formData) {
-					// 	var object = {};
-					// 	formData.forEach(function (key, value) {
+				}).done(function (datas) {
+  						$('#form1 input').remove();
 
-					// 		object[key] = value;
-					// 	});
-					// 	json = JSON.stringify(object, null);
-					// 	return json;
-					// };
-					// console.log(toJson(formData))
-					// $(document).on("click", '#confirmEdit', function () {
-					// 	for (var pair of formData.entries()) {
-					// 		console.log(pair[0] + ',' + pair[1]);
-
-					// 	}
-					$.ajax({
-						url: '/reservations/reservation/' + catchIdValue,
-						contentType: false,
-						processData: false,
-						type: 'post',
-						data: formData,
-						// dataType: "json",
-						success: function (result) {
-						}
-
-					}).done(function (datas) {
-						$('#form1').remove();
-
-						console.log('變更成功');
-					});
-				})
+					console.log('變更成功');
+				
+				
 			})
+				})
+				
+				
+				});
+				
 					// })
 		</script>
 

@@ -24,6 +24,7 @@ import org.iii.ee100.animour.salon.dao.ReservationDao;
 import org.iii.ee100.animour.salon.dao.ServiceContentDao;
 import org.iii.ee100.animour.salon.entity.Designer;
 import org.iii.ee100.animour.salon.entity.FreeTime;
+import org.iii.ee100.animour.salon.entity.NameAndDate;
 import org.iii.ee100.animour.salon.entity.Reservation;
 import org.iii.ee100.animour.salon.entity.ReservationTime;
 import org.iii.ee100.animour.salon.entity.ServiceContent;
@@ -69,6 +70,11 @@ public class ReservationService extends GenericService<Reservation> {
 		
 	}
 	
+	public ArrayList<FreeTime> getFreeDate(Date appointDate) {
+		return Lists.newArrayList(freeTimeDao.findByAppointDate(appointDate));
+		
+	}
+	
 	
 	
 	public FreeTime updateBReservationStatus(FreeTime freeTime) {
@@ -92,9 +98,13 @@ public class ReservationService extends GenericService<Reservation> {
 		return Lists.newArrayList(designerDao.findAll());
 
 	}
-	
+	//找設計師和有空時間
 	public ArrayList<FreeTime> getFreeDesignerTime(String designer,String status){
 		return Lists.newArrayList(freeTimeDao.findByDesignerAndStatus(designer, status));
+	}
+	
+	public ArrayList<FreeTime> getFreeDesignerTimeAndDate(String designer,String status,Date appointDate){
+		return Lists.newArrayList(freeTimeDao.findByDesignerAndStatusAndAppointDate(designer, status, appointDate));
 	}
 
 	public ArrayList<ReservationTime> getAllReservationTime() {
@@ -132,6 +142,39 @@ public class ReservationService extends GenericService<Reservation> {
 		}
 		return map;
 	}
+	//預約班表生成
+	public void makeDate() throws ParseException {
+		int i=0;
+
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		List<FreeTime> freeTimeList = new ArrayList<>();
+		freeTimeList=freeTimeDao.findByStatus("free");
+		for(int r=1;r<=7;r++) {
+	        Date date=new Date();//取時間
+	        Calendar calendar = new GregorianCalendar();
+	        calendar.setTime(date);
+	        	i++;
+	        	calendar.add(calendar.DATE,i);//把日期往後增加一天.整數往後,負數往前
+	        	for(int j=1;j<=6;j++) {
+	        		date=calendar.getTime(); //這個就是時間往後推一天的结果
+	        		String dateString = formatter.format(date);
+	        		date=formatter.parse(dateString);
+	        		for(FreeTime freeTime:freeTimeList) {
+	        			if(!freeTime.getAppointDate().equals(date)) {
+	        				freeTime.setAppointDate(date);
+	    					freeTimeDao.save(freeTime);
+
+	        			}
+	        			
+	        		}
+	        	}
+	        	
+	        	
+	        }
+	    
+	}
+
 	
 	//判斷日期是否重複並改變狀態
 	public void freeTime(Reservation reservation) {
