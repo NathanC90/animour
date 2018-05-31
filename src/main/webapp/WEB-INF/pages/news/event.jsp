@@ -130,11 +130,11 @@
                	<!-- Button code -->
 					<div title="Add to Calendar" class="addeventatc btn btn-outline btn-radius btn-xs" style="float:right; border:2px solid #9C3; font-family:微軟正黑體">
 					    <a>新增活動到行事曆
-					    <span class="start">08/31/2018 08:00 AM</span>
-					    <span class="end">09/03/2018 10:00 AM</span>
-					    <span class="timezone">America/Los_Angeles</span>
-					    <span class="title">Summary of the event</span>
-					    <span class="description">Description of the event</span>
+					    <span class="start">${oneEvent.eventDate}</span>
+					    <span class="end">${oneEvent.publishExpire}</span>
+					    <span class="timezone">${oneEvent.eventDate}</span>
+					    <span class="title">${oneEvent.subject}</span>
+					    <span class="description">${oneEvent.content}</span>
 					    </a>
 					</div>
                	<!-- Add to Google Calendar ends -->
@@ -208,24 +208,7 @@
 <!--                   	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png" width="15 px" style="margin-right: 10px"/>分享至臉書</a> -->
 		
 		<!-- Share Page to Facebook starts -->
-<!--               	<div  -->
-<!--               		class="fb-share-button"  -->
-<!--               		data-href="http://localhost:8080/news/event"  -->
-<!--               		data-layout="button"  -->
-<!--               		data-size="large"  -->
-<!--               		data-mobile-iframe="true"> -->
-<!--               			<a  -->
-<!--               				target="_blank"  -->
-<!--               				href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8080%2Fnews%2Fevent&amp;src=sdkpreparse"  -->
-<!--               				class="fb-xfbml-parse-ignore btn btn-outline btn-radius mt-20 btn-lg btn-block" -->
-<!--               				style="margin:10px"> -->
-<!--               					<img  -->
-<!--               						src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/F_icon.svg/2000px-F_icon.svg.png"  -->
-<!--               						width="15 px"  -->
-<!--               						style="margin-right: 10px"/> -->
-<!--               							分享至臉書 -->
-<!--               			</a> -->
-<!--               	</div> -->
+
             <!--Facebook Url-->
               	<div 
               		class="fb-share-button" 
@@ -278,8 +261,8 @@
 			        </form>
 			      </div>
 			      <div class="modal-footer">
-			        <button type="button" class="btn btn-primary">Close</button>
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Send Message</button>
+			        <button type="button" class="btn btn-primary">取消</button>
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">送出</button>
 			      </div>
 			    </div>
 			  </div>
@@ -425,11 +408,11 @@
 <script type="text/javascript">
 window.addeventasync = function(){
     addeventatc.settings({
-        <!-- appleical  : {show:true, text:"Apple Calendar"}, -->
+        appleical  : {show:false, text:"Apple Calendar"},
         google     : {show:true, text:"Google日曆"},
-        <!-- outlook    : {show:true, text:"Outlook"}, -->
-        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
-        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+        outlook    : {show:false, text:"Outlook"},
+        outlookcom : {show:false, text:"Outlook.com <em>(online)</em>"},
+        yahoo      : {show:false, text:"Yahoo <em>(online)</em>"}
     });
 };
 </script>
