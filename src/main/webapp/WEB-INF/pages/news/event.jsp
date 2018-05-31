@@ -425,11 +425,11 @@
 <script type="text/javascript">
 window.addeventasync = function(){
     addeventatc.settings({
-        <!-- appleical  : {show:true, text:"Apple Calendar"}, -->
+      //  appleical  : {show:false, text:"Apple Calendar"},
         google     : {show:true, text:"Google日曆"},
-        <!-- outlook    : {show:true, text:"Outlook"}, -->
-        outlookcom : {show:true, text:"Outlook.com <em>(online)</em>"},
-        yahoo      : {show:true, text:"Yahoo <em>(online)</em>"}
+        // outlook    : {show:false, text:"Outlook"},
+        // outlookcom : {show:false, text:"Outlook.com <em>(online)</em>"},
+        // yahoo      : {show:false, text:"Yahoo <em>(online)</em>"}
     });
 };
 </script>
