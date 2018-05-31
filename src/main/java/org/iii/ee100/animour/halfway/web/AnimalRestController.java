@@ -108,7 +108,7 @@ public class AnimalRestController {
 	// 複合查詢
 	@RequestMapping(value = "/queryTest", method = { RequestMethod.POST })
 	public List<Animal> specificationQuery(@RequestBody QueryFormHalfway queryform, PageInfo pageinfo, Model model) {
-		List<Map<String, Object>> lastspec = new ArrayList<>(); 
+		List<Map<String, Object>> lastspec = new ArrayList<>();
 
 		// 接收種類的 checkbox
 		Map<String, Object> speciemap = new IdentityHashMap<>();
@@ -118,7 +118,7 @@ public class AnimalRestController {
 			}
 		}
 		lastspec.add(speciemap);
-		
+
 		// 接收縣市的 checkbox
 		Map<String, Object> citymap = new IdentityHashMap<>();
 		if (queryform.getCityitems() != null && queryform.getCityitems().size() != 0) {
@@ -136,7 +136,7 @@ public class AnimalRestController {
 			}
 		}
 		lastspec.add(gendermap);
-		
+
 		// 接收體型的 checkbox
 		Map<String, Object> sizemap = new IdentityHashMap<>();
 		if (queryform.getSizeitems() != null && queryform.getSizeitems().size() != 0) {
@@ -145,7 +145,7 @@ public class AnimalRestController {
 			}
 		}
 		lastspec.add(sizemap);
-		
+
 		// 接收年齡的 checkbox
 		Map<String, Object> agemap = new IdentityHashMap<>();
 		if (queryform.getAgeitems() != null && queryform.getAgeitems().size() != 0) {
@@ -154,10 +154,10 @@ public class AnimalRestController {
 			}
 		}
 		lastspec.add(agemap);
-		
+
 		Specification<Animal> spec = null;
 		int count = 1;
-		
+
 		for (Map<String, Object> m : lastspec) {
 			if (m.size() != 0) {
 				spec = Specifications.where(SpecificationHalfway.containsEqualsOr(m));
@@ -165,7 +165,7 @@ public class AnimalRestController {
 			}
 			count++;
 		}
-		
+
 		for (int i = count; i < lastspec.size(); i++) {
 			if (lastspec.get(i).size() != 0) {
 				spec = Specifications.where(spec).and(SpecificationHalfway.containsEqualsOr(lastspec.get(i)));
@@ -184,14 +184,15 @@ public class AnimalRestController {
 
 		return animals;
 	}
-	
+
 	@RequestMapping(path = { "/halfway/animal/chart" }, method = RequestMethod.GET, produces = { "application/json" })
 	public Map<String, Integer> chart() {
 		return animalservice.chart();
 	}
-	
+
+	// 呼叫 vision API
 	@RequestMapping(value = { "/vision" }, method = RequestMethod.GET)
-	public ResponseEntity<?> visionTest(@RequestParam(value="imageUrl") String imageUrl) {
+	public ResponseEntity<?> visionTest(@RequestParam(value = "imageUrl") String imageUrl) {
 		String response = null;
 		try {
 			response = GoogleVisionUtils.visionApiRequest(imageUrl);
@@ -201,4 +202,19 @@ public class AnimalRestController {
 		return new ResponseEntity<Object>(response, HttpStatus.OK);
 	}
 
+	// 依照會員帳號查詢
+	@RequestMapping(value = { "/halfway/bymember" }, method = RequestMethod.GET)
+	public ResponseEntity<?> findByMemberAccount(@RequestParam(value="account") String account , PageInfo pageinfo) {
+		if (pageinfo.getPageNumber() == null) {
+			pageinfo.setPageNumber(defaultPageInfo.getPageNumber());
+		}
+		if (pageinfo.getSize() == null) {
+			pageinfo.setSize(defaultPageInfo.getSize());
+		}
+		Page<Animal> page = animalservice.getAnimalPageByMemberAccount(memberService.getOneByAccount(account).getId(), pageinfo); // pageNumber=頁數 pageSize=一頁幾筆資料
+		List<Animal> animals = page.getContent();
+		response.setData(animals);
+
+		return new ResponseEntity<Object>(response, HttpStatus.OK);
+	}
 }

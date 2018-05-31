@@ -76,7 +76,7 @@ public class AcceptRecord extends GenericEntity {
 	@Column(name = "FEEDBACK_IMAGE")
 	private String feedbackImages;
 
-	// 認養程序是否成功
+	// 認養程序是否成功，並判斷有無被檢舉
 	@Column(name = "SUCCESS")
 	private Boolean success;
 
@@ -91,6 +91,8 @@ public class AcceptRecord extends GenericEntity {
 	// 認養人ID
 	@Column(name = "MEMBER_ID")
 	private Long memberId;
+	
+	
 
 	@OneToOne
 	private Adoption adoption;

@@ -37,36 +37,37 @@ public class ForumService extends GenericService<Article> {
 	@Autowired
 	private CategoryDao categoryDao;
 
-	public void setTransientForPage(Page<Article> articleList) {
+	public void setTransientForIterable(Iterable<Article> articleList) {
 		for (Article article : articleList) {
 			article.setCommentLength(commentDao.findByArticleIdOrderByUpdateTime(article.getId()).size());
 			article.getCategory().setArticleQuantity(
 					articleDao.findByCategoryIdAndStatus(article.getCategory().getId(), !false).size());
 			article.setThumbsQuantity(thumbsUpDao.findByArticleIdAndThumb(article.getId(), true).size());
 		}
+		articleDao.save(articleList);
 	}
 
 	public Page<Article> getPage(PageRequest pageable) {
 		Page<Article> articleList = articleDao.findAll(pageable);
-		setTransientForPage(articleList);
+		setTransientForIterable(articleList);
 		return articleList;
 	}
 
 	public Page<Article> getPageByPostTime(PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByOrderByPostTimeDesc(pageable);
-		setTransientForPage(articleList);
+		setTransientForIterable(articleList);
 		return articleList;
 	}
 
 	public Page<Article> getPageSearchByCategoryId(Long categoryId, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findByCategoryId(categoryId, pageable);
-		setTransientForPage(articleList);
+		setTransientForIterable(articleList);
 		return articleList;
 	}
 
 	public Page<Article> getPageSearchBySubject(String subject, PageRequest pageable) {
 		Page<Article> articleList = articleDao.findBySubjectContainingIgnoreCaseAndStatus(subject, pageable, !false);
-		setTransientForPage(articleList);
+		setTransientForIterable(articleList);
 		return articleList;
 	}
 
@@ -143,7 +144,10 @@ public class ForumService extends GenericService<Article> {
 
 	// getArticlesByMemberId
 	public List<Article> getArticlesByMemberId(Long Id) {
-		return articleDao.findByMemberIdAndStatus(Id, !false);
+		
+		List<Article> articleList = articleDao.findByMemberIdAndStatus(Id, !false);
+		setTransientForIterable(articleList);
+		return articleList;
 	}
 
 	// public Map<String, Integer> findByStatusOrderByThumbsQuantityDesc() {

@@ -106,7 +106,8 @@
 									<th>性別</th>
 									<th>張貼日期</th>
 									<th>更新日期</th>
-									<th>會員帳號</th>
+									<th>飼主帳號</th>
+									<th>認養會員帳號</th>
 									<th>狀態</th>
 									<th>管理</th>
 								</tr>
@@ -115,7 +116,7 @@
 							</tbody>
 						</table>
 					</div>
-					
+
 					<form id="statusForm">
 						<input type="hidden" name="id">
 						<input type="hidden" name="status">
@@ -123,7 +124,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- 每頁不同內容從此結束 -->
 
@@ -153,10 +154,10 @@
 
 					return year + '/' + monthNames[monthIndex] + '/' + day + ' ';
 				}
-				
-				
-				
-				$.getJSON('/halfway/animal', {"pageNo": 1, "size": 20}, function (data) {
+
+
+
+				$.getJSON('/halfway/animal', { "pageNo": 1, "size": 20 }, function (data) {
 					console.log(data);
 					$('#table1>tbody').empty();
 					$.each(data.data, function (i, animal) {
@@ -167,30 +168,46 @@
 						var cell4 = $("<td></td>").text(animal.gender);//性別
 						var cell5 = $("<td></td>").text(formatDate(new Date(animal.found)));//日期
 						var cell6 = $("<td></td>").text(formatDate(new Date(animal.upload)));//更新
-						var cell7 = $("<td></td>").text(animal.member.account);//會員帳號
+						var cell7 = $("<td></td>").text(animal.member.account);//飼主帳號
+						var cell10 = $("<td></td>").attr({ 'id': 'setMember'+animal.id }).text("無");//認養會員帳號
+						var cell8 = $("<td></td>").text(animal.status).attr({ 'id': 'td_status' + animal.id });
 
-						var cell8 = $("<td></td>").text(animal.status).attr({'id':'td_status'+animal.id});
 
-						
+
 						if (animal.disabled == false) {
 							var span01 = $('<span></span>').addClass('icon icon-eye');
 						} else {
 							var span01 = $('<span></span>').addClass('icon icon-erase');
 						}
-						
-						var button01 = $('<button></button>').attr({ 'type': 'button', 'title': '上架/下架', 'status':animal.disabled ,'id':'button'+animal.id, 'value':animal.id}).addClass('btn btn-outline-primary').append(span01);
+
+						var button01 = $('<button></button>').attr({ 'type': 'button', 'title': '上架/下架', 'status': animal.disabled, 'id': 'button' + animal.id, 'value': animal.id }).addClass('btn btn-outline-primary').append(span01);
 						var divb1 = $('<div></div>').addClass('btn-group').append([button01]);
 						var divf1 = $('<div></div>').addClass('flextable-item').append(divb1);
 
 						var cell9 = $('<td></td>').append(divf1);
 
-						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell8, cell9]);
+						var row = $('<tr></tr>').append([cell1, cell2, cell3, cell4, cell5, cell6, cell7, cell10, cell8, cell9]);
 
 						$('#table1>tbody').append(row);
 						$('#table1').trigger("update");
 
-					});
 
+						$.getJSON('/halfway/acceptrecord', { "pageNo": 1, "size": 20 }, function (datas) {
+							$.each(datas.data, function (i, record) {
+									$("#setMember"+record.adoption.animal.id).text(record.adoption.member.account);
+
+								if (record.success == true){
+									$("#td_status"+ record.adoption.animal.id).text("認養成功");
+								} else if (record.success == false){
+									$("#td_status"+ record.adoption.animal.id).text("已被檢舉");
+								} else {
+									$("#td_status"+ record.adoption.animal.id).text("程序進行中");
+								}
+							});							
+
+						});
+
+					});
 
 				}	 //end getJSON
 				)
@@ -200,50 +217,51 @@
 
 		</script>
 		<script>
-		$(document).ready(function () {
-		$(document).on('click', 'button[title="上架/下架"]', function () {
-			var id=$(this).val();
-			$('input[name="id"]').attr('value', $(this).val());
-			if ($(this).attr('status') == '開放認養'){
-				$('input[name="status"]').attr('value', '開放認養');
-				console.log('status:'+$(this).attr('status'));
+			$(document).ready(function () {
 
-			}
-			else{
-				$('input[name="status"]').attr('value', '下架');					
-			}
-			console.log($(this).val());
-			console.log('status:'+$(this).attr('status'));
-			console.log('id:'+$(this).attr('id'))
-
-			var formData = new FormData(document.getElementById("statusForm"));
-			
-			for(var pair of formData.entries()){
-				console.log(pair[0]+','+pair[1])
-			}
-						
-			$.ajax({
-				type: "POST",
-				url: "/deleteanimal",
-				data: formData,
-				contentType: false,
-				processData: false,
-				success: function (result) {
-					$('#button' +result.id).attr('status', result.status);
-					$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
-					if(result.status=='開放認養'){
-					$('#td_status'+result.id).text('開放認養')
-					}
-					else{
-						$('#td_status'+result.id).text('下架')
+				$(document).on('click', 'button[title="上架/下架"]', function () {
+					var id = $(this).val();
+					$('input[name="id"]').attr('value', $(this).val());
+					if ($(this).attr('status') == '開放認養') {
+						$('input[name="status"]').attr('value', '開放認養');
+						console.log('status:' + $(this).attr('status'));
 
 					}
-					alert('#button' +result.id + ' change its status')
-				}
+					else {
+						$('input[name="status"]').attr('value', '下架');
+					}
+					console.log($(this).val());
+					console.log('status:' + $(this).attr('status'));
+					console.log('id:' + $(this).attr('id'))
+
+					var formData = new FormData(document.getElementById("statusForm"));
+
+					for (var pair of formData.entries()) {
+						console.log(pair[0] + ',' + pair[1])
+					}
+
+					$.ajax({
+						type: "POST",
+						url: "/deleteanimal",
+						data: formData,
+						contentType: false,
+						processData: false,
+						success: function (result) {
+							$('#button' + result.id).attr('status', result.status);
+							$('#button' + result.id + '>span').toggleClass('icon-erase icon-eye');
+							if (result.status == '開放認養') {
+								$('#td_status' + result.id).text('開放認養')
+							}
+							else {
+								$('#td_status' + result.id).text('下架')
+
+							}
+							alert('#button' + result.id + ' change its status')
+						}
+					});
+				});
 			});
-		});
-		});
-		
+
 		</script>
 	</body>
 

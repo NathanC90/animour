@@ -408,11 +408,19 @@
 <script type="text/javascript">
 window.addeventasync = function(){
     addeventatc.settings({
+<<<<<<< HEAD
         appleical  : {show:false, text:"Apple Calendar"},
         google     : {show:true, text:"Google日曆"},
         outlook    : {show:false, text:"Outlook"},
         outlookcom : {show:false, text:"Outlook.com <em>(online)</em>"},
         yahoo      : {show:false, text:"Yahoo <em>(online)</em>"}
+=======
+      //  appleical  : {show:false, text:"Apple Calendar"},
+        google     : {show:true, text:"Google日曆"},
+        // outlook    : {show:false, text:"Outlook"},
+        // outlookcom : {show:false, text:"Outlook.com <em>(online)</em>"},
+        // yahoo      : {show:false, text:"Yahoo <em>(online)</em>"}
+>>>>>>> a59a81ad7d17c65525886df94e50f60321eab75f
     });
 };
 </script>

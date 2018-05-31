@@ -69,12 +69,13 @@ public class AcceptRecordService extends GenericService<AcceptRecord> {
 		List<AcceptRecord> adoptions = acceptRecordDao.findByMemberIdOrderByEndDate(memberId);
 		return adoptions;
 	}
-	
+
 	public void checkProcessEnd(AcceptRecord ar) {
-		if (ar.getDoneMember() && ar.getDoneOwner()) {
-			ar.setStatus("認養成功");
+		if (ar.getDoneMember() != null && ar.getDoneOwner() != null) {
+			if (ar.getDoneMember() && ar.getDoneOwner()) {
+				ar.setStatus("認養成功");
+			}
 		}
-		
 	}
 
 }
