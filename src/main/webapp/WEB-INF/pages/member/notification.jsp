@@ -228,7 +228,7 @@
 					}
 
 					$(document).ready(function () {
-						connect();
+						//connect();
 						//alert("alert from noti")
 
 						// onload 時先去讀取資料庫的未讀通知，新增元素顯示
