@@ -120,9 +120,10 @@
 
 						<div class="col-md-4">
 							<div class="card mb-4 box-shadow">
-								<img class="card-img-top" src="../images/adopt/cats/英短毛專題用圖.jpeg" width="20px" alt="待預約小貓">
+<!-- 							src="../images/adopt/cats/英短毛專題用圖.jpeg" -->
+								<img id="picture${avar.id}" class="card-img-top"  width="20px" alt="待預約小貓">
 								<div class="card-body" style="margin-bottom: 5px" id="bbb${avar.id}">
-									<p class="card-text" style="padding: 0px">服務：${avar.content} 耗時：${avar.time}時 <p id="aaa${avar.id}"><br></p>
+									<p class="card-text" style="padding: 0px">服務：${avar.content}<p id="aaa${avar.id}"><br></p>
 									<div class="d-flex justify-content-between align-items-center" style="max-height: 20px">
 										<div class="btn-group" style="margin: 0px">
 										</div>
@@ -261,7 +262,8 @@
 
 
 			<script>
-
+				$('#picture9').attr({'src':'../images/adopt/cats/英短毛專題用圖.jpeg'});
+				$('#picture7').attr({'src':'../images/reservation/serviceContent/狗狗特殊造型2.jpg'});
 			 $('#aaa9').append('服務人員立即過來服務。她拿剪刀剪我們雜亂的毛，於是我們就像各點一杯冰淇淋解熱過癮。'+
 					 '儘管天候已是入夏，週遭空氣中依然濕氣瀰漫。剪完之後，心涼脾肚開，剛才散步排出的汗珠，瞬間收斂消失於無形，渾身感覺舒暢心寬。');
 			 
@@ -271,8 +273,7 @@
 			 
 					 
 			 $('#aaa7').append('這裡的設計也能到這種地步，令人為之讚嘆。細嫩的毛髮、造型的表達方式、色彩發亮的毛色、'+
-					 '魅力十足的變化，都在這這幾位大師的巧手之下一一呈現，難怪會成為現代著名設計中心。但是，不管再怎麼說，'
-					 );
+					 '魅力十足的變化，都在這這幾位大師的巧手之下一一呈現，難怪會成為現代著名設計中心。');
 			 
 			 $('#bbb9').css({'height':'300px'});
 			 $('#bbb8').css({'height':'300px'});

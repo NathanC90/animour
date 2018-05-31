@@ -2,8 +2,10 @@ package org.iii.ee100.animour.Designer.dao;
 
 import static org.junit.Assert.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -46,9 +48,12 @@ public class ChangeDateTest {
 	FreeTimeDao freeTimeDao;
 
 	@Test
-	public void freetimeDao() {
+	public void freetimeDao() throws ParseException {
 		List<FreeTime> test = new ArrayList<>();
 		test= freeTimeDao.findByStatus("free");
+		SimpleDateFormat date = new SimpleDateFormat("yyyy-MM-dd");
+		Date aaa=date.parse("2018-05-29");
+		test= freeTimeDao.findByAppointDate(aaa);
 		System.out.println("aaabbbccc"+test);
 		
 	}
