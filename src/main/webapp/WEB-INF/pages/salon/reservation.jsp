@@ -263,6 +263,8 @@
 
 			<script>
 				$('#picture9').attr({'src':'../images/adopt/cats/英短毛專題用圖.jpeg'});
+				$('#picture8').attr({'src':'../images/reservation/serviceContent/poodeldog.jpg'});
+				
 				$('#picture7').attr({'src':'../images/reservation/serviceContent/狗狗特殊造型2.jpg'});
 			 $('#aaa9').append('服務人員立即過來服務。她拿剪刀剪我們雜亂的毛，於是我們就像各點一杯冰淇淋解熱過癮。'+
 					 '儘管天候已是入夏，週遭空氣中依然濕氣瀰漫。剪完之後，心涼脾肚開，剛才散步排出的汗珠，瞬間收斂消失於無形，渾身感覺舒暢心寬。');
