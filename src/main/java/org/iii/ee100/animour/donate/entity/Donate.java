@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import org.iii.ee100.animour.common.entity.GenericEntity;
 
 @Entity
-
 @Table(name = "DONATE")
 public class Donate extends GenericEntity {
 	@Id

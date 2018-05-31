@@ -19,6 +19,26 @@ public class DonateController {
 		return "/donation/donate";
 	}
 
+	@RequestMapping("/explain")
+	public String explainIndex(Model model) {
+		return "/donation/explain";
+	}
+
+	@RequestMapping("/friend")
+	public String friendIndex(Model model) {
+		return "/donation/friend";
+	}
+
+	@RequestMapping("/project")
+	public String projectIndex(Model model) {
+		return "/donation/project";
+	}
+
+	@RequestMapping("/policies")
+	public String policiesIndex(Model model) {
+		return "/donation/policies";
+	}
+
 	@RequestMapping(path = { "/donate/selectOneDonate" }, method = { RequestMethod.GET })
 	public String selectOneDonate(Donate donate, Model model) {
 		Donate dn = DonateService.getOne(Long.valueOf(donate.getId()));
@@ -39,30 +59,17 @@ public class DonateController {
 		DonateService.delete(donate.getId());
 		return "/donation/DonateForm";
 	}
-	
-	@RequestMapping(path = {"/donate/updateDonate"}, method = {RequestMethod.POST})
+
+	@RequestMapping(path = { "/donate/updateDonate" }, method = { RequestMethod.POST })
 	public String updateDonate(Donate donate, Model model) {
 		DonateService.update(donate);
 		return "/donation/DonateForm";
 	}
-	
-	@RequestMapping(path = {"/donate/insertDonate"}, method = {RequestMethod.POST})
+
+	@RequestMapping(path = { "/donate/insertDonate" }, method = { RequestMethod.POST })
 	public String insertDonate(Donate donate, Model model) {
 		DonateService.insert(donate);
 		return "/donation/DonateForm";
 	}
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
 }

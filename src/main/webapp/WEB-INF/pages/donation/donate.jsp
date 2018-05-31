@@ -19,7 +19,7 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 
-<title>捐款芳名錄</title>
+<title>支持與贊助</title>
 
 <!-- Bootstrap -->
 <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -46,208 +46,14 @@
 <link rel="stylesheet" type="text/css" href="/css/colors/green.css"
 	media="screen" />
 
-<style>
-.table {
-	width: 100%;
-	max-width: 100%;
-	margin-bottom: 1rem;
-	background-color: transparent
-}
+<!-- Color CSS Styles  -->
+<link rel="stylesheet" type="text/css" href="/css/colors/green.css"
+	media="screen" />
 
-.table td, .table th {
-	padding: .75rem;
-	vertical-align: top;
-	border-top: 1px solid #dee2e6
-}
 
-.table thead th {
-	vertical-align: bottom;
-	border-bottom: 2px solid #dee2e6
-}
-
-.table tbody+tbody {
-	border-top: 2px solid #dee2e6
-}
-
-.table .table {
-	background-color: #fff
-}
-
-.table-sm td, .table-sm th {
-	padding: .3rem
-}
-
-.table-bordered {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered td, .table-bordered th {
-	border: 1px solid #dee2e6
-}
-
-.table-bordered thead td, .table-bordered thead th {
-	border-bottom-width: 2px
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(0, 0, 0, .05)
-}
-
-.table-hover tbody tr:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-primary, .table-primary>td, .table-primary>th {
-	background-color: #b8daff
-}
-
-.table-hover .table-primary:hover {
-	background-color: #9fcdff
-}
-
-.table-hover .table-primary:hover>td, .table-hover .table-primary:hover>th
-	{
-	background-color: #9fcdff
-}
-
-.table-secondary, .table-secondary>td, .table-secondary>th {
-	background-color: #d6d8db
-}
-
-.table-hover .table-secondary:hover {
-	background-color: #c8cbcf
-}
-
-.table-hover .table-secondary:hover>td, .table-hover .table-secondary:hover>th
-	{
-	background-color: #c8cbcf
-}
-
-.table-success, .table-success>td, .table-success>th {
-	background-color: #c3e6cb
-}
-
-.table-hover .table-success:hover {
-	background-color: #b1dfbb
-}
-
-.table-hover .table-success:hover>td, .table-hover .table-success:hover>th
-	{
-	background-color: #b1dfbb
-}
-
-.table-info, .table-info>td, .table-info>th {
-	background-color: #bee5eb
-}
-
-.table-hover .table-info:hover {
-	background-color: #abdde5
-}
-
-.table-hover .table-info:hover>td, .table-hover .table-info:hover>th {
-	background-color: #abdde5
-}
-
-.table-warning, .table-warning>td, .table-warning>th {
-	background-color: #ffeeba
-}
-
-.table-hover .table-warning:hover {
-	background-color: #ffe8a1
-}
-
-.table-hover .table-warning:hover>td, .table-hover .table-warning:hover>th
-	{
-	background-color: #ffe8a1
-}
-
-.table-danger, .table-danger>td, .table-danger>th {
-	background-color: #f5c6cb
-}
-
-.table-hover .table-danger:hover {
-	background-color: #f1b0b7
-}
-
-.table-hover .table-danger:hover>td, .table-hover .table-danger:hover>th
-	{
-	background-color: #f1b0b7
-}
-
-.table-light, .table-light>td, .table-light>th {
-	background-color: #fdfdfe
-}
-
-.table-hover .table-light:hover {
-	background-color: #ececf6
-}
-
-.table-hover .table-light:hover>td, .table-hover .table-light:hover>th {
-	background-color: #ececf6
-}
-
-.table-dark, .table-dark>td, .table-dark>th {
-	background-color: #c6c8ca
-}
-
-.table-hover .table-dark:hover {
-	background-color: #b9bbbe
-}
-
-.table-hover .table-dark:hover>td, .table-hover .table-dark:hover>th {
-	background-color: #b9bbbe
-}
-
-.table-active, .table-active>td, .table-active>th {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover {
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table-hover .table-active:hover>td, .table-hover .table-active:hover>th
-	{
-	background-color: rgba(0, 0, 0, .075)
-}
-
-.table .thead-dark th {
-	color: #fff;
-	background-color: #212529;
-	border-color: #32383e
-}
-
-.table .thead-light th {
-	color: #495057;
-	background-color: #e9ecef;
-	border-color: #dee2e6
-}
-
-.table-dark {
-	color: #fff;
-	background-color: #212529
-}
-
-.table-dark td, .table-dark th, .table-dark thead th {
-	border-color: #32383e
-}
-
-.table-dark.table-bordered {
-	border: 0
-}
-
-.table-dark.table-striped tbody tr:nth-of-type(odd) {
-	background-color: rgba(255, 255, 255, .05)
-}
-
-.table-dark.table-hover tbody tr:hover {
-	background-color: rgba(255, 255, 255, .075)
-}
-</style>
 
 </head>
 <body>
-
 	<!-- 頁面上方連結 ，會蓋住後面的字-->
 	<header id="header-wrap">
 		<!-- Navbar Starts -->
@@ -255,80 +61,130 @@
 		<!-- Navbar ends -->
 	</header>
 	<br>
-	<br>
-	<br>
-	<br>
+	<div class="container">
+		<img class="card-img-top" src="/images/donate/rabbit.png" alt="">
+	</div>
+	<ul class="nav justify-content-center">
+		<li class="nav-item"><h5>
+				<a class="nav-link active" href="#">會員福利</a>
+			</h5></li>
+		<li class="nav-item"><h5>
+				<a class="nav-link" href="/project">&nbsp;|&nbsp;捐款項目</a>
+			</h5></li>
+		<li class="nav-item"><h5>
+				<a class="nav-link" href="explain">&nbsp;|&nbsp;贊助方式</a>
+			</h5></li>
+		<li class="nav-item"><h5>
+				<a class="nav-link" href="friend">&nbsp;|&nbsp;捐款名單</a>
+			</h5></li>
+	</ul>
 
-	<section class="classic-blog-section section">
-		<div class="container">
-			<div class="row">
-
-				<aside class="widget tag-cloud wow fadeIn" data-wow-delay="0.3s">
-					<div class="login button">
-						<ul>
-							<li><a href="/login">會員登入</a></li>
-						</ul>
+	<br>
+	<div class="container">
+		<h3>會員福利</h3>
+		<hr>
+		<h5>
+			會員可經由贊助我們，申請升級會員資格<br>除享與一般會員同級權利與回饋，升級後會員亦可得另享權益如下：
+			<p>
+		</h5>
+		<ol>
+			<li><h6>升等禮&nbsp;:&nbsp;符合升等資格之當月可獲得升等禮乙份。</h6></li>
+			<li><h6>生日禮&nbsp;:&nbsp;會員生日當月可獲得生日禮乙份，且依生日當月的會員等級回饋指定面額的購物金。</h6></li>
+			<li><h6>會員日&nbsp;:&nbsp;每月6號/16號/26號，皆依會員等級回饋指定好禮。</h6></li>
+		</ol>
+		<hr>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="pricing-table pricing-table-x">
+					<div class="table-header">
+						<h3>鑽石會員</h3>
 					</div>
-				</aside>
-				<br> <br>
-				<aside class="widget subscribe-widget wow fadeIn"
-					data-wow-delay="0.3s">
-					<h2 class="widget-title">資料填寫</h2>
-					<div class="donor">
-						<p>請詳細填寫</p>
+					<div class="plan">
+						<h3 class="price">NT350</h3>
 					</div>
-				</aside>
+					<div class="plan-info">
+						<p>
+							<i class="fa fa-check"></i> 100元購物金
+						</p>
+						<p>
+							<i class="fa fa-check"></i> 滿2000送200
+						</p>
+						<div class="button-area">
+							<a href="project" class="btn btn-common"> 詳情 </a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-				<aside>
+			<div class="col-md-4">
+				<div class="pricing-table pricing-table-x">
+					<div class="table-header highlight">
+						<h3>白金會員</h3>
+					</div>
+					<div class="plan">
+						<h3 class="price">NT200</h3>
+					</div>
+					<div class="plan-info">
+						<p>
+							<i class="fa fa-check"></i>100元購物金
+						</p>
+						<p>
+							<i class="fa fa-check"></i>滿2000送100
+						</p>
+						<div class="button-area">
+							<a href="project" class="btn btn-common">詳情</a>
+						</div>
+					</div>
+				</div>
+			</div>
 
-					<br> Email <input id='num' name="id" value="" type="text"
-						size="50" style="text-align: left">
-					<p>
-						<Br> 帳號 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 密碼 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 密碼確認 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 真實姓名 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 顯示姓名 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 連絡電話 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 生日 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 性別 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br> 捐款金額 <input id='num' name="id" value="" type="text"
-							size="14" style="text-align: left">
-					<p>
-						<Br>
-						<button type="submit" class="mt-10 btn btn-common btn-block">確認填寫完畢</button>
-						<br>
-					<hr>
-					<br>
-					<h5>目前最新的六筆捐款紀錄</h5>
-					<br> <br>
-				</aside>
-
+			<div class="col-md-4 wow">
+				<div class="pricing-table pricing-table-x">
+					<div class="table-header">
+						<h3>黃金會員</h3>
+					</div>
+					<div class="plan">
+						<h3 class="price">消費1元以上</h3>
+					</div>
+					<div class="plan-info">
+						<p>
+							<i class="fa fa-check"></i> 滿1000再95折
+						</p>
+						<p>
+							<i class="fa fa-check"></i> 紅利點數1點
+						</p>
+						<div class="button-area">
+							<a href="project" class="btn btn-common">詳情</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+	<br>
+	<!-- footers  -->
+	<jsp:include page="../footer.jsp"></jsp:include>
+	<!-- Go To Top Link -->
+	<a href="#" class="back-to-top"> <i class="fa fa-angle-up"> </i>
+	</a>
 
+	<!-- JavaScript & jQuery Plugins -->
+	<script src="/js/jquery-min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.mixitup.js"></script>
+	<script src="/js/smoothscroll.js"></script>
+	<script src="/js/wow.js"></script>
+	<script src="/js/owl.carousel.js"></script>
+	<script src="/js/waypoints.min.js"></script>
+	<script src="/js/jquery.counterup.min.js"></script>
+	<script src="/js/jquery.slicknav.js"></script>
+	<script src="/js/jquery.appear.js"></script>
+	<script src="/js/form-validator.min.js"></script>
+	<script src="/js/contact-form-script.min.js"></script>
+	<script src="/js/main.js"></script>
 
 </body>
-
-<!-- footers  -->
-<jsp:include page="../footer.jsp"></jsp:include>
-
-
 </html>
